@@ -1,2 +1,0 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ExpandCollapse.ascx.cs" Inherits="StudentReports_ExpandCollapse" %>
-<asp:LinkButton ID="plusMinusButton" runat="server" style="text-decoration: none" OnClick="plusMinusButton_Click">–</asp:LinkButton>
