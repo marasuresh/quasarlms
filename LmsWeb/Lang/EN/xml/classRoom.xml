@@ -1,0 +1,62 @@
+<lng>
+
+   <title>Classroom "Forum"</title>
+   <TopicAuthor>Author</TopicAuthor>
+   <TopicAuthorTip>Name of the topic's author</TopicAuthorTip>
+   <Topic>Topic</Topic>
+   <Blocked>Blocked</Blocked>
+   <TopicTip>Topic</TopicTip>
+   <CurrentTopicBody>Current topic</CurrentTopicBody>
+   <TopicNosing>Not have topic for discussion</TopicNosing>
+   <Author>Instructor</Author>
+   <Student>Student</Student>
+   <NoTopicSelected>Topic not selected...</NoTopicSelected>
+   <NoTopicBody>Not entered full text of topic ...</NoTopicBody>
+   <newTopicSubject>Subject of topic </newTopicSubject>
+   <newTopicTxt>Full text of topic</newTopicTxt>
+   <PostTopicPost>Post</PostTopicPost>
+   <PostDate>Date</PostDate>
+   <PostDateTip>Order by date</PostDateTip>
+   
+   <TaskTitle>Classroom "Tasks"</TaskTitle>
+   <TaskAuthor>Instructor</TaskAuthor>
+   <TaskAuthorTip>Instructor</TaskAuthorTip>
+   <TaskTopic>Task</TaskTopic>
+   <TaskTip>Task summary</TaskTip>
+   <TaskDate>Period</TaskDate>
+   <TaskDateTip>Time of execution</TaskDateTip>
+   <TaskListisEmpty>Task list is empty</TaskListisEmpty>
+   <TaskSolution>Solution of task</TaskSolution>
+   <TaskSolutionTip>State the solution of task (Unchecked, Incomplete, Incorrect, Partially, Almost correct, Correct)</TaskSolutionTip>
+   <TaskNoSolution>No solution</TaskNoSolution>
+   <TaskUnchecked>Unchecked</TaskUnchecked>
+   <TaskIncomplete>Incomplete</TaskIncomplete>
+   <TaskIncorrect>Incorrect</TaskIncorrect>
+   <TaskPartially>Partially</TaskPartially>
+   <TaskAlmost>Almost correct</TaskAlmost>
+   <TaskRight>Correct</TaskRight>
+   
+   <EditTaskTitle>You solution of task</EditTaskTitle>
+   <EditTaskPost>Post</EditTaskPost>
+   
+   <ReplyAuthor>Author</ReplyAuthor>
+   <ReplyAuthorTip>Order by author</ReplyAuthorTip>
+   <ReplyMsg>Thread</ReplyMsg>
+   <ReplyMsgTip>Order by thread</ReplyMsgTip>
+   <ReplyNosing>No thread</ReplyNosing>
+   
+   <PostTitle>Add:</PostTitle>
+   <PostReplySubmit>Add message to selected topic</PostReplySubmit>
+   <PostTopicSubmit>Create new thread</PostTopicSubmit>
+   <PostError>Error:</PostError>
+   
+   <Private>private topic</Private>
+   <Public>public topic</Public>
+   <MessageText>Text of message</MessageText>
+   <MessageTextTip>Order by text</MessageTextTip>
+   
+   <NavigatorPages>Pages</NavigatorPages>
+   <NavigatorTotal>Total pages</NavigatorTotal>
+   <NavigatorPg>page</NavigatorPg>
+
+</lng>

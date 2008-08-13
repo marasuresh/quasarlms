@@ -1,0 +1,71 @@
+﻿<%@ Master
+    Language="C#"
+    AutoEventWireup="true"
+    CodeFile="Template.master.cs"
+    Inherits="Template" %>
+<html>
+<head runat="server">
+    <title>Консоль адміністрування</title>
+    <link rel=stylesheet href=Template.css /> 
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+    <table width=100% cellpadding=0 cellspacing=0>
+    <tr><td colspan=3 class=topPanel>
+        <table width=100% cellpadding=0 cellspacing=0>
+            <tr><td style="height: 56px">
+                <asp:Label runat=server id=titleH2 CssClass=title Font-Size="Large" Font-Bold="true">Title</asp:Label>
+                <br />
+                <asp:Label ID="userLabel" runat="server" CssClass=subTitle Text="{user}"></asp:Label>
+                <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass=logoff />
+                
+            </td><td align=right style="height: 56px">
+            
+                <table><tr><td>
+                    <asp:HyperLink ID="homeHyperLink" runat="server" NavigateUrl="~/" meta:resourcekey="homeHyperLinkResource1">Home</asp:HyperLink>
+                </td><td>&nbsp;</td><td>
+                    <asp:HyperLink ID="newsIconHyperLink" runat="server" NavigateUrl="~/Tools/News" ImageUrl="~/Images/news-item-yellow.gif" meta:resourcekey="newsIconHyperLinkResource1"></asp:HyperLink> 
+               </td><td> 
+                    <asp:HyperLink ID="newsHyperLink" runat="server" NavigateUrl="~/Tools/News" meta:resourcekey="newsHyperLinkResource1">News</asp:HyperLink> 
+                </td><td>&nbsp;</td><td> 
+                
+                    <asp:HyperLink ID="trainingsIconHyperLink" runat="server" NavigateUrl="~/Tools/Trainings" ImageUrl="~/Images/calendar.gif" meta:resourcekey="trainingsIconHyperLinkResource1"></asp:HyperLink> 
+                </td><td>
+                    <asp:HyperLink ID="trainingsHyperLink" runat="server" NavigateUrl="~/Tools/Trainings" meta:resourcekey="trainingsHyperLinkResource1">Trainings</asp:HyperLink>
+                </td><td>&nbsp;</td><td> 
+                
+                    <asp:HyperLink ID="ordersIconsHyperLink" runat="server" NavigateUrl="~/Tools/Orders" ImageUrl="~/Images/order-greeb.gif" meta:resourcekey="ordersIconsHyperLinkResource1"></asp:HyperLink> 
+                </td><td>                
+                    <asp:HyperLink ID="ordersHyperLink" runat="server" NavigateUrl="~/Tools/Orders" meta:resourcekey="ordersHyperLinkResource1">Orders</asp:HyperLink>
+                </td></tr></table>
+                
+            </td></tr>
+            <tr><td colspan=2 align=left class=pathRow>
+                <table cellpadding=0 cellspacing=0 width=100%><tr><td width=90% style="height: 13px">
+                    <asp:SiteMapPath ID="sitePath" runat="server" meta:resourcekey="sitePathResource1"/>
+                </td><td align=right nowrap style="height: 13px">
+                    <asp:HyperLink ID="administrationHyperLink" runat="server" NavigateUrl="~/Tools/Administration" meta:resourceKey="administrationHyperLink" ImageUrl="~/Images/card-people.gif"></asp:HyperLink>
+                    <asp:HyperLink ID="reportsHyperLink" runat="server" NavigateUrl="TutorReport" meta:resourceKey="reportsHyperLink" ImageUrl="~/Images/PrintHS.gif"></asp:HyperLink>
+                </td></tr>               
+                </table>
+            </td></tr>
+        </table> 
+         
+    </td></tr> 
+    <tr><td width=10em class=leftColumn></td>
+    <td height=40em valign=top class=contentTableCell>
+        <asp:contentplaceholder id="mainContentPlaceHolder" runat="server">
+        </asp:contentplaceholder>
+ 
+    </td>
+    <td width=10em class=rightColumn></td> </tr> 
+   <tr><td colspan=3>
+   <div class=bottomLineDiv><font size=1 runat=server id=bottomLine>Kvazar-Micro, 2006</font></div>
+   </td></tr> 
+    </table>
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+    
+    </form>
+</body>
+</html>

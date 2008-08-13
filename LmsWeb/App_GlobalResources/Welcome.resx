@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root><xsd:schema id="root" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"><xsd:import namespace="http://www.w3.org/XML/1998/namespace" /><xsd:element name="root" msdata:IsDataSet="true"><xsd:complexType><xsd:choice maxOccurs="unbounded"><xsd:element name="metadata"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" /></xsd:sequence><xsd:attribute name="name" use="required" type="xsd:string" /><xsd:attribute name="type" type="xsd:string" /><xsd:attribute name="mimetype" type="xsd:string" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element><xsd:element name="assembly"><xsd:complexType><xsd:attribute name="alias" type="xsd:string" /><xsd:attribute name="name" type="xsd:string" /></xsd:complexType></xsd:element><xsd:element name="data"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /><xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" /><xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" /><xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element><xsd:element name="resheader"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" /></xsd:complexType></xsd:element></xsd:choice></xsd:complexType></xsd:element></xsd:schema><resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="Caption" xml:space="preserve">
+			<value>Welcome to education course:</value>
+		</data><data name="BlockingText" xml:space="preserve">
+			<value>Warning! Course is blocked for you</value>
+		</data><data name="Curator" xml:space="preserve">
+			<value>Curator</value>
+		</data><data name="Instructor" xml:space="preserve">
+			<value>Instructor</value>
+		</data><data name="Retry" xml:space="preserve">
+			<value>To repeat an examination</value>
+		</data><data name="NoTrainings" xml:space="preserve">
+			<value>Education trenings is not available for you now! Please subscribe in trening</value>
+		</data><data name="GoToSubscr" xml:space="preserve">
+			<value>Go to Subscribe page.</value>
+		</data><data name="SubscrText" xml:space="preserve">
+			<value>When you is be able to give the application for trening</value>
+		</data><data name="NoFree" xml:space="preserve">
+			<value>Free trening is absence</value>
+		</data><data name="useCD" xml:space="preserve">
+			<value>Using a CD media library</value>
+		</data><data name="settingsCD" xml:space="preserve">
+			<value>Configuration a CD media library</value>
+		</data><data name="cdSubmit" xml:space="preserve">
+			<value>Save</value>
+		</data><data name="cdName" xml:space="preserve">
+			<value>Path to CD media library</value>
+		</data><data name="cdDisk" xml:space="preserve">
+			<value>Disk</value>
+		</data><data name="Questionnaire_Lable" xml:space="preserve">
+			<value></value>
+		</data><data name="Questionnaire_hrefLable" xml:space="preserve">
+			<value>Please, to fill in a questionnaire</value>
+		</data><data name="LastEntryTxt" xml:space="preserve">
+			<value>Was attended</value>
+		</data><data name="Start_hrefLable" xml:space="preserve">
+			<value>Start of the learning</value>
+		</data><data name="Start_help" xml:space="preserve">
+			<value> (menu appear on the left)</value>
+		</data><data name="Members_hrefLable" xml:space="preserve">
+			<value>Members of the learning</value>
+		</data><data name="BulletinBoard_Caption" xml:space="preserve">
+			<value>Bulletin board</value>
+		</data><data name="BulletinBoard_Header_Date" xml:space="preserve">
+			<value>Date</value>
+		</data><data name="BulletinBoard_Header_Author" xml:space="preserve">
+			<value>Author</value>
+		</data><data name="BulletinBoard_Header_Text" xml:space="preserve">
+			<value>Text</value>
+		</data><data name="Statistics_Complete" xml:space="preserve">
+			<value>Complete</value>
+		</data><data name="Statistics_NotComplete" xml:space="preserve">
+			<value>Not complete</value>
+		</data><data name="Statistics_Skipped" xml:space="preserve">
+			<value>Skipped</value>
+		</data><data name="Statistics_CourseTest" xml:space="preserve">
+			<value>Test of the course</value>
+		</data><data name="Statistics_Caption" xml:space="preserve">
+			<value>Testing</value>
+		</data><data name="Statistics_Header_Theme" xml:space="preserve">
+			<value>Theme/course</value>
+		</data><data name="Statistics_Header_Complete" xml:space="preserve">
+			<value>Result</value>
+		</data><data name="Statistics_Header_Tries" xml:space="preserve">
+			<value>Tries</value>
+		</data><data name="Statistics_Header_Points" xml:space="preserve">
+			<value>Mark</value>
+		</data><data name="Statistics_Header_CompletionDate" xml:space="preserve">
+			<value>Date of the completion</value>
+		</data></root>

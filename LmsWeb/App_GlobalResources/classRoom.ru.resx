@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root><xsd:schema id="root" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"><xsd:import namespace="http://www.w3.org/XML/1998/namespace" /><xsd:element name="root" msdata:IsDataSet="true"><xsd:complexType><xsd:choice maxOccurs="unbounded"><xsd:element name="metadata"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" /></xsd:sequence><xsd:attribute name="name" use="required" type="xsd:string" /><xsd:attribute name="type" type="xsd:string" /><xsd:attribute name="mimetype" type="xsd:string" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element><xsd:element name="assembly"><xsd:complexType><xsd:attribute name="alias" type="xsd:string" /><xsd:attribute name="name" type="xsd:string" /></xsd:complexType></xsd:element><xsd:element name="data"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /><xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" /><xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" /><xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element><xsd:element name="resheader"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" /></xsd:complexType></xsd:element></xsd:choice></xsd:complexType></xsd:element></xsd:schema><resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="title" xml:space="preserve">
+			<value>Классная комната "Форум"</value>
+		</data><data name="TopicAuthor" xml:space="preserve">
+			<value>Автор</value>
+		</data><data name="TopicAuthorTip" xml:space="preserve">
+			<value>Имя автора темы</value>
+		</data><data name="Topic" xml:space="preserve">
+			<value>Тема</value>
+		</data><data name="Blocked" xml:space="preserve">
+			<value>блокирована</value>
+		</data><data name="TopicTip" xml:space="preserve">
+			<value>Тема</value>
+		</data><data name="CurrentTopicBody" xml:space="preserve">
+			<value>Текущая тема</value>
+		</data><data name="TopicNosing" xml:space="preserve">
+			<value>нет тем для обсуждения</value>
+		</data><data name="Author" xml:space="preserve">
+			<value>инструктор</value>
+		</data><data name="Student" xml:space="preserve">
+			<value>студент</value>
+		</data><data name="NoTopicSelected" xml:space="preserve">
+			<value>Не выбрана тема ...</value>
+		</data><data name="NoTopicBody" xml:space="preserve">
+			<value>Подробное описание темы не было введено ...</value>
+		</data><data name="newTopicSubject" xml:space="preserve">
+			<value>Тема</value>
+		</data><data name="newTopicTxt" xml:space="preserve">
+			<value>Подробнее</value>
+		</data><data name="PostTopicPost" xml:space="preserve">
+			<value>Отправить</value>
+		</data><data name="PostDate" xml:space="preserve">
+			<value>Дата</value>
+		</data><data name="PostDateTip" xml:space="preserve">
+			<value>Сортировать по дате</value>
+		</data><data name="TaskTitle" xml:space="preserve">
+			<value>Классная комната "Задачи"</value>
+		</data><data name="TaskAuthor" xml:space="preserve">
+			<value>Инструктор</value>
+		</data><data name="TaskAuthorTip" xml:space="preserve">
+			<value>Инструктор</value>
+		</data><data name="TaskTopic" xml:space="preserve">
+			<value>Задача</value>
+		</data><data name="TaskTip" xml:space="preserve">
+			<value>Краткое изложение задачи</value>
+		</data><data name="TaskDate" xml:space="preserve">
+			<value>Срок</value>
+		</data><data name="TaskDateTip" xml:space="preserve">
+			<value>Срок выполнения</value>
+		</data><data name="TaskListisEmpty" xml:space="preserve">
+			<value>Назначенных задач - нет ...</value>
+		</data><data name="TaskSolution" xml:space="preserve">
+			<value>Решение</value>
+		</data><data name="TaskSolutionTip" xml:space="preserve">
+			<value>Состояние решения задачи (нет решения,непроверено,правильно,неправильно)</value>
+		</data><data name="TaskNoSolution" xml:space="preserve">
+			<value>Нет решения</value>
+		</data><data name="TaskUnchecked" xml:space="preserve">
+			<value>Непроверено</value>
+		</data><data name="TaskIncomplete" xml:space="preserve">
+			<value>Не выполнено</value>
+		</data><data name="TaskIncorrect" xml:space="preserve">
+			<value>Неправильно</value>
+		</data><data name="TaskPartially" xml:space="preserve">
+			<value>Частично</value>
+		</data><data name="TaskAlmost" xml:space="preserve">
+			<value>В основном правильно</value>
+		</data><data name="TaskRight" xml:space="preserve">
+			<value>Правильно</value>
+		</data><data name="EditTaskTitle" xml:space="preserve">
+			<value>Ваше решение задачи</value>
+		</data><data name="EditTaskPost" xml:space="preserve">
+			<value>Отправить</value>
+		</data><data name="ReplyAuthor" xml:space="preserve">
+			<value>Автор</value>
+		</data><data name="ReplyAuthorTip" xml:space="preserve">
+			<value>Сортировать по имени автора</value>
+		</data><data name="ReplyMsg" xml:space="preserve">
+			<value>Тема</value>
+		</data><data name="ReplyMsgTip" xml:space="preserve">
+			<value>Сортировать по теме</value>
+		</data><data name="ReplyNosing" xml:space="preserve">
+			<value>нет сообщений</value>
+		</data><data name="PostTitle" xml:space="preserve">
+			<value>Добавить:</value>
+		</data><data name="PostReplySubmit" xml:space="preserve">
+			<value>Добавить сообщение в выбранную тему</value>
+		</data><data name="PostTopicSubmit" xml:space="preserve">
+			<value>Создать новую тему</value>
+		</data><data name="PostError" xml:space="preserve">
+			<value>Произошла ошибка:</value>
+		</data><data name="NavigatorPages" xml:space="preserve">
+			<value>Страницы</value>
+		</data><data name="NavigatorTotal" xml:space="preserve">
+			<value>Всего</value>
+		</data><data name="NavigatorPg" xml:space="preserve">
+			<value>стр</value>
+		</data><data name="Help1" xml:space="preserve">
+			<value>После создания новой темы форума она видна только студенту,
+создавшему тему и инструктору тренинга. Если инструктор считает, что данная
+тема интересна и важна для остальных студентов, он открывает тему для общего
+обсуждения – тогда тема становится доступна для обсуждения (просмотра и
+добавления сообщений) другим студентам тренинга. Вы можете сортировать сообщения 
+по дате, автору и теме(тексту сообщения)</value>
+		</data><data name="Help2" xml:space="preserve">
+			<value>В этом разделе Вы можете получать от инструктора дополнительные задания. Вам нужно выполнить эти задания в указанный срок. После выполнения задания инструктор оценит Ваш ответ.</value>
+		</data><data name="Private" xml:space="preserve">
+			<value>для обсуждения с инструктором</value>
+		</data><data name="Public" xml:space="preserve">
+			<value>для общего обсуждения</value>
+		</data><data name="MessageText" xml:space="preserve">
+			<value>Текст сообщения</value>
+		</data><data name="MessageTextTip" xml:space="preserve">
+			<value>Сортировать по тексту сообщения</value>
+		</data></root>

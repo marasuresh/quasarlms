@@ -1,0 +1,57 @@
+<asp:Menu
+		runat="server"
+		SkinID="MainMenu"
+		Orientation="Horizontal"
+		StaticHoverStyle-CssClass="mainStaticHoverStyle"
+		StaticMenuItemStyle-CssClass="mainStaticMenuItemStyle"
+		StaticSelectedStyle-CssClass="mainStaticSelectedStyle"
+		StaticMenuStyle-CssClass="mainStaticMenuStyle" />
+<asp:Menu
+		runat="server"
+		SkinID="LanguageMenu"
+		Orientation="Horizontal"
+		StaticMenuItemStyle-CssClass="mnLangStatic"
+		StaticSelectedStyle-CssClass="mnLangStaticSelected"
+		StaticHoverStyle-CssClass="mnLangStaticHover"
+		CssClass="mnLang" />
+<asp:Image
+		runat="server"
+		SkinID="LogoBot"
+		ImageUrl="images/km_logo_bot.gif"
+		Width="220"
+		Height="6"
+		border="0" />
+<asp:Image
+		runat="server"
+		SkinID="TopMid2"
+		Height="66"
+		ImageUrl="images/top_mid2.gif"
+		Width="131"
+		border="0" />
+
+<asp:HyperLink
+		runat="server"
+		SkinID="HomeLink"
+		ImageUrl="images/menu_home.gif"
+		Width="16"
+		Height="16" />
+
+<asp:HyperLink
+		runat="server"
+		SkinID="MailLink"
+		ImageUrl="images/menu_mail.gif"
+		Width="16"
+		Height="16" />
+<asp:Image
+		runat="server"
+		SkinID="Bullet1"
+		ImageUrl="images/bullet.gif"
+		Width="14"
+		Height="14"
+		border="0" />
+<asp:GridView
+		runat="server"
+		SkinID="ForumTopicList"
+		CssClass="TableList"
+		Width="100%"
+		HorizontalAlign="Center" />

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<xml>
+   <EnterKeywords>Поиск курса</EnterKeywords>
+   <Search>Искать</Search>
+   <NotFoundA>Не найдены курсы по указанным ключевым словам</NotFoundA>
+   <Founds>результат поиска</Founds>
+   <Help0>Пожалуйста, выберите интересующую вас область.</Help0>
+   <Help1>Здесь перечислены поданные Вами заявки. Для удаления заявки отметьте ее флажком в поле «Удалить». После этого щелкните по ссылке «Удалить выбранные заявки».</Help1>
+   <Help2>Заявка рассматривается в течение одного рабочего дня. После рассмотрения заявки наш менеджер свяжется с Вами.</Help2>
+
+   <!-- Таблица доступных курсов -->
+   <tableAccessibleCourses>
+      <FailDateAlt>Укажите правильную дату</FailDateAlt>
+      <DateAlt>Желаемая дата начала тренинга</DateAlt>
+      <CommentAlt>Поле для ввода комментария</CommentAlt>
+      <Note>Для подачи заявки выберите курс, укажите желаемую дату начала тренинга, и при необходимости, свои пожелания в поле "комментарий". После этого щелкните по ссылке «Подать заявки на выбранные курсы». </Note>
+      <Caption>Подача заявки на изучение курса</Caption>
+      <!-- Заголовок таблицы -->
+      <tableHeader>
+         <dataTD >Выбрать</dataTD>
+         <dataTD>Желаемая дата</dataTD>
+         <dataTD>Курс</dataTD>
+         <dataTD>Комментарий</dataTD>
+      </tableHeader>
+   </tableAccessibleCourses>
+   <addSenderCaption>Подать заявки на выбранные курсы</addSenderCaption>
+
+   <!-- Таблица размещенных заявок -->
+   <tableExisdataTRequests>
+      <Caption>Размещенные заявки</Caption>
+      <!-- Заголовок таблицы -->
+      <tableHeader>
+         <dataTD>Удалить</dataTD>
+         <dataTD>Заявленная дата</dataTD>
+         <dataTD>Заявленный курс</dataTD>
+         <dataTD>Комментарий</dataTD>
+      </tableHeader>
+      <!-- Содержание таблицы -->
+   </tableExisdataTRequests>
+   <!-- КНЯПКА ДЛЯ УДАЛЕНИЯ ЗАЯВОК -->
+   <deleteSenderCaption>Удалить выбранные заявки</deleteSenderCaption>
+   
+</xml>

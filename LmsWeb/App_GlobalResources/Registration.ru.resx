@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root><xsd:schema id="root" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"><xsd:import namespace="http://www.w3.org/XML/1998/namespace" /><xsd:element name="root" msdata:IsDataSet="true"><xsd:complexType><xsd:choice maxOccurs="unbounded"><xsd:element name="metadata"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" /></xsd:sequence><xsd:attribute name="name" use="required" type="xsd:string" /><xsd:attribute name="type" type="xsd:string" /><xsd:attribute name="mimetype" type="xsd:string" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element><xsd:element name="assembly"><xsd:complexType><xsd:attribute name="alias" type="xsd:string" /><xsd:attribute name="name" type="xsd:string" /></xsd:complexType></xsd:element><xsd:element name="data"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /><xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" /><xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" /><xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element><xsd:element name="resheader"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" /></xsd:complexType></xsd:element></xsd:choice></xsd:complexType></xsd:element></xsd:schema><resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="PageError" xml:space="preserve">
+			<value>Введите правильные данные в выделенные поля</value>
+		</data><data name="PageNote" xml:space="preserve">
+			<value>Поля, обязательные для заполнения, обозначены значком</value>
+		</data><data name="PageNote1" xml:space="preserve">
+			<value>Обучение и подача заявок на изучение платных курсов доступны только для зарегистрированных пользователей</value>
+		</data><data name="PageNote2" xml:space="preserve">
+			<value>Для регистрации, заполните форму и нажмите кнопку "Отправить"</value>
+		</data><data name="Email" xml:space="preserve">
+			<value>Электронный адрес. Используется как Ваше регистрацинное имя</value>
+		</data><data name="EmailExist" xml:space="preserve">
+			<value>Пользователь с таким e-mail уже зарегистрирован</value>
+		</data><data name="PasswordOld" xml:space="preserve">
+			<value>Старый пароль</value>
+		</data><data name="ChangePass" xml:space="preserve">
+			<value>Смена пароля</value>
+		</data><data name="ChangePassword" xml:space="preserve">
+			<value>Сменить пароль</value>
+		</data><data name="PasswordFaild" xml:space="preserve">
+			<value>Неверный пароль</value>
+		</data><data name="Password" xml:space="preserve">
+			<value>Пароль</value>
+		</data><data name="PasswordConfirm" xml:space="preserve">
+			<value>Подтверждение пароля</value>
+		</data><data name="LastName" xml:space="preserve">
+			<value>Фамилия</value>
+		</data><data name="FirstName" xml:space="preserve">
+			<value>Имя</value>
+		</data><data name="MidName" xml:space="preserve">
+			<value>Отчество</value>
+		</data><data name="Birth" xml:space="preserve">
+			<value>Дата рождения</value>
+		</data><data name="BirthDay" xml:space="preserve">
+			<value>Число</value>
+		</data><data name="BirthMonth" xml:space="preserve">
+			<value>Месяц</value>
+		</data><data name="BirthYear" xml:space="preserve">
+			<value>Год</value>
+		</data><data name="Sex" xml:space="preserve">
+			<value>Пол</value>
+		</data><data name="Male" xml:space="preserve">
+			<value>Мужской</value>
+		</data><data name="Female" xml:space="preserve">
+			<value>Женский</value>
+		</data><data name="WorkPlace" xml:space="preserve">
+			<value>Место работы</value>
+		</data><data name="CompanyType" xml:space="preserve">
+			<value>Форма собственности</value>
+		</data><data name="CompanyName" xml:space="preserve">
+			<value>Название организации</value>
+		</data><data name="JobOccup" xml:space="preserve">
+			<value>Должность</value>
+		</data><data name="Manager" xml:space="preserve">
+			<value>Непосредственный руководитель</value>
+		</data><data name="ManagerOccup" xml:space="preserve">
+			<value>Должность руководителя</value>
+		</data><data name="ManagerPhone" xml:space="preserve">
+			<value>Телефон руководителя</value>
+		</data><data name="ContactInfo" xml:space="preserve">
+			<value>Контактные данные</value>
+		</data><data name="Country" xml:space="preserve">
+			<value>Страна</value>
+		</data><data name="City" xml:space="preserve">
+			<value>Город</value>
+		</data><data name="PostalCode" xml:space="preserve">
+			<value>Почтовый индекс</value>
+		</data><data name="Adress" xml:space="preserve">
+			<value>Адрес</value>
+		</data><data name="PhoneCityCode" xml:space="preserve">
+			<value>Телефон с кодом города</value>
+		</data><data name="FaxCityCode" xml:space="preserve">
+			<value>Факс с кодом города</value>
+		</data><data name="Education" xml:space="preserve">
+			<value>Образование</value>
+		</data><data name="CollegeProf" xml:space="preserve">
+			<value>ВУЗ, специальность</value>
+		</data><data name="Courses" xml:space="preserve">
+			<value>Курсы, тренинги</value>
+		</data><data name="Cert" xml:space="preserve">
+			<value>Сертификаты</value>
+		</data><data name="AddInfo" xml:space="preserve">
+			<value>Дополнительные сведения</value>
+		</data><data name="Photo" xml:space="preserve">
+			<value>Фото</value>
+		</data><data name="PhotoTooBig" xml:space="preserve">
+			<value>Фото: Размер файла превышает </value>
+		</data><data name="PhotoTypeError" xml:space="preserve">
+			<value>Фото: Недопустимый тип файла</value>
+		</data><data name="Submit" xml:space="preserve">
+			<value>Отправить</value>
+		</data><data name="Reset" xml:space="preserve">
+			<value>Очистить</value>
+		</data><data name="LoginPasswordFailed" xml:space="preserve">
+			<value>Введите электронный адрес, указанный при регистрации, и правильный пароль</value>
+		</data><data name="EnterValidPassword" xml:space="preserve">
+			<value>Если Вы не являетесь зарегистрированным пользователем системы дистанционного обучения "Квазар-Микро", пожалуйста, перейдите в раздел "Записаться на курс"</value>
+		</data><data name="ForgotPassword" xml:space="preserve">
+			<value>Если Вы забыли пароль...</value>
+		</data><data name="Go" xml:space="preserve">
+			<value>Зарегистрироваться</value>
+		</data><data name="StudentExistText" xml:space="preserve">
+			<value>Пользователь с таким логином в настоящее время работает в системе.</value>
+		</data></root>

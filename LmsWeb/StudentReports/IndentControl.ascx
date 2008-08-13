@@ -1,0 +1,1 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="IndentControl.ascx.cs" Inherits="StudentReports_IndentControl" %>

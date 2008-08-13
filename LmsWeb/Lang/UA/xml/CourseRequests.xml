@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<xml>
+   <EnterKeywords>Поиск курса</EnterKeywords>
+   <Search>Искать</Search>
+   <NotFoundA>Не найдены курсы по указанным ключевым словам</NotFoundA>
+   <Founds>результат поиска</Founds>
+
+   <!-- Таблица доступных курсов -->
+   <tableAccessibleCourses>
+      <FailDateAlt>Укажите правильную дату</FailDateAlt>
+      <DateAlt>Желаемая дата начала тренинга</DateAlt>
+      <CommentAlt>Поле для ввода комментария</CommentAlt>
+      <Note>Для подачи заявки выберите курс, укажите желаемую дату начата тренинга, и при необходимости, свои пожелания в поле "комментарий"</Note>
+      <Caption>Подача заявки на изучение курса</Caption>
+      <!-- Заголовок таблицы -->
+      <tableHeader>
+         <dataTD >Выбрать</dataTD>
+         <dataTD>Желаемая дата</dataTD>
+         <dataTD>Курс</dataTD>
+         <dataTD>Комментарий</dataTD>
+      </tableHeader>
+   </tableAccessibleCourses>
+   <addSenderCaption>Подать заявки на выбранные курсы</addSenderCaption>
+
+   <!-- Таблица размещенных заявок -->
+   <tableExisdataTRequests>
+      <Caption>Размещенные заявки</Caption>
+      <!-- Заголовок таблицы -->
+      <tableHeader>
+         <dataTD>Удалить</dataTD>
+         <dataTD>Заявленная дата</dataTD>
+         <dataTD>Заявленный курс</dataTD>
+         <dataTD>Комментарий</dataTD>
+      </tableHeader>
+      <!-- Содержание таблицы -->
+   </tableExisdataTRequests>
+   <!-- КНЯПКА ДЛЯ УДАЛЕНИЯ ЗАЯВОК -->
+   <deleteSenderCaption>Удалить выбранные заявки</deleteSenderCaption>
+   
+</xml>

@@ -1,0 +1,90 @@
+.body {
+	FONT-SIZE: 9pt; COLOR: #000080; font-face: sans-serif,helvetica,arial
+}
+.abody {
+	FONT-SIZE: 9pt; COLOR: #000080; TEXT-INDENT: 3mm; font-face: sans-serif,helvetica,arial
+}
+.bbody {
+	FONT-SIZE: 9pt; COLOR: #000080; TEXT-INDENT: 6mm; font-face: sans-serif,helvetica,arial
+}
+.cbody {
+	FONT-SIZE: 9pt; COLOR: #000080; TEXT-INDENT: 9mm; font-face: sans-serif,helvetica,arial
+}
+.ahead {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #900000; TEXT-DECORATION: none; font-face: verdana,helvetica,arial
+}
+.news {
+	FONT-SIZE: 9pt; MARGIN: 5px 5px 10px; COLOR: #00437e; font-face: sans-serif,helvetica,arial
+}
+.ibody {
+	FONT-SIZE: 9pt; MARGIN: 5px 10px 10px; COLOR: #333333; font-face: sans-serif,helvetica,arial
+}
+.mbody {
+	FONT-SIZE: 8pt; MARGIN: 5px 10px 10px; COLOR: #18328c; font-face: sans-serif,helvetica,arial
+}
+.botbody {
+	FONT-SIZE: 8pt; MARGIN: 0px 0px 10px; COLOR: #18328c; font-face: sans-serif,helvetica,arial
+}
+.ubody {
+	FONT-SIZE: 11pt; MARGIN: 5px 10px 10px; COLOR: #003366; font-face: sans-serif,helvetica,arial
+}
+.sbody {
+	FONT-SIZE: 10pt; MARGIN: 5px 4px 10px; COLOR: #18328c; font-face: verdana,sans-serif,helvetica,arial
+}
+.link {
+	FONT-SIZE: 9pt; COLOR: blue; TEXT-DECORATION: none; font-face: sans-serif,helvetica,arial
+}
+.nylink {
+	FONT-SIZE: 8pt; COLOR: #666666; TEXT-DECORATION: none; font-face: sans-serif,helvetica,arial
+}
+.glink {
+	FONT-SIZE: 9pt; COLOR: #000080; TEXT-DECORATION: none; font-face: sans-serif,helvetica,arial
+}
+.bblink {
+	FONT-SIZE: 9pt; COLOR: #3366cc; TEXT-DECORATION: none; font-face: sans-serif,helvetica,arial
+}
+.blink {
+	FONT-SIZE: 9pt; COLOR: blue; TEXT-DECORATION: none; font-face: sans-serif,helvetica,arial
+}
+.xlink {
+	FONT-SIZE: 7pt; COLOR: #0066ff; TEXT-DECORATION: none; font-face: sans-serif,helvetica,arial
+}
+.rlink {
+	FONT-SIZE: 9pt; COLOR: #b52121; TEXT-DECORATION: none; font-face: sans-serif,helvetica,arial
+}
+.zlink {
+	FONT-SIZE: 7pt; COLOR: #b52121; TEXT-DECORATION: none; font-face: sans-serif,helvetica,arial
+}
+.xlink {
+	FONT-SIZE: 8pt; COLOR: blue; TEXT-DECORATION: none; font-face: verdana,sans-serif,helvetica,arial
+}
+.wlink {
+	FONT-SIZE: 8pt; COLOR: #ffffff; TEXT-DECORATION: none; font-face: sans-serif,helvetica,arial
+}
+.bhead {
+	FONT-WEIGHT: bold; FONT-SIZE: 13pt; MARGIN-LEFT: 8px; COLOR: #054c99; MARGIN-RIGHT: 8px; font-face: verdana
+}
+.bbhead {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; MARGIN-LEFT: 18px; COLOR: #999999; MARGIN-RIGHT: 8px; font-face: verdana
+}
+.shead {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; MARGIN-LEFT: 8px; COLOR: #666666; MARGIN-RIGHT: 8px; font-face: verdana
+}
+.thead {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; MARGIN-LEFT: 8px; COLOR: #993300; MARGIN-RIGHT: 8px; font-face: arial
+}
+.nhead {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; MARGIN-LEFT: 3px; COLOR: red; MARGIN-RIGHT: 3px; font-face: verdana
+}
+.rhead {
+	FONT-WEIGHT: bold; FONT-SIZE: 13pt; MARGIN-LEFT: 3px; COLOR: red; MARGIN-RIGHT: 3px; font-face: verdana
+}
+.dhead {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; MARGIN-LEFT: 1px; COLOR: #900000; MARGIN-RIGHT: 1px; font-face: verdana
+}
+.small {
+	FONT-SIZE: 8pt; font-face: helvetica,arial
+}
+.ssmall {
+	FONT-SIZE: 8pt; font-face: verdana
+}
