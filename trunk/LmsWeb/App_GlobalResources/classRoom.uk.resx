@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root><xsd:schema id="root" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"><xsd:import namespace="http://www.w3.org/XML/1998/namespace" /><xsd:element name="root" msdata:IsDataSet="true"><xsd:complexType><xsd:choice maxOccurs="unbounded"><xsd:element name="metadata"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" /></xsd:sequence><xsd:attribute name="name" use="required" type="xsd:string" /><xsd:attribute name="type" type="xsd:string" /><xsd:attribute name="mimetype" type="xsd:string" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element><xsd:element name="assembly"><xsd:complexType><xsd:attribute name="alias" type="xsd:string" /><xsd:attribute name="name" type="xsd:string" /></xsd:complexType></xsd:element><xsd:element name="data"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /><xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" /><xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" /><xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element><xsd:element name="resheader"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" /></xsd:complexType></xsd:element></xsd:choice></xsd:complexType></xsd:element></xsd:schema><resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="title" xml:space="preserve">
+			<value>Класна кімната "Форум"</value>
+		</data><data name="TopicAuthor" xml:space="preserve">
+			<value>Автор</value>
+		</data><data name="TopicAuthorTip" xml:space="preserve">
+			<value>Ім'я автора теми</value>
+		</data><data name="Topic" xml:space="preserve">
+			<value>Тема</value>
+		</data><data name="Blocked" xml:space="preserve">
+			<value>блокована</value>
+		</data><data name="TopicTip" xml:space="preserve">
+			<value>Тема</value>
+		</data><data name="CurrentTopicBody" xml:space="preserve">
+			<value>Поточна тема</value>
+		</data><data name="TopicNosing" xml:space="preserve">
+			<value>нема тем для обговорення</value>
+		</data><data name="Author" xml:space="preserve">
+			<value>інструктор</value>
+		</data><data name="Student" xml:space="preserve">
+			<value>студент</value>
+		</data><data name="NoTopicSelected" xml:space="preserve">
+			<value>Не вибрано тему ...</value>
+		</data><data name="NoTopicBody" xml:space="preserve">
+			<value>Опис теми не введено ...</value>
+		</data><data name="newTopicSubject" xml:space="preserve">
+			<value>Тема</value>
+		</data><data name="newTopicTxt" xml:space="preserve">
+			<value>Подробиці</value>
+		</data><data name="PostTopicPost" xml:space="preserve">
+			<value>Відправити</value>
+		</data><data name="PostDate" xml:space="preserve">
+			<value>Дата</value>
+		</data><data name="PostDateTip" xml:space="preserve">
+			<value>Сортувати за датою</value>
+		</data><data name="TaskTitle" xml:space="preserve">
+			<value>Класна кімната "Завдання"</value>
+		</data><data name="TaskAuthor" xml:space="preserve">
+			<value>Інструктор</value>
+		</data><data name="TaskAuthorTip" xml:space="preserve">
+			<value>Інструктор</value>
+		</data><data name="TaskTopic" xml:space="preserve">
+			<value>Завдання</value>
+		</data><data name="TaskTip" xml:space="preserve">
+			<value>Коротке викладення завдання</value>
+		</data><data name="TaskDate" xml:space="preserve">
+			<value>Строк</value>
+		</data><data name="TaskDateTip" xml:space="preserve">
+			<value>Строк виконання</value>
+		</data><data name="TaskListisEmpty" xml:space="preserve">
+			<value>Призначених завдань - нема ...</value>
+		</data><data name="TaskSolution" xml:space="preserve">
+			<value>Рішення</value>
+		</data><data name="TaskSolutionTip" xml:space="preserve">
+			<value>Стан рішення завдання (нема рішення,неперевірено,вірно,невірно)</value>
+		</data><data name="TaskNoSolution" xml:space="preserve">
+			<value>Нема рішення</value>
+		</data><data name="TaskUnchecked" xml:space="preserve">
+			<value>Неперевірено</value>
+		</data><data name="TaskIncomplete" xml:space="preserve">
+			<value>Не виконано</value>
+		</data><data name="TaskIncorrect" xml:space="preserve">
+			<value>Невірно</value>
+		</data><data name="TaskPartially" xml:space="preserve">
+			<value>Частково вірно</value>
+		</data><data name="TaskAlmost" xml:space="preserve">
+			<value>В цілому вірно</value>
+		</data><data name="TaskRight" xml:space="preserve">
+			<value>Вірно</value>
+		</data><data name="EditTaskTitle" xml:space="preserve">
+			<value>Ваше рішення завдання</value>
+		</data><data name="EditTaskPost" xml:space="preserve">
+			<value>Відправити</value>
+		</data><data name="ReplyAuthor" xml:space="preserve">
+			<value>Автор</value>
+		</data><data name="ReplyAuthorTip" xml:space="preserve">
+			<value>Сортувати за ім'ям автора</value>
+		</data><data name="ReplyMsg" xml:space="preserve">
+			<value>Тема</value>
+		</data><data name="ReplyMsgTip" xml:space="preserve">
+			<value>Сортувати за темою</value>
+		</data><data name="ReplyNosing" xml:space="preserve">
+			<value>нема повідомлень</value>
+		</data><data name="PostTitle" xml:space="preserve">
+			<value>Додати:</value>
+		</data><data name="PostReplySubmit" xml:space="preserve">
+			<value>Додати повідомлення в вибрану тему</value>
+		</data><data name="PostTopicSubmit" xml:space="preserve">
+			<value>Створити нову тему</value>
+		</data><data name="PostError" xml:space="preserve">
+			<value>Виникла помилка:</value>
+		</data><data name="Private" xml:space="preserve">
+			<value>для спілкування з інструктором</value>
+		</data><data name="Public" xml:space="preserve">
+			<value>для общего спілкування</value>
+		</data><data name="MessageText" xml:space="preserve">
+			<value>Текст повідомлення</value>
+		</data><data name="MessageTextTip" xml:space="preserve">
+			<value>Сортировать за текстом повідомлення</value>
+		</data><data name="NavigatorPages" xml:space="preserve">
+			<value>Сторінки</value>
+		</data><data name="NavigatorTotal" xml:space="preserve">
+			<value>Всього</value>
+		</data><data name="NavigatorPg" xml:space="preserve">
+			<value>стор</value>
+		</data></root>

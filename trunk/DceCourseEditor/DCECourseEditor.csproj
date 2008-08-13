@@ -1,0 +1,390 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DL Server Deployment|AnyCPU' ">
+    <OutputPath>bin\DL Server Deployment\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <BaseAddress>285212672</BaseAddress>
+    <Optimize>true</Optimize>
+    <DebugType>
+    </DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F0BA8B4B-E344-4E2D-8748-E6E81B059AB9}</ProjectGuid>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>CourseEditor</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DCECourseEditor</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>DCECourseEditor.MainForm</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <ManifestCertificateThumbprint>EA8AC73895A0B3B34D9CD59B00A85D554958D91B</ManifestCertificateThumbprint>
+    <ManifestKeyFile>DCECourseEditor_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetZone>LocalIntranet</TargetZone>
+    <PublishUrl>W:\Inetpub\wwwroot\CourseEditor\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://192.168.96.222/CourseEditor/</InstallUrl>
+    <SupportUrl>http://edu.kvazar-micro.com</SupportUrl>
+    <ProductName>Distant Learning System, Course Editor</ProductName>
+    <PublisherName>Kvazar-Micro Education Centre</PublisherName>
+    <WebPage>default.htm</WebPage>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <ApplicationRevision>20</ApplicationRevision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Local deployment|AnyCPU' ">
+    <OutputPath>bin\Local deployment\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <BaseAddress>285212672</BaseAddress>
+    <Optimize>true</Optimize>
+    <DebugType>
+    </DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Name>System.Web.Services</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="WinFormsExtras">
+      <Name>WinFormsExtras</Name>
+      <HintPath>..\DCEAccessLib\WinFormsExtras.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnswersList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CourseEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CourseFolderChooser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CourseFolderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoursesList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CurrencyEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CurrencyList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DomainEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DomainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportImportService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibraryEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LibraryImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LinksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionnaireEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuestionnaireList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RootNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TermForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ThemeEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ThemeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TypeEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TypeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VersionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VocabularyEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WorkEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <EmbeddedResource Include="AnswersList.resx">
+      <DependentUpon>AnswersList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CourseEdit.resx">
+      <DependentUpon>CourseEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CourseFolderChooser.resx">
+      <DependentUpon>CourseFolderChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CourseFolderForm.resx">
+      <DependentUpon>CourseFolderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoursesList.resx">
+      <DependentUpon>CoursesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrencyEdit.resx">
+      <DependentUpon>CurrencyEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrencyList.resx">
+      <DependentUpon>CurrencyList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DomainEdit.resx">
+      <DependentUpon>DomainEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DomainForm.resx">
+      <DependentUpon>DomainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportForm.resx">
+      <DependentUpon>ImportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibraryEdit.resx">
+      <DependentUpon>LibraryEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibraryImportForm.resx">
+      <DependentUpon>LibraryImportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LinksForm.resx">
+      <DependentUpon>LinksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialsForm.resx">
+      <DependentUpon>MaterialsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionEdit.resx">
+      <DependentUpon>QuestionEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionList.resx">
+      <DependentUpon>QuestionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionnaireEdit.resx">
+      <DependentUpon>QuestionnaireEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionnaireList.resx">
+      <DependentUpon>QuestionnaireList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Res\Index.xslt" />
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TermForm.resx">
+      <DependentUpon>TermForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestEdit.resx">
+      <DependentUpon>TestEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThemeEdit.resx">
+      <DependentUpon>ThemeEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThemeList.resx">
+      <DependentUpon>ThemeList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypeEdit.resx">
+      <DependentUpon>TypeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypeList.resx">
+      <DependentUpon>TypeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VersionForm.resx">
+      <DependentUpon>VersionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VocabularyEdit.resx">
+      <DependentUpon>VocabularyEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkEdit.resx">
+      <DependentUpon>WorkEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="App.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DceAccessLib\DCEAccessLib.csproj">
+      <Project>{FB5DD100-1599-4147-8A12-6EE050BCE6FE}</Project>
+      <Name>DCEAccessLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DCECourseEditor_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <BaseApplicationManifest Include="Properties\app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

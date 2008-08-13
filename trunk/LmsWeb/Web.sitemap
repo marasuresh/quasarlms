@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap
+		xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0"
+		enableLocalization="true">
+	<siteMapNode
+			title="root"
+			roles="*">
+		<siteMapNode
+			url="~/MainPage.aspx"
+			title="$resources: MainMenu, Item1_Short, HOME"
+			description="$resources: MainMenu, Item1_Alt, Home page"
+			FullDescr="$resources: MainMenu, Item1_Full, MAIN PAGE"
+			roles="*">
+			<siteMapNode
+				url="~/MainPage.aspx?cset=About&amp;id=1"
+				title="О дистанционном обучении"
+				description="О дистанционном обучении" />
+			<siteMapNode
+				url="~/MainPage.aspx?cset=News&amp;id=2"
+				title="Новости"
+				description="Новости" />
+		</siteMapNode>
+		<!--<siteMapNode
+			provider="LeftMenuProvider" />-->
+		<siteMapNode
+			url="~/Subscribe/CourseRequests.aspx"
+			title="$resources: MainMenu, Item2_Short, SUBSCRIBE TO COURSE"
+			description="$resources: MainMenu, Item2_Alt, Subcribe for a course learning"
+			FullDescr="$resources: MainMenu, Item2_Full, SUBSCRIBE TO COURSE"
+			roles="Student">
+		</siteMapNode>
+		<siteMapNode
+			url="~/Learn/Trainings.aspx"
+			title="$resources: MainMenu, Item3_Short, GO LEARNING"
+			description="$resources: MainMenu, Item3_Alt, Домашняя страница"
+			FullDescr="$resources: MainMenu, Item3_Full, GO LEARNING"
+			roles="Student"/>
+		<siteMapNode
+			url="~/MainPage.aspx?index=5"
+			title="$resources: MainMenu, Item4_Short, CONTACTS"
+			description="$resources: MainMenu, Item4_Alt, Contacts"
+			FullDescr="$resources: MainMenu, Item4_Full, CONTACTS"
+			roles="*"/>
+		<siteMapNode
+			url="~/MainPage.aspx?index=6"
+			title="$resources: MainMenu, Item5_Short, HELP"
+			description="$resources: MainMenu, Item5_Alt, Help"
+			FullDescr="$resources: MainMenu, Item5_Full, HELP"
+			roles="*"/>
+		<siteMapNode
+			url="~/Tools"
+			title="АРМ Тьютора"
+			description="Керування системою"
+			roles="Administrator" />
+	</siteMapNode>
+</siteMap>

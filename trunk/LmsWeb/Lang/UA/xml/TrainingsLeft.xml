@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<xml>
+   <Forum>
+      <item>
+         <text>Учбовий клас</text>
+         <alt>Учбовий клас</alt>
+         <page>Training.aspx</page>
+         <control>classRoomForum</control>
+         <item>
+            <text>Форум</text>
+            <alt>Форум</alt>
+            <page>Training.aspx</page>
+            <control>classRoomForum</control>
+         </item>
+         <item>
+            <text>Завдання</text>
+            <alt>Завдання</alt>
+            <page>Training.aspx</page>
+            <control>classRoomTask</control>
+         </item>
+      </item>
+   </Forum>
+   <Welcome>
+      <item>
+         <text>Welcome</text>
+         <alt>Початкова сторінка</alt>
+         <page>Training.aspx</page>
+         <control>Welcome</control>
+      </item>
+   </Welcome>
+   <FreeIntro>
+      <item>
+         <text>Welcome</text>
+         <alt>Початкова сторінка</alt>
+         <page>Training.aspx</page>
+         <control>FreeIntro</control>
+      </item>
+   </FreeIntro>
+   <Items>
+   </Items>
+   <Test>Тест</Test>
+   <FinalTest>Заключний тест</FinalTest>
+   <Library>Бібліотека</Library>
+   <Vocabulary>Словник</Vocabulary>
+   <Practic>Практика: </Practic>
+</xml>

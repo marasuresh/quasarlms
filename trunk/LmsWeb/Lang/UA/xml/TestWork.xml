@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<xml>
+   <!--Test Start-->
+   <min>мин</min>
+   <Start>Почати тестування</Start>
+   <Continue>Далі</Continue>
+   <Skip>Пропустити</Skip>
+   <TestDurationA>Час проходження теста:</TestDurationA>
+   <AllowTriesA>Залишилось спроб:</AllowTriesA>
+   <TriesA>Спроб складання тесту:</TriesA>
+   <PointsA>Раніше набрано балів:</PointsA>
+   <CompleteA>Тест складено</CompleteA>
+   <StartText>Для початку виконання тесту натисніть кнопку "Почати"</StartText>
+   <retry>Пройти ще раз</retry>
+   <ThemeA>Тема</ThemeA>
+   <CourseTest>Тест курсу</CourseTest>
+   <Previous>Раніше отриманий результат</Previous>
+   <CourseTest>Курсовий тест</CourseTest>
+   <practiceA>Практичена робота</practiceA>
+   <qSend>Ввести данні анкети</qSend>
+   <PracticeComplete>завершено</PracticeComplete>
+  
+   
+   
+   <!--Test Work-->
+   <qRemain>Залишилось питань:</qRemain>
+   <TimeLeft>Залишилось часу: </TimeLeft>
+   <sHintA>Показати коротку підказку</sHintA>
+   <lHintA>Показати повну підказку</lHintA>
+
+   <!--Test Results-->
+   <TimeComplete>Час проходження тесту: </TimeComplete>
+   <testComplete>Тест пройдено успішно</testComplete>
+   <testNotComplete>Тест не складено</testNotComplete>
+   <testTimeOut>Час, на проходження тесту, вичерпано</testTimeOut>
+   <practiceEnd>Практична робота зроблена</practiceEnd>
+   <notValid>Відповідь невірна</notValid>
+   <PointsNeed>Прохідний бал</PointsNeed>
+   <Points>Ви набрали</Points>
+   <PointsMax>Із можливих</PointsMax>
+   <Themes>Розбивка результату по темам:</Themes>
+   
+   <StudentA>Студент</StudentA>
+   <CourseA>Курс</CourseA>
+   <QuestionA>Питання</QuestionA>
+   <AnswersA>Відповіді студента</AnswersA>
+   <PointsAnsw>Бали</PointsAnsw>
+   
+   <QuestionnaireGlobal>Загальна анкета</QuestionnaireGlobal>
+   <QuestionnaireCourse>Анкета курсу</QuestionnaireCourse>
+   <QuestionnaireComplete>Анкета заповнена</QuestionnaireComplete>
+   <StartQuestionnaire>Анкета початку навчання</StartQuestionnaire>
+   <FinishQuestionnaire>Анкета по закінченню курсу</FinishQuestionnaire>
+   <ThanksA>Дякуємо за заповнення анкети</ThanksA>
+	
+	<Help>Будь-ласка, заповніть анкету.</Help>
+	
+   <Questionnaire>
+      <Lable>Поздоровляємо із закінченням курсу </Lable>
+      <hrefLable>Заповніть анкету</hrefLable>
+   </Questionnaire>
+
+</xml>

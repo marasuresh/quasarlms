@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?><root><xsd:schema id="root" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"><xsd:import namespace="http://www.w3.org/XML/1998/namespace" /><xsd:element name="root" msdata:IsDataSet="true"><xsd:complexType><xsd:choice maxOccurs="unbounded"><xsd:element name="metadata"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" /></xsd:sequence><xsd:attribute name="name" use="required" type="xsd:string" /><xsd:attribute name="type" type="xsd:string" /><xsd:attribute name="mimetype" type="xsd:string" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element><xsd:element name="assembly"><xsd:complexType><xsd:attribute name="alias" type="xsd:string" /><xsd:attribute name="name" type="xsd:string" /></xsd:complexType></xsd:element><xsd:element name="data"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /><xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" /><xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" /><xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element><xsd:element name="resheader"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" /></xsd:complexType></xsd:element></xsd:choice></xsd:complexType></xsd:element></xsd:schema><resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="title" xml:space="preserve">
+			<value>Classroom "Forum"</value>
+		</data><data name="TopicAuthor" xml:space="preserve">
+			<value>Author</value>
+		</data><data name="TopicAuthorTip" xml:space="preserve">
+			<value>Name of the topic's author</value>
+		</data><data name="Topic" xml:space="preserve">
+			<value>Topic</value>
+		</data><data name="Blocked" xml:space="preserve">
+			<value>Blocked</value>
+		</data><data name="TopicTip" xml:space="preserve">
+			<value>Topic</value>
+		</data><data name="CurrentTopicBody" xml:space="preserve">
+			<value>Current topic</value>
+		</data><data name="TopicNosing" xml:space="preserve">
+			<value>Not have topic for discussion</value>
+		</data><data name="Author" xml:space="preserve">
+			<value>Instructor</value>
+		</data><data name="Student" xml:space="preserve">
+			<value>Student</value>
+		</data><data name="NoTopicSelected" xml:space="preserve">
+			<value>Topic not selected...</value>
+		</data><data name="NoTopicBody" xml:space="preserve">
+			<value>Not entered full text of topic ...</value>
+		</data><data name="newTopicSubject" xml:space="preserve">
+			<value>Subject of topic </value>
+		</data><data name="newTopicTxt" xml:space="preserve">
+			<value>Full text of topic</value>
+		</data><data name="PostTopicPost" xml:space="preserve">
+			<value>Post</value>
+		</data><data name="PostDate" xml:space="preserve">
+			<value>Date</value>
+		</data><data name="PostDateTip" xml:space="preserve">
+			<value>Order by date</value>
+		</data><data name="TaskTitle" xml:space="preserve">
+			<value>Classroom "Tasks"</value>
+		</data><data name="TaskAuthor" xml:space="preserve">
+			<value>Instructor</value>
+		</data><data name="TaskAuthorTip" xml:space="preserve">
+			<value>Instructor</value>
+		</data><data name="TaskTopic" xml:space="preserve">
+			<value>Task</value>
+		</data><data name="TaskTip" xml:space="preserve">
+			<value>Task summary</value>
+		</data><data name="TaskDate" xml:space="preserve">
+			<value>Period</value>
+		</data><data name="TaskDateTip" xml:space="preserve">
+			<value>Time of execution</value>
+		</data><data name="TaskListisEmpty" xml:space="preserve">
+			<value>Task list is empty</value>
+		</data><data name="TaskSolution" xml:space="preserve">
+			<value>Solution of task</value>
+		</data><data name="TaskSolutionTip" xml:space="preserve">
+			<value>State the solution of task (Unchecked, Incomplete, Incorrect, Partially, Almost correct, Correct)</value>
+		</data><data name="TaskNoSolution" xml:space="preserve">
+			<value>No solution</value>
+		</data><data name="TaskUnchecked" xml:space="preserve">
+			<value>Unchecked</value>
+		</data><data name="TaskIncomplete" xml:space="preserve">
+			<value>Incomplete</value>
+		</data><data name="TaskIncorrect" xml:space="preserve">
+			<value>Incorrect</value>
+		</data><data name="TaskPartially" xml:space="preserve">
+			<value>Partially</value>
+		</data><data name="TaskAlmost" xml:space="preserve">
+			<value>Almost correct</value>
+		</data><data name="TaskRight" xml:space="preserve">
+			<value>Correct</value>
+		</data><data name="EditTaskTitle" xml:space="preserve">
+			<value>You solution of task</value>
+		</data><data name="EditTaskPost" xml:space="preserve">
+			<value>Post</value>
+		</data><data name="ReplyAuthor" xml:space="preserve">
+			<value>Author</value>
+		</data><data name="ReplyAuthorTip" xml:space="preserve">
+			<value>Order by author</value>
+		</data><data name="ReplyMsg" xml:space="preserve">
+			<value>Thread</value>
+		</data><data name="ReplyMsgTip" xml:space="preserve">
+			<value>Order by thread</value>
+		</data><data name="ReplyNosing" xml:space="preserve">
+			<value>No thread</value>
+		</data><data name="PostTitle" xml:space="preserve">
+			<value>Add:</value>
+		</data><data name="PostReplySubmit" xml:space="preserve">
+			<value>Add message to selected topic</value>
+		</data><data name="PostTopicSubmit" xml:space="preserve">
+			<value>Create new thread</value>
+		</data><data name="PostError" xml:space="preserve">
+			<value>Error:</value>
+		</data><data name="Private" xml:space="preserve">
+			<value>private topic</value>
+		</data><data name="Public" xml:space="preserve">
+			<value>public topic</value>
+		</data><data name="MessageText" xml:space="preserve">
+			<value>Text of message</value>
+		</data><data name="MessageTextTip" xml:space="preserve">
+			<value>Order by text</value>
+		</data><data name="NavigatorPages" xml:space="preserve">
+			<value>Pages</value>
+		</data><data name="NavigatorTotal" xml:space="preserve">
+			<value>Total pages</value>
+		</data><data name="NavigatorPg" xml:space="preserve">
+			<value>page</value>
+		</data></root>

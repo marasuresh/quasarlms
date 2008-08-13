@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<RegistrationForm>
+   <PageError>Введите правильные данные в выделенные поля</PageError>
+   <PageNote>Поля, обязательные для заполнения, обозначены значком</PageNote>
+   <PageNote1>Обучение и подача заявок на изучение платных курсов доступны только для зарегистрированных пользователей</PageNote1>
+   <PageNote2>Для регистрации, заполните форму регистрации и нажмите кнопку "Отправить"</PageNote2>
+	<Email>Электронный адрес. Используется как Ваше регистрацинное имя</Email>
+	<EmailExist>Пользователь с таким e-mail уже зарегистрирован</EmailExist>
+	<PasswordOld>Старый пароль</PasswordOld>
+	<ChangePass>Смена пароля</ChangePass>
+	<ChangePassword>Сменить пароль</ChangePassword>
+	<PasswordFaild>Неверный пароль</PasswordFaild>
+	<Password>Пароль</Password>
+	<PasswordConfirm>Подтверждение пароля</PasswordConfirm>
+	<LastName>Фамилия</LastName>
+	<FirstName>Имя</FirstName>
+	<MidName>Отчество</MidName>
+	<Birth>Дата рождения</Birth>
+	<BirthDay>Число</BirthDay>
+	<BirthMonth>Месяц</BirthMonth>
+	<BirthYear>Год</BirthYear>
+	<Sex>Пол</Sex>
+	<Male>Мужской</Male>
+	<Female>Женский</Female>
+	<WorkPlace>Место работы</WorkPlace>
+	<CompanyType>Форма собственности</CompanyType>
+	<CompanyName>Название организации</CompanyName>
+	<JobOccup>Должность</JobOccup>
+	<Manager>Непосредственный руководитель</Manager>
+	<ManagerOccup>Должность руководителя</ManagerOccup>
+	<ManagerPhone>Телефон руководителя</ManagerPhone>
+	<ContactInfo>Контактные данные</ContactInfo>
+	<Country>Страна</Country>
+	<City>Город</City>
+	<PostalCode>Почтовый индекс</PostalCode>
+	<Adress>Адрес</Adress>
+	<PhoneCityCode>Телефон с кодом города</PhoneCityCode>
+	<FaxCityCode>Факс с кодом города</FaxCityCode>
+	<Education>Образование</Education>
+	<CollegeProf>ВУЗ, специальность</CollegeProf>
+	<Courses>Курсы, тренинги</Courses>
+	<Cert>Сертификаты</Cert>
+	<AddInfo>Дополнительные сведения</AddInfo>
+	<Photo>Фото</Photo>
+	<PhotoTooBig>Фото: Размер файла превышает </PhotoTooBig>
+	<PhotoTypeError>Фото: Недопустимый тип файла</PhotoTypeError>
+	<Submit>Отправить</Submit>
+	<Reset>Очистить</Reset>
+	
+	
+	<!-- Неверный логин-пароль -->
+	<LoginPasswordFailed>Введите электронный адрес, указанный при регистрации, и правильный пароль</LoginPasswordFailed>
+	<EnterValidPassword>Если Вы не являетесь зарегистрированным пользователем системы дистанционного обучения "Квазар-Микро", пройдите регистрацию на сайте</EnterValidPassword>
+	<ForgotPassword>Если Вы забыли пароль...</ForgotPassword>
+	<Go>Зарегистрироваться</Go>
+	<StudentExistText>Користувач з таким логіном зараз працює в системі.</StudentExistText>
+</RegistrationForm>

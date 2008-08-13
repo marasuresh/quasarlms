@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<xml>
+   <EnterKeywords>Search of a courses</EnterKeywords>
+   <Search>Search</Search>
+   <NotFoundA>Your search did not match</NotFoundA>
+   <Founds>Result of the search</Founds>
+
+   <!-- Таблица доступных курсов -->
+   <tableAccessibleCourses>
+      <FailDateAlt>Enter correctly date</FailDateAlt>
+      <DateAlt>Wishful date of the start training</DateAlt>
+      <CommentAlt>Filed for comments</CommentAlt>
+      <Note>You can send request for study the course, select prefer start date, and if need, describe your needs, comments and other notes in "Comments" filed</Note>
+      <Caption>To give application for study the course</Caption>
+      <!-- Заголовок таблицы -->
+      <tableHeader>
+         <dataTD >Select</dataTD>
+         <dataTD>Wishful date</dataTD>
+         <dataTD>Course</dataTD>
+         <dataTD>Comments</dataTD>
+      </tableHeader>
+   </tableAccessibleCourses>
+   <addSenderCaption>To give application for selected courses</addSenderCaption>
+
+   <!-- Таблица размещенных заявок -->
+   <tableExisdataTRequests>
+      <Caption>Based application</Caption>
+      <!-- Заголовок таблицы -->
+      <tableHeader>
+         <dataTD>Delete</dataTD>
+         <dataTD>Declared date</dataTD>
+         <dataTD>Declared course</dataTD>
+         <dataTD>Comments</dataTD>
+      </tableHeader>
+      <!-- Содержание таблицы -->
+   </tableExisdataTRequests>
+   <!-- КНЯПКА ДЛЯ УДАЛЕНИЯ ЗАЯВОК -->
+   <deleteSenderCaption>Delete to selected application</deleteSenderCaption>
+   
+</xml>

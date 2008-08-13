@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	
+<head>
+<title>Unreal Media player control sample</title>
+<META http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+<script id="clientEventHandlersVB" language="vbscript">
+<!--
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' Page event handlers
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+sub OnLoad()
+	UPlayer.UseRTPMulticast
+	UPlayer.UseMediaServer "srvtest:5119"
+	'UPlayer.UseFile "MediaRoot\\test.avi"
+	
+	UPlayer.UseLiveDirect "srvtest", 1
+	UPlayer.UseLiveAlias "video for all"
+	
+	'Uncomment the next lines to prohibit context menu and flow bar appearance
+	'UPlayer.EnableContextMenu false
+	UPlayer.EnableFlowControl false, false
+	
+	UPlayer.Play
+	'--------------------------
+	UPlayer1.UseRTPMulticast
+	UPlayer1.UseMediaServer "srvtest:5119"
+	'UPlayer1.UseFile "MediaRoot\\test.avi"
+	
+	UPlayer1.UseLiveDirect "srvtest", 2
+	UPlayer1.UseLiveAlias "screen for all"
+	
+	'Uncomment the next lines to prohibit context menu and flow bar appearance
+	'UPlayer1.EnableContextMenu false
+	UPlayer1.EnableFlowControl false, false
+	
+	UPlayer1.Play	
+	'document.getElementById("Layer1").style.visibility="visible"
+	'--------------------------
+	UPlayer2.UseRTPMulticast
+	UPlayer2.UseMediaServer "srvtest:5119"
+	'UPlayer1.UseFile "MediaRoot\\test.avi"
+	
+	UPlayer2.UseLiveDirect "srvtest", 3
+	UPlayer2.UseLiveAlias "sound"
+	
+	'Uncomment the next lines to prohibit context menu and flow bar appearance
+	'UPlayer2.EnableContextMenu false
+	UPlayer2.EnableFlowControl false, false
+	
+	UPlayer2.Play	
+	'document.getElementById("Layer1").style.visibility="visible"
+	
+end sub
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' Player callbacks
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+sub UPlayer_OnStart()
+	
+end sub
+
+sub UPlayer_OnStop(PlaylistToBeCont)
+	if PlaylistToBeCont = false then
+		UPlayer_OnResize 320, 240
+	end if	
+end sub
+
+sub UPlayer_OnResize(X, Y)
+	UPlayer.Width  = X
+	UPlayer.Height = Y	
+end sub
+
+//-->
+		</script>
+<style type="text/css">
+<!--
+.video {
+	position: absolute;
+	z-index: -1;
+	left: 5px;
+	top: 6px;
+}
+.picture {
+	background-color: #0033FF;
+	z-index: 1;
+}
+.descr {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+.style1 {
+	color: #993300;
+	border: none;
+}
+.style3 {
+	color: #006633;
+	border: none;
+}
+.style5 {
+	color: #333333;
+	font-weight: normal;
+}
+.style7 {font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; color: #3165A5; }
+.style8 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+body {  margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px}
+.marign {  margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px}
+.header {  font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold}
+.form {
+	margin-top: 0px;
+	margin-right: 5px;
+	margin-bottom: 0px;
+	margin-left: 5px;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+-->
+        </style>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+    </script>
+</head>
+	<body onload="OnLoad()" bgcolor="#9CAEBD" >
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="15" rowspan="2" background="bgr_left.gif"><img src="empty.gif" width="15" height="30" class="header"></td>
+	<td width="1" bgcolor="#FFFFFF" class="marign"><img src="empty.gif" width="1" height="10"></td>
+    <td width="545"  bgcolor="#D6D7DE"><nowrap><span class="header">&nbsp;&nbsp;Системы управления персоналом</span></nowrap><span class="header"><br>
+      &nbsp;&nbsp;Система мотивации персонала</span></td>
+   
+    <td width="1" rowspan="2" bgcolor="#000000"><img src="empty.gif" width="1" height="3"></td>
+    <td width="100%" rowspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="empty.gif" width="550" height="1"></td>
+  </tr>
+</table>
+<table cellspacing="0" cellpadding="0" bgcolor="#F7F7F7">
+  <tr> 
+    <td rowspan="3" width="7" height="324"><font color="#CED7DE"><img src="left.gif" width="7" height="328"></font></td>
+    <td colspan="2" height="5"><font color="#CED7DE"><img src="top.gif" width="718" height="7"></font></td>
+    <td rowspan="3" width="6" height="328" bgcolor="#9CAEBD"><img src="right.gif" width="6" height="328"></td>
+  </tr>
+  <tr> 
+    <td align="center" valign="middle"><font color="#CED7DE"><object id="UPlayer" codebase="http://www.umediaserver.net/bin/UMediaControl3.cab" height="257"
+				width="343" data="data:application/x-oleobject;base64,yBuidwXvgUCTv5KK6JCKJRAHAAATIQAAzhgAAA=="
+				classid="clsid:BE964208-66F0-48fb-8F53-0C2BC35A610A" VIEWASTEXT>
+      </object></font></td>
+    <td align="center" valign="middle"><font color="#CED7DE"><object id="UPlayer1" codebase="http://www.umediaserver.net/bin/UMediaControl3.cab" height="308"
+				width="398" data="data:application/x-oleobject;base64,yBuidwXvgUCTv5KK6JCKJRAHAAATIQAAzhgAAA=="
+				classid="clsid:BE964208-66F0-48fb-8F53-0C2BC35A610A" VIEWASTEXT>
+      </object></font></td>
+  </tr>
+  <tr> 
+    <td colspan="2" height="11"><font color="#CED7DE"><img src="buttom.gif" width="718" height="11"></font></td>
+  </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+  <tr> 
+   
+    <td rowspan="2"  background="bgr_left.gif"><img src="empty.gif" width="15" height="30"></td>
+	<td rowspan="2" bgcolor="#FFFFFF" class="marign"><img src="empty.gif" width="1" height="30"></td>
+    <td rowspan="2" bgcolor="#CED7DE" class="marign"> <IFRAME id=contFrameId2 
+                        name=contFrame2 align=top 
+                        src="chat.htm" 
+                        frameBorder=yes width="100%" 
+                        height="130"> </IFRAME> <p>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr valign="bottom"> 
+          <td> 
+            <input type="text" name="textfield" size="75" class="form">
+          </td>
+          <td width="70"><input name="Submit" type="submit" class="form" value="&gt;&gt;&gt;">            <!--img src="talk.gif" width="64" height="20" align="left"--></td>
+  </tr>
+</table>
+      &nbsp; <img src="empty.gif" width="550" height="1"> 
+    </td>
+   
+    <td rowspan="2" bgcolor="#000000"><img src="empty.gif" width="1" height="3"></td>
+    <td width="100%" valign="top"><img src="empty.gif" width="3" height="40">&nbsp;&nbsp;<img src="yes.gif" width="35" height="35">&nbsp;&nbsp;&nbsp;&nbsp;<img src="no.gif" width="35" height="35"></td>
+  </tr>
+  <tr> 
+    <td width="100%" bgcolor="#9CAEBD" class="marign" valign="top"> 
+      <p class="style7"><font color="#000000">&nbsp;</font></p>
+    </td>
+  </tr>
+</table>
+<table width="550" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td rowspan="2" background="bgr_left.gif" height="100%" width="15"><img src="empty.gif" width="15" height="30"></td>
+    <td width="550" height="1" colspan="2" bgcolor="#000000"><img src="empty.gif" width="558" height="1"></td>
+  </tr>
+  <tr> 
+<td width="1" height="100%" rowspan="2" bgcolor="#FFFFFF" class="marign"><img src="empty.gif" width="1" height="30"></td>
+    <td width="100%" height="100%">&nbsp;<object id="UPlayer2" codebase="http://www.umediaserver.net/bin/UMediaControl3.cab" height="1"
+				width="1" data="data:application/x-oleobject;base64,yBuidwXvgUCTv5KK6JCKJRAHAAATIQAAzhgAAA=="
+				classid="clsid:BE964208-66F0-48fb-8F53-0C2BC35A610A" VIEWASTEXT>
+  </object> </td>
+  </tr>
+</table>
+
+</body>
+</html>

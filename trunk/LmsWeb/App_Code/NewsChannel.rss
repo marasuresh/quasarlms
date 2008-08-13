@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<rss version="2.0">
+
+  <channel>
+
+    <title>Dce News Channel</title>
+
+    <link>~/News.aspx</link>
+
+    <description>Dce News Channel</description>
+
+    <ttl>10</ttl>
+
+    <name></name>
+
+    <user></user>
+    <ttl>60</ttl>
+	<language>en-us</language>
+	<copyright>Copyright 2007, Kvazar-Micro</copyright>
+	<managingEditor></managingEditor>
+	<webMaster></webMaster>
+	<pubDate>Sat, 07 Sep 2002 00:00:01 GMT</pubDate>
+	<lastBuildDate></lastBuildDate>
+	<generator></generator>
+	<docs>http://www.rssboard.org/rss-specification</docs>
+	<image>
+		<url></url>
+		<title></title>
+		<width></width>
+		<height></height>
+		<description></description>
+	</image>
+    <item>
+
+      <title> EnterEx 2005</title>
+
+      <description> .</description>
+
+      <link>http://edu.kvazar-micro.com</link>
+		
+		<source url="http://edu.kvazar-micro.com">KM</source>
+		<enclosure url="http://www.scripting.com/mp3s/weatherReportSuite.mp3"
+				   length="12216320"
+				   type="audio/mpeg" />
+
+		<pubDate>05.04.2005</pubDate>
+		<guid>http://some.server.com/weblogItem3207</guid>
+		<author></author>
+		<moreText></moreText>
+    </item>
+
+  </channel>
+
+</rss>
