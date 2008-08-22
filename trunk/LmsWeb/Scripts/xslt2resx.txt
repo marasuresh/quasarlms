@@ -1,0 +1,1 @@
+﻿C:\usr\install\dev\dotnet\msxsl.exe C:\usr\src\Lms\LmsWeb\Lang\ru\xml\TrainingsLeft.xml C:\usr\src\Lms\LmsWeb\Scripts\xmlt2resx.xslt -o C:\usr\src\Lms\LmsWeb\App_GlobalResources\TrainingsLeft.ru.resx -u 3.0
