@@ -282,7 +282,7 @@ namespace DCEInternalSystem
       private void langSwitcher1_LanguageChanged(int langid)
       {
 ///
-         this.dataSet = DCEWebAccess.WebAccess.GetDataSet("select *, dbo.UserName(Author,0) as UserName, dbo.GetStrContent(Message,"+langid+") as RMsg from BulletinBoard where Training='"+this.Node.TrainingId+"'","Messages");
+         this.dataSet = DCEWebAccess.WebAccess.GetDataSet("select *, dbo.UserName(Author,0) as UserName, dbo.GetStrContentAlt(Message,"+langid+") as RMsg from BulletinBoard where Training='"+this.Node.TrainingId+"'","Messages");
          this.dataView.Table = this.dataSet.Tables["Messages"];
       }
 

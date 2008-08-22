@@ -51,6 +51,6 @@
 			url="~/Tools"
 			title="АРМ Тьютора"
 			description="Керування системою"
-			roles="Administrator" />
+			roles="Administrators" />
 	</siteMapNode>
 </siteMap>

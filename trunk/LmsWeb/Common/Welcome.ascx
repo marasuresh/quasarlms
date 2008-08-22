@@ -1,6 +1,8 @@
 <%@ Reference Page="~/Learn/Trainings.aspx" %>
 <%@ Control Language="c#" Inherits="DCE.Common.Welcome" CodeFile="Welcome.ascx.cs" %>
 <%@ Import Namespace="System.Xml" %>
+<%@ Import Namespace="System.Linq" %>
+<%@ Register Src="~/Common/Members.ascx" TagName="Members" TagPrefix="lms" %>
 
 <script language="javascript"><!--
 function qwHref(qId){
@@ -12,10 +14,6 @@ function qwHref(qId){
 function toTest(id){
 	AddParameter("cset", "TestWork");
 	AddParameter("id", id);
-	applyParameters();
-}
-function membersHref(){
-	AddParameter("cset", "Members");
 	applyParameters();
 }
 function resizeFrame(){
@@ -37,22 +35,14 @@ function resizeFrame(){
 		DataMember="Courses"
 		DefaultMode="ReadOnly">
 	<EmptyDataTemplate>
-		<h3 class="failure">
-		<asp:Literal
-				runat="server"
-				ID="ltrErrorMessage"
-				Text='<%$ Resources:Welcome, NoTrainings %>' /></h3>
+		<h3 class="failure"><%= Resources.Welcome.NoTrainings %></h3>
 		<p class="blue">
 			<asp:Hyperlink
 					runat="server"
 					ID="hlSubscribt"
-					NavigateUrl="<%$ Resources: PageUrl, PAGE_SUBSCRIBE %>"
-					Text='<%$ Resources:Welcome, GoToSubscr %>' />
-			,&nbsp;
-			<asp:Literal
-					runat="server"
-					ID="ltrSubscribeText"
-					Text='<%$ Resources:Welcome, SubscrText %>' />
+					NavigateUrl="<%= Resources.PageUrl.PAGE_SUBSCRIBE %>"
+					Text='<%= Resources.Welcome.GoToSubscr %>' />
+			,&nbsp;<%= Resources.Welcome.SubscrText %>
 		</p>
 	</EmptyDataTemplate>
 	
@@ -68,9 +58,7 @@ function resizeFrame(){
 			<td		width="100%"
 					style="PADDING-TOP: 7px">
 				<h3		class="cap3">
-						<asp:Literal ID="Literal1"
-								runat="server"
-								Text='<%$ Resources:Welcome,Caption %>' /></h3>
+					<%= Resources.Welcome.Caption %></h3>
 				<h3		class="cap4"
 						title='<%# Eval("Description") %>'>
 					<%# Eval("Name") %></h3>
@@ -83,21 +71,10 @@ function resizeFrame(){
 								Eval("EndDate"))%>
 						</asp:HyperLink>
 				<p	style="COLOR: darkgray">
-					<asp:Literal ID="Literal2"
-							runat="server"
-							Text='<%$ Resources:Welcome,LastEntryTxt %>' />:
-					&nbsp;<%# DceUserService.LastEntry %></p>
-				
-				<asp:PlaceHolder
-						runat="server"
-						ID="phBlocking"
-						Visible='<%# this.Blocking %>'>
-					<br/>
-					<h3 class="Failure">
-						<asp:Literal ID="Literal3"
-								runat="server"
-								Text='<%$ Resources:Welcome,BlockingText %>' /></h3>
-				</asp:PlaceHolder>
+					<%= Resources.Welcome.LastEntryTxt %>:&nbsp;<%# Profile.LastActivityDate %></p>
+				<% if(this.IsBlocked) { %>
+					<br/><h3 class="Failure"><%= Resources.Welcome.BlockingText %></h3>
+				<% } %>
 			 
 				 <!-- Приступить к обучению и Список участников -->
 				<asp:HyperLink
@@ -105,7 +82,7 @@ function resizeFrame(){
 						ID="HyperLink1"
 						NavigateUrl="javascript:membersHref()"
 						Text='<%$ Resources:Welcome,Members_hrefLable %>'
-						Visible='<%# (&#9;Convert.IsDBNull(Eval("qrId"))&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&& !Convert.IsDBNull(Eval("qId"))&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;)&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;|| this.Blocking %>' /><br/>
+						Visible='<%# (Convert.IsDBNull(Eval("qrId"))&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&& !Convert.IsDBNull(Eval("qId"))&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;)&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;|| this.IsBlocked %>' /><br/>
 				<asp:PlaceHolder
 						runat="server"
 						ID="phLink"
@@ -115,17 +92,8 @@ function resizeFrame(){
 								ID="hlStart"
 								NavigateUrl='<%# Resources.PageUrl.PAGE_TRAINING + "?trId=" + DCE.Service.TrainingID %>'
 								Text='<%$ Resources:Welcome,Start_hrefLable %>' />&nbsp; &nbsp;
-						<asp:HyperLink ID="HyperLink2"
-								runat="server"
-								align="right"
-								NavigateUrl='javascript:membersHref()'
-								Text='<%$ Resources:Welcome,Members_hrefLable %>' />
 					</p>			
-					<p class="help">
-						<asp:Literal ID="Literal4"
-								runat="server"
-								Text='<%$ Resources:Welcome,Start_help %>' />
-					</p>		 
+					<p class="help"><%= Resources.Welcome.Start_help %></p>		 
 				</asp:PlaceHolder>
  
 				<!-- CDPath form -->
@@ -208,19 +176,16 @@ protected string cdDefPathVar = string.Empty;
 		</tr>
 	</table>
 	
-	<hr/>
+	<hr/><%--
 	<p		class="CenterColumn">
 		<asp:Image
 				runat="server"
 				ID="imgBullet1"
 				SkinID="Bullet1"
 				ToolTip="" />&nbsp;&nbsp;&nbsp;
-		<strong	class="yellow">
-			<asp:Literal ID="Literal7"
-					runat="server"
-					Text='<%$ Resources:Welcome,BulletinBoard_Caption %>' /></strong>
-	</p>
-	
+		<strong	class="yellow"><%= Resources.Welcome.BulletinBoard_Caption %></strong>
+	</p>--%>
+	<%--
 	<asp:GridView
 			runat="server"
 			ID="gvBulletins"
@@ -272,7 +237,8 @@ protected string cdDefPathVar = string.Empty;
 			No records
 		</EmptyDataTemplate>
 	</asp:GridView>
-		
+		--%>
+		<%--
 		<asp:ObjectDataSource
 				runat="server"
 				ID="odsBulletins"
@@ -284,7 +250,7 @@ protected string cdDefPathVar = string.Empty;
 				<asp:Parameter Name="trainingId" Type="Object" />
 			</SelectParameters>
 		</asp:ObjectDataSource>
-	
+	--%>
 	<hr/>
 	<p		class="CenterColumn">
 		<asp:Image
@@ -292,83 +258,31 @@ protected string cdDefPathVar = string.Empty;
 				ID="imgBullet"
 				SkinID="Bullet1"
 				ToolTip="" />&nbsp;&nbsp;&nbsp;
-		<strong	class="yellow">
-			<asp:Literal ID="Literal11"
-					runat="server"
-					Text='<%$ Resources:Welcome,Statistics_Caption %>' /></strong>
+		<strong	class="yellow"><%= Resources.Welcome.Statistics_Caption %></strong>
 	</p>
-	<asp:GridView
-			runat="server"
-			ID="gvTestResults"
-			DataSourceID="odsTestResults"
-			AutoGenerateColumns="false"
-			CellPadding="3"
-			CellSpacing="0"
-			HorizontalAlign="Center"
-			Width="100%"
-			CssClass="TableList">
-		<RowStyle BackColor="#f6f6f6" />
-		<AlternatingRowStyle BackColor="#ffffff" />
-		<Columns>
-			<asp:TemplateField
-					ItemStyle-Width="50%"
-					HeaderText='<%$ Resources:Welcome,Statistics_Header_Theme %>'>
-				<ItemTemplate>
-					<asp:HyperLink
-							runat="server"
-							ID="hlTest"
-							NavigateUrl='<%# Eval("testId", @"javascript:toTest(""{0}"")") %>'
-							Text='<%# !Convert.IsDBNull(Eval("Theme"))
-									? "Theme"
-									: global::Resources.Welcome.Statistics_CourseTest %>' />
-				</ItemTemplate>
-			</asp:TemplateField>
-			<asp:TemplateField
-					ItemStyle-Width="20%"
-					ItemStyle-Wrap="false"
-					HeaderText='<%$ Resources:Welcome,Statistics_Header_Complete %>'>
-				<ItemTemplate>
-					<%# (bool)Eval("Complete")
-							? global::Resources.Welcome.Statistics_Complete
-							: ((bool)Eval("Skipped")
-								? global::Resources.Welcome.Statistics_Skipped
-								: global::Resources.Welcome.Statistics_NotComplete)%>
-				</ItemTemplate>
-			</asp:TemplateField>
-			<asp:BoundField
-					DataField="Tries"
-					ItemStyle-Width="10%"
-					ItemStyle-HorizontalAlign="Center"
-					HeaderText='<%$ Resources:Welcome,Statistics_Header_Tries %>' />
-			<asp:BoundField
-					DataField="Points"
-					ItemStyle-Width="10%"
-					ItemStyle-HorizontalAlign="Center"
-					HeaderText='<%$ Resources:Welcome,Statistics_Header_Points %>' />
-			<asp:BoundField
-					DataField="CompletionDate"
-					ItemStyle-Width="10%"
-					ItemStyle-HorizontalAlign="Center"
-					HeaderText='<%$ Resources:Welcome,Statistics_Header_CompletionDate %>' />
-		</Columns>
-		<EmptyDataTemplate>
-			No records
-		</EmptyDataTemplate>
-	</asp:GridView>
-	
-		<asp:ObjectDataSource
-			runat="server"
-			ID="odsTestResults"
-			OldValuesParameterFormatString="original_{0}"
-			OnSelecting="odsTestResults_Selecting"
-			SelectMethod="GetStatistics"
-			TypeName="DceAccessLib.DAL.TestController" >
-		<SelectParameters>
-			<asp:Parameter Name="courseId" Type="Object" />
-			<asp:Parameter Name="studentId" Type="Object" />
-		</SelectParameters>
-	</asp:ObjectDataSource>
-	
+	<% if(this.Results.Any()) { %>
+	<table cellpadding="3" cellspacing="0" width="100%" class="TableList">
+		<tr><th><%= Resources.Welcome.Statistics_CourseTest %></th>
+			<th><%= Resources.Welcome.Statistics_Header_Complete %></th>
+			<th><%= Resources.Welcome.Statistics_Header_Tries %></th>
+			<th><%= Resources.Welcome.Statistics_Header_Points %></th>
+			<th><%= Resources.Welcome.Statistics_Header_CompletionDate %></th>
+		</tr>
+	<% var i = 0; %>
+	<% foreach (var _result in this.Results) { %>
+	<% i++; %>
+		<tr bgcolor='<%= 0 == i % 2 ? "#ffffff" : "#f6f6f6" %>'>
+			<td width="50%"><a href='javascript:toTest(<%= _result.Test.Name %>)'><%= string.IsNullOrEmpty(_result.Theme) ? Resources.Welcome.Statistics_CourseTest : _result.Theme %></a></td>
+			<td width="20%" nowrap="nowrap"><%= _result.IsComplete ? Resources.Welcome.Statistics_Complete : (_result.IsSkipped ? Resources.Welcome.Statistics_Skipped : Resources.Welcome.Statistics_NotComplete) %></td>
+			<td width="10%" align="center"><%= _result.AttemptsCount %></td>
+			<td width="10%" align="center"><%= _result.Points %></td>
+			<td width="10%" align="center"><%= _result.CompletedOn %></td>
+		</tr>
+	<% } %>
+	</table>
+	<% } else { %>
+		No records
+	<% } %>
 		<iframe	name="contFrame"
 			width="100%"
 			id="contFrameId"
@@ -387,3 +301,5 @@ protected string cdDefPathVar = string.Empty;
 		</iframe>
 	</ItemTemplate>
 </asp:FormView>
+
+<lms:Members runat="server" />

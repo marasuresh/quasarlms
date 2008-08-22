@@ -2,6 +2,7 @@
 <script RunAt="server">
 	void Application_Start(object sender, EventArgs e)
 	{
+		return;
 		string[] _roles = "Administrator,BusinessTutor,BusinessTutorRegional,Student,Tutor,TutorRegional".Split(new char[] {','});
 		
 		Array.ForEach(

@@ -96,7 +96,7 @@
 							Operator="DataTypeCheck"
 							Type="Date"
 							Display="Dynamic" />
-					<cc1:CalendarExtender
+					<asp:CalendarExtender
 							ID="CalendarExtender1"
 							runat="server"
 							TargetControlID="BirthdayTextBox" /></td></tr>
@@ -454,7 +454,7 @@
 	</ItemTemplate>
 </asp:FormView>
 <asp:SqlDataSource ID="dsUsers" runat="server" ConflictDetection="CompareAllValues"
-	ConnectionString="<%$ ConnectionStrings:Dce2005ConnectionString %>"
+	ConnectionString="<%$ ConnectionStrings:DceConnectionString %>"
 	DeleteCommand="DELETE FROM [Students] WHERE [id] = @original_id AND [FirstName] = @original_FirstName AND [Patronymic] = @original_Patronymic AND [LastName] = @original_LastName AND [FirstNameEng] = @original_FirstNameEng AND [LastNameEng] = @original_LastNameEng AND [Birthday] = @original_Birthday AND [Sex] = @original_Sex AND [Organization] = @original_Organization AND [ChiefPhone] = @original_ChiefPhone AND [ChiefPosition] = @original_ChiefPosition AND [Chief] = @original_Chief AND [JobPosition] = @original_JobPosition AND [OrgType] = @original_OrgType AND [Country] = @original_Country AND [City] = @original_City AND [ZIP] = @original_ZIP AND [Address] = @original_Address AND [Phone] = @original_Phone AND [Certificates] = @original_Certificates AND [Courses] = @original_Courses AND [Education] = @original_Education AND [Email] = @original_Email AND [Fax] = @original_Fax AND [Comments] = @original_Comments AND [Photo] = @original_Photo"
 	InsertCommand="INSERT INTO [Students] ([id], [FirstName], [Patronymic], [LastName], [FirstNameEng], [LastNameEng], [Birthday], [Sex], [Organization], [ChiefPhone], [ChiefPosition], [Chief], [JobPosition], [OrgType], [Country], [City], [ZIP], [Address], [Phone], [Certificates], [Courses], [Education], [Email], [Fax], [Comments], [Photo]) VALUES (@id, @FirstName, @Patronymic, @LastName, @FirstNameEng, @LastNameEng, @Birthday, @Sex, @Organization, @ChiefPhone, @ChiefPosition, @Chief, @JobPosition, @OrgType, @Country, @City, @ZIP, @Address, @Phone, @Certificates, @Courses, @Education, @Email, @Fax, @Comments, @Photo)"
 	OldValuesParameterFormatString="original_{0}" OnSelecting="dsUsers_Selecting"

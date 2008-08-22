@@ -1,20 +1,38 @@
 namespace DCE.Common
 {
 	using System;
+	using System.Collections.Generic;
 	using System.Data;
-	using System.Drawing;
-	using System.Web;
+	using System.Linq;
 	using System.Xml;
-
+	using N2.Lms.Items;
+	using Rhino.Mocks;
+	
 	/// <summary>
 	/// Страница Welcome.
 	/// </summary>
 	public partial  class Welcome : DCE.BaseTrainingControl
 	{
-		bool m_blocking;
-		protected bool Blocking {
+		Training m_training;
+		protected Training Training { get; set; }
+
+
+
+		protected IEnumerable<TestResult> Results { get; set; }
+
+		bool? m_blocked;
+		protected bool IsBlocked {
 			get {
-				return this.m_blocking;
+				return (this.m_blocked ?? (this.m_blocked = this.GetBlocking())).Value;
+			}
+		}
+		bool GetBlocking()
+		{
+			using (var _ctx = new Lms.LmsDataContext()) {
+				return 
+					_ctx.TrainingBlockings.Any(_b =>
+						_b.Student == CurrentUser.UserID
+							&& _b.Training == (PageParameters.trId ?? Guid.Empty));
 			}
 		}
 
@@ -24,8 +42,38 @@ namespace DCE.Common
 			return DateTime.TryParse(value, out _result) ? _result : default(DateTime?);
 		}
 
+		void SetMocks()
+		{
+			this.Training = new Training {
+				Name = "Training Id 1",
+				Title = "Training 1",
+				Course = new Course {
+				},
+			};
+			
+			this.Results = new[] {
+				new TestResult {
+					AllowedAttempts = 3,
+					AttemptsCount = 4,
+					CompletedOn = DateTime.Now,
+					IsComplete = true,
+					IsSkipped = false,
+					Points = 123,
+					Theme = "Theme 1",
+
+					Test = new Test {
+						Name = "0000",
+						Parent = this.Training.Course,
+					}
+				},
+				//MockRepository.GenerateStub<TestResult>()
+			};
+		}
+
 		protected void Page_Load(object sender, System.EventArgs e)
 		{
+			this.SetMocks();
+			
 			this.doc.InnerXml = "<xml/>";
 			
 			Guid? reqTrId = PageParameters.trId;
@@ -39,44 +87,6 @@ namespace DCE.Common
 			string CoursesRoot = this.ResolveUrl(DCE.Settings.getCoursesRoot());
 			Guid? studentId = CurrentUser.UserID;
 			string cdAction = this.Request.Form["cdAction"];
-			
-			if (!string.IsNullOrEmpty(cdAction)) {
-				string checkUseCD = this.Request.Form["checkUseCD"];
-				string defPath=this.Request.Form["cdDefPath"];
-				string currPath=this.Request.Form["cdPath"];
-				
-				if(studentId.HasValue && trainingId.HasValue) {
-					string select;
-					DataSet ds = CCPath_Select(trainingId, studentId);
-					DataTable tablePath = ds.Tables["CDPath"];
-					
-					if (tablePath != null) {
-						DataRow row = null;
-						
-						if (tablePath.Rows.Count == 0) {
-							row = tablePath.NewRow();
-							row["studentId"] = studentId;
-							row["trainingId"] = trainingId;
-							tablePath.Rows.Add(row);
-						} else {
-							row = tablePath.Rows[0];
-						}
-						
-						if (!string.IsNullOrEmpty(checkUseCD)) {
-							
-							if (!string.IsNullOrEmpty(currPath) && currPath != defPath) {
-								row["cdPath"]=currPath;
-							}
-							
-							row["useCDLib"]=true;
-						} else {
-							row["useCDLib"]=false;
-						}
-						
-						dbData.Instance.UpdateDataSet("select * from CDPath", "CDPath", ref ds);
-					}
-				}
-			}
 			
 			Guid? qwId = GuidService.Parse(this.Request.Form["qwId"]);
 			
@@ -93,14 +103,7 @@ namespace DCE.Common
 				DataTable tableCourses = dsCourses.Tables["Courses"];
 				
 				if (tableCourses != null && tableCourses.Rows.Count == 1) {
-					Session["CourseLanguage"] = tableCourses.Rows[0]["CourseLanguage"].ToString();
-				}
-
-				DataSet dsBlocking = Blocking_Select(trainingId, studentId);
-				DataTable tableBlock = dsBlocking.Tables["Blocking"];
-				
-				if (tableBlock != null && tableBlock.Rows.Count > 0) {
-					this.m_blocking = true;
+					DCE.Service.CourseLanguage = tableCourses.Rows[0]["CourseLanguage"].ToString();
 				}
 				
 				if (tableCourses != null && tableCourses.Rows.Count == 1) {
@@ -165,42 +168,5 @@ WHERE	(t.id = '{4}')
 
 			return dbData.Instance.getDataSet(select, "dataSet", "Courses");
 		}
-
-		static DataSet Blocking_Select(Guid? trainingId, Guid? studentId)
-		{
-			string select0 = string.Format(@"
-select	id
-from	dbo.TrainingBlocking
-where	Student='{0}'
-		and Training='{1}'",
-					studentId,
-					trainingId);
-
-			return dbData.Instance.getDataSet(select0, "DataSet", "Blocking");
-		}
-
-		static DataSet CCPath_Select(Guid? trainingId, Guid? studentId)
-		{
-			string select = string.Format(@"
-select	*
-from	CDPath 
-where	studentId='{0}'
-		and trainingId='{1}'",
-					studentId,
-					trainingId);
-
-			return dbData.Instance.getDataSet(select, "dataSet", "CDPath");
-		}
-
-		protected void odsTestResults_Selecting(object sender, System.Web.UI.WebControls.ObjectDataSourceSelectingEventArgs e)
-		{
-			e.InputParameters["courseId"] = DCE.Service.courseId;
-			e.InputParameters["studentId"] = CurrentUser.UserID;
-		}
-		
-		protected void odsBulletins_Selecting(object sender, System.Web.UI.WebControls.ObjectDataSourceSelectingEventArgs e)
-		{
-			e.InputParameters["trainingId"] = DCE.Service.TrainingID;
-		}
-}
+	}
 }

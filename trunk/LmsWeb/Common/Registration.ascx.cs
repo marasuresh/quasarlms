@@ -17,25 +17,17 @@ namespace DCE.Common
 		protected void createUserWizard_CreatedUser(object sender, EventArgs e)
 		{
 			string _login = this.createUserWizard.UserName;
-			MembershipUser _mUser = Membership.GetUser(_login);
-			DceUser _dceUser = DceUserService.GetUserByLogin(_login);
 			
-			if (null == _dceUser) {
-				DceUserService.CreateUser(_login);
-			}
-
-			_dceUser = DceUserService.GetUserByLogin(_login);
-
 			System.Web.UI.Control _template = this.createUserWizard.CreateUserStep.ContentTemplateContainer;
 			TextBox _tbLastName = _template.FindControl("tbLastName") as TextBox;
 			TextBox _tbFirstName = _template.FindControl("tbFirstName") as TextBox;
 			TextBox _tbMidName = _template.FindControl("tbMidName") as TextBox;
 
-			_dceUser.LastName = _tbLastName.Text;
-			_dceUser.FirstName = _tbFirstName.Text;
-			_dceUser.Patronymic = _tbMidName.Text;
-
-			DceUserService.UpdateUser(_dceUser);
+			Profile.LastName = _tbLastName.Text;
+			Profile.FirstName = _tbFirstName.Text;
+			Profile.Patronymic = _tbMidName.Text;
+			
+			Profile.Save();
 		}
 	}
 }

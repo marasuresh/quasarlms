@@ -3,11 +3,10 @@
 		Inherits="DCE.FreeCourses"
 		CodeFile="FreeCourses.aspx.cs"
 		MasterPageFile="~/MasterPage.master" %>
+<%@ Register Src="~/Common/FreeIntro.ascx" TagName="FreeIntro" TagPrefix="lms" %>
 <asp:Content
 		runat="server"
 		ID="ctnCenter"
 		ContentPlaceHolderID="cphCenterColumn">
-	<asp:PlaceHolder
-			ID="PlaceHolder1"
-			runat="server" />
+	<lms:FreeIntro runat="server" />
 </asp:Content>

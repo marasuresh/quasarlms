@@ -134,7 +134,7 @@ try {{
 		}
 		protected void Login1_LoggingIn(object sender, LoginCancelEventArgs e)
 		{
-			Login _loginCtl = sender as Login;
+/*			Login _loginCtl = sender as Login;
 			string _login = _loginCtl.UserName;
 			
 			if (!Membership.ValidateUser(_login, _loginCtl.Password)) {
@@ -150,8 +150,9 @@ try {{
 				if (null == _dceUser) {
 					DceUserService.CreateUser(_login);
 				}
-			}
+			}*/
 		}
+
 		protected void Login1_LoggedIn(object sender, EventArgs e)
 		{
 			//Legacy code to support DceUserService.LastEntry

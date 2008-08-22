@@ -13,7 +13,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F0BA8B4B-E344-4E2D-8748-E6E81B059AB9}</ProjectGuid>
     <SccProjectName>
@@ -151,10 +151,7 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <Reference Include="WinFormsExtras">
-      <Name>WinFormsExtras</Name>
-      <HintPath>..\DCEAccessLib\WinFormsExtras.dll</HintPath>
-    </Reference>
+    <Reference Include="WinFormsExtras, Version=1.0.1445.33426, Culture=neutral" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnswersList.cs">
@@ -355,6 +352,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="App.ico" />
+    <Content Include="WinFormsExtras.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DceAccessLib\DCEAccessLib.csproj">
