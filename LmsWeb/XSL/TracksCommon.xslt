@@ -30,18 +30,6 @@
 </xsl:template>
 
 <xsl:template match="/">
- <script language="javascript">
- function CouseRef(cid)
- {
- if (cid != "")
- {
- AddParameter("cid", cid);
- AddParameter("cset", "CourseIntro");
-
- applyParameters();
- }
- }
- </script>
  
  <!--Треки курсов-->
  <!--xsl:if test="count(xml/CoursesList/DataSet/Courses)>0"-->
@@ -83,7 +71,7 @@
  <td>
 		 <!--xsl:choose>
 		 <xsl:when test="cid!=''"-->
-	 <a href="javascript:CouseRef('{cid}')"><xsl:value-of select="Name"/>
+	 <a href="Lms/UI/CourseInfo.aspx{cid}"><xsl:value-of select="Name"/>
  <xsl:if test="CPublic='true'">
 	 &#160;(<xsl:value-of select="$head/Public"/>)
 	 </xsl:if>

@@ -31,15 +31,6 @@
 
 <xsl:template match="/">
  <script language="javascript">
- function CouseRef(cid)
- {
- if (cid != "")
- {
- AddParameter("cid", cid);
- AddParameter("cset", "CourseIntro");
-
- applyParameters();
- }
  }
  function rTrack(id)
  {
@@ -96,7 +87,7 @@
 	 	 <xsl:if test="(position() div 2)=ceiling(position() div 2)"><xsl:attribute name="bgcolor">#F6F6F6</xsl:attribute></xsl:if>					
 		 <xsl:if test="(position() div 2)!=ceiling(position() div 2)"><xsl:attribute name="bgcolor">#FFFFFF</xsl:attribute></xsl:if>
  <td>
-	 <a href="javascript:CouseRef('{cId}')"><xsl:value-of select="Name"/>
+	 <a href="Lms/UI/CourseInfo.aspx{cId}"><xsl:value-of select="Name"/>
  <xsl:if test="CPublic='true'">
 	 &#160;(<xsl:value-of select="$head/Public"/>)
 	 </xsl:if>
@@ -168,7 +159,7 @@
 	 	 <xsl:if test="(position() div 2)=ceiling(position() div 2)"><xsl:attribute name="bgcolor">#F6F6F6</xsl:attribute></xsl:if>					
 		 <xsl:if test="(position() div 2)!=ceiling(position() div 2)"><xsl:attribute name="bgcolor">#FFFFFF</xsl:attribute></xsl:if>
  <td>
-	 <a href="javascript:CouseRef('{cId}')"><xsl:value-of select="Name"/>
+	 <a href="Lms/UI/CourseInfo.aspx?cid={cId}"><xsl:value-of select="Name"/>
  <xsl:if test="CPublic='true'">
 	 &#160;(<xsl:value-of select="$head/Public"/>)
 	 </xsl:if>

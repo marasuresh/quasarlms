@@ -1,16 +1,10 @@
 using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Web;
-using System.Web.SessionState;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.HtmlControls;
 
 namespace DCE
 {
+	using System.Linq;
+	using System.Xml.Linq;
 	/// <summary>
 	/// Выбор тренинга для обучения
 	/// </summary>
@@ -18,15 +12,24 @@ namespace DCE
 	{
 		protected void Page_Load(object sender, System.EventArgs e)
 		{
-			this.leftMenu = this.LeftMenu1;
 			this.onLoadCenter();
 			Guid? _studentId = CurrentUser.UserID;
-			DataSet dsTraining = DceAccessLib.DAL.TrainingController.Select(_studentId.Value);
-			DataTable tableTraining = dsTraining.Tables["item"];
-			
-			if (tableTraining != null && tableTraining.Rows.Count > 0) {
-				DCE.Service.TrainingID = (Guid?)tableTraining.Rows[0]["id"];
-				this.leftMenu.doc.LoadXml("<xml>" + dsTraining.GetXml() + "</xml>");
+			var _trainings = DceAccessLib.DAL.TrainingController.Select(_studentId.Value);
+
+			if (_trainings.Any()) {
+				var _first = _trainings.First();
+				DCE.Service.TrainingID = GuidService.Parse(_first.Name);
+
+				this.LeftMenu.doc.InnerXml = new XElement("xml",
+					new XElement("Items",
+						from _training in _trainings
+						select new XElement("item",
+							new XElement("text", _training.Title),
+							new XElement("control", "Welcome"),
+							new XElement("id", _training.Name),
+							new XElement("trId", _training.Name)))
+				).ToString(SaveOptions.DisableFormatting);
+				
 			} else {
 				this.Response.Redirect(Resources.PageUrl.PAGE_MAIN__WELCOME);
 			}

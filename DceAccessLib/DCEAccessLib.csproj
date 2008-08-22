@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.30428</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FB5DD100-1599-4147-8A12-6EE050BCE6FE}</ProjectGuid>
     <SccProjectName>
@@ -245,7 +245,6 @@
     </None>
     <None Include="Web References\SecurityServices\UserManager.disco" />
     <None Include="Web References\DceService\DCEAccess.disco" />
-    <Content Include="WinFormsExtras.dll" />
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,0 +1,1065 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="DTwork" EntityNamespace="Lms" ContextNamespace="Lms" Class="LmsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=C:\usr\src\Lms\LmsWeb\App_Data\DTwork.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="Convert.Properties.Settings" SettingsPropertyName="DTworkConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BulletinBoard" Member="BulletinBoards">
+    <Type Name="BulletinBoard">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Author" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PostDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Training" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CDPath" Member="CDPaths">
+    <Type Name="CDPath">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="studentId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="trainingId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="cdPath" Member="cdPath1" Type="System.String" DbType="NVarChar(120)" CanBeNull="true" />
+      <Column Name="useCDLib" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Student_CDPath" Member="Student" ThisKey="studentId" OtherKey="id" Type="Student" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Training_CDPath" Member="Training" ThisKey="trainingId" OtherKey="id" Type="Training" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Content" Member="Contents">
+    <Type Name="Content">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="eid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Lang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DataStr" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Data" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TData" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ParentEid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="COrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Course_Content" Member="CourseAdditions" ThisKey="eid,Lang" OtherKey="Additions,CourseLanguage" Type="Course" IsForeignKey="true" />
+      <Association Name="Course_Content1" Member="CourseAuthor" ThisKey="eid,Lang" OtherKey="Author,CourseLanguage" Type="Course" IsForeignKey="true" />
+      <Association Name="Course_Content2" Member="CourseDescriptionLong" ThisKey="eid" OtherKey="DescriptionLong" Type="Course" IsForeignKey="true" />
+      <Association Name="Course_Content3" Member="CourseDescriptionShort" ThisKey="eid" OtherKey="DescriptionShort" Type="Course" IsForeignKey="true" />
+      <Association Name="Course_Content4" Member="CourseKeywords" ThisKey="eid,Lang" OtherKey="Keywords,CourseLanguage" Type="Course" IsForeignKey="true" />
+      <Association Name="Course_Content5" Member="CourseName" ThisKey="eid" OtherKey="Name" Type="Course" IsForeignKey="true" />
+      <Association Name="Course_Content6" Member="Courserequirements" ThisKey="eid,Lang" OtherKey="Requirements,CourseLanguage" Type="Course" IsForeignKey="true" />
+      <Association Name="CourseType_Content" Member="CourseType" ThisKey="eid" OtherKey="Name" Type="CourseType" IsForeignKey="true" />
+      <Association Name="Language_Content" Member="Language" ThisKey="Lang" OtherKey="id" Type="Language" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CourseDomain" Member="CourseDomains">
+    <Type Name="CourseDomain">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Parent" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Name" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="CourseDomain_Course" Member="Courses" ThisKey="id" OtherKey="Area" Type="Course" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CourseRequest" Member="CourseRequests">
+    <Type Name="CourseRequest">
+      <Column Name="id" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Student" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Course" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RequestDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Course_CourseRequest" Member="Course1" ThisKey="Course" OtherKey="id" Type="Course" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Courses" Member="Courses">
+    <Type Name="Course">
+      <Column Name="id" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Version" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Area" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Type" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Cost1" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CostType1" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Cost2" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CostType2" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Author" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CPublic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DescriptionShort" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DescriptionLong" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Requirements" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Keywords" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Additions" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Instructors" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StartQuestionnaire" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="FinishQuestionnaire" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DiskFolder" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="isReady" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CourseLanguage" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Course_Content" Member="AdditionsContents" ThisKey="Additions,CourseLanguage" OtherKey="eid,Lang" Type="Content" />
+      <Association Name="Course_Content1" Member="AuthorContents" ThisKey="Author,CourseLanguage" OtherKey="eid,Lang" Type="Content" />
+      <Association Name="Course_Content2" Member="DescriptionLongContents" ThisKey="DescriptionLong" OtherKey="eid" Type="Content" />
+      <Association Name="Course_Content3" Member="DescriptionShortContents" ThisKey="DescriptionShort" OtherKey="eid" Type="Content" />
+      <Association Name="Course_Content4" Member="KeywordsContents" ThisKey="Keywords,CourseLanguage" OtherKey="eid,Lang" Type="Content" />
+      <Association Name="Course_Content5" Member="NameContents" ThisKey="Name" OtherKey="eid" Type="Content" />
+      <Association Name="Course_Content6" Member="RequirementsContents" ThisKey="Requirements,CourseLanguage" OtherKey="eid,Lang" Type="Content" />
+      <Association Name="Course_CourseRequest" Member="CourseRequests" ThisKey="id" OtherKey="Course" Type="CourseRequest" />
+      <Association Name="Course_Training" Member="Trainings" ThisKey="id" OtherKey="Course" Type="Training" />
+      <Association Name="Course_Vocabulary" Member="Vocabularies" ThisKey="id" OtherKey="Course" Type="Vocabulary" />
+      <Association Name="CourseDomain_Course" Member="CourseDomain" ThisKey="Area" OtherKey="id" Type="CourseDomain" IsForeignKey="true" />
+      <Association Name="CourseType_Course" Member="CourseType" ThisKey="Type" OtherKey="id" Type="CourseType" IsForeignKey="true" />
+      <Association Name="Group_Course" Member="Group" ThisKey="Instructors" OtherKey="id" Type="Group" IsForeignKey="true" />
+      <Association Name="Language_Course" Member="Language" ThisKey="CourseLanguage" OtherKey="id" Type="Language" IsForeignKey="true" />
+      <Association Name="Test_Course" Member="Test" ThisKey="FinishQuestionnaire" OtherKey="id" Type="Test" IsForeignKey="true" />
+      <Association Name="Test_Course1" Member="Test1" ThisKey="StartQuestionnaire" OtherKey="id" Type="Test" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CourseType" Member="CourseTypes">
+    <Type Name="CourseType">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="CourseType_Content" Member="Contents" ThisKey="Name" OtherKey="eid" Type="Content" />
+      <Association Name="CourseType_Course" Member="Courses" ThisKey="id" OtherKey="Type" Type="Course" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTrackRequest" Member="CTrackRequests">
+    <Type Name="CTrackRequest">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Student" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CTrack" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RequestDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="CTrack_CTrackRequest" Member="CTrack1" ThisKey="CTrack" OtherKey="id" Type="CTrack" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTracks" Member="CTracks">
+    <Type Name="CTrack">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Courses" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="CTrack_CTrackRequest" Member="CTrackRequests" ThisKey="id" OtherKey="CTrack" Type="CTrackRequest" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Currency" Member="Currencies">
+    <Type Name="Currency">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Entities" Member="Entities">
+    <Type Name="Entity">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Parent" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Entity_Right" Member="Rights" ThisKey="id" OtherKey="eid" Type="Right" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ForumReplies" Member="ForumReplies">
+    <Type Name="ForumReply">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Topic" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Author" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PostDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="ForumTopic_ForumReply" Member="ForumTopic" ThisKey="Topic" OtherKey="id" Type="ForumTopic" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ForumTopics" Member="ForumTopics">
+    <Type Name="ForumTopic">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Training" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Author" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Student" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Topic" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Message" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PostDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Blocked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="ForumTopic_ForumReply" Member="ForumReplies" ThisKey="id" OtherKey="Topic" Type="ForumReply" />
+      <Association Name="Training_ForumTopic" Member="Training1" ThisKey="Training" OtherKey="id" Type="Training" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GroupMembers" Member="GroupMembers">
+    <Type Name="GroupMember">
+      <Column Name="mid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MGroup" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Group_GroupMember" Member="Group" ThisKey="MGroup" OtherKey="id" Type="Group" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Groups" Member="Groups">
+    <Type Name="Group">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Group_Course" Member="Courses" ThisKey="id" OtherKey="Instructors" Type="Course" />
+      <Association Name="Group_GroupMember" Member="GroupMembers" ThisKey="id" OtherKey="MGroup" Type="GroupMember" />
+      <Association Name="Group_Training" Member="Trainings" ThisKey="id" OtherKey="Curators" Type="Training" />
+      <Association Name="Group_Training1" Member="Trainings1" ThisKey="id" OtherKey="Instructors" Type="Training" />
+      <Association Name="Group_Training2" Member="Trainings2" ThisKey="id" OtherKey="Students" Type="Training" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Languages" Member="Languages">
+    <Type Name="Language">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NameEng" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NameNative" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Abbr" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Association Name="Language_Content" Member="Contents" ThisKey="id" OtherKey="Lang" Type="Content" />
+      <Association Name="Language_Course" Member="Courses" ThisKey="id" OtherKey="CourseLanguage" Type="Course" />
+    </Type>
+  </Table>
+  <Table Name="dbo.News" Member="News">
+    <Type Name="New">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NewsDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Head" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Short" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MoreHref" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="MoreText" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CourseCode" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Image" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ObjectRegions" Member="ObjectRegions">
+    <Type Name="ObjectRegion">
+      <Column Name="ObjectID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RegionID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Regions" Member="Regions">
+    <Type Name="Region">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CodesCommaSeparated" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rights" Member="Rights">
+    <Type Name="Right">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="eid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="permid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="[read]" Member="read" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="write" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="[delete]" Member="delete" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Entity_Right" Member="Entity" ThisKey="eid" OtherKey="id" Type="Entity" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Roles" Member="Roles">
+    <Type Name="Role">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CodeName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsGlobal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Schedule" Member="Schedules">
+    <Type Name="Schedule">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Training" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Theme" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="isOpen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Mandatory" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Training_Schedule" Member="Training1" ThisKey="Training" OtherKey="id" Type="Training" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Students" Member="Students">
+    <Type Name="Student">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="Patronymic" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="FirstNameEng" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="LastNameEng" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="Birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Sex" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Organization" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="OrgType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="JobPosition" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="Chief" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="ChiefPosition" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="ChiefPhone" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="ZIP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="Education" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Courses" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Certificates" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Login" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MediaLibrary" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LastLogin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TotalLogins" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="useCDLib" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cdPath" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PasswordHash" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="PasswordHashSalt" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastModifyDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Student_CDPath" Member="CDPaths" ThisKey="id" OtherKey="studentId" Type="CDPath" />
+      <Association Name="Student_TaskSolution" Member="TaskSolutions" ThisKey="id" OtherKey="Student" Type="TaskSolution" />
+      <Association Name="Student_TrainingBlocking" Member="TrainingBlockings" ThisKey="id" OtherKey="Student" Type="TrainingBlocking" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tasks" Member="Tasks">
+    <Type Name="Task">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Training" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Creator" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Description" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="TaskTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Task_TaskSolution" Member="TaskSolutions" ThisKey="id" OtherKey="Task" Type="TaskSolution" />
+      <Association Name="Training_Task" Member="Training1" ThisKey="Training" OtherKey="id" Type="Training" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VTerms" Member="VTerms">
+    <Type Name="VTerm">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="VTerm_Vocabulary" Member="Vocabularies" ThisKey="id" OtherKey="Term" Type="Vocabulary" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TaskSolutions" Member="TaskSolutions">
+    <Type Name="TaskSolution">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Task" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Student" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Complete" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Solution" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Student_TaskSolution" Member="Student1" ThisKey="Student" OtherKey="id" Type="Student" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Task_TaskSolution" Member="Task1" ThisKey="Task" OtherKey="id" Type="Task" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TestAnswers" Member="TestAnswers">
+    <Type Name="TestAnswer">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TestResults" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Question" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Answer" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AnswerTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TestQuestion_TestAnswer" Member="TestQuestion" ThisKey="Question" OtherKey="id" Type="TestQuestion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TestQuestions" Member="TestQuestions">
+    <Type Name="TestQuestion">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Test" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ShortHint" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LongHint" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Answer" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Theme" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="TestQuestion_TestAnswer" Member="TestAnswers" ThisKey="id" OtherKey="Question" Type="TestAnswer" />
+      <Association Name="Test_TestQuestion" Member="Test1" ThisKey="Test" OtherKey="id" Type="Test" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TestResults" Member="TestResults">
+    <Type Name="TestResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Test" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Student" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Complete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CompletionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Tries" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AllowTries" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TryStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Skipped" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Test_TestResult" Member="Test1" ThisKey="Test" OtherKey="id" Type="Test" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tests" Member="Tests">
+    <Type Name="Test">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Parent" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Show" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Split" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AutoFinish" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DefLanguage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CanSwitchLang" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Hints" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InternalName" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ShowThemes" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Test_Course" Member="Courses" ThisKey="id" OtherKey="FinishQuestionnaire" Type="Course" />
+      <Association Name="Test_Course1" Member="Courses1" ThisKey="id" OtherKey="StartQuestionnaire" Type="Course" />
+      <Association Name="Test_TestQuestion" Member="TestQuestions" ThisKey="id" OtherKey="Test" Type="TestQuestion" />
+      <Association Name="Test_TestResult" Member="TestResults" ThisKey="id" OtherKey="Test" Type="TestResult" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TestWriteTable" Member="TestWriteTables">
+    <Type Name="TestWriteTable">
+      <Column Name="[Dummy]" Member="Dummy" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Themes" Member="Themes">
+    <Type Name="Theme">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Parent" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mandatory" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Practice" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tracks" Member="Tracks">
+    <Type Name="Track">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Students" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Trainings" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TrainingBlocking" Member="TrainingBlockings">
+    <Type Name="TrainingBlocking">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Student" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Training" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Student_TrainingBlocking" Member="Student1" ThisKey="Student" OtherKey="id" Type="Student" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Training_TrainingBlocking" Member="Training1" ThisKey="Training" OtherKey="id" Type="Training" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Trainings" Member="Trainings">
+    <Type Name="Training">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Course" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="isPublic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Instructors" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Curators" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Students" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TimeStrict" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TestOnly" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Expires" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Training_CDPath" Member="CDPaths" ThisKey="id" OtherKey="trainingId" Type="CDPath" />
+      <Association Name="Training_ForumTopic" Member="ForumTopics" ThisKey="id" OtherKey="Training" Type="ForumTopic" />
+      <Association Name="Training_Schedule" Member="Schedules" ThisKey="id" OtherKey="Training" Type="Schedule" />
+      <Association Name="Training_Task" Member="Tasks" ThisKey="id" OtherKey="Training" Type="Task" />
+      <Association Name="Training_TrainingBlocking" Member="TrainingBlockings" ThisKey="id" OtherKey="Training" Type="TrainingBlocking" />
+      <Association Name="Course_Training" Member="Course1" ThisKey="Course" OtherKey="id" Type="Course" IsForeignKey="true" />
+      <Association Name="Group_Training" Member="Group" ThisKey="Curators" OtherKey="id" Type="Group" IsForeignKey="true" />
+      <Association Name="Group_Training1" Member="Group1" ThisKey="Instructors" OtherKey="id" Type="Group" IsForeignKey="true" />
+      <Association Name="Group_Training2" Member="Group2" ThisKey="Students" OtherKey="id" Type="Group" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserProfileData" Member="UserProfileDatas">
+    <Type Name="UserProfileData">
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AnonymousID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WebProfileXmlData" Type="System.Xml.Linq.XElement" DbType="Xml NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserRoles" Member="UserRoles">
+    <Type Name="UserRole">
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Role" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Vocabulary" Member="Vocabularies">
+    <Type Name="Vocabulary">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Course" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Term" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Course_Vocabulary" Member="Course1" ThisKey="Course" OtherKey="id" Type="Course" IsForeignKey="true" />
+      <Association Name="VTerm_Vocabulary" Member="VTerm" ThisKey="Term" OtherKey="id" Type="VTerm" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.AllDistinctTrainingStudents" Method="AllDistinctTrainingStudents" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="AllDistinctTrainingStudentsResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UserName" Method="UserName" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="eng" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.AllGroupMembers" Method="AllGroupMembers" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="AllGroupMembersResult">
+      <Column Name="mid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MGroup" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AllStudentTrainings" Method="AllStudentTrainings" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="AllStudentTrainingsResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AllSubThemes" Method="AllSubThemes" IsComposable="true">
+    <Parameter Name="themeid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="lang" Type="System.Int32" DbType="Int" />
+    <ElementType Name="AllSubThemesResult">
+      <Column Name="parentid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AllTrainingStudents" Method="AllTrainingStudents" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="AllTrainingStudentsResult">
+      <Column Name="mid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MGroup" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CountCompletePractice" Method="CountCompletePractice" IsComposable="true">
+    <Parameter Name="trainingId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="studentid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CountCompleteSolutions" Method="CountCompleteSolutions" IsComposable="true">
+    <Parameter Name="trainingId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="studentid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CountCompleteTests" Method="CountCompleteTests" IsComposable="true">
+    <Parameter Name="trainingId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="studentid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CountStudentSolutions" Method="CountStudentSolutions" IsComposable="true">
+    <Parameter Name="trainingId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="studentid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CountStudentsPassedTest" Method="CountStudentsPassedTest" IsComposable="true">
+    <Parameter Name="training" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="CountStudentsPassedTestResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="total" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="avgpoints" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CountTestResults" Method="CountTestResults" IsComposable="true">
+    <Parameter Name="test" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CountTestTries" Method="CountTestTries" IsComposable="true">
+    <Parameter Name="training" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="test" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CourseDuration" Method="CourseDuration" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CourseIsActive" Method="CourseIsActive" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.CourseOfTest" Method="CourseOfTest" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.CourseOfTestQuestion" Method="CourseOfTestQuestion" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.CourseOfTheme" Method="CourseOfTheme" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.CourseTests" Method="CourseTests" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="CourseTestsResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcelegacy_Fn_Courses_AreaTopmostParentID" Method="dcelegacy_Fn_Courses_AreaTopmostParentID" IsComposable="true">
+    <Parameter Name="areaID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcelegacy_Fn_Courses_GetAreaName" Method="dcelegacy_Fn_Courses_GetAreaName" IsComposable="true">
+    <Parameter Name="areaID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcelegacy_Fn_Courses_GetCourseAreaID" Method="dcelegacy_Fn_Courses_GetCourseAreaID" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.dcelegacy_Fn_Subscribe_GetBestTrainingID" Method="dcelegacy_Fn_Subscribe_GetBestTrainingID" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="requestDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.dcelegacy_Fn_Trainings_GetStudentCount" Method="dcelegacy_Fn_Trainings_GetStudentCount" IsComposable="true">
+    <Parameter Name="trainingID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.dcereports_Fn_Tests_GetStudentTestResults" Method="dcereports_Fn_Tests_GetStudentTestResults" IsComposable="true">
+    <Parameter Name="studentID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcereports_Fn_Tests_GetStudentTestResultsResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Test" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Student" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Complete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CompletionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Tries" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AllowTries" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TryStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Skipped" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="JobPosition" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcereports_Fn_Tests_GetTestResults" Method="dcereports_Fn_Tests_GetTestResults" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="studentID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcereports_Fn_Tests_GetTestResultsResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Test" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Student" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Complete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CompletionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Tries" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AllowTries" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TryStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Skipped" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="JobPosition" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcereports_Fn_TutorDiary_GetTrainingsOfCourseType" Method="dcereports_Fn_TutorDiary_GetTrainingsOfCourseType" IsComposable="true">
+    <Parameter Name="courseTypeID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcereports_Fn_TutorDiary_GetTrainingsOfCourseTypeResult">
+      <Column Name="TrainingID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RegionName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="CourseName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="StudentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PassedFinalTest" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcereports_Tests_GetMaxTestResultDate" Method="dcereports_Tests_GetMaxTestResultDate" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.DateTime" />
+  </Function>
+  <Function Name="dbo.dcereports_Tests_GetStudentMaxTestResultDate" Method="dcereports_Tests_GetStudentMaxTestResultDate" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="studentID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.DateTime" />
+  </Function>
+  <Function Name="dbo.dcereports_Tests_GetTestResultCount" Method="dcereports_Tests_GetTestResultCount" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.dcereports_Tests_GetTestResultPassedCount" Method="dcereports_Tests_GetTestResultPassedCount" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Access_FindUsersByAny" Method="dcetools_Fn_Access_FindUsersByAny" IsComposable="true">
+    <Parameter Name="homeRegion" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="searchString" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="dcetools_Fn_Access_FindUsersByAnyResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Login" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="EMail" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="JobPosition" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RegionID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="RegionName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RoleID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Content_GetImage" Method="dcetools_Fn_Content_GetImage" IsComposable="true">
+    <Parameter Name="contentID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Data.Linq.Binary" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Content_GetString" Method="dcetools_Fn_Content_GetString" IsComposable="true">
+    <Parameter Name="contentID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Content_GetText" Method="dcetools_Fn_Content_GetText" IsComposable="true">
+    <Parameter Name="contentID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_CourseDomains_GetDomainParent" Method="dcetools_Fn_CourseDomains_GetDomainParent" IsComposable="true">
+    <Parameter Name="domainID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_CourseDomains_IsDomainChildAnyDeep" Method="dcetools_Fn_CourseDomains_IsDomainChildAnyDeep" IsComposable="true">
+    <Parameter Name="domainID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="parentCheckID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Courses_GetCourseName" Method="dcetools_Fn_Courses_GetCourseName" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Courses_GetTestIdList" Method="dcetools_Fn_Courses_GetTestIdList" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcetools_Fn_Courses_GetTestIdListResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Courses_GetTestResultIdList" Method="dcetools_Fn_Courses_GetTestResultIdList" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcetools_Fn_Courses_GetTestResultIdListResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Courses_Themes_GetCourseThemeIDList" Method="dcetools_Fn_Courses_Themes_GetCourseThemeIDList" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcetools_Fn_Courses_Themes_GetCourseThemeIDListResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Courses_Themes_GetCourseThemes" Method="dcetools_Fn_Courses_Themes_GetCourseThemes" IsComposable="true">
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcetools_Fn_Courses_Themes_GetCourseThemesResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ParentThemeID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mandatory" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ContentHref" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OrderIndex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Orders_GetBestTrainingDate" Method="dcetools_Fn_Orders_GetBestTrainingDate" IsComposable="true">
+    <Parameter Name="homeRegion" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="orderID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Orders_GetCourseAvailableTrainingsWithDates" Method="dcetools_Fn_Orders_GetCourseAvailableTrainingsWithDates" IsComposable="true">
+    <Parameter Name="homeRegion" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcetools_Fn_Orders_GetCourseAvailableTrainingsWithDatesResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Orders_GetCourseID" Method="dcetools_Fn_Orders_GetCourseID" IsComposable="true">
+    <Parameter Name="orderID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Orders_GetStudentID" Method="dcetools_Fn_Orders_GetStudentID" IsComposable="true">
+    <Parameter Name="orderID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Regions_GetIdList" Method="dcetools_Fn_Regions_GetIdList" IsComposable="true">
+    <ElementType Name="dcetools_Fn_Regions_GetIdListResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Regions_GetIdNameList" Method="dcetools_Fn_Regions_GetIdNameList" IsComposable="true">
+    <ElementType Name="dcetools_Fn_Regions_GetIdNameListResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="RegionName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Regions_GetName" Method="dcetools_Fn_Regions_GetName" IsComposable="true">
+    <Parameter Name="regionID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Regions_GetObjectRegionID" Method="dcetools_Fn_Regions_GetObjectRegionID" IsComposable="true">
+    <Parameter Name="objectID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Regions_GetObjectRegionName" Method="dcetools_Fn_Regions_GetObjectRegionName" IsComposable="true">
+    <Parameter Name="objectID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Regions_ObjectCanReadByHome" Method="dcetools_Fn_Regions_ObjectCanReadByHome" IsComposable="true">
+    <Parameter Name="objectID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="homeRegion" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Regions_ObjectCanWriteByHome" Method="dcetools_Fn_Regions_ObjectCanWriteByHome" IsComposable="true">
+    <Parameter Name="objectID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="homeRegion" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Regions_RegionCanReadByHome" Method="dcetools_Fn_Regions_RegionCanReadByHome" IsComposable="true">
+    <Parameter Name="regionID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="homeRegion" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Regions_RegionCanWriteByHome" Method="dcetools_Fn_Regions_RegionCanWriteByHome" IsComposable="true">
+    <Parameter Name="regionID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="homeRegion" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Students_GetStudentFullName" Method="dcetools_Fn_Students_GetStudentFullName" IsComposable="true">
+    <Parameter Name="studentID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Themes_GetThemeName" Method="dcetools_Fn_Themes_GetThemeName" IsComposable="true">
+    <Parameter Name="themeID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Themes_GetThemeParent" Method="dcetools_Fn_Themes_GetThemeParent" IsComposable="true">
+    <Parameter Name="themeID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Themes_IsThemeChildAnyDeep" Method="dcetools_Fn_Themes_IsThemeChildAnyDeep" IsComposable="true">
+    <Parameter Name="themeID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="parentCheckID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Trainings_Forum_GetTopicLastPostDate" Method="dcetools_Fn_Trainings_Forum_GetTopicLastPostDate" IsComposable="true">
+    <Parameter Name="topicID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.DateTime" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Trainings_Forum_GetTopicMessageCount" Method="dcetools_Fn_Trainings_Forum_GetTopicMessageCount" IsComposable="true">
+    <Parameter Name="topicID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Trainings_GetCourseID" Method="dcetools_Fn_Trainings_GetCourseID" IsComposable="true">
+    <Parameter Name="trainingID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Trainings_GetTrainingName" Method="dcetools_Fn_Trainings_GetTrainingName" IsComposable="true">
+    <Parameter Name="trainingID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcetools_Fn_Trainings_GetTrainingNameResult">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Trainings_Schedule_GetTrainingScheduleIDList" Method="dcetools_Fn_Trainings_Schedule_GetTrainingScheduleIDList" IsComposable="true">
+    <Parameter Name="trainingID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcetools_Fn_Trainings_Schedule_GetTrainingScheduleIDListResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Trainings_Schedule_GetTrainingThemeScheduleID" Method="dcetools_Fn_Trainings_Schedule_GetTrainingThemeScheduleID" IsComposable="true">
+    <Parameter Name="trainingID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="themeID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Trainings_Students_GetIDList" Method="dcetools_Fn_Trainings_Students_GetIDList" IsComposable="true">
+    <Parameter Name="trainingID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcetools_Fn_Trainings_Students_GetIDListResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Trainings_Students_GetStudentTrainingIDList" Method="dcetools_Fn_Trainings_Students_GetStudentTrainingIDList" IsComposable="true">
+    <Parameter Name="studentID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="dcetools_Fn_Trainings_Students_GetStudentTrainingIDListResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Trainings_Students_GetTrainingStudentCount" Method="dcetools_Fn_Trainings_Students_GetTrainingStudentCount" IsComposable="true">
+    <Parameter Name="trainingID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Trainings_Students_IsTrainingContainsStudent" Method="dcetools_Fn_Trainings_Students_IsTrainingContainsStudent" IsComposable="true">
+    <Parameter Name="trainingID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="studentID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Users_GetStudentOrUserFullName" Method="dcetools_Fn_Users_GetStudentOrUserFullName" IsComposable="true">
+    <Parameter Name="userID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Users_GetUserFullName" Method="dcetools_Fn_Users_GetUserFullName" IsComposable="true">
+    <Parameter Name="userID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.dcetools_Fn_Util_CombineFullName" Method="dcetools_Fn_Util_CombineFullName" IsComposable="true">
+    <Parameter Name="firstName" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="patronymicName" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="lastName" Type="System.String" DbType="NVarChar(255)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.GetContentAlt" Method="GetContentAlt" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="lang" Type="System.String" DbType="NChar(3)" />
+    <Parameter Name="deflang" Type="System.String" DbType="NChar(3)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.GetMaxCOrder" Method="GetMaxCOrder" IsComposable="true">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetStrContentAlt" Method="GetStrContentAlt" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="lang" Type="System.String" DbType="NChar(3)" />
+    <Parameter Name="deflang" Type="System.String" DbType="NChar(3)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.GetStrContentOrderer" Method="GetStrContentOrderer" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="lang" Type="System.Int32" DbType="Int" />
+    <Parameter Name="order" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.GetTContentId" Method="GetTContentId" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="lang" Type="System.String" DbType="NChar(3)" />
+    <Parameter Name="deflang" Type="System.String" DbType="NChar(3)" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.GetTDataContentAlt" Method="GetTDataContentAlt" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="lang" Type="System.String" DbType="NChar(3)" />
+    <Parameter Name="deflang" Type="System.String" DbType="NChar(3)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.GetTestCourse" Method="GetTestCourse" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Guid" />
+  </Function>
+  <Function Name="dbo.GetTestCourseName" Method="GetTestCourseName" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="lang" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.GetThemeName" Method="GetThemeName" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="lang" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.GetUserRole" Method="GetUserRole" IsComposable="true">
+    <Parameter Name="userId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="trId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.IdIsNotNull" Method="IdIsNotNull" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.isAreaHasCourses" Method="isAreaHasCourses" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.IsChildTheme" Method="IsChildTheme" IsComposable="true">
+    <Parameter Name="parent" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="child" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.isCourseOfArea" Method="isCourseOfArea" IsComposable="true">
+    <Parameter Name="cid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="areaid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.IsCourseTestComplete" Method="IsCourseTestComplete" IsComposable="true">
+    <Parameter Name="trainingId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="studentid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.IsEmptyString" Method="IsEmptyString" IsComposable="true">
+    <Parameter Name="sourceStr" Type="System.String" DbType="NVarChar(1024)" />
+    <Parameter Name="defStr" Type="System.String" DbType="NVarChar(1024)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.isIdEqual" Method="isIdEqual" IsComposable="true">
+    <Parameter Name="one" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="two" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.IsTestMandatory" Method="IsTestMandatory" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="trid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.NumReplies" Method="NumReplies" IsComposable="true">
+    <Parameter Name="topic" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.StudentName" Method="StudentName" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="eng" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.TargetLang" Method="TargetLang" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="lang" Type="System.String" DbType="NChar(3)" />
+    <Parameter Name="deflang" Type="System.String" DbType="NChar(3)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.TestPoints" Method="TestPoints" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.TestResultPoints" Method="TestResultPoints" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.TopicAuthor" Method="TopicAuthor" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.TrainingTests" Method="TrainingTests" IsComposable="true">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="TrainingTestsResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TrainingTests_TrainingsFromTest" Method="TrainingTests_TrainingsFromTest" IsComposable="true">
+    <Parameter Name="testID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="TrainingTests_TrainingsFromTestResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Course" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="isPublic" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Instructors" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Curators" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Students" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TimeStrict" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TestOnly" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Expires" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CreateTraining" Method="CreateTraining">
+    <Parameter Name="trainingID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="trainingRegion" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="code" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="name" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="comment" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="courseID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="isPublic" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isActive" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="timeStrict" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="endDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="testOnly" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="expires" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

@@ -20,11 +20,9 @@ namespace DCE
 		
 		protected void Page_Load(object sender, System.EventArgs e)
 		{
-			this.leftMenu = this.LeftMenu1;
-			this.leftMenu.doc.LoadXml("<xml><Items></Items></xml>");
-			this.onLoadCenter();
+			this.LeftMenu.doc.LoadXml("<xml><Items></Items></xml>");
 
-			doc = this.leftMenu.doc;
+			doc = this.LeftMenu.doc;
 			XmlNode items = doc.DocumentElement.SelectSingleNode("Items");
 			
 			if (items != null) {
@@ -92,18 +90,6 @@ where	cd.Parent " + (parentId == null ? ("is NULL") : ("='" + parentId + "'")) +
 		and dbo.isAreaHasCourses(cd.id)=1";
 			
 			return dbData.Instance.getDataSet(select, "dataSet", "item");
-		}
-
-		void onLoadCenter()
-		{
-			string _cset = this.Request["cset"] as string;
-
-			Control _ctl = string.IsNullOrEmpty(_cset)
-					? this.LoadControl(@"~/Common/TrainingRequest.ascx")
-					: this.LoadControl(@"~/Common/" + _cset + ".ascx")
-						?? this.LoadControl(@"~/Common/TrainingRequest.ascx");
-			
-			this.PlaceHolder1.Controls.Add(_ctl);
 		}
 	}
 }

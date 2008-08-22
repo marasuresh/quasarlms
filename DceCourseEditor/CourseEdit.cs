@@ -340,7 +340,7 @@ namespace DCECourseEditor
 
          FillComboBox(
             CType, 
-            "select id, dbo.GetStrContentAlt2(Name, " + Node.DefLang + ", 'RU') as RName from CourseType", 
+            "select id, dbo.GetStrContentAlt(Name, " + Node.DefLang + ", 'RU') as RName from CourseType", 
             "CourseType", 
             "RName", 
             "id",
@@ -1459,7 +1459,7 @@ namespace DCECourseEditor
          else
          {
             courseName = DCEAccessLib.DCEWebAccess.WebAccess.GetString(
-               "select dbo.GetStrContentAlt2(Name, " + defLang + ", 'RU') as RName from Courses where id = '" + id + "'");
+               "select dbo.GetStrContentAlt(Name, " + defLang + ", 'RU') as RName from Courses where id = '" + id + "'");
          }
 
          this.Expand();
@@ -1477,7 +1477,7 @@ namespace DCECourseEditor
             defLang = value; 
             
             CourseName = DCEAccessLib.DCEWebAccess.WebAccess.GetString(
-               "select dbo.GetStrContentAlt2(Name, " + defLang + ", 'RU') as RName from Courses where id = '" + this.Id + "'");
+               "select dbo.GetStrContentAlt(Name, " + defLang + ", 'RU') as RName from Courses where id = '" + this.Id + "'");
          }
       }
 
@@ -1534,7 +1534,7 @@ namespace DCECourseEditor
 
          System.Data.DataSet ds = DCEAccessLib.DCEWebAccess.WebAccess.GetDataSet(
          
-            "select *, dbo.GetStrContentAlt2(Name, " + DefLang + ", 'RU') as RName, Parent from Themes " + 
+            "select *, dbo.GetStrContentAlt(Name, " + DefLang + ", 'RU') as RName, Parent from Themes " + 
          
             "where Parent = '" + Id + "' and " + 
             

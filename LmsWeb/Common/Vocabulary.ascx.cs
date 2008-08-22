@@ -91,7 +91,7 @@ namespace DCE.Common
 
 		private System.Data.DataSet Course_GetVocabulary(Guid? courseId)
 		{
-			string select = @"SELECT t.id, L.Abbr, dbo.GetStrContentA(t.Name, 'EN') as nameEN,
+			string select = @"SELECT t.id, L.Abbr, dbo.GetStrContentAlt(t.Name, 'EN') as nameEN,
                c.DataStr as name,
                dbo.GetStrContentAlt(t.Text, '" + LocalisationService.Language + "','" + LocalisationService.DefaultLanguage + @"') as text
                FROM  dbo.Content c, Languages L, VTerms t, Vocabulary v

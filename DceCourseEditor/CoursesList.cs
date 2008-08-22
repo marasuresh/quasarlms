@@ -339,9 +339,6 @@ namespace DCECourseEditor
             "dbo.GetStrContentOrderer(Additions, 1, 2) as Add3, " + 
             
             "dbo.GetStrContentOrderer(Additions, 1, 3) as Add4, " + 
-
-//            "dbo.GetStrContent(t.Name, 1) as RType, " + 
-
             "* from dbo.Courses c where " + query; //+ " and Type = t.id";
          
          // TODO: need l/r join !
@@ -847,9 +844,9 @@ namespace DCECourseEditor
          {
             System.Data.DataSet dsCourse = DCEAccessLib.DCEWebAccess.WebAccess.GetDataSet(@"
             select id, DiskFolder,
-               dbo.GetStrContent(Name,"+lrow["id"].ToString()+@" ) as Name,
-               dbo.GetStrContent(DescriptionShort, "+lrow["id"].ToString()+@") as DescriptionShort,
-               dbo.GetStrContent(DescriptionLong, "+lrow["id"].ToString()+@") as DescriptionLong
+               dbo.GetStrContentAlt(Name,"+lrow["id"].ToString()+@" ) as Name,
+               dbo.GetStrContentAlt(DescriptionShort, "+lrow["id"].ToString()+@") as DescriptionShort,
+               dbo.GetStrContentAlt(DescriptionLong, "+lrow["id"].ToString()+@") as DescriptionLong
             from Courses 
             where id = '"+courseId+"'"
                , "Course");
@@ -864,7 +861,7 @@ namespace DCECourseEditor
                   folder = "";
 
                System.Data.DataSet dsThemes = DCEAccessLib.DCEWebAccess.WebAccess.GetDataSet(@"
-            select id, dbo.GetStrContent(Name, "+lrow["id"].ToString()+@") as Name
+            select id, dbo.GetStrContentAlt(Name, "+lrow["id"].ToString()+@") as Name
             from Themes 
             where Parent = '"+courseId+"' and Type=1 order by TOrder"
                   , "Themes");
@@ -910,7 +907,7 @@ namespace DCECourseEditor
             parent.InnerXml += cdoc.DocumentElement.InnerXml;
 
             System.Data.DataSet dsThemes = DCEAccessLib.DCEWebAccess.WebAccess.GetDataSet(@"
-               select id, dbo.GetStrContent(Name, " +lrow["id"].ToString() +@") as Name
+               select id, dbo.GetStrContentAlt(Name, " +lrow["id"].ToString() +@") as Name
                from Themes 
                where Parent = '"+themeId+"' and Type=1 order by TOrder"
                , "Themes");

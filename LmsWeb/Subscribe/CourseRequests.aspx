@@ -3,11 +3,10 @@
 		Inherits="DCE.CourseRequests"
 		CodeFile="CourseRequests.aspx.cs"
 		MasterPageFile="~/MasterPage.master" %>
+<%@ Register Src="~/Common/TrainingRequest.ascx" TagName="TrainingRequest" TagPrefix="lms" %>
 <asp:Content
 		runat="server"
 		ID="cntCenter"
 		ContentPlaceHolderID="cphCenterColumn">
-	<asp:PlaceHolder
-			ID="PlaceHolder1"
-			runat="server" />
+	<lms:TrainingRequest runat="server" />
 </asp:Content>

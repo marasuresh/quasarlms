@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Lms
+{
+	partial class LmsDataContext
+	{
+		public string Language { get; set; }
+	}
+}

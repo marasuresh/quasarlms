@@ -1,15 +1,11 @@
 using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Web;
-using System.Web.SessionState;
-using System.Web.UI;
 using System.Xml;
 
 namespace DCE
 {
+	using System.Linq;
+	using System.Xml.Linq;
+	
 	/// <summary>
 	/// Главная страница
 	/// </summary>
@@ -25,10 +21,9 @@ namespace DCE
 
 		protected void Page_Load(object sender, System.EventArgs e)
 		{
-			this.leftMenu = this.LeftMenu1;
-			DCE.Service.LoadXmlDoc(this.Page, this.leftMenu.doc, "HomeLeft.xml");
+			DCE.Service.LoadXmlDoc(this.Page, this.LeftMenu.doc, "HomeLeft.xml");
 			this.onLoadCenter();
-			doc = this.leftMenu.doc;
+			doc = this.LeftMenu.doc;
 			
 			XmlNode items = doc.DocumentElement.SelectSingleNode("Items");
 			
@@ -90,15 +85,14 @@ namespace DCE
       /// <param name="parentNode"></param>
 		static void addAreas(Guid? parentId, XmlNode parentNode)
 		{
-			DataSet dsAreas = DceAccessLib.DAL.CourseController.SelectAreas(parentId);
-			DataTable tableAreas = dsAreas.Tables["item"];
-			
-			if (tableAreas != null && tableAreas.Rows.Count > 0) {
-				string areas = dsAreas.GetXml();
-				XmlDocument tdoc = new XmlDocument();
-				tdoc.LoadXml(areas);
-				parentNode.InnerXml += tdoc.SelectSingleNode("dataSet").InnerXml;
-			}
+			parentNode.InnerXml += 
+				new XElement("item",
+					from _area in DceAccessLib.DAL.CourseController.SelectAreas(parentId)
+					select new XElement("CourseDomain",
+						new XElement("id", _area.Name),
+						new XElement("control", "CourseCommon"),
+						new XElement("text", _area.Title))
+				).Value;
 		}
 		
 		void onLoadCenter()
@@ -116,14 +110,17 @@ namespace DCE
 						this.PlaceHolder1.Controls.Add(this.LoadControl("Common\\HelpInfo.ascx"));
 						break;
 					default:
-						this.PlaceHolder1.Controls.Add(this.LoadControl("Common\\News.ascx"));
+						var _ctl = this.LoadControl(@"News\UI\NewsList.ascx");
+						((N2.Templates.News.UI.NewsList)_ctl).CurrentItem = DceAccessLib.DAL.NewsController.Select();
+						this.PlaceHolder1.Controls.Add(_ctl);
 						break;
 				}
 			} else {
-				Control _ctl = this.LoadControl(@"Common\" + _cset + ".ascx");
+				var _ctl = this.LoadControl(@"Common\" + _cset + ".ascx");
 				
 				if (null == _ctl) {
-					_ctl = this.LoadControl("Common\\News.ascx");
+					_ctl = this.LoadControl(@"News\UI\NewsList.ascx");
+					((N2.Templates.News.UI.NewsList)_ctl).CurrentItem = DceAccessLib.DAL.NewsController.Select();
 				}
 				
 				this.PlaceHolder1.Controls.Add(_ctl);

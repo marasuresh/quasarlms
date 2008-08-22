@@ -64,7 +64,7 @@ namespace DCE.Common
                doc.DocumentElement.InnerXml += dsCommon.GetXml();
                if (tableCommon != null && tableCommon.Rows.Count == 1)
                {
-				   Session["CourseLanguage"] = tableCommon.Rows[0]["CourseLanguage"];
+				   DCE.Service.CourseLanguage = tableCommon.Rows[0]["CourseLanguage"];
 
                   System.Data.DataSet dsTPoints = Test_SelectPoints(testId);
                   doc.DocumentElement.InnerXml += dsTPoints.GetXml();

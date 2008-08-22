@@ -1,4 +1,5 @@
 <%@ Control Language="c#" Inherits="DCE.Common.Migrated_LeftMenu" CodeFile="LeftMenu.ascx.cs" %>
+<%@ Register Namespace="N2.Web.UI.WebControls" Assembly="N2" TagPrefix="n2" %>
 <%@ Import Namespace="System.Web.UI.WebControls" %>
 <%@ Import Namespace="System.Xml" %>
 
@@ -18,6 +19,8 @@
 			</nobr>
 		</div>
 	</div>
+
+<n2:Tree runat="server" ID="n2Tree" />
 
 <asp:TreeView
 		ID="TreeView1"
