@@ -5,10 +5,7 @@ using System.Xml;
 
 namespace DCE
 {
-	using System.Collections.Generic;
 	using System.Diagnostics;
-	using System.Linq;
-	using System.Xml.Linq;
 	using N2.Lms.Items;
 	/// <summary>
 	/// Основная страница обучения
@@ -20,41 +17,27 @@ namespace DCE
 		Guid? m_selectedId;
 		Guid? m_trainingId;
 
-		protected override void OnInit(EventArgs e)
+		protected void Page_Load(object sender, System.EventArgs e)
 		{
-			MenuItem _root = new MenuItem();
-
-			base.OnInit(e);
-
 			this.m_selectedId = PageParameters.ID;
 			this.m_courseId = PageParameters.courseId;
 			this.m_trainingId = PageParameters.trId;
 
-			DataSet dsCourse = null;
-			DataTable tableCourse = null;
 			Course rowCourse = null;
 
 			if (this.m_trainingId.HasValue) {
 				DCE.Service.LoadXmlDoc(this.Page, this.LeftMenu.doc, @"TrainingsLeft.xml");
-
-				Debug.WriteLine("#36" + this.LeftMenu.doc.InnerXml, "sty");
 			} else {
-				Debug.WriteLine("#38", "sty");
 				if (this.m_courseId.HasValue) {
 					if (!DceAccessLib.DAL.CourseController.Exists(this.m_courseId.Value)) {
 						this.m_courseId = null;
 					}
 				}
 				DCE.Service.courseId = this.m_courseId;
-				
-				this.LeftMenu.doc.InnerXml = new XElement("Items",
-					new XElement("item",
-						new XAttribute("text", Resources.TrainingsLeft.Welcome_item_text),
-						new XAttribute("alt", Resources.TrainingsLeft.Welcome_item_alt),
-						new XAttribute("page", Resources.TrainingsLeft.Welcome_item_page),
-						new XAttribute("control", Resources.TrainingsLeft.Welcome_item_control)
-					)
-				).Value;
+				DCE.Service.LoadXmlDoc(this.Page, this.LeftMenu.doc, @"TrainingsLeft.xml");
+				XmlNode welcome = this.LeftMenu.doc.DocumentElement.SelectSingleNode("FreeIntro");
+				XmlNode items = this.LeftMenu.doc.DocumentElement.SelectSingleNode("Items");
+				items.InnerXml += welcome.InnerXml;
 			}
 
 			DCE.Service.TrainingID = this.m_trainingId;
@@ -65,32 +48,12 @@ namespace DCE
 				if (null != _training) {
 					this.m_courseId = GuidService.Parse(_training.Course.Name);
 				
-					if (!_training.TestOnly) {
-
-						_root.Children.Concat(
-							(new N2.ContentItem[] {
-									new MenuItem {
-										Name = "Welcome",
-										Title = Resources.TrainingsLeft.Welcome_item_alt,
-										NavigateUrl = "Training.aspx?cset=Welcome"},
-									new MenuItem {
-										Name = "Class",
-										Title = Resources.TrainingsLeft.Forum_item_alt,
-										NavigateUrl = "Training.aspx?cset=classRoomForum",
-										Children = (new N2.ContentItem[] {
-											new MenuItem {
-												Name = "Forum",
-												Title = Resources.TrainingsLeft.Forum_item_forum_alt,
-												NavigateUrl = "Training.aspx?cset=classRoomForum",
-											},
-											new MenuItem {
-												Name = "Assignments",
-												Title = Resources.TrainingsLeft.Forum_item_task_alt,
-												NavigateUrl = "Training.aspx?cset=classRoomForum",
-											},
-										}).ToList()
-									},
-								}).ToList());
+					if (!((bool)_training["TestOnly"])) {
+						XmlNode welcome = this.LeftMenu.doc.DocumentElement.SelectSingleNode("Welcome");
+						XmlNode forum = this.LeftMenu.doc.DocumentElement.SelectSingleNode("Forum");
+						XmlNode items = this.LeftMenu.doc.DocumentElement.SelectSingleNode("Items");
+						items.InnerXml += welcome.InnerXml;
+						items.InnerXml += forum.InnerXml;
 					}
 				} else {
 					this.Response.Redirect(Resources.PageUrl.PAGE_TRAININGS + "?index=4");
@@ -101,43 +64,36 @@ namespace DCE
 				var _course = DceAccessLib.DAL.CourseController.Select(this.m_courseId.Value);
 				
 				if (null != _course) {
-
-					Debug.WriteLine("course not null", "sty");
-
 					rowCourse = _course;
 					this.m_courseId = GuidService.Parse(_course.Name);
-					//DCE.Service.CourseLanguage = _course["CourseLanguage"].ToString();
+					Session["CourseLanguage"] = _course["CourseLanguage"];
 				}
-				DCE.Service.courseId = this.m_courseId;
-			} else {
+			}
+			DCE.Service.courseId = this.m_courseId;
+
+			if(!this.m_courseId.HasValue) {
 				this.Response.Redirect(Resources.PageUrl.PAGE_MAIN + "?index=1");
 			}
 
 			this.onLoadCenter();
-			
-			Debug.WriteLine("Row course: " + rowCourse.Title, "sty");
-			Debug.WriteLine("Course id: " + this.m_courseId, "sty");
-			Debug.WriteLine("Training id: " + this.m_trainingId, "sty");
 
 			if (rowCourse != null) {
-				if (!string.IsNullOrEmpty(rowCourse.Title)) {
-					this.Session["courseName"] = rowCourse.Title;
+				if (rowCourse["Name"] != null) {
+					this.Session["courseName"] = (string)rowCourse["Name"];
 				}
 				
 				doc = this.LeftMenu.doc;
 				XmlNode items = doc.DocumentElement.SelectSingleNode("Items");
-				Debug.WriteLine(doc.InnerXml, "sty");
+				
 				if (items != null) {
 					this.addThemes(
 							this.m_courseId,
 							items,
 							this.m_trainingId,
-							10,
+							1,
 							"ContentView");
 				}
 			}
-
-			base.Tree.CurrentItem = base.Tree.RootItem = _root;
 		}
 
       /// <summary>
@@ -157,185 +113,226 @@ namespace DCE
 				string control)
 		{
 			bool isTraining = false;
-
-			if (!parentId.HasValue) {
-				return true;
-			}
-			
 			bool AllowNext = true; // Доступность следующих тем
-			IEnumerable<TrainingSchedule> _schedule;
-
-			// запрос для свободного курса
-			if (!trId.HasValue) {
-				_schedule = GetFreeCourseSchedule(parentId);
-			} else {
+			
+			if (parentId.HasValue) {
+				string select;
 				
-				using (var _ctx = new Lms.LmsDataContext()) {
-					_schedule = (
-						from _theme in _ctx.Themes
-						join _training in _ctx.Trainings
-							on _theme.Parent equals parentId.Value
-						join _sch in _ctx.Schedules
-							on new { th = _theme.id, tr = _training.id } equals
-								new { th = _sch.Theme ?? Guid.Empty, tr = _sch.Training ?? Guid.Empty }
-							into _sched
-						where _training.id == trId
-							&& _theme.Type == (int)DCEAccessLib.ThemeType.theme
-						from _sch in _sched.DefaultIfEmpty()
-						let _level0 = null != _sch || level == 0
-						select new TrainingSchedule {
-							SortOrder = _theme.TOrder,
-							Theme = new Topic {
-								Name = _theme.id.ToString(),
-								Duration = _theme.Duration,
-								Practice = _theme.Practice == null
-									? new Test {
-										Name = _theme.Practice.ToString()
-									}
-									: null,
-								Parent = new N2.Lms.Items.Training {
-									Name = _training.id.ToString(),
-									TestOnly = _training.TestOnly,
-								},
-								ContentUrl = _theme.Content.ToString(),
-								Title = _ctx.GetStrContentAlt(
-									_theme.Name,
+				if (!trId.HasValue) {
+					Debug.WriteLine("Free course", "sty");
+					// запрос для свободного курса
+					select = string.Format(@"
+SELECT	id,
+		TOrder,
+		Duration,
+		Practice,
+		Mandatory,
+		CONVERT(bit,1) as isOpen,
+		dbo.GetStrContentAlt(
+			Name,
+			'{0}',
+			'{1}') as text,
+		'{2}' as control,
+		Content,
+		Duration,
+		Practice,
+		Mandatory,
+		{3} as selected
+from dbo.Themes
+where	Parent='{4}'
+		and Practice is NULL
+		and Type={5}
+order by TOrder",
+			LocalisationService.Language,
+			LocalisationService.DefaultLanguage,
+			control,
+			this.m_selectedId.HasValue
+				? string.Format(
+					"dbo.IsChildTheme(id, '{0}')",
+					this.m_selectedId.Value.ToString())
+				: "0",
+			parentId.Value,
+			(int)DCEAccessLib.ThemeType.theme);
+
+				} else {
+					if (level != 0) {
+						Debug.WriteLine("Level: " + level.ToString(), "sty");
+						select = string.Format(@"
+select	t.id,
+		t.TOrder,
+		t.Duration,
+		t.Practice,
+		dbo.GetStrContentAlt(t.Name, '{0}', '{1}') as text,
+		'{2}' as control,
+		t.Content,
+		tr.TestOnly {3}
+from	dbo.Themes t,
+		dbo.Trainings tr 
+where	t.Parent='{4}' 
+		and tr.id='{5}'
+		and Type={6}
+order by	t.TOrder",
 									LocalisationService.Language,
-									LocalisationService.DefaultLanguage),
-							},
-							Published = _level0 ? _sch.StartDate : default(DateTime?),
-							Expires = _level0 ? _sch.EndDate : default(DateTime?),
-							IsOpen = _level0 ? _sch.isOpen : false,
-							Training = new N2.Lms.Items.Training {
-								Name = _training.id.ToString(),
-								TestOnly = _training.TestOnly,
-							},
-						}).ToList();
-				}
-
-				isTraining = true;
-			}
-
-			bool testOnly = !_schedule.Any() && level == 0;
-
-			if (_schedule.Any()
-					&& (!isTraining || !(testOnly = _schedule.First().Training.TestOnly))) {
-				
-				Debug.WriteLine("Schedules #: " + _schedule.Count(), "sty");
-				
-				foreach (var _sch in _schedule) {
-					// Is Practice
-					var practice = _sch.Theme.Practice;
-					bool isDateComplete = true;
-
-					var _node = new XElement("item");
-
-					if (_sch.Published.HasValue) {
-						string _alt = _sch.Published.Value.ToString("dd.MM.yyyy");
-						isDateComplete = _sch.Published.Value <= DateTime.Now;
-
-						if (_sch.Expires.HasValue) {
-							_alt += " / " + _sch.Expires.Value.ToString("dd.MM.yyyy");
-						}
-						_node.Add(new XElement("alt", _alt));
-					}
-
-					if (practice != null) { // Практика
-						_node.Add(new XElement("control", "Practice"),
-							new XElement("id", practice.Name),
-							new XElement("text", practice.Title));
-					}
-
-					if (trId.HasValue && level == 0 && (!AllowNext || (!_sch.IsOpen && !isDateComplete))) { // Тема закрыта
-						_node.Add(new XAttribute("disabled", true));
-						AllowNext = false;
-					}
-
-					if (level == 0) {
-						if (!this.addThemes(
-									GuidService.Parse(_sch.Theme.Name),
-									null,
+									LocalisationService.DefaultLanguage,
+									control,
+									this.m_selectedId.HasValue
+											? string.Format(
+												",dbo.IsChildTheme(t.id, '{0}') as selected ",
+												this.m_selectedId.Value)
+											: string.Empty,
+									parentId,
 									trId,
-									level + 1,
-									control)) {
+									(int)DCEAccessLib.ThemeType.theme);
+					} else {
+						Debug.WriteLine("Level == 0:", "sty");
+						select = string.Format(@"
+select	t.id,
+		t.TOrder,
+		t.Duration,
+		t.Practice,
+		dbo.GetStrContentAlt(t.Name, '{0}','{1}') as text,
+		'{2}' as control,
+		t.Content,
+		(t.Mandatory & s.Mandatory) as Mandatory,
+		s.isOpen,
+		s.StartDate,
+		s.EndDate,
+		tr.TestOnly {3}
+from	dbo.Themes t,
+		dbo.Schedule s,
+		dbo.Trainings tr 
+where	t.Parent='{4}' 
+		and s.Theme=t.id
+		and s.Training=tr.id
+		and tr.id='{5}'
+		and Type={6}
+order by	t.TOrder",
+									LocalisationService.Language,
+									LocalisationService.DefaultLanguage,
+									control,
+									this.m_selectedId.HasValue
+										? string.Format(
+											",dbo.IsChildTheme(t.id, '{0}') as selected ",
+											this.m_selectedId.Value)
+										: string.Empty,
+									parentId,
+									trId,
+									(int)DCEAccessLib.ThemeType.theme);
+					}
+					isTraining = true;
+				}
+				
+				DataSet dsThemes = dbData.Instance.getDataSet(select,  "dataSet", "item");
+				DataTable tableThemes = dsThemes.Tables["item"];
+				bool testOnly = tableThemes != null && tableThemes.Rows.Count == 0 && level == 0;
+				
+				if (tableThemes != null 
+						&& tableThemes.Rows.Count > 0 
+						&& (!isTraining || !(testOnly = (bool) tableThemes.Rows[0]["TestOnly"]))) {
+					string themes = dsThemes.GetXml();
+					XmlDocument tdoc = new XmlDocument();
+					tdoc.LoadXml(themes);
+					
+					foreach (System.Xml.XmlNode theme in tdoc.SelectNodes("dataSet/item")) {
+						// Is Practice
+						XmlNode practice = theme.SelectSingleNode("Practice");
+						XmlNode name = theme.SelectSingleNode("text");
+						bool isDateComplete = true;
+						
+						XmlNode startDateNode = theme.SelectSingleNode("StartDate");
+						XmlNode endDateNode = theme.SelectSingleNode("EndDate");
+						DateTime startDate = DateTime.Now;
+						DateTime endDate = DateTime.Now;
+						
+						if (startDateNode != null) {
+							XmlNode alt = tdoc.CreateNode(XmlNodeType.Element, "alt", string.Empty);
+							startDate = DateTime.Parse(startDateNode.InnerText);
+							startDateNode.InnerText = startDate.ToString("dd.MM.yyyy");
+							alt.InnerText += startDateNode.InnerText;
+							isDateComplete = startDate <= DateTime.Now;
+							
+							if (endDateNode != null) {
+								endDate = DateTime.Parse(endDateNode.InnerText);
+								endDateNode.InnerText = endDate.ToString("dd.MM.yyyy");
+								alt.InnerText += " / "+endDateNode.InnerText;
+							}
+							
+							theme.AppendChild(alt);
+						}
+						
+						if (practice != null && practice.InnerText != "") { // Практика
+							theme.SelectSingleNode("control").InnerText = "Practice";
+							theme.SelectSingleNode("id").InnerText = practice.InnerText;
+							XmlNode practiceA = doc.DocumentElement.SelectSingleNode("Practic");
+							
+							if (practiceA != null) {
+								if (name == null) {
+									name = tdoc.CreateNode(XmlNodeType.Element, "text", "");
+								}
+								name.InnerText = practiceA.InnerText + name.InnerText;
+								theme.AppendChild(name);
+							}
+						}
+						
+						XmlNode openNode = theme.SelectSingleNode("isOpen");
+						bool isOpen = openNode != null && openNode.InnerText == "true";
+						
+						if(trId.HasValue && level == 0 && (!AllowNext || (!isOpen && !isDateComplete))) { // Тема закрыта
+							XmlAttribute a = tdoc.CreateAttribute("disabled");
+							a.Value = "true";
+							theme.Attributes.Append(a);
 							AllowNext = false;
 						}
-					}
-				}
-
-				//parentNode.InnerXml += tdoc.SelectSingleNode("dataSet").InnerXml;
-			}
-
-			if (trId.HasValue) { // Добавление теста темы или курса
-				AddTest(parentId, this.doc, ref parentNode, level, ref AllowNext, testOnly);
-			}
-
-			// Добавить библиотеку
-			AddLibrary(parentId, level, testOnly, this.doc, ref parentNode);
-
-			// Добавить словарь
-			if (level == 0 && !testOnly) {
-				AddVocabulary(parentId, this.m_courseId, this.doc, ref parentNode);
-			}
-
-			return AllowNext; // Допустимо ли прохожнение следующих тем - определяется тестом
-		}
-
-		static IEnumerable<TrainingSchedule> GetFreeCourseSchedule(Guid? parentId)
-		{
-				using (var _ctx = new Lms.LmsDataContext()) {
-					return (
-						from _theme in _ctx.Themes
-						where _theme.Parent == parentId.Value
-							&& !_theme.Practice.HasValue
-							&& _theme.Type == (int)DCEAccessLib.ThemeType.theme
-						select new TrainingSchedule {
-							SortOrder = _theme.TOrder,
-							IsOpen = true,
-							Theme = new Topic {
-								Name = _theme.id.ToString(),
-								Practice = _theme.Practice.HasValue
-									? new Test {
-										Name = _theme.Practice.ToString()
-									}
-									: null,
-								Title = _ctx.GetStrContentAlt(
-									_theme.Name,
-									LocalisationService.Language,
-									LocalisationService.DefaultLanguage),
-								Mandatory = _theme.Mandatory,
-								Duration = _theme.Duration,
-								ContentUrl = _theme.Content.ToString(),
+						
+						XmlNode selNode = theme.SelectSingleNode("selected");
+						if (level == 0 || (selNode != null && selNode.InnerText == "true")) {
+							if (!this.addThemes(
+										GuidService.Parse(theme.SelectSingleNode("id").InnerText),
+										theme,
+										trId,
+										level + 1,
+										control)) {
+								AllowNext = false;
 							}
-						}).ToList();
+						}
+					}
+					
+					parentNode.InnerXml += tdoc.SelectSingleNode("dataSet").InnerXml;
 				}
+				
+				if (trId.HasValue) { // Добавление теста темы или курса
+					AddTest(parentId, this.doc, ref parentNode, level, ref AllowNext, testOnly);
+				}
+				
+				// Добавить библиотеку
+				AddLibrary(parentId, level, testOnly, this.doc, ref parentNode);
+				
+				// Добавить словарь
+				if (level == 0 && !testOnly) {
+					AddVocabulary(parentId, this.m_courseId, this.doc, ref parentNode);
+				}
+			}
+			return AllowNext; // Допустимо ли прохожнение следующих тем - определяется тестом
 		}
 
 		static void AddTest(Guid? parentId, XmlDocument xmlDoc, ref XmlNode parentNode, int level, ref bool AllowNext, bool testOnly)
 		{
 			Guid? studentId = CurrentUser.UserID;
-			DataSet dsTest = Test_Select(parentId, studentId);
+			XmlNode testNode = xmlDoc.SelectSingleNode((level > 0 || testOnly)
+						? "/xml/Test"
+						: "/xml/FinalTest");
+			
+			string test = testNode != null ? testNode.InnerText : "Test";
+			DataSet dsTest = Test_Select(parentId, studentId, test);
 			DataTable tableTest = dsTest.Tables["item"];
 
 			if (tableTest != null && tableTest.Rows.Count > 0 && (AllowNext || level > 0)) { // Допустимо ли прохожнение следующих тем
 				AllowNext = AllowNext && (bool)tableTest.Rows[0]["AllowNext"];
 
-				string test = dsTest.GetXml();
+				test = dsTest.GetXml();
 				XmlDocument tdoc = new XmlDocument();
 				tdoc.LoadXml(test);
-				var _node = tdoc.SelectSingleNode("dataSet");
-				var _c = tdoc.CreateElement("text");
-				_c.InnerText = (level > 0 || testOnly)
-						? Resources.TrainingsLeft.Test
-						: Resources.TrainingsLeft.FinalTest;
-				_node.SelectSingleNode("item").AppendChild(_c);
-
-				_c = tdoc.CreateElement("control");
-				_c.InnerText = "TestWork";
-				_node.SelectSingleNode("item").AppendChild(_c);
-
-				
-				parentNode.InnerXml += _node.InnerXml;
+				parentNode.InnerXml += tdoc.SelectSingleNode("dataSet").InnerXml;
 			}
 		}
 
@@ -437,28 +434,34 @@ order by TOrder",
 			return dbData.Instance.getDataSet(select0, "dataSet", "item");
 		}
 
-		static DataSet Test_Select(Guid? parentId, Guid? studentId)
+		static DataSet Test_Select(Guid? parentId, Guid? studentId, string test)
 		{
 			string select0;
 			if (studentId.HasValue) {
 				select0 = string.Format(@"
 select	t.id,
-		(ISNULL(tr.Skipped,0) | ISNULL(tr.Complete, 0)) as AllowNext
+		(/*((dbo.IsTestMandatory(t.id) ^ 1) & ISNULL(tr.Skipped,0)) | */ISNULL(tr.Skipped,0) | ISNULL(tr.Complete, 0)) as AllowNext,
+		'{0}' as text,
+		'TestWork' as control
 from	dbo.Tests t
 	left join dbo.TestResults tr
 		on (tr.Test=t.id and tr.Student='{1}')
 where	Type={2}
 		and t.Parent='{3}'",
-						string.Empty,
+						test,
 						studentId,
 						(int)DCEAccessLib.TestType.test,
 						parentId);
 			} else {
 				select0 = string.Format(@"
-select	id, CONVERT(bit, 1) AS AllowNext 
+select	id,
+		'{0}' as text,
+		'TestWork' as control, 
+		CONVERT(bit, 1) AS AllowNext 
 from	dbo.Tests
 where	Type=1
-		and Parent='{0}'",
+		and Parent='{1}'",
+						test,
 						parentId);
 			}
 
