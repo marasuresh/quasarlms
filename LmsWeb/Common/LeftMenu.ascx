@@ -20,7 +20,7 @@
 		</div>
 	</div>
 
-<n2:Tree runat="server" ID="n2Tree" />
+<%--<n2:Tree runat="server" ID="n2Tree" /> --%>
 
 <asp:TreeView
 		ID="TreeView1"

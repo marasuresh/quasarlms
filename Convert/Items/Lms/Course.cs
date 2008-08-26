@@ -18,6 +18,7 @@
 		#region Properties
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/15.png"; } }
+		public override string TemplateUrl { get { return "~/Lms/UI/CourseInfo.aspx"; } }
 		public override bool IsPage { get { return true; } }
 
 		#endregion Properties

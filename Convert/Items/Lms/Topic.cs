@@ -49,7 +49,17 @@
 			get { return this.GetDetail("Practice") as Test; }
 			set { this.SetDetail<Test>("Practice", value); }
 		}
-
+/*
+		public Course Course {
+			get {
+				ContentItem _result = this.Parent;
+				while(_result != null || !(_result is Course)) {
+					_result = _result.Parent;
+				}
+				return _result as Course;
+			}
+		}
+*/
 		#endregion Lms Properties
 	}
 }

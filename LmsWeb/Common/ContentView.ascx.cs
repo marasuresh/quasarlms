@@ -1,122 +1,74 @@
 namespace DCE.Common
 {
 	using System;
-	using System.Data;
-	using System.Drawing;
-	using System.Web;
-	using System.Xml;
-	using System.Xml.Xsl;
+	using System.Collections.Generic;
+	using System.Linq;
+	using N2.Lms.Items;
 	/// <summary>
 	/// Просмотр учебных материалов по теме
 	/// </summary>
 	public partial class ContentView : DCE.BaseTrainingControl
 	{
-		public string AbsoluteViewPath;
-		public string FileName;
-
-		protected void Page_Load(object sender, System.EventArgs e)
-		{
-			Guid? trId = DCE.Service.TrainingID;
-			string courseId = DCE.Service.courseId.ToString();
-			XmlDocument doc = new XmlDocument();
-			string CoursesRoot = this.CoursesRootUrl;
-			Guid? themeId = PageParameters.ID;
-
-			if (themeId.HasValue && trId.HasValue) {
-				doc.LoadXml("<xml/>");
-				DataSet dsContents = Courses_GetContentDS(CoursesRoot, themeId, this.ResolveUrl(@"~\" + Settings.getValue("Courses/root")));
-				DataTable tableContent = dsContents.Tables["contentItem"];
-
-				if (tableContent != null && tableContent.Rows.Count > 0) {
-					bool hasLang = false; // Есть ли content для выбранного языка
-
-					foreach (DataRow row in tableContent.Rows) {
-						if (row["lang"].ToString() != row["DefLang"].ToString()) {
-							hasLang = true;
-							break;
-						}
-					}
-
-					if (hasLang) {
-
-						for (int i = tableContent.Rows.Count - 1; i >= 0; i--) {
-							DataRow row = tableContent.Rows[i];
-
-							if (row["lang"].ToString() == row["DefLang"].ToString()) {
-								tableContent.Rows.RemoveAt(i);
-							}
-						}
-					}
-
-					this.Session["themeName"] = tableContent.Rows[0]["Name"].ToString();
-					string cont = dsContents.GetXml();
-					doc.DocumentElement.InnerXml += cont;
-				}
-
-				object cn = this.Session["courseName"];
-
-				if (cn != null) {
-					string courseName = (string)cn;
-					doc.DocumentElement.InnerXml += "<Course>" + courseName + "</Course>";
-				}
-
-				DataSet dsTr = Training_Select(trId);
-				doc.DocumentElement.InnerXml += dsTr.GetXml();
+		Training m_training;
+		protected Training Training {
+			get { return this.m_training
+				?? (this.m_training = Training_Select(DCE.Service.TrainingID));
 			}
-
-			XslTransform trans = new XslTransform();
-			trans.Load(this.Page.MapPath(@"~\xsl\ContentView.xslt"));
-
-			this.Xml1.Document = doc;
-			this.Xml1.TransformArgumentList = new XsltArgumentList();
-			this.Xml1.TransformArgumentList.AddParam("LangPath", "",
-				this.ResolveUrl(@"~\" + DCE.Service.GetLanguagePath(this.Page)));
-			this.Xml1.Transform = trans;
 		}
 
-		static DataSet Training_Select(Guid? trId)
+		static Training Training_Select(Guid? trId)
 		{
-			string select = @"select 
-                  dbo.GetStrContentAlt(c.Name, '" + LocalisationService.Language + @"', l.Abbr) as tName
-               FROM  Trainings t 
-                  INNER JOIN
-                  Courses c inner join dbo.Languages l 
-                     ON l.id=c.CourseLanguage
-                     ON t.Course = c.id 
-               WHERE (t.id = '" + trId + "')";
-
-			return dbData.Instance.getDataSet(select, "trainings", "training");
+			using (var _ctx = new Lms.LmsDataContext()) {
+				return (
+					from _training in _ctx.Trainings
+					join _lang in _ctx.Languages
+						on _training.Course1.CourseLanguage equals _lang.id
+					where _training.id == trId
+					select new Training {
+						Name = _training.id.ToString(),
+						Title = _ctx.GetStrContentAlt(_training.Course1.Name, LocalisationService.Language, _lang.Abbr),
+						Course = new Course {
+							Name = _training.Course1.id.ToString(),
+							DiskFolder = _training.Course1.DiskFolder,
+							IsPublic = _training.Course1.CPublic,
+						}
+					}).FirstOrDefault();
+			}
 		}
 
-		static DataSet Courses_GetContentDS(string CoursesRoot, Guid? themeId, string croot)
-		{
-			string select = string.Format(@"
-SELECT	'{0}' as cRoot,
-		'{1}' as PublicRoot, 
-		ct.DataStr AS url,
-		c.DiskFolder,
-		l.Abbr AS lang,
-		cl.Abbr as DefLang,
-		dbo.GetStrContentAlt(t.Name,'{2}',cl.Abbr) as Name,
-		c.CPublic
-FROM	Content ct
-	INNER JOIN Themes t
-		ON ct.eid = t.Content 
-	INNER JOIN Languages l
-		ON ct.Lang = l.id 
-	inner join Courses c
-		on c.id=dbo.CourseofTheme(t.id)
-	INNER JOIN Languages cl
-		ON c.CourseLanguage = cl.id 
-WHERE	(t.id = '{3}') 
-		AND (l.Abbr = '{2}' or l.Abbr = cl.Abbr)
-ORDER BY ct.COrder, ct.Lang",
-						CoursesRoot,
-						croot,
-						LocalisationService.Language,
-						themeId);
+		IEnumerable<Topic> m_themes;
+		protected IEnumerable<Topic> Themes {
+			get {
+				return this.m_themes
+					?? (this.m_themes = Courses_GetContentDS(PageParameters.ID));
+			}
+		}
 
-			return dbData.Instance.getDataSet(select, "dsContent", "contentItem");
+		IEnumerable<Topic> Courses_GetContentDS(Guid? themeId)
+		{
+			using (var _ctx = new Lms.LmsDataContext()) {
+				return (
+					from _theme in _ctx.Themes
+					join _ct in _ctx.Contents
+						on _theme.Content equals _ct.eid
+					join _course in _ctx.Courses
+						on _ctx.CourseOfTheme(_theme.id) equals _course.id
+					join _lang in _ctx.Languages
+						on _course.CourseLanguage equals _lang.id
+					join _l in _ctx.Languages
+						on _ct.Lang equals _l.id
+					where _theme.id == themeId
+					where _l.Abbr == LocalisationService.Language
+					select new Topic {
+						ContentUrl = _ct.DataStr,
+						Title = _ctx.GetStrContentAlt(
+							_theme.Name,
+							LocalisationService.Language,
+							_lang.Abbr),
+						
+					}
+				).ToList();
+			}
 		}
 	}
 }

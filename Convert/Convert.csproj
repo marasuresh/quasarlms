@@ -70,13 +70,14 @@
     <Compile Include="Custom\TestResult.cs" />
     <Compile Include="EnsureChildrenAttribute.cs" />
     <Compile Include="Items\Lms\Area.cs" />
+    <Compile Include="Items\Lms\RequestList.cs" />
     <Compile Include="Items\Lms\TrainingList.cs" />
     <Compile Include="Items\Lms\IContinuous.cs" />
     <Compile Include="Items\Lms\Topic.cs" />
     <Compile Include="Items\Lms\TopicList.cs" />
     <Compile Include="Items\Lms\Course.cs" />
     <Compile Include="Items\Lms\CourseList.cs" />
-    <Compile Include="Items\Lms\CourseRequest.cs" />
+    <Compile Include="Items\Lms\Request.cs" />
     <Compile Include="Items\Lms\Test.cs" />
     <Compile Include="Items\Lms\TestResult.cs" />
     <Compile Include="Items\Lms\Training.cs" />

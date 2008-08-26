@@ -12,26 +12,21 @@ namespace DCE.Common
 	/// <summary>
 	/// Отображение информации о курсе
 	/// </summary>
-	public partial  class CourseIntro : DCE.BaseWebControl
+	public partial  class CourseIntro : N2.Web.UI.UserControl<Course>
 	{
 		protected override void OnInit(EventArgs e)
 		{
-			if (null != this.Course) {
-				this.Session["courseName"] = this.Course;
+			if (null != this.CurrentItem) {
+				this.Session["courseName"] = this.CurrentItem.Title;
 
-				this.Course["MetaKeywrods"] = this.Course.Keywords;
-				this.Course["MetaDescription"] = this.Course.Description;
+				this.CurrentItem["MetaKeywrods"] = this.CurrentItem.Keywords;
+				this.CurrentItem["MetaDescription"] = this.CurrentItem.Description;
 
 				var _metaApplier = new N2.Templates.SEO.TitleAndMetaTagApplyer(
-					this.Page, this.Course);
+					this.Page, this.CurrentItem);
 			}
 
 			base.OnInit(e);
-		}
-
-		Course m_course;
-		protected Course Course {
-			get { return this.m_course ?? (this.m_course = this.GetCourse()); }
 		}
 
 		Course GetCourse()
@@ -43,12 +38,5 @@ namespace DCE.Common
 					_code,
 					_id);
 		}
-
-		protected void odsCourse_Selecting(object sender, System.Web.UI.WebControls.ObjectDataSourceSelectingEventArgs e)
-		{
-			e.InputParameters["reqCourseCode"] = this.Request["code"];
-			e.InputParameters["reqCourseId"] = GuidService.Parse(this.Request["cId"]);
-			e.InputParameters["CoursesRoot"] = this.ResolveUrl(DCE.Settings.getCoursesRoot());
-		}
-}
+	}
 }
