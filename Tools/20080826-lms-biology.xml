@@ -1,0 +1,1343 @@
+<?xml version="1.0" standalone="yes"?>
+<Биология_x0020_-_x0020_курс_x0020_лабораторных_x0020_работ>
+  <xs:schema id="Биология_x0020_-_x0020_курс_x0020_лабораторных_x0020_работ" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="Биология_x0020_-_x0020_курс_x0020_лабораторных_x0020_работ" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Courses">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Version" type="xs:string" minOccurs="0" />
+                <xs:element name="Code" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Area" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Cost1" type="xs:double" minOccurs="0" />
+                <xs:element name="CostType1" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Cost2" type="xs:double" minOccurs="0" />
+                <xs:element name="CostType2" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Author" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="CPublic" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DescriptionShort" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DescriptionLong" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Requirements" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Keywords" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Additions" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Instructors" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="StartQuestionnaire" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="FinishQuestionnaire" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DiskFolder" type="xs:string" minOccurs="0" />
+                <xs:element name="isReady" type="xs:boolean" minOccurs="0" />
+                <xs:element name="CourseLanguage" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Content">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="eid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="Lang" type="xs:int" minOccurs="0" />
+                <xs:element name="DataStr" type="xs:string" minOccurs="0" />
+                <xs:element name="Data" type="xs:base64Binary" minOccurs="0" />
+                <xs:element name="TData" type="xs:string" minOccurs="0" />
+                <xs:element name="ParentEid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="COrder" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Themes">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Parent" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Duration" type="xs:int" minOccurs="0" />
+                <xs:element name="Mandatory" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Content" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="TOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="Practice" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Tests">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="Parent" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Duration" type="xs:int" minOccurs="0" />
+                <xs:element name="Points" type="xs:int" minOccurs="0" />
+                <xs:element name="Show" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Split" type="xs:boolean" minOccurs="0" />
+                <xs:element name="AutoFinish" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DefLanguage" type="xs:int" minOccurs="0" />
+                <xs:element name="CanSwitchLang" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Hints" type="xs:int" minOccurs="0" />
+                <xs:element name="InternalName" type="xs:string" minOccurs="0" />
+                <xs:element name="ShowThemes" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="TestQuestions">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Test" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Content" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="ShortHint" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="LongHint" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Points" type="xs:int" minOccurs="0" />
+                <xs:element name="Answer" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="QOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="Theme" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Terms">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Text" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Courses>
+    <id>e835e4eb-ef5e-4295-b492-e754c26df483</id>
+    <Version>1</Version>
+    <Code>ByolLab10</Code>
+    <Name>40c80942-f39d-4729-a0f5-4d50ce04ceec</Name>
+    <Area>4204c47f-74f6-4aff-b775-ea8dd239722b</Area>
+    <Type>a280104a-9ee8-4b59-91ab-7910dea5adae</Type>
+    <Cost1>0</Cost1>
+    <Cost2>0</Cost2>
+    <Author>1d2eaa94-0271-4bd4-876f-042b50590d33</Author>
+    <CPublic>false</CPublic>
+    <DescriptionShort>661153d8-301d-4b6a-a1d8-71f54143b908</DescriptionShort>
+    <DescriptionLong>ae4ced8e-5d28-4260-a263-0f9467db6e20</DescriptionLong>
+    <Requirements>0e77017c-0b90-45f1-8dbe-409c4acb443d</Requirements>
+    <Keywords>b507737c-715d-4e6a-9bb6-d72f9e9e4884</Keywords>
+    <Additions>7334c76b-c3df-4136-9bfa-124b44557bd7</Additions>
+    <Instructors>5bbaef03-416f-4f1d-bf98-23ef59e5b984</Instructors>
+    <DiskFolder />
+    <isReady>false</isReady>
+    <CourseLanguage>1</CourseLanguage>
+  </Courses>
+  <Content>
+    <id>204b8125-24fa-46f1-90c4-06d8b34a5d89</id>
+    <eid>40c80942-f39d-4729-a0f5-4d50ce04ceec</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Биология - курс лабораторных работ</DataStr>
+    <COrder>14151</COrder>
+  </Content>
+  <Content>
+    <id>07d53391-d095-4633-9e6c-259432f75ee8</id>
+    <eid>40c80942-f39d-4729-a0f5-4d50ce04ceec</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Курс лабораторных работ</DataStr>
+    <COrder>14152</COrder>
+  </Content>
+  <Content>
+    <id>a0216195-5e97-44db-92d1-3103d50d2fa9</id>
+    <eid>1d2eaa94-0271-4bd4-876f-042b50590d33</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>7de6b19c-e139-406c-9b9c-4994f0d5fff5</id>
+    <eid>661153d8-301d-4b6a-a1d8-71f54143b908</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>97052897-22f8-4075-819a-84901d969d48</id>
+    <eid>ae4ced8e-5d28-4260-a263-0f9467db6e20</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>ddfde7f8-3a17-485b-942c-c4a5e1887d50</id>
+    <eid>0e77017c-0b90-45f1-8dbe-409c4acb443d</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>4d19ae3c-0e5d-42c1-827e-89f64e63bda0</id>
+    <eid>b507737c-715d-4e6a-9bb6-d72f9e9e4884</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>d9143f0f-9c84-4194-9512-06b79f3a5ad4</id>
+    <eid>7334c76b-c3df-4136-9bfa-124b44557bd7</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>0</COrder>
+  </Content>
+  <Content>
+    <id>78be9b59-2dc4-4ba2-96e0-487f8e4346cc</id>
+    <eid>7334c76b-c3df-4136-9bfa-124b44557bd7</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>1</COrder>
+  </Content>
+  <Content>
+    <id>182e45be-87d5-4619-95b7-0f9d261973fe</id>
+    <eid>7334c76b-c3df-4136-9bfa-124b44557bd7</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>2</COrder>
+  </Content>
+  <Content>
+    <id>59801c69-d42e-4da6-bac8-6bc79e65543f</id>
+    <eid>7334c76b-c3df-4136-9bfa-124b44557bd7</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>3</COrder>
+  </Content>
+  <Content>
+    <id>a8644faa-160e-4d68-9c20-c1cc150ee2e4</id>
+    <eid>dee19c74-bf30-4d29-a0e9-de436221f85a</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Определение свойств ферментов</DataStr>
+    <COrder>14153</COrder>
+  </Content>
+  <Content>
+    <id>8ffc83f3-8136-46e0-9adf-a4861364944f</id>
+    <eid>dee19c74-bf30-4d29-a0e9-de436221f85a</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Определение свойств ферментов</DataStr>
+    <COrder>14154</COrder>
+  </Content>
+  <Content>
+    <id>8f1bc4b5-30ae-4195-ad90-f2915f3ab83d</id>
+    <eid>dd4f8e21-6e43-4c17-8d0b-529db8040f22</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14157</COrder>
+  </Content>
+  <Content>
+    <id>e3b15999-b667-41f6-ac92-3a021ad12018</id>
+    <eid>dd4f8e21-6e43-4c17-8d0b-529db8040f22</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14158</COrder>
+  </Content>
+  <Content>
+    <id>7aeb81bb-74a1-401a-9c17-83759e58050b</id>
+    <eid>ea516d54-28e0-407d-b677-03f68408b3fc</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14161</COrder>
+  </Content>
+  <Content>
+    <id>436f24ba-14c1-408c-95eb-b5faa64cb852</id>
+    <eid>ea516d54-28e0-407d-b677-03f68408b3fc</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14162</COrder>
+  </Content>
+  <Content>
+    <id>da74d679-8e19-4a43-85ab-b23b63ff9708</id>
+    <eid>965de373-2bf8-45af-b927-d32f334349f6</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Определение некоторых органических молекул</DataStr>
+    <COrder>14165</COrder>
+  </Content>
+  <Content>
+    <id>762b6803-4018-4c51-9daa-16a294e22a86</id>
+    <eid>965de373-2bf8-45af-b927-d32f334349f6</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Определение некоторых органических молекул</DataStr>
+    <COrder>14166</COrder>
+  </Content>
+  <Content>
+    <id>ee9cd981-523d-4bca-89bc-c40d9efb7a92</id>
+    <eid>48d177f3-fb33-44f4-8581-9274834097c2</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14169</COrder>
+  </Content>
+  <Content>
+    <id>bab2b17c-b322-471e-bd35-4f0812070485</id>
+    <eid>48d177f3-fb33-44f4-8581-9274834097c2</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14170</COrder>
+  </Content>
+  <Content>
+    <id>def5aeb3-c896-4ee6-816e-89fb5e1b9618</id>
+    <eid>647a76c5-0b64-4591-8109-da2e4ba2160a</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14173</COrder>
+  </Content>
+  <Content>
+    <id>784755ef-2a99-4f93-a873-a6dc7c535dfc</id>
+    <eid>647a76c5-0b64-4591-8109-da2e4ba2160a</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14174</COrder>
+  </Content>
+  <Content>
+    <id>585976fd-c67b-4965-a0b8-f579e589d6ab</id>
+    <eid>51600434-ba41-4d47-927d-252522d1ed06</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Определение свойств жиров</DataStr>
+    <COrder>14177</COrder>
+  </Content>
+  <Content>
+    <id>4a953e0c-12d8-44f8-9fec-4b58e587f274</id>
+    <eid>51600434-ba41-4d47-927d-252522d1ed06</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Определение свойств жиров</DataStr>
+    <COrder>14178</COrder>
+  </Content>
+  <Content>
+    <id>997649ae-e9e8-42c0-8ac4-4224edb189ef</id>
+    <eid>dcbf1b53-b948-4d34-b958-d9d8e828d50d</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14181</COrder>
+  </Content>
+  <Content>
+    <id>4b1f2119-0a78-4007-ba0e-69f82fdbedc3</id>
+    <eid>dcbf1b53-b948-4d34-b958-d9d8e828d50d</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14182</COrder>
+  </Content>
+  <Content>
+    <id>05731439-8875-4f9a-83fa-ff7035a3fa01</id>
+    <eid>6e321022-5dda-49fc-8c8e-67648af7fd81</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14185</COrder>
+  </Content>
+  <Content>
+    <id>94db733a-3378-470c-8965-c9f8fd641d41</id>
+    <eid>6e321022-5dda-49fc-8c8e-67648af7fd81</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14186</COrder>
+  </Content>
+  <Content>
+    <id>b124d499-5200-45a0-b4a3-f870579ca5dd</id>
+    <eid>f7b02390-5073-4258-bd22-4b91134ad790</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Строение клеток прокариот и эукариот</DataStr>
+    <COrder>14189</COrder>
+  </Content>
+  <Content>
+    <id>79e11f8e-4f9f-41b3-84af-5d312481daff</id>
+    <eid>f7b02390-5073-4258-bd22-4b91134ad790</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Строение клеток прокариот и эукариот</DataStr>
+    <COrder>14190</COrder>
+  </Content>
+  <Content>
+    <id>6acee6f6-315a-4271-98ff-685738008010</id>
+    <eid>79151bd1-f65b-4299-80f8-5dce4090a7aa</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14193</COrder>
+  </Content>
+  <Content>
+    <id>40292d5e-80c8-46b1-b217-732eb7e272b5</id>
+    <eid>79151bd1-f65b-4299-80f8-5dce4090a7aa</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14194</COrder>
+  </Content>
+  <Content>
+    <id>309d6b69-a5ac-4021-ad07-899cb18fd514</id>
+    <eid>ec7ff181-aafe-4f5b-9d7f-34465350f048</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14197</COrder>
+  </Content>
+  <Content>
+    <id>1ee7e432-89b5-4595-affe-48e0947651c0</id>
+    <eid>ec7ff181-aafe-4f5b-9d7f-34465350f048</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14198</COrder>
+  </Content>
+  <Content>
+    <id>ec2c0dc4-bbaa-4ab7-9a52-bb15d5ac81a9</id>
+    <eid>a8cbb522-8347-4e85-b41a-e16c38f71c11</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Сравнение строения клеток растений, животных, грибов и бактерий</DataStr>
+    <COrder>14201</COrder>
+  </Content>
+  <Content>
+    <id>d21ec2ab-0f9b-4e57-81c4-61884632c60c</id>
+    <eid>a8cbb522-8347-4e85-b41a-e16c38f71c11</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Сравнение строения клеток растений, животных, грибов и бактерий</DataStr>
+    <COrder>14202</COrder>
+  </Content>
+  <Content>
+    <id>2713a4b8-9727-4425-9a02-74925339afd8</id>
+    <eid>cab85a1a-2b40-4905-9759-2a64b5a4d4df</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14205</COrder>
+  </Content>
+  <Content>
+    <id>1e2dc8cf-c1b3-49a0-8048-03b65ab0d63f</id>
+    <eid>cab85a1a-2b40-4905-9759-2a64b5a4d4df</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14206</COrder>
+  </Content>
+  <Content>
+    <id>395ebc09-7cb6-4d9b-85b2-4fd9d5f0860e</id>
+    <eid>8cd89997-748b-4720-beca-24a2ecebef9b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14209</COrder>
+  </Content>
+  <Content>
+    <id>d44aab86-bc7c-40ed-a1e3-06a45c264b6a</id>
+    <eid>8cd89997-748b-4720-beca-24a2ecebef9b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14210</COrder>
+  </Content>
+  <Content>
+    <id>f43f21de-9fe1-4823-ba6a-86fadac17bc7</id>
+    <eid>9d0fcd70-6965-430b-9bea-a4d5d908db27</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Явление плазмолиза и деплазмолиза в клетках растений</DataStr>
+    <COrder>14213</COrder>
+  </Content>
+  <Content>
+    <id>82dab780-fad8-4a47-951e-130e7bba1219</id>
+    <eid>9d0fcd70-6965-430b-9bea-a4d5d908db27</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Явление плазмолиза и деплазмолиза в клетках растений</DataStr>
+    <COrder>14214</COrder>
+  </Content>
+  <Content>
+    <id>a3d01264-cd7c-4e30-9f74-219a043b104f</id>
+    <eid>469a7f06-720e-4323-b169-703c4f9de58e</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14217</COrder>
+  </Content>
+  <Content>
+    <id>95604c5d-8b9f-4897-9f36-12e535a2bc80</id>
+    <eid>469a7f06-720e-4323-b169-703c4f9de58e</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14218</COrder>
+  </Content>
+  <Content>
+    <id>e457c7a6-58e8-4777-aa5d-155c1f344182</id>
+    <eid>e4c05633-ee2c-4dfc-abf4-2e3d32d8ae03</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14221</COrder>
+  </Content>
+  <Content>
+    <id>31242626-e1d1-4498-8129-21d2a4d293e7</id>
+    <eid>e4c05633-ee2c-4dfc-abf4-2e3d32d8ae03</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14222</COrder>
+  </Content>
+  <Content>
+    <id>b19a0250-f474-4c70-86fc-0f6e8c998870</id>
+    <eid>d7d7c1da-5f8d-4eaa-b66d-d153710d74e1</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Приготовление и описание микропрепаратов клеток растений</DataStr>
+    <COrder>14225</COrder>
+  </Content>
+  <Content>
+    <id>948d6226-ffd5-4490-bb89-1df4ab7eae4b</id>
+    <eid>d7d7c1da-5f8d-4eaa-b66d-d153710d74e1</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Приготовление и описание микропрепаратов клеток растений</DataStr>
+    <COrder>14226</COrder>
+  </Content>
+  <Content>
+    <id>315b29e2-3df4-4017-9924-f87c8d80dde0</id>
+    <eid>8c190cfb-2853-42e2-9f63-5b0f6dad2f0b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14229</COrder>
+  </Content>
+  <Content>
+    <id>9b42134e-f2a3-4149-bed0-7dab88f23ec1</id>
+    <eid>8c190cfb-2853-42e2-9f63-5b0f6dad2f0b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14230</COrder>
+  </Content>
+  <Content>
+    <id>2a530066-9825-4b4a-954a-5e6f1867e698</id>
+    <eid>e2cf3d19-da5d-4b50-b9b8-9d0394480e7c</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14233</COrder>
+  </Content>
+  <Content>
+    <id>2e3ccb71-3a7c-4872-9b3e-b2a5a5fe5f93</id>
+    <eid>e2cf3d19-da5d-4b50-b9b8-9d0394480e7c</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14234</COrder>
+  </Content>
+  <Content>
+    <id>985e1119-1c78-4984-9944-b830f2b393d6</id>
+    <eid>32ee7658-2e33-429f-b8ac-8d2830a508eb</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Митотическое деление клеток</DataStr>
+    <COrder>14237</COrder>
+  </Content>
+  <Content>
+    <id>0bdc08ad-5762-4207-9bb5-0e6839f3dbde</id>
+    <eid>32ee7658-2e33-429f-b8ac-8d2830a508eb</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Митотическое деление клеток</DataStr>
+    <COrder>14238</COrder>
+  </Content>
+  <Content>
+    <id>54c11d5b-8d22-4d0f-8681-37a9d265d6c6</id>
+    <eid>45bc7dff-ec68-435b-9c7a-2de5591def19</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14241</COrder>
+  </Content>
+  <Content>
+    <id>56738fc5-f050-45c3-b416-5ea77f933c93</id>
+    <eid>45bc7dff-ec68-435b-9c7a-2de5591def19</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14242</COrder>
+  </Content>
+  <Content>
+    <id>33d8e185-6f2a-43c0-93b7-f9444cca1596</id>
+    <eid>6b92f263-ecfe-4b6b-bbbd-547fbcf4b8e9</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14245</COrder>
+  </Content>
+  <Content>
+    <id>9d7d7eb1-47a3-4dbd-a996-8de4caf3f9ce</id>
+    <eid>6b92f263-ecfe-4b6b-bbbd-547fbcf4b8e9</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14246</COrder>
+  </Content>
+  <Content>
+    <id>55c7f356-6e15-423f-b9f2-4e1205caf03e</id>
+    <eid>70efdee5-e775-4914-8af6-1c58d88290cf</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Выявление признаков сходства зародышей человека и млекопитающих</DataStr>
+    <COrder>14249</COrder>
+  </Content>
+  <Content>
+    <id>0e40ad59-8302-43ed-9248-0ea8ab389dff</id>
+    <eid>70efdee5-e775-4914-8af6-1c58d88290cf</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Выявление признаков сходства зародышей человека и млекопитающих</DataStr>
+    <COrder>14250</COrder>
+  </Content>
+  <Content>
+    <id>425b965b-17d2-4975-ba1a-11f95894ce01</id>
+    <eid>799ee102-849c-4f3c-a20c-5dee25e230e8</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14253</COrder>
+  </Content>
+  <Content>
+    <id>e3df21e3-1bea-4561-a0a9-c54704ad5e95</id>
+    <eid>799ee102-849c-4f3c-a20c-5dee25e230e8</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Ход работы</DataStr>
+    <COrder>14254</COrder>
+  </Content>
+  <Content>
+    <id>2e844bd9-130d-44b1-b5f8-823137233def</id>
+    <eid>09242aef-5d6f-455b-a6de-80587f79759c</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14257</COrder>
+  </Content>
+  <Content>
+    <id>7e2c05f8-e201-40a2-9235-33e53445c06f</id>
+    <eid>09242aef-5d6f-455b-a6de-80587f79759c</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Выполнение работы</DataStr>
+    <COrder>14258</COrder>
+  </Content>
+  <Content>
+    <id>6520718d-caed-4d55-93b0-996ecb5cb9fb</id>
+    <eid>358288eb-7c3c-4177-ab97-5f657d8739af</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1778.html</DataStr>
+    <COrder>14155</COrder>
+  </Content>
+  <Content>
+    <id>f5944d8b-c699-4c27-8dad-1db8cde4109b</id>
+    <eid>358288eb-7c3c-4177-ab97-5f657d8739af</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1778.html</DataStr>
+    <COrder>14156</COrder>
+  </Content>
+  <Content>
+    <id>ac5b1dac-ca21-49b1-a8ab-0cf2d19f16b5</id>
+    <eid>b29a1be3-ee96-488d-bfa0-17c876a61505</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1779.html</DataStr>
+    <COrder>14159</COrder>
+  </Content>
+  <Content>
+    <id>b1582635-1329-4c96-8ade-b4466ba285a6</id>
+    <eid>b29a1be3-ee96-488d-bfa0-17c876a61505</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1779.html</DataStr>
+    <COrder>14160</COrder>
+  </Content>
+  <Content>
+    <id>ac4d3627-dd17-4258-95c2-1604b2e618fc</id>
+    <eid>649f47c6-613a-4b4c-91e6-4660218e7abe</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1780.html</DataStr>
+    <COrder>14163</COrder>
+  </Content>
+  <Content>
+    <id>137f3944-4a5d-4468-8d04-3426d87ac227</id>
+    <eid>649f47c6-613a-4b4c-91e6-4660218e7abe</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1780.html</DataStr>
+    <COrder>14164</COrder>
+  </Content>
+  <Content>
+    <id>89be20bd-0622-458b-bd31-6d4019a6c85d</id>
+    <eid>c99821a4-47c2-48c4-a2b5-10c8d3a491e6</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1781.html</DataStr>
+    <COrder>14167</COrder>
+  </Content>
+  <Content>
+    <id>fe0d4920-518b-4e89-a22a-83a5d91a7a3b</id>
+    <eid>c99821a4-47c2-48c4-a2b5-10c8d3a491e6</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1781.html</DataStr>
+    <COrder>14168</COrder>
+  </Content>
+  <Content>
+    <id>d2147ffc-7980-4215-a923-41bfbe5d57ee</id>
+    <eid>739ce141-6656-487c-9c62-2191ee7cd571</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1782.html</DataStr>
+    <COrder>14171</COrder>
+  </Content>
+  <Content>
+    <id>c2c30413-23cb-4069-a01a-ede790445b50</id>
+    <eid>739ce141-6656-487c-9c62-2191ee7cd571</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1782.html</DataStr>
+    <COrder>14172</COrder>
+  </Content>
+  <Content>
+    <id>17e6be04-bb90-4080-b4a4-39981f773cca</id>
+    <eid>886c9d94-d00d-47bc-8495-003e9190e3a7</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1783.html</DataStr>
+    <COrder>14175</COrder>
+  </Content>
+  <Content>
+    <id>0527356d-bb85-449b-88e5-ae1e65acbd90</id>
+    <eid>886c9d94-d00d-47bc-8495-003e9190e3a7</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1783.html</DataStr>
+    <COrder>14176</COrder>
+  </Content>
+  <Content>
+    <id>0b62ef8e-5902-4a08-bcaf-e5e27367d29b</id>
+    <eid>3a746cc7-73b1-43d7-bd70-6c479217c690</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1784.html</DataStr>
+    <COrder>14179</COrder>
+  </Content>
+  <Content>
+    <id>f841d76c-29e3-4c8d-9856-368b1b762b66</id>
+    <eid>3a746cc7-73b1-43d7-bd70-6c479217c690</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1784.html</DataStr>
+    <COrder>14180</COrder>
+  </Content>
+  <Content>
+    <id>ac6e9fae-df9c-43f9-84cc-b105e703bd39</id>
+    <eid>ea3a0eef-8ff6-462a-a7b1-870ad848964f</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1785.html</DataStr>
+    <COrder>14183</COrder>
+  </Content>
+  <Content>
+    <id>69e77b5f-eb02-44e8-9b24-ce10cb39df43</id>
+    <eid>ea3a0eef-8ff6-462a-a7b1-870ad848964f</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1785.html</DataStr>
+    <COrder>14184</COrder>
+  </Content>
+  <Content>
+    <id>5526e3b1-1c38-4ab9-a312-3736c771d657</id>
+    <eid>404415ae-58af-44e5-8995-90615688b081</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1786.html</DataStr>
+    <COrder>14187</COrder>
+  </Content>
+  <Content>
+    <id>64c71abc-668f-4dd2-b192-cc23e7889942</id>
+    <eid>404415ae-58af-44e5-8995-90615688b081</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1786.html</DataStr>
+    <COrder>14188</COrder>
+  </Content>
+  <Content>
+    <id>6bd57895-f26f-467b-ae60-9363f5576306</id>
+    <eid>a454549a-58ac-4b65-a97f-d8859a24e792</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1787.html</DataStr>
+    <COrder>14191</COrder>
+  </Content>
+  <Content>
+    <id>b6e605fd-ce20-4903-af5f-61229c7ba293</id>
+    <eid>a454549a-58ac-4b65-a97f-d8859a24e792</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1787.html</DataStr>
+    <COrder>14192</COrder>
+  </Content>
+  <Content>
+    <id>3c881d30-8511-4609-a826-8cb88820cabe</id>
+    <eid>9784f9f7-eec0-4579-9648-4312c62b35ea</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1788.html</DataStr>
+    <COrder>14195</COrder>
+  </Content>
+  <Content>
+    <id>10a10765-9ff0-4ad2-b0d9-93ffd201fc0f</id>
+    <eid>9784f9f7-eec0-4579-9648-4312c62b35ea</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1788.html</DataStr>
+    <COrder>14196</COrder>
+  </Content>
+  <Content>
+    <id>27029857-6884-44f8-9023-27233003f477</id>
+    <eid>6dfd2d91-c27b-4e86-ac6d-19276710dde6</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1789.html</DataStr>
+    <COrder>14199</COrder>
+  </Content>
+  <Content>
+    <id>f40b5b33-4eb0-4b76-9ec0-da2212af0147</id>
+    <eid>6dfd2d91-c27b-4e86-ac6d-19276710dde6</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1789.html</DataStr>
+    <COrder>14200</COrder>
+  </Content>
+  <Content>
+    <id>e857ae4d-102f-442f-aa6f-d461425e4994</id>
+    <eid>8dfa8b17-3f0b-4a6e-b15e-9229d3332ad7</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1790.html</DataStr>
+    <COrder>14203</COrder>
+  </Content>
+  <Content>
+    <id>1e730b41-963b-4891-9e3e-4152319bf8a4</id>
+    <eid>8dfa8b17-3f0b-4a6e-b15e-9229d3332ad7</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1790.html</DataStr>
+    <COrder>14204</COrder>
+  </Content>
+  <Content>
+    <id>2e4067cb-c277-471c-af11-19f9ac6325c2</id>
+    <eid>1b4145af-b023-4c4f-b375-4dfcbed8b594</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1791.html</DataStr>
+    <COrder>14207</COrder>
+  </Content>
+  <Content>
+    <id>2e3d9b17-1225-42a0-bd1c-d41a2ea85beb</id>
+    <eid>1b4145af-b023-4c4f-b375-4dfcbed8b594</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1791.html</DataStr>
+    <COrder>14208</COrder>
+  </Content>
+  <Content>
+    <id>e0d90b56-255a-4035-89f9-f075deca793a</id>
+    <eid>b8919ff8-ad81-4016-a129-427173679c1b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1792.html</DataStr>
+    <COrder>14211</COrder>
+  </Content>
+  <Content>
+    <id>e789b34e-7566-44fd-b61a-925680fa4712</id>
+    <eid>b8919ff8-ad81-4016-a129-427173679c1b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1792.html</DataStr>
+    <COrder>14212</COrder>
+  </Content>
+  <Content>
+    <id>5fb32b46-29a4-4571-8474-ffaa4164e7c5</id>
+    <eid>6ae66b91-922c-4e0f-be47-36c6319504ad</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1793.html</DataStr>
+    <COrder>14215</COrder>
+  </Content>
+  <Content>
+    <id>855e4622-e022-4fc3-abb9-b065896c58fb</id>
+    <eid>6ae66b91-922c-4e0f-be47-36c6319504ad</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1793.html</DataStr>
+    <COrder>14216</COrder>
+  </Content>
+  <Content>
+    <id>53638663-f9ce-4901-bbfc-d672a2ce6782</id>
+    <eid>b61a4adf-f85b-43e6-8eb4-4fe7392a016e</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1794.html</DataStr>
+    <COrder>14219</COrder>
+  </Content>
+  <Content>
+    <id>80c9e643-dc09-4370-8fdf-e97b5e23c734</id>
+    <eid>b61a4adf-f85b-43e6-8eb4-4fe7392a016e</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1794.html</DataStr>
+    <COrder>14220</COrder>
+  </Content>
+  <Content>
+    <id>c9c9748a-9fe7-485f-accb-1a03c0985fbc</id>
+    <eid>f5b94732-510f-4142-b58e-ebacea342134</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1795.html</DataStr>
+    <COrder>14223</COrder>
+  </Content>
+  <Content>
+    <id>c94878ba-b5f3-47dc-b0fa-3100ce85b445</id>
+    <eid>f5b94732-510f-4142-b58e-ebacea342134</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1795.html</DataStr>
+    <COrder>14224</COrder>
+  </Content>
+  <Content>
+    <id>4ff0bbb8-7c8a-4d53-b506-c97a5f0d398a</id>
+    <eid>e28de7f2-f22d-4287-87e3-54f499c04b27</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1796.html</DataStr>
+    <COrder>14227</COrder>
+  </Content>
+  <Content>
+    <id>f1b05ac6-bee3-4b8c-b0c5-00377dbb29ba</id>
+    <eid>e28de7f2-f22d-4287-87e3-54f499c04b27</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1796.html</DataStr>
+    <COrder>14228</COrder>
+  </Content>
+  <Content>
+    <id>7ceca9d6-30ec-4e9a-8b85-a1564998f653</id>
+    <eid>17f61f18-4548-471b-9093-e8cc26303ec7</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1797.html</DataStr>
+    <COrder>14231</COrder>
+  </Content>
+  <Content>
+    <id>feb9e671-b91e-4aaa-856a-bd43177a1689</id>
+    <eid>17f61f18-4548-471b-9093-e8cc26303ec7</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1797.html</DataStr>
+    <COrder>14232</COrder>
+  </Content>
+  <Content>
+    <id>0a205197-fa7b-4297-912e-04a10c8d82a8</id>
+    <eid>a3d608df-3f87-4098-bedd-7be32bbbc1cd</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1798.html</DataStr>
+    <COrder>14235</COrder>
+  </Content>
+  <Content>
+    <id>00bb9753-5ed1-46c7-b129-0b9b5e439d39</id>
+    <eid>a3d608df-3f87-4098-bedd-7be32bbbc1cd</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1798.html</DataStr>
+    <COrder>14236</COrder>
+  </Content>
+  <Content>
+    <id>b8c062b8-7125-4775-a29b-6698d7a1edee</id>
+    <eid>ec50df32-bfd8-45b4-91d0-3361aab9dc85</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1799.html</DataStr>
+    <COrder>14239</COrder>
+  </Content>
+  <Content>
+    <id>84d1e37d-51db-4f79-bb00-55d6658ea60a</id>
+    <eid>ec50df32-bfd8-45b4-91d0-3361aab9dc85</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1799.html</DataStr>
+    <COrder>14240</COrder>
+  </Content>
+  <Content>
+    <id>fe5fe76d-34e9-4587-b2a6-a28a95bcc3ff</id>
+    <eid>53970069-060f-4f72-8217-4946f5dd2c45</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1800.html</DataStr>
+    <COrder>14243</COrder>
+  </Content>
+  <Content>
+    <id>ec24ae32-8f8e-4aba-89d4-39a1ed9fb323</id>
+    <eid>53970069-060f-4f72-8217-4946f5dd2c45</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1800.html</DataStr>
+    <COrder>14244</COrder>
+  </Content>
+  <Content>
+    <id>a3427d8e-19e2-47eb-8975-a14bb4642b6f</id>
+    <eid>aea4c2fd-3f49-4c45-9cf5-dfadbf6a3945</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1801.html</DataStr>
+    <COrder>14247</COrder>
+  </Content>
+  <Content>
+    <id>c571e06e-d8ca-4ca3-9fda-6ea17a362239</id>
+    <eid>aea4c2fd-3f49-4c45-9cf5-dfadbf6a3945</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1801.html</DataStr>
+    <COrder>14248</COrder>
+  </Content>
+  <Content>
+    <id>4ab3d588-2cad-493d-81fa-89e0625cd920</id>
+    <eid>bd5aa454-5a1e-4eed-bbab-b331d95dca74</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1802.html</DataStr>
+    <COrder>14251</COrder>
+  </Content>
+  <Content>
+    <id>fe48408f-4e47-45b9-a0a8-08f0591264d0</id>
+    <eid>bd5aa454-5a1e-4eed-bbab-b331d95dca74</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1802.html</DataStr>
+    <COrder>14252</COrder>
+  </Content>
+  <Content>
+    <id>530bf48e-46b8-4c16-8c38-f68841369ffc</id>
+    <eid>43ed009a-43b1-4ce3-8152-6e5bf2abeb0a</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1803.html</DataStr>
+    <COrder>14255</COrder>
+  </Content>
+  <Content>
+    <id>fd656b1b-0572-4b0a-b40c-592a49a6cccb</id>
+    <eid>43ed009a-43b1-4ce3-8152-6e5bf2abeb0a</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1803.html</DataStr>
+    <COrder>14256</COrder>
+  </Content>
+  <Content>
+    <id>0c04bb58-adb1-468d-8b95-d97335fdf6d2</id>
+    <eid>46b509b9-3ccd-46fd-849d-999dec08174e</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/biology10_v11/1804.html</DataStr>
+    <COrder>14259</COrder>
+  </Content>
+  <Content>
+    <id>03849951-aa61-46ed-a75e-e375b2ff7b7b</id>
+    <eid>46b509b9-3ccd-46fd-849d-999dec08174e</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/biology10_v11/1804.html</DataStr>
+    <COrder>14260</COrder>
+  </Content>
+  <Themes>
+    <id>1e3ea2c8-b91b-4056-aba7-5a6632b5b265</id>
+    <Type>1</Type>
+    <Name>dee19c74-bf30-4d29-a0e9-de436221f85a</Name>
+    <Parent>e835e4eb-ef5e-4295-b492-e754c26df483</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>358288eb-7c3c-4177-ab97-5f657d8739af</Content>
+    <TOrder>2956</TOrder>
+  </Themes>
+  <Themes>
+    <id>773cfcae-4906-4f4e-8238-2f0d6304cd06</id>
+    <Type>1</Type>
+    <Name>dd4f8e21-6e43-4c17-8d0b-529db8040f22</Name>
+    <Parent>1e3ea2c8-b91b-4056-aba7-5a6632b5b265</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>b29a1be3-ee96-488d-bfa0-17c876a61505</Content>
+    <TOrder>2957</TOrder>
+  </Themes>
+  <Themes>
+    <id>84b0f2fc-41d6-4a4d-b97a-5856a93c8344</id>
+    <Type>1</Type>
+    <Name>ea516d54-28e0-407d-b677-03f68408b3fc</Name>
+    <Parent>1e3ea2c8-b91b-4056-aba7-5a6632b5b265</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>649f47c6-613a-4b4c-91e6-4660218e7abe</Content>
+    <TOrder>2958</TOrder>
+  </Themes>
+  <Themes>
+    <id>17c7f909-ccde-49fd-9393-841c05e154fb</id>
+    <Type>1</Type>
+    <Name>965de373-2bf8-45af-b927-d32f334349f6</Name>
+    <Parent>e835e4eb-ef5e-4295-b492-e754c26df483</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>c99821a4-47c2-48c4-a2b5-10c8d3a491e6</Content>
+    <TOrder>2959</TOrder>
+  </Themes>
+  <Themes>
+    <id>01e5db26-491e-49fb-ba62-5e66b52760f4</id>
+    <Type>1</Type>
+    <Name>48d177f3-fb33-44f4-8581-9274834097c2</Name>
+    <Parent>17c7f909-ccde-49fd-9393-841c05e154fb</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>739ce141-6656-487c-9c62-2191ee7cd571</Content>
+    <TOrder>2960</TOrder>
+  </Themes>
+  <Themes>
+    <id>6405cebe-610b-4ab8-a444-0c84a50e824d</id>
+    <Type>1</Type>
+    <Name>647a76c5-0b64-4591-8109-da2e4ba2160a</Name>
+    <Parent>17c7f909-ccde-49fd-9393-841c05e154fb</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>886c9d94-d00d-47bc-8495-003e9190e3a7</Content>
+    <TOrder>2961</TOrder>
+  </Themes>
+  <Themes>
+    <id>1c19bc22-83ad-4e59-afab-305dc5489ca2</id>
+    <Type>1</Type>
+    <Name>51600434-ba41-4d47-927d-252522d1ed06</Name>
+    <Parent>e835e4eb-ef5e-4295-b492-e754c26df483</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>3a746cc7-73b1-43d7-bd70-6c479217c690</Content>
+    <TOrder>2962</TOrder>
+  </Themes>
+  <Themes>
+    <id>0c70e40a-4edb-475e-9f36-0f6bb2a73516</id>
+    <Type>1</Type>
+    <Name>dcbf1b53-b948-4d34-b958-d9d8e828d50d</Name>
+    <Parent>1c19bc22-83ad-4e59-afab-305dc5489ca2</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>ea3a0eef-8ff6-462a-a7b1-870ad848964f</Content>
+    <TOrder>2963</TOrder>
+  </Themes>
+  <Themes>
+    <id>f9237feb-7171-4224-88ae-a0492f4b6ed8</id>
+    <Type>1</Type>
+    <Name>6e321022-5dda-49fc-8c8e-67648af7fd81</Name>
+    <Parent>1c19bc22-83ad-4e59-afab-305dc5489ca2</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>404415ae-58af-44e5-8995-90615688b081</Content>
+    <TOrder>2964</TOrder>
+  </Themes>
+  <Themes>
+    <id>ea2d98cb-2e54-4462-a4a4-f693851d5bf7</id>
+    <Type>1</Type>
+    <Name>f7b02390-5073-4258-bd22-4b91134ad790</Name>
+    <Parent>e835e4eb-ef5e-4295-b492-e754c26df483</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>a454549a-58ac-4b65-a97f-d8859a24e792</Content>
+    <TOrder>2965</TOrder>
+  </Themes>
+  <Themes>
+    <id>9cbc881b-9a74-4956-bcdd-6e8bdaa6bc6e</id>
+    <Type>1</Type>
+    <Name>79151bd1-f65b-4299-80f8-5dce4090a7aa</Name>
+    <Parent>ea2d98cb-2e54-4462-a4a4-f693851d5bf7</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>9784f9f7-eec0-4579-9648-4312c62b35ea</Content>
+    <TOrder>2966</TOrder>
+  </Themes>
+  <Themes>
+    <id>ebade7b4-694f-4b9d-a936-5b7b11d60a39</id>
+    <Type>1</Type>
+    <Name>ec7ff181-aafe-4f5b-9d7f-34465350f048</Name>
+    <Parent>ea2d98cb-2e54-4462-a4a4-f693851d5bf7</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>6dfd2d91-c27b-4e86-ac6d-19276710dde6</Content>
+    <TOrder>2967</TOrder>
+  </Themes>
+  <Themes>
+    <id>1b7b2035-ebfd-400a-8c57-783d0be442f9</id>
+    <Type>1</Type>
+    <Name>a8cbb522-8347-4e85-b41a-e16c38f71c11</Name>
+    <Parent>e835e4eb-ef5e-4295-b492-e754c26df483</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>8dfa8b17-3f0b-4a6e-b15e-9229d3332ad7</Content>
+    <TOrder>2968</TOrder>
+  </Themes>
+  <Themes>
+    <id>58b39ce4-f6d1-4791-94be-0e2898777eec</id>
+    <Type>1</Type>
+    <Name>cab85a1a-2b40-4905-9759-2a64b5a4d4df</Name>
+    <Parent>1b7b2035-ebfd-400a-8c57-783d0be442f9</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>1b4145af-b023-4c4f-b375-4dfcbed8b594</Content>
+    <TOrder>2969</TOrder>
+  </Themes>
+  <Themes>
+    <id>d025f124-9365-4445-857e-30a00ce78b59</id>
+    <Type>1</Type>
+    <Name>8cd89997-748b-4720-beca-24a2ecebef9b</Name>
+    <Parent>1b7b2035-ebfd-400a-8c57-783d0be442f9</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>b8919ff8-ad81-4016-a129-427173679c1b</Content>
+    <TOrder>2970</TOrder>
+  </Themes>
+  <Themes>
+    <id>2f1f64f0-4b6f-4a5a-8bf4-a2e7ad5b8df4</id>
+    <Type>1</Type>
+    <Name>9d0fcd70-6965-430b-9bea-a4d5d908db27</Name>
+    <Parent>e835e4eb-ef5e-4295-b492-e754c26df483</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>6ae66b91-922c-4e0f-be47-36c6319504ad</Content>
+    <TOrder>2971</TOrder>
+  </Themes>
+  <Themes>
+    <id>5aea5e43-00b2-49b2-a541-0a142888d60c</id>
+    <Type>1</Type>
+    <Name>469a7f06-720e-4323-b169-703c4f9de58e</Name>
+    <Parent>2f1f64f0-4b6f-4a5a-8bf4-a2e7ad5b8df4</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>b61a4adf-f85b-43e6-8eb4-4fe7392a016e</Content>
+    <TOrder>2972</TOrder>
+  </Themes>
+  <Themes>
+    <id>370aff28-b332-4ef2-802a-5641278d4914</id>
+    <Type>1</Type>
+    <Name>e4c05633-ee2c-4dfc-abf4-2e3d32d8ae03</Name>
+    <Parent>2f1f64f0-4b6f-4a5a-8bf4-a2e7ad5b8df4</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>f5b94732-510f-4142-b58e-ebacea342134</Content>
+    <TOrder>2973</TOrder>
+  </Themes>
+  <Themes>
+    <id>7c2448b3-b2df-4c7a-b733-8c0138bd4c77</id>
+    <Type>1</Type>
+    <Name>d7d7c1da-5f8d-4eaa-b66d-d153710d74e1</Name>
+    <Parent>e835e4eb-ef5e-4295-b492-e754c26df483</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>e28de7f2-f22d-4287-87e3-54f499c04b27</Content>
+    <TOrder>2974</TOrder>
+  </Themes>
+  <Themes>
+    <id>a6d49f55-3231-461e-a050-a0a40c42573d</id>
+    <Type>1</Type>
+    <Name>8c190cfb-2853-42e2-9f63-5b0f6dad2f0b</Name>
+    <Parent>7c2448b3-b2df-4c7a-b733-8c0138bd4c77</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>17f61f18-4548-471b-9093-e8cc26303ec7</Content>
+    <TOrder>2975</TOrder>
+  </Themes>
+  <Themes>
+    <id>0460b87f-01b7-4ffc-9c63-53c777721f47</id>
+    <Type>1</Type>
+    <Name>e2cf3d19-da5d-4b50-b9b8-9d0394480e7c</Name>
+    <Parent>7c2448b3-b2df-4c7a-b733-8c0138bd4c77</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>a3d608df-3f87-4098-bedd-7be32bbbc1cd</Content>
+    <TOrder>2976</TOrder>
+  </Themes>
+  <Themes>
+    <id>26f114c5-bc02-4f38-9d36-6fdabbe2337b</id>
+    <Type>1</Type>
+    <Name>32ee7658-2e33-429f-b8ac-8d2830a508eb</Name>
+    <Parent>e835e4eb-ef5e-4295-b492-e754c26df483</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>ec50df32-bfd8-45b4-91d0-3361aab9dc85</Content>
+    <TOrder>2977</TOrder>
+  </Themes>
+  <Themes>
+    <id>192f3b53-4775-4efe-8a55-a37586529fbf</id>
+    <Type>1</Type>
+    <Name>45bc7dff-ec68-435b-9c7a-2de5591def19</Name>
+    <Parent>26f114c5-bc02-4f38-9d36-6fdabbe2337b</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>53970069-060f-4f72-8217-4946f5dd2c45</Content>
+    <TOrder>2978</TOrder>
+  </Themes>
+  <Themes>
+    <id>237ec311-e856-4499-bc39-588e0ee6774c</id>
+    <Type>1</Type>
+    <Name>6b92f263-ecfe-4b6b-bbbd-547fbcf4b8e9</Name>
+    <Parent>26f114c5-bc02-4f38-9d36-6fdabbe2337b</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>aea4c2fd-3f49-4c45-9cf5-dfadbf6a3945</Content>
+    <TOrder>2979</TOrder>
+  </Themes>
+  <Themes>
+    <id>987b11b7-9baa-4e4f-8ae1-ca83169ee827</id>
+    <Type>1</Type>
+    <Name>70efdee5-e775-4914-8af6-1c58d88290cf</Name>
+    <Parent>e835e4eb-ef5e-4295-b492-e754c26df483</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>bd5aa454-5a1e-4eed-bbab-b331d95dca74</Content>
+    <TOrder>2980</TOrder>
+  </Themes>
+  <Themes>
+    <id>f2ddaa3a-2859-48b8-8f66-758e778a91f6</id>
+    <Type>1</Type>
+    <Name>799ee102-849c-4f3c-a20c-5dee25e230e8</Name>
+    <Parent>987b11b7-9baa-4e4f-8ae1-ca83169ee827</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>43ed009a-43b1-4ce3-8152-6e5bf2abeb0a</Content>
+    <TOrder>2981</TOrder>
+  </Themes>
+  <Themes>
+    <id>4c5276d4-6ca1-4216-a171-a7a6de907792</id>
+    <Type>1</Type>
+    <Name>09242aef-5d6f-455b-a6de-80587f79759c</Name>
+    <Parent>987b11b7-9baa-4e4f-8ae1-ca83169ee827</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>46b509b9-3ccd-46fd-849d-999dec08174e</Content>
+    <TOrder>2982</TOrder>
+  </Themes>
+</Биология_x0020_-_x0020_курс_x0020_лабораторных_x0020_работ>

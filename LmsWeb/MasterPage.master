@@ -9,7 +9,7 @@
 <%@ Import Namespace="N2.Lms.Items" %>
 <%@ Import Namespace="Rhino.Mocks" %>
 <%@ Import Namespace="System.Linq" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
  <HEAD id="HEAD1" runat="server">
  <title>Система дистанционного обучения "Квазар-Микро"</title>
@@ -18,6 +18,9 @@
                      дистанційне навчання, дистанційні курси, дистанційне тестування, курс, тренінг, інструктор, тест, тести, тестування, семінар, новини дистанційного навчання" name="Keywords"/>
  <meta content="Система дистанционного обучения Квазар-Микро" name="Description"/>
  <meta name="Author" content="esteewhy" />
+ <!--[if lte IE 7]>
+<link rel="stylesheet" href="Lms/UI/Js/jquery.tabs_ie.css" type="text/css" media="projection, screen" />
+<![endif]-->
  <uc1:AddHtmlHead id="AddHtmlHead2" runat="server"></uc1:AddHtmlHead>
  <LINK href="CSS/dce.css" type="text/css" rel="stylesheet"/>
  <link rel="shortcut icon" href="images/Dce.ico" />

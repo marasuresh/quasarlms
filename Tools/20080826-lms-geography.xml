@@ -1,0 +1,2500 @@
+<?xml version="1.0" standalone="yes"?>
+<География_x0020_тест_x0020_ЕГЭ>
+  <xs:schema id="География_x0020_тест_x0020_ЕГЭ" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="География_x0020_тест_x0020_ЕГЭ" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Courses">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Version" type="xs:string" minOccurs="0" />
+                <xs:element name="Code" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Area" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Cost1" type="xs:double" minOccurs="0" />
+                <xs:element name="CostType1" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Cost2" type="xs:double" minOccurs="0" />
+                <xs:element name="CostType2" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Author" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="CPublic" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DescriptionShort" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DescriptionLong" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Requirements" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Keywords" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Additions" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Instructors" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="StartQuestionnaire" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="FinishQuestionnaire" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DiskFolder" type="xs:string" minOccurs="0" />
+                <xs:element name="isReady" type="xs:boolean" minOccurs="0" />
+                <xs:element name="CourseLanguage" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Content">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="eid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="Lang" type="xs:int" minOccurs="0" />
+                <xs:element name="DataStr" type="xs:string" minOccurs="0" />
+                <xs:element name="Data" type="xs:base64Binary" minOccurs="0" />
+                <xs:element name="TData" type="xs:string" minOccurs="0" />
+                <xs:element name="ParentEid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="COrder" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Themes">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Parent" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Duration" type="xs:int" minOccurs="0" />
+                <xs:element name="Mandatory" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Content" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="TOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="Practice" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Tests">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="Parent" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Duration" type="xs:int" minOccurs="0" />
+                <xs:element name="Points" type="xs:int" minOccurs="0" />
+                <xs:element name="Show" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Split" type="xs:boolean" minOccurs="0" />
+                <xs:element name="AutoFinish" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DefLanguage" type="xs:int" minOccurs="0" />
+                <xs:element name="CanSwitchLang" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Hints" type="xs:int" minOccurs="0" />
+                <xs:element name="InternalName" type="xs:string" minOccurs="0" />
+                <xs:element name="ShowThemes" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="TestQuestions">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Test" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Content" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="ShortHint" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="LongHint" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Points" type="xs:int" minOccurs="0" />
+                <xs:element name="Answer" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="QOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="Theme" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Terms">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Text" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Courses>
+    <id>33002a27-ecf6-419b-9c7f-7253f8f02c61</id>
+    <Version>1</Version>
+    <Code>GeoEGE</Code>
+    <Name>cdbb30f8-2b0a-4e2c-9978-bc7a31613614</Name>
+    <Area>4204c47f-74f6-4aff-b775-ea8dd239722b</Area>
+    <Type>a280104a-9ee8-4b59-91ab-7910dea5adae</Type>
+    <Cost1>0</Cost1>
+    <Cost2>0</Cost2>
+    <Author>ce724bb5-a79f-4347-a0d0-6d28d144af81</Author>
+    <CPublic>false</CPublic>
+    <DescriptionShort>f7e72bb6-9534-4018-911b-796a06f4197a</DescriptionShort>
+    <DescriptionLong>6f7f2520-955e-4759-9e45-1d4ca302fe09</DescriptionLong>
+    <Requirements>ee8a6c20-f15a-4423-af67-f758a6d2a43c</Requirements>
+    <Keywords>2b9b2e62-0162-48a0-addb-d592ea26e2c0</Keywords>
+    <Additions>ebf02a8d-3791-4c5b-8869-2209f7b9afcf</Additions>
+    <Instructors>45af9f58-4a38-48db-9326-269042ecdfb6</Instructors>
+    <DiskFolder />
+    <isReady>false</isReady>
+    <CourseLanguage>1</CourseLanguage>
+  </Courses>
+  <Content>
+    <id>ce7e9228-470c-49a6-b0d1-14a36e5fdf17</id>
+    <eid>cdbb30f8-2b0a-4e2c-9978-bc7a31613614</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>География тест ЕГЭ</DataStr>
+  </Content>
+  <Content>
+    <id>22bab792-009f-4f27-8a14-d418ccf68eef</id>
+    <eid>ce724bb5-a79f-4347-a0d0-6d28d144af81</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Единый государственный экзамен по  ГЕОГРАФИИ
+Демонстрационный вариант 2003 г.</DataStr>
+  </Content>
+  <Content>
+    <id>97b0c6d4-7fff-4822-965c-a36719f29205</id>
+    <eid>f7e72bb6-9534-4018-911b-796a06f4197a</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Внимательно прочитайте каждое задание и предлагаемые  варианты ответа, если они имеются. Отвечайте только после того, как вы поняли вопрос и проанализировали все варианты ответа.
+Выполняйте задания в том порядке, в котором они даны. Если какое-то задание</TData>
+  </Content>
+  <Content>
+    <id>f29c6b53-0078-432f-b5f4-b37c24eeb7a9</id>
+    <eid>6f7f2520-955e-4759-9e45-1d4ca302fe09</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>f292ee94-c7e2-4d80-aaa2-b7e54769682c</id>
+    <eid>ee8a6c20-f15a-4423-af67-f758a6d2a43c</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>7df816e4-100b-4ade-bf6e-23991380dbf4</id>
+    <eid>2b9b2e62-0162-48a0-addb-d592ea26e2c0</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>4a97c547-853b-45fa-b5b9-1f4ddcde2d7c</id>
+    <eid>ebf02a8d-3791-4c5b-8869-2209f7b9afcf</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>0</COrder>
+  </Content>
+  <Content>
+    <id>ea038c5a-b458-47e7-a0c7-97ac753882e6</id>
+    <eid>ebf02a8d-3791-4c5b-8869-2209f7b9afcf</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>1</COrder>
+  </Content>
+  <Content>
+    <id>e4b25ba6-7f29-4b2e-a10b-0a960a897b72</id>
+    <eid>ebf02a8d-3791-4c5b-8869-2209f7b9afcf</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>2</COrder>
+  </Content>
+  <Content>
+    <id>e7938a16-bd9f-418f-a8be-1f8f2201928e</id>
+    <eid>ebf02a8d-3791-4c5b-8869-2209f7b9afcf</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>3</COrder>
+  </Content>
+  <Content>
+    <id>adde904b-da17-49dc-bc3a-a8022c1f9769</id>
+    <eid>3f107a25-33ae-4267-8f59-cfd7c8fc8ae2</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Сельское население преобладает в странах </TData>
+  </Content>
+  <Content>
+    <id>fe539e09-98f8-4edc-b71d-d458f4781e06</id>
+    <eid>3f107a25-33ae-4267-8f59-cfd7c8fc8ae2</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Сельское население преобладает в странах </TData>
+  </Content>
+  <Content>
+    <id>d5771486-cd0f-45a2-a70b-e303c1f56c31</id>
+    <eid>b2fd7c17-de66-420d-903d-2bbfe1f039d6</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Какoе из утверждений о размерах Земли является верным?</TData>
+  </Content>
+  <Content>
+    <id>34167845-afde-4d33-aafb-e754d132de08</id>
+    <eid>b2fd7c17-de66-420d-903d-2bbfe1f039d6</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Какoе из утверждений о размерах Земли является верным?</TData>
+  </Content>
+  <Content>
+    <id>99f946bf-6a0b-4a37-970e-5c5da35c814f</id>
+    <eid>bddce117-dbd4-450e-8a7b-4ed8be9f8e8d</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>На территории каких современных гор произошло складчатое горообразование в палеозойскую эру?</TData>
+  </Content>
+  <Content>
+    <id>878fd792-388e-4770-8509-f781395ab3a7</id>
+    <eid>bddce117-dbd4-450e-8a7b-4ed8be9f8e8d</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>На территории каких современных гор произошло складчатое горообразование в палеозойскую эру?</TData>
+  </Content>
+  <Content>
+    <id>7e4016b1-1f7e-4732-9937-a597c0379db8</id>
+    <eid>ec3e8b73-89ad-4df7-8d0c-3fc777b79c4b</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>ege_geo_q4.htm</DataStr>
+  </Content>
+  <Content>
+    <id>894ce455-ad50-43a7-90e9-0de05720486d</id>
+    <eid>7ba95598-e331-4f71-b99f-f0d52ca96e02</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>80% всей массы воздуха на Земле сосредоточено в</TData>
+  </Content>
+  <Content>
+    <id>9f07db26-998c-4312-9bc8-867000398e6b</id>
+    <eid>7ba95598-e331-4f71-b99f-f0d52ca96e02</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>80% всей массы воздуха на Земле сосредоточено в</TData>
+  </Content>
+  <Content>
+    <id>1c36d120-7a75-44d8-804c-8cf0f6ed3d46</id>
+    <eid>9077006c-c7ed-4e7c-9fb0-12838ee359b2</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Баобабы и бутылочное дерево являются представителями флоры</TData>
+  </Content>
+  <Content>
+    <id>97386f2a-d35d-4a30-b7f1-a74946d52a2c</id>
+    <eid>9077006c-c7ed-4e7c-9fb0-12838ee359b2</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Баобабы и бутылочное дерево являются представителями флоры</TData>
+  </Content>
+  <Content>
+    <id>209272ea-cb76-42e1-95b7-0873dc1e44ad</id>
+    <eid>9cbec522-592b-4807-a7ab-e81a42db5608</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>На территории России отсутствует(-ют)</TData>
+  </Content>
+  <Content>
+    <id>1fe213bc-48b6-45d8-99b6-368018eabbf6</id>
+    <eid>9cbec522-592b-4807-a7ab-e81a42db5608</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>На территории России отсутствует(-ют)</TData>
+  </Content>
+  <Content>
+    <id>1124adff-1881-4aee-b897-0d963b777880</id>
+    <eid>962a1565-fa3b-4e54-bdce-3bdcfc5e827d</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>ege_geo_q8.htm</DataStr>
+  </Content>
+  <Content>
+    <id>61d7cc15-1524-41fd-9c84-015d092f2ede</id>
+    <eid>bbf418f3-0730-41b2-ab26-fe3837d8ff27</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>В целом этот материк – равнинный, только вдоль восточного побережья вытянулись старые горы, максимальная высота которых всего 2228 м. Это материк</TData>
+  </Content>
+  <Content>
+    <id>7eb2f921-a021-4b20-b25f-81b5853cb595</id>
+    <eid>bbf418f3-0730-41b2-ab26-fe3837d8ff27</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>В целом этот материк – равнинный, только вдоль восточного побережья вытянулись старые горы, максимальная высота которых всего 2228 м. Это материк</TData>
+  </Content>
+  <Content>
+    <id>40e93f9b-d561-46ef-ba63-5b49b46a9985</id>
+    <eid>69be0653-4f46-4c27-ad4f-6e42f2e446b9</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>В каком из городов выпадает наибольшее количество осадков?</TData>
+  </Content>
+  <Content>
+    <id>0aab9258-0931-40d1-8541-f32f6ce3587e</id>
+    <eid>69be0653-4f46-4c27-ad4f-6e42f2e446b9</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>В каком из городов выпадает наибольшее количество осадков?</TData>
+  </Content>
+  <Content>
+    <id>c30e72f2-89f3-4057-9a90-09403b9a76cc</id>
+    <eid>eda8f43f-7947-4222-86fd-8c148a4571c1</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Население развитых стран характеризуется </TData>
+  </Content>
+  <Content>
+    <id>429f0718-9d27-492f-a270-2be6043eb7f7</id>
+    <eid>eda8f43f-7947-4222-86fd-8c148a4571c1</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Население развитых стран характеризуется </TData>
+  </Content>
+  <Content>
+    <id>5f30caf1-b314-4cea-aae0-7c4517824c16</id>
+    <eid>7036dad1-80b2-42a3-b2cf-41c1a3ca8026</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Kaкая общая черта объединяет города Лос-Анджелес, Лондон, Шанхай и Сеул?</TData>
+  </Content>
+  <Content>
+    <id>6a27596f-31bc-4205-b786-c80df26de176</id>
+    <eid>7036dad1-80b2-42a3-b2cf-41c1a3ca8026</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Kaкая общая черта объединяет города Лос-Анджелес, Лондон, Шанхай и Сеул?</TData>
+  </Content>
+  <Content>
+    <id>f44c406a-492e-4b13-bcf8-471025f50197</id>
+    <eid>017214c7-6a7d-46f9-886c-a42eeb8ec249</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Международная организация ОПЕК представляет собой</TData>
+  </Content>
+  <Content>
+    <id>60fcd144-eedd-4c9e-9aaf-88f9109494a9</id>
+    <eid>017214c7-6a7d-46f9-886c-a42eeb8ec249</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Международная организация ОПЕК представляет собой</TData>
+  </Content>
+  <Content>
+    <id>6138c9b6-a2ed-43b5-96fa-89ab3cd62432</id>
+    <eid>049d1c85-1fba-4a18-bc7d-bc56bc5db0d5</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Главными мировыми производителями стали являются:</TData>
+  </Content>
+  <Content>
+    <id>69e25d1b-1f87-4c42-a02f-8ca0fa2bbf65</id>
+    <eid>049d1c85-1fba-4a18-bc7d-bc56bc5db0d5</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Главными мировыми производителями стали являются:</TData>
+  </Content>
+  <Content>
+    <id>380541fa-1b98-4137-9454-7a00ec039b8e</id>
+    <eid>8ca5124d-0ba6-44ab-a10a-45a9abdb44c2</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>По тоннажу морского флота в мире лидируют страны</TData>
+  </Content>
+  <Content>
+    <id>cdf05ca7-c97b-4d90-84eb-b4ec145340c8</id>
+    <eid>8ca5124d-0ba6-44ab-a10a-45a9abdb44c2</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>По тоннажу морского флота в мире лидируют страны</TData>
+  </Content>
+  <Content>
+    <id>eb655ed6-d682-4760-88a0-3e5e56f38569</id>
+    <eid>25db4c8e-86ef-4fb2-88d3-9257dd374e77</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Россия занимает первое место в мире по</TData>
+  </Content>
+  <Content>
+    <id>bf858a52-35d7-4444-bb2b-df99bdb6d82f</id>
+    <eid>25db4c8e-86ef-4fb2-88d3-9257dd374e77</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Россия занимает первое место в мире по</TData>
+  </Content>
+  <Content>
+    <id>69d7d6f1-148a-436d-ad91-ddb71f593309</id>
+    <eid>32ae64a0-043c-459c-a174-9f2384192456</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>ege_geo_q17.htm</DataStr>
+  </Content>
+  <Content>
+    <id>4f28d85a-f1cb-4750-b6bb-0822774811b4</id>
+    <eid>1341f8d4-48a7-43f2-85a9-235592ececf1</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Государство Алжир показано на карте Африки цифрой</TData>
+  </Content>
+  <Content>
+    <id>d3f623ae-a37b-4479-af3a-a1c744caeedc</id>
+    <eid>1341f8d4-48a7-43f2-85a9-235592ececf1</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Государство Алжир показано на карте Африки цифрой</TData>
+  </Content>
+  <Content>
+    <id>0343db54-048f-4bd7-b701-271bdb12e7c0</id>
+    <eid>56206354-6aa1-4d8a-b15b-5d389cd6d7a7</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Монархиями являются</TData>
+  </Content>
+  <Content>
+    <id>98f39e1b-daae-4b84-9487-561193035608</id>
+    <eid>56206354-6aa1-4d8a-b15b-5d389cd6d7a7</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Монархиями являются</TData>
+  </Content>
+  <Content>
+    <id>e32bc653-027a-445b-949d-0b139ae6d92c</id>
+    <eid>adf80734-5711-405b-8228-2ce46dab54b7</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Для населения стран Восточной Европы характерна(-ен)</TData>
+  </Content>
+  <Content>
+    <id>c5909673-36de-42f1-a5e7-95128c90a87c</id>
+    <eid>adf80734-5711-405b-8228-2ce46dab54b7</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Для населения стран Восточной Европы характерна(-ен)</TData>
+  </Content>
+  <Content>
+    <id>30ddde4c-21c4-4c82-9883-3895325cf013</id>
+    <eid>26fedbed-632e-4ed4-8a42-cf308904f610</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>В каких странах доля городского населения составляет менее 50% ?</TData>
+  </Content>
+  <Content>
+    <id>7428abd2-310b-4950-9176-87691fca532b</id>
+    <eid>26fedbed-632e-4ed4-8a42-cf308904f610</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>В каких странах доля городского населения составляет менее 50% ?</TData>
+  </Content>
+  <Content>
+    <id>c8f9eea3-583c-4607-b4e6-63aefde5442a</id>
+    <eid>858dc1b4-53f5-4a8c-9597-12fb476146d1</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Какое государство имеет выход к морю?</TData>
+  </Content>
+  <Content>
+    <id>45a9b7a2-457c-4d67-8357-6d43fdd769b0</id>
+    <eid>858dc1b4-53f5-4a8c-9597-12fb476146d1</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Какое государство имеет выход к морю?</TData>
+  </Content>
+  <Content>
+    <id>97b25329-74f2-4aa1-822c-789ba5f7a318</id>
+    <eid>7cd835a8-5863-46bd-8223-7f87099fa9a5</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>ege_geo_q19.htm</DataStr>
+  </Content>
+  <Content>
+    <id>763a299d-303b-4f4b-a9ed-10c82f8a4635</id>
+    <eid>34e6bf90-1fb7-4bf3-8536-e9380af32e73</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Существование пролива между Азией и Америкой доказал</TData>
+  </Content>
+  <Content>
+    <id>884b3e33-e8e2-4d19-a36f-5e90c06eb1b2</id>
+    <eid>34e6bf90-1fb7-4bf3-8536-e9380af32e73</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Существование пролива между Азией и Америкой доказал</TData>
+  </Content>
+  <Content>
+    <id>7f9034bb-90bd-4160-bbc6-771c42586938</id>
+    <eid>78f81141-d4f8-41a7-b842-52244a01bd1d</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>В каком экономическом районе расположено наибольшее количество городов-миллионеров?</TData>
+  </Content>
+  <Content>
+    <id>5c78eceb-7186-4ee1-9e25-c8e61bd66c2e</id>
+    <eid>78f81141-d4f8-41a7-b842-52244a01bd1d</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>В каком экономическом районе расположено наибольшее количество городов-миллионеров?</TData>
+  </Content>
+  <Content>
+    <id>437f86bc-3b95-4150-a280-092ad1d4c879</id>
+    <eid>9d2ee3de-8bb0-4650-882a-9c04c3ac0565</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Естественный прирост населения выше</TData>
+  </Content>
+  <Content>
+    <id>3e6aef17-01d0-46f1-b9ce-12dd5f30fa1f</id>
+    <eid>9d2ee3de-8bb0-4650-882a-9c04c3ac0565</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Естественный прирост населения выше</TData>
+  </Content>
+  <Content>
+    <id>1fe2dc1f-0ed4-4dea-ac40-b959c22d6416</id>
+    <eid>63fa63dc-1c9e-4449-88f6-cf9fa9a2715d</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Металлургия полного цикла сформирована в городе</TData>
+  </Content>
+  <Content>
+    <id>4459b84a-b8fd-49f4-a0c3-e2fe196b0442</id>
+    <eid>63fa63dc-1c9e-4449-88f6-cf9fa9a2715d</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Металлургия полного цикла сформирована в городе</TData>
+  </Content>
+  <Content>
+    <id>6c575c2d-d70e-44e1-b74b-640315a8a929</id>
+    <eid>bd39accc-134c-410b-b1ed-1309660da862</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Портами  Северного  морского  пути являются</TData>
+  </Content>
+  <Content>
+    <id>c52ea8cf-f154-4820-9a33-ef2e4ec6797f</id>
+    <eid>bd39accc-134c-410b-b1ed-1309660da862</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Портами  Северного  морского  пути являются</TData>
+  </Content>
+  <Content>
+    <id>6d47f02f-1489-46fc-847e-6da0dea7f19d</id>
+    <eid>7a9ae5ad-45cd-4284-a66a-0881dba7d890</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Какая природная зона есть на Русской равнине, но отсутствует на Западно-Сибирской?</TData>
+  </Content>
+  <Content>
+    <id>716064f4-4ac0-4ab8-b0c6-836412a9a420</id>
+    <eid>7a9ae5ad-45cd-4284-a66a-0881dba7d890</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Какая природная зона есть на Русской равнине, но отсутствует на Западно-Сибирской?</TData>
+  </Content>
+  <Content>
+    <id>f7b0e88c-0d09-49d1-8e15-25586606d57d</id>
+    <eid>9cb8e5d3-8b19-4995-ae45-4aaaea53594c</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Крупнейшим по численности коренным народом Среднего Поволжья являются</TData>
+  </Content>
+  <Content>
+    <id>7a26b86b-9c04-4f40-bb43-da233b6b4ce8</id>
+    <eid>9cb8e5d3-8b19-4995-ae45-4aaaea53594c</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Крупнейшим по численности коренным народом Среднего Поволжья являются</TData>
+  </Content>
+  <Content>
+    <id>f0096277-49fb-4ff2-8092-7024260e2bbc</id>
+    <eid>8753adb2-5099-4209-9b13-27d6f11b1fb4</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Отраслью специализации Северо-Кавказского района является</TData>
+  </Content>
+  <Content>
+    <id>60389e1c-2365-4af0-acb7-96249dfb4d3e</id>
+    <eid>8753adb2-5099-4209-9b13-27d6f11b1fb4</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Отраслью специализации Северо-Кавказского района является</TData>
+  </Content>
+  <Content>
+    <id>21db0794-0f98-474e-a353-4874c4e94202</id>
+    <eid>eb650c40-fbba-4eaf-b2fe-9ac49ec75bf4</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Какая общая экологическая проблема характеризует Урал и Предкавказье?</TData>
+  </Content>
+  <Content>
+    <id>b63d72dd-27d4-4b64-83dc-b97a637d2aec</id>
+    <eid>eb650c40-fbba-4eaf-b2fe-9ac49ec75bf4</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Какая общая экологическая проблема характеризует Урал и Предкавказье?</TData>
+  </Content>
+  <Content>
+    <id>c74b5fe7-f67b-4d4a-8eb0-3923f0926617</id>
+    <eid>432f9015-6d20-44f4-a9f6-b12b73e224e0</eid>
+    <Type>5</Type>
+    <Lang>2</Lang>
+    <DataStr>EGE_geo_q33.htm</DataStr>
+  </Content>
+  <Content>
+    <id>02834ceb-1f33-42d1-a825-eab9758adf32</id>
+    <eid>432f9015-6d20-44f4-a9f6-b12b73e224e0</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>EGE_geo_q33.htm</DataStr>
+  </Content>
+  <Content>
+    <id>9657e663-29b9-4867-99a4-1e45bcf6c67a</id>
+    <eid>d2a3ef96-e490-4951-9ba0-4c783175018a</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Какой бассейн занимает первое место по добыче каменного угля  в России? </TData>
+  </Content>
+  <Content>
+    <id>807eee00-916b-4fd1-8b42-3d60f4dd72bd</id>
+    <eid>d2a3ef96-e490-4951-9ba0-4c783175018a</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Какой бассейн занимает первое место по добыче каменного угля  в России? </TData>
+  </Content>
+  <Content>
+    <id>23c6bfbc-490b-4dbc-b5d8-116fa5bbcd40</id>
+    <eid>4ef673c1-ba8e-4aee-ade1-ef6b0a81e14d</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Что общего у Западной Сибири, Поволжья и Центральной России?</TData>
+  </Content>
+  <Content>
+    <id>f597d6a0-f757-413d-8020-dde31910b5ac</id>
+    <eid>4ef673c1-ba8e-4aee-ade1-ef6b0a81e14d</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+    <TData>Что общего у Западной Сибири, Поволжья и Центральной России?</TData>
+  </Content>
+  <Content>
+    <id>d5d8ab5e-7ad6-47d7-a699-27022e30c4d9</id>
+    <eid>aeee677a-ab04-4fc6-886b-0f6422de0b3f</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>0ec5d766-e70e-4d1f-9de1-f00b1057689f</id>
+    <eid>aeee677a-ab04-4fc6-886b-0f6422de0b3f</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>7cae386c-1fa6-471c-847e-14e0ef2f886d</id>
+    <eid>c79a8788-019d-42e6-9812-459b3772773b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>4b76bca4-06c3-4bcd-b1e6-ff7fe67e20d2</id>
+    <eid>c79a8788-019d-42e6-9812-459b3772773b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>208267dc-7361-40d1-a8ea-0d1ecbd72dd4</id>
+    <eid>357f2067-7f13-4fad-996b-24342daa1485</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>2b055539-a56c-421e-860e-d3574238f9a1</id>
+    <eid>357f2067-7f13-4fad-996b-24342daa1485</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>1e98cb3e-39e7-430e-bfe9-7536dc49d8fa</id>
+    <eid>2b60be56-4171-452c-813f-1e165efb09af</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>47eee4f5-2cb6-4be5-954a-39eef003564f</id>
+    <eid>e0e6f425-3a53-4009-bb2e-5fac54de2933</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>4a75b21d-091e-4b9e-8d26-8809eabdd6a3</id>
+    <eid>e0e6f425-3a53-4009-bb2e-5fac54de2933</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>913d721f-6ac4-4207-9c39-4717243fa61a</id>
+    <eid>19702f48-8fc0-46d0-8151-6ba9cc5b0c06</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>9c43be72-bb74-47d3-8598-9e1edcc4d0ed</id>
+    <eid>19702f48-8fc0-46d0-8151-6ba9cc5b0c06</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>bde15a2f-8bf0-45a7-bfd8-93fbc567c40d</id>
+    <eid>3e42e544-ccf0-45ab-bd42-e40e09e2e8f8</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>765cff02-c353-4c7d-9a69-c140e9cf7778</id>
+    <eid>3e42e544-ccf0-45ab-bd42-e40e09e2e8f8</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>79ea9f79-7367-46c4-85e3-d4da1054be8e</id>
+    <eid>57645283-205a-4006-a0e3-b068420183c0</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>094d1898-4110-4f1d-a8dc-33c211bacca3</id>
+    <eid>d1e67354-e846-4fc8-ac57-3865822abc78</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>3346ce2c-6389-4dcb-a6fa-4dfe01587856</id>
+    <eid>d1e67354-e846-4fc8-ac57-3865822abc78</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>0a389059-7227-477c-8aa9-458f1bb1e236</id>
+    <eid>985e4c98-9dd8-4376-80c0-524d0faf54fe</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>3621b1e7-8685-43b3-ad79-9c4c17be77a6</id>
+    <eid>985e4c98-9dd8-4376-80c0-524d0faf54fe</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>3d1f0a7c-c633-4705-9564-8666cc7c4de1</id>
+    <eid>311f4d23-9c43-47f3-9049-da83a75f674b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>e3838283-5789-4990-96bc-be3653f9147f</id>
+    <eid>311f4d23-9c43-47f3-9049-da83a75f674b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>1c16a832-ea22-4d5a-afda-97906a963a1f</id>
+    <eid>a03ed15a-959d-4924-8ccb-a920107f6ab9</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>ef086d93-fbb3-4d24-9554-cace0f251371</id>
+    <eid>a03ed15a-959d-4924-8ccb-a920107f6ab9</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>00ee16cf-91bf-4a12-8e93-17c1e03ecaff</id>
+    <eid>0a3bf050-e217-41cc-bc2c-86f7dd921e60</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>416348e8-1614-4afd-9ce3-46443ee80735</id>
+    <eid>0a3bf050-e217-41cc-bc2c-86f7dd921e60</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>c2a3e58c-070a-4426-9c03-5b7ab1ff37b3</id>
+    <eid>a0e8077f-c47e-49c7-abe2-7aea23f9ee83</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>44c4b1ee-c8bf-4760-a6a5-d2028573292c</id>
+    <eid>a0e8077f-c47e-49c7-abe2-7aea23f9ee83</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>2ba4c1e6-d261-4486-9e4d-8f57a6acd9da</id>
+    <eid>9362a200-2f7b-4b78-a3e8-789adfbd32ee</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>ced14910-a4c0-4780-b971-fd87826f12c9</id>
+    <eid>9362a200-2f7b-4b78-a3e8-789adfbd32ee</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>e1492247-75c5-47e4-9844-1f01ea79276f</id>
+    <eid>17d49f5c-cdf8-401a-adcf-0ba7185ce65b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>33dc62e3-5d0f-47c8-8154-6e5731a24d33</id>
+    <eid>17d49f5c-cdf8-401a-adcf-0ba7185ce65b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>a4c208e6-c0ea-43ee-8a28-5f1a186e37b9</id>
+    <eid>3f4f85e5-6852-47a1-be97-bca5f9dc8c12</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>b08dcc40-18e1-40d4-bc5a-1c293c977b32</id>
+    <eid>8d9047a8-0108-434c-a93d-f804fe8cb203</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>645fde6d-4454-4aef-9094-e3d2f8afe7d7</id>
+    <eid>8d9047a8-0108-434c-a93d-f804fe8cb203</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>e614dfb2-d095-49a0-9f71-b6af2dc36029</id>
+    <eid>87f3ef73-f083-492b-a143-4049da5d9b54</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>50377d18-7756-4586-87eb-fc92327d9b88</id>
+    <eid>87f3ef73-f083-492b-a143-4049da5d9b54</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>36a9bf17-219f-47f8-8859-2ccc13e1b59f</id>
+    <eid>f21ffa71-182a-4c31-8ed7-54009e5aa199</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>f0195d41-8179-4bce-8b25-eeaf3c68486e</id>
+    <eid>f21ffa71-182a-4c31-8ed7-54009e5aa199</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>9609682b-e1cc-43cf-a326-882677bae46f</id>
+    <eid>9d9edf45-f0bf-4de7-9c4d-d0d0562127c2</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>f2ceddf2-7252-4bdb-bd9a-d0c5641737c7</id>
+    <eid>9d9edf45-f0bf-4de7-9c4d-d0d0562127c2</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>bfc5c4c5-d713-4dba-baf2-4c4d5cca4999</id>
+    <eid>e2576b55-ecdf-495a-a7cc-d942c25c83d8</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>c37785f4-2b7f-47bc-8484-9f78148ce0b1</id>
+    <eid>e2576b55-ecdf-495a-a7cc-d942c25c83d8</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>747183fc-c7bb-417f-bf19-a534181f6fd6</id>
+    <eid>f3ebc311-90ac-4c68-a76c-082cd2aff2b2</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>8188b50c-1360-4b50-90c9-0bd11f7bb2c2</id>
+    <eid>8b90843d-c6a7-4f1f-95da-3a731e634b4c</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>5dcb0386-4003-4f24-a15e-dc6cde5813da</id>
+    <eid>8b90843d-c6a7-4f1f-95da-3a731e634b4c</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>c173ba62-a44d-457a-b649-e415d1105fc7</id>
+    <eid>90eb8f17-dc34-48f3-a898-2a1d0e99d19d</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>eeb96371-c7ad-48ec-868a-ec02c08be223</id>
+    <eid>90eb8f17-dc34-48f3-a898-2a1d0e99d19d</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>a7cffddb-511f-4f10-975b-2842277087ce</id>
+    <eid>e72d6ec9-eb71-4ba7-8508-55bf980b6ba1</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>99527b30-79a9-4430-b00f-98243fb0be33</id>
+    <eid>e72d6ec9-eb71-4ba7-8508-55bf980b6ba1</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>1f5efcfa-19f6-47b6-895e-1f31174385d5</id>
+    <eid>e877ccad-4515-452f-9756-b9338e0f5068</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>ce8edc96-97fb-4de8-865b-ab072e3e1bf9</id>
+    <eid>e877ccad-4515-452f-9756-b9338e0f5068</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>2ef74ce2-a96c-4ac0-86db-68fb4022c8e6</id>
+    <eid>11555a28-2153-4f73-99cd-b0d67348b9b9</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>863b6fc8-fe7f-456d-9fad-bcb4ddcf6f1f</id>
+    <eid>11555a28-2153-4f73-99cd-b0d67348b9b9</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>1c1cef10-d330-44b5-8c15-cd6a7d18f1a3</id>
+    <eid>518ab0ef-c6ba-42c6-bedb-866c994c66ba</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>5c22e9ac-f5dd-4cb9-a2ce-e9a762f60981</id>
+    <eid>518ab0ef-c6ba-42c6-bedb-866c994c66ba</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>aaf905e2-27eb-4d7d-9fbe-199709a7d6c0</id>
+    <eid>df8036da-b9b4-4370-b99f-c6e9afc95cb0</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>be77ca80-eeac-459d-9af9-fbda9212c6df</id>
+    <eid>df8036da-b9b4-4370-b99f-c6e9afc95cb0</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>8f46d1f9-8399-4566-a4c5-6f9edd2fe45e</id>
+    <eid>e7764ec1-e4bf-4810-b615-fd6fa7811ced</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>a5e92ae4-3030-4d6e-8a30-ec00772693a7</id>
+    <eid>e7764ec1-e4bf-4810-b615-fd6fa7811ced</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>7987d576-bb1b-4e90-b0e3-5d0077016158</id>
+    <eid>6312d492-06ac-428c-bd95-496256c77ba4</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>3947a63c-4077-4bc1-85ef-9cf64150d98d</id>
+    <eid>6312d492-06ac-428c-bd95-496256c77ba4</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>824e97d2-c38b-4671-8f37-3bf74b0371e2</id>
+    <eid>bd2c7271-a4ec-445e-95b3-7b017cffb1ac</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>c07756c4-377c-4a75-9993-5aa92b00eb36</id>
+    <eid>bd2c7271-a4ec-445e-95b3-7b017cffb1ac</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>00eddfd7-5c57-42d8-b06f-5ed28f17bbf8</id>
+    <eid>bdb88cd6-fd0b-4283-a161-70a0dbb872d7</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>2a7f0ed2-de9e-4d32-85a6-85078d118d45</id>
+    <eid>bdb88cd6-fd0b-4283-a161-70a0dbb872d7</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>04404490-d927-4017-b67e-a30afea0b8f7</id>
+    <eid>8ecddc5f-bc7c-480c-829d-fe6bc18ce061</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>3cc34185-ce4d-403b-9140-c78cc7bfe83a</id>
+    <eid>8ecddc5f-bc7c-480c-829d-fe6bc18ce061</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>95cf77c2-62de-4b39-bc37-65876fabb641</id>
+    <eid>0d7fb042-21a4-431d-9113-79d50fbf3c5c</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>af07e913-ad69-459a-b6d3-e45733a7cf0e</id>
+    <eid>0d7fb042-21a4-431d-9113-79d50fbf3c5c</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>211eaba8-b4b1-433f-941b-1d77bbf1e7f7</id>
+    <eid>d7b215cc-4fb9-4ffa-96a6-7d868b33c661</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>5b4a5bcf-7710-434c-bf37-f47f3cc2cc11</id>
+    <eid>d7b215cc-4fb9-4ffa-96a6-7d868b33c661</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>e125c788-239f-4c26-a3b2-213a0055cac3</id>
+    <eid>39d97815-1e45-4e3c-84bf-fc8e3718c56e</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>f53de1cc-1f93-4c79-a3b2-4b37557f992e</id>
+    <eid>39d97815-1e45-4e3c-84bf-fc8e3718c56e</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>8459392a-faf8-41b3-81fb-531690948cb9</id>
+    <eid>db2e743c-35ab-4baa-962c-7f3bdeeb0eeb</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>0a42f28e-eb95-4b7b-9148-23534e613059</id>
+    <eid>642d37e2-dfe2-4791-acbf-0ed6cc31ba05</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>fdd1c86b-09a6-46be-af42-beb60bbc2dcc</id>
+    <eid>642d37e2-dfe2-4791-acbf-0ed6cc31ba05</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>311b1ad1-fa6c-4d8e-9e35-bc76a0f7aac3</id>
+    <eid>24c18145-743e-491e-bd0d-d368150adbfe</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>380da263-c65d-4abf-8d4b-fab60c0cceb5</id>
+    <eid>24c18145-743e-491e-bd0d-d368150adbfe</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>0fa68ef8-2287-4964-9810-63c762aacdb7</id>
+    <eid>3c9598ef-a196-4a51-9cc4-a7a130274807</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>4ed2a626-d3be-4efd-9eb0-653a5ce307f3</id>
+    <eid>3c9598ef-a196-4a51-9cc4-a7a130274807</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>d40df8df-8204-47bd-8b52-336eb55def21</id>
+    <eid>4814c03e-c449-4003-806e-d10a1704ddd9</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>beed62fa-6562-4f5c-96ac-12a11e7d13c8</id>
+    <eid>df00e876-d022-4e79-a936-a1703724693a</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>21fae76e-6716-4b4b-9250-faaf4f0f50bf</id>
+    <eid>df00e876-d022-4e79-a936-a1703724693a</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>4da6b3d8-5afa-4865-979a-20bf61cc728d</id>
+    <eid>d92e73e0-b057-4485-9db9-c84276f2da2e</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>0544a7fd-8dcc-4469-9e57-4189a93230c6</id>
+    <eid>d92e73e0-b057-4485-9db9-c84276f2da2e</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>791f23fb-2dd8-44f4-8e15-501acb08dcb4</id>
+    <eid>af6eb321-0f2c-4638-ad69-cfb88e95ef23</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>b05b2f35-d412-4d3a-a2ba-92baa8d8dc65</id>
+    <eid>af6eb321-0f2c-4638-ad69-cfb88e95ef23</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>6fc30fcd-8646-481e-9b29-1570e9f86836</id>
+    <eid>43d01ebc-cce7-4113-83f7-0462ca909158</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>9269fe77-c281-4a51-83c7-3d6fd8765a15</id>
+    <eid>43d01ebc-cce7-4113-83f7-0462ca909158</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>e1fdf691-0a56-4ee2-b2c0-b2d9749c61ab</id>
+    <eid>d48d6a34-f4b7-4e5b-a188-771546aed6d6</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>6c41608e-1c1e-43f1-a578-cabc6050b425</id>
+    <eid>d48d6a34-f4b7-4e5b-a188-771546aed6d6</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>6158ca1e-4af3-40ac-99eb-105ea20810b0</id>
+    <eid>f36af85a-d708-4d09-983a-02d95479dcb1</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>1fb473f1-1287-4693-8216-854dbd7515b1</id>
+    <eid>f36af85a-d708-4d09-983a-02d95479dcb1</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>89e954b9-b178-4953-a3e8-9550ddd3fad7</id>
+    <eid>8f4d876b-3122-48be-92fc-052ed5d323fd</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>e47dd682-7bc8-4da8-b895-c70a04849c04</id>
+    <eid>8f4d876b-3122-48be-92fc-052ed5d323fd</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>bf6b8ea3-2792-4115-a57d-0d0999e73b73</id>
+    <eid>d08e2f5e-c5ab-4118-b470-8df1521b4cb6</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>c97c0cb1-5093-4f36-b061-63914a9c6608</id>
+    <eid>d08e2f5e-c5ab-4118-b470-8df1521b4cb6</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>967b6c05-f28c-4ec9-acec-7dd0b21aa763</id>
+    <eid>6c6ccef6-a1ff-47aa-a2c0-6c1cb28bbfe8</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>ccf009b8-ded0-497f-9350-756bee82d94c</id>
+    <eid>9ca7180d-8674-42ab-9af0-72e994979592</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>a235ede0-845d-46a6-9a6b-bd959ac65777</id>
+    <eid>9ca7180d-8674-42ab-9af0-72e994979592</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>c946baa7-3b3f-4bfa-ac7a-959016ae9d68</id>
+    <eid>50a66f49-cd0f-486f-93e6-da3620912288</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>295f111c-86b4-4a86-8d07-bada984ef31d</id>
+    <eid>50a66f49-cd0f-486f-93e6-da3620912288</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>4b2ba9e2-31fb-448d-a95b-4e83ce365d23</id>
+    <eid>7a88b918-1e8c-4241-afa4-35db24412907</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>6bf2d61a-69e4-4a17-8618-ba6b3e9244a6</id>
+    <eid>7a88b918-1e8c-4241-afa4-35db24412907</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>f09a1b28-1930-4fb4-bd10-a2096bbb4957</id>
+    <eid>e567ee85-3db6-43a3-ba92-1e126293b060</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>5d2197b7-1d41-4a62-b551-da74f22bba22</id>
+    <eid>e567ee85-3db6-43a3-ba92-1e126293b060</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>35fb0f15-215c-460f-80e3-7a093eea018c</id>
+    <eid>836efafd-8e2f-4821-a1b3-468d6de8d0e3</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>d073a2cd-429b-4c5b-b176-a0c534e039b0</id>
+    <eid>836efafd-8e2f-4821-a1b3-468d6de8d0e3</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>13380ca1-dc3b-4e64-a252-7ae2e888a851</id>
+    <eid>3261cdfa-5028-4345-86e3-9148ccb87349</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>f0af96d0-f32b-4ccf-8cbc-6eee9332b0c5</id>
+    <eid>e0847bec-1236-415a-82e3-2c6f384a0d5f</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>022e7a3c-0ec3-40d1-b023-ccef5b289594</id>
+    <eid>e0847bec-1236-415a-82e3-2c6f384a0d5f</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>a02d4158-957f-4c80-a6ef-194e21f20f91</id>
+    <eid>5cd1e39e-b047-4a7b-9708-71918edc4df0</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>3d07d0d4-a4e7-47c7-88dd-641c0ac670b9</id>
+    <eid>5cd1e39e-b047-4a7b-9708-71918edc4df0</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>b376094d-e981-47f8-9f59-5ff9a0f94aa7</id>
+    <eid>797160e4-c4d3-40b4-bd30-ff9707370ecc</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>9b339a9a-bf0b-4830-a4cc-be9d90e5c27c</id>
+    <eid>797160e4-c4d3-40b4-bd30-ff9707370ecc</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>6f91c841-24d7-43bf-becd-526bd62c4508</id>
+    <eid>53cbd0fa-eb2b-48e2-a26d-6feaa945bd7f</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>ce197b38-23a8-4616-85f7-c38e35f2cd25</id>
+    <eid>53cbd0fa-eb2b-48e2-a26d-6feaa945bd7f</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>8bf0116a-9d9b-4036-9d34-8c0cca2288ac</id>
+    <eid>522df6cc-c1e7-4a2f-a491-8c5dc296f901</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>6245bb72-d488-4fd1-b5dc-dfff394f968c</id>
+    <eid>522df6cc-c1e7-4a2f-a491-8c5dc296f901</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>ce4e396e-e796-4032-92da-08da89518b6e</id>
+    <eid>0c17b09b-7a0e-40d8-9b5c-c67bf7b22ae9</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>f6dac38c-7b78-4bbf-b9e1-f47696166947</id>
+    <eid>0c17b09b-7a0e-40d8-9b5c-c67bf7b22ae9</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>5810b81d-40ee-40c2-b9be-4f3157657084</id>
+    <eid>1b9d18e9-d9ac-4f80-9d94-e6657cd1169b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>0d57c37e-87c7-447e-98be-a0b899e38cb3</id>
+    <eid>1b9d18e9-d9ac-4f80-9d94-e6657cd1169b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>804ba93a-6bf8-4238-bfd1-3c66848927e9</id>
+    <eid>3e475449-e612-4998-aebf-c8c859d7ef47</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>d5d828ff-971f-47bb-8531-da95637f3934</id>
+    <eid>3e475449-e612-4998-aebf-c8c859d7ef47</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>cf14bcaf-6365-458c-b90f-04f08d88e485</id>
+    <eid>7296f197-0361-4e3e-b1b8-80a6c1f8e6f5</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>41dc3b1a-75b7-4edb-94c8-15edff6623ec</id>
+    <eid>7296f197-0361-4e3e-b1b8-80a6c1f8e6f5</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>c3366974-6986-4b3d-9343-cb46a9cb6d90</id>
+    <eid>0aa82373-8487-4e69-82d3-c839b4a58a34</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>00689901-2004-4a13-b574-fed12264b6af</id>
+    <eid>0aa82373-8487-4e69-82d3-c839b4a58a34</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>ae805f2d-aff8-4c62-9a7a-484701c5e217</id>
+    <eid>e29c22cd-3c92-43aa-a120-bb8083b3a624</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>b1be32ec-fce2-424b-8f76-c73c3f2fe911</id>
+    <eid>e29c22cd-3c92-43aa-a120-bb8083b3a624</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>8a64b1c0-9c12-42d2-8b58-163a83725d7c</id>
+    <eid>91b3cbbf-5078-4ea2-a95b-1c476cbedae2</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>659f896e-1691-4449-838f-1a5b704e4fed</id>
+    <eid>91b3cbbf-5078-4ea2-a95b-1c476cbedae2</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr />
+  </Content>
+  <Content>
+    <id>13201313-832f-4089-adec-5c1483ea2174</id>
+    <eid>036808f9-a6f7-4a18-b545-48102210df55</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Восточной Европы&lt;/Answer&gt;&lt;Answer right = "true"&gt;Южной Европы&lt;/Answer&gt;&lt;Answer right = "false"&gt;Юго-Восточной Азии&lt;/Answer&gt;&lt;Answer right = "false"&gt;Южной Америки&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>0101a0ab-db25-4be6-81c9-867009ade8de</id>
+    <eid>036808f9-a6f7-4a18-b545-48102210df55</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Восточной Европы&lt;/Answer&gt;&lt;Answer right = "true"&gt;Южной Европы&lt;/Answer&gt;&lt;Answer right = "false"&gt;Юго-Восточной Азии&lt;/Answer&gt;&lt;Answer right = "false"&gt;Южной Америки&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>b0db80dc-b8db-4d9a-a820-08c10b941556</id>
+    <eid>0aacb5a0-cddd-4159-8d43-11b8aba6d50f</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Расстояние от центра Земли до экватора меньше, чем до любого из полюсов.&lt;/Answer&gt;&lt;Answer right = "true"&gt;Средний радиус Земли равен 6371 км.&lt;/Answer&gt;&lt;Answer right = "false"&gt;Длина любого меридиана больше длины экватора.&lt;/Answer&gt;&lt;Answer right = "false"&gt;Длина экватора составляет примерно 20000 км.&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>322420e0-b658-4be5-a07d-987c31cd9316</id>
+    <eid>0aacb5a0-cddd-4159-8d43-11b8aba6d50f</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Расстояние от центра Земли до экватора меньше, чем до любого из полюсов.&lt;/Answer&gt;&lt;Answer right = "true"&gt;Средний радиус Земли равен 6371 км.&lt;/Answer&gt;&lt;Answer right = "false"&gt;Длина любого меридиана больше длины экватора.&lt;/Answer&gt;&lt;Answer right = "false"&gt;Длина экватора составляет примерно 20000 км.&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>42af2f72-bb21-4790-9242-73353821ae2d</id>
+    <eid>acff6d9b-68b9-4c5a-93d2-9e8f11d1ea66</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Анд&lt;/Answer&gt;&lt;Answer right = "true"&gt;Уральских&lt;/Answer&gt;&lt;Answer right = "false"&gt;Кавказских&lt;/Answer&gt;&lt;Answer right = "false"&gt;Альп&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>2efb9115-9126-4638-b291-d9a2838790ad</id>
+    <eid>acff6d9b-68b9-4c5a-93d2-9e8f11d1ea66</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Анд&lt;/Answer&gt;&lt;Answer right = "true"&gt;Уральских&lt;/Answer&gt;&lt;Answer right = "false"&gt;Кавказских&lt;/Answer&gt;&lt;Answer right = "false"&gt;Альп&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>9157a4d8-b179-4fd9-b588-1c8964fa34d6</id>
+    <eid>17c6370f-74da-4c51-9384-41db5695a0c3</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;1&lt;/Answer&gt;&lt;Answer right = "false"&gt;2&lt;/Answer&gt;&lt;Answer right = "false"&gt;3&lt;/Answer&gt;&lt;Answer right = "false"&gt;4&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>2badbb28-2517-412e-be37-4c46a6c47776</id>
+    <eid>17c6370f-74da-4c51-9384-41db5695a0c3</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>77c4a1aa-a34a-4bfd-bdfd-807ad2ac73f3</id>
+    <eid>17c6370f-74da-4c51-9384-41db5695a0c3</eid>
+    <Type>2</Type>
+    <Lang>3</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>3857858a-1473-4251-8218-2ffbd9eda0a9</id>
+    <eid>65a7d856-cd1d-4423-9ddb-940cac88f4e1</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;верхних слоях атмосферы&lt;/Answer&gt;&lt;Answer right = "false"&gt;озоновом слое&lt;/Answer&gt;&lt;Answer right = "false"&gt;стратосфере&lt;/Answer&gt;&lt;Answer right = "true"&gt;тропосфере&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>685c0a82-9175-4486-b731-f0c64ee18ab4</id>
+    <eid>65a7d856-cd1d-4423-9ddb-940cac88f4e1</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;верхних слоях атмосферы&lt;/Answer&gt;&lt;Answer right = "false"&gt;озоновом слое&lt;/Answer&gt;&lt;Answer right = "false"&gt;стратосфере&lt;/Answer&gt;&lt;Answer right = "true"&gt;тропосфере&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>9a79763b-c85a-4004-ab69-1e2c4fa7dadc</id>
+    <eid>93fae2bc-67b5-4e9d-991e-928aad7125c8</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;тропических пустынь&lt;/Answer&gt;&lt;Answer right = "true"&gt;саванн и редколесий&lt;/Answer&gt;&lt;Answer right = "false"&gt;влажных экваториальных лесов&lt;/Answer&gt;&lt;Answer right = "false"&gt;жестколистных вечнозелёных лесов и кустарников&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>4c541da1-4c5a-443a-b185-eb6b72da79b2</id>
+    <eid>93fae2bc-67b5-4e9d-991e-928aad7125c8</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;тропических пустынь&lt;/Answer&gt;&lt;Answer right = "true"&gt;саванн и редколесий&lt;/Answer&gt;&lt;Answer right = "false"&gt;влажных экваториальных лесов&lt;/Answer&gt;&lt;Answer right = "false"&gt;жестколистных вечнозелёных лесов и кустарников&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>34aceaac-8b71-402d-b741-171d6b73944d</id>
+    <eid>346c625f-0fb4-4253-880f-01144df6bf7f</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;природная зона пустынь и полупустынь&lt;/Answer&gt;&lt;Answer right = "false"&gt;зона смешанных и широколиственных лесов&lt;/Answer&gt;&lt;Answer right = "false"&gt;области высотной поясности&lt;/Answer&gt;&lt;Answer right = "true"&gt;природная зона саванн и редколесий&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>b78fadbb-0c8a-4f7a-bdae-a4a44acca81c</id>
+    <eid>346c625f-0fb4-4253-880f-01144df6bf7f</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;природная зона пустынь и полупустынь&lt;/Answer&gt;&lt;Answer right = "false"&gt;зона смешанных и широколиственных лесов&lt;/Answer&gt;&lt;Answer right = "false"&gt;области высотной поясности&lt;/Answer&gt;&lt;Answer right = "true"&gt;природная зона саванн и редколесий&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>4db8b9e9-b470-42df-b8cf-4b21c6941209</id>
+    <eid>7ac0ab0a-7adb-4c05-a2e7-64bc5ed88262</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;A&lt;/Answer&gt;&lt;Answer right = "false"&gt;B&lt;/Answer&gt;&lt;Answer right = "true"&gt;C&lt;/Answer&gt;&lt;Answer right = "false"&gt;D&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>69d00981-526f-4d22-828d-824a89621187</id>
+    <eid>7ac0ab0a-7adb-4c05-a2e7-64bc5ed88262</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "true"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>fc84a940-379f-4305-8510-9dfefd3c72b4</id>
+    <eid>7ac0ab0a-7adb-4c05-a2e7-64bc5ed88262</eid>
+    <Type>2</Type>
+    <Lang>3</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "true"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>2da59ca7-a403-471d-8438-353c812a746a</id>
+    <eid>3255df1d-276d-4d3a-9b47-f8625ea4aae8</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Северная Америка&lt;/Answer&gt;&lt;Answer right = "false"&gt;Южная Америка&lt;/Answer&gt;&lt;Answer right = "true"&gt;Австралия&lt;/Answer&gt;&lt;Answer right = "false"&gt;Африка&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>e56f52a5-3d27-490e-b383-b99c4a8dd493</id>
+    <eid>3255df1d-276d-4d3a-9b47-f8625ea4aae8</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Северная Америка&lt;/Answer&gt;&lt;Answer right = "false"&gt;Южная Америка&lt;/Answer&gt;&lt;Answer right = "true"&gt;Австралия&lt;/Answer&gt;&lt;Answer right = "false"&gt;Африка&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>70ea9190-6c5a-49d7-b59c-71d7d0fc2e8e</id>
+    <eid>5bf50a06-ae7c-4357-94e5-6144c0686d06</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Москве&lt;/Answer&gt;&lt;Answer right = "true"&gt;Калининграде&lt;/Answer&gt;&lt;Answer right = "false"&gt;Омске&lt;/Answer&gt;&lt;Answer right = "false"&gt;Якутске&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>d1d44833-7dbd-4667-ba57-bcfd6037e667</id>
+    <eid>5bf50a06-ae7c-4357-94e5-6144c0686d06</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Москве&lt;/Answer&gt;&lt;Answer right = "true"&gt;Калининграде&lt;/Answer&gt;&lt;Answer right = "false"&gt;Омске&lt;/Answer&gt;&lt;Answer right = "false"&gt;Якутске&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>2a4a1a01-f640-429d-9e44-b3c7e5c63cda</id>
+    <eid>36a48fc7-1988-487a-9092-a59cf8429b9b</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;высокой рождаемостью&lt;/Answer&gt;&lt;Answer right = "true"&gt;низкой рождаемостью&lt;/Answer&gt;&lt;Answer right = "false"&gt;низкой средней продолжительностью жизни&lt;/Answer&gt;&lt;Answer right = "false"&gt;высоким естественным приростом&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>576a85d8-17cc-446d-861c-e97f1a69673d</id>
+    <eid>36a48fc7-1988-487a-9092-a59cf8429b9b</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;высокой рождаемостью&lt;/Answer&gt;&lt;Answer right = "true"&gt;низкой рождаемостью&lt;/Answer&gt;&lt;Answer right = "false"&gt;низкой средней продолжительностью жизни&lt;/Answer&gt;&lt;Answer right = "false"&gt;высоким естественным приростом&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>3e78a6d5-5cfc-45ea-875d-5f696d75f1e1</id>
+    <eid>561f01f1-0279-4b57-82ab-42e2d6b24d67</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Это крупные порты.&lt;/Answer&gt;&lt;Answer right = "true"&gt;Это города-миллионеры.&lt;/Answer&gt;&lt;Answer right = "false"&gt;Они расположены в бассейне Тихого океана.&lt;/Answer&gt;&lt;Answer right = "false"&gt;Это столицы.&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>d147cd8d-962c-4c60-8fdc-c11cbe3e11a2</id>
+    <eid>561f01f1-0279-4b57-82ab-42e2d6b24d67</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Это крупные порты.&lt;/Answer&gt;&lt;Answer right = "true"&gt;Это города-миллионеры.&lt;/Answer&gt;&lt;Answer right = "false"&gt;Они расположены в бассейне Тихого океана.&lt;/Answer&gt;&lt;Answer right = "false"&gt;Это столицы.&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>2f3f21ad-edca-4fb5-b2e3-4138d06234f7</id>
+    <eid>2c7fa8ea-f195-4d44-b977-b11a04851602</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;ассоциацию государств Юго-Восточной Азии&lt;/Answer&gt;&lt;Answer right = "true"&gt;организацию стран – экспортёров нефти&lt;/Answer&gt;&lt;Answer right = "false"&gt;Лигу арабских государств&lt;/Answer&gt;&lt;Answer right = "false"&gt;Североамериканскую ассоциацию свободной торговли&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>de1c3218-9018-4945-9ddc-630aa66625c1</id>
+    <eid>2c7fa8ea-f195-4d44-b977-b11a04851602</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;ассоциацию государств Юго-Восточной Азии&lt;/Answer&gt;&lt;Answer right = "true"&gt;организацию стран – экспортёров нефти&lt;/Answer&gt;&lt;Answer right = "false"&gt;Лигу арабских государств&lt;/Answer&gt;&lt;Answer right = "false"&gt;Североамериканскую ассоциацию свободной торговли&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>c00a79ea-be95-4bf1-83fd-996dafeba843</id>
+    <eid>94e515cc-c41e-4852-b522-fe5be2d2d351</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;Китай, Япония, США&lt;/Answer&gt;&lt;Answer right = "false"&gt;США, Бразилия, Индия&lt;/Answer&gt;&lt;Answer right = "false"&gt;Украина, Россия, Япония&lt;/Answer&gt;&lt;Answer right = "false"&gt;Австралия, Индия, Россия&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>b319b88d-34fc-45ce-8041-a25ddc2ca453</id>
+    <eid>94e515cc-c41e-4852-b522-fe5be2d2d351</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;Китай, Япония, США&lt;/Answer&gt;&lt;Answer right = "false"&gt;США, Бразилия, Индия&lt;/Answer&gt;&lt;Answer right = "false"&gt;Украина, Россия, Япония&lt;/Answer&gt;&lt;Answer right = "false"&gt;Австралия, Индия, Россия&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>3ecb62e7-acb2-442d-b349-782814003a31</id>
+    <eid>0a1da4e6-6156-4ca1-8c50-fdcac41e37de</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;Панама и Либерия&lt;/Answer&gt;&lt;Answer right = "false"&gt;Великобритания и Испания&lt;/Answer&gt;&lt;Answer right = "false"&gt;США и Япония&lt;/Answer&gt;&lt;Answer right = "false"&gt;Россия и Канада&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>015c1e54-b491-4dd0-b429-84d6ec3e887a</id>
+    <eid>0a1da4e6-6156-4ca1-8c50-fdcac41e37de</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;Панама и Либерия&lt;/Answer&gt;&lt;Answer right = "false"&gt;Великобритания и Испания&lt;/Answer&gt;&lt;Answer right = "false"&gt;США и Япония&lt;/Answer&gt;&lt;Answer right = "false"&gt;Россия и Канада&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>4303ca22-6306-4dbe-b092-d279bd8fb9c3</id>
+    <eid>61f6e9d9-9097-4fb0-ac72-e187f6d4881e</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;запасам нефти&lt;/Answer&gt;&lt;Answer right = "true"&gt;запасам природного газа&lt;/Answer&gt;&lt;Answer right = "false"&gt;суммарной мощности АЭС&lt;/Answer&gt;&lt;Answer right = "false"&gt;добыче нефти&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>3fde746a-0683-4364-aaff-e859a38ab6ab</id>
+    <eid>61f6e9d9-9097-4fb0-ac72-e187f6d4881e</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;запасам нефти&lt;/Answer&gt;&lt;Answer right = "true"&gt;запасам природного газа&lt;/Answer&gt;&lt;Answer right = "false"&gt;суммарной мощности АЭС&lt;/Answer&gt;&lt;Answer right = "false"&gt;добыче нефти&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>c32a1f35-1eab-465d-8946-939e2792caa7</id>
+    <eid>e4f25f5f-baab-4e5c-9350-4f3f3538bb42</eid>
+    <Type>2</Type>
+    <Lang>3</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "true"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>3f3a8196-5eb0-43b3-a2a4-b0162826cf26</id>
+    <eid>e4f25f5f-baab-4e5c-9350-4f3f3538bb42</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "true"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>51864f57-b8c5-4c26-8f78-d520e9f26f8a</id>
+    <eid>e4f25f5f-baab-4e5c-9350-4f3f3538bb42</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;сельскохозяйственные земли&lt;/Answer&gt;&lt;Answer right = "true"&gt;районы заготовки древесины&lt;/Answer&gt;&lt;Answer right = "false"&gt;непригодные для сельского хозяйства земли&lt;/Answer&gt;&lt;Answer right = "false"&gt;малоценные для сельского хозяйства земли&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>c361390f-0302-4441-94bb-355593b5ce5d</id>
+    <eid>832ee9f3-0710-4e39-ac37-880df9587def</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;1&lt;/Answer&gt;&lt;Answer right = "false"&gt;2&lt;/Answer&gt;&lt;Answer right = "false"&gt;3&lt;/Answer&gt;&lt;Answer right = "false"&gt;4&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>ca8dc250-3407-48ec-85f6-38cab6ad079e</id>
+    <eid>832ee9f3-0710-4e39-ac37-880df9587def</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;1&lt;/Answer&gt;&lt;Answer right = "false"&gt;2&lt;/Answer&gt;&lt;Answer right = "false"&gt;3&lt;/Answer&gt;&lt;Answer right = "false"&gt;4&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>6dd95824-fb07-4665-a934-42301600f484</id>
+    <eid>fc9f6ca9-b6fe-431a-abe6-3d8a9fe667de</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Австрия и Греция&lt;/Answer&gt;&lt;Answer right = "false"&gt;Ирландия и Финляндия&lt;/Answer&gt;&lt;Answer right = "false"&gt;Италия и Франция&lt;/Answer&gt;&lt;Answer right = "true"&gt;Испания и Бельгия&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>e1191639-8352-4c85-a10c-9fc0dbc0f710</id>
+    <eid>fc9f6ca9-b6fe-431a-abe6-3d8a9fe667de</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Австрия и Греция&lt;/Answer&gt;&lt;Answer right = "false"&gt;Ирландия и Финляндия&lt;/Answer&gt;&lt;Answer right = "false"&gt;Италия и Франция&lt;/Answer&gt;&lt;Answer right = "true"&gt;Испания и Бельгия&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>b763d8f5-e0e9-42e5-b5bf-7e3d8b0504a7</id>
+    <eid>f20a37d9-663e-45a8-9fb2-acd4dab8d101</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;естественная убыль населения&lt;/Answer&gt;&lt;Answer right = "false"&gt;низкий (менее 30 %) уровень урбанизации&lt;/Answer&gt;&lt;Answer right = "false"&gt;наибольшая доля детей в возрастной структуре населения&lt;/Answer&gt;&lt;Answer right = "false"&gt;религия большинства верующего населения - протестантство&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>29d7ef60-9399-49c0-b170-89e2af963b90</id>
+    <eid>f20a37d9-663e-45a8-9fb2-acd4dab8d101</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;естественная убыль населения&lt;/Answer&gt;&lt;Answer right = "false"&gt;низкий (менее 30 %) уровень урбанизации&lt;/Answer&gt;&lt;Answer right = "false"&gt;наибольшая доля детей в возрастной структуре населения&lt;/Answer&gt;&lt;Answer right = "false"&gt;религия большинства верующего населения - протестантство&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>7e33cbd9-8998-4378-9be8-008bc0134c25</id>
+    <eid>770dd433-22af-45df-ab7c-cd925164558b</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;Индии и Монголии&lt;/Answer&gt;&lt;Answer right = "false"&gt;Бельгии и Польше&lt;/Answer&gt;&lt;Answer right = "false"&gt;Японии и Швейцарии&lt;/Answer&gt;&lt;Answer right = "false"&gt;Германия и Италии&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>fe471143-3081-4eee-9c99-e1bfb9f478f0</id>
+    <eid>770dd433-22af-45df-ab7c-cd925164558b</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;Индии и Монголии&lt;/Answer&gt;&lt;Answer right = "false"&gt;Бельгии и Польше&lt;/Answer&gt;&lt;Answer right = "false"&gt;Японии и Швейцарии&lt;/Answer&gt;&lt;Answer right = "false"&gt;Германия и Италии&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>f3f12d6d-ec75-4d80-9304-9b011faa8344</id>
+    <eid>a1e72ac0-4630-4713-b176-d32f3a0b0a65</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;Украина&lt;/Answer&gt;&lt;Answer right = "false"&gt;Киргизия&lt;/Answer&gt;&lt;Answer right = "false"&gt;Узбекистан&lt;/Answer&gt;&lt;Answer right = "false"&gt;Молдавия&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>8c5646e9-c570-4081-9835-bdcb11855dde</id>
+    <eid>a1e72ac0-4630-4713-b176-d32f3a0b0a65</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;Украина&lt;/Answer&gt;&lt;Answer right = "false"&gt;Киргизия&lt;/Answer&gt;&lt;Answer right = "false"&gt;Узбекистан&lt;/Answer&gt;&lt;Answer right = "false"&gt;Молдавия&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>d6c966b7-20ed-47bc-b0dd-4553af30d0c1</id>
+    <eid>db22099e-b7f5-4f53-9f47-15304cb27792</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "true"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>2b8ef9dc-164d-4917-aa60-aee036cc8438</id>
+    <eid>db22099e-b7f5-4f53-9f47-15304cb27792</eid>
+    <Type>2</Type>
+    <Lang>3</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "true"&gt;&lt;/Answer&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>291d2b9d-dbb0-4b2e-ab91-e08f433dac50</id>
+    <eid>db22099e-b7f5-4f53-9f47-15304cb27792</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;мазут&lt;/Answer&gt;&lt;Answer right = "false"&gt;дизельное топливо&lt;/Answer&gt;&lt;Answer right = "true"&gt;газ&lt;/Answer&gt;&lt;Answer right = "false"&gt;горючие сланцы&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>e6c100a4-70bc-467d-98b8-2f5411bd3d94</id>
+    <eid>39d632a7-31bd-4632-9add-99a3e93ec598</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;В. Беринг&lt;/Answer&gt;&lt;Answer right = "false"&gt;С. Челюскин&lt;/Answer&gt;&lt;Answer right = "false"&gt;А. Чириков&lt;/Answer&gt;&lt;Answer right = "false"&gt;Е. Хабаров&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>5d30eb42-3a4d-4adc-93d6-b6b5d4190676</id>
+    <eid>39d632a7-31bd-4632-9add-99a3e93ec598</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;В. Беринг&lt;/Answer&gt;&lt;Answer right = "false"&gt;С. Челюскин&lt;/Answer&gt;&lt;Answer right = "false"&gt;А. Чириков&lt;/Answer&gt;&lt;Answer right = "false"&gt;Е. Хабаров&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>5ee4bcb2-553c-49a1-bf94-89e3af1fa286</id>
+    <eid>d3c9880a-a380-4060-8c52-f8f7522324d0</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Северо-Кавказском&lt;/Answer&gt;&lt;Answer right = "false"&gt;Западно-Сибирском&lt;/Answer&gt;&lt;Answer right = "true"&gt;Уральском&lt;/Answer&gt;&lt;Answer right = "false"&gt;Центральном&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>6c895ffc-7f06-4544-8ad4-af6cc6e0b81f</id>
+    <eid>d3c9880a-a380-4060-8c52-f8f7522324d0</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Северо-Кавказском&lt;/Answer&gt;&lt;Answer right = "false"&gt;Западно-Сибирском&lt;/Answer&gt;&lt;Answer right = "true"&gt;Уральском&lt;/Answer&gt;&lt;Answer right = "false"&gt;Центральном&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>2815d38f-715e-48fd-a4a5-17b684d893d9</id>
+    <eid>1f8e6110-9fea-49eb-a0c7-c61c645f95c8</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;в Дагестане&lt;/Answer&gt;&lt;Answer right = "false"&gt;в Магаданской области&lt;/Answer&gt;&lt;Answer right = "false"&gt;в Псковской области&lt;/Answer&gt;&lt;Answer right = "false"&gt;на Камчатке&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>148b83f1-0194-4e93-bd30-8b9661da735d</id>
+    <eid>1f8e6110-9fea-49eb-a0c7-c61c645f95c8</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;в Дагестане&lt;/Answer&gt;&lt;Answer right = "false"&gt;в Магаданской области&lt;/Answer&gt;&lt;Answer right = "false"&gt;в Псковской области&lt;/Answer&gt;&lt;Answer right = "false"&gt;на Камчатке&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>06495a40-a066-4921-816b-718c9a47ce1e</id>
+    <eid>d84375f6-ea68-419e-af7d-a930f368e6a9</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Нижнем Новгороде&lt;/Answer&gt;&lt;Answer right = "false"&gt;Краснодаре&lt;/Answer&gt;&lt;Answer right = "false"&gt;Москве&lt;/Answer&gt;&lt;Answer right = "true"&gt;Череповце&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>8a382c9d-1a15-46bd-a35d-f1b72df049ae</id>
+    <eid>d84375f6-ea68-419e-af7d-a930f368e6a9</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Нижнем Новгороде&lt;/Answer&gt;&lt;Answer right = "false"&gt;Краснодаре&lt;/Answer&gt;&lt;Answer right = "false"&gt;Москве&lt;/Answer&gt;&lt;Answer right = "true"&gt;Череповце&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>30ac397a-47f2-4936-b7c6-316c62dd50b1</id>
+    <eid>20007a81-0727-4f76-b11c-fe11b441dc26</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Архангельск,  Владивосток  и  Санкт-Петербург&lt;/Answer&gt;&lt;Answer right = "false"&gt;Астрахань,  Калининград  и  Магадан&lt;/Answer&gt;&lt;Answer right = "true"&gt;Диксон,  Мурманск  и  Хатанга&lt;/Answer&gt;&lt;Answer right = "false"&gt;Находка,  Новороссийск  и  Тикси&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>4a3f16b9-0155-4bd5-9381-902bdf6e5d56</id>
+    <eid>20007a81-0727-4f76-b11c-fe11b441dc26</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Архангельск,  Владивосток  и  Санкт-Петербург&lt;/Answer&gt;&lt;Answer right = "false"&gt;Астрахань,  Калининград  и  Магадан&lt;/Answer&gt;&lt;Answer right = "true"&gt;Диксон,  Мурманск  и  Хатанга&lt;/Answer&gt;&lt;Answer right = "false"&gt;Находка,  Новороссийск  и  Тикси&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>492e629c-70e0-46ba-a268-38463aa37a5f</id>
+    <eid>9ed3d993-d232-402b-90d8-645e9d153467</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;тундра&lt;/Answer&gt;&lt;Answer right = "false"&gt;тайга&lt;/Answer&gt;&lt;Answer right = "false"&gt;смешанные леса&lt;/Answer&gt;&lt;Answer right = "true"&gt;широколиственные леса&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>9b6984a7-6a9d-42a7-9d5f-5c5bbdcf7d63</id>
+    <eid>9ed3d993-d232-402b-90d8-645e9d153467</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;тундра&lt;/Answer&gt;&lt;Answer right = "false"&gt;тайга&lt;/Answer&gt;&lt;Answer right = "false"&gt;смешанные леса&lt;/Answer&gt;&lt;Answer right = "true"&gt;широколиственные леса&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>07b36125-caed-4cda-9d79-56d899ac783d</id>
+    <eid>94b4e3cb-19f0-48ed-b527-e03b04c11c4c</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;башкиры&lt;/Answer&gt;&lt;Answer right = "false"&gt;марийцы&lt;/Answer&gt;&lt;Answer right = "true"&gt;татары&lt;/Answer&gt;&lt;Answer right = "false"&gt;чуваши&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>e86d6ea6-62cc-4b64-a7b0-c58c7ec98611</id>
+    <eid>94b4e3cb-19f0-48ed-b527-e03b04c11c4c</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;башкиры&lt;/Answer&gt;&lt;Answer right = "false"&gt;марийцы&lt;/Answer&gt;&lt;Answer right = "true"&gt;татары&lt;/Answer&gt;&lt;Answer right = "false"&gt;чуваши&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>0e4f7b80-3357-4739-9215-06dfc45aa031</id>
+    <eid>a27caf0f-b4c0-4e17-a463-e6a0dbd92a71</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;пищевая промышленность&lt;/Answer&gt;&lt;Answer right = "false"&gt;производство кокса&lt;/Answer&gt;&lt;Answer right = "false"&gt;топливно-энергетическая промышленность&lt;/Answer&gt;&lt;Answer right = "false"&gt;производство стали&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>12007943-d1e8-4819-9a01-0dd226c93fde</id>
+    <eid>a27caf0f-b4c0-4e17-a463-e6a0dbd92a71</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;пищевая промышленность&lt;/Answer&gt;&lt;Answer right = "false"&gt;производство кокса&lt;/Answer&gt;&lt;Answer right = "false"&gt;топливно-энергетическая промышленность&lt;/Answer&gt;&lt;Answer right = "false"&gt;производство стали&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>cc961190-6a48-4339-9fc1-21b515393223</id>
+    <eid>f7f082da-4a3a-4fb5-91d4-7594622f3e5d</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;захоронение радиоактивных отходов&lt;/Answer&gt;&lt;Answer right = "false"&gt;сведение лесов&lt;/Answer&gt;&lt;Answer right = "false"&gt;сильное загрязнение атмосферы&lt;/Answer&gt;&lt;Answer right = "true"&gt;недостаток водных ресурсов&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>3095166c-1906-4edd-b012-89bc1b9f06c9</id>
+    <eid>f7f082da-4a3a-4fb5-91d4-7594622f3e5d</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;захоронение радиоактивных отходов&lt;/Answer&gt;&lt;Answer right = "false"&gt;сведение лесов&lt;/Answer&gt;&lt;Answer right = "false"&gt;сильное загрязнение атмосферы&lt;/Answer&gt;&lt;Answer right = "true"&gt;недостаток водных ресурсов&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>32dbb4dc-dd62-4e2f-a8b4-0d0b2e71a13e</id>
+    <eid>cb147924-ed27-478d-90ab-51a26a099325</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;нефти&lt;/Answer&gt;&lt;Answer right = "false"&gt;олова&lt;/Answer&gt;&lt;Answer right = "false"&gt;меди&lt;/Answer&gt;&lt;Answer right = "false"&gt;каменного угля&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>30eaabb7-94ad-4c33-ba62-8a07e6f8f0f7</id>
+    <eid>cb147924-ed27-478d-90ab-51a26a099325</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "true"&gt;нефти&lt;/Answer&gt;&lt;Answer right = "false"&gt;олова&lt;/Answer&gt;&lt;Answer right = "false"&gt;меди&lt;/Answer&gt;&lt;Answer right = "false"&gt;каменного угля&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>f660e7ed-7a3b-4d9c-9277-5a415587c3e5</id>
+    <eid>4009b673-cb09-432e-a08e-878e014326d0</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Печорский&lt;/Answer&gt;&lt;Answer right = "true"&gt;Кузнецкий&lt;/Answer&gt;&lt;Answer right = "false"&gt;Канско-Ачинский&lt;/Answer&gt;&lt;Answer right = "false"&gt;Ленский&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>0534d4fb-cc8c-4c90-b3e4-c939a52b2c54</id>
+    <eid>4009b673-cb09-432e-a08e-878e014326d0</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;Печорский&lt;/Answer&gt;&lt;Answer right = "true"&gt;Кузнецкий&lt;/Answer&gt;&lt;Answer right = "false"&gt;Канско-Ачинский&lt;/Answer&gt;&lt;Answer right = "false"&gt;Ленский&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>efa3a1f5-a1a6-4017-8b4f-834d29587f06</id>
+    <eid>1a7bf237-db6c-450f-9ec1-f136078062fb</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;специализация на цветной металлургии&lt;/Answer&gt;&lt;Answer right = "true"&gt;специализация на отраслях машиностроения и металлообработки&lt;/Answer&gt;&lt;Answer right = "false"&gt;обеспеченность топливно-энергетическими ресурсами&lt;/Answer&gt;&lt;Answer right = "false"&gt;обеспеченность лесными ресурсами&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>4006d44c-4d0d-4aff-9baf-bcf5dab74b09</id>
+    <eid>1a7bf237-db6c-450f-9ec1-f136078062fb</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;специализация на цветной металлургии&lt;/Answer&gt;&lt;Answer right = "true"&gt;специализация на отраслях машиностроения и металлообработки&lt;/Answer&gt;&lt;Answer right = "false"&gt;обеспеченность топливно-энергетическими ресурсами&lt;/Answer&gt;&lt;Answer right = "false"&gt;обеспеченность лесными ресурсами&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Tests>
+    <id>836277f9-d8e8-4a40-96fb-6dac81e81bf0</id>
+    <Type>1</Type>
+    <Parent>33002a27-ecf6-419b-9c7f-7253f8f02c61</Parent>
+    <Duration>40</Duration>
+    <Points>20</Points>
+    <Show>true</Show>
+    <Split>false</Split>
+    <AutoFinish>false</AutoFinish>
+    <DefLanguage>1</DefLanguage>
+    <CanSwitchLang>false</CanSwitchLang>
+    <Hints>1</Hints>
+    <ShowThemes>false</ShowThemes>
+  </Tests>
+  <TestQuestions>
+    <id>0d067d18-ceb5-4b86-9025-19e405377b23</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>3f107a25-33ae-4267-8f59-cfd7c8fc8ae2</Content>
+    <ShortHint>aeee677a-ab04-4fc6-886b-0f6422de0b3f</ShortHint>
+    <LongHint>0d7fb042-21a4-431d-9113-79d50fbf3c5c</LongHint>
+    <Points>1</Points>
+    <Answer>036808f9-a6f7-4a18-b545-48102210df55</Answer>
+    <Type>6</Type>
+    <QOrder>696</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>3bb6a884-df6f-40f1-8bbb-879a5fb6a7ec</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>b2fd7c17-de66-420d-903d-2bbfe1f039d6</Content>
+    <ShortHint>c79a8788-019d-42e6-9812-459b3772773b</ShortHint>
+    <LongHint>d7b215cc-4fb9-4ffa-96a6-7d868b33c661</LongHint>
+    <Points>1</Points>
+    <Answer>0aacb5a0-cddd-4159-8d43-11b8aba6d50f</Answer>
+    <Type>6</Type>
+    <QOrder>697</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>83bdf737-4b85-4171-a3be-4d3ae30398c5</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>bddce117-dbd4-450e-8a7b-4ed8be9f8e8d</Content>
+    <ShortHint>357f2067-7f13-4fad-996b-24342daa1485</ShortHint>
+    <LongHint>39d97815-1e45-4e3c-84bf-fc8e3718c56e</LongHint>
+    <Points>1</Points>
+    <Answer>acff6d9b-68b9-4c5a-93d2-9e8f11d1ea66</Answer>
+    <Type>6</Type>
+    <QOrder>698</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>43cc9f26-e6bf-488b-ada4-0d8034e25f37</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>ec3e8b73-89ad-4df7-8d0c-3fc777b79c4b</Content>
+    <ShortHint>2b60be56-4171-452c-813f-1e165efb09af</ShortHint>
+    <LongHint>db2e743c-35ab-4baa-962c-7f3bdeeb0eeb</LongHint>
+    <Points>1</Points>
+    <Answer>17c6370f-74da-4c51-9384-41db5695a0c3</Answer>
+    <Type>5</Type>
+    <QOrder>699</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>56b73515-7ba4-46ec-98c6-97eb4338a413</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>7ba95598-e331-4f71-b99f-f0d52ca96e02</Content>
+    <ShortHint>e0e6f425-3a53-4009-bb2e-5fac54de2933</ShortHint>
+    <LongHint>642d37e2-dfe2-4791-acbf-0ed6cc31ba05</LongHint>
+    <Points>1</Points>
+    <Answer>65a7d856-cd1d-4423-9ddb-940cac88f4e1</Answer>
+    <Type>6</Type>
+    <QOrder>700</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>fefd1f98-4663-4d0c-8114-8d25f734f860</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>9077006c-c7ed-4e7c-9fb0-12838ee359b2</Content>
+    <ShortHint>19702f48-8fc0-46d0-8151-6ba9cc5b0c06</ShortHint>
+    <LongHint>24c18145-743e-491e-bd0d-d368150adbfe</LongHint>
+    <Points>1</Points>
+    <Answer>93fae2bc-67b5-4e9d-991e-928aad7125c8</Answer>
+    <Type>6</Type>
+    <QOrder>701</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>1a05f20f-3360-4550-b784-ef0e1d537a7d</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>9cbec522-592b-4807-a7ab-e81a42db5608</Content>
+    <ShortHint>3e42e544-ccf0-45ab-bd42-e40e09e2e8f8</ShortHint>
+    <LongHint>3c9598ef-a196-4a51-9cc4-a7a130274807</LongHint>
+    <Points>1</Points>
+    <Answer>346c625f-0fb4-4253-880f-01144df6bf7f</Answer>
+    <Type>6</Type>
+    <QOrder>702</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>67be30ad-08f9-48bf-8504-7fb229bf5bef</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>962a1565-fa3b-4e54-bdce-3bdcfc5e827d</Content>
+    <ShortHint>57645283-205a-4006-a0e3-b068420183c0</ShortHint>
+    <LongHint>4814c03e-c449-4003-806e-d10a1704ddd9</LongHint>
+    <Points>1</Points>
+    <Answer>7ac0ab0a-7adb-4c05-a2e7-64bc5ed88262</Answer>
+    <Type>5</Type>
+    <QOrder>703</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>87f7467a-9451-4a92-9939-9099f7c0975f</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>bbf418f3-0730-41b2-ab26-fe3837d8ff27</Content>
+    <ShortHint>d1e67354-e846-4fc8-ac57-3865822abc78</ShortHint>
+    <LongHint>df00e876-d022-4e79-a936-a1703724693a</LongHint>
+    <Points>1</Points>
+    <Answer>3255df1d-276d-4d3a-9b47-f8625ea4aae8</Answer>
+    <Type>6</Type>
+    <QOrder>704</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>4dd1032f-6a90-4e8e-a6bc-208dc934578b</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>69be0653-4f46-4c27-ad4f-6e42f2e446b9</Content>
+    <ShortHint>985e4c98-9dd8-4376-80c0-524d0faf54fe</ShortHint>
+    <LongHint>d92e73e0-b057-4485-9db9-c84276f2da2e</LongHint>
+    <Points>1</Points>
+    <Answer>5bf50a06-ae7c-4357-94e5-6144c0686d06</Answer>
+    <Type>6</Type>
+    <QOrder>705</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>167e8509-75d1-412d-ab0e-a63312af8db2</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>eda8f43f-7947-4222-86fd-8c148a4571c1</Content>
+    <ShortHint>311f4d23-9c43-47f3-9049-da83a75f674b</ShortHint>
+    <LongHint>af6eb321-0f2c-4638-ad69-cfb88e95ef23</LongHint>
+    <Points>1</Points>
+    <Answer>36a48fc7-1988-487a-9092-a59cf8429b9b</Answer>
+    <Type>6</Type>
+    <QOrder>706</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>810b357f-5eb8-44ae-b9a1-696010f2a9d4</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>7036dad1-80b2-42a3-b2cf-41c1a3ca8026</Content>
+    <ShortHint>a03ed15a-959d-4924-8ccb-a920107f6ab9</ShortHint>
+    <LongHint>43d01ebc-cce7-4113-83f7-0462ca909158</LongHint>
+    <Points>1</Points>
+    <Answer>561f01f1-0279-4b57-82ab-42e2d6b24d67</Answer>
+    <Type>6</Type>
+    <QOrder>707</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>2fff6e64-d04e-488a-a937-cd00d0d5f1ae</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>017214c7-6a7d-46f9-886c-a42eeb8ec249</Content>
+    <ShortHint>0a3bf050-e217-41cc-bc2c-86f7dd921e60</ShortHint>
+    <LongHint>d48d6a34-f4b7-4e5b-a188-771546aed6d6</LongHint>
+    <Points>1</Points>
+    <Answer>2c7fa8ea-f195-4d44-b977-b11a04851602</Answer>
+    <Type>6</Type>
+    <QOrder>708</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>9e3713fc-af5f-4266-8617-907ef250b783</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>049d1c85-1fba-4a18-bc7d-bc56bc5db0d5</Content>
+    <ShortHint>a0e8077f-c47e-49c7-abe2-7aea23f9ee83</ShortHint>
+    <LongHint>f36af85a-d708-4d09-983a-02d95479dcb1</LongHint>
+    <Points>1</Points>
+    <Answer>94e515cc-c41e-4852-b522-fe5be2d2d351</Answer>
+    <Type>6</Type>
+    <QOrder>709</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>cb4b18f8-3f58-41f5-a7b0-5abec6ad1feb</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>8ca5124d-0ba6-44ab-a10a-45a9abdb44c2</Content>
+    <ShortHint>9362a200-2f7b-4b78-a3e8-789adfbd32ee</ShortHint>
+    <LongHint>8f4d876b-3122-48be-92fc-052ed5d323fd</LongHint>
+    <Points>1</Points>
+    <Answer>0a1da4e6-6156-4ca1-8c50-fdcac41e37de</Answer>
+    <Type>6</Type>
+    <QOrder>710</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>2ff0184e-6194-49d8-aa3d-bf6163798095</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>25db4c8e-86ef-4fb2-88d3-9257dd374e77</Content>
+    <ShortHint>17d49f5c-cdf8-401a-adcf-0ba7185ce65b</ShortHint>
+    <LongHint>d08e2f5e-c5ab-4118-b470-8df1521b4cb6</LongHint>
+    <Points>1</Points>
+    <Answer>61f6e9d9-9097-4fb0-ac72-e187f6d4881e</Answer>
+    <Type>6</Type>
+    <QOrder>711</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>4efde781-2083-46dc-8d10-0e6275bc5fa2</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>32ae64a0-043c-459c-a174-9f2384192456</Content>
+    <ShortHint>3f4f85e5-6852-47a1-be97-bca5f9dc8c12</ShortHint>
+    <LongHint>6c6ccef6-a1ff-47aa-a2c0-6c1cb28bbfe8</LongHint>
+    <Points>1</Points>
+    <Answer>e4f25f5f-baab-4e5c-9350-4f3f3538bb42</Answer>
+    <Type>5</Type>
+    <QOrder>712</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>40f05db6-7729-44a3-bb58-81977306ae26</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>1341f8d4-48a7-43f2-85a9-235592ececf1</Content>
+    <ShortHint>8d9047a8-0108-434c-a93d-f804fe8cb203</ShortHint>
+    <LongHint>9ca7180d-8674-42ab-9af0-72e994979592</LongHint>
+    <Points>1</Points>
+    <Answer>832ee9f3-0710-4e39-ac37-880df9587def</Answer>
+    <Type>6</Type>
+    <QOrder>713</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>d5170435-c1eb-4a08-8f26-76a2d93cb829</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>56206354-6aa1-4d8a-b15b-5d389cd6d7a7</Content>
+    <ShortHint>87f3ef73-f083-492b-a143-4049da5d9b54</ShortHint>
+    <LongHint>50a66f49-cd0f-486f-93e6-da3620912288</LongHint>
+    <Points>1</Points>
+    <Answer>fc9f6ca9-b6fe-431a-abe6-3d8a9fe667de</Answer>
+    <Type>6</Type>
+    <QOrder>714</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>af21479b-8f8b-4557-962b-0b90ce045ff0</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>adf80734-5711-405b-8228-2ce46dab54b7</Content>
+    <ShortHint>f21ffa71-182a-4c31-8ed7-54009e5aa199</ShortHint>
+    <LongHint>7a88b918-1e8c-4241-afa4-35db24412907</LongHint>
+    <Points>1</Points>
+    <Answer>f20a37d9-663e-45a8-9fb2-acd4dab8d101</Answer>
+    <Type>6</Type>
+    <QOrder>715</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>87ace5c2-2b6c-4081-b24e-817f1af9e4e1</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>26fedbed-632e-4ed4-8a42-cf308904f610</Content>
+    <ShortHint>9d9edf45-f0bf-4de7-9c4d-d0d0562127c2</ShortHint>
+    <LongHint>e567ee85-3db6-43a3-ba92-1e126293b060</LongHint>
+    <Points>1</Points>
+    <Answer>770dd433-22af-45df-ab7c-cd925164558b</Answer>
+    <Type>6</Type>
+    <QOrder>716</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>e081c80c-715e-4fc3-803d-f1adb0fc9fa2</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>858dc1b4-53f5-4a8c-9597-12fb476146d1</Content>
+    <ShortHint>e2576b55-ecdf-495a-a7cc-d942c25c83d8</ShortHint>
+    <LongHint>836efafd-8e2f-4821-a1b3-468d6de8d0e3</LongHint>
+    <Points>1</Points>
+    <Answer>a1e72ac0-4630-4713-b176-d32f3a0b0a65</Answer>
+    <Type>6</Type>
+    <QOrder>717</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>3617c033-79f1-41f7-96bc-c82e8bb648f2</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>7cd835a8-5863-46bd-8223-7f87099fa9a5</Content>
+    <ShortHint>f3ebc311-90ac-4c68-a76c-082cd2aff2b2</ShortHint>
+    <LongHint>3261cdfa-5028-4345-86e3-9148ccb87349</LongHint>
+    <Points>1</Points>
+    <Answer>db22099e-b7f5-4f53-9f47-15304cb27792</Answer>
+    <Type>5</Type>
+    <QOrder>718</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>f6a5b765-d841-4fc7-b9ba-ff9f00745e77</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>34e6bf90-1fb7-4bf3-8536-e9380af32e73</Content>
+    <ShortHint>8b90843d-c6a7-4f1f-95da-3a731e634b4c</ShortHint>
+    <LongHint>e0847bec-1236-415a-82e3-2c6f384a0d5f</LongHint>
+    <Points>1</Points>
+    <Answer>39d632a7-31bd-4632-9add-99a3e93ec598</Answer>
+    <Type>6</Type>
+    <QOrder>719</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>fe481598-039d-41c2-b7c4-0c112a00d9de</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>78f81141-d4f8-41a7-b842-52244a01bd1d</Content>
+    <ShortHint>90eb8f17-dc34-48f3-a898-2a1d0e99d19d</ShortHint>
+    <LongHint>5cd1e39e-b047-4a7b-9708-71918edc4df0</LongHint>
+    <Points>1</Points>
+    <Answer>d3c9880a-a380-4060-8c52-f8f7522324d0</Answer>
+    <Type>6</Type>
+    <QOrder>720</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>706a0246-907a-4049-ae3f-f58dc41e6f71</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>9d2ee3de-8bb0-4650-882a-9c04c3ac0565</Content>
+    <ShortHint>e72d6ec9-eb71-4ba7-8508-55bf980b6ba1</ShortHint>
+    <LongHint>797160e4-c4d3-40b4-bd30-ff9707370ecc</LongHint>
+    <Points>1</Points>
+    <Answer>1f8e6110-9fea-49eb-a0c7-c61c645f95c8</Answer>
+    <Type>6</Type>
+    <QOrder>721</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>6e593b4a-81ac-426e-aeed-059e45b16933</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>63fa63dc-1c9e-4449-88f6-cf9fa9a2715d</Content>
+    <ShortHint>e877ccad-4515-452f-9756-b9338e0f5068</ShortHint>
+    <LongHint>53cbd0fa-eb2b-48e2-a26d-6feaa945bd7f</LongHint>
+    <Points>1</Points>
+    <Answer>d84375f6-ea68-419e-af7d-a930f368e6a9</Answer>
+    <Type>6</Type>
+    <QOrder>722</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>cfec0cee-ee5a-4fc7-a374-d9a577aedfc3</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>bd39accc-134c-410b-b1ed-1309660da862</Content>
+    <ShortHint>11555a28-2153-4f73-99cd-b0d67348b9b9</ShortHint>
+    <LongHint>522df6cc-c1e7-4a2f-a491-8c5dc296f901</LongHint>
+    <Points>1</Points>
+    <Answer>20007a81-0727-4f76-b11c-fe11b441dc26</Answer>
+    <Type>6</Type>
+    <QOrder>723</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>53c7366c-6b60-4865-8edd-b9aeee6a310e</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>7a9ae5ad-45cd-4284-a66a-0881dba7d890</Content>
+    <ShortHint>518ab0ef-c6ba-42c6-bedb-866c994c66ba</ShortHint>
+    <LongHint>0c17b09b-7a0e-40d8-9b5c-c67bf7b22ae9</LongHint>
+    <Points>1</Points>
+    <Answer>9ed3d993-d232-402b-90d8-645e9d153467</Answer>
+    <Type>6</Type>
+    <QOrder>724</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>b87124c1-5b5e-4542-80e8-b998337db46c</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>9cb8e5d3-8b19-4995-ae45-4aaaea53594c</Content>
+    <ShortHint>df8036da-b9b4-4370-b99f-c6e9afc95cb0</ShortHint>
+    <LongHint>1b9d18e9-d9ac-4f80-9d94-e6657cd1169b</LongHint>
+    <Points>1</Points>
+    <Answer>94b4e3cb-19f0-48ed-b527-e03b04c11c4c</Answer>
+    <Type>6</Type>
+    <QOrder>725</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>509b125f-a6c8-45de-8e98-073929fe65d4</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>8753adb2-5099-4209-9b13-27d6f11b1fb4</Content>
+    <ShortHint>e7764ec1-e4bf-4810-b615-fd6fa7811ced</ShortHint>
+    <LongHint>3e475449-e612-4998-aebf-c8c859d7ef47</LongHint>
+    <Points>1</Points>
+    <Answer>a27caf0f-b4c0-4e17-a463-e6a0dbd92a71</Answer>
+    <Type>6</Type>
+    <QOrder>726</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>4ac48ff6-d51d-47dd-90a3-6f713c19baba</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>eb650c40-fbba-4eaf-b2fe-9ac49ec75bf4</Content>
+    <ShortHint>6312d492-06ac-428c-bd95-496256c77ba4</ShortHint>
+    <LongHint>7296f197-0361-4e3e-b1b8-80a6c1f8e6f5</LongHint>
+    <Points>1</Points>
+    <Answer>f7f082da-4a3a-4fb5-91d4-7594622f3e5d</Answer>
+    <Type>6</Type>
+    <QOrder>727</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>9e7c5b95-2377-4a5b-8813-5a950d5d4439</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>432f9015-6d20-44f4-a9f6-b12b73e224e0</Content>
+    <ShortHint>bd2c7271-a4ec-445e-95b3-7b017cffb1ac</ShortHint>
+    <LongHint>0aa82373-8487-4e69-82d3-c839b4a58a34</LongHint>
+    <Points>1</Points>
+    <Answer>cb147924-ed27-478d-90ab-51a26a099325</Answer>
+    <Type>5</Type>
+    <QOrder>728</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>0d962fb1-575b-48a3-a88e-1c9b0ac89aa4</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>d2a3ef96-e490-4951-9ba0-4c783175018a</Content>
+    <ShortHint>bdb88cd6-fd0b-4283-a161-70a0dbb872d7</ShortHint>
+    <LongHint>e29c22cd-3c92-43aa-a120-bb8083b3a624</LongHint>
+    <Points>1</Points>
+    <Answer>4009b673-cb09-432e-a08e-878e014326d0</Answer>
+    <Type>6</Type>
+    <QOrder>729</QOrder>
+  </TestQuestions>
+  <TestQuestions>
+    <id>be909a91-8dc8-41b6-804b-d30c9bd1674a</id>
+    <Test>836277f9-d8e8-4a40-96fb-6dac81e81bf0</Test>
+    <Content>4ef673c1-ba8e-4aee-ade1-ef6b0a81e14d</Content>
+    <ShortHint>8ecddc5f-bc7c-480c-829d-fe6bc18ce061</ShortHint>
+    <LongHint>91b3cbbf-5078-4ea2-a95b-1c476cbedae2</LongHint>
+    <Points>1</Points>
+    <Answer>1a7bf237-db6c-450f-9ec1-f136078062fb</Answer>
+    <Type>6</Type>
+    <QOrder>730</QOrder>
+  </TestQuestions>
+</География_x0020_тест_x0020_ЕГЭ>

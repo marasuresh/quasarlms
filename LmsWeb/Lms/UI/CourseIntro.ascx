@@ -1,4 +1,8 @@
-<%@ Control Language="c#" Inherits="DCE.Common.CourseIntro" CodeFile="CourseIntro.ascx.cs" %>
+<%@ Control
+		Language="c#"
+		Inherits="CourseIntro"
+		CodeFile="CourseIntro.ascx.cs" %>
+<%@ Import Namespace="System.Linq" %>
 <table	cellspacing="0"
 		cellpadding="0"
 		width="100%"
@@ -8,7 +12,7 @@
 	<tr valign="top">
 		<td width="75%">
 			<h3 class="cap3"><%= Resources.CourseIntro.Caption %></h3>
-			<h3 class="cap4" title='<%= this.CurrentItem.Description %>'>
+			<h3 class="cap4" title='<%= this.CurrentItem.Text %>'>
 				<%= this.CurrentItem.Title %></h3>
 			
 			<% if(!string.IsNullOrEmpty(this.CurrentItem.Author)) { %>
@@ -38,10 +42,13 @@
 						src='<%= this.CurrentItem.RequirementsUrl ?? "about:blank" %>'>
 				</iframe>
 			<% } %>
-			<% if (!string.IsNullOrEmpty(this.CurrentItem.Additions)) { %>
+			<% var _additions = this.CurrentItem.GetDetailCollection("Additions", false); %>
+			<% if (_additions.Count > 0) { %>
 				<h3 class="cap3">
 					<%= Resources.CourseIntro.Additions %>:</h3>
-				<small><%= this.CurrentItem.Additions%></small>
+				<% foreach (string _addition in _additions) { %>
+				<p><small><%= _addition %></small></p>
+				<% } %>
 			<% } %>
 		</td>
 	</tr>

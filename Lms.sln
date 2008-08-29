@@ -30,6 +30,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LmsWeb", "LmsWeb\", "{98CE0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Convert", "Convert\Convert.csproj", "{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{4F7EC6A5-6048-4FB7-B76E-1BC045857145}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -141,6 +143,26 @@ Global
 		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.DL Server Deployment|.NET.ActiveCfg = Debug|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.DL Server Deployment|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.DL Server Deployment|Any CPU.Build.0 = Debug|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.DL Server Deployment|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.DL Server Deployment|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Local deployment|.NET.ActiveCfg = Release|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Local deployment|Any CPU.ActiveCfg = Release|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Local deployment|Any CPU.Build.0 = Release|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Local deployment|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Local deployment|Mixed Platforms.Build.0 = Release|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Release|.NET.ActiveCfg = Release|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

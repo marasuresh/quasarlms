@@ -10,7 +10,7 @@
 
 	[Definition("Topic", "Topic", Installer = InstallerHint.NeverRootOrStartPage)]
 	[RestrictParents(typeof(TopicList), typeof(Topic))]
-	[AllowedChildren(typeof(Topic))]
+	[AllowedChildren(typeof(Topic), typeof(Test))]
 	[NotThrowable]
 	[WithEditableName("Name (Guid)", 10)]
 	[WithEditableTitle("Title", 20)]
@@ -19,17 +19,26 @@
 		#region Properties
 		
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/19.png"; } }
-
+		public override string TemplateUrl { get { return "~/Lms/UI/Topic.aspx"; } }
+		
 		#endregion Properties
 
 		#region Lms Properties
 
-		[EditableUrl("Content Url", 30)]
+		IEnumerable<string> Content {
+			get {
+				return
+					from _ld in this.GetDetailCollection("Content", true).OfType<StringDetail>()
+					select _ld.StringValue;
+			}
+		}
+
+/*		[EditableUrl("Content Url", 30)]
 		public string ContentUrl {
 			get { return (string)this.GetDetail("ContentUrl"); }
 			set { this.SetDetail<string>("ContentUrl", value); }
 		}
-
+*/
 		[EditableCheckBox("Mandatory", 70)]
 		public bool Mandatory {
 			get { return (bool?)this.GetDetail("Mandatory") ?? true; }
@@ -49,7 +58,8 @@
 			get { return this.GetDetail("Practice") as Test; }
 			set { this.SetDetail<Test>("Practice", value); }
 		}
-/*
+
+		/*
 		public Course Course {
 			get {
 				ContentItem _result = this.Parent;

@@ -1,0 +1,755 @@
+<?xml version="1.0" standalone="yes"?>
+<Древняя_x0020_история_x0020_России>
+  <xs:schema id="Древняя_x0020_история_x0020_России" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="Древняя_x0020_история_x0020_России" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Courses">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Version" type="xs:string" minOccurs="0" />
+                <xs:element name="Code" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Area" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Cost1" type="xs:double" minOccurs="0" />
+                <xs:element name="CostType1" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Cost2" type="xs:double" minOccurs="0" />
+                <xs:element name="CostType2" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Author" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="CPublic" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DescriptionShort" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DescriptionLong" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Requirements" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Keywords" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Additions" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Instructors" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="StartQuestionnaire" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="FinishQuestionnaire" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DiskFolder" type="xs:string" minOccurs="0" />
+                <xs:element name="isReady" type="xs:boolean" minOccurs="0" />
+                <xs:element name="CourseLanguage" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Content">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="eid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="Lang" type="xs:int" minOccurs="0" />
+                <xs:element name="DataStr" type="xs:string" minOccurs="0" />
+                <xs:element name="Data" type="xs:base64Binary" minOccurs="0" />
+                <xs:element name="TData" type="xs:string" minOccurs="0" />
+                <xs:element name="ParentEid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="COrder" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Themes">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Parent" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Duration" type="xs:int" minOccurs="0" />
+                <xs:element name="Mandatory" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Content" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="TOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="Practice" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Tests">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="Parent" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Duration" type="xs:int" minOccurs="0" />
+                <xs:element name="Points" type="xs:int" minOccurs="0" />
+                <xs:element name="Show" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Split" type="xs:boolean" minOccurs="0" />
+                <xs:element name="AutoFinish" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DefLanguage" type="xs:int" minOccurs="0" />
+                <xs:element name="CanSwitchLang" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Hints" type="xs:int" minOccurs="0" />
+                <xs:element name="InternalName" type="xs:string" minOccurs="0" />
+                <xs:element name="ShowThemes" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="TestQuestions">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Test" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Content" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="ShortHint" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="LongHint" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Points" type="xs:int" minOccurs="0" />
+                <xs:element name="Answer" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="QOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="Theme" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Terms">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Text" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Courses>
+    <id>51259cf2-79dd-4032-a900-93767649abf8</id>
+    <Version />
+    <Code>Rus_Hystory</Code>
+    <Name>4c852941-d60c-4e5a-9aa4-c95953a850e2</Name>
+    <Area>4204c47f-74f6-4aff-b775-ea8dd239722b</Area>
+    <Type>a280104a-9ee8-4b59-91ab-7910dea5adae</Type>
+    <Cost1>0</Cost1>
+    <Cost2>0</Cost2>
+    <Author>b89839b2-e218-43d0-b1a8-a187abcc1454</Author>
+    <CPublic>false</CPublic>
+    <DescriptionShort>5fea199f-9918-4cf4-8181-f81721963bf0</DescriptionShort>
+    <DescriptionLong>4dc3cd44-bf0a-475f-a085-042158ea6235</DescriptionLong>
+    <Requirements>d28ab4c6-0fbb-4d7c-9161-904b9d30eba8</Requirements>
+    <Keywords>e77fb6ab-8ac3-42e7-9257-74d1fb9ce521</Keywords>
+    <Additions>7ed22252-cebb-42cd-becf-d0a179bcac5f</Additions>
+    <Instructors>a07b8846-1793-430c-9512-8d565d9105a4</Instructors>
+    <DiskFolder />
+    <isReady>false</isReady>
+    <CourseLanguage>1</CourseLanguage>
+  </Courses>
+  <Content>
+    <id>8aec6e14-58e3-4a92-a411-9209db2aed5d</id>
+    <eid>4c852941-d60c-4e5a-9aa4-c95953a850e2</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Древняя история России</DataStr>
+    <COrder>14097</COrder>
+  </Content>
+  <Content>
+    <id>452cc6e3-bfed-4da3-9471-1926683930c5</id>
+    <eid>4c852941-d60c-4e5a-9aa4-c95953a850e2</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Древняя история России</DataStr>
+    <COrder>14098</COrder>
+  </Content>
+  <Content>
+    <id>3282d1ee-a342-4bf5-9f01-8f4d81b0a816</id>
+    <eid>b89839b2-e218-43d0-b1a8-a187abcc1454</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>252c272e-2c49-4ca2-945e-bec34c66c373</id>
+    <eid>5fea199f-9918-4cf4-8181-f81721963bf0</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>4f6a3093-ec57-416d-9131-9ceac65b7310</id>
+    <eid>4dc3cd44-bf0a-475f-a085-042158ea6235</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>c7253c6b-0431-4cd3-948c-bd828a5ed433</id>
+    <eid>d28ab4c6-0fbb-4d7c-9161-904b9d30eba8</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>e38e774c-43a6-476f-9813-3cf22423d0cc</id>
+    <eid>e77fb6ab-8ac3-42e7-9257-74d1fb9ce521</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>4b1b813a-cfac-4569-b9bd-098c00d4815d</id>
+    <eid>7ed22252-cebb-42cd-becf-d0a179bcac5f</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>0</COrder>
+  </Content>
+  <Content>
+    <id>b4a50920-1b19-4ff2-9704-2753bb0bb98e</id>
+    <eid>7ed22252-cebb-42cd-becf-d0a179bcac5f</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>1</COrder>
+  </Content>
+  <Content>
+    <id>458d7750-5796-4208-9b39-ff0375e978b8</id>
+    <eid>7ed22252-cebb-42cd-becf-d0a179bcac5f</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>2</COrder>
+  </Content>
+  <Content>
+    <id>729402f0-7b1a-4008-809e-7faf8a7c7547</id>
+    <eid>7ed22252-cebb-42cd-becf-d0a179bcac5f</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>3</COrder>
+  </Content>
+  <Content>
+    <id>8a9b1a0e-a85a-4356-92d1-5a2ca7902f8e</id>
+    <eid>7bb770c0-6b39-4652-80f3-e469f1eb155d</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>7 КЛАСС</DataStr>
+    <COrder>14099</COrder>
+  </Content>
+  <Content>
+    <id>ea2f0f41-798e-4a50-a487-c9eaa512a298</id>
+    <eid>7bb770c0-6b39-4652-80f3-e469f1eb155d</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>7 КЛАСС</DataStr>
+    <COrder>14100</COrder>
+  </Content>
+  <Content>
+    <id>16e800c1-e48e-4320-829d-2e67c2e36cab</id>
+    <eid>8f439234-377f-45db-a6d6-44eb7aefed91</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Формирование и расцвет Киевской Руси</DataStr>
+    <COrder>14103</COrder>
+  </Content>
+  <Content>
+    <id>4b393128-4be5-4a8f-9403-99b3289728c5</id>
+    <eid>8f439234-377f-45db-a6d6-44eb7aefed91</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Формирование и расцвет Киевской Руси</DataStr>
+    <COrder>14104</COrder>
+  </Content>
+  <Content>
+    <id>0792f290-f925-45ee-a6cd-c47bcb4b458f</id>
+    <eid>34b963f4-141b-4abb-b196-edb8168bb8db</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Киевское государство при первых князьях</DataStr>
+    <COrder>14107</COrder>
+  </Content>
+  <Content>
+    <id>ac8e3258-d501-4eab-b8da-d3ce98870477</id>
+    <eid>34b963f4-141b-4abb-b196-edb8168bb8db</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Киевское государство при первых князьях</DataStr>
+    <COrder>14108</COrder>
+  </Content>
+  <Content>
+    <id>42cb65f6-9ec7-409f-8803-5f3b6334f4f9</id>
+    <eid>8bdce17e-ac00-46e2-aac9-d42fda262d28</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Образование государства Киевская Русь</DataStr>
+    <COrder>14111</COrder>
+  </Content>
+  <Content>
+    <id>b0477ccb-a7af-4fe2-be15-431b4dfd425e</id>
+    <eid>8bdce17e-ac00-46e2-aac9-d42fda262d28</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Образование государства Киевская Русь</DataStr>
+    <COrder>14112</COrder>
+  </Content>
+  <Content>
+    <id>6970eda9-52a8-44e3-96b1-5eb76309be42</id>
+    <eid>a5fa5667-5e9c-4aad-a98c-1a7464699aed</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Происхождение названия Русь</DataStr>
+    <COrder>14115</COrder>
+  </Content>
+  <Content>
+    <id>33b56bcd-60ba-424c-997e-b5ced889469d</id>
+    <eid>a5fa5667-5e9c-4aad-a98c-1a7464699aed</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Происхождение названия Русь</DataStr>
+    <COrder>14116</COrder>
+  </Content>
+  <Content>
+    <id>caf27d7a-b073-4286-ab75-c827e3ec5fc7</id>
+    <eid>f07ba721-616f-4a6e-a66b-17dfa1fbea89</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Первые правители</DataStr>
+    <COrder>14119</COrder>
+  </Content>
+  <Content>
+    <id>1e8c2b7e-86cd-4898-986a-5dc80339a9f0</id>
+    <eid>f07ba721-616f-4a6e-a66b-17dfa1fbea89</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Первые правители</DataStr>
+    <COrder>14120</COrder>
+  </Content>
+  <Content>
+    <id>50cf9e2f-92be-4024-8574-dfb949baba8c</id>
+    <eid>4f31a39b-d8d1-4742-9a41-fed2b6584f1a</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Князь Аскольд</DataStr>
+    <COrder>14123</COrder>
+  </Content>
+  <Content>
+    <id>c63bc401-0b19-432f-91d1-bd1a75dbc0b1</id>
+    <eid>4f31a39b-d8d1-4742-9a41-fed2b6584f1a</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Князь Аскольд</DataStr>
+    <COrder>14124</COrder>
+  </Content>
+  <Content>
+    <id>a12e4ed3-18bf-41e2-9e66-2063a1664f56</id>
+    <eid>1be66216-7922-43ca-bb6b-b03ce44dc15b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Утверждение дингастии Рюриковичей</DataStr>
+    <COrder>14127</COrder>
+  </Content>
+  <Content>
+    <id>317e2ce0-55c4-40bf-91a3-81a54dbf0bec</id>
+    <eid>1be66216-7922-43ca-bb6b-b03ce44dc15b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Утверждение дингастии Рюриковичей</DataStr>
+    <COrder>14128</COrder>
+  </Content>
+  <Content>
+    <id>72480b31-0dd4-4cdc-a2c9-aef91aff0d4c</id>
+    <eid>d42e2d5f-c7e9-4293-a673-74961dfdb2de</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Правление Олега. </DataStr>
+    <COrder>14131</COrder>
+  </Content>
+  <Content>
+    <id>c2041f6e-fc95-47e0-9b5d-6fc621782468</id>
+    <eid>d42e2d5f-c7e9-4293-a673-74961dfdb2de</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Правление Олега. </DataStr>
+    <COrder>14132</COrder>
+  </Content>
+  <Content>
+    <id>ebf847bd-1eef-473d-84f8-441d6c5b74b9</id>
+    <eid>02fcf041-bd7c-4dc0-99da-116e15321b22</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Правление Олега. Внешняя политика</DataStr>
+    <COrder>14135</COrder>
+  </Content>
+  <Content>
+    <id>e0e763b9-d712-4447-9fba-963c856f73e0</id>
+    <eid>02fcf041-bd7c-4dc0-99da-116e15321b22</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Правление Олега. Внешняя политика</DataStr>
+    <COrder>14136</COrder>
+  </Content>
+  <Content>
+    <id>7f3d7ff9-6149-4ffd-8c56-871814a84c3f</id>
+    <eid>71a68bbd-8496-48a6-825e-7d6ecf408b93</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Князь Игорь</DataStr>
+    <COrder>14139</COrder>
+  </Content>
+  <Content>
+    <id>9d9a9106-caf6-477b-b806-e047b93335ed</id>
+    <eid>71a68bbd-8496-48a6-825e-7d6ecf408b93</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Князь Игорь</DataStr>
+    <COrder>14140</COrder>
+  </Content>
+  <Content>
+    <id>d3641bf3-a350-4e66-8120-905575c31a80</id>
+    <eid>4327d3ae-21e0-4a0c-b084-106dd61f71ec</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Материалы для учителя: карты</DataStr>
+    <COrder>14143</COrder>
+  </Content>
+  <Content>
+    <id>84718a57-4a1d-4f2e-9732-3e957a253236</id>
+    <eid>4327d3ae-21e0-4a0c-b084-106dd61f71ec</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Материалы для учителя: карты</DataStr>
+    <COrder>14144</COrder>
+  </Content>
+  <Content>
+    <id>793c0533-6bc3-4f10-81b4-26c05b094198</id>
+    <eid>2bf80939-9ea3-44b2-b2c6-a89eb588a53f</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Материалы для учителя: иллюстрации</DataStr>
+    <COrder>14147</COrder>
+  </Content>
+  <Content>
+    <id>b6086eef-13df-42da-9d5d-d31df66e68de</id>
+    <eid>2bf80939-9ea3-44b2-b2c6-a89eb588a53f</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Материалы для учителя: иллюстрации</DataStr>
+    <COrder>14148</COrder>
+  </Content>
+  <Content>
+    <id>813ebdb9-dfde-4e08-884e-d5b1d34d5573</id>
+    <eid>c9297b4d-1a9b-46f2-af9a-f4b4781a625b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/7_.html</DataStr>
+    <COrder>14101</COrder>
+  </Content>
+  <Content>
+    <id>3ddcd50d-67a0-4c61-8bad-f3e58bedb02b</id>
+    <eid>c9297b4d-1a9b-46f2-af9a-f4b4781a625b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/7_.html</DataStr>
+    <COrder>14102</COrder>
+  </Content>
+  <Content>
+    <id>97ed0135-bd6b-45ed-89d1-d09556e15757</id>
+    <eid>71e49ee7-75f7-4e90-8ff6-edd21276f610</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/____1.html</DataStr>
+    <COrder>14105</COrder>
+  </Content>
+  <Content>
+    <id>b3da8f17-d773-4153-851d-371b95a50547</id>
+    <eid>71e49ee7-75f7-4e90-8ff6-edd21276f610</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/____1.html</DataStr>
+    <COrder>14106</COrder>
+  </Content>
+  <Content>
+    <id>edcafb54-d155-43d2-827f-a3e847bb9f82</id>
+    <eid>893ab368-664d-4bbb-a69e-7b80ef80885c</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/____2.html</DataStr>
+    <COrder>14109</COrder>
+  </Content>
+  <Content>
+    <id>7e965828-f1fa-4666-b1e6-07a8604964ab</id>
+    <eid>893ab368-664d-4bbb-a69e-7b80ef80885c</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/____2.html</DataStr>
+    <COrder>14110</COrder>
+  </Content>
+  <Content>
+    <id>870041fa-c702-407e-902d-fadc0709e0f5</id>
+    <eid>505dde42-dfaa-4f66-b746-953b87a83d38</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/___1.html</DataStr>
+    <COrder>14113</COrder>
+  </Content>
+  <Content>
+    <id>ab49dcb8-78af-4f09-99ba-2fb59fd1575c</id>
+    <eid>505dde42-dfaa-4f66-b746-953b87a83d38</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/___1.html</DataStr>
+    <COrder>14114</COrder>
+  </Content>
+  <Content>
+    <id>6719e6bd-8eb6-409d-8e20-baa5a111eabb</id>
+    <eid>af8e1fbc-1129-4659-ae87-fa707ed54865</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/__1.html</DataStr>
+    <COrder>14117</COrder>
+  </Content>
+  <Content>
+    <id>b88655f5-1f5c-4d45-a896-0381475631f2</id>
+    <eid>af8e1fbc-1129-4659-ae87-fa707ed54865</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/__1.html</DataStr>
+    <COrder>14118</COrder>
+  </Content>
+  <Content>
+    <id>71eedb86-1689-4395-9a98-5c14bef9580e</id>
+    <eid>5461d8a5-a683-44c3-afc9-5c7466cf6774</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/_1.html</DataStr>
+    <COrder>14121</COrder>
+  </Content>
+  <Content>
+    <id>4d99fac0-2306-4a20-841b-00aa2c86936d</id>
+    <eid>5461d8a5-a683-44c3-afc9-5c7466cf6774</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/_1.html</DataStr>
+    <COrder>14122</COrder>
+  </Content>
+  <Content>
+    <id>7cf4def3-7400-4fa8-b6da-d4aa547bdacd</id>
+    <eid>483b439d-9ab4-4e00-8a5d-b40f9513c69a</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/_2.html</DataStr>
+    <COrder>14125</COrder>
+  </Content>
+  <Content>
+    <id>7cec5a69-cd94-4090-a949-a5b18490b5a8</id>
+    <eid>483b439d-9ab4-4e00-8a5d-b40f9513c69a</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/_2.html</DataStr>
+    <COrder>14126</COrder>
+  </Content>
+  <Content>
+    <id>498ba665-043c-4c13-8fe3-ef0442c55059</id>
+    <eid>461aa35e-ed2b-41b6-8530-72f3f8b0d959</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/__2.html</DataStr>
+    <COrder>14129</COrder>
+  </Content>
+  <Content>
+    <id>d9ba8253-e2da-4a27-affc-8853a8a42b24</id>
+    <eid>461aa35e-ed2b-41b6-8530-72f3f8b0d959</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/__2.html</DataStr>
+    <COrder>14130</COrder>
+  </Content>
+  <Content>
+    <id>e0eb5880-1afa-4092-aba8-6ce4e248c74f</id>
+    <eid>0d43664a-8629-4228-bce0-1eb3704f2f7d</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/__3.html</DataStr>
+    <COrder>14133</COrder>
+  </Content>
+  <Content>
+    <id>e6a2f05c-bb39-455b-8a9c-78aedeb31975</id>
+    <eid>0d43664a-8629-4228-bce0-1eb3704f2f7d</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/__3.html</DataStr>
+    <COrder>14134</COrder>
+  </Content>
+  <Content>
+    <id>442f0d24-7b88-4f1d-8c34-c4e5f1bf1846</id>
+    <eid>e00114b2-b521-40c2-ae0e-d8c0168c27d5</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/___2.html</DataStr>
+    <COrder>14137</COrder>
+  </Content>
+  <Content>
+    <id>650ec7d2-ca73-4ec2-b8b0-685f65f7b5eb</id>
+    <eid>e00114b2-b521-40c2-ae0e-d8c0168c27d5</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/___2.html</DataStr>
+    <COrder>14138</COrder>
+  </Content>
+  <Content>
+    <id>eeb6cf08-146d-4c2e-9602-b2ab0a880a76</id>
+    <eid>a559526c-91e4-471a-ab11-871d3badf721</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/_3.html</DataStr>
+    <COrder>14141</COrder>
+  </Content>
+  <Content>
+    <id>329f8536-b688-444a-a7e5-de8534b0cc4a</id>
+    <eid>a559526c-91e4-471a-ab11-871d3badf721</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/_3.html</DataStr>
+    <COrder>14142</COrder>
+  </Content>
+  <Content>
+    <id>35b6496b-95df-4c39-8559-c24fed1d791a</id>
+    <eid>b4721a13-2028-4a55-9d78-31dc4c285d41</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/___3.html</DataStr>
+    <COrder>14145</COrder>
+  </Content>
+  <Content>
+    <id>dfec8341-2c22-4a9e-a317-cc8824656f71</id>
+    <eid>b4721a13-2028-4a55-9d78-31dc4c285d41</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/___3.html</DataStr>
+    <COrder>14146</COrder>
+  </Content>
+  <Content>
+    <id>6f26127e-0bce-4d22-b444-d1a3d93e0261</id>
+    <eid>119539a4-a1a5-43db-a2cb-d568d3cc1f31</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/___4.html</DataStr>
+    <COrder>14149</COrder>
+  </Content>
+  <Content>
+    <id>dd40fe01-a10b-4cf7-84b5-350743fe86d9</id>
+    <eid>119539a4-a1a5-43db-a2cb-d568d3cc1f31</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/___4.html</DataStr>
+    <COrder>14150</COrder>
+  </Content>
+  <Themes>
+    <id>dc28d13b-ae67-4bdd-a103-6fd4aea71430</id>
+    <Type>1</Type>
+    <Name>7bb770c0-6b39-4652-80f3-e469f1eb155d</Name>
+    <Parent>51259cf2-79dd-4032-a900-93767649abf8</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>c9297b4d-1a9b-46f2-af9a-f4b4781a625b</Content>
+    <TOrder>2956</TOrder>
+  </Themes>
+  <Themes>
+    <id>9b7edc7b-0fc5-47a6-9bc9-778eabe3f334</id>
+    <Type>1</Type>
+    <Name>8f439234-377f-45db-a6d6-44eb7aefed91</Name>
+    <Parent>dc28d13b-ae67-4bdd-a103-6fd4aea71430</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>71e49ee7-75f7-4e90-8ff6-edd21276f610</Content>
+    <TOrder>2957</TOrder>
+  </Themes>
+  <Themes>
+    <id>0a64634d-4966-4df6-9ac5-1b1645fd57f3</id>
+    <Type>1</Type>
+    <Name>34b963f4-141b-4abb-b196-edb8168bb8db</Name>
+    <Parent>9b7edc7b-0fc5-47a6-9bc9-778eabe3f334</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>893ab368-664d-4bbb-a69e-7b80ef80885c</Content>
+    <TOrder>2958</TOrder>
+  </Themes>
+  <Themes>
+    <id>12aebadc-fd91-4734-b4e3-04c64f5de46c</id>
+    <Type>1</Type>
+    <Name>8bdce17e-ac00-46e2-aac9-d42fda262d28</Name>
+    <Parent>0a64634d-4966-4df6-9ac5-1b1645fd57f3</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>505dde42-dfaa-4f66-b746-953b87a83d38</Content>
+    <TOrder>2959</TOrder>
+  </Themes>
+  <Themes>
+    <id>37e7947d-a747-4a76-ac70-ba6f09632231</id>
+    <Type>1</Type>
+    <Name>a5fa5667-5e9c-4aad-a98c-1a7464699aed</Name>
+    <Parent>0a64634d-4966-4df6-9ac5-1b1645fd57f3</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>af8e1fbc-1129-4659-ae87-fa707ed54865</Content>
+    <TOrder>2960</TOrder>
+  </Themes>
+  <Themes>
+    <id>b69e7d4d-e151-4d57-91df-c159485142ff</id>
+    <Type>1</Type>
+    <Name>f07ba721-616f-4a6e-a66b-17dfa1fbea89</Name>
+    <Parent>0a64634d-4966-4df6-9ac5-1b1645fd57f3</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>5461d8a5-a683-44c3-afc9-5c7466cf6774</Content>
+    <TOrder>2961</TOrder>
+  </Themes>
+  <Themes>
+    <id>21ef1d4b-5f04-4f5c-9ceb-f6a507598ac8</id>
+    <Type>1</Type>
+    <Name>4f31a39b-d8d1-4742-9a41-fed2b6584f1a</Name>
+    <Parent>0a64634d-4966-4df6-9ac5-1b1645fd57f3</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>483b439d-9ab4-4e00-8a5d-b40f9513c69a</Content>
+    <TOrder>2962</TOrder>
+  </Themes>
+  <Themes>
+    <id>604f390b-17ea-487f-b954-953dc85d8b45</id>
+    <Type>1</Type>
+    <Name>1be66216-7922-43ca-bb6b-b03ce44dc15b</Name>
+    <Parent>0a64634d-4966-4df6-9ac5-1b1645fd57f3</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>461aa35e-ed2b-41b6-8530-72f3f8b0d959</Content>
+    <TOrder>2963</TOrder>
+  </Themes>
+  <Themes>
+    <id>0fc0fe90-d9da-405e-9fe4-ddc0525c62a2</id>
+    <Type>1</Type>
+    <Name>d42e2d5f-c7e9-4293-a673-74961dfdb2de</Name>
+    <Parent>0a64634d-4966-4df6-9ac5-1b1645fd57f3</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>0d43664a-8629-4228-bce0-1eb3704f2f7d</Content>
+    <TOrder>2964</TOrder>
+  </Themes>
+  <Themes>
+    <id>0e1acb1f-b8f2-4cf3-8302-2f1f5d73ac6c</id>
+    <Type>1</Type>
+    <Name>02fcf041-bd7c-4dc0-99da-116e15321b22</Name>
+    <Parent>0a64634d-4966-4df6-9ac5-1b1645fd57f3</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>e00114b2-b521-40c2-ae0e-d8c0168c27d5</Content>
+    <TOrder>2965</TOrder>
+  </Themes>
+  <Themes>
+    <id>11cec196-b476-48b3-b3d2-4ab89735dda8</id>
+    <Type>1</Type>
+    <Name>71a68bbd-8496-48a6-825e-7d6ecf408b93</Name>
+    <Parent>0a64634d-4966-4df6-9ac5-1b1645fd57f3</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>a559526c-91e4-471a-ab11-871d3badf721</Content>
+    <TOrder>2966</TOrder>
+  </Themes>
+  <Themes>
+    <id>e3e58854-a657-4f0d-aa68-08f89412ca40</id>
+    <Type>1</Type>
+    <Name>4327d3ae-21e0-4a0c-b084-106dd61f71ec</Name>
+    <Parent>9b7edc7b-0fc5-47a6-9bc9-778eabe3f334</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>b4721a13-2028-4a55-9d78-31dc4c285d41</Content>
+    <TOrder>2967</TOrder>
+  </Themes>
+  <Themes>
+    <id>2dc3f366-71e5-41ca-a8d4-6d870572819b</id>
+    <Type>1</Type>
+    <Name>2bf80939-9ea3-44b2-b2c6-a89eb588a53f</Name>
+    <Parent>9b7edc7b-0fc5-47a6-9bc9-778eabe3f334</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>119539a4-a1a5-43db-a2cb-d568d3cc1f31</Content>
+    <TOrder>2968</TOrder>
+  </Themes>
+</Древняя_x0020_история_x0020_России>
