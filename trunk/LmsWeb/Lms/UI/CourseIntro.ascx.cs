@@ -1,5 +1,3 @@
-namespace DCE.Common
-{
 	using System;
 	using System.Data;
 	using System.Drawing;
@@ -12,7 +10,7 @@ namespace DCE.Common
 	/// <summary>
 	/// Отображение информации о курсе
 	/// </summary>
-	public partial  class CourseIntro : N2.Web.UI.UserControl<Course>
+	public partial  class CourseIntro : N2.Web.UI.ContentUserControl<Course>
 	{
 		protected override void OnInit(EventArgs e)
 		{
@@ -20,7 +18,7 @@ namespace DCE.Common
 				this.Session["courseName"] = this.CurrentItem.Title;
 
 				this.CurrentItem["MetaKeywrods"] = this.CurrentItem.Keywords;
-				this.CurrentItem["MetaDescription"] = this.CurrentItem.Description;
+				this.CurrentItem["MetaDescription"] = this.CurrentItem.Text;
 
 				var _metaApplier = new N2.Templates.SEO.TitleAndMetaTagApplyer(
 					this.Page, this.CurrentItem);
@@ -39,4 +37,3 @@ namespace DCE.Common
 					_id);
 		}
 	}
-}

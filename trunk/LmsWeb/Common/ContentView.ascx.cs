@@ -4,11 +4,23 @@ namespace DCE.Common
 	using System.Collections.Generic;
 	using System.Linq;
 	using N2.Lms.Items;
+	using N2.Details;
+	using N2.Resources;
 	/// <summary>
 	/// Просмотр учебных материалов по теме
 	/// </summary>
+	[Obsolete]
 	public partial class ContentView : DCE.BaseTrainingControl
 	{
+		protected override void OnLoad(EventArgs e)
+		{
+			Register.JQuery(this.Page);
+			Register.StyleSheet(this.Page, "~/Lms/UI/Js/jQuery.tabs.css");
+			Register.JavaScript(this.Page, "~/Lms/UI/Js/jQuery.tabs.js");
+			
+			base.OnLoad(e);
+		}
+
 		Training m_training;
 		protected Training Training {
 			get { return this.m_training
@@ -36,38 +48,48 @@ namespace DCE.Common
 			}
 		}
 
-		IEnumerable<Topic> m_themes;
-		protected IEnumerable<Topic> Themes {
+		Topic m_theme;
+		protected Topic Theme {
 			get {
-				return this.m_themes
-					?? (this.m_themes = Courses_GetContentDS(PageParameters.ID));
+				return this.m_theme
+					?? (this.m_theme = Courses_GetContentDS(PageParameters.ID));
 			}
 		}
 
-		IEnumerable<Topic> Courses_GetContentDS(Guid? themeId)
+		Topic Courses_GetContentDS(Guid? themeId)
 		{
 			using (var _ctx = new Lms.LmsDataContext()) {
-				return (
+				var _result = (
 					from _theme in _ctx.Themes
-					join _ct in _ctx.Contents
-						on _theme.Content equals _ct.eid
 					join _course in _ctx.Courses
 						on _ctx.CourseOfTheme(_theme.id) equals _course.id
 					join _lang in _ctx.Languages
 						on _course.CourseLanguage equals _lang.id
-					join _l in _ctx.Languages
-						on _ct.Lang equals _l.id
 					where _theme.id == themeId
-					where _l.Abbr == LocalisationService.Language
-					select new Topic {
-						ContentUrl = _ct.DataStr,
-						Title = _ctx.GetStrContentAlt(
+					select new {
+						name = _theme.id.ToString(),
+						title = _ctx.GetStrContentAlt(
 							_theme.Name,
 							LocalisationService.Language,
 							_lang.Abbr),
-						
-					}
-				).ToList();
+						content =
+							from _ct in _ctx.Contents
+							join _l in _ctx.Languages
+								on _ct.Lang equals _l.id
+							where _ct.eid == _theme.Content
+							where (_l.Abbr == LocalisationService.Language
+								|| _l.Abbr == _lang.Abbr)
+							select _ct.DataStr,
+					}).First();
+				
+				var _topic = new Topic {
+					Name = _result.name,
+					Title = _result.title,
+				};
+
+				_topic.GetDetailCollection("Content", true).AddRange(_result.content);
+
+				return _topic;
 			}
 		}
 	}

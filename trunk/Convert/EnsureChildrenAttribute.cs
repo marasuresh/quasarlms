@@ -11,23 +11,13 @@ namespace N2.Definitions
 		AttributeTargets.Class,
 		AllowMultiple = true,
 		Inherited = true)]
-	public class EnsureChildrenAttribute:
-		TypeIntegrityAttribute,
-		IInheritableDefinitionRefiner
+	public class EnsureChildrenAttribute: Attribute
 	{
 		public EnsureChildrenAttribute(params Type[] ensuredChildrenTypes)
 		{
 			this.Types = ensuredChildrenTypes;
 		}
 
-		#region IInheritableDefinitionRefiner Members
-
-		public void Refine(ItemDefinition currentDefinition, IList<ItemDefinition> allDefinitions)
-		{
-			
-			throw new NotImplementedException();
-		}
-
-		#endregion
+		public Type[] Types { get; set; }
 	}
 }

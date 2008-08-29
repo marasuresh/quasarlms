@@ -1,4 +1,7 @@
-<%@ Control Language="c#" Inherits="DCE.Common.ContentView" CodeFile="ContentView.ascx.cs" %>
+<%@ Control
+		Language="c#"
+		Inherits="Topic"
+		CodeFile="Topic.ascx.cs" %>
 <%@ Import Namespace="System.Linq" %>
 <script runat="server">
 public string makeUrl(string croot, string folder, string path)
@@ -16,9 +19,9 @@ $('div#tabs').tabs({ fxAutoHeight: true });
 <% if(null != this.Training) { %>
 	<h3 class="cap4"><%= this.Training.Title %></h3>
 <% } %>
-<h3 class="cap3"><%= this.Theme.Title %></h3>
+<h3 class="cap3"><%= this.CurrentItem.Title %></h3>
 
-<% var _content = this.Theme.GetDetailCollection("Content", false); %>
+<% var _content = this.CurrentItem.GetDetailCollection("Content", false); %>
 <% var _displayTabs = _content.Count > 1; %>
 <% var i = 0; %>
 <% if (_displayTabs) { %>
@@ -36,8 +39,8 @@ $('div#tabs').tabs({ fxAutoHeight: true });
 				height="100%"
 				align="top"
 				src='<%= !string.IsNullOrEmpty(_url)
-					? makeUrl(base.CoursesRootUrl, this.Training.Course.DiskFolder, _url)
-					: this.ResolveUrl(@"~\" + DCE.Service.GetLanguagePath(this.Page)) + "NoContent.htm" %>'>
+					? makeUrl("", /*this.Training.Course.DiskFolder*/"", _url)
+					: this.ResolveUrl(@"~\") + "NoContent.htm" %>'>
 		</iframe>
 	</div>
 	<% } %>

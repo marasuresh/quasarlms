@@ -1,0 +1,611 @@
+<?xml version="1.0" standalone="yes"?>
+<_x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020_Проблемы_x0020_тестирования_x0020_в_x0020_дистанционном_x0020_обучении>
+  <xs:schema id="_x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020_Проблемы_x0020_тестирования_x0020_в_x0020_дистанционном_x0020_обучении" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="_x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020_Проблемы_x0020_тестирования_x0020_в_x0020_дистанционном_x0020_обучении" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Courses">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Version" type="xs:string" minOccurs="0" />
+                <xs:element name="Code" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Area" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Cost1" type="xs:double" minOccurs="0" />
+                <xs:element name="CostType1" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Cost2" type="xs:double" minOccurs="0" />
+                <xs:element name="CostType2" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Author" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="CPublic" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DescriptionShort" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DescriptionLong" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Requirements" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Keywords" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Additions" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Instructors" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="StartQuestionnaire" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="FinishQuestionnaire" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DiskFolder" type="xs:string" minOccurs="0" />
+                <xs:element name="isReady" type="xs:boolean" minOccurs="0" />
+                <xs:element name="CourseLanguage" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Content">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="eid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="Lang" type="xs:int" minOccurs="0" />
+                <xs:element name="DataStr" type="xs:string" minOccurs="0" />
+                <xs:element name="Data" type="xs:base64Binary" minOccurs="0" />
+                <xs:element name="TData" type="xs:string" minOccurs="0" />
+                <xs:element name="ParentEid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="COrder" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Themes">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Parent" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Duration" type="xs:int" minOccurs="0" />
+                <xs:element name="Mandatory" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Content" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="TOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="Practice" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Tests">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="Parent" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Duration" type="xs:int" minOccurs="0" />
+                <xs:element name="Points" type="xs:int" minOccurs="0" />
+                <xs:element name="Show" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Split" type="xs:boolean" minOccurs="0" />
+                <xs:element name="AutoFinish" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DefLanguage" type="xs:int" minOccurs="0" />
+                <xs:element name="CanSwitchLang" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Hints" type="xs:int" minOccurs="0" />
+                <xs:element name="InternalName" type="xs:string" minOccurs="0" />
+                <xs:element name="ShowThemes" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="TestQuestions">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Test" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Content" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="ShortHint" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="LongHint" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Points" type="xs:int" minOccurs="0" />
+                <xs:element name="Answer" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="QOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="Theme" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Terms">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Text" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Courses>
+    <id>e32fbcdd-7daf-4577-8163-88cbfa2ded7f</id>
+    <Version>1</Version>
+    <Code>Seminar1</Code>
+    <Name>16d77d34-ff1b-4255-b5ce-3ea7646c473b</Name>
+    <Area>137d9ae1-0abe-4cea-a177-a1545d5cb024</Area>
+    <Type>a7706663-2294-449f-87a5-6277f4f10d5d</Type>
+    <Cost1>0</Cost1>
+    <Cost2>0</Cost2>
+    <Author>bcb6dea0-d06f-4ce9-be64-f3de7d8930e3</Author>
+    <CPublic>false</CPublic>
+    <DescriptionShort>2cc514a2-cc62-4514-ad7e-fbf06b03aeda</DescriptionShort>
+    <DescriptionLong>7ba8843e-2a2d-4516-a171-c723ae474015</DescriptionLong>
+    <Requirements>dee2faea-2a02-4e6a-b2c7-86da1d2a0b90</Requirements>
+    <Keywords>4b7c342d-077d-458a-9fb7-c4f43ab299e6</Keywords>
+    <Additions>54698dbb-9e31-41b9-933b-9a89eb2987db</Additions>
+    <Instructors>42685f8f-c692-4cc2-8f9b-a1797e44d68f</Instructors>
+    <DiskFolder />
+    <isReady>false</isReady>
+    <CourseLanguage>1</CourseLanguage>
+  </Courses>
+  <Content>
+    <id>76b586c1-14ea-4f56-b778-8a5768e487dc</id>
+    <eid>16d77d34-ff1b-4255-b5ce-3ea7646c473b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>          Проблемы тестирования в дистанционном обучении</DataStr>
+  </Content>
+  <Content>
+    <id>00b7f803-e607-40d5-a814-d8f71a4bcccb</id>
+    <eid>16d77d34-ff1b-4255-b5ce-3ea7646c473b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Testing problems in distance learning</DataStr>
+  </Content>
+  <Content>
+    <id>e2322d9c-5a7d-4590-84fa-eb88bb34f118</id>
+    <eid>16d77d34-ff1b-4255-b5ce-3ea7646c473b</eid>
+    <Type>1</Type>
+    <Lang>3</Lang>
+    <DataStr>Проблеми тестування у дистанційному навчанні</DataStr>
+  </Content>
+  <Content>
+    <id>5be02b26-b8e3-4689-a011-2b4667203951</id>
+    <eid>bcb6dea0-d06f-4ce9-be64-f3de7d8930e3</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Г.Марьенко</DataStr>
+  </Content>
+  <Content>
+    <id>349612b5-d6aa-47c9-9e58-6752840f868f</id>
+    <eid>bcb6dea0-d06f-4ce9-be64-f3de7d8930e3</eid>
+    <Type>1</Type>
+    <Lang>3</Lang>
+  </Content>
+  <Content>
+    <id>34e18a17-b0fe-424e-9c93-8dbed5376e25</id>
+    <eid>bcb6dea0-d06f-4ce9-be64-f3de7d8930e3</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+  </Content>
+  <Content>
+    <id>7aed9271-2cab-4004-9cfb-1f160e031fde</id>
+    <eid>2cc514a2-cc62-4514-ad7e-fbf06b03aeda</eid>
+    <Type>6</Type>
+    <Lang>3</Lang>
+  </Content>
+  <Content>
+    <id>e79ed994-1eb2-45c7-9fea-73fe2cb8976e</id>
+    <eid>2cc514a2-cc62-4514-ad7e-fbf06b03aeda</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Обсуждаются вопросы, связанные с методиками тестирования, критериями оценок, системами тестирования, а также рассматривается имеющийся опыт западных специалистов и инструкторов Учебного Центра «Квазар-Микро».</TData>
+  </Content>
+  <Content>
+    <id>e3abcfba-76c5-4e80-8325-7a959402ccec</id>
+    <eid>2cc514a2-cc62-4514-ad7e-fbf06b03aeda</eid>
+    <Type>6</Type>
+    <Lang>2</Lang>
+  </Content>
+  <Content>
+    <id>e7943585-2db7-4c0b-9066-2e87c81fa741</id>
+    <eid>7ba8843e-2a2d-4516-a171-c723ae474015</eid>
+    <Type>1</Type>
+    <Lang>3</Lang>
+  </Content>
+  <Content>
+    <id>e42d7781-ee10-43ce-9a36-a58e8a02da2f</id>
+    <eid>7ba8843e-2a2d-4516-a171-c723ae474015</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+  </Content>
+  <Content>
+    <id>c5ef713c-db84-44a4-ac0a-b7b971c93eab</id>
+    <eid>7ba8843e-2a2d-4516-a171-c723ae474015</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>d3266e94-8816-46b1-8aba-690c3a9b5584</id>
+    <eid>dee2faea-2a02-4e6a-b2c7-86da1d2a0b90</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>9bbbf79f-5e25-4ab9-8623-c02391f5c307</id>
+    <eid>dee2faea-2a02-4e6a-b2c7-86da1d2a0b90</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+  </Content>
+  <Content>
+    <id>94db3476-3121-41ff-af2a-dac28024f1a0</id>
+    <eid>dee2faea-2a02-4e6a-b2c7-86da1d2a0b90</eid>
+    <Type>1</Type>
+    <Lang>3</Lang>
+  </Content>
+  <Content>
+    <id>30900a0b-e60a-4b7b-b889-5bc81fa23c2d</id>
+    <eid>4b7c342d-077d-458a-9fb7-c4f43ab299e6</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+  </Content>
+  <Content>
+    <id>781adc17-4a4c-4362-84fb-71afb3a19068</id>
+    <eid>4b7c342d-077d-458a-9fb7-c4f43ab299e6</eid>
+    <Type>1</Type>
+    <Lang>3</Lang>
+  </Content>
+  <Content>
+    <id>ffaf9413-c375-4dab-ac7c-b0a62a96c60b</id>
+    <eid>4b7c342d-077d-458a-9fb7-c4f43ab299e6</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>тестирование, оценка, метод, знания, качество, обучение</DataStr>
+  </Content>
+  <Content>
+    <id>a4b5c009-c85a-43fa-a720-2f6e257171a8</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>3</Lang>
+    <COrder>0</COrder>
+  </Content>
+  <Content>
+    <id>86262c8f-3a85-4c99-ae89-7f7b6e85d061</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <COrder>0</COrder>
+  </Content>
+  <Content>
+    <id>a890396f-7c3d-4ef5-beb0-18c675709a6d</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>0</COrder>
+  </Content>
+  <Content>
+    <id>c9a04276-a2dd-423c-8249-2258d218bccc</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>1</COrder>
+  </Content>
+  <Content>
+    <id>5ec709a5-78e1-45de-8791-4613a523a71a</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>3</Lang>
+    <COrder>1</COrder>
+  </Content>
+  <Content>
+    <id>95b0f72e-08bd-466e-92f5-51c799f3c0eb</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <COrder>1</COrder>
+  </Content>
+  <Content>
+    <id>4ef73e47-2e53-44b7-9656-79dfb89f42a7</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>3</Lang>
+    <COrder>2</COrder>
+  </Content>
+  <Content>
+    <id>19c87bd9-479e-40e2-aa09-7ec89526d26f</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <COrder>2</COrder>
+  </Content>
+  <Content>
+    <id>6c7ef73c-2ab7-4ef1-8abf-abc2dbf43025</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>2</COrder>
+  </Content>
+  <Content>
+    <id>da1ccffc-51eb-4e06-9bd3-b60e70dfc670</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>3</COrder>
+  </Content>
+  <Content>
+    <id>809a7f02-c8b7-411d-b410-ecc8e944f4b4</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <COrder>3</COrder>
+  </Content>
+  <Content>
+    <id>1db9f5f8-996e-4008-badf-1aa0c5f4d74d</id>
+    <eid>54698dbb-9e31-41b9-933b-9a89eb2987db</eid>
+    <Type>1</Type>
+    <Lang>3</Lang>
+    <COrder>3</COrder>
+  </Content>
+  <Content>
+    <id>ce01fd2e-4630-405c-ab2e-a012fd8fb3c5</id>
+    <eid>44dd3f4d-8570-4f70-a8be-c7df50f5f069</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Значение объективной оценки знаний в дистанционном обучении</DataStr>
+  </Content>
+  <Content>
+    <id>9388a9cc-1106-477b-9272-dac36a6dedb1</id>
+    <eid>461eaeb9-41a8-4fd3-9a07-a2275c88aec9</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Роль мультимедийных тестов для контроля знаний в управлении учебным процессом</DataStr>
+  </Content>
+  <Content>
+    <id>ece0fc53-7236-4dfd-803c-e951cf548b01</id>
+    <eid>9e3ae949-4f60-4727-b6d0-65d7af5e93f3</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Применение модели Киркпатрика для оценки дистанционного обучения</DataStr>
+  </Content>
+  <Content>
+    <id>ef06450b-2cd4-4d0b-a9a5-cd6d7d9b0056</id>
+    <eid>a4bb3035-9745-430c-8a03-6d14961c5275</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>О системах анализа результатов корпоративного обучения</DataStr>
+  </Content>
+  <Content>
+    <id>c961834d-943e-4691-ae3b-fb07aa6af949</id>
+    <eid>8e5d53e9-92b3-4d7e-9040-7ba3df38bbfb</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Praxis</DataStr>
+  </Content>
+  <Content>
+    <id>096db824-8533-4a02-8b2b-51dc7cfe863e</id>
+    <eid>a3eddd56-632d-41f9-aef0-5e83a0a8b272</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Методы построения тестов оценки знаний</DataStr>
+  </Content>
+  <Content>
+    <id>c0b30d2a-c2b4-4fb9-942e-1769e9e5956a</id>
+    <eid>5ee72ffd-c053-457c-a8e1-39de36256361</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Практика создания систем тестирования</DataStr>
+  </Content>
+  <Content>
+    <id>84eeb9f4-6638-4405-805b-93efecf6e506</id>
+    <eid>e173e4a8-0a45-4b1b-ac61-3abb69711a29</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Функциональность систем оценки знаний</DataStr>
+  </Content>
+  <Content>
+    <id>2c7eb5f3-62d3-4873-a10a-6a48107d53ca</id>
+    <eid>2fbca2b1-45a7-4426-b658-a866ada5821a</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Подведение итогов семинара</DataStr>
+  </Content>
+  <Content>
+    <id>b79ca6e6-fb8b-404d-9fe1-3418e7275f2d</id>
+    <eid>0b1a4c54-2139-4dd8-9d07-e86ca34b45cd</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>tp1\role.htm</DataStr>
+    <COrder>9933</COrder>
+  </Content>
+  <Content>
+    <id>24be4b7e-a795-4213-9b58-98dae0c8c366</id>
+    <eid>95aae2a2-e292-443c-87c9-aa9eb142cde3</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>tp1\mul_test.htm</DataStr>
+    <COrder>9934</COrder>
+  </Content>
+  <Content>
+    <id>e0aa5b77-52fd-4cc1-a536-add432d2c346</id>
+    <eid>5d93f728-e79f-4d53-9f56-f175cb719b22</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>tp1\kirk.htm</DataStr>
+    <COrder>9935</COrder>
+  </Content>
+  <Content>
+    <id>496e50c0-a478-48a1-8e01-3cb72b04263d</id>
+    <eid>50eec5cb-11ee-437c-b73e-01a5ddd65351</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>tp1\analize_systems.htm</DataStr>
+    <COrder>9936</COrder>
+  </Content>
+  <Content>
+    <id>3c833769-ddf3-4865-a4e3-f49d3dd73f4d</id>
+    <eid>b95b7800-7604-48f5-8e8c-db2e67e793cf</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>tp1\met_test.htm</DataStr>
+    <COrder>9937</COrder>
+  </Content>
+  <Content>
+    <id>fabad9c7-6653-492f-97fd-607b756e5a55</id>
+    <eid>8d4c0144-9531-483d-8638-66b6fd3d7172</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>redirect1.htm</DataStr>
+    <COrder>9938</COrder>
+  </Content>
+  <Content>
+    <id>0fc65a7b-958e-4b99-91b0-b35111c24fcf</id>
+    <eid>f7f658dd-e1c0-4eb9-bd51-554e900ecb05</eid>
+    <Type>5</Type>
+    <Lang>1</Lang>
+    <DataStr>redirect2.htm</DataStr>
+    <COrder>9939</COrder>
+  </Content>
+  <Content>
+    <id>ee6a30b0-372a-414d-b01e-fb540c511337</id>
+    <eid>ec29381e-0e85-4e20-8ef6-b14a66731070</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>Was ist das?</TData>
+  </Content>
+  <Content>
+    <id>6e09ec0e-e2fd-44d6-aecd-dcdf17014d89</id>
+    <eid>3c3c9ba8-d33d-4d20-b99f-d2a8da09d00e</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>42</DataStr>
+  </Content>
+  <Content>
+    <id>532dfde7-6428-4f90-abf7-174079b026a5</id>
+    <eid>dbc60131-d270-4850-a2de-2fcb85a029ac</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+    <TData>fourty two</TData>
+  </Content>
+  <Content>
+    <id>bfd1f864-6e92-4536-b0d1-10ad18d94e90</id>
+    <eid>2c8d26a4-7dac-4558-b800-17454b88a015</eid>
+    <Type>2</Type>
+    <Lang>1</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;42&lt;/Answer&gt;&lt;Answer right = "true"&gt;fourty two&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>075e88a6-9589-4d36-8644-ab0ce7796f15</id>
+    <eid>2c8d26a4-7dac-4558-b800-17454b88a015</eid>
+    <Type>2</Type>
+    <Lang>2</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "true"&gt;&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Content>
+    <id>e4bfaa98-b4d9-48ee-89e1-c2712e037f24</id>
+    <eid>2c8d26a4-7dac-4558-b800-17454b88a015</eid>
+    <Type>2</Type>
+    <Lang>3</Lang>
+    <TData>&lt;Question type = "single"&gt;&lt;Answer right = "false"&gt;&lt;/Answer&gt;&lt;Answer right = "true"&gt;&lt;/Answer&gt;&lt;/Question&gt;</TData>
+  </Content>
+  <Themes>
+    <id>5e1ddc86-f879-436f-90f0-7b95f83d5434</id>
+    <Type>1</Type>
+    <Name>44dd3f4d-8570-4f70-a8be-c7df50f5f069</Name>
+    <Parent>e32fbcdd-7daf-4577-8163-88cbfa2ded7f</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>0b1a4c54-2139-4dd8-9d07-e86ca34b45cd</Content>
+    <TOrder>2956</TOrder>
+  </Themes>
+  <Themes>
+    <id>91844bf9-fb0a-47ad-ab2f-3f71a92d0ec1</id>
+    <Type>1</Type>
+    <Name>461eaeb9-41a8-4fd3-9a07-a2275c88aec9</Name>
+    <Parent>5e1ddc86-f879-436f-90f0-7b95f83d5434</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>95aae2a2-e292-443c-87c9-aa9eb142cde3</Content>
+    <TOrder>2957</TOrder>
+  </Themes>
+  <Themes>
+    <id>2d7e2c30-4029-4055-8912-fffdbe897d94</id>
+    <Type>1</Type>
+    <Name>9e3ae949-4f60-4727-b6d0-65d7af5e93f3</Name>
+    <Parent>5e1ddc86-f879-436f-90f0-7b95f83d5434</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>5d93f728-e79f-4d53-9f56-f175cb719b22</Content>
+    <TOrder>2958</TOrder>
+  </Themes>
+  <Themes>
+    <id>6e1333d7-3744-4ab5-843e-a46dbdb1ad13</id>
+    <Type>1</Type>
+    <Name>a4bb3035-9745-430c-8a03-6d14961c5275</Name>
+    <Parent>5e1ddc86-f879-436f-90f0-7b95f83d5434</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>50eec5cb-11ee-437c-b73e-01a5ddd65351</Content>
+    <TOrder>2959</TOrder>
+  </Themes>
+  <Themes>
+    <id>85f16371-f77d-48f1-8ef3-1d4e3663c47c</id>
+    <Type>1</Type>
+    <Name>8e5d53e9-92b3-4d7e-9040-7ba3df38bbfb</Name>
+    <Parent>5e1ddc86-f879-436f-90f0-7b95f83d5434</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>bb7ac50f-5e0d-4346-ac97-eaf47e7fc1f5</Content>
+    <TOrder>2960</TOrder>
+    <Practice>93a103a0-b060-43fc-bcd0-debde9a61423</Practice>
+  </Themes>
+  <Themes>
+    <id>70903d72-784f-499f-bda5-70f75a186c9c</id>
+    <Type>1</Type>
+    <Name>a3eddd56-632d-41f9-aef0-5e83a0a8b272</Name>
+    <Parent>e32fbcdd-7daf-4577-8163-88cbfa2ded7f</Parent>
+    <Duration>2</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>b95b7800-7604-48f5-8e8c-db2e67e793cf</Content>
+    <TOrder>2961</TOrder>
+  </Themes>
+  <Themes>
+    <id>15bbacec-6565-4335-b2b0-8f1873fb6428</id>
+    <Type>1</Type>
+    <Name>5ee72ffd-c053-457c-a8e1-39de36256361</Name>
+    <Parent>e32fbcdd-7daf-4577-8163-88cbfa2ded7f</Parent>
+    <Duration>2</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>8d4c0144-9531-483d-8638-66b6fd3d7172</Content>
+    <TOrder>2962</TOrder>
+  </Themes>
+  <Themes>
+    <id>0470dcd3-da77-4d1e-a076-4f332dfb6a99</id>
+    <Type>1</Type>
+    <Name>e173e4a8-0a45-4b1b-ac61-3abb69711a29</Name>
+    <Parent>e32fbcdd-7daf-4577-8163-88cbfa2ded7f</Parent>
+    <Duration>2</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>f7f658dd-e1c0-4eb9-bd51-554e900ecb05</Content>
+    <TOrder>2963</TOrder>
+  </Themes>
+  <Themes>
+    <id>cba26e45-fdb9-4024-bc9a-ce63c5966db4</id>
+    <Type>1</Type>
+    <Name>2fbca2b1-45a7-4426-b658-a866ada5821a</Name>
+    <Parent>e32fbcdd-7daf-4577-8163-88cbfa2ded7f</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>4a7e28ec-79a6-4d4e-85f8-687be98fc182</Content>
+    <TOrder>2964</TOrder>
+  </Themes>
+  <Tests>
+    <id>93a103a0-b060-43fc-bcd0-debde9a61423</id>
+    <Type>2</Type>
+    <Parent>85f16371-f77d-48f1-8ef3-1d4e3663c47c</Parent>
+    <Duration>0</Duration>
+    <Points>0</Points>
+    <Show>true</Show>
+    <Split>false</Split>
+    <AutoFinish>false</AutoFinish>
+    <DefLanguage>1</DefLanguage>
+    <CanSwitchLang>false</CanSwitchLang>
+    <Hints>1</Hints>
+    <ShowThemes>true</ShowThemes>
+  </Tests>
+  <TestQuestions>
+    <id>9a7bdbc6-7ea1-42c7-afe8-c8c8fb277549</id>
+    <Test>93a103a0-b060-43fc-bcd0-debde9a61423</Test>
+    <Content>ec29381e-0e85-4e20-8ef6-b14a66731070</Content>
+    <ShortHint>3c3c9ba8-d33d-4d20-b99f-d2a8da09d00e</ShortHint>
+    <LongHint>dbc60131-d270-4850-a2de-2fcb85a029ac</LongHint>
+    <Points>0</Points>
+    <Answer>2c8d26a4-7dac-4558-b800-17454b88a015</Answer>
+    <Type>6</Type>
+    <QOrder>696</QOrder>
+    <Theme>d5a2aa0f-4c84-4a5e-a491-7f2ffe0a7954</Theme>
+  </TestQuestions>
+</_x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020__x0020_Проблемы_x0020_тестирования_x0020_в_x0020_дистанционном_x0020_обучении>

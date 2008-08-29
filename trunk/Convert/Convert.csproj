@@ -70,6 +70,7 @@
     <Compile Include="Custom\TestResult.cs" />
     <Compile Include="EnsureChildrenAttribute.cs" />
     <Compile Include="Items\Lms\Area.cs" />
+    <Compile Include="Items\Lms\TestQuestion.cs" />
     <Compile Include="Items\Lms\RequestList.cs" />
     <Compile Include="Items\Lms\TrainingList.cs" />
     <Compile Include="Items\Lms\IContinuous.cs" />
@@ -89,9 +90,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lms.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LmsInitializer.cs" />
-    <Compile Include="LmsProvider.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

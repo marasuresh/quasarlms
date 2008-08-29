@@ -1,0 +1,839 @@
+<?xml version="1.0" standalone="yes"?>
+<Уроки_x0020_физики>
+  <xs:schema id="Уроки_x0020_физики" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="Уроки_x0020_физики" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Courses">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Version" type="xs:string" minOccurs="0" />
+                <xs:element name="Code" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Area" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Cost1" type="xs:double" minOccurs="0" />
+                <xs:element name="CostType1" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Cost2" type="xs:double" minOccurs="0" />
+                <xs:element name="CostType2" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Author" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="CPublic" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DescriptionShort" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DescriptionLong" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Requirements" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Keywords" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Additions" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Instructors" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="StartQuestionnaire" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="FinishQuestionnaire" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="DiskFolder" type="xs:string" minOccurs="0" />
+                <xs:element name="isReady" type="xs:boolean" minOccurs="0" />
+                <xs:element name="CourseLanguage" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Content">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="eid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="Lang" type="xs:int" minOccurs="0" />
+                <xs:element name="DataStr" type="xs:string" minOccurs="0" />
+                <xs:element name="Data" type="xs:base64Binary" minOccurs="0" />
+                <xs:element name="TData" type="xs:string" minOccurs="0" />
+                <xs:element name="ParentEid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="COrder" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Themes">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:unsignedByte" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Parent" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Duration" type="xs:int" minOccurs="0" />
+                <xs:element name="Mandatory" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Content" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="TOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="Practice" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Tests">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="Parent" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Duration" type="xs:int" minOccurs="0" />
+                <xs:element name="Points" type="xs:int" minOccurs="0" />
+                <xs:element name="Show" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Split" type="xs:boolean" minOccurs="0" />
+                <xs:element name="AutoFinish" type="xs:boolean" minOccurs="0" />
+                <xs:element name="DefLanguage" type="xs:int" minOccurs="0" />
+                <xs:element name="CanSwitchLang" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Hints" type="xs:int" minOccurs="0" />
+                <xs:element name="InternalName" type="xs:string" minOccurs="0" />
+                <xs:element name="ShowThemes" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="TestQuestions">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Test" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Content" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="ShortHint" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="LongHint" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Points" type="xs:int" minOccurs="0" />
+                <xs:element name="Answer" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="QOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="Theme" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Terms">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+                <xs:element name="Text" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Courses>
+    <id>eba7b738-07ba-463c-b658-bc9ac4d2e819</id>
+    <Version />
+    <Code>Phisica</Code>
+    <Name>d55fd700-6036-4e95-bd3b-cf7021c54eaa</Name>
+    <Area>4204c47f-74f6-4aff-b775-ea8dd239722b</Area>
+    <Type>a280104a-9ee8-4b59-91ab-7910dea5adae</Type>
+    <Cost1>0</Cost1>
+    <Cost2>0</Cost2>
+    <Author>59ed7795-12ec-4b2d-b23a-8f20a34fd94b</Author>
+    <CPublic>false</CPublic>
+    <DescriptionShort>4f28fc4a-d984-4d0e-bbc5-aeb4765cb9cf</DescriptionShort>
+    <DescriptionLong>2dde8eca-1b73-45c2-84ae-bbd01723521f</DescriptionLong>
+    <Requirements>27ca32f9-6af2-43c0-8cda-8793d906c7c3</Requirements>
+    <Keywords>c15cb838-d912-4590-9d9b-ba779e0becb1</Keywords>
+    <Additions>27964c56-60b5-42b3-b595-debec2138187</Additions>
+    <Instructors>97591f10-110b-4b6c-b5f8-7e5faa19ce60</Instructors>
+    <DiskFolder />
+    <isReady>false</isReady>
+    <CourseLanguage>1</CourseLanguage>
+  </Courses>
+  <Content>
+    <id>1fe71f73-b06c-4f45-988c-14d737a7b7a4</id>
+    <eid>d55fd700-6036-4e95-bd3b-cf7021c54eaa</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Уроки физики</DataStr>
+    <COrder>14035</COrder>
+  </Content>
+  <Content>
+    <id>c73db744-da60-4d48-a153-ef944593e503</id>
+    <eid>d55fd700-6036-4e95-bd3b-cf7021c54eaa</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Уроки физики</DataStr>
+    <COrder>14036</COrder>
+  </Content>
+  <Content>
+    <id>e8280e0c-a262-47ed-b16b-9252a115fb4e</id>
+    <eid>59ed7795-12ec-4b2d-b23a-8f20a34fd94b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>fba5a7e1-b6d0-420b-b23f-cf4c78512ab3</id>
+    <eid>4f28fc4a-d984-4d0e-bbc5-aeb4765cb9cf</eid>
+    <Type>6</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>0eb5fcdc-2d0c-4d0f-9a44-e2284fe0e6ff</id>
+    <eid>2dde8eca-1b73-45c2-84ae-bbd01723521f</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>234ead25-b50f-4175-826f-7b25ac2286e1</id>
+    <eid>27ca32f9-6af2-43c0-8cda-8793d906c7c3</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>881f3026-515b-4360-8e06-643929a11281</id>
+    <eid>c15cb838-d912-4590-9d9b-ba779e0becb1</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+  </Content>
+  <Content>
+    <id>f50791a8-799c-4a3a-9505-57f0cd6dc2c9</id>
+    <eid>27964c56-60b5-42b3-b595-debec2138187</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>0</COrder>
+  </Content>
+  <Content>
+    <id>762009c7-2c92-4776-8b09-4ebb81612a9d</id>
+    <eid>27964c56-60b5-42b3-b595-debec2138187</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>1</COrder>
+  </Content>
+  <Content>
+    <id>542c3e48-470b-483e-963b-e0ea6ea4d48a</id>
+    <eid>27964c56-60b5-42b3-b595-debec2138187</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>2</COrder>
+  </Content>
+  <Content>
+    <id>6fbe1081-83ca-43b3-9a00-935d01a2cee1</id>
+    <eid>27964c56-60b5-42b3-b595-debec2138187</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <COrder>3</COrder>
+  </Content>
+  <Content>
+    <id>27f17e8c-14a0-469d-a5fc-3290bec360b3</id>
+    <eid>b3144a66-02be-49ff-9d15-a61ed4ead9ae</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Траектория, путь и перемещение</DataStr>
+    <COrder>14037</COrder>
+  </Content>
+  <Content>
+    <id>44b14362-a66d-461e-a5e8-3d0b0f2a1338</id>
+    <eid>b3144a66-02be-49ff-9d15-a61ed4ead9ae</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Траектория, путь и перемещение</DataStr>
+    <COrder>14038</COrder>
+  </Content>
+  <Content>
+    <id>efd1c902-5a4e-4db4-bb06-bed61504b46e</id>
+    <eid>47ff838a-b989-4d6b-946e-ac0deb33433b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Траектория</DataStr>
+    <COrder>14041</COrder>
+  </Content>
+  <Content>
+    <id>10a94efa-f1a0-4433-9de9-a70bc942eb88</id>
+    <eid>47ff838a-b989-4d6b-946e-ac0deb33433b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Траектория</DataStr>
+    <COrder>14042</COrder>
+  </Content>
+  <Content>
+    <id>4f1c43b5-53c6-4f1e-83ba-23cf831107a6</id>
+    <eid>71881115-93db-439f-a5a5-1b20b1bc8744</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Виды траекторий</DataStr>
+    <COrder>14045</COrder>
+  </Content>
+  <Content>
+    <id>97a13773-a717-47be-b506-e90f6c974381</id>
+    <eid>71881115-93db-439f-a5a5-1b20b1bc8744</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Виды траекторий</DataStr>
+    <COrder>14046</COrder>
+  </Content>
+  <Content>
+    <id>f2936ea1-dfeb-425c-8b6f-594d31d777bf</id>
+    <eid>cb5f397b-30bf-4158-b58a-cdd187409f60</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Путь</DataStr>
+    <COrder>14049</COrder>
+  </Content>
+  <Content>
+    <id>e9e9a859-0982-45b2-98b5-00cfdc8f5a43</id>
+    <eid>cb5f397b-30bf-4158-b58a-cdd187409f60</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Путь</DataStr>
+    <COrder>14050</COrder>
+  </Content>
+  <Content>
+    <id>93650e14-d6bd-4f43-a3ff-1b4aeaf754c7</id>
+    <eid>2c4969a3-7081-4df2-b227-3b2d5f85243c</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Перемещение</DataStr>
+    <COrder>14053</COrder>
+  </Content>
+  <Content>
+    <id>63a13d6f-49ee-4097-b64a-20ea03b9ad29</id>
+    <eid>2c4969a3-7081-4df2-b227-3b2d5f85243c</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Перемещение</DataStr>
+    <COrder>14054</COrder>
+  </Content>
+  <Content>
+    <id>ebe9a211-0232-4bf7-ac6e-9a3d7d1efd66</id>
+    <eid>7e9ebb2d-6bb2-4b1b-b597-b3bc352b0624</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Определения координат тела в системе отсчета</DataStr>
+    <COrder>14057</COrder>
+  </Content>
+  <Content>
+    <id>28582f97-62b5-4001-8402-038ab21b31f1</id>
+    <eid>7e9ebb2d-6bb2-4b1b-b597-b3bc352b0624</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Определения координат тела в системе отсчета</DataStr>
+    <COrder>14058</COrder>
+  </Content>
+  <Content>
+    <id>134f2c1b-be34-47c7-8ad6-bfe87002e8a7</id>
+    <eid>34ddf033-1e70-4b1f-aa82-09ef97f235b8</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Равноускоренное и равномерное движения</DataStr>
+    <COrder>14061</COrder>
+  </Content>
+  <Content>
+    <id>b7a937fe-a659-48c3-b8b4-5f3f309b8f77</id>
+    <eid>34ddf033-1e70-4b1f-aa82-09ef97f235b8</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Равноускоренное и равномерное движения</DataStr>
+    <COrder>14062</COrder>
+  </Content>
+  <Content>
+    <id>aea285d6-d338-44d3-ab33-705ed3cdc7d2</id>
+    <eid>beb0daae-34c5-4dfe-8cd3-2fe95a292fd7</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Движение объектов с ускорением и без него.</DataStr>
+    <COrder>14065</COrder>
+  </Content>
+  <Content>
+    <id>e84792d5-e5a5-46a8-a7f6-7924514bdad5</id>
+    <eid>beb0daae-34c5-4dfe-8cd3-2fe95a292fd7</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Движение объектов с ускорением и без него.</DataStr>
+    <COrder>14066</COrder>
+  </Content>
+  <Content>
+    <id>096ce470-a48a-4767-8f36-e65be79370be</id>
+    <eid>ba6181d6-fb61-4df8-9c2b-24c60fc6e821</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Равномерное движение.</DataStr>
+    <COrder>14069</COrder>
+  </Content>
+  <Content>
+    <id>e58b2b02-6caa-45fd-aee5-cffc0734e912</id>
+    <eid>ba6181d6-fb61-4df8-9c2b-24c60fc6e821</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Равномерное движение.</DataStr>
+    <COrder>14070</COrder>
+  </Content>
+  <Content>
+    <id>4af6e2f6-ebcf-493e-bad3-a65e3652eb2f</id>
+    <eid>a368f8c8-ffb2-4e13-9ba2-321bf5b268c1</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Равноускоренное движение</DataStr>
+    <COrder>14073</COrder>
+  </Content>
+  <Content>
+    <id>151f4b1b-c897-4b2c-b060-18e75175400f</id>
+    <eid>a368f8c8-ffb2-4e13-9ba2-321bf5b268c1</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Равноускоренное движение</DataStr>
+    <COrder>14074</COrder>
+  </Content>
+  <Content>
+    <id>dfcab8b8-2666-4f5f-9fb2-62f4ee6bb158</id>
+    <eid>75e1174c-f38f-4e0e-bc15-b58fd7c0adf4</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Свободное падение тел в пространстве</DataStr>
+    <COrder>14077</COrder>
+  </Content>
+  <Content>
+    <id>516afcea-b0cf-4b65-bf2a-d9cda998ee71</id>
+    <eid>75e1174c-f38f-4e0e-bc15-b58fd7c0adf4</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Свободное падение тел в пространстве</DataStr>
+    <COrder>14078</COrder>
+  </Content>
+  <Content>
+    <id>d5f8fe57-2dc2-43f4-b977-6dfbaba1ec8d</id>
+    <eid>fc109469-5a95-4ade-9224-9412717978bb</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Ускорение свободного падения</DataStr>
+    <COrder>14081</COrder>
+  </Content>
+  <Content>
+    <id>9a537806-309c-4fcb-98a1-ac23154fd364</id>
+    <eid>fc109469-5a95-4ade-9224-9412717978bb</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Ускорение свободного падения</DataStr>
+    <COrder>14082</COrder>
+  </Content>
+  <Content>
+    <id>b08bcc25-9b2e-4d8c-9811-61602e313ede</id>
+    <eid>3581943c-9233-4f90-bd4b-c731ceff24e9</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Лабораторная работа. Исследование равноускоренного прямолинейного движения</DataStr>
+    <COrder>14085</COrder>
+  </Content>
+  <Content>
+    <id>c3051499-f35a-4acd-8dac-1942dd1eac30</id>
+    <eid>3581943c-9233-4f90-bd4b-c731ceff24e9</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Лабораторная работа. Исследование равноускоренного прямолинейного движения</DataStr>
+    <COrder>14086</COrder>
+  </Content>
+  <Content>
+    <id>f325de0a-cb69-4e09-8064-11c33e971e8a</id>
+    <eid>22665232-b5b1-4ed5-aed7-9c18a95414ac</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Лабораторная работа. Измерение массы тела на рычажных весах</DataStr>
+    <COrder>14089</COrder>
+  </Content>
+  <Content>
+    <id>9d9f00d9-f7d4-4bbe-b8f0-95eeefaff46b</id>
+    <eid>22665232-b5b1-4ed5-aed7-9c18a95414ac</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Лабораторная работа. Измерение массы тела на рычажных весах</DataStr>
+    <COrder>14090</COrder>
+  </Content>
+  <Content>
+    <id>05e202ce-0b20-478b-91c2-f1f6209c8553</id>
+    <eid>aeea6a5b-76a0-447a-b305-4ef818ca3547</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>Движение под действием силы тяжести</DataStr>
+    <COrder>14093</COrder>
+  </Content>
+  <Content>
+    <id>e714e857-6f92-47e1-aa08-7bc9d355ab72</id>
+    <eid>aeea6a5b-76a0-447a-b305-4ef818ca3547</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>Движение под действием силы тяжести</DataStr>
+    <COrder>14094</COrder>
+  </Content>
+  <Content>
+    <id>f25fcea4-3571-4439-95cc-ff30a3f22d60</id>
+    <eid>f69ca8a2-618f-4771-8601-729377080270</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/16.html</DataStr>
+    <COrder>14039</COrder>
+  </Content>
+  <Content>
+    <id>71b80515-e3d6-4b83-90ec-c4acac6f076d</id>
+    <eid>f69ca8a2-618f-4771-8601-729377080270</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/16.html</DataStr>
+    <COrder>14040</COrder>
+  </Content>
+  <Content>
+    <id>3b33a7a8-d19e-4471-88eb-02044d7fb0d6</id>
+    <eid>522b0c5f-e13d-4e7b-97d2-9e0ff1e90535</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/17.html</DataStr>
+    <COrder>14043</COrder>
+  </Content>
+  <Content>
+    <id>e754b19e-24cb-4e9f-b0a9-4af4bba76d50</id>
+    <eid>522b0c5f-e13d-4e7b-97d2-9e0ff1e90535</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/17.html</DataStr>
+    <COrder>14044</COrder>
+  </Content>
+  <Content>
+    <id>8288a1b6-1d52-4db8-ac45-475675f9584d</id>
+    <eid>1f82ab64-bf4b-4578-8551-54289c2e1d37</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/18.html</DataStr>
+    <COrder>14047</COrder>
+  </Content>
+  <Content>
+    <id>56f846ad-2102-450c-bee0-d730163d9094</id>
+    <eid>1f82ab64-bf4b-4578-8551-54289c2e1d37</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/18.html</DataStr>
+    <COrder>14048</COrder>
+  </Content>
+  <Content>
+    <id>29d16c14-8bc8-40ea-b310-13e7189daa25</id>
+    <eid>6515f065-2ec5-409d-884f-f74499f839e1</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/19.html</DataStr>
+    <COrder>14051</COrder>
+  </Content>
+  <Content>
+    <id>8b6d3574-31b0-411e-b153-6798ed01cb21</id>
+    <eid>6515f065-2ec5-409d-884f-f74499f839e1</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/19.html</DataStr>
+    <COrder>14052</COrder>
+  </Content>
+  <Content>
+    <id>6ecaa58c-649b-4fd5-a54f-5f724197a473</id>
+    <eid>208b6dc7-3e07-46b9-a005-176ce9ceedfc</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/20.html</DataStr>
+    <COrder>14055</COrder>
+  </Content>
+  <Content>
+    <id>843de990-91be-429c-b04f-bd811e5b9f27</id>
+    <eid>208b6dc7-3e07-46b9-a005-176ce9ceedfc</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/20.html</DataStr>
+    <COrder>14056</COrder>
+  </Content>
+  <Content>
+    <id>4002d7ef-2bb6-4f6b-82d1-845a1136765f</id>
+    <eid>07484c2f-5fc3-4c47-9bb9-0d9fe4391ba9</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/21.html</DataStr>
+    <COrder>14059</COrder>
+  </Content>
+  <Content>
+    <id>8d0de2a3-ed5a-444e-aeb4-f21cee4e1192</id>
+    <eid>07484c2f-5fc3-4c47-9bb9-0d9fe4391ba9</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/21.html</DataStr>
+    <COrder>14060</COrder>
+  </Content>
+  <Content>
+    <id>d99cc384-7cdf-44fb-9f22-a054c881aa3a</id>
+    <eid>dbd5098e-a298-4ac0-a299-e3329ab98c7f</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/22.html</DataStr>
+    <COrder>14063</COrder>
+  </Content>
+  <Content>
+    <id>1fa1a93f-3795-482d-b9f9-11a8ac4074b5</id>
+    <eid>dbd5098e-a298-4ac0-a299-e3329ab98c7f</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/22.html</DataStr>
+    <COrder>14064</COrder>
+  </Content>
+  <Content>
+    <id>1a7132b5-540b-458e-9a54-255df1a4bd4b</id>
+    <eid>c50185ac-d195-43fe-b3b4-1b42403d878a</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/23.html</DataStr>
+    <COrder>14067</COrder>
+  </Content>
+  <Content>
+    <id>93e0c35e-d31c-4559-99de-d21741798f15</id>
+    <eid>c50185ac-d195-43fe-b3b4-1b42403d878a</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/23.html</DataStr>
+    <COrder>14068</COrder>
+  </Content>
+  <Content>
+    <id>6bbfd679-a7d3-432d-8edf-9b4fabf0dfc3</id>
+    <eid>ed19a123-6610-4998-ad2a-1eccedc86a7b</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/24.html</DataStr>
+    <COrder>14071</COrder>
+  </Content>
+  <Content>
+    <id>caf7ff7f-71bb-4db0-ab07-d308463ab2ca</id>
+    <eid>ed19a123-6610-4998-ad2a-1eccedc86a7b</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/24.html</DataStr>
+    <COrder>14072</COrder>
+  </Content>
+  <Content>
+    <id>ac128dc8-181e-494f-97ef-8cbb8cfb0053</id>
+    <eid>2c6ab84c-1132-4c01-9bef-f1bfb0268621</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/25.html</DataStr>
+    <COrder>14075</COrder>
+  </Content>
+  <Content>
+    <id>37bf3450-256c-4477-ac7b-f6191681a465</id>
+    <eid>2c6ab84c-1132-4c01-9bef-f1bfb0268621</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/25.html</DataStr>
+    <COrder>14076</COrder>
+  </Content>
+  <Content>
+    <id>270f1265-5e86-4d65-bb37-3aee6024ed96</id>
+    <eid>750c6258-f07a-4297-b1be-b3ba4159d4d5</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/26.html</DataStr>
+    <COrder>14079</COrder>
+  </Content>
+  <Content>
+    <id>5df659b4-2f6d-4357-8aab-bb6125caeb6f</id>
+    <eid>750c6258-f07a-4297-b1be-b3ba4159d4d5</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/26.html</DataStr>
+    <COrder>14080</COrder>
+  </Content>
+  <Content>
+    <id>242e0cac-b7ea-4386-afaa-54689a126c63</id>
+    <eid>88101dc7-98db-4109-9899-091f12ae0bc3</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/27.html</DataStr>
+    <COrder>14083</COrder>
+  </Content>
+  <Content>
+    <id>48f042e6-a535-4912-904c-68c91a1fa107</id>
+    <eid>88101dc7-98db-4109-9899-091f12ae0bc3</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/27.html</DataStr>
+    <COrder>14084</COrder>
+  </Content>
+  <Content>
+    <id>5bf8c559-4222-425e-a7e4-af32646e23a7</id>
+    <eid>9c7d8cfb-01ab-4d42-8f5f-d4547f52e854</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/28.html</DataStr>
+    <COrder>14087</COrder>
+  </Content>
+  <Content>
+    <id>cc554fa2-6549-4b8d-b4dd-51ccc76ee1ff</id>
+    <eid>9c7d8cfb-01ab-4d42-8f5f-d4547f52e854</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/28.html</DataStr>
+    <COrder>14088</COrder>
+  </Content>
+  <Content>
+    <id>b2c0d871-4759-469b-a63a-e193f936b00d</id>
+    <eid>56170017-ea8a-47ed-8238-df3a841c71e5</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/105.html</DataStr>
+    <COrder>14091</COrder>
+  </Content>
+  <Content>
+    <id>deeb6467-ce3b-4290-95dc-f57905f2a198</id>
+    <eid>56170017-ea8a-47ed-8238-df3a841c71e5</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/105.html</DataStr>
+    <COrder>14092</COrder>
+  </Content>
+  <Content>
+    <id>2064f91d-a28d-49b5-b414-03b22d29e6a5</id>
+    <eid>6ca6a954-80c4-43b4-8770-14554d1dc8a6</eid>
+    <Type>1</Type>
+    <Lang>1</Lang>
+    <DataStr>RU/resources/_/29.html</DataStr>
+    <COrder>14095</COrder>
+  </Content>
+  <Content>
+    <id>74f5f444-f713-4e8b-9a2f-c92651b117e5</id>
+    <eid>6ca6a954-80c4-43b4-8770-14554d1dc8a6</eid>
+    <Type>1</Type>
+    <Lang>2</Lang>
+    <DataStr>EN/resources/_/29.html</DataStr>
+    <COrder>14096</COrder>
+  </Content>
+  <Themes>
+    <id>61ec8b90-2695-4f66-a5f0-cf6faac11ceb</id>
+    <Type>1</Type>
+    <Name>b3144a66-02be-49ff-9d15-a61ed4ead9ae</Name>
+    <Parent>eba7b738-07ba-463c-b658-bc9ac4d2e819</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>f69ca8a2-618f-4771-8601-729377080270</Content>
+    <TOrder>2956</TOrder>
+  </Themes>
+  <Themes>
+    <id>4caa669f-a79b-4ffa-b77b-20f57f54c7ac</id>
+    <Type>1</Type>
+    <Name>47ff838a-b989-4d6b-946e-ac0deb33433b</Name>
+    <Parent>61ec8b90-2695-4f66-a5f0-cf6faac11ceb</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>522b0c5f-e13d-4e7b-97d2-9e0ff1e90535</Content>
+    <TOrder>2957</TOrder>
+  </Themes>
+  <Themes>
+    <id>7adf4251-74e8-4d92-8432-585bf39db64c</id>
+    <Type>1</Type>
+    <Name>71881115-93db-439f-a5a5-1b20b1bc8744</Name>
+    <Parent>61ec8b90-2695-4f66-a5f0-cf6faac11ceb</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>1f82ab64-bf4b-4578-8551-54289c2e1d37</Content>
+    <TOrder>2958</TOrder>
+  </Themes>
+  <Themes>
+    <id>aed3ea6f-2344-4afc-b91d-f6589bf8046b</id>
+    <Type>1</Type>
+    <Name>cb5f397b-30bf-4158-b58a-cdd187409f60</Name>
+    <Parent>61ec8b90-2695-4f66-a5f0-cf6faac11ceb</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>6515f065-2ec5-409d-884f-f74499f839e1</Content>
+    <TOrder>2959</TOrder>
+  </Themes>
+  <Themes>
+    <id>3924b554-72d0-4944-bdd3-5a57fb4c6999</id>
+    <Type>1</Type>
+    <Name>2c4969a3-7081-4df2-b227-3b2d5f85243c</Name>
+    <Parent>61ec8b90-2695-4f66-a5f0-cf6faac11ceb</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>208b6dc7-3e07-46b9-a005-176ce9ceedfc</Content>
+    <TOrder>2960</TOrder>
+  </Themes>
+  <Themes>
+    <id>726d491b-ee9c-4f09-908c-43eb2f158bfd</id>
+    <Type>1</Type>
+    <Name>7e9ebb2d-6bb2-4b1b-b597-b3bc352b0624</Name>
+    <Parent>61ec8b90-2695-4f66-a5f0-cf6faac11ceb</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>07484c2f-5fc3-4c47-9bb9-0d9fe4391ba9</Content>
+    <TOrder>2961</TOrder>
+  </Themes>
+  <Themes>
+    <id>01917914-44b0-4518-b151-f5272555fe3b</id>
+    <Type>1</Type>
+    <Name>34ddf033-1e70-4b1f-aa82-09ef97f235b8</Name>
+    <Parent>eba7b738-07ba-463c-b658-bc9ac4d2e819</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>dbd5098e-a298-4ac0-a299-e3329ab98c7f</Content>
+    <TOrder>2962</TOrder>
+  </Themes>
+  <Themes>
+    <id>c0b90df3-bdfc-47a0-a7b4-449ec854a79b</id>
+    <Type>1</Type>
+    <Name>beb0daae-34c5-4dfe-8cd3-2fe95a292fd7</Name>
+    <Parent>01917914-44b0-4518-b151-f5272555fe3b</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>c50185ac-d195-43fe-b3b4-1b42403d878a</Content>
+    <TOrder>2963</TOrder>
+  </Themes>
+  <Themes>
+    <id>84ba960c-6831-4105-b608-1c670cb7f648</id>
+    <Type>1</Type>
+    <Name>ba6181d6-fb61-4df8-9c2b-24c60fc6e821</Name>
+    <Parent>01917914-44b0-4518-b151-f5272555fe3b</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>ed19a123-6610-4998-ad2a-1eccedc86a7b</Content>
+    <TOrder>2964</TOrder>
+  </Themes>
+  <Themes>
+    <id>c4761417-26d9-469d-9c78-59807d6a5d05</id>
+    <Type>1</Type>
+    <Name>a368f8c8-ffb2-4e13-9ba2-321bf5b268c1</Name>
+    <Parent>01917914-44b0-4518-b151-f5272555fe3b</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>2c6ab84c-1132-4c01-9bef-f1bfb0268621</Content>
+    <TOrder>2965</TOrder>
+  </Themes>
+  <Themes>
+    <id>23599445-0b25-4227-9f39-b4744896f8a6</id>
+    <Type>1</Type>
+    <Name>75e1174c-f38f-4e0e-bc15-b58fd7c0adf4</Name>
+    <Parent>01917914-44b0-4518-b151-f5272555fe3b</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>750c6258-f07a-4297-b1be-b3ba4159d4d5</Content>
+    <TOrder>2966</TOrder>
+  </Themes>
+  <Themes>
+    <id>dd752965-ceee-45cf-9425-142fc480dd55</id>
+    <Type>1</Type>
+    <Name>fc109469-5a95-4ade-9224-9412717978bb</Name>
+    <Parent>01917914-44b0-4518-b151-f5272555fe3b</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>88101dc7-98db-4109-9899-091f12ae0bc3</Content>
+    <TOrder>2967</TOrder>
+  </Themes>
+  <Themes>
+    <id>76a5dd32-539c-4009-94d2-9ddcc0e4a7a2</id>
+    <Type>1</Type>
+    <Name>3581943c-9233-4f90-bd4b-c731ceff24e9</Name>
+    <Parent>01917914-44b0-4518-b151-f5272555fe3b</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>9c7d8cfb-01ab-4d42-8f5f-d4547f52e854</Content>
+    <TOrder>2968</TOrder>
+  </Themes>
+  <Themes>
+    <id>e2e045f6-2135-4f60-9577-8be875b1c275</id>
+    <Type>1</Type>
+    <Name>22665232-b5b1-4ed5-aed7-9c18a95414ac</Name>
+    <Parent>01917914-44b0-4518-b151-f5272555fe3b</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>56170017-ea8a-47ed-8238-df3a841c71e5</Content>
+    <TOrder>2969</TOrder>
+  </Themes>
+  <Themes>
+    <id>a957a429-9b49-4857-9927-99e044eb8d93</id>
+    <Type>1</Type>
+    <Name>aeea6a5b-76a0-447a-b305-4ef818ca3547</Name>
+    <Parent>eba7b738-07ba-463c-b658-bc9ac4d2e819</Parent>
+    <Duration>1</Duration>
+    <Mandatory>true</Mandatory>
+    <Content>6ca6a954-80c4-43b4-8770-14554d1dc8a6</Content>
+    <TOrder>2970</TOrder>
+  </Themes>
+</Уроки_x0020_физики>
