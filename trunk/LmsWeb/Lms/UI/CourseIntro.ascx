@@ -43,7 +43,7 @@
 				</iframe>
 			<% } %>
 			<% var _additions = this.CurrentItem.GetDetailCollection("Additions", false); %>
-			<% if (_additions.Count > 0) { %>
+			<% if (null != _additions && _additions.Count > 0) { %>
 				<h3 class="cap3">
 					<%= Resources.CourseIntro.Additions %>:</h3>
 				<% foreach (string _addition in _additions) { %>

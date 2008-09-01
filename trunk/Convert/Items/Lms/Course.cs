@@ -16,7 +16,9 @@
 	[RestrictParents(typeof(CourseList))]
 	//[WithEditableTitle("Title", 20)]
 	[TabPanel("lms", "LMS", 200)]
-	[EnsureChildren(typeof(TopicList), typeof(TrainingList), typeof(RequestList))]
+	[	EnsureChild("Topics", typeof(TopicList)),
+		EnsureChild("Trainings", typeof(TrainingList)),
+		EnsureChild("Requests", typeof(RequestList))]
 	public class Course : AbstractContentPage, IContinuous
 	{
 		#region Properties
