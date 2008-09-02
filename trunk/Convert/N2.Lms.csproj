@@ -59,22 +59,19 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Custom\Course.cs" />
     <Compile Include="Custom\LmsDataContext.cs" />
     <Compile Include="Custom\TestResult.cs" />
-    <Compile Include="EnsureChildAttribute.cs" />
-    <Compile Include="ItemBuilder.cs" />
-    <Compile Include="ItemBuilderInitializer.cs" />
     <Compile Include="Items\Lms\Area.cs" />
     <Compile Include="Items\Lms\TestQuestion.cs" />
     <Compile Include="Items\Lms\RequestList.cs" />
@@ -102,7 +99,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="WithEditableDateRangeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -121,6 +117,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\N2.Futures\N2.Futures.csproj">
+      <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
+      <Name>N2.Futures</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
