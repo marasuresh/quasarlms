@@ -5,6 +5,9 @@ namespace N2.Details
 	using System.Web.UI;
 	using N2.Web.UI.WebControls;
 	
+	/// <summary>
+	/// Editable date/time range, defined by a pair of DateTime properties
+	/// </summary>
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple=true)]
 	public class WithEditableDateRangeAttribute
 		: WithEditablePublishedRangeAttribute
