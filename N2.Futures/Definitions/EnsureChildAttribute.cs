@@ -47,7 +47,7 @@ namespace N2.Definitions
 				_child.Name = this.Name;
 				_child.Title = this.Name;
 //TODO Ensure proper moment to persist
-				this.Persister.Save(_child);
+//				this.Persister.Save(_child);
 			}
 		}
 	}

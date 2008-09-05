@@ -126,7 +126,7 @@ namespace Lms
     #endregion
 		
 		public LmsDataContext() : 
-				base(global::Convert.Properties.Settings.Default.DTworkConnectionString, mappingSource)
+				base(global::N2.Lms.Properties.Settings.Default.DTworkConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

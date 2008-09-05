@@ -32,9 +32,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Lms", "Convert\N2.Lms.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{4F7EC6A5-6048-4FB7-B76E-1BC045857145}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Futures.Tests", "N2.Lms.Tests\N2.Futures.Tests.csproj", "{2212CEDF-8C0C-4D25-B80B-9D96B1589CA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Futures.Tests", "N2.Futures.Tests\N2.Futures.Tests.csproj", "{2212CEDF-8C0C-4D25-B80B-9D96B1589CA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Futures", "N2.Futures\N2.Futures.csproj", "{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Workflow", "N2.Workflow\N2.Workflow.csproj", "{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -207,6 +209,26 @@ Global
 		{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.DL Server Deployment|.NET.ActiveCfg = Debug|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.DL Server Deployment|Any CPU.ActiveCfg = Debug|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.DL Server Deployment|Any CPU.Build.0 = Debug|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.DL Server Deployment|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.DL Server Deployment|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Local deployment|.NET.ActiveCfg = Release|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Local deployment|Any CPU.ActiveCfg = Release|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Local deployment|Any CPU.Build.0 = Release|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Local deployment|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Local deployment|Mixed Platforms.Build.0 = Release|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Release|.NET.ActiveCfg = Release|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

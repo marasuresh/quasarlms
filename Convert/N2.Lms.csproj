@@ -8,8 +8,8 @@
     <ProjectGuid>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Convert</RootNamespace>
-    <AssemblyName>Convert</AssemblyName>
+    <RootNamespace>N2.Lms</RootNamespace>
+    <AssemblyName>N2.Lms</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -69,10 +69,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Custom\Course.cs" />
     <Compile Include="Custom\LmsDataContext.cs" />
-    <Compile Include="Custom\TestResult.cs" />
     <Compile Include="Items\Lms\Area.cs" />
+    <Compile Include="Items\Lms\TrainingContainer.cs" />
+    <Compile Include="Items\Lms\RequestContainer.cs" />
+    <Compile Include="Items\Lms\CourseList.cs" />
     <Compile Include="Items\Lms\TestQuestion.cs" />
     <Compile Include="Items\Lms\RequestList.cs" />
     <Compile Include="Items\Lms\TrainingList.cs" />
@@ -80,7 +81,7 @@
     <Compile Include="Items\Lms\Topic.cs" />
     <Compile Include="Items\Lms\TopicList.cs" />
     <Compile Include="Items\Lms\Course.cs" />
-    <Compile Include="Items\Lms\CourseList.cs" />
+    <Compile Include="Items\Lms\CourseContainer.cs" />
     <Compile Include="Items\Lms\Request.cs" />
     <Compile Include="Items\Lms\Test.cs" />
     <Compile Include="Items\Lms\TestResult.cs" />
