@@ -110,8 +110,8 @@ namespace DCE
 						this.PlaceHolder1.Controls.Add(this.LoadControl("Common\\HelpInfo.ascx"));
 						break;
 					default:
-						var _ctl = this.LoadControl(@"News\UI\NewsList.ascx");
-						((N2.Templates.News.UI.NewsList)_ctl).CurrentItem = DceAccessLib.DAL.NewsController.Select();
+						var _ctl = this.LoadControl(@"~/Templates/UI/Parts/NewsList.ascx");
+						((N2.Templates.UI.Parts.NewsList)_ctl).CurrentItem = DceAccessLib.DAL.NewsController.Select();
 						this.PlaceHolder1.Controls.Add(_ctl);
 						break;
 				}
@@ -119,8 +119,8 @@ namespace DCE
 				var _ctl = this.LoadControl(@"Common\" + _cset + ".ascx");
 				
 				if (null == _ctl) {
-					_ctl = this.LoadControl(@"News\UI\NewsList.ascx");
-					((N2.Templates.News.UI.NewsList)_ctl).CurrentItem = DceAccessLib.DAL.NewsController.Select();
+					_ctl = this.LoadControl(@"~/Templates/UI/Parts/NewsList.ascx");
+					((N2.Templates.UI.Parts.NewsList)_ctl).CurrentItem = DceAccessLib.DAL.NewsController.Select();
 				}
 				
 				this.PlaceHolder1.Controls.Add(_ctl);

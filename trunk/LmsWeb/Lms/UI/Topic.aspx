@@ -1,5 +1,5 @@
 ﻿<%@ Page
-	Inherits="N2.Web.UI.ContentPage`1[[N2.Lms.Items.Topic, Convert]], N2"
+	Inherits="N2.Web.UI.ContentPage`1[[N2.Lms.Items.Topic, N2.Lms]], N2"
 	Language="C#" %>
 <%@ Register src="Topic.ascx" tagname="Topic" tagprefix="uc2" %>
 <asp:Content runat="server" ContentPlaceHolderID="TextContent">

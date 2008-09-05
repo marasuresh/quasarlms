@@ -1,8 +1,6 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
-<%@ Reference Control="~/common/bottom.ascx" %>
 <%@ Reference Control="~/common/leftmenu.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="MainMenuControl" Src="Common/MainMenuControl.ascx" %>
-<%@ Register TagPrefix="uc1" TagName="Bottom" Src="Common/Bottom.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="AddHtmlHead" Src="Common/AddHtmlHead.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="LeftMenu" Src="Common/LeftMenu.ascx" %>
 <%@ Register TagPrefix="edit" Namespace="N2.Edit.Web.UI.Controls" Assembly="N2.Edit" %>
@@ -54,7 +52,25 @@
  </td>
  </tr>
   </table>
-<uc1:bottom id="Bottom2" runat="server" />
+<div id="CommonFooter">
+	<table	id="dceFooter"
+			cellspacing="0"
+			cellpadding="0"
+			width="100%">
+		<tbody>
+			<tr valign="bottom">
+				<td		align="center">
+					<div id="dceGlobalFooter">&copy;&nbsp;
+						<asp:Literal
+								runat="server"
+								ID="ltrCopyRights"
+								Text='<%$ Resources:Bottom, title %>' />
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 </form>
 </body>
 </HTML>
