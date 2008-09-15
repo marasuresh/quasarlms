@@ -1,4 +1,7 @@
-<%@ Page language="c#" Inherits="DCE._Default" codePage="65001" CodeFile="Default.aspx.cs" %>
+<%@ Page
+		language="c#"
+		Inherits="DCE._Default"
+		CodeFile="Default.aspx.cs" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <HTML>
    <HEAD runat="server">
@@ -17,6 +20,6 @@
       <!--LINK href="CSS\dce.css" type="text/css" rel="stylesheet"-->
    </HEAD>
    <body bottomMargin="0" leftMargin="0" topMargin="0" rightMargin="0" marginwidth="0">
-      <P>&nbsp;</P>
+      <P>&nbsp;</P>;-)<%=N2.Context.CurrentPage.Title%>
    </body>
 </HTML>

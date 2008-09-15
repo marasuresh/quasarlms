@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Custom\LmsDataContext.cs" />
+    <Compile Include="GuidService.cs" />
     <Compile Include="Items\Lms\Area.cs" />
     <Compile Include="Items\Lms\TrainingContainer.cs" />
     <Compile Include="Items\Lms\RequestContainer.cs" />
@@ -94,6 +95,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lms.dbml</DependentUpon>
     </Compile>
+    <Compile Include="LmsInitializer.cs" />
+    <Compile Include="LmsProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -123,6 +126,10 @@
     <ProjectReference Include="..\N2.Futures\N2.Futures.csproj">
       <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
       <Name>N2.Futures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\N2.Workflow\N2.Workflow.csproj">
+      <Project>{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}</Project>
+      <Name>N2.Workflow</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,17 +5,19 @@
 	using N2.Details;
 	using N2.Integrity;
 	using N2.Web.UI.WebControls;
+	using N2.Workflow;
 	
 	[Definition("Request", "CourseRequest")]
 	[RestrictParents(typeof(RequestContainer))]
 	[AllowedChildren(Types = new Type[0])]
+	[N2.Persistence.NotVersionable]
+	[WithWorkflowAction(Name="Workflow", SortOrder = 150)]
 	public class Request : ContentItem
 	{
 		public override string IconUrl {
 			get {
 				return
-					string.Format(
-						"~/Lms/UI/Img/04/{0:00}.png", (int)this.State);
+					this.GetCurrentState().ToState.Icon;
 			}
 		}
 		
@@ -66,23 +68,6 @@
 			set { this.SetDetail<DateTime>("StartDate", value); }
 		}
 
-		[EditableEnum("State", 14, typeof(RequestState))]
-		public RequestState State
-		{
-			get { return (RequestState?)this.GetDetail("Workflow.State")
-				?? RequestState.New; }
-			set { this.SetDetail<RequestState>("Workflow.State", value); }
-		}
-
 		#endregion Lms Properties
-	}
-
-	public enum RequestState
-	{
-		New = 10,
-		Approved = 2,
-		Denied = 1,
-		Cancelled = 4,
-		Finished = 3
 	}
 }

@@ -19,10 +19,12 @@ namespace DCE.Common
 	/// <summary>
 	/// Левое меню
 	/// </summary>
-	public partial  class Migrated_LeftMenu : LeftMenu
+	public partial  class Migrated_LeftMenu : System.Web.UI.UserControl
 	{
 		private int genId = 0;
-		
+
+		XmlDocument doc = new XmlDocument();
+
 		/// <summary>
 		/// Перебор пунктов дерева меню и удаление неотображаемых пунктов
 		/// рекурсивно вызываемый метод

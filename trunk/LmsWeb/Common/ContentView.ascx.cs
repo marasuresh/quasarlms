@@ -10,7 +10,7 @@ namespace DCE.Common
 	/// Просмотр учебных материалов по теме
 	/// </summary>
 	[Obsolete]
-	public partial class ContentView : DCE.BaseTrainingControl
+	public partial class ContentView : System.Web.UI.UserControl
 	{
 		protected override void OnLoad(EventArgs e)
 		{
@@ -24,11 +24,12 @@ namespace DCE.Common
 		Training m_training;
 		protected Training Training {
 			get { return this.m_training
-				?? (this.m_training = Training_Select(DCE.Service.TrainingID));
+				?? (this.m_training = Training_Select(
+				Guid.Empty));
 			}
 		}
 
-		static Training Training_Select(Guid? trId)
+		Training Training_Select(Guid? trId)
 		{
 			using (var _ctx = new Lms.LmsDataContext()) {
 				return (
@@ -38,7 +39,10 @@ namespace DCE.Common
 					where _training.id == trId
 					select new Training {
 						Name = _training.id.ToString(),
-						Title = _ctx.GetStrContentAlt(_training.Course1.Name, LocalisationService.Language, _lang.Abbr),
+						Title = _ctx.GetStrContentAlt(
+							_training.Course1.Name,
+							this.Page.UICulture,
+							_lang.Abbr),
 						Course = new Course {
 							Name = _training.Course1.id.ToString(),
 							DiskFolder = _training.Course1.DiskFolder,
@@ -52,7 +56,7 @@ namespace DCE.Common
 		protected Topic Theme {
 			get {
 				return this.m_theme
-					?? (this.m_theme = Courses_GetContentDS(PageParameters.ID));
+					?? (this.m_theme = Courses_GetContentDS(Guid.Empty));
 			}
 		}
 
@@ -70,18 +74,22 @@ namespace DCE.Common
 						name = _theme.id.ToString(),
 						title = _ctx.GetStrContentAlt(
 							_theme.Name,
-							LocalisationService.Language,
+							this.Page.UICulture,
 							_lang.Abbr),
 						content =
 							from _ct in _ctx.Contents
 							join _l in _ctx.Languages
 								on _ct.Lang equals _l.id
 							where _ct.eid == _theme.Content
-							where (_l.Abbr == LocalisationService.Language
+							where (_l.Abbr == this.Page.UICulture
 								|| _l.Abbr == _lang.Abbr)
 							select _ct.DataStr,
-					}).First();
-				
+					}).FirstOrDefault();
+
+				if (_result == null) {
+					return null;
+				}
+
 				var _topic = new Topic {
 					Name = _result.name,
 					Title = _result.title,

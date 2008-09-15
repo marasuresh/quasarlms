@@ -8,13 +8,14 @@
 	using N2.Integrity;
 	using N2.Persistence;
 	using N2.Templates.Items;
+	using N2.Workflow.Items;
 	
 	[Definition("Request Container", "RequestContainer", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
 	[WithEditableTitle("Title", 10)]
 	[ItemAuthorizedRoles(Roles = new string[0])]
 	[RestrictParents(typeof(IStructuralPage))]
 	[AllowedChildren(typeof(Request))]
-	public class RequestContainer: ContentItem
+	public class RequestContainer: ContentItem, IWorkflowItemContainer
 	{
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/50.png"; } }
 
@@ -24,6 +25,13 @@
 		public virtual IList<ContentItem> Requests
 		{
 			get { return GetChildren(); }
+		}
+
+		[EditableLink("Workflow", 107)]
+		public Workflow Workflow {
+			get { return this.GetDetail("Workflow") as Workflow; }
+			set { this.SetDetail<Workflow>("Workflow", value); }
+
 		}
 	}
 }

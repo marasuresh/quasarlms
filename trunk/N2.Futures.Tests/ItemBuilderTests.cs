@@ -41,10 +41,11 @@ namespace N2.Tests.Definitions
 			//Save item, bypassing N2 engine
 			engine.Persister.Repository.Save(_parent);
 
-			engine.Persister.Get(_parent.ID);
+			_parent = engine.Persister.Get(_parent.ID);
 			Assert.IsEmpty(_parent.Children.ToList());
 
 			engine.Persister.Save(_parent);
+			_parent = engine.Persister.Get(_parent.ID);
 			Assert.IsNotEmpty(_parent.Children.ToList());
 		}
 

@@ -24,7 +24,7 @@ namespace DCE.Common
 	/// <summary>
 	/// Главное меню
 	/// </summary>
-	public partial  class Migrated_MainMenuControl : MainMenuControl
+	public partial  class Migrated_MainMenuControl : System.Web.UI.UserControl
 	{
       /// <summary>
       /// Активный пункт меню
@@ -35,43 +35,7 @@ namespace DCE.Common
       /// </summary>
       /// <returns>Активный пункт меню</returns>
 //      public int SwitchMenu()
-		override public int SwitchMenu()
-		{
-			string menuIndex = this.Request.Params["index"];
-			if(menuIndex+"" != "")
-         {
-            this.Session["MainMenuItem"] = menuIndex;
-            this.Active = System.Convert.ToInt32(menuIndex, 10);
-         }
-         else
-         {
-            menuIndex = "";
-            object m = this.Session["MainMenuItem"];
-            if (m != null)
-               menuIndex = (string) m;
-            if (menuIndex != "")
-            {
-               this.Active = System.Convert.ToInt32(menuIndex, 10);
-            }
-            else
-            {
-               this.Session["MainMenuItem"] = Active.ToString();
-            }
-         }
 		
-         return this.Active;
-      }
-		
-		/// <summary>
-		/// Process menu selection before Page.Load event
-		/// </summary>
-		/// <param name="e"></param>
-		protected override void OnInit(EventArgs e)
-		{
-			base.OnInit(e);
-			this.SwitchMenu();
-		}
-
 		protected void Page_Load(object sender, System.EventArgs e)
 		{
 			this.Page.ClientScript.RegisterClientScriptInclude(
@@ -156,7 +120,6 @@ try {{
 		protected void Login1_LoggedIn(object sender, EventArgs e)
 		{
 			//Legacy code to support DceUserService.LastEntry
-			DCE.Service.SetCook("LastEntry");
 		}
 
 		protected void mnLang_PreRender(object sender, EventArgs e)

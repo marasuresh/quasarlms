@@ -14,5 +14,7 @@
 	public class TrainingList: AbstractContentPage
 	{
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/20.png"; } }
+
+		public override string TemplateUrl { get { return "~/Lms/UI/TrainingList.aspx"; } }
 	}
 }

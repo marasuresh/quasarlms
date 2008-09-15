@@ -252,7 +252,7 @@
     </None>
     <None Include="Web References\SecurityServices\UserManager.wsdl" />
     <WebReferenceUrl Include="http://localhost:6349/DTWork/SecurityServices/UserManager.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
+      <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\SecurityServices\</RelPath>
       <UpdateFromURL>http://localhost:6349/DTWork/SecurityServices/UserManager.asmx</UpdateFromURL>
       <ServiceLocationURL>
@@ -263,7 +263,7 @@
       <CachedSettingsPropName>DCEAccessLib_SecurityServices_UserManager</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:6349/DTWork/WebServices/DCEAccess.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
+      <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\DceService\</RelPath>
       <UpdateFromURL>http://localhost:6349/DTWork/WebServices/DCEAccess.asmx</UpdateFromURL>
       <ServiceLocationURL>
