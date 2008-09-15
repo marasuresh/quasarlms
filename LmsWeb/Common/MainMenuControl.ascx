@@ -59,7 +59,7 @@ function forgotPassword(){AddParameter("cset", "ForgotPassw");applyParameters();
 						runat="server"
 						ID="hlMail"
 						SkinID="MailLink"
-						NavigateUrl='<%$ AppSettings:AdminMailLink %>'
+						NavigateUrl='mailto:admin'
 						ToolTip='<%$ Resources:HomeLeft,Mail %>' /></td>
 		</tr>
 	</table>

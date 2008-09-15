@@ -6,6 +6,7 @@
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="N2.Lms.Items" %>
 <%@ Import Namespace="System.Diagnostics" %>
+<%@ Import Namespace="N2.Workflow" %>
 <script runat="server">
 	protected void List_Command(object sender, CommandEventArgs e)
 	{
@@ -13,17 +14,16 @@
 			case "PostRequest": {
 					Request _request = this.Engine.Definitions.CreateInstance<Request>(this.CurrentItem.RequestContainer);
 					Debug.WriteLine("e.CommandArgument: " + e.CommandArgument);
-					_request.Course = this.Engine.Persister.Get<Course>(int.Parse((string)e.CommandArgument));
 					_request.SavedBy = this.User.Identity.Name;
-					_request.Title = _request.SavedBy + ", " + _request.Course.Title;
+					_request.Title = _request.Name;
 					this.Engine.Persister.Save(_request);
 					BindData();
 				}
 				break;
 			case "DeleteRequest": {
 					var _request = this.Engine.Persister.Get<Request>(int.Parse((string)e.CommandArgument));
-					_request.State = 4;
-					this.Engine.Persister.Save(_request);
+					_request.PerformAction("Cancel", Profile.UserName, "Canceled");
+					//this.Engine.Persister.Save(_request);
 					BindData();
 				}
 				break;
@@ -37,7 +37,7 @@
 					.RequestContainer
 					.Children
 					.OfType<Request>()
-					.Where(_r => _r.State == 0);
+					.Where(_r => _r.GetCurrentState().ToState.Name == "Active");
 		}
 	}
 	

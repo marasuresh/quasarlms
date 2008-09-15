@@ -36,8 +36,8 @@ $('div#tabs').tabs({ fxAutoHeight: true });
 				height="100%"
 				align="top"
 				src='<%= !string.IsNullOrEmpty(_url)
-					? makeUrl(base.CoursesRootUrl, this.Training.Course.DiskFolder, _url)
-					: this.ResolveUrl(@"~\" + DCE.Service.GetLanguagePath(this.Page)) + "NoContent.htm" %>'>
+					? makeUrl("~/Upload/", this.Training.Course.DiskFolder, _url)
+					: this.ResolveUrl(@"~\NoContent.htm") %>'>
 		</iframe>
 	</div>
 	<% } %>

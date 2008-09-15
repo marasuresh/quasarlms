@@ -5,20 +5,15 @@ namespace DCE
 {
 	using System.Linq;
 	using System.Xml.Linq;
+	using N2.Web.UI;
 	
 	/// <summary>
 	/// Главная страница
 	/// </summary>
-	public partial class MainPage : DCE.BaseWebPage
+	public partial class MainPage : ContentPage
 	{
 		XmlDocument doc = null;
-		
-		protected int Active {
-			get {
-				return this.MainMenuControl1.Active;
-			}
-		}
-
+		/*
 		protected void Page_Load(object sender, System.EventArgs e)
 		{
 			DCE.Service.LoadXmlDoc(this.Page, this.LeftMenu.doc, "HomeLeft.xml");
@@ -125,6 +120,6 @@ namespace DCE
 				
 				this.PlaceHolder1.Controls.Add(_ctl);
 			}
-      }
+      }*/
 	}
 }

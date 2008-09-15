@@ -10,7 +10,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LmsWeb", "LmsWeb\", "{98CE0443-0C6B-4F69-B262-423AF4EF6871}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFramework = "3.5"
-		ProjectReferences = "{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}|Convert.dll;{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}|N2.Futures.dll;"
+		ProjectReferences = "{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}|N2.Lms.dll;{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}|N2.Futures.dll;{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}|N2.Workflow.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/LmsWeb"
 		Debug.AspNetCompiler.PhysicalPath = "LmsWeb\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\LmsWeb\"
@@ -25,7 +25,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LmsWeb", "LmsWeb\", "{98CE0
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "4077"
+		VWDPort = "2422"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Lms", "Convert\N2.Lms.csproj", "{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}"
@@ -37,6 +37,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Futures", "N2.Futures\N2.Futures.csproj", "{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Workflow", "N2.Workflow\N2.Workflow.csproj", "{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Workflow.Tests", "N2.Workflow.Tests\N2.Workflow.Tests.csproj", "{F57F9879-F75B-447E-A523-FF3F95A99801}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -229,6 +231,18 @@ Global
 		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.Debug|Mixed Platforms.ActiveCfg = Debug|Mixed Platforms
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.DL Server Deployment|.NET.ActiveCfg = DL Server Deployment|Any CPU
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.DL Server Deployment|Any CPU.ActiveCfg = DL Server Deployment|Any CPU
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.DL Server Deployment|Mixed Platforms.ActiveCfg = DL Server Deployment|Mixed Platforms
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.Local deployment|.NET.ActiveCfg = Local deployment|Any CPU
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.Local deployment|Any CPU.ActiveCfg = Local deployment|Any CPU
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.Local deployment|Mixed Platforms.ActiveCfg = Local deployment|Mixed Platforms
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.Release|.NET.ActiveCfg = Release|Any CPU
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F57F9879-F75B-447E-A523-FF3F95A99801}.Release|Mixed Platforms.ActiveCfg = Release|Mixed Platforms
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
