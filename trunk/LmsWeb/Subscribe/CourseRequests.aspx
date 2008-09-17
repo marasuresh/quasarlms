@@ -7,6 +7,6 @@
 <asp:Content
 		runat="server"
 		ID="cntCenter"
-		ContentPlaceHolderID="cphCenterColumn">
+		ContentPlaceHolderID="ContentAndSidebar">
 	<lms:TrainingRequest runat="server" />
 </asp:Content>

@@ -11,7 +11,7 @@
 	[Definition("Training List", "TrainingList", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
 	[WithEditableTitle("Title", 10)]
 	[RestrictParents(typeof(IStructuralPage))]
-	public class TrainingList: AbstractContentPage
+	public class TrainingList: CourseList
 	{
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/20.png"; } }
 

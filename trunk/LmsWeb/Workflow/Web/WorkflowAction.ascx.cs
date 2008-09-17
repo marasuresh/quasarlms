@@ -40,10 +40,10 @@ $('#{0} option').each(function(){{
 	protected override void OnInit(System.EventArgs e)
 	{
 		base.OnInit(e);
-
+		
 		this.RegisterScripts();
 
-		var _item = this.CurrentItem ?? N2.Web.UI.ItemUtility.FindCurrentItem(this.Parent);
+		var _item = /*this.CurrentItem ??*/ N2.Web.UI.ItemUtility.FindCurrentItem(this.Parent);
 
 		var _currentState = _item.GetCurrentState();
 

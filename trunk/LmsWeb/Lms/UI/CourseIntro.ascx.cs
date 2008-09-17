@@ -19,9 +19,9 @@
 
 				this.CurrentItem["MetaKeywrods"] = this.CurrentItem.Keywords;
 				this.CurrentItem["MetaDescription"] = this.CurrentItem.Text;
-
+				/*
 				var _metaApplier = new N2.Templates.SEO.TitleAndMetaTagApplyer(
-					this.Page, this.CurrentItem);
+					this.Page, this.CurrentItem);*/
 			}
 
 			base.OnInit(e);
@@ -29,11 +29,6 @@
 
 		Course GetCourse()
 		{
-			string _code = this.Request["code"];
-			Guid? _id = GuidService.Parse(this.Request["cId"]);
-
-			return DceAccessLib.DAL.CourseController.SelectByCodeOrId(
-					_code,
-					_id);
+			return this.CurrentItem as Course;
 		}
 	}

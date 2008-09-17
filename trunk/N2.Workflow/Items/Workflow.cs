@@ -4,7 +4,7 @@
 	using N2.Details;
 	using N2.Definitions;
 	using N2.Integrity;
-	using N2.Templates.UI.Items;
+	using N2.Templates.UI.Parts;
 
 	[Definition("Workflow", "Workflow")]
 	[WithEditableName("Name", 01)]

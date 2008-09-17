@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\eval\n2cms\src\N2\obj\Debug\N2.dll</HintPath>
     </Reference>
+    <Reference Include="N2.Templates, Version=1.0.403.28716, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\src\wwwroot\bin\N2.Templates.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
