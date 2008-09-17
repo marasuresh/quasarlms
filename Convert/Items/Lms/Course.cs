@@ -13,12 +13,11 @@
 	using N2.Web.UI;
 
 	[Definition("Course", "Course", Installer = InstallerHint.NeverRootOrStartPage)]
-	[RestrictParents(typeof(CourseList))]
+	[RestrictParents(typeof(CourseContainer))]
 	//[WithEditableTitle("Title", 20)]
 	[TabPanel("lms", "LMS", 200)]
 	[	EnsureChild("Topics", typeof(TopicList)),
-		EnsureChild("Trainings", typeof(TrainingContainer)),
-		EnsureChild("Requests", typeof(RequestContainer))]
+		EnsureChild("Trainings", typeof(TrainingContainer))]
 	public class Course : AbstractContentPage, IContinuous
 	{
 		#region Properties

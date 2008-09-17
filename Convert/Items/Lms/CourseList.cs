@@ -36,5 +36,12 @@
 		}
 
 		#endregion Lms Properties
+
+		public override N2.Collections.ItemList GetChildren()
+		{
+			return this.CourseContainer.GetChildren();
+			//return base.GetChildren(childZoneName);
+		}
+
 	}
 }

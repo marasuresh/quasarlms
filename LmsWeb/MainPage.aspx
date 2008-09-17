@@ -8,7 +8,6 @@
 		runat="server"
 		ContentPlaceHolderID="ContentAndSidebar"
 		ID="ctnCenter">
-	vas ist dass
 	<asp:PlaceHolder
 			ID="PlaceHolder1"
 			runat="server" />

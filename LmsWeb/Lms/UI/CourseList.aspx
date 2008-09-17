@@ -1,7 +1,6 @@
 ﻿<%@ Page
 		Language="C#"
-		MasterPageFile="~/templates/UI/Layouts/Top+SubMenu.Master"
-		Inherits="N2.Web.UI.ContentPage`1[[N2.Lms.Items.CourseList, N2.Lms]], N2" %>
+		Inherits="N2.Templates.Web.UI.TemplatePage`1[[N2.Lms.Items.CourseList, N2.Lms]], N2.Templates" %>
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="N2.Lms.Items" %>

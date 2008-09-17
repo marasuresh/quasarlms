@@ -39,7 +39,7 @@
 		public override bool IsPage { get { return false; } }
 
 		public override string IconUrl {
-			get { return null != this.ToState ? this.ToState.Icon : string.Empty; }
+			get { return null != this.ToState ? this.ToState.Icon : "~/Workflow/UI/img/46.png"; }
 		}
 	}
 }

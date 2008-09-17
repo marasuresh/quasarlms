@@ -3,7 +3,7 @@
 <%@ Register Src="Common/Registration.ascx" TagName="Registration" TagPrefix="uc1" %>
 <asp:Content
 		ID="ctnSignUp"
-		ContentPlaceHolderID="cphCenterColumn"
+		ContentPlaceHolderID="ContentAndSidebar"
 		Runat="Server">
 	<uc1:Registration
 			ID="Registration1"

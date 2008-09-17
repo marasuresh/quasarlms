@@ -5,7 +5,7 @@
 <asp:Content
 		runat="server"
 		ID="ctnCenter"
-		ContentPlaceHolderID="cphCenterColumn">
+		ContentPlaceHolderID="ContentAndSidebar">
 	<asp:placeholder
 			id="PlaceHolder1"
 			runat="server" />

@@ -1,13 +1,8 @@
-namespace DCE
+using N2.Templates.Items;
+
+namespace N2.Templates.UI
 {
-	/// <summary>
-	/// Summary description for _Default.
-	/// </summary>
-	public partial class _Default : N2.Web.UI.ContentPage
+	public partial class Default : Web.UI.TemplatePage<LanguageRoot>
 	{
-      protected void Page_Load(object sender, System.EventArgs e)
-      {
-         this.Response.Redirect(Resources.PageUrl.PAGE_MAIN + "?index=1");
-      }
 	}
 }
