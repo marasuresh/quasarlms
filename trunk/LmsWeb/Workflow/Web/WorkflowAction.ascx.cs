@@ -5,68 +5,79 @@ using N2.Web.UI;
 using System.Web.UI.WebControls;
 using N2.Web.UI.WebControls;
 using N2.Workflow;
+using N2.Workflow.Items;
 using N2.Resources;
+using N2;
+using System.Web.UI;
 
-public partial class WorkflowAction: ContentUserControl, IWorkflowActionControl
+public partial class WorkflowAction: UserControl, IWorkflowActionControl
 {
-	#region Properties
-	
-	public string Comment { get {
-		return this.tbComment.Text;
-	}}
 
-	public string SelectedAction { get {
-		return this.ddlAction.SelectedValue;
-	}}
-
-	#endregion Properties
-
-	protected void RegisterScripts()
-	{
-		Register.JQuery(this.Page);
-		Register.JavaScript(this.Page, "~/Workflow/UI/js/jquery.jdrop.js");
-		Register.JavaScript(
-			this.Page,
-			string.Format(@"$('#{0}').jdrop();
-$('#{0} option').each(function(){{
-	$(this).html($(this).html().replace(/&lt;/,'<').replace(/&gt;/,'>'));}});
-",
-				this.ddlAction.ClientID,
-				this.tbComment.ClientID),
-			ScriptOptions.DocumentReady);
-		Register.StyleSheet(this.Page, "~/Workflow/UI/css/screen.css");
-	}
 
 	protected override void OnInit(System.EventArgs e)
 	{
 		base.OnInit(e);
-		
-		this.RegisterScripts();
-
-		var _item = /*this.CurrentItem ??*/ N2.Web.UI.ItemUtility.FindCurrentItem(this.Parent);
-
-		var _currentState = _item.GetCurrentState();
-
-		//if (!this.IsPostBack) {
-		this.ddlAction.DataSource =
-			from _action in _currentState.ToState.Actions
-			select new {
-				Text = string.Format("<img src='{0}' /> {1}",
-					this.ResolveClientUrl(_action.LeadsTo.Icon),
-					_action.Title),
-				Value = _action.Name,
-			};
-		this.ddlAction.DataBind();
-		//}
+		this.BindControls();
 	}
 
-	protected void ddlAction_PreRender(object sender, EventArgs e)
+	void BindControls()
 	{
-		foreach (var _item in ((DropDownList)sender).Items.Cast<ListItem>()) {
-			_item.Text = System.Web.HttpUtility
-				.HtmlDecode(_item.Text)
-				.Replace("&lt;", "<")
-				.Replace("&gt;", ">");
+		if (null != ((IWorkflowActionControl)this).CurrentItem) {
+			this.rptActionList.DataSource = this.InitialState.ToState.Actions;
+			this.rptActionList.DataBind();
+
+			if (vEditState.Visible) {
+				this.ie.CurrentItem = this.CurrentState;
+				this.ie.DataBind();
+			}
 		}
 	}
+
+	protected void Action_Command(object sender, RepeaterCommandEventArgs e)
+	{
+		ActionDefinition _selectedAction = this.InitialState
+			.ToState
+			.Actions
+			.Single(_a => _a.Name == (string)e.CommandArgument);
+
+		ItemState _newState = (ItemState)N2.Context.Definitions.CreateInstance(
+			_selectedAction.StateType
+				?? typeof(ItemState),
+			((IWorkflowActionControl)this).CurrentItem);
+
+		_newState.ToState = _selectedAction.LeadsTo;
+		
+		//not required
+		_newState.Action = _selectedAction;
+		_newState.FromState = this.InitialState.ToState;
+		
+		_newState.AddTo(((IWorkflowActionControl)this).CurrentItem);
+
+		((IWorkflowActionControl)this).CurrentItem.AssignCurrentState(_newState);
+
+		this.mv.SetActiveView(vEditState);
+		this.BindControls();
+		//this.ie.DataBind();
+	}
+
+	protected void Cancel_Click(object sender, EventArgs e)
+	{
+		//Restore original state
+		if (this.CurrentState != this.InitialState) {
+			((IWorkflowActionControl)this).CurrentItem.Children.Remove(this.CurrentState);
+			((IWorkflowActionControl)this).CurrentItem.AssignCurrentState(this.InitialState);
+		}
+		
+		this.mv.SetActiveView(vActionList);
+	}
+
+	#region IWorkflowActionControl Members
+
+	ContentItem m_ci;
+	ContentItem IWorkflowActionControl.CurrentItem {
+		get { return this.m_ci; }
+		set { this.m_ci = value; this.BindControls(); }
+	}
+
+	#endregion
 }

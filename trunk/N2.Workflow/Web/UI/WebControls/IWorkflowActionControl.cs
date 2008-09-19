@@ -1,8 +1,9 @@
 ﻿namespace N2.Web.UI.WebControls
 {
+	using N2.Workflow.Items;
+	
 	public interface IWorkflowActionControl
 	{
-		string Comment { get; }
-		string SelectedAction { get; }
+		ContentItem CurrentItem { get; set; }
 	}
 }

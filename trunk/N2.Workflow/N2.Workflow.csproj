@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Definitions\WorkflowAttribute.cs" />
+    <Compile Include="Details\EditableStateTypeDropDownAttribute.cs" />
     <Compile Include="Details\WithWorkflowActionAttribute.cs" />
     <Compile Include="Items\ActionDefinition.cs" />
     <Compile Include="Items\IWorkflowEnabled.cs" />
