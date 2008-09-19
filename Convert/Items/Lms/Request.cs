@@ -6,6 +6,7 @@
 	using N2.Integrity;
 	using N2.Web.UI.WebControls;
 	using N2.Workflow;
+	using N2.Workflow.Items;
 	
 	[Definition("Request", "CourseRequest")]
 	[RestrictParents(typeof(RequestContainer))]

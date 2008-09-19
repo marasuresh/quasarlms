@@ -23,13 +23,21 @@
 
 		#region Lms Properties
 
-		[EditableLink("Course Container", 73)]
+		[EditableLink(
+			"Course Container",
+			73,
+			Required = true,
+			LocalizationClassKey = "Lms.CourseList")]
 		public CourseContainer CourseContainer {
 			get { return this.GetDetail("CourseContainer") as CourseContainer; }
 			set { this.SetDetail<CourseContainer>("CourseContainer", value); }
 		}
 
-		[EditableLink("Request Container", 75)]
+		[EditableLink(
+			"Request Container",
+			75,
+			Required = true,
+			LocalizationClassKey = "Lms.CourseList")]
 		public RequestContainer RequestContainer {
 			get { return this.GetDetail("RequestContainer") as RequestContainer; }
 			set { this.SetDetail<RequestContainer>("RequestContainer", value); }

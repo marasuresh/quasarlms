@@ -15,11 +15,26 @@ namespace N2.Workflow.Items
 	[RestrictParents(typeof(StateDefinition))]
 	public class ActionDefinition: ContentItem
 	{
-		[EditableLink("Destination State", 13)]
+		#region Business properties
+
+		[EditableLink("Destination State", 13, Required = true)]
 		public StateDefinition LeadsTo {
 			get { return this.GetDetail("LeadsTo") as StateDefinition; }
 			set { this.SetDetail<StateDefinition>("LeadsTo", value); }
 		}
+
+		[EditableStateTypeDropDown(
+			Name = "Item State Type",
+			Title = "State Type", SortOrder = 23,
+			LocalizationClassKey = "Workflow.ActionDefinition")]
+		public Type StateType {
+			get { return this.GetDetail("StateType") as Type; }
+			set { this.SetDetail<Type>("StateType", value); }
+		}
+
+		#endregion Business properties
+
+		#region System properties
 
 		public override bool IsPage { get { return false; } }
 
@@ -30,6 +45,9 @@ namespace N2.Workflow.Items
 
 		public override string IconUrl { get {
 			return this.LeadsTo.Icon ?? string.Format("~/Workflow/UI/Img/03/0{0}.png",
-				this.LeadsTo == null ? 1 : 2); } }
+				this.LeadsTo == null ? 1 : 2); }
+		}
+
+		#endregion System properties
 	}
 }
