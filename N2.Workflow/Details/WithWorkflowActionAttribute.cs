@@ -29,25 +29,29 @@ namespace N2.Details
 		{
 			var _tb = editor as WorkflowActionToolbar;
 
-			ItemEditor childEditor = _tb.ItemEditor;
+			if (_tb.IsNewAction) {
+				ItemEditor childEditor = _tb.ItemEditor;
 
-			childEditor.Update();
-			IItemEditor parentEditor = ItemUtility.FindInParents<IItemEditor>(editor.Parent);
-			
-			//Perform *after* parent was saved
-			parentEditor.Saved += (sender, e) => {
-				//get just saved concrete child
-				ItemState _state = childEditor.Save() as ItemState;
-				//if child is not equal current parent's state..
-				if (_state != e.AffectedItem.GetCurrentState()) {
-					//push new state to Details collection
-					e.AffectedItem.AssignCurrentState(childEditor.Save() as ItemState);
-					//persist parent second time with state detail updated
-					Engine.Persister.Save(e.AffectedItem);
-				}
-			};
-			//notify parent was updated
-			return true;
+				childEditor.Update();
+				IItemEditor parentEditor = ItemUtility.FindInParents<IItemEditor>(editor.Parent);
+
+				//Perform *after* parent was saved
+				parentEditor.Saved += (sender, e) => {
+					//get just saved concrete child
+					ItemState _state = childEditor.Save() as ItemState;
+					//if child is not equal current parent's state..
+					if (_state != e.AffectedItem.GetCurrentState()) {
+						//push new state to Details collection
+						e.AffectedItem.AssignCurrentState(_state);
+						//persist parent second time with state detail updated
+						Engine.Persister.Save(e.AffectedItem);
+					}
+				};
+				//notify parent was updated
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		static TraceSource TraceSource = new TraceSource("Workflow");

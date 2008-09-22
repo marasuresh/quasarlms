@@ -16,8 +16,8 @@ $('div#tabs').tabs({ fxAutoHeight: true });
 });
 </script>
 
-<% if(null != this.Training) { %>
-	<h3 class="cap4"><%= this.Training.Title %></h3>
+<% if(null != this.CurrentItem.Training) { %>
+	<h3 class="cap4"><%= ((N2.ContentItem)this.CurrentItem.Training ?? this.CurrentItem.Course).Title %></h3>
 <% } %>
 <h3 class="cap3"><%= this.CurrentItem.Title %></h3>
 

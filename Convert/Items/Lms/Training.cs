@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 
 namespace N2.Lms.Items
 {
@@ -9,28 +10,25 @@ namespace N2.Lms.Items
 	using N2.Integrity;
 	using N2.Templates.Items;
 	using N2.Web.UI;
-
+	using N2.Collections;
+	
 	[RestrictParents(typeof(TrainingList))]
 	[Definition]
 	[WithEditableDateRange("Validity period", 50, "StartOn", "FinishOn", ContainerName="lms")]
 	[TabPanel("lms", "LMS", 200)]
 	public class Training : AbstractContentPage
 	{
-		#region Properties
+		#region System properties
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/01/43.png"; } }
-		
-		#endregion Properties
+		public override string TemplateUrl { get { return "~/Lms/UI/Training.aspx"; } }
+
+		#endregion System properties
 
 		#region Lms Properties
 
-		internal TrainingList TrainingList {
-			get { return this.Parent as TrainingList; }
-		}
-
 		public Course Course {
-			get { return ((ContentItem)this.TrainingList ?? this).Parent as Course; }
-			set { ((ContentItem)this.TrainingList ?? this).Parent = value; }
+			get { return this.OriginalCourse ?? Find.EnumerateParents(this).OfType<Course>().FirstOrDefault(); }
 		}
 
 		[EditableCheckBox("Test Only", 40, ContainerName="lms")]
@@ -55,5 +53,19 @@ namespace N2.Lms.Items
 		}
 
 		#endregion Lms Properties
+
+		#region Lms Collection Properties
+
+		internal Course OriginalCourse;
+		
+		public override ItemList GetChildren(ItemFilter filter)
+		{
+			return base.GetChildren(filter).AppendItemsAsVirtual(
+				this.Course.TopicContainer.Topics.Cast<ContentItem>(),
+				this,
+				filter);
+		}
+
+		#endregion Lms Collection Properties
 	}
 }

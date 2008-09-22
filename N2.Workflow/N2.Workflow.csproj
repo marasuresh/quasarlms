@@ -48,16 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Definitions\WorkflowAttribute.cs" />
     <Compile Include="Details\EditableStateTypeDropDownAttribute.cs" />
     <Compile Include="Details\WithWorkflowActionAttribute.cs" />
     <Compile Include="Items\ActionDefinition.cs" />
-    <Compile Include="Items\IWorkflowEnabled.cs" />
     <Compile Include="Items\StateDefinition.cs" />
     <Compile Include="Items\Workflow.cs" />
     <Compile Include="Items\ItemState.cs" />
     <Compile Include="Items\IWorkflowItemContainer.cs" />
-    <Compile Include="Web\UI\WebControls\IWorkflowActionControl.cs" />
     <Compile Include="Web\UI\WebControls\WorkflowActionToolbar.cs">
     </Compile>
     <Compile Include="WorkflowExtensions.cs" />
@@ -65,6 +62,7 @@
     <Compile Include="WorkflowPublicExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Definitions\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

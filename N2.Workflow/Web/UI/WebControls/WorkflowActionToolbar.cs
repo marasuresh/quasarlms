@@ -16,40 +16,21 @@ namespace N2.Web.UI.WebControls
 	/// 
 	/// </summary>
 	/// <see cref="N2.Web.UI.WebControls.ItemEditorList"/>
-	public class WorkflowActionToolbar: WebControl
+	public class WorkflowActionToolbar: CompositeControl, INamingContainer
 	{
 		#region Workflow Properties
-
-		/// <summary>
-		/// Item's state. It can be either persisted value OR new value just assigned by the user.
-		/// </summary>
-		public ItemState CurrentState {
-			get { return this.parentItem.GetCurrentState(); }
-		}
-
-		/// <summary>
-		/// The state in which current item remains before user starts using this control.
-		/// Because item state is supposed to change after user interection,
-		/// we need to hold initial value in the view state.
-		/// </summary>
-		protected ItemState InitialStateStore
-		{
-			get { return ViewState["InitialState"] as ItemState; }
-			set { this.ViewState["InitialState"] = value; }
-		}
 
 		/// <summary>
 		/// A wrapper around initial item state, guaranteed to be not null.
 		/// </summary>
 		public ItemState InitialState {
 			get {
-				return this.InitialStateStore
-					?? (this.InitialStateStore = this.CurrentState);
+				return this.ParentItem.GetCurrentState();
 			}
 		}
 
 		public bool IsNewAction {
-			get { return this.InitialState != this.CurrentState; }
+			get { return !string.IsNullOrEmpty(this.AddedTypeName); }
 		}
 
 		#endregion Workflow Properties
@@ -59,9 +40,9 @@ namespace N2.Web.UI.WebControls
 		private DropDownList types;
 		private PlaceHolder itemEditorsContainer;
 		private ContentItem parentItem;
-		private List<string> addedTypes = new List<string>();
-		private List<int> deletedIndexes = new List<int>();
 		FieldSet fs;
+
+		PlaceHolder actionSelectorContainer;
 
 		#endregion
 
@@ -78,6 +59,11 @@ namespace N2.Web.UI.WebControls
 
 		public ItemEditor ItemEditor { get; protected set; }
 
+		protected string AddedTypeName {
+			get { return (string)this.ViewState["AddedTypeName"]; }
+			set { this.ViewState["AddedTypeName"] = value; }
+		}
+
 		/// <summary>Gets the parent item where to look for items.</summary>
 		public int ParentItemID
 		{
@@ -92,16 +78,6 @@ namespace N2.Web.UI.WebControls
 			set { ViewState["CurrentItemType"] = value; }
 		}
 
-		public IList<string> AddedTypes
-		{
-			get { return addedTypes; }
-		}
-
-		public IList<int> DeletedIndexes
-		{
-			get { return deletedIndexes; }
-		}
-
 		protected IDefinitionManager Definitions {
 			get { return N2.Context.Definitions; }
 		}
@@ -112,43 +88,40 @@ namespace N2.Web.UI.WebControls
 
 		#endregion
 
-		protected override void OnInit(EventArgs e)
-		{
-			base.OnInit(e);
-
-			Controls.Add(this.itemEditorsContainer = new PlaceHolder());
-
-			this.InitActionDropDown();
-			this.InitStateEditor();
-			//this.AddCancelActionButton();
-
-			this.ItemEditor.Visible = this.IsNewAction;
-		}
-
 		protected override void LoadViewState(object savedState)
 		{
-			Triplet p = (Triplet)savedState;
-			base.LoadViewState(p.First);
-			addedTypes = (List<string>)p.Second;
-			deletedIndexes = (List<int>)p.Third;
-			EnsureChildControls();
-
-			Console.WriteLine("addedTypes: " + addedTypes.Count + ", deletedIndexes: " + deletedIndexes.Count);
+			base.LoadViewState(savedState);
+			Trace.WriteLine("View State Loaded", "Workflow");
+			this._CreateChildControls();
 		}
 
-		protected override void CreateChildControls()
+		protected override void OnLoad(EventArgs e)
 		{
-			types.Items.AddRange((
-				from _action in this.InitialState.ToState.Actions
-				select new ListItem(_action.Title, _action.Name)
-			).ToArray());
-
-			base.CreateChildControls();
+			if (!this.Page.IsPostBack) {
+				this._CreateChildControls();
+			}
+			base.OnLoad(e);
 		}
 
-		protected override object SaveViewState()
+		protected void _CreateChildControls()
 		{
-			return new Triplet(base.SaveViewState(), addedTypes, deletedIndexes);
+			this.Controls.Clear();
+			
+			this.Controls.Add(this.itemEditorsContainer = new PlaceHolder());
+			
+			if (this.IsNewAction) {
+				Trace.WriteLine("Initializing empty Item Editor with type: " + this.AddedTypeName, "Workflow");
+				this.InitStateEditor();
+				this.UpdateItemEditor(
+					this.CreateItem(
+						Utility.TypeFromName(this.AddedTypeName)));
+				this.AddCancelActionButton();
+			} else {
+				Trace.WriteLine("Action Select", "Workflow");
+				this.InitActionDropDown();
+			}
+			
+			this.ClearChildViewState();
 		}
 
 		private ContentItem CreateItem(Type itemType)
@@ -158,11 +131,16 @@ namespace N2.Web.UI.WebControls
 
 		private void InitActionDropDown()
 		{
-			types = new DropDownList();
-			Controls.Add(types);
+			this.Controls.Add(this.actionSelectorContainer = new PlaceHolder());
+			
+			this.actionSelectorContainer.Controls.Add(types = new DropDownList());
+			types.Items.AddRange((
+					from _action in this.InitialState.ToState.Actions
+					select new ListItem(_action.Title, _action.Name)
+				).ToArray());
 
 			ImageButton b = new ImageButton();
-			Controls.Add(b);
+			this.actionSelectorContainer.Controls.Add(b);
 			b.ImageUrl = Page.ClientScript.GetWebResourceUrl(typeof (ItemEditorList), "N2.Resources.add.gif");
 			b.ToolTip = "Perform action";
 			b.CausesValidation = false;
@@ -172,35 +150,42 @@ namespace N2.Web.UI.WebControls
 		private void InitStateEditor()
 		{
 			itemEditorsContainer.Controls.Add(this.fs = new FieldSet());
+			
 			fs.Controls.Add(this.ItemEditor = new ItemEditor {
-				ID = ID + "_ie",
-				Visible = false,
+				ID = "ie"
 			});
+
+			Trace.WriteLine("Item editor created", "Workflow");
 		}
 
 		private void NewActionClick(object sender, ImageClickEventArgs e)
 		{
+			//Locate selected action by name, because DropDownList only supports items as strings
 			ActionDefinition _selectedAction = this.InitialState
 					.ToState
 					.Actions
 					.Single(_a => _a.Name == types.SelectedValue);
 
-			ItemState item = CreateItem(_selectedAction.StateType ?? typeof(ItemState)) as ItemState;
+			Type _itemType = _selectedAction.StateType ?? typeof(ItemState);
+			ItemState item = CreateItem(_itemType) as ItemState;
 			item.ToState = _selectedAction.LeadsTo;
 
 			//not required
 			item.Action = _selectedAction;
 			item.FromState = this.InitialState.ToState;
-
-			//this.ParentItem.AssignCurrentState(item);
+			
+			this.AddedTypeName = string.Format("{0}", _itemType.AssemblyQualifiedName);
+			this.InitStateEditor();
 			UpdateItemEditor(item);
+			this.actionSelectorContainer.Visible = false;
+			this.AddCancelActionButton();
 		}
 
 		private void AddCancelActionButton()
 		{
 			ImageButton b = new ImageButton();
 			itemEditorsContainer.Controls.Add(b);
-			b.ID = ID + "_d";
+			b.ID = "del";
 			b.CssClass = " delete";
 			b.ImageUrl = Page.ClientScript.GetWebResourceUrl(typeof (ItemEditorList), "N2.Resources.delete.gif");
 			b.ToolTip = "Cancel Action";
@@ -210,13 +195,14 @@ namespace N2.Web.UI.WebControls
 		private void CancelActionClick(object sender, ImageClickEventArgs e)
 		{
 			ImageButton b = (ImageButton)sender;
-			b.Enabled = false;
-			b.CssClass += " disabled";
+			b.Visible = false;
 			
-			this.ParentItem.AssignCurrentState(this.InitialState);
-			
-			this.ItemEditor.Visible = false;
-			this.ItemEditor.CssClass += " disabled";
+			//this.ParentItem.AssignCurrentState(this.InitialState);
+			this.ClearChildState();
+			this.itemEditorsContainer.Visible = false;
+			this.AddedTypeName = null;
+			this.InitActionDropDown();
+			this.actionSelectorContainer.Visible = true;
 		}
 
 		private ItemEditor UpdateItemEditor(ContentItem item)
@@ -224,22 +210,17 @@ namespace N2.Web.UI.WebControls
 			this.fs.Legend = N2.Context.Definitions.GetDefinition(item.GetType()).Title;
 			this.ItemEditor.CurrentItem = item;
 			this.ItemEditor.ParentPath = this.ParentItem.Path;
-			this.ItemEditor.Visible = true;
-			//private void AddCancelActionButton()
 			return this.ItemEditor;
 		}
 
 		#region IItemContainer Members
 
-		public ContentItem ParentItem
-		{
-			get
-			{
+		public ContentItem ParentItem {
+			get {
 				return parentItem 
 					?? (parentItem = N2.Context.Persister.Get(ParentItemID));
 			}
-			set
-			{
+			set {
 				if (value == null)
 					throw new ArgumentNullException("value");
 
