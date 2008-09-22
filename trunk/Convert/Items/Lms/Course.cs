@@ -2,6 +2,7 @@
 {
 	using System.Collections.Generic;
 	using System.Linq;
+	using System.Diagnostics;
 
 	using N2.Details;
 	using N2.Definitions;
@@ -11,35 +12,29 @@
 	using N2.Templates.Items;
 	using N2.Serialization;
 	using N2.Web.UI;
+	using N2.Collections;
 
 	[Definition("Course", "Course", Installer = InstallerHint.NeverRootOrStartPage)]
 	[RestrictParents(typeof(CourseContainer))]
 	//[WithEditableTitle("Title", 20)]
 	[TabPanel("lms", "LMS", 200)]
-	[	EnsureChild("Topics", typeof(TopicList)),
-		EnsureChild("Trainings", typeof(TrainingContainer))]
+	[	EnsureChild(Course.TopicContainerName, typeof(TopicList)),
+		EnsureChild(Course.TrainingContainerName, typeof(TrainingContainer))]
 	public class Course : AbstractContentPage, IContinuous
 	{
+		#region Constants
+		
+		public const string TopicContainerName = "Topics";
+		public const string TrainingContainerName = "Trainings";
+
+		#endregion Constants
+
 		#region Properties
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/15.png"; } }
 		public override string TemplateUrl { get { return "~/Lms/UI/CourseInfo.aspx"; } }
 
 		#endregion Properties
-
-		#region Methods
-
-		void EnsureTopicList(IList<ContentItem> children)
-		{
-			if (!children.OfType<TopicList>().Any()) {
-				var _tl = Context.Current.Definitions.CreateInstance<TopicList>(this);
-				_tl.Name = this.Name + "TopicList";
-				_tl.Title = this.Title + " Topics";
-				Context.Current.Persister.Save(_tl);
-			}
-		}
-
-		#endregion Methods
 
 		#region Lms Properties
 
@@ -129,5 +124,35 @@
 		}
 
 		#endregion Lms Properties
+
+		#region Lms Collection Properties
+
+		/// <summary>
+		/// Storage node for topic hierarchy
+		/// </summary>
+		internal TopicList TopicContainer {
+			//Cannot just GetChild by Course.TopicContainerName
+			// because TopicList may be created not only by [EnsureChild]
+			// but as a result of the import procedure, in which case
+			// Name will be assigned an arbitrary value, such as course code.
+			get { return this.GetChildren(new TypeFilter(typeof(TopicList)))
+				.Cast<TopicList>()
+				.First(); }
+		}
+
+		public IEnumerable<Topic> Topics { get { return this.TopicContainer.Topics; } }
+
+		/// <summary>
+		/// Storage node for trainings
+		/// </summary>
+		internal TrainingContainer TrainingContainer {
+			get { return this.GetChildren(new TypeFilter(typeof(TrainingContainer)))
+				.Cast<TrainingContainer>()
+				.First(); }
+		}
+
+		public IEnumerable<Training> Trainings { get { return this.TrainingContainer.Trainings; } }
+
+		#endregion Lms Collection Properties
 	}
 }

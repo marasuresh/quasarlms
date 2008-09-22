@@ -7,6 +7,7 @@
 	using N2.Installation;
 	using N2.Integrity;
 	using N2.Edit.Trash;
+	using N2.Templates.Items;
 
 	[Definition("Topic", "Topic", Installer = InstallerHint.NeverRootOrStartPage)]
 	[RestrictParents(typeof(TopicList), typeof(Topic))]
@@ -14,7 +15,7 @@
 	[NotThrowable]
 	[WithEditableName("Name (Guid)", 10)]
 	[WithEditableTitle("Title", 20)]
-	public class Topic: ContentItem, IContinuous
+	public class Topic : AbstractContentPage, IContinuous
 	{
 		#region Properties
 		
@@ -52,24 +53,26 @@
 			set { this.SetDetail<int>("Duration", value); }
 		}
 
-		[EditableItem("Practice", 90)]
+		[EditableItem("Practice", 90, Required = false)]
 		public Test Practice
 		{
 			get { return this.GetDetail("Practice") as Test; }
 			set { this.SetDetail<Test>("Practice", value); }
 		}
 
-		/*
+		
 		public Course Course {
 			get {
-				ContentItem _result = this.Parent;
-				while(_result != null || !(_result is Course)) {
-					_result = _result.Parent;
-				}
-				return _result as Course;
+				return N2.Find.EnumerateParents(this).OfType<Course>().FirstOrDefault();
 			}
 		}
-*/
+
+		public Training Training {
+			get {
+				return N2.Find.EnumerateParents(this).OfType<Training>().FirstOrDefault();
+			}
+		}
+		
 		#endregion Lms Properties
 	}
 }

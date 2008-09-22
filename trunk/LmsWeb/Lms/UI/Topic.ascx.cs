@@ -19,25 +19,4 @@ public partial class Topic : ContentUserControl<N2.Lms.Items.Topic>
 
 		base.OnLoad(e);
 	}
-
-	//TODO Move as property of Topic entity
-	Training m_training;
-	protected Training Training
-	{
-		get
-		{
-			return this.m_training
-				?? (this.m_training = this.GetTraining());
-		}
-	}
-
-	Training GetTraining()
-	{
-		N2.ContentItem _tr = this.CurrentItem.Parent;
-		while (!(_tr is Training) && (_tr != null)) {
-			_tr = _tr.Parent;
-		}
-
-		return _tr as Training;
-	}
 }

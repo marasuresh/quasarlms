@@ -53,6 +53,7 @@
     <Compile Include="Definitions\EnsureChildAttribute.cs" />
     <Compile Include="ItemBuilder.cs" />
     <Compile Include="ItemBuilderInitializer.cs" />
+    <Compile Include="Items\ProxyItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

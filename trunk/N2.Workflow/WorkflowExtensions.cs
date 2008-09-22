@@ -11,13 +11,11 @@ namespace N2.Workflow
 	{
 		public static Workflow GetWorkflow(this ContentItem item)
 		{
-			if (item is IWorkflowItemContainer) {
-				return ((IWorkflowItemContainer)item).Workflow;
-			} else if (item.Parent != null && item.Parent is IWorkflowItemContainer) {
-				return ((IWorkflowItemContainer)item.Parent).Workflow;
-			} else {
-				return null;
-			}
+			var _workflowContainer = Find.EnumerateParents(item).OfType<IWorkflowItemContainer>().FirstOrDefault();
+
+			return null != _workflowContainer
+				? _workflowContainer.Workflow
+				: null;
 		}
 
 		public static void AssignCurrentState(this ContentItem item, ItemState state)

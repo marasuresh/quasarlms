@@ -31,7 +31,6 @@
 		public Workflow Workflow {
 			get { return this.GetDetail("Workflow") as Workflow; }
 			set { this.SetDetail<Workflow>("Workflow", value); }
-
 		}
 	}
 }

@@ -3,7 +3,7 @@
 	using N2.Plugin;
 	using N2.Templates.Services;
 	
-	[AutoInitialize]
+	//[AutoInitialize]
 	public class LmsInitializer: IPluginInitializer
 	{
 		#region IPluginInitializer Members

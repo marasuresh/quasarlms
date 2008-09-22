@@ -21,25 +21,6 @@ namespace N2.Workflow
 			this.definitions = definitions;
 		}
 
-		ItemState EnsureCurrentState(ContentItem item)
-		{
-			var _state = item.GetCurrentState();
-			
-			if (null == _state) {
-				ItemState _cs = this.definitions.CreateInstance<ItemState>(item);
-				_cs.ToState = item.GetWorkflow().InitialState;
-				this.persister.Save(_cs);
-			}
-
-			return _state;
-		}
-
-		ItemState EnsureCurrentState<C>(C item)
-			where C: ContentItem, IWorkflowEnabled
-		{
-			return this.EnsureCurrentState(item);
-		}
-
 		public ItemState PerformAction(
 			ContentItem item,
 			ActionDefinition action,
@@ -87,31 +68,5 @@ namespace N2.Workflow
 
 			return this.PerformAction(item, _action, user, comment);
 		}
-
-		#region IStartable Members
-
-		public void Start()
-		{
-			this.persister.ItemSaving += this.OnItemSaving;
-		}
-
-		public void Stop()
-		{
-			this.persister.ItemSaving -= this.OnItemSaving;
-		}
-
-		#endregion
-
-		#region Event handlers
-
-		void OnItemSaving(object sender, CancellableItemEventArgs e)
-		{
-			if (e.AffectedItem is IWorkflowEnabled) {
-				this.EnsureCurrentState(e.AffectedItem);
-			}
-		}
-
-		#endregion Event handlers
-
 	}
 }

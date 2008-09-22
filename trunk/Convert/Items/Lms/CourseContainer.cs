@@ -15,5 +15,9 @@
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/17.png"; } }
 
 		public override bool IsPage { get { return false; } }
+
+		#region Lms list properties
+
+		#endregion Lms list properties
 	}
 }
