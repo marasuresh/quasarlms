@@ -373,7 +373,7 @@
 						typeName="System.String, mscorlib">
 					<xsl:value-of select="key('Content', ShortHint)[Lang = $defLang]/TData"/>
 				</detail>
-				<detail name="ShortHint"
+				<detail name="LongHint"
 						typeName="System.String, mscorlib">
 					<xsl:value-of select="key('Content', LongHint)[Lang = $defLang]/DataStr"/>
 				</detail>
