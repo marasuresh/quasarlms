@@ -1,16 +1,13 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace N2.Lms.Items
 {
 	using N2.Collections;
-	using N2.Definitions;
 	using N2.Details;
-	using N2.Edit.Trash;
 	using N2.Installation;
 	using N2.Integrity;
-	using N2.Persistence;
 	using N2.Templates.Items;
 	using N2.Workflow;
 	
@@ -41,33 +38,50 @@ namespace N2.Lms.Items
 			return default(AccessFilter);
 		}
 
-		public override ItemList GetChildren(ItemFilter filter)
+		public IEnumerable<Lms.RequestStates.ApprovedState> GetApprovedRequests(string userName)
 		{
-			Trace.WriteLine("Training List", "Lms");
-			
-			var items = base.GetChildren(filter);
-
-			AccessFilter _af = FindAccessFilter(filter);
-
 			var _requestQuery =
 				from _request in this.RequestContainer.Children.OfType<Request>()
 				let _approvedRequest = _request.GetCurrentState() as Lms.RequestStates.ApprovedState
 				where _approvedRequest != null
 				select _approvedRequest;
 
+			if (!string.IsNullOrEmpty(userName)) {
+				_requestQuery = _requestQuery.Where(_r => _r.SavedBy == userName);
+			}
+
+			return _requestQuery;
+		}
+
+		Training TranslateToCurrentLanguage(Training training)
+		{
+			return training;
+			var _lm = N2.Context.Current.Resolve<N2.Engine.Globalization.ILanguageGateway>();
+			var _currentLanguage = _lm.GetLanguage(this);
+			return _lm.GetTranslation(training, _currentLanguage) as Training;
+		}
+
+		public override ItemList GetChildren(ItemFilter filter)
+		{
+			Trace.WriteLine("Training List", "Lms");
+			
+			var items = base.GetChildren(filter);
+
+			if (null == this.RequestContainer) {
+				return items;
+			}
+			
+			AccessFilter _af = FindAccessFilter(filter);
 			IEnumerable<Training> _trainings = new Training[0];
-
+			
 			if (null != _af) {
-
 				Trace.WriteLine("Access filter found: " + _af.User.Identity.Name, "Lms");
-
-				_trainings =
-					_requestQuery
-					.Where(_r => _r.SavedBy == _af.User.Identity.Name)
-					.Select(_r => _r.Training);
+				_trainings = GetApprovedRequests(_af.User.Identity.Name).Select(
+					_r => this.TranslateToCurrentLanguage(_r.Training));
 			} else if(filter is NullFilter) {
 				Trace.WriteLine("NullFilter", "Lms");
-				_trainings = _requestQuery.Select(_r => _r.Training);
+				_trainings = GetApprovedRequests(null).Select(
+					_r => this.TranslateToCurrentLanguage(_r.Training));
 			} else if (filter is CompositeFilter) {
 				Trace.WriteLine("Composite filter: " +
 					string.Join(

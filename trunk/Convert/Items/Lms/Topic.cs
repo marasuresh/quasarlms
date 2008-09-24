@@ -63,7 +63,7 @@
 		
 		public Course Course {
 			get {
-				return N2.Find.EnumerateParents(this).OfType<Course>().FirstOrDefault();
+				return N2.Find.EnumerateParents(this).OfType<Course>().FirstOrDefault() ?? this.Training.Course;
 			}
 		}
 

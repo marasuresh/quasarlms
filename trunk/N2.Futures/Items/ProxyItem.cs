@@ -13,7 +13,7 @@ public class ProxyItem : AbstractContentPage, IStructuralPage
 	public override string IconUrl { get { return "~/Lms/UI/Img/03/15.png"; } }
 	
 	[N2.Details.EditableTextBox("Url", 100)]
-	public string Url {
+	public new string Url {
 		get { return (string)this.GetDetail("TemplateUrl"); }
 		set { this.SetDetail<string>("TemplateUrl", value); }
 	}
