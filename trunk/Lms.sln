@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Web Developer Express 2008
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCEAccessLib", "DceAccessLib\DCEAccessLib.csproj", "{FB5DD100-1599-4147-8A12-6EE050BCE6FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCECourseEditor", "DceCourseEditor\DCECourseEditor.csproj", "{F0BA8B4B-E344-4E2D-8748-E6E81B059AB9}"
@@ -10,7 +10,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LmsWeb", "LmsWeb\", "{98CE0443-0C6B-4F69-B262-423AF4EF6871}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFramework = "3.5"
-		ProjectReferences = "{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}|N2.Lms.dll;{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}|N2.Futures.dll;{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}|N2.Workflow.dll;"
+		ProjectReferences = "{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}|N2.Lms.dll;{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}|N2.Futures.dll;{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}|N2.Workflow.dll;{08BB3289-C88F-4F23-A021-52BFE895FAC8}|ACalendar.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/LmsWeb"
 		Debug.AspNetCompiler.PhysicalPath = "LmsWeb\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\LmsWeb\"
@@ -39,6 +39,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Workflow", "N2.Workflow\N2.Workflow.csproj", "{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Workflow.Tests", "N2.Workflow.Tests\N2.Workflow.Tests.csproj", "{F57F9879-F75B-447E-A523-FF3F95A99801}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.ACalendar", "ACalendar\N2.ACalendar.csproj", "{08BB3289-C88F-4F23-A021-52BFE895FAC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -243,6 +245,26 @@ Global
 		{F57F9879-F75B-447E-A523-FF3F95A99801}.Release|.NET.ActiveCfg = Release|Any CPU
 		{F57F9879-F75B-447E-A523-FF3F95A99801}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F57F9879-F75B-447E-A523-FF3F95A99801}.Release|Mixed Platforms.ActiveCfg = Release|Mixed Platforms
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.DL Server Deployment|.NET.ActiveCfg = Debug|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.DL Server Deployment|Any CPU.ActiveCfg = Debug|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.DL Server Deployment|Any CPU.Build.0 = Debug|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.DL Server Deployment|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.DL Server Deployment|Mixed Platforms.Build.0 = Debug|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Local deployment|.NET.ActiveCfg = Release|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Local deployment|Any CPU.ActiveCfg = Release|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Local deployment|Any CPU.Build.0 = Release|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Local deployment|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Local deployment|Mixed Platforms.Build.0 = Release|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Release|.NET.ActiveCfg = Release|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{08BB3289-C88F-4F23-A021-52BFE895FAC8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
