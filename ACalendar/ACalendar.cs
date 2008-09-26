@@ -9,7 +9,6 @@ using N2.Edit.Trash;
 using N2.Templates.Items;
 using N2.Serialization;
 using N2.Web.UI;
-using N2.Lms.Items;
 
 namespace N2.ACalendar
 {
@@ -17,7 +16,6 @@ namespace N2.ACalendar
     [RestrictParents(typeof(ACalendarContainer))]
     //[TabPanel("lms", "LMS", 200)]
     [AllowedChildren(typeof(AEvent))]
-
     public class ACalendar : AbstractContentPage
     {
         #region Properties

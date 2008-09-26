@@ -8,7 +8,6 @@
     using N2.Installation;
     using N2.Integrity;
     using N2.Edit.Trash;
-    using N2.Lms.Items;
 
     [Definition("AEvent", "AEvent", Installer = InstallerHint.NeverRootOrStartPage)]
     [RestrictParents(typeof(ACalendar))]
@@ -16,7 +15,7 @@
     [WithEditableName("Name (Guid)", 10)]
     [WithEditableTitle("Title", 20)]
     [WithEditableDateRange("Период", 30, "DateStart", "DateEnd", Required = true)]
-    public class AEvent : ContentItem, IContinuous
+    public class AEvent : ContentItem
     {
         #region Properties
 
@@ -35,10 +34,12 @@
             set { this.SetDetail<DateTime>("DateStart", value); }
         }
 
-         public DateTime DateEnd
+         public DateTime? DateEnd
         {
-            get { return this.GetDetail("DateEnd") as DateTime; }
-            set { this.SetDetail<DateTime>("DateEnd", value); }
+            get { return this.GetDetail<DateTime?>(
+				"DateEnd",
+				null); }
+            set { this.SetDetail<DateTime?>("DateEnd", value); }
         }
 
         //[EditableTextBox("Type", 100)]

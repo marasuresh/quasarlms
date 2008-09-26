@@ -59,12 +59,6 @@
     <Compile Include="AEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Convert\N2.Lms.csproj">
-      <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
-      <Name>N2.Lms</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
