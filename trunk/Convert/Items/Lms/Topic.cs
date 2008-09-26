@@ -34,7 +34,34 @@
 			}
 		}
 
-/*		[EditableUrl("Content Url", 30)]
+		[EditableChildren("Urls", "", "ContentItems", 9)]
+		IList<ContentUrlItem> ContentItems
+		{
+			get
+			{
+				return (
+					from _cntStr in this.Content
+					select new ContentUrlItem {
+						ContentUrl = _cntStr,
+					}).ToList();
+			}
+		}
+
+		#region Types
+
+		[Definition]
+		public class ContentUrlItem: ContentItem
+		{
+			[EditableUrl("URL", 9)]
+			public string ContentUrl {
+				get { return this.GetDetail<string>("ContentUrl", string.Empty); }
+				set { this.SetDetail<string>("ContentUrl", value); }
+			}
+		}
+
+		#endregion Types
+
+		/*		[EditableUrl("Content Url", 30)]
 		public string ContentUrl {
 			get { return (string)this.GetDetail("ContentUrl"); }
 			set { this.SetDetail<string>("ContentUrl", value); }

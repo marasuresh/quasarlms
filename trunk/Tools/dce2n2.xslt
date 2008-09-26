@@ -350,12 +350,23 @@
 		<item
 			name="{id}"
 			parent="-1"
-			title="{key('Content', Content)[Lang = $defLang]/TData}"
 			sortOrder="{QOrder}"
 			visible="true"
 			xsl:use-attribute-sets="generic"
 			typeName="N2.Lms.Items.TestQuestion, Convert"
 			discriminator="TestQuestion">
+			<xsl:attribute name="title">
+				<xsl:variable name="ContentNode"
+							  select="key('Content', Content)[Lang = $defLang]" />
+				<xsl:choose>
+					<xsl:when test="Type = 5">
+						<xsl:value-of select="$ContentNode/DataStr" />
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="$ContentNode/TData"/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:attribute>
 			<xsl:attribute name="parent">
 				<xsl:call-template name="MakeParentIdOf">
 					<xsl:with-param name="obj"
