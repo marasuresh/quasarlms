@@ -70,26 +70,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GuidService.cs" />
-    <Compile Include="Items\Lms\Area.cs" />
-    <Compile Include="Items\Lms\IVirtualizable.cs" />
-    <Compile Include="Items\Lms\RequestStates\ApprovedState.cs" />
-    <Compile Include="Items\Lms\RequestStates\AcceptedState.cs" />
+    <Compile Include="Items\Lms\RequestWorkflow\Transitions\ApprovedState.cs" />
+    <Compile Include="Items\Lms\RequestWorkflow\Transitions\AcceptedState.cs" />
     <Compile Include="Items\Lms\TrainingContainer.cs" />
     <Compile Include="Items\Lms\RequestContainer.cs" />
     <Compile Include="Items\Lms\CourseList.cs" />
     <Compile Include="Items\Lms\TestQuestion.cs" />
     <Compile Include="Items\Lms\RequestList.cs" />
     <Compile Include="Items\Lms\TrainingList.cs" />
-    <Compile Include="Items\Lms\IContinuous.cs" />
     <Compile Include="Items\Lms\Topic.cs" />
     <Compile Include="Items\Lms\TopicList.cs" />
     <Compile Include="Items\Lms\Course.cs" />
     <Compile Include="Items\Lms\CourseContainer.cs" />
-    <Compile Include="Items\Lms\Request.cs" />
+    <Compile Include="Items\Lms\RequestWorkflow\Request.cs" />
     <Compile Include="Items\Lms\Test.cs" />
-    <Compile Include="Items\Lms\TestResult.cs" />
     <Compile Include="Items\Lms\Training.cs" />
-    <Compile Include="Items\Lms\TrainingSchedule.cs" />
+    <Compile Include="Items\Lms\TrainingWorkflow\StateDefinitions\ScheduledTopic.cs" />
+    <Compile Include="Items\Lms\TrainingWorkflow\TrainingTicket.cs" />
     <Compile Include="Items\MenuItem.cs" />
     <Compile Include="Lms.designer.cs">
       <AutoGen>True</AutoGen>
@@ -136,6 +133,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Custom\" />
+    <Folder Include="Details\" />
+    <Folder Include="Web\UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

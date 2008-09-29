@@ -16,6 +16,11 @@ public partial class Topic : ContentUserControl<N2.Lms.Items.Topic>
 		Register.JQuery(this.Page);
 		Register.StyleSheet(this.Page, "~/Lms/UI/Js/jQuery.tabs.css");
 		Register.JavaScript(this.Page, "~/Lms/UI/Js/jQuery.tabs.js");
+		Register.JavaScript(
+			this.Page,
+			"~/Lms/UI/Js/n2lms.js",
+			N2.Resources.ScriptPosition.Header,
+			N2.Resources.ScriptOptions.Include);
 
 		base.OnLoad(e);
 	}

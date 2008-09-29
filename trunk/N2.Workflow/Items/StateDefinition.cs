@@ -31,6 +31,7 @@ namespace N2.Workflow.Items
 		}
 		
 		public override string IconUrl { get { return this.Icon ?? "~/Workflow/UI/Img/03/31.png"; } }
+		public override string TemplateUrl { get { return "~/Workflow/UI/StateDefinition.ascx"; } }
 
 		public IEnumerable<ActionDefinition> Actions {
 			get {

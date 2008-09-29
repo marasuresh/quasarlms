@@ -20,7 +20,7 @@
 	[TabPanel("lms", "LMS", 200)]
 	[	EnsureChild(Course.TopicContainerName, typeof(TopicList)),
 		EnsureChild(Course.TrainingContainerName, typeof(TrainingContainer))]
-	public class Course : AbstractContentPage, IContinuous
+	public class Course : AbstractContentPage
 	{
 		#region Constants
 		

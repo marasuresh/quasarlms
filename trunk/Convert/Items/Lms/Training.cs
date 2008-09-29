@@ -11,6 +11,7 @@ namespace N2.Lms.Items
 	using N2.Templates.Items;
 	using N2.Web.UI;
 	using N2.Collections;
+	using N2.Workflow.Items;
 	
 	[RestrictParents(typeof(TrainingList))]
 	[Definition]
@@ -60,12 +61,37 @@ namespace N2.Lms.Items
 		
 		public override ItemList GetChildren(ItemFilter filter)
 		{
-			return base.GetChildren(filter).AppendItemsAsVirtual(
-				this.Course.TopicContainer.Topics.Cast<ContentItem>(),
-				this,
-				filter);
+			//this.EnsureTopicSchedule(filter);
+			return base.GetChildren(filter);
 		}
 
 		#endregion Lms Collection Properties
+
+		#region Methods
+
+		/// <summary>
+		/// Recreate Course's top-level topics 
+		/// </summary>
+		void EnsureTopicSchedule(ItemFilter filter)
+		{
+			var _topLevelTopics = this.Course.TopicContainer.GetChildren(filter).OfType<Topic>();
+			var _children = base.GetChildren(filter);
+
+			foreach (var _topic in _topLevelTopics) {
+				if (!_children.Exists(_child => string.Equals(
+						_child.Name,
+						_topic.Name,
+						StringComparison.OrdinalIgnoreCase))) {
+					_topic.ScheduleTopicForTraining(this);
+				}
+			}
+		}
+		
+		#endregion Methods
+
+		[EditableItem("Workflow", 44, ContainerName = "lms")]
+		public Workflow Workflow {
+			get { return this.GetDetail<Workflow>("Workflow", this.GenerateDefaultWorkflow()); }
+		}
 	}
 }
