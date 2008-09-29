@@ -16,10 +16,6 @@
 		"Text",
 		10,
 		"ShortHint")]
-	[WithEditable(
-		"Длинная подсказка",
-		typeof(TextBox),
-		"Text", 15, "LongHint")]
 	public class TestQuestion: ContentItem
 	{
 		#region System properties
@@ -29,6 +25,12 @@
 		#endregion System properties
 
 		#region Lms properties
+
+		[EditableFreeTextArea("Длинная подсказка", 15)]
+		public string LongHint {
+			get { return this.GetDetail<string>("LongHint", null); }
+			set { this.SetDetail<string>("LongHint", value); }
+		}
 
 		[EditableTextBox(
 			"Количество баллов",

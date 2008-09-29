@@ -12,11 +12,14 @@
 	{
 		[EditableLink("Initial State", 05)]
 		public StateDefinition InitialState {
-			get { return this.GetDetail("InitialState") as StateDefinition; }
+			get { return this.GetDetail<StateDefinition>(
+				"InitialState",
+				this.GetChild("new") as StateDefinition); }
 			set { this.SetDetail<StateDefinition>("InitialState", value); }
 		}
 
 		public override bool IsPage { get { return false; } }
+		public override string TemplateUrl { get { return "~/Workflow/UI/Workflow.ascx"; } }
 
 		public override string Title {
 			get { return base.Title ?? this.Name; }

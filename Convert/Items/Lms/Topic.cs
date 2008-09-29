@@ -8,58 +8,31 @@
 	using N2.Integrity;
 	using N2.Edit.Trash;
 	using N2.Templates.Items;
+	using N2.Definitions;
 
 	[Definition("Topic", "Topic", Installer = InstallerHint.NeverRootOrStartPage)]
 	[RestrictParents(typeof(TopicList), typeof(Topic))]
-	[AllowedChildren(typeof(Topic), typeof(Test))]
-	[NotThrowable]
-	[WithEditableName("Name (Guid)", 10)]
-	[WithEditableTitle("Title", 20)]
-	public class Topic : AbstractContentPage, IContinuous
+	[WithEditableName("Name (Guid)", 03)]
+	[WithEditableTitle("Title", 05)]
+	[WithEditablePublishedRange("Published between", 07)]
+	[ReplaceDefinitions(typeof(AbstractContentPage), typeof(ContentItem))]
+	public class Topic : AbstractContentPage
 	{
-		#region Properties
-		
+		#region System properties
+
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/19.png"; } }
 		public override string TemplateUrl { get { return "~/Lms/UI/Topic.aspx"; } }
 		
-		#endregion Properties
+		#endregion System properties
 
 		#region Lms Properties
-
-		IEnumerable<string> Content {
+		
+		public DetailCollection Content {
 			get {
 				return
-					from _ld in this.GetDetailCollection("Content", true).OfType<StringDetail>()
-					select _ld.StringValue;
+					this.GetDetailCollection("Content", true);
 			}
 		}
-
-		[EditableChildren("Urls", "", "ContentItems", 9)]
-		IList<ContentUrlItem> ContentItems
-		{
-			get
-			{
-				return (
-					from _cntStr in this.Content
-					select new ContentUrlItem {
-						ContentUrl = _cntStr,
-					}).ToList();
-			}
-		}
-
-		#region Types
-
-		[Definition]
-		public class ContentUrlItem: ContentItem
-		{
-			[EditableUrl("URL", 9)]
-			public string ContentUrl {
-				get { return this.GetDetail<string>("ContentUrl", string.Empty); }
-				set { this.SetDetail<string>("ContentUrl", value); }
-			}
-		}
-
-		#endregion Types
 
 		/*		[EditableUrl("Content Url", 30)]
 		public string ContentUrl {
@@ -73,14 +46,7 @@
 			set { this.SetDetail<bool>("Mandatory", value); }
 		}
 
-		[EditableTextBox("Duration", 80)]
-		public int Duration
-		{
-			get { return (int?)this.GetDetail("Duration") ?? 0; }
-			set { this.SetDetail<int>("Duration", value); }
-		}
-
-		[EditableItem("Practice", 90, Required = false)]
+		//[EditableItem("Practice", 90, Required = false)]
 		public Test Practice
 		{
 			get { return this.GetDetail("Practice") as Test; }

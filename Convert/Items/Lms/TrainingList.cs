@@ -10,7 +10,9 @@ namespace N2.Lms.Items
 	using N2.Integrity;
 	using N2.Templates.Items;
 	using N2.Workflow;
-	
+	using N2.Lms.Items.Lms.RequestStates;
+	using N2.Lms.Items.TrainingWorkflow;
+
 	[Definition("Training List", "TrainingList", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
 	[WithEditableTitle("Title", 10)]
 	[RestrictParents(typeof(IStructuralPage))]
@@ -19,9 +21,41 @@ namespace N2.Lms.Items
 		#region System properties
 		
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/20.png"; } }
-		public override string TemplateUrl { get { return "~/Lms/UI/TrainingList.aspx"; } }
-
+		public override string TemplateUrl { get {
+			return this.MyStartedTrainings.Any()
+				? "~/Lms/UI/Player.aspx"
+				: "~/Lms/UI/TrainingList.aspx"; } }
+		
 		#endregion System properties
+
+		#region Lms list properties
+
+		public IEnumerable<ApprovedState> MyApprovedApplications {
+			get {
+				return
+					from _req in this.RequestContainer.GetChildren().OfType<Request>()
+					let _currentState = _req.GetCurrentState()
+					where _currentState is ApprovedState
+					select _currentState as ApprovedState;
+			}
+		}
+
+		IEnumerable<TrainingTicket> m_myStartedTrainings;
+		public IEnumerable<TrainingTicket> MyStartedTrainings {
+			get {
+				return
+					this.m_myStartedTrainings
+					?? (this.m_myStartedTrainings =
+					from _approvedApplication in this.MyApprovedApplications
+					let _ticket = _approvedApplication.Ticket
+					where _ticket != null
+					select _ticket);
+			}
+		}
+		
+		#endregion
+
+#if LegacyBusinessLogic
 
 		static AccessFilter FindAccessFilter(ItemFilter filter)
 		{
@@ -113,5 +147,6 @@ namespace N2.Lms.Items
 			
 			return items;
 		}
+#endif
 	}
 }

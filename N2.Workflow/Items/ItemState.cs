@@ -3,10 +3,15 @@
 	using System.Web.UI.WebControls;
 	using N2.Details;
 	using N2.Web.UI;
-
+	using N2.Definitions;
+	using N2.Persistence;
+	
 	[Definition]
-	[N2.Persistence.NotVersionable]
+	[Disable]
+	[NotVersionable]
+#if CheckWorkflow
 	[TabPanel("workflow", "Workflow", 200, AuthorizedRoles = new[] { "Administrators"})]
+#endif
 	public class ItemState: ContentItem
 	{
 		[EditableTextBox("Comment", 13, Rows=3, TextMode = TextBoxMode.MultiLine)]
@@ -15,28 +20,34 @@
 			set { this.SetDetail<string>("Comment", value); }
 		}
 
+#if CheckWorkflow
 		[EditableLink(
 			"Previous State",
 			210,
 			ContainerName = "workflow")]
+#endif
 		public StateDefinition FromState {
 			get { return this.GetDetail("FromState") as StateDefinition; }
 			set { this.SetDetail<StateDefinition>("FromState", value); }
 		}
 
+#if CheckWorkflow
 		[EditableLink(
 			"Current State",
 			220,
 			ContainerName = "workflow")]
+#endif
 		public StateDefinition ToState {
 			get { return this.GetDetail("ToState") as StateDefinition; }
 			set { this.SetDetail<StateDefinition>("ToState", value); }
 		}
 
+#if CheckWorkflow
 		[EditableLink(
 			"Action",
 			230,
 			ContainerName = "workflow")]
+#endif
 		public ActionDefinition Action {
 			get { return this.GetDetail("Action") as ActionDefinition; }
 			set { this.SetDetail<ActionDefinition>("Action", value); }
@@ -44,8 +55,11 @@
 
 		[EditableTextBox(
 			"Assigned To",
-			240,
-			ContainerName = "workflow")]
+			240
+#if CheckWorkflow
+			, ContainerName = "workflow"
+#endif
+			)]
 		public string AssignedTo {
 			get { return this.GetDetail<string>("AssignedTo", string.Empty); }
 			set { this.SetDetail<string>("AssignedTo", value); }
