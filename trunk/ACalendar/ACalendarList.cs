@@ -17,7 +17,7 @@
     [RestrictParents(typeof(IStructuralPage))]
     public class ACalendarList : AbstractContentPage
     {
-        public override string IconUrl { get { return "~/Template/UI/Img/calendar.png"; } }
+        public override string IconUrl { get { return "~/Lms/UI/Img/04/calendar.png"; } }
 
         public override string TemplateUrl { get { return "~/ACalendar/UI/ACalendarList.aspx"; } }
 
