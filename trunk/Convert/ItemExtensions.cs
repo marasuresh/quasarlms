@@ -117,7 +117,7 @@ namespace N2.Lms
 			_finishAction.LeadsTo = _finalState;
 			_finishAction.AddTo(_lastState);
 			
-			_wf.AddTo(training);
+			//_wf.AddTo(training);
 
 			return _wf;
 		}
