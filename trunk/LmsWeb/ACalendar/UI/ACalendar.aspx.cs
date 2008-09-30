@@ -5,8 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using N2.ACalendar;
+using N2.Resources;
 
-public partial class ACalendar_UI_ACalendar : N2.Web.UI.ContentPage<ACalendar>
+public partial class ACalendar_UI_ACalendar :  N2.Templates.Web.UI.TemplatePage<ACalendar>
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -25,6 +26,18 @@ public partial class ACalendar_UI_ACalendar : N2.Web.UI.ContentPage<ACalendar>
         }
     }
 
+    protected override void OnLoad(EventArgs e)
+    {
+        Register.JQuery(this.Page);
+        Register.StyleSheet(this.Page, "~/Lms/UI/Js/jCal.small.css");
+        Register.JavaScript(this.Page, "~/Lms/UI/Js/jCal.js");
+        Register.JavaScript(this.Page, "~/Lms/UI/Js/jQuery.animate.clip.js");
+        Register.JavaScript(this.Page, "~/Lms/UI/Js/jQuery.color.js");
+
+        base.OnLoad(e);
+    }
+
+
     protected string week_name (int n)
     {
         DateTime first_sept = new DateTime(DateTime.Now.Year, 9, 1);
@@ -40,5 +53,17 @@ public partial class ACalendar_UI_ACalendar : N2.Web.UI.ContentPage<ACalendar>
         }
         return _ret + ")";
     
-    } 
+    }
+    protected void btnExcel_Click(object sender, EventArgs e)
+    {
+        var  cals =   ((ACalendarContainer)this.CurrentItem.Parent).Children;
+        Response.Redirect(Server.MapPath("../../Upload") + "/" + ExcelExport.ExportToFile(cals));
+
+    }
+    protected void btnSave_Click(object sender, EventArgs e)
+    {
+
+
+
+    }
 }

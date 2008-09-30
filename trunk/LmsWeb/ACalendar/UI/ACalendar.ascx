@@ -14,7 +14,7 @@
 			<h3 class="cap4" title='<%= this.CurrentItem.Text %>'></h3>
 			
 			<% if(!string.IsNullOrEmpty(this.CurrentItem.Duration.ToString())) { %>
-				<p>:&nbsp;<%= this.CurrentItem.Duration%></p>
+				<p>:&nbsp;<%= this.CurrentItem.Title%></p>
 			<% } %>
 			
 <%--			<iframe	name="contFrame"
