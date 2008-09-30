@@ -29,8 +29,12 @@ namespace N2.Workflow.Items
 			get { return base.Title ?? this.Name; }
 			set { base.Title = value; }
 		}
+
+		public override string IconUrl { get { return
+			string.IsNullOrEmpty(this.Icon)
+				? this.GetIconUrl() ?? base.IconUrl
+				: base.IconUrl; } }
 		
-		public override string IconUrl { get { return this.Icon ?? "~/Workflow/UI/Img/03/31.png"; } }
 		public override string TemplateUrl { get { return "~/Workflow/UI/StateDefinition.ascx"; } }
 
 		public IEnumerable<ActionDefinition> Actions {

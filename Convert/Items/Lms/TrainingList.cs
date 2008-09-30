@@ -45,12 +45,22 @@ namespace N2.Lms.Items
 			get {
 				return
 					this.m_myStartedTrainings
-					?? (this.m_myStartedTrainings =
-					from _approvedApplication in this.MyApprovedApplications
-					let _ticket = _approvedApplication.Ticket
-					where _ticket != null
-					select _ticket);
+					?? (this.m_myStartedTrainings = this.GetMyStartedTrainings());
 			}
+		}
+
+		IEnumerable<TrainingTicket> GetMyStartedTrainings()
+		{
+			return
+				from _approvedApplication in this.MyApprovedApplications
+				let _ticket = _approvedApplication.Ticket
+				where _ticket != null
+				let _ticketState = _ticket.GetCurrentState()
+				where string.Equals(
+					_ticketState.ToState.Name,
+					"new",
+					System.StringComparison.OrdinalIgnoreCase)
+				select _ticket;
 		}
 		
 		#endregion

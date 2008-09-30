@@ -28,7 +28,7 @@
 
 		public override string IconUrl { get { return
 			null == this.InitialState
-				? string.Format("~/Workflow/UI/Img/03/{0}.png", this.InitialState == null ? 41 : 35)
-				: this.InitialState.Icon; } }
+				? string.Format("~/Workflow/UI/Img/03/{0}.png", 41)
+				: this.InitialState.IconUrl; } }
 	}
 }
