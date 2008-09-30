@@ -16,7 +16,7 @@
     [RestrictParents(typeof(IStructuralPage))]
     public class ACalendarContainer : ContentItem
     {
-        public override string IconUrl { get { return "~/Template/UI/Img/calendar.png"; } }
+        public override string IconUrl { get { return "~/Lms/UI/Img/04/calendar.png"; } }
         public override bool IsPage { get { return false; } }
     }
 }
