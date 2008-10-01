@@ -20,17 +20,9 @@
     {
         #region Properties
 
-        public override string IconUrl { get { return "~/Lms/UI/Img/04/50.png"; } }
-        
-        public override string TemplateUrl { get { return "~/Messaging/UI/Message.aspx"; } }
+        //public override string IconUrl { get { return "~/Lms/UI/Img/04/50.png"; } }
 
-        public override bool IsPage
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override string TemplateUrl { get { return "~/Messaging/UI/Views/Message.aspx"; } }
 
         //public override bool IsAuthorized(System.Security.Principal.IPrincipal user)
         //{

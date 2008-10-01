@@ -18,7 +18,7 @@ namespace N2.Messaging
 
         public override string IconUrl { get { return "~/Lms/UI/Img/04/15.png"; } }
 
-        public override string TemplateUrl { get { return "~/Messaging/UI/Message.aspx"; } }
+        public override string TemplateUrl { get { return "~/Messaging/UI/Views/Message.aspx"; } }
 
         //Признак выполнения.
         [EditableCheckBox("Выполнено", 10)]
