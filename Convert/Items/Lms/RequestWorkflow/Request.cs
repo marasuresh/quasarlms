@@ -17,8 +17,7 @@
 	{
 		public override string IconUrl {
 			get {
-				return
-					this.GetCurrentState().ToState.Icon;
+				return this.GetCurrentState().ToState.IconUrl;
 			}
 		}
 		

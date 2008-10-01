@@ -76,9 +76,15 @@ namespace N2.Lms
 			return _topicSchedule;
 		}
 
-
+		/// <summary>
+		/// Default workflow hierarchy template for a given training.
+		/// </summary>
+		/// <param name="training"></param>
+		/// <returns></returns>
 		internal static Workflow GenerateDefaultWorkflow(this Training training)
 		{
+			int _sortOrder = 0;
+			
 			Workflow _wf = Context.Definitions.CreateInstance<Workflow>(training);
 			_wf.Name = "workflow";
 			_wf.Title = "Workflow";
@@ -86,16 +92,19 @@ namespace N2.Lms
 			StateDefinition _newState = Context.Definitions.CreateInstance<StateDefinition>(_wf);
 			_newState.Name = "new";
 			_newState.Title = "New";
+			_newState.SortOrder = _sortOrder++;
 			_newState.AddTo(_wf);
 			
-			//_wf.InitialState = _newState;
+			_wf.InitialState = _newState;
 			
 			StateDefinition _lastState = _newState;
+
 			
 			foreach (Topic _topLevelTopic in training.Course.Topics) {
 				ScheduledTopic _st = Context.Definitions.CreateInstance<ScheduledTopic>(_wf);
 				_st.Topic = _topLevelTopic;
 				_st.Title = _topLevelTopic.Title;
+				_st.SortOrder = _sortOrder++;
 				_st.AddTo(_wf);
 				
 				ActionDefinition _transition = Context.Definitions.CreateInstance<ActionDefinition>(_lastState);
@@ -109,6 +118,7 @@ namespace N2.Lms
 			StateDefinition _finalState = Context.Definitions.CreateInstance<StateDefinition>(_wf);
 			_finalState.Name = "finished";
 			_finalState.Title = "Finished";
+			_finalState.SortOrder = _sortOrder++;
 			_finalState.AddTo(_wf);
 			
 			ActionDefinition _finishAction = Context.Definitions.CreateInstance<ActionDefinition>(_lastState);

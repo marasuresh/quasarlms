@@ -18,7 +18,7 @@ namespace N2.Workflow.Items
 	{
 		[EditableImage("Icon", 07)]
 		public string Icon {
-			get { return this.GetDetail("Icon") as string; }
+			get { return this.GetDetail<string>("Icon", item => this.GetIconUrl() ?? base.IconUrl); }
 			set { this.SetDetail<string>("Icon", value); }
 		}
 
@@ -33,15 +33,15 @@ namespace N2.Workflow.Items
 		public override string IconUrl { get { return
 			string.IsNullOrEmpty(this.Icon)
 				? this.GetIconUrl() ?? base.IconUrl
-				: base.IconUrl; } }
+				: this.Icon; } }
 		
-		public override string TemplateUrl { get { return "~/Workflow/UI/StateDefinition.ascx"; } }
-
 		public IEnumerable<ActionDefinition> Actions {
 			get {
 				return this.GetChildren(
 					new N2.Collections.TypeFilter(typeof(ActionDefinition))).Cast<ActionDefinition>();
 			}
 		}
+
+		public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
 	}
 }

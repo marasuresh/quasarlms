@@ -6,12 +6,12 @@ using N2.Details;
 using N2.Resources;
 using N2.Web.UI;
 using N2.ACalendar;
-
+using items = N2.ACalendar;
 	/// <summary>
 	/// Отображение информации о календаре
 	/// </summary>
 
-public partial class ACalendar :  ContentUserControl<ACalendar>
+public partial class ACalendar :  ContentUserControl<items.ACalendar>
 {
     protected void Page_Load(object sender, EventArgs e)
     {

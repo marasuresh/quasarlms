@@ -1,4 +1,5 @@
-﻿namespace N2.Workflow.Items
+﻿#define CheckWorkflow
+namespace N2.Workflow.Items
 {
 	using System.Web.UI.WebControls;
 	using N2.Details;
@@ -10,7 +11,7 @@
 	[Disable]
 	[NotVersionable]
 #if CheckWorkflow
-	[TabPanel("workflow", "Workflow", 200, AuthorizedRoles = new[] { "Administrators"})]
+	[TabPanel("workflow", "Workflow", 200/*, AuthorizedRoles = new[] { "Administrator"}*/)]
 #endif
 	public class ItemState: ContentItem
 	{
@@ -25,6 +26,8 @@
 			"Previous State",
 			210,
 			ContainerName = "workflow")]
+#else
+		[Editable("Previous State", typeof(HiddenField), "Value", 210)]
 #endif
 		public StateDefinition FromState {
 			get { return this.GetDetail("FromState") as StateDefinition; }
@@ -36,6 +39,8 @@
 			"Current State",
 			220,
 			ContainerName = "workflow")]
+#else
+		[Editable("Current State", typeof(HiddenField), "Value", 220)]
 #endif
 		public StateDefinition ToState {
 			get { return this.GetDetail("ToState") as StateDefinition; }
@@ -47,6 +52,8 @@
 			"Action",
 			230,
 			ContainerName = "workflow")]
+#else
+		[Editable("Action", typeof(HiddenField), "Value", 230)]
 #endif
 		public ActionDefinition Action {
 			get { return this.GetDetail("Action") as ActionDefinition; }
@@ -79,5 +86,7 @@
 		public override string IconUrl {
 			get { return null != this.ToState ? this.ToState.Icon : "~/Workflow/UI/img/46.png"; }
 		}
+
+		public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
 	}
 }
