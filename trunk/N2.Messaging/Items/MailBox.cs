@@ -17,7 +17,7 @@ namespace N2.Messaging
     [RestrictParents(typeof(IStructuralPage))]
     public class MailBox : AbstractContentPage
     {
-        public override string TemplateUrl { get { return "~/Messaging/UI/MailBox.aspx"; } }
+        public override string TemplateUrl { get { return "~/Messaging/UI/Views/MailBox.aspx"; } }
 
         [EditableLink("Message Store", 1, HelpTitle="Select an item, which contains all messages.")]
         public MessageStore MessageStore
