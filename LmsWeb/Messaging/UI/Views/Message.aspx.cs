@@ -17,6 +17,9 @@ public partial class Messaging_UI_Message : N2.Web.UI.ContentPage<Message>
         base.OnInit(e);
     }
 
+	FormView fvMessage;
+	N2.Web.UI.WebControls.ItemDataSource dsMessage;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         dsMessage.CurrentItem = CurrentItem;

@@ -2,11 +2,23 @@
 using System.Linq;
 using N2.Collections;
 using N2.Messaging;
+using System.Web.UI.WebControls;
+using System.Web;
 
 public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<MailBox>
 {
+	protected string CurrentUserName {
+		get { return this.Context.User.Identity.Name; }
+	}
+
+	DropDownList ddlMsgType;
+	DropDownList ddlDirection;
+	CheckBox cboxOnlyNew;
+	GridView gvMailBox;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+
         Message[] showingMsg = null;
 
         //Фильтровка сообщений выводимых на экран.
@@ -29,10 +41,10 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
         switch (ddlDirection.SelectedValue)
         {
             case "incoming":
-                showingMsg = msgFilter.GetIncomingMsg(showingMsg, Profile.UserName);
+                showingMsg = msgFilter.GetIncomingMsg(showingMsg, this.CurrentUserName);
                 break;
             case "sent":
-                showingMsg = msgFilter.GetSentMsg(showingMsg, Profile.UserName);
+                showingMsg = msgFilter.GetSentMsg(showingMsg, this.CurrentUserName);
                 break;
         }
 
@@ -50,8 +62,8 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
         get
         {
             return (from child in CurrentItem.MessageStore.Children.OfType<Message>()
-                    where ((string.Equals(child.From, Profile.UserName, StringComparison.OrdinalIgnoreCase) ||
-                            string.Equals(child.To, Profile.UserName, StringComparison.OrdinalIgnoreCase))                        
+                    where ((string.Equals(child.From, this.CurrentUserName, StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(child.To, this.CurrentUserName, StringComparison.OrdinalIgnoreCase))                        
                             )
                     select child).ToArray();
             //ItemList allUserMessages = (CurrentItem.MessageStore.GetChildren());
@@ -65,8 +77,8 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
         get
         {
             return (from child in CurrentItem.MessageStore.Children.OfType<Letter>()
-                    where (string.Equals(child.From, Profile.UserName, StringComparison.OrdinalIgnoreCase) ||
-                            string.Equals(child.To, Profile.UserName, StringComparison.OrdinalIgnoreCase))
+                    where (string.Equals(child.From, this.CurrentUserName, StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(child.To, this.CurrentUserName, StringComparison.OrdinalIgnoreCase))
                     select child).ToArray();
         }
     }
@@ -77,8 +89,8 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
         get
         {
             return (from child in CurrentItem.MessageStore.Children.OfType<Task>()
-                    where (string.Equals(child.From, Profile.UserName, StringComparison.OrdinalIgnoreCase) ||
-                            string.Equals(child.To, Profile.UserName, StringComparison.OrdinalIgnoreCase))
+                    where (string.Equals(child.From, this.CurrentUserName, StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(child.To, this.CurrentUserName, StringComparison.OrdinalIgnoreCase))
                     select child).ToArray();
         }
     }
@@ -89,8 +101,8 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
         get
         {
             return (from child in CurrentItem.MessageStore.Children.OfType<Announcement>()
-                    where (string.Equals(child.From, Profile.UserName, StringComparison.OrdinalIgnoreCase) ||
-                            string.Equals(child.To, Profile.UserName, StringComparison.OrdinalIgnoreCase))
+                    where (string.Equals(child.From, this.CurrentUserName, StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(child.To, this.CurrentUserName, StringComparison.OrdinalIgnoreCase))
                     select child).ToArray();
         }
     }
@@ -104,8 +116,8 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
         get
         {
             return (from child in CurrentItem.DraughtStore.Children.OfType<Message>()
-                    where ((string.Equals(child.From, Profile.UserName, StringComparison.OrdinalIgnoreCase) ||
-                            string.Equals(child.To, Profile.UserName, StringComparison.OrdinalIgnoreCase)))
+                    where ((string.Equals(child.From, this.CurrentUserName, StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(child.To, this.CurrentUserName, StringComparison.OrdinalIgnoreCase)))
                     select child).ToArray();
         }
     }
@@ -116,8 +128,8 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
         get
         {
             return (from child in CurrentItem.RecycleBin.Children.OfType<Message>()
-                    where ((string.Equals(child.From, Profile.UserName, StringComparison.OrdinalIgnoreCase) ||
-                            string.Equals(child.To, Profile.UserName, StringComparison.OrdinalIgnoreCase)))
+                    where ((string.Equals(child.From, this.CurrentUserName, StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(child.To, this.CurrentUserName, StringComparison.OrdinalIgnoreCase)))
                     select child).ToArray();
         }
     }
