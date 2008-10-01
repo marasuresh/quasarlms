@@ -1,0 +1,187 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F919C042-6130-4EE7-9C24-743947E63B4D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>N2.Trac</RootNamespace>
+    <AssemblyName>TracWeb</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkSubset>Full</TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="N2, Version=1.0.403.22714, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\src\N2\obj\Debug\N2.dll</HintPath>
+    </Reference>
+    <Reference Include="N2.Edit, Version=1.0.403.22720, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\src\wwwroot\bin\N2.Edit.dll</HintPath>
+    </Reference>
+    <Reference Include="N2.Templates, Version=1.0.403.22719, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\src\wwwroot\bin\N2.Templates.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.SysCache2, Version=2.0.0.1001, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\lib\NHibernate.Caches.SysCache2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.52.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\lib\System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lms\UI\CourseInfo.aspx" />
+    <Content Include="Lms\UI\CourseIntro.ascx" />
+    <Content Include="Lms\UI\CourseList.aspx" />
+    <Content Include="Lms\UI\Img\01\43.png" />
+    <Content Include="Lms\UI\Img\01\46.png" />
+    <Content Include="Lms\UI\Img\02\02.png" />
+    <Content Include="Lms\UI\Img\02\03.png" />
+    <Content Include="Lms\UI\Img\03\15.png" />
+    <Content Include="Lms\UI\Img\03\31.png" />
+    <Content Include="Lms\UI\Img\03\32.png" />
+    <Content Include="Lms\UI\Img\03\33.png" />
+    <Content Include="Lms\UI\Img\03\34.png" />
+    <Content Include="Lms\UI\Img\03\35.png" />
+    <Content Include="Lms\UI\Img\03\36.png" />
+    <Content Include="Lms\UI\Img\03\37.png" />
+    <Content Include="Lms\UI\Img\03\38.png" />
+    <Content Include="Lms\UI\Img\03\39.png" />
+    <Content Include="Lms\UI\Img\03\40.png" />
+    <Content Include="Lms\UI\Img\03\41.png" />
+    <Content Include="Lms\UI\Img\03\42.png" />
+    <Content Include="Lms\UI\Img\03\43.png" />
+    <Content Include="Lms\UI\Img\03\44.png" />
+    <Content Include="Lms\UI\Img\03\45.png" />
+    <Content Include="Lms\UI\Img\04\01.png" />
+    <Content Include="Lms\UI\Img\04\02.png" />
+    <Content Include="Lms\UI\Img\04\03.png" />
+    <Content Include="Lms\UI\Img\04\04.png" />
+    <Content Include="Lms\UI\Img\04\05.png" />
+    <Content Include="Lms\UI\Img\04\06.png" />
+    <Content Include="Lms\UI\Img\04\07.png" />
+    <Content Include="Lms\UI\Img\04\08.png" />
+    <Content Include="Lms\UI\Img\04\09.png" />
+    <Content Include="Lms\UI\Img\04\10.png" />
+    <Content Include="Lms\UI\Img\04\15.png" />
+    <Content Include="Lms\UI\Img\04\16.png" />
+    <Content Include="Lms\UI\Img\04\17.png" />
+    <Content Include="Lms\UI\Img\04\19.png" />
+    <Content Include="Lms\UI\Img\04\20.png" />
+    <Content Include="Lms\UI\Img\04\49.png" />
+    <Content Include="Lms\UI\Img\04\50.png" />
+    <Content Include="Lms\UI\Img\04\calendar.png" />
+    <Content Include="Lms\UI\Img\page_script.gif" />
+    <Content Include="Lms\UI\Img\page_tick.gif" />
+    <Content Include="Lms\UI\Js\jquery.tabs-ie.css" />
+    <Content Include="Lms\UI\Js\jquery.tabs.css" />
+    <Content Include="Lms\UI\Js\jquery.tabs.js" />
+    <Content Include="Lms\UI\Js\n2lms.js" />
+    <Content Include="Lms\UI\Js\tab.png" />
+    <Content Include="Lms\UI\Player.aspx" />
+    <Content Include="Lms\UI\Player\Content.ascx" />
+    <Content Include="Lms\UI\Player\Controller.ascx" />
+    <Content Include="Lms\UI\Player\Navigator.ascx" />
+    <Content Include="Lms\UI\Topic.ascx" />
+    <Content Include="Lms\UI\Topic.aspx" />
+    <Content Include="Lms\UI\Training.aspx" />
+    <Content Include="Lms\UI\TrainingList.aspx" />
+    <Content Include="Lms\UI\TrainingSelector.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Lms\UI\CourseIntro.ascx.cs">
+      <DependentUpon>CourseIntro.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Lms\UI\Topic.ascx.cs">
+      <DependentUpon>Topic.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lms\UI\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.connectionStrings.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Convert\N2.Lms.csproj">
+      <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
+      <Name>N2.Lms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>4135</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

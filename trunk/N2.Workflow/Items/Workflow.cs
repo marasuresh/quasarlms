@@ -4,7 +4,6 @@
 	using N2.Details;
 	using N2.Definitions;
 	using N2.Integrity;
-	using N2.Templates.UI.Parts;
 
 	[Definition("Workflow", "Workflow")]
 	[WithEditableName("Name", 01)]
@@ -12,9 +11,11 @@
 	{
 		[EditableLink("Initial State", 05)]
 		public StateDefinition InitialState {
-			get { return this.GetDetail<StateDefinition>(
-				"InitialState",
-				this.GetChild("new") as StateDefinition); }
+			get {
+				return this.GetDetail<StateDefinition>(
+					"InitialState",
+					item => this.GetChild("new") as StateDefinition);
+			}
 			set { this.SetDetail<StateDefinition>("InitialState", value); }
 		}
 

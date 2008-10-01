@@ -8,7 +8,7 @@
     using N2.Installation;
     using N2.Integrity;
     using N2.Edit.Trash;
-    using N2.Lms.Items;
+    //using N2.Lms.Items;
 
     [Definition("AEvent", "AEvent", Installer = InstallerHint.NeverRootOrStartPage)]
     //[RestrictParents(typeof(ACalendar))]

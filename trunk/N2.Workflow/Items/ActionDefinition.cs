@@ -43,9 +43,13 @@ namespace N2.Workflow.Items
 			set { base.Title = value; }
 		}
 
-		public override string IconUrl { get {
-			return this.LeadsTo.Icon ?? string.Format("~/Workflow/UI/Img/03/0{0}.png",
-				this.LeadsTo == null ? 1 : 2); }
+		public override string IconUrl { get { return this.LeadsTo.IconUrl; } }
+
+		//public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
+
+		public override string ZoneName {
+			get { return base.ZoneName ?? "SiteRight"; }
+			set { base.ZoneName = value; }
 		}
 
 		#endregion System properties

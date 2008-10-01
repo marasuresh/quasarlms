@@ -15,20 +15,40 @@
 
 		public static string GetIconUrl(int position)
 		{
+			Trace.WriteLine("Get icon url: " + position.ToString(), "Workflow");
 			string _result = null;
 			
-			if (System.Web.Hosting.HostingEnvironment.IsHosted) {
-				Page _page = HttpContext.Current.Handler as Page;
+			if(null != ClientScript) {
 
-				if (null != _page) {
-					string _res = string.Format("N2.Workflow.Images.{0:00}.png", position);
-					
-					Trace.WriteLine("Resource: "+_res, "Workflow");
-					_result = _page.ClientScript.GetWebResourceUrl(typeof(Workflow), _res);
-				}
+				string _res = string.Format("N2.Workflow.Images.{0:00}.png", position);
+
+				Trace.WriteLine("Resource: " + _res, "Workflow");
+				_result = ClientScript.GetWebResourceUrl(typeof(Workflow), _res);
 			}
 
 			return _result;
+		}
+
+		static ClientScriptManager s_cs;
+		static ClientScriptManager ClientScript {
+			get
+			{
+				if(!System.Web.Hosting.HostingEnvironment.IsHosted) {
+					return null;
+				}
+				
+				if(null == s_cs) {
+					Page _page = HttpContext.Current.Handler as Page;
+
+					if(null == _page) {
+						_page = new Page();
+						((IHttpHandler)_page).ProcessRequest(HttpContext.Current);
+					}
+
+					s_cs = _page.ClientScript;
+				}
+				return s_cs;
+			}
 		}
 	}
 }

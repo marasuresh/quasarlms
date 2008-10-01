@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using N2.ACalendar;
 using N2.Resources;
 
-public partial class ACalendar_UI_ACalendar :  N2.Templates.Web.UI.TemplatePage<ACalendar>
+public partial class ACalendar_UI_ACalendar :  N2.Templates.Web.UI.TemplatePage<N2.ACalendar.ACalendar>
 {
     protected void Page_Load(object sender, EventArgs e)
     {

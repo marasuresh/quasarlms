@@ -9,6 +9,17 @@ namespace N2.Workflow
 
 	public static class WorkflowPublicExtensions
 	{
+		public static string GetIconFromState(this ContentItem item)
+		{
+			var _state = item.GetCurrentState();
+			
+			if(null == _state || null == _state.ToState) {
+				return null;
+			}
+
+			return _state.ToState.IconUrl;
+		}
+
 		public static ItemState GetCurrentState(this ContentItem item)
 		{
 			var _cs = item.GetDetail("_CurrentState") as ItemState;
@@ -16,6 +27,9 @@ namespace N2.Workflow
 			if (null != _cs) {
 				return _cs;
 			} else {
+				//try to fix broken item link
+				item.Details.Remove("_CurrentState");
+				
 				return new ItemState {
 					Action = null,
 					FromState = null,
