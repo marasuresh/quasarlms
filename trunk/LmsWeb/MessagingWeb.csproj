@@ -72,6 +72,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Messaging\UI\Views\MailBox.aspx" />
+    <Content Include="Messaging\UI\Views\Message.aspx" />
     <Content Include="Web.connectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
@@ -79,9 +81,24 @@
       <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
       <Name>N2.Lms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\N2.Messaging\N2.Messaging.csproj">
+      <Project>{38548097-B909-4682-A9F3-A33719A38CC6}</Project>
+      <Name>N2.Messaging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Messaging\UI\Views\MailBox.aspx.cs">
+      <DependentUpon>MailBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Messaging\UI\Views\Message.aspx.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Messaging\UI\Parts\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
