@@ -9,6 +9,12 @@ namespace N2.Workflow
 
 	public static class WorkflowPublicExtensions
 	{
+		/// <summary>
+		/// Get Icon for the item depending on it's Workflow state.
+		/// Ensure that state is assigned, thus should not throw NullReferenceException.
+		/// </summary>
+		/// <param name="item"></param>
+		/// <returns>String of unresolved URL</returns>
 		public static string GetIconFromState(this ContentItem item)
 		{
 			var _state = item.GetCurrentState();
@@ -29,13 +35,22 @@ namespace N2.Workflow
 			} else {
 				//try to fix broken item link
 				item.Details.Remove("_CurrentState");
-				
-				return new ItemState {
-					Action = null,
-					FromState = null,
-					ToState = item.GetWorkflow().InitialState,
-					Comment = string.Empty,
-				};
+
+				Workflow _wf = item.GetWorkflow();
+
+				if (null != _wf) {
+
+					return new ItemState {
+						Action = null,
+						FromState = null,
+						ToState = item.GetWorkflow().InitialState,
+						Comment = string.Empty,
+					};
+				} else {
+					//Item may appear in RecycleBin,
+					// thus not having parent of type IWorkflowItemContainer
+					return null;
+				}
 			}
 		}
 

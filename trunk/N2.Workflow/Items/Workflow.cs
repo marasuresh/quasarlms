@@ -7,6 +7,7 @@
 
 	[Definition("Workflow", "Workflow")]
 	[WithEditableName("Name", 01)]
+	[ItemAuthorizedRoles("Administrators")]
 	public class Workflow : ContentItem
 	{
 		[EditableLink("Initial State", 05)]
