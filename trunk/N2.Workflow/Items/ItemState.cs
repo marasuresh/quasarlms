@@ -6,10 +6,10 @@ namespace N2.Workflow.Items
 	using N2.Web.UI;
 	using N2.Definitions;
 	using N2.Persistence;
-	
-	[Definition]
-	[Disable]
-	[NotVersionable]
+	using N2.Edit.Trash;
+
+	[Disable, Definition, NotThrowable, NotVersionable]
+	[ItemAuthorizedRoles("Administrators")]
 #if CheckWorkflow
 	[TabPanel("workflow", "Workflow", 200/*, AuthorizedRoles = new[] { "Administrator"}*/)]
 #endif
@@ -88,5 +88,17 @@ namespace N2.Workflow.Items
 		}
 
 		public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
+
+		public override bool Visible
+		{
+			get
+			{
+				return false;
+			}
+			set
+			{
+				base.Visible = value;
+			}
+		}
 	}
 }
