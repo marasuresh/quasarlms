@@ -14,7 +14,7 @@
 		#region System properties
 
 		public override string IconUrl {
-			get { return this.GetCurrentState().ToState.Icon; }
+			get { return this.GetIconFromState(); }
 		}
 		
 		#endregion System properties

@@ -70,6 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GuidService.cs" />
+    <Compile Include="Items\Lms\MyCourses.cs" />
+    <Compile Include="Items\Lms\MyRequests.cs" />
     <Compile Include="Items\Lms\RequestWorkflow\Transitions\ApprovedState.cs" />
     <Compile Include="Items\Lms\RequestWorkflow\Transitions\AcceptedState.cs" />
     <Compile Include="Items\Lms\TrainingContainer.cs" />

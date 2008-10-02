@@ -15,6 +15,7 @@
 	[Definition("Course List", "CourseList", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
 	//[WithEditableTitle("Title", 10)]
 	[RestrictParents(typeof(IStructuralPage))]
+	[Obsolete("Superceeded by a light-weight MyCourses")]
 	public class CourseList: AbstractContentPage
 	{
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/16.png"; } }

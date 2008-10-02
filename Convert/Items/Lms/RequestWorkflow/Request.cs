@@ -13,24 +13,19 @@
 	[AllowedChildren(Types = new Type[0])]
 	[N2.Persistence.NotVersionable]
 	[WithWorkflowAction(Name="Workflow", SortOrder = 150)]
+	[WithEditableDateRange("Desired time span", 13, "RequestDate", "StartDate")]
 	public class Request : ContentItem
 	{
-		public override string IconUrl {
-			get {
-				return this.GetCurrentState().ToState.IconUrl;
-			}
-		}
+		public override string IconUrl { get { return this.GetIconFromState(); } }
 		
 		public override bool IsPage { get { return false; } }
 
-		public override string Name {
+		public override string Title {
 			get {
 				return
-					string.IsNullOrEmpty(base.Name)
-						? this.GetDafaultName()
-						: base.Name;
+					base.Title ?? (base.Title = this.GetDafaultName());
 			}
-			set { base.Name = value; }
+			set { base.Title = value; }
 		}
 
 		string GetDafaultName()
@@ -45,7 +40,11 @@
 
 		#region Lms Properties
 
-		public Course Course { get; set; }
+		[EditableLink("Course", 17, Required = true)]
+		public Course Course {
+			get { return this.GetDetail("Course") as Course; }
+			set { this.SetDetail<Course>("Course", value); }
+		}
 
 		[EditableTextBox("Comments", 10, TextMode = TextBoxMode.MultiLine, Rows=3)]
 		public string Comments
@@ -54,14 +53,12 @@
 			set { this.SetDetail<string>("Comments", value); }
 		}
 
-		[Editable("Request Date", typeof(DatePicker), "SelectedDate", 20)]
 		public DateTime RequestDate
 		{
 			get { return (DateTime?)this.GetDetail("RequestDate") ?? DateTime.Now; }
 			set { this.SetDetail<DateTime>("RequestDate", value); }
 		}
 
-		[Editable("Start Date", typeof(DatePicker), "SelectedDate", 30)]
 		public DateTime StartDate
 		{
 			get { return (DateTime?)this.GetDetail("StartDate") ?? DateTime.Now; }

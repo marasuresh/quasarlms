@@ -30,15 +30,7 @@ namespace N2.Lms.Items
 
 		#region Lms list properties
 
-		public IEnumerable<ApprovedState> MyApprovedApplications {
-			get {
-				return
-					from _req in this.RequestContainer.GetChildren().OfType<Request>()
-					let _currentState = _req.GetCurrentState()
-					where _currentState is ApprovedState
-					select _currentState as ApprovedState;
-			}
-		}
+		
 
 		IEnumerable<TrainingTicket> m_myStartedTrainings;
 		public IEnumerable<TrainingTicket> MyStartedTrainings {
@@ -52,7 +44,7 @@ namespace N2.Lms.Items
 		IEnumerable<TrainingTicket> GetMyStartedTrainings()
 		{
 			return
-				from _approvedApplication in this.MyApprovedApplications
+				from _approvedApplication in this.RequestContainer.MyApprovedApplications
 				let _ticket = _approvedApplication.Ticket
 				where _ticket != null
 				let _ticketState = _ticket.GetCurrentState()
