@@ -1,0 +1,21 @@
+﻿table.AuditTrail
+{
+	border-collapse:collapse;
+}
+
+table.AuditTrail th{
+	padding:2px;
+	border-style:outset;
+	border-width:medium;
+	border-color: White;
+	background-color:Silver;
+	text-align:left;
+}
+
+table.AuditTrail td{
+	padding: 2px;
+	border-style:solid;
+	border-width:thin;
+	border-color: Black;
+	text-align:left;
+}

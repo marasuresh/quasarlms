@@ -10,3 +10,5 @@
 [assembly: WebResource("N2.Workflow.Images.08.png", "image/png")]
 [assembly: WebResource("N2.Workflow.Images.09.png", "image/png")]
 [assembly: WebResource("N2.Workflow.Images.10.png", "image/png")]
+
+[assembly: WebResource("N2.Workflow.Workflow.css", "text/css")]
