@@ -90,12 +90,6 @@ namespace N2.Web.UI.WebControls
 			get { return (int)(ViewState["CurrentItemID"] ?? 0); }
 			set { ViewState["CurrentItemID"] = value; }
 		}
-
-		/// <summary>Gets the parent item where to look for items.</summary>
-		public string ParentItemType {
-			get { return (string)(ViewState["CurrentItemType"] ?? string.Empty); }
-			set { ViewState["CurrentItemType"] = value; }
-		}
 		
 		#endregion Properties
 		
@@ -112,7 +106,6 @@ namespace N2.Web.UI.WebControls
 
 				parentItem = value;
 				ParentItemID = value.ID;
-				ParentItemType = value.GetType().AssemblyQualifiedName;
 			}
 		}
 
