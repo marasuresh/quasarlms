@@ -1,16 +1,18 @@
-	using System;
-	using System.Data;
-	using System.Drawing;
-	using System.Web;
-	using System.Xml;
-	using System.Web.UI.HtmlControls;
-	using System.Linq;
-	using N2.Lms.Items;
+using System;
+using System.Data;
+using System.Drawing;
+using System.Web;
+using System.Xml;
+using System.Web.UI.HtmlControls;
+using System.Linq;
+using N2.Lms.Items;
+using N2.Templates.Web.UI;
+using N2.Templates.Items;
 	
 	/// <summary>
 	/// Отображение информации о курсе
 	/// </summary>
-	public partial  class CourseIntro : N2.Web.UI.ContentUserControl<Course>
+	public partial  class CourseIntro : TemplateUserControl<AbstractContentPage, Course>
 	{
 		protected override void OnInit(EventArgs e)
 		{

@@ -34,6 +34,12 @@ namespace N2.Web.UI.WebControls
 		{
 			var _history = this.ParentItem.GetChildren(new TypeFilter(typeof(ItemState)));
 
+			//Stay silent if nothing to display
+			if (!_history.Any()) {
+				base.RenderContents(output);
+				return;
+			}
+
 			var _rows =
 				from _state in _history.Cast<ItemState>()
 				select new {

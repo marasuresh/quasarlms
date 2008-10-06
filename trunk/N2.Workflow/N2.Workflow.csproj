@@ -61,7 +61,6 @@
     </Compile>
     <Compile Include="Web\UI\WebControls\WorkflowLegend.cs" />
     <Compile Include="WorkflowExtensions.cs" />
-    <Compile Include="WorkflowManager.cs" />
     <Compile Include="WorkflowPublicExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

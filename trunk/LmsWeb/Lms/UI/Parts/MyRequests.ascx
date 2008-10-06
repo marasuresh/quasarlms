@@ -25,7 +25,7 @@
 	
 	void BindData()
 	{
-		this.rptRequests.DataSource = this.CurrentItem.RequestContainer.MyApprovedApplications;
+		this.rptRequests.DataSource = this.CurrentItem.RequestContainer.MyPendingRequests;
 		this.rptRequests.DataBind();
 	}
 
@@ -35,43 +35,47 @@
 		base.OnInit(e);
 	}
 </script>
+<n2:H4 runat="server" Text='<%$ CurrentItem: Title %>' />
+<n2:Box runat="server">
+<p class="help"><%= Resources.CourseRequests.Help1 %><br/>
+			<%= Resources.CourseRequests.Help2 %></p>
 <asp:Repeater
 			runat="server"
 			ID="rptRequests"
 			Visible='<%# this.CurrentItem.RequestContainer.MyApprovedApplications.Any() %>'
 			OnItemCommand="List_Command">
 				<HeaderTemplate>
-				<br/><h3 class="cap2"><%= Resources.CourseRequests.tableExisdataTRequests_Caption %></h3>
-		<p class="help"><%= Resources.CourseRequests.Help1 %><br/>
-			<%= Resources.CourseRequests.Help2 %></p>
 		
 		<table cellspacing="0" cellpadding="3" border="1" width="100%" align="center" class="TableList">
-			<tr><th><%= Resources.CourseRequests.tableExisdataTRequests_tableHeader_01 %></th>
-				<th><%= Resources.CourseRequests.tableExisdataTRequests_tableHeader_02 %></th>
+			<tr>
 				<th><%= Resources.CourseRequests.tableExisdataTRequests_tableHeader_03 %></th>
-				<th><%= Resources.CourseRequests.tableExisdataTRequests_tableHeader_04 %></th></tr>
+				<th></th></tr>
+				
 				</HeaderTemplate>
 				
 				<FooterTemplate>
-				</table><hr/>
+				</table>
 				</FooterTemplate>
 				
 				<ItemTemplate>
-					<tr bgcolor='<%# 0 % 2==0 ? "#FFFFFF" : "#F6F6F6" %>'>
-					<td width="80" align="center" nowrap="true">
-						<asp:LinkButton
+					<tr bgcolor='<%# Container.ItemIndex % 2  == 1 ? "#FFFFFF" : "#F6F6F6" %>'>
+				
+					<td title="<%# Eval("Course.DescriptionUrl") %>">
+						<%# N2.Web.Link.To(((Request)Container.DataItem).Course).ToString() %>
+						
+						<em><%# Eval("Comments") %></em>
+						
+						<small><%# ((Request)Container.DataItem).Published.Value.ToShortDateString() %></small>
+						</td>
+					<td><asp:ImageButton
 								runat="server"
 								ID="lbDeleteRequest"
-								CommandArgument='<%# Eval("Parent.ID") %>'
+								ImageUrl="~/Lms/UI/Img/03/01.png"
+								CommandArgument='<%# Eval("ID") %>'
 								CommandName="DeleteRequest"
-								Text="<%$ Resources: CourseRequests, tableExisdataTRequests_tableHeader_01 %>" /></td>
-					<td width="100" align="center" nowrap="true">
-						<a><%# Eval("Training.Published") %></a></td>
-					<td width="40%" title="<%# Eval("Training.Course.DescriptionUrl") %>">
-						<a href="../Lms/UI/CourseInfo.aspx?cid=<%# Eval("Training.Course.Name") %>">
-							<%# Eval("Training.Title") %></a></td>
-					<td width="55%"><%# Eval("Parent.Comments") %></td>
+								AlternateText="<%$ Resources: CourseRequests, tableExisdataTRequests_tableHeader_01 %>" /></td>
 				</tr>
 
 				</ItemTemplate>
 			</asp:Repeater>
+</n2:Box>

@@ -14,22 +14,27 @@ namespace N2.Lms.Items
 	using N2.Workflow.Items;
 	
 	[RestrictParents(typeof(TrainingList))]
-	[Definition]
+	[Definition, WithEditableTitle]
 	[WithEditableDateRange("Validity period", 50, "StartOn", "FinishOn", ContainerName="lms")]
 	[TabPanel("lms", "LMS", 200)]
-	public class Training : AbstractContentPage
+	public partial class Training : AbstractContentPage
 	{
 		#region System properties
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/01/43.png"; } }
 		public override string TemplateUrl { get { return "~/Lms/UI/Training.aspx"; } }
 
+		public override string Title {
+			get { return base.Title ?? (base.Title = this.Course.Title); }
+			set { base.Title = value; }
+		}
+
 		#endregion System properties
 
 		#region Lms Properties
 
 		public Course Course {
-			get { return this.OriginalCourse ?? Find.EnumerateParents(this).OfType<Course>().FirstOrDefault(); }
+			get { return Find.EnumerateParents(this).OfType<Course>().FirstOrDefault(); }
 		}
 
 		[EditableCheckBox("Test Only", 40, ContainerName="lms")]
@@ -55,25 +60,13 @@ namespace N2.Lms.Items
 
 		#endregion Lms Properties
 
-		#region Lms Collection Properties
-
-		internal Course OriginalCourse;
-		
-		public override ItemList GetChildren(ItemFilter filter)
-		{
-			//this.EnsureTopicSchedule(filter);
-			return base.GetChildren(filter);
-		}
-
-		#endregion Lms Collection Properties
-
 		Workflow m_workflow;
 		
 		[EditableItem("Workflow", 44, ContainerName = "lms")]
 		public Workflow Workflow {
 			get {
 				if (null == this.m_workflow) {
-					this.m_workflow = this.GetDetail<Workflow>("Workflow", null);
+					this.m_workflow = this.GetChild("workflow") as Workflow;
 
 					if (null == this.m_workflow) {
 						this.m_workflow = this.GenerateDefaultWorkflow();

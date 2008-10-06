@@ -4,17 +4,26 @@
 	using N2.Details;
 	using N2.Workflow;
 	using N2.Lms.Items.Lms.RequestStates;
-	
+	using N2.Persistence;
+	using N2.Edit.Trash;
+
+	using N2.Templates.Items;
+
 	[Definition(Description = @"Represent all training information, associated with a given student.")]
 	[RestrictParents(typeof(Lms.RequestStates.ApprovedState))]
 	[WithWorkflowAction(Name = "Workflow", SortOrder = 3)]
-	[N2.Persistence.NotVersionable]
-	public class TrainingTicket: ContentItem
+	[NotVersionable, NotThrowable]
+	[WithWorkflowAuditTrail(Name = "Audit Trail")]
+	public partial class TrainingTicket: AbstractContentPage
 	{
 		#region System properties
 
 		public override string IconUrl {
 			get { return this.GetIconFromState(); }
+		}
+
+		public override string TemplateUrl {
+			get { return "~/Lms/UI/Player.aspx"; }
 		}
 		
 		#endregion System properties

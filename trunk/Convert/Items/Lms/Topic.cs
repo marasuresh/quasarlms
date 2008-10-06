@@ -16,13 +16,18 @@
 	[WithEditableTitle("Title", 05)]
 	[WithEditablePublishedRange("Published between", 07)]
 	[ReplaceDefinitions(typeof(AbstractContentPage), typeof(ContentItem))]
-	public class Topic : AbstractContentPage
+	public class Topic : AbstractItem
 	{
 		#region System properties
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/19.png"; } }
-		public override string TemplateUrl { get { return "~/Lms/UI/Topic.aspx"; } }
-		
+		public override string TemplateUrl { get { return "~/Lms/UI/Topic.ascx"; } }
+		public override string ZoneName {
+			get { return "Topics"; }
+			set { base.ZoneName = value; }
+		}
+		public override bool IsPage { get { return false; } }
+
 		#endregion System properties
 
 		#region Lms Properties
