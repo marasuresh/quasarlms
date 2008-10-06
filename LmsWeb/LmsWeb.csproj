@@ -148,6 +148,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lms\UI\TopicContainer.ascx" />
+    <Content Include="Lms\UI\Img\03\01.png" />
+    <Content Include="Lms\UI\Img\03\02.png" />
+    <Content Include="Lms\UI\Parts\MyTrainings.ascx" />
     <Content Include="Lms\UI\Parts\MyCourses.ascx" />
     <Content Include="Lms\UI\Parts\MyRequests.ascx" />
     <Content Include="Web.connectionStrings.config" />

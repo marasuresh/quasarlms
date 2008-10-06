@@ -14,11 +14,12 @@
 	[N2.Persistence.NotVersionable]
 	[WithWorkflowAction(Name="Workflow", SortOrder = 150)]
 	[WithEditableDateRange("Desired time span", 13, "RequestDate", "StartDate")]
+	[WithWorkflowAuditTrail(Name = "Audit Trail")]
 	public class Request : ContentItem
 	{
 		public override string IconUrl { get { return this.GetIconFromState(); } }
 		
-		public override bool IsPage { get { return false; } }
+//		public override bool IsPage { get { return false; } }
 
 		public override string Title {
 			get {
@@ -38,7 +39,19 @@
 					+ " " + this.RequestDate.ToShortDateString());
 		}
 
+		public override bool IsAuthorized(System.Security.Principal.IPrincipal user)
+		{
+			return base.IsAuthorized(user) && this.User == user.Identity.Name;
+		}
+
 		#region Lms Properties
+
+		[EditableTextBox("User", 15)]
+		public string User
+		{
+			get { return this.GetDetail<string>("User", item => this.User = this.SavedBy); }
+			set { this.SetDetail<string>("User", value); }
+		}
 
 		[EditableLink("Course", 17, Required = true)]
 		public Course Course {

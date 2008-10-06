@@ -1,15 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using N2.Lms.Items;
+using N2.Details;
+using N2.Resources;
+using N2.Web.UI;
+using N2.Templates.Web.UI;
+using N2.Templates.Items;
 
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using N2.Lms.Items;
-	using N2.Details;
-	using N2.Resources;
-	using N2.Web.UI;
-	/// <summary>
-	/// Просмотр учебных материалов по теме
-	/// </summary>
-public partial class Topic : ContentUserControl<N2.Lms.Items.Topic>
+/// <summary>
+/// Просмотр учебных материалов по теме
+/// </summary>
+public partial class Topic : TemplateUserControl<AbstractContentPage, N2.Lms.Items.Topic>
 {
 	protected override void OnLoad(EventArgs e)
 	{

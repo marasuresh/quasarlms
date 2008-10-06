@@ -11,7 +11,18 @@
 <script runat="server">
 	protected void List_Command(object sender, CommandEventArgs e)
 	{
-		
+		var _courseId = int.Parse(((string)e.CommandArgument));
+		Course _course = this.Engine.Persister.Get<Course>(_courseId);
+
+		if (null != _course) {
+			Request _request = this.Engine.Definitions.CreateInstance<Request>(this.CurrentItem.RequestContainer);
+			Debug.WriteLine("e.CommandArgument: " + e.CommandArgument);
+			_request.User = _request.SavedBy = this.Page.User.Identity.Name;
+			_request.Title = _request.Name;
+			_request.Course = _course;
+			this.Engine.Persister.Save(_request);
+			BindData();
+		}
 	}
 	
 	void BindData()
@@ -26,49 +37,44 @@
 		base.OnInit(e);
 	}
 </script>
+
+<n2:H4 runat="server" Text="<%$ CurrentItem: Title %>" />
+<n2:Box runat="server">
 <asp:Repeater
 		runat="server"
 		ID="rptCourses"
 		OnItemCommand="List_Command">
 	<HeaderTemplate>
-	<h3 class="cap2"><%= Resources.CourseRequests.tableAccessibleCourses_Caption%>
-			<% if (false) { %>&nbsp;(<%= Resources.CourseRequests.Founds%>)<% } %></h3>
 		<p class="help"><%= Resources.CourseRequests.tableAccessibleCourses_Note%></p>
+		
 		<table	cellspacing="0"
 				cellpadding="3"
 				border="1"
 				width="100%"
 				align="center"
 				class="TableList">
-			<tr><th><%= Resources.CourseRequests.tableAccessibleCourses_tableHeader_01%></th>
+			<tr><th></th>
 				<th><%= Resources.CourseRequests.tableAccessibleCourses_tableHeader_02%></th>
-				<th><%= Resources.CourseRequests.tableAccessibleCourses_tableHeader_03%></th>
-				<th><%= Resources.CourseRequests.tableAccessibleCourses_tableHeader_04%></th></tr>
+				<th><%= Resources.CourseRequests.tableAccessibleCourses_tableHeader_03%></th></tr>
 	</HeaderTemplate>
 	<FooterTemplate></table></FooterTemplate>
 	<ItemTemplate>
-		<tr bgcolor='<%# 2 == 0 % 2 ? "#FFFFFF" : "#F6F6F6" %>'>
-			<td width="80" align="center" nowrap="true">
-				<asp:LinkButton ID="LinkButton1"
+		<tr bgcolor='<%# 2 == Container.ItemIndex % 2 ? "#FFFFFF" : "#F6F6F6" %>'>
+			<td><asp:ImageButton
 						runat="server"
+						ImageUrl="~/Lms/UI/Img/03/02.png"
 						CommandArgument='<%# Eval("ID") %>'
 						CommandName="PostRequest"
-						Text='<%$ Resources: CourseRequests, tableAccessibleCourses_tableHeader_01 %>' />
-					<td		width="100"
-							align="center"
-							nowrap="true">
-						<n2:DatePicker
+						AlternateText='<%$ Resources: CourseRequests, tableAccessibleCourses_tableHeader_01 %>' />
+					<td><n2:DatePicker
 								runat="server"
 								SelectedDate='<%# System.DateTime.Now %>' /></td>
-					<td		width="40%"
-							title="<%# Eval("DescriptionUrl") %>">
-						<a href="../Lms/UI/CourseInfo.aspx?cid=<%# Eval("Name") %>"><%# Eval("Title") %></a></td>
-					<td		width="55%"
-							title="<%= Resources.CourseRequests.tableAccessibleCourses_CommentAlt %>">
-						<input	type="text"
-								name="comment"
-								class="clear"
-								maxlength="255"/></td>
+					<td title="<%# Eval("DescriptionUrl") %>">
+						<asp:HyperLink
+								runat="server"
+								NavigateUrl='<%# ((Course)Container.DataItem).Url %>'
+								Text='<%# Eval("Title") %>' /></td>
 				</tr>
 	</ItemTemplate>
 </asp:Repeater>
+</n2:Box>

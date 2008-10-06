@@ -20,7 +20,7 @@
 	[TabPanel("lms", "LMS", 200)]
 	[	EnsureChild(Course.TopicContainerName, typeof(TopicList)),
 		EnsureChild(Course.TrainingContainerName, typeof(TrainingContainer))]
-	public class Course : AbstractContentPage
+	public partial class Course : AbstractContentPage
 	{
 		#region Constants
 		
@@ -34,9 +34,17 @@
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/15.png"; } }
 		public override string TemplateUrl { get { return "~/Lms/UI/CourseInfo.aspx"; } }
 
+		public override string ZoneName {
+			get { return "Content"; }
+			set { base.ZoneName = value; }
+		}
+
 		#endregion Properties
 
 		#region Lms Properties
+
+		[EditableFreeTextArea("Text", 345, ContainerName = "lms")]
+		public string Text { get { return (string)this.GetDetail("Text"); } set { this.SetDetail<string>("Text", value); } }
 
 		[EditableCheckBox("Is Public", 350, ContainerName = "lms")]
 		public bool IsPublic
@@ -124,35 +132,5 @@
 		}
 
 		#endregion Lms Properties
-
-		#region Lms Collection Properties
-
-		/// <summary>
-		/// Storage node for topic hierarchy
-		/// </summary>
-		internal TopicList TopicContainer {
-			//Cannot just GetChild by Course.TopicContainerName
-			// because TopicList may be created not only by [EnsureChild]
-			// but as a result of the import procedure, in which case
-			// Name will be assigned an arbitrary value, such as course code.
-			get { return this.GetChildren(new TypeFilter(typeof(TopicList)))
-				.Cast<TopicList>()
-				.First(); }
-		}
-
-		public IEnumerable<Topic> Topics { get { return this.TopicContainer.Topics; } }
-
-		/// <summary>
-		/// Storage node for trainings
-		/// </summary>
-		internal TrainingContainer TrainingContainer {
-			get { return this.GetChildren(new TypeFilter(typeof(TrainingContainer)))
-				.Cast<TrainingContainer>()
-				.First(); }
-		}
-
-		public IEnumerable<Training> Trainings { get { return this.TrainingContainer.Trainings; } }
-
-		#endregion Lms Collection Properties
 	}
 }
