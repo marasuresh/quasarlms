@@ -9,6 +9,7 @@
 	using N2.Edit.Trash;
 	using N2.Templates.Items;
 	using N2.Definitions;
+	using N2.Collections;
 
 	[Definition("Topic", "Topic", Installer = InstallerHint.NeverRootOrStartPage)]
 	[RestrictParents(typeof(TopicList), typeof(Topic))]
@@ -16,12 +17,14 @@
 	[WithEditableTitle("Title", 05)]
 	[WithEditablePublishedRange("Published between", 07)]
 	[ReplaceDefinitions(typeof(AbstractContentPage), typeof(ContentItem))]
-	public class Topic : AbstractItem
+	public partial class Topic : AbstractItem
 	{
 		#region System properties
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/19.png"; } }
+		
 		public override string TemplateUrl { get { return "~/Lms/UI/Topic.ascx"; } }
+		
 		public override string ZoneName {
 			get { return "Topics"; }
 			set { base.ZoneName = value; }
@@ -32,10 +35,19 @@
 
 		#region Lms Properties
 		
-		public DetailCollection Content {
+		internal DetailCollection Content {
 			get {
 				return
 					this.GetDetailCollection("Content", true);
+			}
+		}
+
+		public IEnumerable<string> ContentLinks {
+			get {
+				DetailCollection _col = this.GetDetailCollection("Content", false);
+				return null != _col
+					? _col.OfType<string>()
+					: Enumerable.Empty<string>();
 			}
 		}
 
@@ -52,23 +64,8 @@
 		}
 
 		//[EditableItem("Practice", 90, Required = false)]
-		public Test Practice
-		{
-			get { return this.GetDetail("Practice") as Test; }
-			set { this.SetDetail<Test>("Practice", value); }
-		}
-
-		
-		public Course Course {
-			get {
-				return N2.Find.EnumerateParents(this).OfType<Course>().FirstOrDefault() ?? this.Training.Course;
-			}
-		}
-
-		public Training Training {
-			get {
-				return N2.Find.EnumerateParents(this).OfType<Training>().FirstOrDefault();
-			}
+		public Test Practice {
+			get { return this.GetChildren(new TypeFilter(typeof(Test))).FirstOrDefault() as Test; }
 		}
 		
 		#endregion Lms Properties

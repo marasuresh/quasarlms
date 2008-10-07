@@ -17,6 +17,21 @@
 		</collection>
 	</xsl:template>
 
+	<xsl:template match="item[@discriminator='TestQuestion']/details/detail[@name='AnswerType']">
+		<xsl:copy>
+			<xsl:apply-templates select="@*|*|text()"/>
+			<xsl:variable
+					name="_answerTypeName"
+					select="../../detailCollections/fixAnswers/Question/@type" />
+			<!--DceCourseEditor\AnswerList.cs:712-->
+			<xsl:choose>
+				<xsl:when test="$_answerTypeName = 'textbox'">0</xsl:when>
+				<xsl:when test="$_answerTypeName = 'multiple'">1</xsl:when>
+				<xsl:when test="$_answerTypeName = 'single'">2</xsl:when>
+			</xsl:choose>
+		</xsl:copy>
+	</xsl:template>
+
 	<xsl:template match="item[@discriminator='TestQuestion']/details/detail[@name='Answers']">
 		<xsl:copy>
 			<xsl:apply-templates select="@*|*|text()"/>

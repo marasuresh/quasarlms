@@ -44,6 +44,13 @@
 
 		public IEnumerable<Training> Trainings { get { return this.TrainingContainer.Trainings; } }
 
+		Test m_test;
+		public Test Test {
+			get { return this.m_test
+				?? (this.m_test = this.TopicContainer.GetChildren(new TypeFilter(typeof(Test))).FirstOrDefault() as Test);
+			}
+		}
+
 		#endregion Lms Collection Properties
 	}
 }
