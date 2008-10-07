@@ -9,6 +9,15 @@ namespace N2.Lms
 	
 	internal static class ItemExtensions
 	{
+		public static IEnumerable<T> FlattenChildHierarchy<T>(this T root)
+			where T: ContentItem
+		{
+			return
+				new T[] { root }.Concat(
+					root.Children.OfType<T>()
+						.SelectMany(_child => FlattenChildHierarchy<T>(_child)));
+		}
+		
 		/// <summary>
 		/// Appends cloned items to a given Item List,
 		/// applying ItemFilter and setting Parent property.

@@ -73,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GuidService.cs" />
+    <Compile Include="Items\Lms\Topic.Business.cs" />
+    <Compile Include="Items\Lms\Test.Business.cs" />
     <Compile Include="Items\Lms\TopicList.Business.cs" />
     <Compile Include="Items\Lms\Course.Business.cs" />
     <Compile Include="Items\Lms\MyTrainings.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Items\Lms\RequestWorkflow\Request.cs" />
     <Compile Include="Items\Lms\Test.cs" />
     <Compile Include="Items\Lms\Training.cs" />
+    <Compile Include="Items\Lms\TrainingWorkflow\StateDefinitions\ScheduledTopic.Business.cs" />
     <Compile Include="Items\Lms\TrainingWorkflow\TrainingTicket.Business.cs" />
     <Compile Include="Items\Lms\TrainingWorkflow\StateDefinitions\ScheduledTopic.cs" />
     <Compile Include="Items\Lms\TrainingWorkflow\TrainingTicket.cs" />

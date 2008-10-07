@@ -396,6 +396,8 @@
 						typeName="System.Int32, mscorlib">
 					<xsl:value-of select="Type"/>
 				</detail>
+				<detail name="AnswerType"
+						typeName="System.Int32, mscorlib" />
 				<detail name="Answers"
 						typeName="System.String, mscorlib" />
 			</details>

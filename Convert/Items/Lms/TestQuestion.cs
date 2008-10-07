@@ -1,10 +1,12 @@
 ﻿namespace N2.Lms.Items
 {
+	using System.Collections.Generic;
 	using System;
 	using System.Linq;
 	using N2.Details;
 	using N2.Integrity;
 	using System.Web.UI.WebControls;
+	using N2.Templates.Items;
 
 	[Definition]
 	[RestrictParents(typeof(Test))]
@@ -16,12 +18,14 @@
 		"Text",
 		10,
 		"ShortHint")]
-	public class TestQuestion: ContentItem
+	public class TestQuestion: AbstractItem
 	{
 		#region System properties
 		
 		public override string IconUrl { get { return "~/Lms/UI/Img/page_tick.gif"; } }
-		
+		public override string TemplateUrl { get { return "~/Lms/UI/TestQuestion.ascx"; } }
+		public override bool IsPage { get { return false; } }
+
 		#endregion System properties
 
 		#region Lms properties
@@ -44,18 +48,23 @@
 			set { this.SetDetail<int>("Points", value); }
 		}
 
-		[EditableTextBox(
-			"Тип вопроса",
-			25,
-			ValidationExpression = @"\d+",
-			Validate = true,
-			Required = true,
-			DefaultValue = "1")]
-		public int Type {
-			get { return this.GetDetail<int>("Type", 1); }
-			set { this.SetDetail<int>("Type", value); }
+		[EditableEnum("Тип ответа", 25, typeof(AnswerTypeEnum))]
+		public AnswerTypeEnum AnswerType
+		{
+			get { return this.GetDetail<AnswerTypeEnum>("AnswerType", AnswerTypeEnum.Text); }
+			set { this.SetDetail<AnswerTypeEnum>("AnswerType", value); }
 		}
 
+		[EditableEnum(
+			"Тип вопроса",
+			27,
+			typeof(QuestionTypeEnum))]
+		public QuestionTypeEnum Type
+		{
+			get { return this.GetDetail<QuestionTypeEnum>("Type", QuestionTypeEnum.Text); }
+			set { this.SetDetail<QuestionTypeEnum>("Type", value); }
+		}
+		
 		[EditableTextBox(
 			"Правильный ответ",
 			30,
@@ -82,22 +91,38 @@
 			Rows = 9,
 			HelpTitle = "Возможные варианты ответа, по одному в каждой строчке")]
 		public string Options {
+			get { return string.Join("\n", OptionList.ToArray()); }
+			set { this.OptionList = value.Split('\n').Select(_line => _line.Trim()); }
+		}
+
+		internal DetailCollection OptionCollection {
+			get { return this.GetDetailCollection("Options", true); }
+		}
+
+		public IEnumerable<string> OptionList {
 			get {
-				return
-					string.Join(
-						"\n",
-						this.GetDetailCollection("Options", true).Cast<string>().ToArray());
+				return this.OptionCollection.Cast<string>();
 			}
 			set {
-				var _col = this.GetDetailCollection("Options", true);
-				_col.Clear();
-				_col.AddRange(
-					from _line in value.Split('\n')
-					select _line.Trim()
-				);
+				this.OptionCollection.Clear();
+				this.OptionCollection.AddRange(value);
 			}
 		}
 		
 		#endregion Lms collection properties
+
+		public enum AnswerTypeEnum
+		{
+			Text = 0,
+			Multiple,
+			Single
+		}
+
+		public enum QuestionTypeEnum
+		{
+			Text = 6,
+			Url = 5,
+			Object = 3
+		}
 	}
 }

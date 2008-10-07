@@ -13,7 +13,7 @@ namespace N2.Lms.Items
 	[RestrictParents(typeof(Workflow))]
 	[Definition(Description = @"Top-level topic instance within a Training, represented as a continuous workflow state.")]
 	[WithEditablePublishedRange("Published between", 01)]
-	public class ScheduledTopic: StateDefinition
+	public partial class ScheduledTopic: StateDefinition
 	{
 		#region System properties
 
@@ -33,7 +33,9 @@ namespace N2.Lms.Items
 			get { return base.ZoneName ?? string.Empty; }
 			set { base.ZoneName = value; }
 		}
-		
+
+		public override string TemplateUrl { get { return "~/Lms/UI/Module.ascx"; } }
+
 		#endregion System properties
 
 		#region Lms properties

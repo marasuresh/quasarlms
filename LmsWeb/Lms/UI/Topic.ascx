@@ -1,28 +1,36 @@
 <%@ Control
 		Language="c#"
-		Inherits="Topic"
-		CodeFile="Topic.ascx.cs" %>
-<%@ Import Namespace="System.Linq" %>
+		Inherits="N2.Templates.Web.UI.TemplateUserControl`2[[N2.Templates.Items.AbstractContentPage, N2.Templates], [N2.Lms.Items.Topic, N2.Lms]], N2.Templates" %>
 <script runat="server">
-public string makeUrl(string croot, string folder, string path)
-{
-	string newPath = croot+folder+path;
-	return newPath.Replace("\\", "/");
-}
-</script>
-<script type="text/javascript" language="javascript">
+	
+	protected override void OnInit(EventArgs e)
+	{
+		base.OnInit(e);
+
+		Register.JQuery(this.Page);
+		Register.JavaScript(
+			this.Page,
+			"~/Lms/UI/Js/n2lms.js",
+			N2.Resources.ScriptPosition.Header,
+			N2.Resources.ScriptOptions.Include);
+
+		if (this.CurrentItem.ContentLinks.Count() > 1) {
+			Register.StyleSheet(this.Page, "~/Lms/UI/Js/jQuery.tabs.css");
+			Register.JavaScript(this.Page, "~/Lms/UI/Js/jQuery.tabs.js");
+			Register.JavaScript(this.Page, @"
 $(function() {
 $('div#tabs').tabs({ fxAutoHeight: true });
 });
+", ScriptOptions.DocumentReady);
+		}
+
+	}
 </script>
 
-<% if(null != this.CurrentItem.Training) { %>
-	<h3 class="cap4"><%= ((N2.ContentItem)this.CurrentItem.Training ?? this.CurrentItem.Course).Title %></h3>
-<% } %>
 <h3 class="cap3"><%= this.CurrentItem.Title %></h3>
 
-<% var _content = this.CurrentItem.GetDetailCollection("Content", false); %>
-<% var _displayTabs = _content.Count > 1; %>
+<% var _content = this.CurrentItem.ContentLinks; %>
+<% var _displayTabs = _content.Count() > 1; %>
 <% var i = 0; %>
 <% if (_displayTabs) { %>
 <div id="tabs">

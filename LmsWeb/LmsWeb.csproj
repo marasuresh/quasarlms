@@ -122,9 +122,7 @@
     <Content Include="Lms\UI\Js\n2lms.js" />
     <Content Include="Lms\UI\Js\tab.png" />
     <Content Include="Lms\UI\Player.aspx" />
-    <Content Include="Lms\UI\Player\Content.ascx" />
-    <Content Include="Lms\UI\Player\Controller.ascx" />
-    <Content Include="Lms\UI\Player\Navigator.ascx" />
+    <Content Include="Lms\UI\Player\Player.ascx" />
     <Content Include="Lms\UI\Topic.ascx" />
     <Content Include="Lms\UI\Topic.aspx" />
     <Content Include="Lms\UI\Training.aspx" />
@@ -136,10 +134,6 @@
       <DependentUpon>CourseIntro.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Lms\UI\Topic.ascx.cs">
-      <DependentUpon>Topic.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lms\UI\Web.config" />
@@ -148,6 +142,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lms\UI\Module.ascx" />
+    <Content Include="Lms\UI\Player\Player.css" />
+    <Content Include="Lms\UI\TestQuestion.ascx" />
+    <Content Include="Lms\UI\Test.ascx" />
     <Content Include="Lms\UI\TopicContainer.ascx" />
     <Content Include="Lms\UI\Img\03\01.png" />
     <Content Include="Lms\UI\Img\03\02.png" />
