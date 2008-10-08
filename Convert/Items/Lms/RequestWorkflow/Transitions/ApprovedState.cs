@@ -5,9 +5,10 @@
 	using N2.Integrity;
 	using N2.Workflow.Items;
 	using N2.Lms.Items.TrainingWorkflow;
+	using N2.Web;
 
 	[RestrictParents(typeof(Request))]
-	public partial class ApprovedState: ItemState, IWorkflowItemContainer
+	public partial class ApprovedState: ItemState, IWorkflowItemContainer, ILink
 	{
 		[EditableLink("Assign Training", 1, Required = true)]
 		public Training Training {
@@ -18,17 +19,30 @@
 			set { this.SetDetail<Training>("Training", value); }
 		}
 
-		public override bool IsPage
-		{
-			get
-			{
-				return true;
-			}
-		}
+		#region System properties
+		
+		public override bool IsPage { get { return true; } }
+		public override string IconUrl { get { return null == this.Training ? "~/Lms/UI/Img/error.png" : base.IconUrl; } }
 
+		#endregion System properties
+		
 		#region IWorkflowItemContainer Members
 
 		public Workflow Workflow { get { return this.Training.Workflow; } }
+
+		#endregion
+
+		#region ILink Members
+
+		string ILink.Contents { get { return this.Title; } }
+
+		string ILink.Target { get { return string.Empty; } }
+
+		string N2.Web.ILink.ToolTip {
+			get { return null == this.Training ? "Training is not set" : string.Empty; }
+		}
+
+		string ILink.Url { get { return this.Url; } }
 
 		#endregion
 	}

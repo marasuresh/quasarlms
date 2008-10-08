@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\eval\n2cms\lib\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="Forum, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2Forum\output\bin\Forum.dll</HintPath>
+    </Reference>
     <Reference Include="N2, Version=1.0.403.22714, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\eval\n2cms\src\N2\obj\Debug\N2.dll</HintPath>
@@ -71,6 +75,10 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Mobile" />
     <Reference Include="System.Xml" />
+    <Reference Include="yaf, Version=1.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2Forum\output\bin\yaf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lms\UI\CourseInfo.aspx" />
@@ -142,6 +150,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lms\UI\Img\error.png" />
     <Content Include="Lms\UI\Module.ascx" />
     <Content Include="Lms\UI\Player\Player.css" />
     <Content Include="Lms\UI\TestQuestion.ascx" />
@@ -159,6 +168,9 @@
       <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
       <Name>N2.Lms</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="yafnet.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

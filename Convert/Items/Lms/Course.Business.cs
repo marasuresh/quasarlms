@@ -52,5 +52,16 @@
 		}
 
 		#endregion Lms Collection Properties
+
+		/// <summary>
+		/// Attempts to find a top-level topic of course
+		/// in case direct link to it was lost from ScheduledTopic item.
+		/// </summary>
+		/// <param name="name">.Name property of course's Topic</param>
+		/// <returns></returns>
+		internal Topic FindTopic(string name)
+		{
+			return TrainingContainer.GetChild(name) as Topic;
+		}
 	}
 }

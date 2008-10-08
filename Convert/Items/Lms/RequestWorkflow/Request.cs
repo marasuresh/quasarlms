@@ -17,15 +17,14 @@
 	[WithWorkflowAuditTrail(Name = "Audit Trail")]
 	public class Request : ContentItem
 	{
-		public override string IconUrl { get { return this.GetIconFromState(); } }
+		public override string IconUrl { get {
+			return null == this.Course ? "~/Lms/UI/Img/error.png" : this.GetIconFromState();
+		} }
 		
 //		public override bool IsPage { get { return false; } }
 
 		public override string Title {
-			get {
-				return
-					base.Title ?? (base.Title = this.GetDafaultName());
-			}
+			get { return base.Title ?? (base.Title = this.GetDafaultName()); }
 			set { base.Title = value; }
 		}
 

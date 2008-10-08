@@ -19,7 +19,7 @@
 		#region System properties
 
 		public override string IconUrl {
-			get { return this.GetIconFromState(); }
+			get { return null == this.Training ? "~/Lms/UI/Img/error.png" : this.GetIconFromState(); }
 		}
 
 		public override string TemplateUrl {
@@ -30,7 +30,9 @@
 
 		#region Lms properties
 
-		public Training Training { get { return ((ApprovedState)this.Parent).Training; } }
+		public Training Training { get { return
+			((ApprovedState)this.Parent).Training; }
+		}
 
 		#endregion Lms properties
 	}

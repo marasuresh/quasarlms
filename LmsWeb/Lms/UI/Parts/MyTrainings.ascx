@@ -15,7 +15,7 @@
 <% var _tickets = this.CurrentItem.RequestContainer.MyActiveTrainingTickets; %>
 <table>
 <% foreach (TrainingTicket _ticket in _tickets) { %>
-	<tr><td><a href='<%= this.ResolveClientUrl(_ticket.Url) %>'><%= _ticket.Training.Title %></a></td></tr>
+	<tr><td><a href='<%= this.ResolveClientUrl(_ticket.Url) %>'><%= _ticket.Training != null ? _ticket.Training.Title : "Error: Training is NULL" %></a></td></tr>
 <% } %>
 </table>
 </n2:Box>

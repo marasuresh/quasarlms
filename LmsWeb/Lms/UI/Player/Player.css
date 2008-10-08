@@ -1,5 +1,35 @@
-﻿div#wrap > table,
+﻿html,height,form{
+height:100%;
+}
+div#wrap > table,
 div#wrap {
+	width:100%;
+	height:100%;
+}
+.wzm .sb {
+	width: 200px;
+	overflow: scroll;
+}
+.wzm .sb > TABLE {
+	width: 100%;
+	height: 100%;
+}
+.wzm A.sba {
+	display:block;
+	padding:4px;
+	padding-left:7px;
+	width: 100%;
+}
+.wzm A.sba:HOVER {
+	background-color: ButtonHighlight;
+}
+.wzm .sbl .selected A.sba {
+	background-color: Beige;
+}
+
+.wztr SPAN.sbl
+{
+	display:block;
 	width:100%;
 	height:100%;
 }

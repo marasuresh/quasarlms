@@ -6,6 +6,13 @@
 	
 	protected override void OnInit(EventArgs e)
 	{
+		base.OnInit(e);
+		this.EnsureChildControls();
+		this.wzTest.ActiveStepIndex = 0;
+	}
+
+	protected virtual void CreateControlHierarchy()
+	{
 		foreach(var _q in this.CurrentItem.Questions) {
 			var _step = new TemplatedWizardStep();
 			
@@ -13,14 +20,16 @@
 			_step.StepType = WizardStepType.Auto;
 			_step.Title = _q.Title;
 			this.wzTest.WizardSteps.Add(_step);
-			//this.wzTest.DisplaySideBar = false;
 			var _ctl = (TemplateUserControl<AbstractContentPage, TestQuestion>)((IContainable)_q).AddTo(_step);
 			_ctl.CurrentItem = _q;
 		}
-
-		this.wzTest.ActiveStepIndex = 0;
-		
-		base.OnInit(e);
+	}
+	
+	protected override void CreateChildControls()
+	{
+		base.CreateChildControls();//delegate declarative Wizard creation to base
+		this.CreateControlHierarchy();//append my steps to wizard
+		this.ClearChildViewState();
 	}
 </script>
 

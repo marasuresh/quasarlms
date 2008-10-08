@@ -12,13 +12,7 @@
 	[RestrictParents(typeof(Test))]
 	[AllowedChildren]
 	[WithEditableTitle(Required = true)]
-	[WithEditable(
-		"Подсказка",
-		typeof(TextBox),
-		"Text",
-		10,
-		"ShortHint")]
-	public class TestQuestion: AbstractItem
+	public partial class TestQuestion: AbstractItem
 	{
 		#region System properties
 		
@@ -29,6 +23,13 @@
 		#endregion System properties
 
 		#region Lms properties
+
+		[EditableTextBox("Подсказка", 10)]
+		public string ShortHint
+		{
+			get { return this.GetDetail<string>("ShortHint", null); }
+			set { this.SetDetail<string>("ShortHint", value); }
+		}
 
 		[EditableFreeTextArea("Длинная подсказка", 15)]
 		public string LongHint {

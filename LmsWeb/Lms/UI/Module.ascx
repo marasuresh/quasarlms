@@ -36,7 +36,8 @@
 		BorderWidth="0px" 
 		Font-Names="Verdana"
 		Width="100%"
-		Height="100%">
+		Height="100%"
+		CssClass="wztr">
 	<StepStyle ForeColor="#333333" />
 	<SideBarButtonStyle
 		ForeColor="White"
@@ -64,9 +65,17 @@
 		BorderWidth="2px" />
 	
 	<SideBarTemplate>
-		<asp:DataList runat="server" ID="SideBarList">
+		<asp:DataList
+				runat="server"
+				ID="SideBarList"
+				RepeatLayout="Flow"
+				CssClass="sbl"
+				SelectedItemStyle-Font-Italic="true">
 			<ItemTemplate>
-				<asp:LinkButton runat="server" ID="SideBarButton" />
+				<asp:LinkButton
+					runat="server"
+					ID="SideBarButton"
+					CssClass="sba" />
 			</ItemTemplate>
 		</asp:DataList>
 		

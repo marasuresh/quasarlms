@@ -43,22 +43,46 @@
 		return _ctl;
 	}
 
+	protected override void OnInit(EventArgs e)
+	{
+		this.EnsureChildControls();
+		base.OnInit(e);
+	}
+	
 	protected override void CreateChildControls()
 	{
 		base.CreateChildControls();
 		this.Controls.Clear();
 		this.CreateControlHierarchy();
+		base.ClearChildViewState();
 	}
 	
 	protected virtual void CreateControlHierarchy()
 	{
 		TestQuestion _question = this.CurrentItem;
+		
 		this.Controls.Add(new LiteralControl(string.Format(
-@"<p><strong>{1}</strong> ({2}/{3})</p>",
+@"<p><strong>{1}</strong></p>",
 				null,
 				_question.Title,
 				_question.Type,
 				_question.AnswerType)));
+
+		if (this.CurrentItem.Test.HintType == Test.HintTypeEnum.Single
+			|| this.CurrentItem.Test.HintType == Test.HintTypeEnum.Both) {
+
+			if (!string.IsNullOrEmpty(this.CurrentItem.ShortHint)) {
+				this.Controls.Add(new LiteralControl(string.Format(
+@"<p>{0}</p>", this.CurrentItem.ShortHint)));
+			}
+
+			if (this.CurrentItem.Test.HintType == Test.HintTypeEnum.Both) {
+				if (!string.IsNullOrEmpty(this.CurrentItem.LongHint)) {
+					this.Controls.Add(new LiteralControl(string.Format(
+@"<p>{0}</p>", this.CurrentItem.LongHint)));
+				}
+			}
+		}
 		
 		Control _answerControl;
 
