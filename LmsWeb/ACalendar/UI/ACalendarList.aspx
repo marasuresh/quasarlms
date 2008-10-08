@@ -9,7 +9,11 @@
 	<% foreach (var _acal in this.ACalendars)
     { %>
         <tr>
-            <td><a href='<%= _acal.Url %>'><%= _acal.Title%></a></td>
+            <td>
+            <%= _acal.CurrentItem.Title%>
+<%--            <a href='<%= _acal.TemplateUrl %>'><%= _acal.Title%></a>
+--%>        
+            </td>
         </tr>    
              
 <%--             <td><%= _acal.Title%></td></tr>
