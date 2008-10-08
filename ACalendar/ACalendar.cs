@@ -9,6 +9,12 @@ using N2.Edit.Trash;
 using N2.Templates.Items;
 using N2.Serialization;
 using N2.Web.UI;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
+
+using System.Runtime.Serialization.Json;
+using System.Text;
 
 namespace N2.ACalendar
 {
@@ -20,7 +26,7 @@ namespace N2.ACalendar
     {
         #region Properties
 
-        public override string IconUrl { get { return "~/Template/UI/Img/calendar.png"; } }
+        public override string IconUrl { get { return "~/Templates/UI/Img/calendar.png"; } }
         public override string TemplateUrl { get { return "~/ACalendar/UI/ACalendar.aspx"; } }
 
         public string[] weeks;
@@ -79,5 +85,49 @@ namespace N2.ACalendar
             get { return this.Children.OfType<AEvent>(); }
         }
 
+        public void UpdateEvents(string jsonText) 
+         {
+             string all_data = "[{\"act\": \"п\", \"dateStart\": 1231106400000,\"dateEnd\":1231711199000},{\"act\": \"п\", \"dateStart\": 1236549600000,\"dateEnd\":1237154399000}]";
+             // jsonText =
+             //"{" +
+             //" \"FirstValue\": 1.1," +
+             //" \"SecondValue\": \"some text\"," +
+             //" \"TrueValue\": true" +
+             //"}";
+             //string json = @"{""Name"" : ""My Product""}";
+
+
+             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(JsonAEvent[]));
+             //string json = @"{""Name"" : ""My Product""}";       
+            MemoryStream  ms = new MemoryStream( Encoding.Unicode.GetBytes(jsonText));
+
+            var events = ser.ReadObject(ms) as JsonAEvent[];
+
+           foreach (JsonAEvent _e in events) 
+           {
+               if (_e.act == null) continue;
+                //this.Children.add(_e);
+               //Definitions.DefinitionManager.
+
+
+           }
+
+
+            string _act = (((JsonAEvent[])events)[0]).act;
+            string _ds = (((JsonAEvent[])events)[0]).dateStart;
+            //foreach (JsonAEvent _e in events as IEnumerable<JsonAEvent>)
+            // {
+            //     
+
+            // }
+
+        }
+
+      
+    public class JsonAEvent  {    public string act; public string dateStart; public string dateEnd;}
+      
     }
 }
+
+
+

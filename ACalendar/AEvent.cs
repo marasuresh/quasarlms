@@ -8,8 +8,8 @@
     using N2.Installation;
     using N2.Integrity;
     using N2.Edit.Trash;
-    //using N2.Lms.Items;
 
+    [Serializable]
     [Definition("AEvent", "AEvent", Installer = InstallerHint.NeverRootOrStartPage)]
     //[RestrictParents(typeof(ACalendar))]
     [NotThrowable]
@@ -58,25 +58,25 @@
          //    set { this.SetDetail<weeks>("week", value); }
          //}
 
-        [EditableTextBox("WeekStart", 60)]
-        public string WeekStart
+        [EditableTextBox("DateStart", 60)]
+        public string DateStart
         {
-            get { return this.GetDetail("WeekStart") as string; }
-            set { this.SetDetail<string>("WeekStart", value); }
+            get { return this.GetDetail("DateStart") as string; }
+            set { this.SetDetail<string>("DateStart", value); }
         }
-        [EditableTextBox("WeekEnd", 70)]
-        public string WeekEnd
+        [EditableTextBox("DateEnd", 70)]
+        public string DateEnd
         {
-            get { return this.GetDetail("WeekEnd") as string; }
-            set { this.SetDetail<string>("WeekEnd", value); }
+            get { return this.GetDetail("DateEnd") as string; }
+            set { this.SetDetail<string>("DateEnd", value); }
         }
 
 
-        [EditableTextBox("Description", 110)]
-        public string Description
+        [EditableTextBox("Act", 110)]
+        public string Act
         {
-            get { return this.GetDetail("Description") as string; }
-            set { this.SetDetail<string>("Description", value); }
+            get { return this.GetDetail("Act") as string; }
+            set { this.SetDetail<string>("Act", value); }
         }
 
         //[EditableTextBox("Duration", 80)]
