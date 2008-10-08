@@ -61,6 +61,12 @@
       <HintPath>..\..\eval\n2cms\lib\System.Data.SQLite.DLL</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -77,6 +83,20 @@
     <Content Include="ACalendar\UI\ACalendarList.aspx" />
     <Content Include="ACalendar\UI\ACalendarList_.aspx" />
     <Content Include="ACalendar\UI\ACalendar_.aspx" />
+    <Content Include="ACalendar\UI\Js\eeGrad.gif" />
+    <Content Include="ACalendar\UI\Js\jCal.js" />
+    <Content Include="ACalendar\UI\Js\jCal.small.css" />
+    <Content Include="ACalendar\UI\Js\jquery.animate.clip.js" />
+    <Content Include="ACalendar\UI\Js\jquery.color.js" />
+    <Content Include="ACalendar\UI\Js\jQuery.intellisense.js" />
+    <Content Include="ACalendar\UI\Js\jquery.tabs-ie.css" />
+    <Content Include="ACalendar\UI\Js\jquery.tabs.css" />
+    <Content Include="ACalendar\UI\Js\jquery.tabs.js" />
+    <Content Include="ACalendar\UI\Js\json2.js" />
+    <Content Include="ACalendar\UI\Js\tab.png" />
+    <Content Include="ACalendar\UI\Js\_left.gif" />
+    <Content Include="ACalendar\UI\Js\_right.gif" />
+    <Content Include="ACalendar\UI\Parts\ACalendar_small.ascx" />
     <Content Include="Web.connectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +121,13 @@
     <Compile Include="ACalendar\UI\ACalendarList.aspx.cs">
       <DependentUpon>ACalendarList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACalendar\UI\Parts\ACalendar_small.ascx.cs">
+      <DependentUpon>ACalendar_small.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACalendar\UI\Parts\ACalendar_small.ascx.designer.cs">
+      <DependentUpon>ACalendar_small.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
