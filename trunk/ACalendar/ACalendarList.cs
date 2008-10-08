@@ -15,6 +15,7 @@
     [Definition("ACalendar List", "ACalendarList", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
     //[WithEditableTitle("Title", 10)]
     [RestrictParents(typeof(IStructuralPage))]
+
     public class ACalendarList : AbstractContentPage
     {
         public override string IconUrl { get { return "~/Lms/UI/Img/04/calendar.png"; } }
