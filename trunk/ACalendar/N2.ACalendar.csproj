@@ -44,6 +44,16 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Net.Json, Version=1.0.2821.20109, Culture=neutral, PublicKeyToken=e0b9c68a59fc9efd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Net.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -57,6 +67,7 @@
     <Compile Include="ACalendar.cs" />
     <Compile Include="ACalendarContainer.cs" />
     <Compile Include="ACalendarList.cs" />
+    <Compile Include="ACalendarSmall.cs" />
     <Compile Include="AEvent.cs" />
     <Compile Include="ExcelExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
