@@ -83,10 +83,10 @@
 		}
 
 		[EditableEnum("Hint type", 25, typeof(HintTypeEnum))]
-		public int HintType
+		public HintTypeEnum HintType
 		{
-			get { return (int)(HintTypeEnum)Enum.Parse(typeof(HintTypeEnum), this.GetDetail<string>("Hint", "None"), true); }
-			set { this.SetDetail<string>("Hint", ((HintTypeEnum)value).ToString()); }
+			get { return (HintTypeEnum)Enum.Parse(typeof(HintTypeEnum), this.GetDetail<string>("Hint", "None"), true); }
+			set { this.SetDetail<string>("Hint", value.ToString()); }
 		}
 
 		#endregion Lms properties

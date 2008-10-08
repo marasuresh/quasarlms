@@ -12,6 +12,36 @@ namespace N2.Lms.Items
 	
 	partial class RequestContainer
 	{
+		#region Methods
+
+		public Request SubscribeTo(Course course, string user)
+		{
+			if (null == course) {
+				throw new ArgumentException("course");
+			}
+
+			if (string.IsNullOrEmpty(user)) {
+				throw new ArgumentException("user");
+			}
+
+			if (this.MyActiveCourses.Any(_course => _course.ID == course.ID)) {
+				throw new ArgumentException("You're already participating in course " + course.Title, "course");
+			}
+
+//TODO check if user is eligible for this course
+
+			Request _request = N2.Context.Definitions.CreateInstance<Request>(this);
+
+			_request.User = _request.SavedBy = user;
+			_request.Title = _request.Name;
+			_request.Course = course;
+			N2.Context.Persister.Save(_request);
+
+			return _request;
+		}
+		
+		#endregion Methods
+
 		public IEnumerable<ApprovedState> MyApprovedApplications {
 			get {
 				return

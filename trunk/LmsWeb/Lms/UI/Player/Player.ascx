@@ -6,17 +6,22 @@
 <%@ Reference Control="~/Lms/UI/Module.ascx" %>
 
 <script runat="server">
-	protected override void OnInit(EventArgs e)
+	protected override void CreateChildControls()
 	{
-		N2.Resources.Register.StyleSheet(this.Page, "~/Lms/UI/Player/Player.css");
-		
+		base.CreateChildControls();
+		this.CreateControlHierarchy();
+		this.ClearChildViewState();
+	}
+
+	protected virtual void CreateControlHierarchy()
+	{
 		foreach (var _scheduledTopic in this.CurrentItem.Training.Workflow.Children.OfType<ScheduledTopic>()) {
 			AddModuleStep(_scheduledTopic);
 
 			if (_scheduledTopic.HasTest) {
 				this.AddPracticeStep(_scheduledTopic.Topic.Practice);
 			}
-			
+
 		}
 
 		//TODO: take test from training schedule rather then from course definition
@@ -25,20 +30,24 @@
 			Debug.WriteLine(_test.Title, "Lms");
 			this.AddPracticeStep(_test).StepType = WizardStepType.Finish;
 		}
-		
-		this.wzModules.ActiveStepIndex = 0;
-		
+	}
+	
+	protected override void OnInit(EventArgs e)
+	{
 		base.OnInit(e);
+		N2.Resources.Register.StyleSheet(this.Page, "~/Lms/UI/Player/Player.css");
+		this.EnsureChildControls();
+		this.wzModules.ActiveStepIndex = 0;
 	}
 
 	protected WizardStepBase AddModuleStep(ScheduledTopic module)
 	{
 		TemplatedWizardStep _step = new TemplatedWizardStep();
 		_step.ID = module.Name;
-		_step.Title = module.Title;
+		_step.Title = "<img src='" + this.Page.ResolveClientUrl(module.IconUrl) + "' /> " + module.Title;
 		_step.StepType = WizardStepType.Auto;
 		this.wzModules.WizardSteps.Add(_step);
-
+		
 		var _uc = (ASP.Module)((IContainable)module).AddTo(_step);
 		_uc.CurrentItem = module;
 
@@ -63,15 +72,13 @@
 		ID="wzModules"
 		BackColor="#EFF3FB"
 		BorderColor="#B5C7DE"
-		BorderWidth="1px"
+		BorderStyle="None"
 		Font-Names="Verdana"
-		Font-Size="0.8em"
+		CssClass="wzm"
 		Height="100%">
 	<StepStyle ForeColor="#333333" />
 	<SideBarButtonStyle
-			BackColor="#507CD1"
-			Font-Names="Verdana"
-			ForeColor="White" />
+			CssClass="sbLink" />
 	<NavigationButtonStyle
 			BackColor="White"
 			BorderColor="#507CD1"
@@ -81,10 +88,8 @@
 			Font-Size="0.8em"
 			ForeColor="#284E98" />
 	<SideBarStyle
-			BackColor="#507CD1"
-			Font-Size="0.9em"
 			VerticalAlign="Top"
-			Width="200px"
+			CssClass="sb"
 			Wrap="true" />
 	<HeaderStyle
 			BackColor="#284E98"
@@ -95,4 +100,19 @@
 			Font-Size="0.9em"
 			ForeColor="White"
 			HorizontalAlign="Center" />
+	<SideBarTemplate>
+		<asp:DataList
+				runat="server"
+				ID="SideBarList"
+				CssClass="sbl"
+				SelectedItemStyle-CssClass="selected">
+			<ItemTemplate>
+				<asp:LinkButton
+					runat="server"
+					ID="SideBarButton"
+					CssClass="sba" />
+			</ItemTemplate>
+		</asp:DataList>
+		
+	</SideBarTemplate>
 </asp:Wizard>

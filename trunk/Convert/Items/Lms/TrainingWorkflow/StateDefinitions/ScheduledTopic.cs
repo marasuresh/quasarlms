@@ -42,7 +42,9 @@ namespace N2.Lms.Items
 
 		[EditableLink("Topic", 03, Required = true)]
 		public Topic Topic {
-			get { return this.GetDetail<Topic>("Topic", null); }
+			get { return this.GetDetail<Topic>(
+				"Topic",
+				item => ((Training)item.Parent.Parent).Course.FindTopic(item.Name)); }
 			set { this.SetDetail<Topic>("Topic", value); }
 		}
 

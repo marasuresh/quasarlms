@@ -11,16 +11,10 @@
 	{
 		var _courseId = int.Parse(((string)e.CommandArgument));
 		Course _course = this.Engine.Persister.Get<Course>(_courseId);
-
-		if (null != _course) {
-			Request _request = this.Engine.Definitions.CreateInstance<Request>(this.CurrentItem.RequestContainer);
-			Debug.WriteLine("e.CommandArgument: " + e.CommandArgument);
-			_request.User = _request.SavedBy = this.Page.User.Identity.Name;
-			_request.Title = _request.Name;
-			_request.Course = _course;
-			this.Engine.Persister.Save(_request);
-			BindData();
-		}
+		
+		this.CurrentItem.RequestContainer.SubscribeTo(_course, this.Page.User.Identity.Name);
+		Debug.WriteLine("e.CommandArgument: " + _courseId.ToString(), "Lms");
+		BindData();
 	}
 	
 	void BindData()
