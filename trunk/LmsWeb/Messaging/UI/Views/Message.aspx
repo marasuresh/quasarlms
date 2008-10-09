@@ -1,21 +1,28 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/UI/Layouts/Top+SubMenu.Master" AutoEventWireup="true" CodeFile="Message.aspx.cs" Inherits="Messaging_UI_Message" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Messaging/Top+SubMenu.master" AutoEventWireup="true" CodeBehind="Message.aspx.cs" Inherits="Messaging_UI_Message" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="TextContent" Runat="Server">
-    <n2:ItemDataSource runat="server" ID="dsMessage" />
-    <asp:FormView runat="server" ID="fvMessage" DefaultMode="ReadOnly">
-        <EmptyDataTemplate>
-            Источник данных пуст.
-        </EmptyDataTemplate>
-        <ItemTemplate>
-            <%# Eval("Subject") %><br />
-            <%# Eval("Text") %>
-        </ItemTemplate>
-    </asp:FormView>
-    <%--<asp:Repeater ID="Repeater1" runat="server" DataSourceID="dsMessage">
-        <ItemTemplate>
-            <%# Eval("Subject") %><br />
-            <%# Eval("Text") %>       
-        </ItemTemplate>
-    </asp:Repeater>--%>
-    <%--<n2:ItemEditor runat="server" ID="ie" />--%>
+    <div style="width:100%">
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <asp:Label ID="lbFrom" runat="server" Text="lbFrom" meta:resourcekey="lblFromResource1" ></asp:Label>    
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tbFrom" runat="server" ReadOnly="true" Width="100%"></asp:TextBox>            
+                        </td>  
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="lbSubject" runat="server" Text="lbSubject" meta:resourcekey="lbSubjectResource1" ></asp:Label>    
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tbSubject" runat="server" ReadOnly="true" Width="100%"></asp:TextBox>            
+                        </td>  
+                    </tr>
+                </table>
+                <br />
+                <N2:FreeTextArea ID="txtText" runat="server" TextMode="MultiLine" 
+                                meta:resourcekey="txtTextResource1" CssClass="freeTextArea" 
+                                EnableFreeTextArea="True" ReadOnly="true" Width="100%"/>
+    </div>
 </asp:Content>
