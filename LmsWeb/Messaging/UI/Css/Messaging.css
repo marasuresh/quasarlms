@@ -1,0 +1,20 @@
+﻿.part
+{
+    font-family:Arial Cyr;
+    font-size:80%
+}
+
+.letter
+{
+     color:Green;
+}
+
+.task
+{
+     color:Red;
+}
+
+.announcement
+{
+     color:Blue;
+}

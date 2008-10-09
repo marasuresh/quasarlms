@@ -11,14 +11,24 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
 		get { return this.Context.User.Identity.Name; }
 	}
 
-	DropDownList ddlMsgType;
-	DropDownList ddlDirection;
-	CheckBox cboxOnlyNew;
-	GridView gvMailBox;
+    protected DropDownList ddlMsgType;
+    protected DropDownList ddlDirection;
+    protected CheckBox cboxOnlyNew;
+    protected GridView gvMailBox;
 
+    protected override void OnInit(EventArgs e)
+    {
+        base.OnInit(e);
+        if (CurrentItem.Action == "inbox")
+        {
+            ddlDirection.SelectedIndex = 2;    //Отобразить входящие сообщения.
+        }
+    }
+    
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        
         Message[] showingMsg = null;
 
         //Фильтровка сообщений выводимых на экран.
@@ -55,8 +65,7 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
         gvMailBox.DataBind();
     }
 
-    
-    //Все сообщения текущего пользователя.
+ //Все сообщения текущего пользователя.
     protected Message[] Messages
     {
         get
