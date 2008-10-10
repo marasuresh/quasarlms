@@ -38,31 +38,54 @@
 		N2.Resources.Register.StyleSheet(this.Page, "~/Lms/UI/Player/Player.css");
 		this.EnsureChildControls();
 		this.wzModules.ActiveStepIndex = 0;
+
+		Register.JQuery(this.Page);
+		Register.JavaScript(this.Page, @"
+$('#wrap').bind('resize', function(){ this.height(document.documentElement.clientHeight) });
+", ScriptOptions.DocumentReady);
+				this.Page.ClientScript.RegisterClientScriptInclude(
+					"jQuery.splitter",
+					this.Page.ResolveClientUrl("~/Edit/Js/plugins/jquery.splitter.js")
+				);
+				Register.JavaScript(this.Page, @"
+		var _oldWizard = $('table.wzm');
+		var _leftPane = $('<div id=""leftPane"" class=""sb""/>');
+		var _rightPane = $('<div id=""rightPane""/>');
+		$('td.sb', _oldWizard).contents().appendTo(_leftPane);
+		$('td.sb', _oldWizard).next().contents().appendTo(_rightPane);
+		var _newWizard = $('<div class=""wzm"" id=""splitter"">');
+		_leftPane.appendTo(_newWizard);
+		_rightPane.appendTo(_newWizard);
+		_oldWizard.replaceWith(_newWizard);
+		_newWizard.splitter({type:'v', initA: true});
+		", ScriptOptions.DocumentReady);
 	}
 
 	protected WizardStepBase AddModuleStep(ScheduledTopic module)
 	{
-		TemplatedWizardStep _step = new TemplatedWizardStep();
-		_step.ID = module.Name;
-		_step.Title = "<img src='" + this.Page.ResolveClientUrl(module.IconUrl) + "' /> " + module.Title;
-		_step.StepType = WizardStepType.Auto;
+		WizardStep _step = new WizardStep {
+			ID = module.Name,
+			Title = "<img src='" + this.Page.ResolveClientUrl(module.IconUrl) + "' /> " + module.Title,
+			StepType = WizardStepType.Auto
+		};
 		this.wzModules.WizardSteps.Add(_step);
 		
-		var _uc = (ASP.Module)((IContainable)module).AddTo(_step);
-		_uc.CurrentItem = module;
+		((ASP.Module)((IContainable)module).AddTo(_step)).CurrentItem = module;
 
 		return _step;
 	}
 	
 	protected WizardStepBase AddPracticeStep(Test test)
 	{
-		TemplatedWizardStep _step = new TemplatedWizardStep();
-		_step.ID = test.Name;
-		_step.Title = test.Title;
-		_step.StepType = WizardStepType.Auto;
+		WizardStep _step = new WizardStep {
+			ID = test.Name,
+			Title = test.Title,
+			StepType = WizardStepType.Auto,
+		};
+		
 		this.wzModules.WizardSteps.Add(_step);
 		
-		var _uc = (ASP.TestPlayer)((IContainable)test).AddTo(_step);
+		var _uc = ((ASP.TestPlayer)((IContainable)test).AddTo(_step)).CurrentItem = test;
 		
 		return _step;
 	}
@@ -75,8 +98,8 @@
 		BorderStyle="None"
 		Font-Names="Verdana"
 		CssClass="wzm"
-		Height="100%">
-	<StepStyle ForeColor="#333333" />
+		Height="80%">
+	<StepStyle ForeColor="#333333" VerticalAlign="Top" />
 	<SideBarButtonStyle
 			CssClass="sbLink" />
 	<NavigationButtonStyle

@@ -13,14 +13,17 @@
 	protected override void OnInit(EventArgs e)
 	{
 		foreach (var _topic in this.CurrentItem.FlatHierarchy) {
-			TemplatedWizardStep _step = new TemplatedWizardStep();
-			_step.ID = _topic.Name;
-			_step.Title = _topic.Title;
-			_step.StepType = WizardStepType.Auto;
+			WizardStep _step = new WizardStep {
+				ID = _topic.Name,
+				Title = _topic.Title,
+				StepType = WizardStepType.Auto,
+			};
+			
 			this.wzTopics.WizardSteps.Add(_step);
 
-			var _uc = (TemplateUserControl<AbstractContentPage, Topic>)((N2.Definitions.IContainable)_topic).AddTo(_step);
-			_uc.CurrentItem = _topic;
+			((TemplateUserControl<AbstractContentPage, Topic>)((N2.Definitions.IContainable)_topic)
+				.AddTo(_step))
+				.CurrentItem = _topic;
 
 			this.wzTopics.ActiveStepIndex = 0;
 		}
