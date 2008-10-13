@@ -29,7 +29,7 @@ namespace N2.Details
 		{
 			var _tb = editor as WorkflowActionToolbar;
 
-			if (_tb.IsNewAction) {
+			if (_tb.WorkflowActionPerformed) {
 				ItemEditor childEditor = _tb.ItemEditor;
 
 				childEditor.Update();

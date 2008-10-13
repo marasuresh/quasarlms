@@ -29,21 +29,16 @@ namespace N2.Web.UI.WebControls
 			}
 		}
 
-		public bool IsNewAction {
-			get { return !string.IsNullOrEmpty(this.AddedTypeName); }
-		}
-
 		#endregion Workflow Properties
 
 		#region Fields
 
 		private DropDownList types;
 		private PlaceHolder itemEditorsContainer;
-		private ContentItem parentItem;
+		ContentItem m_parentItem;
 		FieldSet fs;
 
 		PlaceHolder actionSelectorContainer;
-
 		#endregion
 
 		#region Constructor
@@ -59,11 +54,6 @@ namespace N2.Web.UI.WebControls
 
 		public ItemEditor ItemEditor { get; protected set; }
 
-		protected string AddedTypeName {
-			get { return (string)this.ViewState["AddedTypeName"]; }
-			set { this.ViewState["AddedTypeName"] = value; }
-		}
-
 		/// <summary>Gets the parent item where to look for items.</summary>
 		public int ParentItemID
 		{
@@ -71,54 +61,80 @@ namespace N2.Web.UI.WebControls
 			set { ViewState["CurrentItemID"] = value; }
 		}
 
-		/// <summary>Gets the parent item where to look for items.</summary>
-		public string ParentItemType
-		{
-			get { return (string) (ViewState["CurrentItemType"] ?? string.Empty); }
-			set { ViewState["CurrentItemType"] = value; }
+		public bool WorkflowActionPerformed {
+			get { return !string.IsNullOrEmpty(this.NewStateTypeName); }
 		}
 
-		protected IDefinitionManager Definitions {
-			get { return N2.Context.Definitions; }
-		}
-
-		public ItemDefinition CurrentItemDefinition {
-			get { return Definitions.GetDefinition(Type.GetType(ParentItemType)); }
+		protected string NewStateTypeName {
+			get { return (string)this.ViewState["newStateTypeName"]; }
+			set { this.ViewState["newStateTypeName"] = value; }
 		}
 
 		#endregion
 
-		protected override void LoadViewState(object savedState)
+/*		protected override void LoadViewState(object savedState)
 		{
 			base.LoadViewState(savedState);
 			Trace.WriteLine("View State Loaded", "Workflow");
 			this._CreateChildControls();
 		}
-
-		protected override void OnLoad(EventArgs e)
+*/
+		ItemState GetNewStateStub()
 		{
-			if (!this.Page.IsPostBack) {
-				this._CreateChildControls();
+			if (!string.IsNullOrEmpty(this.NewStateTypeName)) {
+
+				ItemState _itemState = (ItemState)this.CreateItem(Utility.TypeFromName(this.NewStateTypeName));
+
+				int[] _itemStateProperties = this.ViewState["itemStateProperties"] as int[];
+
+				if (_itemStateProperties != null && 3 == _itemStateProperties.Length) {
+					_itemState.FromState = N2.Context.Persister.Get<StateDefinition>(_itemStateProperties[0]);
+					_itemState.Action = N2.Context.Persister.Get<ActionDefinition>(_itemStateProperties[1]);
+					_itemState.ToState = N2.Context.Persister.Get<StateDefinition>(_itemStateProperties[2]);
+				}
+
+				Trace.WriteLine("Created empty state stub: " + this.NewStateTypeName, "Workflow");
+
+				return _itemState;
+			} else {
+				return null;
 			}
-			base.OnLoad(e);
 		}
 
-		protected void _CreateChildControls()
+		void SaveNewStateStub(ItemState itemState)
 		{
+			this.SaveNewStateStub(
+				itemState.GetType().AssemblyQualifiedName,
+				itemState.FromState.ID,
+				itemState.Action.ID,
+				itemState.ToState.ID);
+		}
+
+		void SaveNewStateStub(string typeName, int fromStateId, int actionId, int toStateId)
+		{
+			this.NewStateTypeName = typeName;
+			this.ViewState["itemStateProperties"] = new int[] {
+				fromStateId,
+				actionId,
+				toStateId
+			};
+		}
+
+		protected override void CreateChildControls()
+		{
+			base.CreateChildControls();
+			
 			this.Controls.Clear();
 			
 			this.Controls.Add(this.itemEditorsContainer = new PlaceHolder());
-			
-			if (this.IsNewAction) {
-				Trace.WriteLine("Initializing empty Item Editor with type: " + this.AddedTypeName, "Workflow");
+
+			if (this.WorkflowActionPerformed) {
 				this.InitStateEditor();
-				this.UpdateItemEditor(
-					this.CreateItem(
-						Utility.TypeFromName(this.AddedTypeName)));
+				this.UpdateItemEditor(this.GetNewStateStub());
 				this.AddCancelActionButton();
 			} else {
 				Trace.WriteLine("Action Select", "Workflow");
-				this.InitActionDropDown();
+				this.InitActionSelector();
 			}
 			
 			this.ClearChildViewState();
@@ -129,33 +145,25 @@ namespace N2.Web.UI.WebControls
 			return N2.Context.Definitions.CreateInstance(itemType, ParentItem);
 		}
 
-		private void InitActionDropDown()
+		private void InitActionSelector()
 		{
-			this.Controls.Add(this.actionSelectorContainer = new PlaceHolder());
-			
-			this.actionSelectorContainer.Controls.Add(types = new DropDownList());
-			types.Items.AddRange((
-					from _action in this.InitialState.ToState.Actions
-					select new ListItem(_action.Title, _action.Name)
-				).ToArray());
+			var _actionQuery =
+				from _action in this.InitialState.ToState.Actions
+				select new ListItem(_action.Title, _action.Name);
 
-			ImageButton b = new ImageButton();
-			this.actionSelectorContainer.Controls.Add(b);
-			b.ImageUrl = Page.ClientScript.GetWebResourceUrl(typeof (ItemEditorList), "N2.Resources.add.gif");
-			b.ToolTip = "Perform action";
-			b.CausesValidation = false;
-			b.Click += NewActionClick;
-		}
+			if (_actionQuery.Any()) {
+				this.Controls.Add(this.actionSelectorContainer = new PlaceHolder());
 
-		private void InitStateEditor()
-		{
-			itemEditorsContainer.Controls.Add(this.fs = new FieldSet());
-			
-			fs.Controls.Add(this.ItemEditor = new ItemEditor {
-				ID = "ie"
-			});
+				this.actionSelectorContainer.Controls.Add(types = new DropDownList());
+				types.Items.AddRange(_actionQuery.ToArray());
 
-			Trace.WriteLine("Item editor created", "Workflow");
+				ImageButton b = new ImageButton();
+				this.actionSelectorContainer.Controls.Add(b);
+				b.ImageUrl = Page.ClientScript.GetWebResourceUrl(typeof(ItemEditorList), "N2.Resources.add.gif");
+				b.ToolTip = "Perform action";
+				b.CausesValidation = false;
+				b.Click += NewActionClick;
+			}
 		}
 
 		private void NewActionClick(object sender, ImageClickEventArgs e)
@@ -167,18 +175,26 @@ namespace N2.Web.UI.WebControls
 					.Single(_a => _a.Name == types.SelectedValue);
 
 			Type _itemType = _selectedAction.StateType ?? typeof(ItemState);
-			ItemState item = CreateItem(_itemType) as ItemState;
-			item.ToState = _selectedAction.LeadsTo;
-
-			//not required
-			item.Action = _selectedAction;
-			item.FromState = this.InitialState.ToState;
 			
-			this.AddedTypeName = string.Format("{0}", _itemType.AssemblyQualifiedName);
-			this.InitStateEditor();
-			UpdateItemEditor(item);
-			this.actionSelectorContainer.Visible = false;
-			this.AddCancelActionButton();
+			this.SaveNewStateStub(
+				_itemType.AssemblyQualifiedName,
+				this.InitialState.ToState.ID,
+				_selectedAction.ID,
+				_selectedAction.LeadsTo.ID);
+			
+			//force framework to regenerate the hierarchy before rendering
+			this.ChildControlsCreated = false;
+		}
+
+		private void InitStateEditor()
+		{
+			itemEditorsContainer.Controls.Add(this.fs = new FieldSet());
+			
+			fs.Controls.Add(this.ItemEditor = new ItemEditor {
+				ID = "ie"
+			});
+
+			Trace.WriteLine("Item editor created", "Workflow");
 		}
 
 		private void AddCancelActionButton()
@@ -194,15 +210,12 @@ namespace N2.Web.UI.WebControls
 
 		private void CancelActionClick(object sender, ImageClickEventArgs e)
 		{
-			ImageButton b = (ImageButton)sender;
-			b.Visible = false;
+//			ImageButton b = (ImageButton)sender;
+//			b.Visible = false;
 			
-			//this.ParentItem.AssignCurrentState(this.InitialState);
 			this.ClearChildState();
-			this.itemEditorsContainer.Visible = false;
-			this.AddedTypeName = null;
-			this.InitActionDropDown();
-			this.actionSelectorContainer.Visible = true;
+			this.NewStateTypeName = null;
+			this.ChildControlsCreated = false;
 		}
 
 		private ItemEditor UpdateItemEditor(ContentItem item)
@@ -217,16 +230,15 @@ namespace N2.Web.UI.WebControls
 
 		public ContentItem ParentItem {
 			get {
-				return parentItem 
-					?? (parentItem = N2.Context.Persister.Get(ParentItemID));
+				return this.m_parentItem 
+					?? (this.m_parentItem = N2.Context.Persister.Get(this.ParentItemID));
 			}
 			set {
-				if (value == null)
+				if (value == null) {
 					throw new ArgumentNullException("value");
-
-				parentItem = value;
-				ParentItemID = value.ID;
-				ParentItemType = value.GetType().AssemblyQualifiedName;
+				}
+				this.m_parentItem = value;
+				this.ParentItemID = value.ID;
 			}
 		}
 

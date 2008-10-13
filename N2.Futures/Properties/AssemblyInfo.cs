@@ -1,16 +1,17 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Web.UI;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("N2.Futures")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Miscelaneous utilities for N2 Web Framework")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("KM")]
+[assembly: AssemblyCompany("esteewhy")]
 [assembly: AssemblyProduct("N2.Futures")]
-[assembly: AssemblyCopyright("Copyright © KM 2008")]
+[assembly: AssemblyCopyright("Copyright © esteewhy 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -34,3 +35,8 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly: WebResource("N2.Futures.Images.group.png", "image/png")]
+[assembly: WebResource("N2.Futures.Images.user_green.png", "image/png")]
+[assembly: WebResource("N2.Futures.Images.user_orange.png", "image/png")]
+[assembly: WebResource("N2.Futures.Images.user_red.png", "image/png")]
