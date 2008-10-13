@@ -1,0 +1,122 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace N2.Web.UI.WebControls
+{
+	using System.Diagnostics;
+	
+	[DefaultProperty("Text")]
+	[ToolboxData("<{0}:SelectUser runat=server></{0}:SelectUser>")]
+	public class SelectUser : CompositeControl
+	{
+		#region Properties
+
+		public string SelectedUser {
+			get {
+				this.EnsureChildControls();
+				
+				return
+					null != this.textBox
+						? this.textBox.Text
+						: this.tree.SelectedUser;
+			}
+			set {
+				//postpone until InSelectionMode will be loaded from ViewState
+				this.Load += (o, e) => {
+					Debug.WriteLine("SelectUser: SelectedUser_set/Load: ChildControlsCreated = " + this.ChildControlsCreated.ToString(), "UserTree");
+					Debug.WriteLine("SelectUser: SelectedUser_set/Load: InSelectedMode = " + this.InSelectionMode.ToString(), "UserTree");
+
+					if (!this.InSelectionMode) {
+						this.EnsureChildControls();
+						this.textBox.Text = value;
+					}
+				};
+			}
+		}
+
+		protected bool InSelectionMode {
+			get {
+				return (bool?)this.ViewState["InSelectionMode"] ?? false;
+			}
+			set { this.ViewState["InSelectionMode"] = value; }
+		}
+
+		protected UserTree tree;
+		protected TextBox textBox;
+		protected Button selectButton;
+
+		#endregion Properties
+
+		#region Methods
+
+		protected override void CreateChildControls()
+		{
+			Debug.WriteLine("SelectUser.CreateChildControls: IsPostBack=" + this.Page.IsPostBack.ToString(), "UserTree");
+
+			base.CreateChildControls();
+
+			if (this.InSelectionMode) {
+
+				Debug.WriteLine("SelectUser.CreateChildControls: Tree", "UserTree");
+
+				this.tree = new UserTree {
+					ID = "ut",
+				};
+				this.tree.Style.Add("float", "left");
+				this.tree.SelectionChanged += UserTree_SelectionChanged;
+				
+				this.Controls.Add(this.tree);
+				this.Controls.Add(new Button { ID = "postBack" });
+			} else {
+
+				Debug.WriteLine("SelectUser.CreateChildControls: TextBox", "UserTree");
+
+				this.textBox = new TextBox {
+					ID = "tb",
+				};
+
+				this.Controls.Add(this.textBox);
+
+				this.selectButton = new Button {
+					ID = "btn",
+					Text = "…",
+					CausesValidation = false
+				};
+
+				this.selectButton.Click += Button_Click;
+				this.Controls.Add(this.selectButton);
+			}
+
+			this.ClearChildViewState();
+		}
+
+		protected void UserTree_SelectionChanged(object sender, EventArgs e)
+		{
+			string _selection = this.tree.SelectedUser;
+			Debug.WriteLine("UserTree_SelectionChanged: " + _selection, "UserTree");
+			
+			this.InSelectionMode = false;
+			this.ChildControlsCreated = false;
+			//access to .SelectedUser will cause a recreation of child controls,
+			// so TreeView will disappear..
+			Debug.WriteLine("UserTree_SelectionChanged", "UserTree");
+			this.EnsureChildControls();
+			this.textBox.Text = _selection;
+		}
+
+		protected void Button_Click(object sender, EventArgs e)
+		{
+			Debug.WriteLine("SelectUser.Button_Click", "UserTree");
+			this.InSelectionMode = true;
+			this.ChildControlsCreated = false;
+		}
+
+		#endregion Methods
+	}
+}

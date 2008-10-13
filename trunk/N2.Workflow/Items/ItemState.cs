@@ -1,4 +1,4 @@
-﻿#define CheckWorkflow
+﻿//#define CheckWorkflow
 namespace N2.Workflow.Items
 {
 	using System.Web.UI.WebControls;
@@ -26,8 +26,6 @@ namespace N2.Workflow.Items
 			"Previous State",
 			210,
 			ContainerName = "workflow")]
-#else
-		[Editable("Previous State", typeof(HiddenField), "Value", 210)]
 #endif
 		public StateDefinition FromState {
 			get { return this.GetDetail("FromState") as StateDefinition; }
@@ -39,8 +37,6 @@ namespace N2.Workflow.Items
 			"Current State",
 			220,
 			ContainerName = "workflow")]
-#else
-		[Editable("Current State", typeof(HiddenField), "Value", 220)]
 #endif
 		public StateDefinition ToState {
 			get { return this.GetDetail("ToState") as StateDefinition; }
@@ -52,16 +48,16 @@ namespace N2.Workflow.Items
 			"Action",
 			230,
 			ContainerName = "workflow")]
-#else
-		[Editable("Action", typeof(HiddenField), "Value", 230)]
 #endif
 		public ActionDefinition Action {
 			get { return this.GetDetail("Action") as ActionDefinition; }
 			set { this.SetDetail<ActionDefinition>("Action", value); }
 		}
 
-		[EditableTextBox(
+		[Editable(
 			"Assigned To",
+			typeof(N2.Web.UI.WebControls.SelectUser),
+			"SelectedUser",
 			240
 #if CheckWorkflow
 			, ContainerName = "workflow"

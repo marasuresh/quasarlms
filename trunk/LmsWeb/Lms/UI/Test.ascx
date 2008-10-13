@@ -14,14 +14,15 @@
 	protected virtual void CreateControlHierarchy()
 	{
 		foreach(var _q in this.CurrentItem.Questions) {
-			var _step = new TemplatedWizardStep();
+			var _step = new WizardStep {
+				ID = _q.Name,
+				StepType = WizardStepType.Auto,
+				Title = _q.Title
+			};
 			
-			_step.ID = _q.Name;
-			_step.StepType = WizardStepType.Auto;
-			_step.Title = _q.Title;
 			this.wzTest.WizardSteps.Add(_step);
-			var _ctl = (TemplateUserControl<AbstractContentPage, TestQuestion>)((IContainable)_q).AddTo(_step);
-			_ctl.CurrentItem = _q;
+			((TemplateUserControl<AbstractContentPage, TestQuestion>)((IContainable)_q).AddTo(_step))
+				.CurrentItem = _q;
 		}
 	}
 	
@@ -54,7 +55,12 @@
 		VerticalAlign="Top"
 		Width="150px"
 		Wrap="true" />
-	<HeaderStyle BackColor="#5D7B9D" BorderStyle="Solid" Font-Bold="True" 
-		Font-Size="0.9em" ForeColor="White" HorizontalAlign="Left" />
+	<HeaderStyle
+		BackColor="#5D7B9D"
+		BorderStyle="Solid"
+		Font-Bold="True" 
+		Font-Size="0.9em"
+		ForeColor="White"
+		HorizontalAlign="Left" />
 </asp:Wizard>
 

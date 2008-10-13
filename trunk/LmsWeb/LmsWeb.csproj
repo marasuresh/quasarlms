@@ -173,6 +173,9 @@
     <Content Include="yafnet.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Browsers\Templates.browser" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Properties\" />
   </ItemGroup>
