@@ -17,9 +17,12 @@ namespace N2.Web.UI.WebControls
 	{
 		#region Properties
 
+		string m_delayedSelectedUserValue;
+
 		public string SelectedUser {
 			get {
 				this.EnsureChildControls();
+				Debug.WriteLine("SelectUser.SelctedUser.get: " + this.textBox.Text, "UserTree");
 				
 				return
 					null != this.textBox
@@ -27,14 +30,25 @@ namespace N2.Web.UI.WebControls
 						: this.tree.SelectedUser;
 			}
 			set {
+				//Bug in N2?
+				if (this.Page.IsPostBack) return;
 				//postpone until InSelectionMode will be loaded from ViewState
+
+				this.m_delayedSelectedUserValue = value;
+				
 				this.Load += (o, e) => {
-					Debug.WriteLine("SelectUser: SelectedUser_set/Load: ChildControlsCreated = " + this.ChildControlsCreated.ToString(), "UserTree");
-					Debug.WriteLine("SelectUser: SelectedUser_set/Load: InSelectedMode = " + this.InSelectionMode.ToString(), "UserTree");
+					Debug.WriteLine(string.Format(
+						@"SelectUser: SelectedUser_set/Load: ChildControlsCreated = {0}, InSelectedMode = {1}, {2}",
+						this.ChildControlsCreated.ToString(),
+						this.InSelectionMode.ToString(),
+						this.m_delayedSelectedUserValue), "UserTree");
 
 					if (!this.InSelectionMode) {
 						this.EnsureChildControls();
-						this.textBox.Text = value;
+
+						if (!string.Equals(this.textBox.Text, this.m_delayedSelectedUserValue, StringComparison.OrdinalIgnoreCase)) {
+							this.textBox.Text = this.m_delayedSelectedUserValue;
+						}
 					}
 				};
 			}
@@ -91,6 +105,12 @@ namespace N2.Web.UI.WebControls
 
 				this.selectButton.Click += Button_Click;
 				this.Controls.Add(this.selectButton);
+
+				MembershipUserValidator _validator = new MembershipUserValidator {
+					ID = "mvv",
+					ControlToValidate = this.textBox.ID,
+					Display = ValidatorDisplay.Dynamic,
+				};
 			}
 
 			this.ClearChildViewState();
@@ -105,9 +125,8 @@ namespace N2.Web.UI.WebControls
 			this.ChildControlsCreated = false;
 			//access to .SelectedUser will cause a recreation of child controls,
 			// so TreeView will disappear..
-			Debug.WriteLine("UserTree_SelectionChanged", "UserTree");
 			this.EnsureChildControls();
-			this.textBox.Text = _selection;
+			this.textBox.Text = this.m_delayedSelectedUserValue = _selection;
 		}
 
 		protected void Button_Click(object sender, EventArgs e)
