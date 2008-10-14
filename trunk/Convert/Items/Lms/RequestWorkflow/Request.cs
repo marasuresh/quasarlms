@@ -45,7 +45,10 @@
 
 		#region Lms Properties
 
-		[EditableTextBox("User", 15)]
+		[Editable("User",
+			typeof(N2.Web.UI.WebControls.SelectUser),
+			"SelectedUser",
+			15)]
 		public string User
 		{
 			get { return this.GetDetail<string>("User", item => this.User = this.SavedBy); }

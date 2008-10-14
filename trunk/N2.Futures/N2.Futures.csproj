@@ -58,6 +58,8 @@
     <Compile Include="ItemBuilderInitializer.cs" />
     <Compile Include="Items\ProxyItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\UI\WebControls\MembershipUserValidator.cs" />
+    <Compile Include="Web\UI\WebControls\Test\UserTreeTestBed.cs" />
     <Compile Include="Web\UI\WebControls\UserTree.cs" />
     <Compile Include="Web\UI\WebControls\SelectUser.cs" />
   </ItemGroup>

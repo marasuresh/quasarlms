@@ -11,7 +11,7 @@ using N2.Web.UI.WebControls;
 
 namespace N2.Messaging.Messaging.UI.Parts
 {
-    public partial class NewMessageList : TemplateUserControl<ContentItem, N2.Messaging.NewMessageList>
+    public partial class NewMessageList : TemplateUserControl<ContentItem, N2.Messaging.MailBox>
     {
         protected ItemDataSource idsNews;
 
