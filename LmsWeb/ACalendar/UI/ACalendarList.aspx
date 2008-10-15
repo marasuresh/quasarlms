@@ -10,9 +10,9 @@
     { %>
         <tr>
             <td>
-            <%= _acal.CurrentItem.Title%>
-<%--            <a href='<%= _acal.TemplateUrl %>'><%= _acal.Title%></a>
---%>        
+            
+           <a href='<%= _acal.TemplateUrl %>'><%= _acal.Title%></a>
+       
             </td>
         </tr>    
              

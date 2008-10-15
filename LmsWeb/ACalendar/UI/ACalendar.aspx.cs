@@ -64,7 +64,7 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
     {
         get
         {
-            return (from child in this.CurrentItem.Events select child).ToArray();
+            return (from child in this.CurrentItem.AEvents select child).ToArray();
             //where string.Equals(child.To, Profile.UserName, StringComparison.OrdinalIgnoreCase)
 
         }
@@ -160,7 +160,7 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
     }
     protected void del(JsonAEvent _e)
     {
-        foreach (AEvent _ce in this.CurrentItem.Events)
+        foreach (AEvent _ce in this.CurrentItem.AEvents)
         {
             if (_ce.DateStart == _e.dateStart)
             {
@@ -181,10 +181,10 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
  
         
 
-            int _c =  this.CurrentItem.Events.Count();
-            while (this.CurrentItem.Events.Count() > 0)
+            int _c =  this.CurrentItem.AEvents.Count();
+            while (this.CurrentItem.AEvents.Count() > 0)
             {
-                AEvent _ce = this.CurrentItem.Events.First();
+                AEvent _ce = this.CurrentItem.AEvents.First();
                 this.Engine.Persister.Delete(_ce);
             }
         DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(JsonAEvent[]));

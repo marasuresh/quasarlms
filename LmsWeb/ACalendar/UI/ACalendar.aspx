@@ -103,6 +103,7 @@
 
         var events_string = '<%= data_in%>';
         var oevent = eval("([" + events_string + "])");
+        if (oevent.length == 0) return;
 
         //                    $.each(oevent, function(elem){
         //                        
@@ -111,30 +112,21 @@
         var MinMilli = 1000 * 60;       //Initialize variables.
         var HrMilli = MinMilli * 60;
         var DyMilli = HrMilli * 24;
-
         for (var i = 0; i < oevent.length; i++) {
+            if (oevent[i] != null) {
+                var currentAct = oevent[i].act;
+                var currentStart = new Date(oevent[i].dateStart);
+                var currentEnd = new Date(oevent[i].dateEnd);
+                //var timeSpan = currentEnd - currentStart;
+                var _days = (currentEnd.valueOf() - currentStart.valueOf()) / DyMilli; // надо округлить
+                var _color = colors(currentAct);
 
-            var currentAct = oevent[i].act;
-            var currentStart = new Date(oevent[i].dateStart);
-            var currentEnd = new Date(oevent[i].dateEnd);
-            //var timeSpan = currentEnd - currentStart;
-            var _days = (currentEnd.valueOf() - currentStart.valueOf()) / DyMilli; // надо округлить
+                for (var j = 0; j < _days; j++) {
 
-            //	            var _color = '0000FF';
-            //	            if (currentAct == 'п') _color = '55FF00'; //салатовый
-            //	            if (currentAct == 'э') _color = 'FFFF00'; //красный
-            //	            if (currentAct == 'в') _color = '0000FF'; //синий
-            //	            if (currentAct == 'а') _color = 'ВС143С'; //светло-коричневый
-            //	            if (currentAct == 'к') _color = '87CEFA';  //голубой
-
-
-            var _color = colors(currentAct);
-
-            for (var j = 0; j < _days; j++) {
-
-                var currDay = $('#calOne').find('[id*=d_' + (currentStart.getMonth() + 1) + '_' + currentStart.getDate() + '_' + currentStart.getFullYear() + ']');
-                if (currDay.length) currDay.append('<div class="dInfo" style="background-color: #' + _color + '"><span style="color:#ccc"></span>' + currentAct + '</div>');
-                currentStart.setDate(currentStart.getDate() + 1);
+                    var currDay = $('#calOne').find('[id*=d_' + (currentStart.getMonth() + 1) + '_' + currentStart.getDate() + '_' + currentStart.getFullYear() + ']');
+                    if (currDay.length) currDay.append('<div class="dInfo" style="background-color: #' + _color + '"><span style="color:#ccc"></span>' + currentAct + '</div>');
+                    currentStart.setDate(currentStart.getDate() + 1);
+                }
             }
         }
     }
