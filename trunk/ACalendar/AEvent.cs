@@ -11,7 +11,7 @@
 
     [Serializable]
     [Definition("AEvent", "AEvent", Installer = InstallerHint.NeverRootOrStartPage)]
-    //[RestrictParents(typeof(ACalendar))]
+    [RestrictParents(typeof(ACalendar))]
     [NotThrowable]
     [WithEditableTitle("Title", 20)]
     //[WithEditableName("Name (Guid)", 10)]
