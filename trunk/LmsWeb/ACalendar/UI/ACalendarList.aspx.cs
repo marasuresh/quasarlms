@@ -15,13 +15,28 @@ public partial class ACalendar_UI_ACalendarList : N2.Web.UI.ContentPage<ACalenda
 
     }
 
-    protected ACalendar[] ACalendars
+    protected N2.ACalendar.ACalendar[] ACalendars
     {
         get
         {
-            return (from child in this.CurrentItem.ACalendarContainer.Children.OfType<ACalendar>() select child).ToArray();
+            return (from child in CurrentItem.ACalendarContainer.Children.OfType<N2.ACalendar.ACalendar>() select child).ToArray();
                     //where string.Equals(child.To, Profile.UserName, StringComparison.OrdinalIgnoreCase)
                     
         }
-    } 
-}
+    }
+
+    //protected ACalendar[] ACalendaries
+    //{
+    //    get
+    //    {
+    //        return (from child in this.CurrentItem.ACalendarContainer.ACalendars select child).ToArray();
+    //        //where string.Equals(child.To, Profile.UserName, StringComparison.OrdinalIgnoreCase)
+
+    //    }
+    //    set
+    //    {
+    //        //this.CurrentItem.Events = value;
+    //    }
+    }
+
+
