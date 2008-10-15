@@ -15,6 +15,7 @@
     [Definition("ACalendar List", "ACalendarList", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
     //[WithEditableTitle("Title", 10)]
     [RestrictParents(typeof(IStructuralPage))]
+    [AllowedChildren(typeof(ACalendar))]
 
     public class ACalendarList : AbstractContentPage
     {

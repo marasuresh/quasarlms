@@ -68,14 +68,14 @@ namespace N2.ACalendar
              }
              worksheet.get_Range("C21", "BB"+ (_row-1).ToString()).Value2 = data;
 
-    //            Range("M31").Select
+    //Range("M31").Select
     //With Selection.Interior
     //    .ColorIndex = 0
     //    .Pattern = xlGray25
     //    .PatternColorIndex = xlAutomatic
     //End With
 
-             worksheet.get_Range("E21", "E22").Interior.Pattern = "xlGray25";
+             //worksheet.get_Range("E21", "E22").Interior.Pattern = "xlGray25";
              aXL.Visible = true;
             //aXL.Save( wb);
             //FinishExcel(aXL);
