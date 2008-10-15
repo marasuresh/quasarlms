@@ -86,32 +86,32 @@ namespace N2.Web.UI.WebControls
 				this.tree.SelectionChanged += UserTree_SelectionChanged;
 				
 				this.Controls.Add(this.tree);
-				this.Controls.Add(new Button { ID = "postBack" });
 			} else {
 
-				Debug.WriteLine("SelectUser.CreateChildControls: TextBox", "UserTree");
-
-				this.textBox = new TextBox {
-					ID = "tb",
-				};
-
-				this.Controls.Add(this.textBox);
-
-				this.selectButton = new Button {
-					ID = "btn",
-					Text = "…",
-					CausesValidation = false
-				};
-
-				this.selectButton.Click += Button_Click;
-				this.Controls.Add(this.selectButton);
-
-				MembershipUserValidator _validator = new MembershipUserValidator {
-					ID = "mvv",
-					ControlToValidate = this.textBox.ID,
-					Display = ValidatorDisplay.Dynamic,
-				};
+				Debug.WriteLine("SelectUser.CreateChildControls: TextBox (only)", "UserTree");
 			}
+			
+			this.textBox = new TextBox { ID = "tb", };
+			
+			this.Controls.Add(this.textBox);
+
+			this.selectButton = new Button {
+				ID = "btn",
+				Text = "…",
+				CausesValidation = false
+			};
+
+			this.selectButton.Click += Button_Click;
+			this.Controls.Add(this.selectButton);
+
+			MembershipUserValidator _validator = new MembershipUserValidator {
+				ID = "mvv",
+				ControlToValidate = this.textBox.ID,
+				Display = ValidatorDisplay.Dynamic,
+				ErrorMessage = "User list contains unrecognised user(s)",
+			};
+
+			this.Controls.Add(_validator);
 
 			this.ClearChildViewState();
 		}
