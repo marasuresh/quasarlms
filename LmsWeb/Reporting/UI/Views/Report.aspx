@@ -1,4 +1,4 @@
-п»ї<%@ Page Language="C#" MasterPageFile="~/Templates/UI/Layouts/Top+SubMenu.Master" AutoEventWireup="true" CodeBehind="Report.aspx.cs" Inherits="Reporting_UI_Report" %>
+<%@ Page Language="C#" MasterPageFile="~/Reporting/UI/Layouts/Top+SubMenu.Master" AutoEventWireup="true" CodeBehind="Report.aspx.cs" Inherits="Reporting_UI_Report" %>
 <%@ Import Namespace="System.Linq" %>
 
 <asp:Content  ID="Content1" ContentPlaceHolderID="TextContent" Runat="Server">
@@ -9,29 +9,29 @@
                 <td align="left">
                     <asp:DropDownList ID="ddlReportType" runat="server">
                         <asp:ListItem value="erv" selected="True">
-                            Р­РєР·Р°РјРµРЅР°С†РёРѕРЅРЅРѕ СЂРµР№С‚РёРЅРіРѕРІС‹Рµ РІРµРґРѕРјРѕСЃС‚Рё
+                            Экзаменационно рейтинговые ведомости
                         </asp:ListItem>
                         <asp:ListItem value="svrs">
-                            РЎРІРѕРґРЅС‹Рµ РІРµРґРѕРјРѕСЃС‚Рё РїРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј СЃРµСЃСЃРёРё
+                            Сводные ведомости по результатам сессии
                         </asp:ListItem>
                         <asp:ListItem value="oaz">
-                            РћС‚С‡РµС‚С‹ РїРѕ Р°РєР°РґРµРјРёС‡РµСЃРєРёРј Р·Р°РґРѕР»Р¶РµРЅРЅРѕСЃС‚РёСЏРј
+                            Отчеты по академическим задолженностиям
                         </asp:ListItem>
                         <asp:ListItem value="pv">
-                            РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рµ РІРµРґРѕРјРѕСЃС‚Рё
+                            Предварительные ведомости
                         </asp:ListItem>
                         <asp:ListItem value="oes">
-                            РћС‚С‡РµС‚С‹ РїРѕ СЌРєР·Р°РјРµРЅР°С†РёРѕРЅРЅС‹Рј СЃРµСЃСЃРёСЏРј
+                            Отчеты по экзаменационным сессиям
                         </asp:ListItem>
                         <asp:ListItem value="oz">
-                            РћС‚С‡РµС‚ РїРѕ Р·Р°СЏРІРєР°Рј
+                            Отчет по заявкам
                         </asp:ListItem>
                         <asp:ListItem value="irp">
-                            РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЂРµРЅР°Р±РµР»СЊРЅРѕСЃС‚Рё РїРѕС‚РѕРєРѕРІ
+                            Информация о ренабельности потоков
                         </asp:ListItem>
                      </asp:DropDownList>
                      
-                     <asp:Button ID="btnGet" runat="server" Text="РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ" 
+                     <asp:Button ID="btnGet" runat="server" Text="Сформировать" 
                         onclick="btnGet_Click" />
 
                 </td>
@@ -45,7 +45,7 @@
  	<% if (this.Requests.Any())
     { %>
     <table>
-        <tr><th>РќР°Р·РІР°РЅРёРµ</th></tr>
+        <tr><th>Название</th></tr>
 	<% foreach (var _req in this.Requests)
     { %>
         <tr>
