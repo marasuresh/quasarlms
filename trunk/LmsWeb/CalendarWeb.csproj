@@ -141,6 +141,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Reporting\UI\Layouts\Top+SubMenu.Master" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Properties\" />
   </ItemGroup>
