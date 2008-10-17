@@ -10,14 +10,10 @@ namespace N2.Messaging
 
     [Definition]
     [WithEditableTitle("Title", 10)]
-    //[ItemAuthorizedRoles(Roles = new string[0])]
     [NotThrowable, NotVersionable]
     [AllowedChildren(typeof(Message))]
-    [RestrictParents(typeof(IStructuralPage))]
-    public class RecycleBin : ContentItem
+    public class RecycleBin : BaseStore
     {
-        public override string IconUrl { get { return "~/Lms/UI/Img/04/20.png"; } }
-
-        public override bool IsPage { get { return false; } }
+        
     }
 }

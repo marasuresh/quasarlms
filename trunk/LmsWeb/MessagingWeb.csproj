@@ -80,7 +80,6 @@
     <Content Include="Messaging\UI\Parts\MessageInput.ascx" />
     <Content Include="Messaging\UI\Parts\NewMessageList.ascx" />
     <Content Include="Messaging\UI\Views\MailBox.aspx" />
-    <Content Include="Messaging\UI\Views\Message.aspx" />
     <Content Include="Web.connectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +93,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Messaging\UI\Parts\Message.ascx.cs">
+      <DependentUpon>Message.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Messaging\UI\Parts\Message.ascx.designer.cs">
+      <DependentUpon>Message.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Messaging\UI\Parts\MessageInput.ascx.cs">
       <DependentUpon>MessageInput.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -112,10 +118,6 @@
       <DependentUpon>MailBox.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Messaging\UI\Views\Message.aspx.cs">
-      <DependentUpon>Message.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Messaging\UI\Parts\App_LocalResources\MessageInput.ascx.resx" />
@@ -125,7 +127,17 @@
     <Content Include="Messaging\Top+SubMenu.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Messaging\UI\Images\attach.png" />
+    <Content Include="Messaging\UI\Images\eye.png" />
+    <Content Include="Messaging\UI\Parts\Message.ascx" />
+    <Content Include="Messaging\UI\Views\Message.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Messaging\UI\Parts\App_LocalResources\Message.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Messaging\UI\Views\App_LocalResources\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

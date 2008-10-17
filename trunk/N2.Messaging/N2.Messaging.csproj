@@ -31,33 +31,39 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="N2, Version=1.0.403.22991, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2, Version=1.0.403.27113, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Convert\bin\Debug\N2.dll</HintPath>
+      <HintPath>..\..\eval\n2cms\output\Templates\wwwroot\Bin\N2.dll</HintPath>
     </Reference>
-    <Reference Include="N2.Templates, Version=1.0.403.22995, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2.Templates, Version=1.0.403.26130, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Convert\bin\Debug\N2.Templates.dll</HintPath>
+      <HintPath>..\..\eval\n2cms\output\Templates\wwwroot\Bin\N2.Templates.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\UserMsgFilter.cs" />
+    <Compile Include="Collections\UserNewMsgFilter.cs" />
     <Compile Include="Items\Announcement.cs" />
+    <Compile Include="Items\BaseStore.cs" />
     <Compile Include="Items\DraughtStore.cs" />
     <Compile Include="Items\Letter.cs" />
     <Compile Include="Items\MailBox.cs" />
     <Compile Include="Items\Message.cs" />
     <Compile Include="Items\MessageStore.cs" />
     <Compile Include="Items\msgFilter.cs" />
+    <Compile Include="Items\NewMessageList.cs" />
     <Compile Include="Items\RecycleBin.cs" />
     <Compile Include="Items\Task.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Facility\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

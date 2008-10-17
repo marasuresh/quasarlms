@@ -8,21 +8,12 @@ namespace N2.Messaging
     using N2.Integrity;
     using N2.Persistence;
 
-    [Definition]
+    [Definition("Message Store", "MessageStore", "A list of message. Message items can be added to this page.", "", 150)]
     [WithEditableTitle("Title", 10)]
-    //[ItemAuthorizedRoles(Roles = new string[0])]
     [NotThrowable, NotVersionable]
     [AllowedChildren(typeof(Message))]
-    [RestrictParents(typeof(IStructuralPage))]
-    public class MessageStore : ContentItem
+    public class MessageStore : BaseStore
     {
-        public override string IconUrl { get { return "~/Lms/UI/Img/04/20.png"; } }
-
-        public override bool IsPage { get { return false; } }
-
-        public void SaveMessage(ContentItem message)
-        {
-            Context.Persister.Save(message);
-        }
+        
     }
 }

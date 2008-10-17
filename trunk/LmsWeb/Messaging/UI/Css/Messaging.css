@@ -4,17 +4,48 @@
     font-size:80%
 }
 
-.letter
+.lettercss
 {
      color:Green;
 }
 
-.task
+.taskcss
 {
      color:Red;
 }
 
-.announcement
+.announcementcss
 {
      color:Blue;
+}
+
+.Grid { border: solid 1px #FFFFFF; }
+.Grid td
+{
+border: solid 1px #FFFFFF;
+margin: 1px 1px 1px 1px;
+padding: 1px 1px 1px 1px;
+text-align: center;
+}
+.GridHeader
+{
+text-align:center;
+font-weight: normal;
+font-size:80%;
+background-color: #8b8dbb;
+}
+.GridItem
+{
+background-color: #e6e6e6;
+font-size:80%;
+}
+
+.GridAltItem
+{
+background-color: white;
+font-size:80%;
+}
+.NullClass
+{
+ font-style:inherit;    
 }
