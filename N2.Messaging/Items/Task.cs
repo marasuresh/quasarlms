@@ -20,6 +20,8 @@ namespace N2.Messaging
 
         public override string TemplateUrl { get { return "~/Messaging/UI/Views/Message.aspx"; } }
 
+        public override string TypeOfMessage { get { return "taskcss"; } }
+
         //Признак выполнения.
         [EditableCheckBox("Выполнено", 10)]
         public bool isDone

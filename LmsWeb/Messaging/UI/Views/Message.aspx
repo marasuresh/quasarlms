@@ -1,28 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Messaging/Top+SubMenu.master" AutoEventWireup="true" CodeBehind="Message.aspx.cs" Inherits="Messaging_UI_Message" %>
+﻿<%@ Page Language="C#"  
+Inherits="N2.Templates.Web.UI.TemplatePage`1[[N2.Messaging.Message, N2.Messaging]], N2.Templates" %>
+<%@ Import Namespace="System.Linq" %>
+<%@ Import Namespace="N2.Web" %>
+<%@ Register TagPrefix="uc" TagName="Message" 
+    Src="~\Messaging\UI\Parts\Message.ascx" %>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="TextContent" Runat="Server">
-    <div style="width:100%">
-                <table width="100%">
-                    <tr>
-                        <td>
-                            <asp:Label ID="lbFrom" runat="server" Text="lbFrom" meta:resourcekey="lblFromResource1" ></asp:Label>    
-                        </td>
-                        <td>
-                            <asp:TextBox ID="tbFrom" runat="server" ReadOnly="true" Width="100%"></asp:TextBox>            
-                        </td>  
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:Label ID="lbSubject" runat="server" Text="lbSubject" meta:resourcekey="lbSubjectResource1" ></asp:Label>    
-                        </td>
-                        <td>
-                            <asp:TextBox ID="tbSubject" runat="server" ReadOnly="true" Width="100%"></asp:TextBox>            
-                        </td>  
-                    </tr>
-                </table>
-                <br />
-                <N2:FreeTextArea ID="txtText" runat="server" TextMode="MultiLine" 
-                                meta:resourcekey="txtTextResource1" CssClass="freeTextArea" 
-                                EnableFreeTextArea="True" ReadOnly="true" Width="100%"/>
-    </div>
+<asp:Content ID="Content1" ContentPlaceHolderID="TextContent" Runat="Server">
+            <uc:Message id="miViewMsg" runat="server"/>
 </asp:Content>

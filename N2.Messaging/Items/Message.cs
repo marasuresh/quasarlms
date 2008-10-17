@@ -24,34 +24,34 @@
 
         public override string TemplateUrl { get { return "~/Messaging/UI/Views/Message.aspx"; } }
 
-        //public override bool IsAuthorized(System.Security.Principal.IPrincipal user)
-        //{
-        //    string userName = user.Identity.Name;
-        //    bool userIsAuthorized = base.IsAuthorized(user);
-        //    return true;
-        //}
 
-        [EditableTextBox("Отправитель", 5)]
+        [EditableTextBox("Отправитель", 1)]
         public string From
         {
             get { return GetDetail("From") as string; }
             set { SetDetail("From", value); }
         }
 
-        [EditableTextBox("Получатель", 5)]
+        [EditableTextBox("Получатель", 2)]
         public string To
         {
             get { return GetDetail("To") as string; }
             set { SetDetail("To", value); }
         }
 
-        ////Тип сообщения.
-        //[EditableEnum("Тип сообщения", 8, typeof(msgType))]
-        //public msgType typeOfMessage
-        //{
-        //    get { return (msgType)(GetDetail("typeOfMessage") ?? msgType.letter); }
-        //    set { SetDetail("typeOfMessage", value); }
-        //}
+        [EditableTextBox("Владелец сообщения", 2)]
+        public string Owner
+        {
+            get { return GetDetail("Owner") as string; }
+            set { SetDetail("Owner", value); }
+        }
+
+        [EditableTextBox("Тема", 3)]
+        public string Subject
+        {
+            get { return GetDetail("Subject") as string; }
+            set { SetDetail("Subject", value); }
+        }
 
         //Признак прочтения.
         [EditableCheckBox("Прочитано", 10)]
@@ -61,20 +61,51 @@
             set { SetDetail("isRead", value); }
         }
 
-        
-        public string Subject
+        public string[] Attachments
         {
-            get { return Title; }
-            set { Title = value; }
+            get { return GetDetail("Attachments") as string[]; }
+            set { SetDetail("Attachments", value); }
+        }
+
+        public virtual string TypeOfMessage
+        {
+            get { return ""; }
+        }
+
+        public MailBox mailBox
+        {
+            get { return GetDetail("mailBox") as MailBox; }
+            set { SetDetail("mailBox", value); }
         }
         
-        //[EditableFreeTextArea("Body", 1)]
-        //public string Body
-        //{
-        //    get { return this.Text; }
-        //    set { this.Text = value;}
-        //}
 
         #endregion Properties
+
+        #region Methods
+
+        public void Save()
+        {
+            Context.Persister.Save(this);
+        }
+
+        //Срабатывает при создании сообщения. Фильтрует сообщения в обратном порядке.
+        public override void AddTo(ContentItem newParent)
+        {
+            Utility.Insert(this, newParent, "Published DESC");
+        }
+
+        public override bool Visible
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+                base.Visible = value;
+            }
+        }
+
+        #endregion
     }
 }
