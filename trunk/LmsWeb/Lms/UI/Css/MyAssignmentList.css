@@ -1,0 +1,26 @@
+﻿.wza {
+	border-top: 1px solid #B5C7DE;
+	vertical-align:top;
+}
+.wza A.sba {
+	display:block;
+	padding:4px;
+	padding-left:7px;
+	width: 100%;
+	font-family: Verdana;
+	margin-left:7px;
+	color:#445599;
+}
+.wza a:hover.sba: {
+	background-color: Beige;
+}
+.wza .selected A.sba {
+	background-color: White;
+}
+.wza .wzs table {
+	border:none;
+	width:100%;
+}
+.wza .wzs table th {
+	background-color:Silver;
+}

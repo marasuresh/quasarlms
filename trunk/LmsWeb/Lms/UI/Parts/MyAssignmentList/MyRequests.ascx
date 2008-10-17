@@ -1,7 +1,7 @@
 ﻿<%@ Control
 		Language="C#"
 		AutoEventWireup="true"
-		Inherits="N2.Templates.Web.UI.TemplateUserControl`2[[N2.Templates.Items.AbstractContentPage, N2.Templates], [N2.Lms.Items.MyRequests, N2.Lms]], N2.Templates" %>
+		Inherits="N2.Templates.Web.UI.TemplateUserControl`2[[N2.Templates.Items.AbstractContentPage, N2.Templates], [N2.Lms.Items.MyAssignmentList, N2.Lms]], N2.Templates" %>
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="N2.Lms.Items" %>
@@ -35,8 +35,6 @@
 		base.OnInit(e);
 	}
 </script>
-<n2:H4 runat="server" Text='<%$ CurrentItem: Title %>' />
-<n2:Box runat="server">
 <p class="help"><%= Resources.CourseRequests.Help1 %><br/>
 			<%= Resources.CourseRequests.Help2 %></p>
 <asp:Repeater
@@ -46,7 +44,7 @@
 			OnItemCommand="List_Command">
 				<HeaderTemplate>
 		
-		<table cellspacing="0" cellpadding="3" border="1" width="100%" align="center" class="TableList">
+		<table cellspacing="0" cellpadding="3" align="center">
 			<tr>
 				<th><%= Resources.CourseRequests.tableExisdataTRequests_tableHeader_03 %></th>
 				<th></th></tr>
@@ -78,4 +76,3 @@
 
 				</ItemTemplate>
 			</asp:Repeater>
-</n2:Box>

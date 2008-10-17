@@ -69,7 +69,7 @@ namespace N2.Lms.Items
 				return
 					from _request in this.GetChildren(/*filtered by current user*/).OfType<Request>()
 					let _currentState = _request.GetCurrentState() as ApprovedState
-					where _currentState != null
+					where _currentState != null && null != _currentState.Ticket
 					select _currentState.Ticket;
 			}
 		}

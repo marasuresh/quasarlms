@@ -1,50 +1,45 @@
 ﻿<%@ Control
 		Language="C#"
 		AutoEventWireup="true"
-		Inherits="N2.Templates.Web.UI.TemplateUserControl`2[[N2.Templates.Items.AbstractContentPage, N2.Templates], [N2.Lms.Items.MyCourses, N2.Lms]], N2.Templates" %>
+		Inherits="N2.Templates.Web.UI.TemplateUserControl`2[[N2.Templates.Items.AbstractContentPage, N2.Templates], [N2.Lms.Items.MyAssignmentList, N2.Lms]], N2.Templates" %>
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="System.Diagnostics" %>
 <%@ Import Namespace="N2.Workflow" %>
 
 <script runat="server">
-	protected void List_Command(object sender, CommandEventArgs e)
-	{
-		var _courseId = int.Parse(((string)e.CommandArgument));
-		Course _course = this.Engine.Persister.Get<Course>(_courseId);
-		
-		this.CurrentItem.RequestContainer.SubscribeTo(_course, this.Page.User.Identity.Name);
-		Debug.WriteLine("e.CommandArgument: " + _courseId.ToString(), "Lms");
-		BindData();
-	}
-	
 	void BindData()
 	{
-		this.rptCourses.DataSource = this.CurrentItem.MyAvailableCourses;
-		this.rptCourses.DataBind();
+		this.rpt.DataSource = this.CurrentItem.MyAvailableCourses;
+		this.rpt.DataBind();
 	}
 
 	protected override void OnInit(EventArgs e)
 	{
+		this.rpt.ItemCommand += (o, e0) => {
+			var _courseId = int.Parse(((string)e0.CommandArgument));
+			Course _course = this.Engine.Persister.Get<Course>(_courseId);
+			
+			this.CurrentItem.RequestContainer.SubscribeTo(
+				_course,
+				this.Page.User.Identity.Name);
+			
+			Debug.WriteLine("e.CommandArgument: " + _courseId.ToString(), "Lms");
+			BindData();
+		};
+		
 		this.BindData();
 		base.OnInit(e);
 	}
 </script>
 
-<n2:H4 runat="server" Text="<%$ CurrentItem: Title %>" />
-<n2:Box runat="server">
 <asp:Repeater
 		runat="server"
-		ID="rptCourses"
-		OnItemCommand="List_Command">
+		ID="rpt">
 	<HeaderTemplate>
-		<p class="help"><%= Resources.CourseRequests.tableAccessibleCourses_Note%></p>
-		
 		<table	cellspacing="0"
 				cellpadding="3"
-				border="1"
-				width="100%"
-				align="center"
-				class="TableList">
+				border="0"
+				align="center">
 			<tr><th></th>
 				<th><%= Resources.CourseRequests.tableAccessibleCourses_tableHeader_02%></th>
 				<th><%= Resources.CourseRequests.tableAccessibleCourses_tableHeader_03%></th></tr>
@@ -69,4 +64,3 @@
 				</tr>
 	</ItemTemplate>
 </asp:Repeater>
-</n2:Box>
