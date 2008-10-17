@@ -13,9 +13,19 @@ namespace N2.Lms.Items
 	[AllowedZones("Content", "Right", "Left")]
 	[WithEditableName]
 	[WithEditableTitle]
-	public class MyTrainings: AbstractItem
+	public partial class MyAssignmentList: AbstractItem
 	{
 		#region Lms properties
+
+		[EditableLink(
+			"Course Container", 03,
+			Required = true,
+			LocalizationClassKey = "Lms.CourseList")]
+		public CourseContainer CourseContainer
+		{
+			get { return this.GetDetail("CourseContainer") as CourseContainer; }
+			set { this.SetDetail<CourseContainer>("CourseContainer", value); }
+		}
 
 		[EditableLink(
 			"Request Container", 05,
@@ -26,12 +36,12 @@ namespace N2.Lms.Items
 			get { return this.GetDetail("RequestContainer") as RequestContainer; }
 			set { this.SetDetail<RequestContainer>("RequestContainer", value); }
 		}
-
+		
 		#endregion Lms properties
-
+		
 		#region System properties
-
-		public override string TemplateUrl { get { return "~/Lms/UI/Parts/MyTrainings.ascx"; } }
+		
+		public override string TemplateUrl { get { return "~/Lms/UI/Parts/MyAssignmentList.ascx"; } }
 		
 		public override bool IsPage { get { return false; } }
 		

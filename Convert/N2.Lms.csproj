@@ -73,15 +73,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GuidService.cs" />
+    <Compile Include="Items\Lms\MyAssignmentList.Business.cs" />
+    <Compile Include="Items\Lms\MyAssignmentList.cs" />
     <Compile Include="Items\Lms\TestQuestion.Business.cs" />
     <Compile Include="Items\Lms\TrainingExtensions.cs" />
     <Compile Include="Items\Lms\Topic.Business.cs" />
     <Compile Include="Items\Lms\Test.Business.cs" />
     <Compile Include="Items\Lms\TopicList.Business.cs" />
     <Compile Include="Items\Lms\Course.Business.cs" />
-    <Compile Include="Items\Lms\MyTrainings.cs" />
-    <Compile Include="Items\Lms\MyCourses.cs" />
-    <Compile Include="Items\Lms\MyRequests.cs" />
     <Compile Include="Items\Lms\RequestContainer.Business.cs" />
     <Compile Include="Items\Lms\RequestWorkflow\Transitions\ApprovedState.cs" />
     <Compile Include="Items\Lms\RequestWorkflow\Transitions\AcceptedState.cs" />
@@ -103,7 +102,6 @@
     <Compile Include="Items\Lms\TrainingWorkflow\TrainingTicket.Business.cs" />
     <Compile Include="Items\Lms\TrainingWorkflow\StateDefinitions\ScheduledTopic.cs" />
     <Compile Include="Items\Lms\TrainingWorkflow\TrainingTicket.cs" />
-    <Compile Include="Items\MenuItem.cs" />
     <Compile Include="Lms.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
