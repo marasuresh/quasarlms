@@ -27,7 +27,6 @@ namespace N2.Workflow.Items
 		public override string Title
 		{
 			get { return base.Title ?? this.Name; }
-			set { base.Title = value; }
 		}
 
 		public override string IconUrl { get { return
@@ -42,6 +41,6 @@ namespace N2.Workflow.Items
 			}
 		}
 
-		public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
+		public override string TemplateUrl { get { return "~/Templates/UI/Parts/Empty.ascx"; } }
 	}
 }

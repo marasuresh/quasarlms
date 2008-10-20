@@ -21,16 +21,15 @@
 		}
 
 		public override bool IsPage { get { return false; } }
-		public override string TemplateUrl { get { return "~/Workflow/UI/Workflow.ascx"; } }
+		public override string TemplateUrl { get { return "~/Templates/UI/Parts/Empty.ascx"; } }
 
-		public override string Title {
-			get { return base.Title ?? this.Name; }
-			set { base.Title = value; }
-		}
+		public override string Title { get { return base.Title ?? this.Name; } }
 
 		public override string IconUrl { get { return
 			null == this.InitialState
 				? string.Format("~/Workflow/UI/Img/03/{0}.png", 41)
 				: this.InitialState.IconUrl; } }
+
+		public override bool Visible { get { return false; } }
 	}
 }

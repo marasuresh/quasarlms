@@ -31,15 +31,14 @@
 
 		static ClientScriptManager s_cs;
 		static ClientScriptManager ClientScript {
-			get
-			{
+			get {
 				if(!System.Web.Hosting.HostingEnvironment.IsHosted) {
 					return null;
 				}
 				
 				if(null == s_cs) {
 					Page _page = HttpContext.Current.Handler as Page;
-
+//HACK research an implication of enforcing page lifecycle manually on performance and stability
 					if(null == _page) {
 						_page = new Page();
 						((IHttpHandler)_page).ProcessRequest(HttpContext.Current);

@@ -34,10 +34,7 @@ namespace N2.Details
 		static string GetFullyQualifiedTypeName(Type type)
 		{
 			return null != type
-				? string.Format(
-						"{0}, {1}",
-						type.FullName,
-						type.Assembly.FullName)
+				? type.AssemblyQualifiedName
 				: string.Empty;
 		}
 	}

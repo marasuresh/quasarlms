@@ -34,48 +34,43 @@ namespace N2.Web.UI.WebControls
 		{
 			var _history = this.ParentItem.GetChildren(new TypeFilter(typeof(ItemState)));
 
-			//Stay silent if nothing to display
-			if (!_history.Any()) {
-				base.RenderContents(output);
-				return;
-			}
-
-			var _rows =
-				from _state in _history.Cast<ItemState>()
-				select new {
-					Date = _state.Created,
-					User = _state.SavedBy,
-					From = _state.FromState.Name,
-					FromIcon = _state.FromState.IconUrl,
-					To = _state.ToState.Name,
-					ToIcon = _state.ToState.IconUrl,
-					ByAction = _state.Action.Name,
-					Reason = _state.Comment,
-					ReassignedTo = _state.AssignedTo,
-				} into _trailData
-				select new[] {
+			if (_history.Any()) {
+				var _rows =
+					from _state in _history.Cast<ItemState>()
+					select new {
+						Date = _state.Created,
+						User = _state.SavedBy,
+						From = _state.FromState.Name,
+						FromIcon = _state.FromState.IconUrl,
+						To = _state.ToState.Name,
+						ToIcon = _state.ToState.IconUrl,
+						ByAction = _state.Action.Name,
+						Reason = _state.Comment,
+						ReassignedTo = _state.AssignedTo,
+					} into _trailData
+					select new[] {
 					_trailData.Date.ToLongDateString(),
 					_trailData.User,
 					string.Format(@"<img src='{0}' />&nbsp;{1}",
 						this.ResolveClientUrl(_trailData.FromIcon),
 						_trailData.From),
 					string.Format(@"<img src='{0}' />&nbsp;{1}",
-						_trailData.ToIcon,
+						this.ResolveClientUrl(_trailData.ToIcon),
 						_trailData.To),
 					_trailData.ByAction,
 					_trailData.Reason,
 					_trailData.ReassignedTo,
 				} into _stringData
-				
-				let _row = "<tr>" + string.Join(string.Empty, (
-					from _s in _stringData
-					select "<td>" + _s + "</td>"
-				).ToArray()) + "</tr>"
-				
-				select _row;
-				
-						
-			output.Write(string.Format(@"
+
+					let _row = "<tr>" + string.Join(string.Empty, (
+						from _s in _stringData
+						select "<td>" + _s + "</td>"
+					).ToArray()) + "</tr>"
+
+					select _row;
+
+
+				output.Write(string.Format(@"
 <table class='Workflow AuditTrail' cellpadding='0' cellspacing='0'>
 	<tr><th>Date</th>
 		<th>User</th>
@@ -87,6 +82,7 @@ namespace N2.Web.UI.WebControls
 	{0}
 </table>
 ", string.Join(System.Environment.NewLine, _rows.ToArray())));
+			}
 		}
 
 		#region Properties
@@ -104,7 +100,8 @@ namespace N2.Web.UI.WebControls
 		public ContentItem ParentItem {
 			get {
 				return parentItem 
-					?? (parentItem = N2.Context.Persister.Get(ParentItemID));
+					?? (parentItem = N2.Context.Persister.Get(ParentItemID))
+					?? (ParentItem = N2.Context.UrlParser.CurrentPage);
 			}
 			set {
 				if (value == null)
