@@ -66,6 +66,8 @@
     <Compile Include="ACalendarList.cs" />
     <Compile Include="ACalendarSmall.cs" />
     <Compile Include="AEvent.cs" />
+    <Compile Include="ACalendarContainer.Business.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="ExcelExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporting\Report.cs" />

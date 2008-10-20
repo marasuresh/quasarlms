@@ -22,7 +22,7 @@
 		#region System properties
 		
 		public override bool IsPage { get { return true; } }
-		public override string IconUrl { get { return null == this.Training ? "~/Lms/UI/Img/error.png" : base.IconUrl; } }
+		public override string IconUrl { get { return null == this.Training ? Icons.Error : base.IconUrl; } }
 
 		#endregion System properties
 		

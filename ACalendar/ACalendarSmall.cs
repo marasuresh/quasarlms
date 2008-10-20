@@ -1,41 +1,66 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using N2.Collections;
-using N2.Details;
+﻿using N2.Details;
 using N2.Integrity;
 using N2.Templates;
 using N2.Templates.Items;
 
-
 namespace N2.ACalendar
 {
-    [Definition("ACalendarSmall", "ACalendarSmall", "Маленький календарь", "", 160)]
-    [WithEditableTitle("Title", 10, Required = false)]
-    [AllowedZones(Zones.RecursiveRight, Zones.Right, Zones.SiteRight)]
-    [RestrictParents(typeof(IStructuralPage))]
+	using N2.Lms;
+	using N2.Web;
+	
+	[Definition("ACalendarSmall", "ACalendarSmall", "Маленький календарь", "", 160)]
+	[WithEditableTitle("Title", 10, Required = false)]
+	[AllowedZones(Zones.RecursiveRight, Zones.Right, Zones.SiteRight)]
+	[RestrictParents(typeof(IStructuralPage))]
+	public class ACalendarSmall : SidebarItem, ILink
+	{
+		#region System properties
+		
+		public override string TemplateUrl { get { return "~/ACalendar/UI/Parts/ACalendar_small.ascx"; } }
 
-    public class ACalendarSmall : SidebarItem
-    {
-        public override string TemplateUrl { get { return "~/ACalendar/UI/Parts/ACalendar_small.ascx"; } }
+		public override string IconUrl { get { return this.ACalendarContainer == null ? Lms.Icons.Error : Icons.Calendar2; } }
 
-        [EditableTextBox("Max messages", 120)]
-        public int MaxNews
-        {
-            get { return (int)(GetDetail("MaxMessages") ?? 3); }
-            set { SetDetail("MaxMessages", value, 3); }
-        }
+		public override bool IsPage { get { return false; } }
 
-        [EditableLink("ACalendar Container", 1, HelpTitle = "Select an item, which contains all calendars.")]
-        public ACalendarContainer ACalendarContainer
-        {
-            get { return this.GetDetail("ACalendarContainer") as ACalendarContainer; }
-            set { this.SetDetail<ACalendarContainer>("ACalendarContainer", value); }
-        }
+		#endregion System properties
 
+		#region Lms properties
 
-    }
+		[EditableTextBox("Max messages", 120)]
+		public int MaxNews
+		{
+			get { return (int)(GetDetail("MaxMessages") ?? 3); }
+			set { SetDetail("MaxMessages", value, 3); }
+		}
+
+		[EditableLink("ACalendar Container", 1,
+			HelpTitle = "Select an item, which contains all calendars.",
+			Required = true)]
+		public ACalendarContainer ACalendarContainer
+		{
+			get { return this.GetDetail("ACalendarContainer") as ACalendarContainer; }
+			set { this.SetDetail<ACalendarContainer>("ACalendarContainer", value); }
+		}
+		
+		#endregion Lms properties
+
+		#region ILink Members
+
+		string ILink.Contents { get { return this.Title; } }
+
+		string ILink.Target { get { return string.Empty; } }
+
+		string ILink.ToolTip {
+			get { return this.ACalendarContainer == null
+					? "ACalendar Container is not set"
+					: this.IconUrl;
+			}
+		}
+
+		string ILink.Url { get { return this.Url; } }
+
+		#endregion
+	}
 }
 //namespace N2.Messaging
 //{
