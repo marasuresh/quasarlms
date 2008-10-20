@@ -177,7 +177,68 @@ namespace N2.Messaging.Messaging.UI.Parts
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
+            Page.Validate("CommentInput");
+            if (Page.IsValid)
+            {
+                //Сохраняем изменения.
+                CurrentItem.To = txtTo.Text;
+                CurrentItem.Subject = txtSubject.Text;
+                CurrentItem.Text = ftaEdit.Text;
+                CurrentItem.Expires = DateTime.Now.AddDays(60);
 
+                MailFactory mFactory = new MailFactory();
+                
+                //Upload file.
+                string[] attacments = null;
+                if (btnFileUpload.HasFile)  // File was sent
+                {
+                    // Get a reference to PostedFile object
+                    HttpPostedFile myFile = btnFileUpload.PostedFile;
+
+                    attacments = mFactory.UploadFile(myFile, Server.MapPath("./Upload/"), "~/Messaging/UI/Views/Upload/");
+                }
+                else
+                    attacments = CurrentItem.Attachments;
+                
+                CurrentItem.Attachments = attacments;
+
+                Engine.Persister.Save(CurrentItem);
+
+                //Возвращаем письмо в отправленные.
+                Engine.Persister.Move(CurrentItem, CurrentItem.mailBox.MessageStore);
+
+                //Создаем дубликаты для получателей.
+                BaseStore store = CurrentItem.mailBox.MessageStore;
+
+                string msgType = CurrentItem.TypeOfMessage;
+
+                string curUser = Context.User.Identity.Name;
+
+                string to = txtTo.Text;
+                string subject = txtSubject.Text;
+                string text = ftaEdit.Text;
+
+
+                //Создание копий получалелей.
+                string[] recipients = mFactory.GetRecipients(to);
+                foreach (string recipient in recipients)
+                {
+                    switch (msgType)
+                    {
+                        case "newLetter":
+                            mFactory.CreateLetter(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem.mailBox);
+                            break;
+                        case "newTask":
+                            mFactory.CreateTask(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem.mailBox);
+                            break;
+                        case "newAnnouncement":
+                            mFactory.CreateAnnouncement(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem.mailBox);
+                            break;
+                    }
+                }
+
+                Response.Redirect(Url.Parse(CurrentItem.mailBox.Url).AppendSegment("inbox").Path);
+            }
         }
 
     }

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Collections\UserMsgFilter.cs" />
     <Compile Include="Collections\UserNewMsgFilter.cs" />
+    <Compile Include="Facility\MailFactory.cs" />
     <Compile Include="Items\Announcement.cs" />
     <Compile Include="Items\BaseStore.cs" />
     <Compile Include="Items\DraughtStore.cs" />
@@ -63,7 +64,6 @@
     <Compile Include="Items\Task.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Facility\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
