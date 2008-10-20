@@ -225,13 +225,13 @@ namespace N2.Messaging.Messaging.UI.Parts
                 {
                     switch (msgType)
                     {
-                        case "newLetter":
+                        case "lettercss":
                             mFactory.CreateLetter(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem.mailBox);
                             break;
-                        case "newTask":
+                        case "taskcss":
                             mFactory.CreateTask(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem.mailBox);
                             break;
-                        case "newAnnouncement":
+                        case "announcementcss":
                             mFactory.CreateAnnouncement(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem.mailBox);
                             break;
                     }
