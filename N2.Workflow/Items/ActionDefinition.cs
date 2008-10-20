@@ -13,7 +13,6 @@ namespace N2.Workflow.Items
 	[Definition]
 	[WithEditableName("Name", 01)]
 	[RestrictParents(typeof(StateDefinition))]
-	[WithEditableTitle]
 	public class ActionDefinition: ContentItem
 	{
 		#region Business properties
@@ -39,13 +38,27 @@ namespace N2.Workflow.Items
 
 		public override bool IsPage { get { return false; } }
 
+		public override string Title {
+			get { return base.Title ?? this.GetDefaultTitle(); }
+		}
+
+		string GetDefaultTitle()
+		{
+			string _result = this.Name;
+
+			if (null != this.LeadsTo) {
+				_result = string.Concat(_result, "&mdash;", this.LeadsTo.Title);
+			}
+
+			return _result;
+		}
+
 		public override string IconUrl { get { return this.LeadsTo.IconUrl; } }
 
-		//public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
+		public override string TemplateUrl { get { return "~/Templates/UI/Parts/Empty.ascx"; } }
 
 		public override string ZoneName {
 			get { return base.ZoneName ?? "SiteRight"; }
-			set { base.ZoneName = value; }
 		}
 
 		#endregion System properties

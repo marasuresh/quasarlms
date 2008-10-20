@@ -149,7 +149,7 @@ namespace N2.Web.UI.WebControls
 		{
 			var _actionQuery =
 				from _action in this.InitialState.ToState.Actions
-				select new ListItem(_action.Title, _action.Name);
+				select new ListItem(System.Web.HttpUtility.HtmlDecode(_action.Title), _action.Name);
 
 			if (_actionQuery.Any()) {
 				this.Controls.Add(this.actionSelectorContainer = new PlaceHolder());

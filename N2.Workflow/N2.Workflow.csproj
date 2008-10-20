@@ -97,7 +97,7 @@
     <EmbeddedResource Include="Workflow.css" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\N2.Futures\N2.Futures.csproj">
+    <ProjectReference Include="..\..\Lms\N2.Futures\N2.Futures.csproj">
       <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
       <Name>N2.Futures</Name>
     </ProjectReference>
