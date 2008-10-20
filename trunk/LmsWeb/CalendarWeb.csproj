@@ -141,6 +141,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ACalendar\UI\Img\calendar.png" />
+    <Content Include="ACalendar\UI\Img\date.png" />
+    <Content Include="ACalendar\UI\Img\date_error.png" />
     <Content Include="Reporting\UI\Layouts\Top+SubMenu.Master" />
   </ItemGroup>
   <ItemGroup>

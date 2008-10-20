@@ -72,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="GuidService.cs" />
     <Compile Include="Items\Lms\MyAssignmentList.Business.cs" />
     <Compile Include="Items\Lms\MyAssignmentList.cs" />

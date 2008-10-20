@@ -89,11 +89,11 @@ namespace N2.Web.UI.WebControls
 				}
 			}
 		}
-
+		
 		[Browsable(true)]
 		[DefaultValue(typeof(DisplayModeEnum), "Users")]
 		public DisplayModeEnum SelectionMode { get; set; }
-
+		//filtering is not implemented yet
 		[Browsable(true)]
 		public string UserFilter { get; set; }
 

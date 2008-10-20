@@ -1,37 +1,20 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using N2.Web.UI.WebControls;
-using N2.Resources;
-using N2.Templates;
 using N2.Templates.Web.UI;
-using N2.ACalendar;
-
-
-
+using N2.Web.UI.WebControls;
 
 namespace N2.ACalendar.UI.Parts
 {
-    public partial class ACalendar_small : TemplateUserControl<ContentItem, N2.ACalendar.ACalendarSmall>
-    {
+	public partial class ACalendar_small : TemplateUserControl<ContentItem, N2.ACalendar.ACalendarSmall>
+	{
 
-        protected ItemDataSource idsNews;
-        protected override void OnInit(EventArgs e)
-        {
-            base.OnInit(e);
-            var calendar_list = CurrentItem.ACalendarContainer.GetChildren();
-            //calendar_list.FindLast() 
-
-
-        }
-    }
+		protected ItemDataSource idsNews;
+		protected override void OnInit(EventArgs e)
+		{
+			base.OnInit(e);
+			var calendar_list = CurrentItem.ACalendarContainer.MyCalendars;
+			//calendar_list.FindLast() 
+		}
+	}
 }
 
 //namespace N2.Messaging.Messaging.UI.Parts
