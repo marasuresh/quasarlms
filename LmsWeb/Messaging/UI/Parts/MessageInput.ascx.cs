@@ -17,19 +17,21 @@ namespace N2.Messaging.Messaging.UI.Parts
             Page.Validate("CommentInput");
             if (Page.IsValid)
             {
-                
+
+                MailFactory mFactory = new MailFactory();
+
                 BaseStore store = CurrentItem.MessageStore;
 
                 string msgType = CurrentItem.Action;
 
                 string curUser = Context.User.Identity.Name;
                 
-                string to = Server.HtmlEncode(txtTo.Text);
-                
-                string subject = Server.HtmlEncode(txtSubject.Text);
+                string to = txtTo.Text;
+               
+                string subject = txtSubject.Text;
                 string text = txtText.Text;
 
-                string[] urlToFile = null;
+                string[] attacments = null;
 
                 //Upload file.
                 if (btnFileUpload.HasFile)  // File was sent
@@ -37,23 +39,38 @@ namespace N2.Messaging.Messaging.UI.Parts
                     // Get a reference to PostedFile object
                     HttpPostedFile myFile = btnFileUpload.PostedFile;
 
-                    urlToFile = UploadFile(myFile);
+                    attacments = mFactory.UploadFile(myFile, Server.MapPath("./Upload/"), "~/Messaging/UI/Views/Upload/");
                 }
                 
+                //Создание копии отправителя.
                 switch (msgType)
                 {
                     case "newLetter":
-                        CreateLetter(curUser, to, curUser, subject, text, urlToFile, store, CurrentItem);
-                        CreateLetter(curUser, to, to, subject, text, urlToFile, store, CurrentItem);
+                        mFactory.CreateLetter(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
                         break;
                     case "newTask":
-                        CreateTask(curUser, to, curUser, subject, text, urlToFile, store, CurrentItem);
-                        CreateTask(curUser, to, to, subject, text, urlToFile, store, CurrentItem);
+                        mFactory.CreateTask(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
                         break;
                     case "newAnnouncement":
-                        CreateAnnouncement(curUser, to, curUser, subject, text, urlToFile, store, CurrentItem);
-                        CreateAnnouncement(curUser, to, to, subject, text, urlToFile, store, CurrentItem);
+                        mFactory.CreateAnnouncement(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
                         break;
+                }
+                //Создание копий получалелей.
+                string[] recipients = mFactory.GetRecipients(to);
+                foreach (string recipient in recipients)
+                {
+                    switch (msgType)
+                    {
+                        case "newLetter":
+                            mFactory.CreateLetter(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem);
+                            break;
+                        case "newTask":
+                            mFactory.CreateTask(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem);
+                            break;
+                        case "newAnnouncement":
+                            mFactory.CreateAnnouncement(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem);
+                            break;
+                    }    
                 }
 
                 Response.Redirect(Url.Parse(CurrentPage.Url).AppendSegment("inbox").Path);
@@ -61,19 +78,12 @@ namespace N2.Messaging.Messaging.UI.Parts
             }
         }
 
-        
-
-
-        protected void btnCancel_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(CurrentPage.Url);
-        }
-
         protected void btnToDr_Click(object sender, EventArgs e)
         {
             Page.Validate("CommentInput");
             if (Page.IsValid)
             {
+                MailFactory mFactory = new MailFactory();
 
                 BaseStore store = CurrentItem.DraughtStore;
 
@@ -81,12 +91,12 @@ namespace N2.Messaging.Messaging.UI.Parts
 
                 string curUser = Context.User.Identity.Name;
 
-                string to = Server.HtmlEncode(txtTo.Text);
+                string to = txtTo.Text;
 
-                string subject = Server.HtmlEncode(txtSubject.Text);
+                string subject = txtSubject.Text;
                 string text = txtText.Text;
 
-                string[] urlToFile = null;
+                string[] attacments = null;
 
                 //Upload file.
                 if (btnFileUpload.HasFile)  // File was sent
@@ -94,19 +104,19 @@ namespace N2.Messaging.Messaging.UI.Parts
                     // Get a reference to PostedFile object
                     HttpPostedFile myFile = btnFileUpload.PostedFile;
 
-                    urlToFile = UploadFile(myFile);
+                    attacments = mFactory.UploadFile(myFile, Server.MapPath("./Upload/"), "~/Messaging/UI/Views/Upload/");
                 }
 
                 switch (msgType)
                 {
                     case "newLetter":
-                        CreateLetter(curUser, to, curUser, subject, text, urlToFile, store, CurrentItem);
+                        mFactory.CreateLetter(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
                         break;
                     case "newTask":
-                        CreateTask(curUser, to, curUser, subject, text, urlToFile, store, CurrentItem);
+                        mFactory.CreateTask(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
                         break;
                     case "newAnnouncement":
-                        CreateAnnouncement(curUser, to, curUser, subject, text, urlToFile, store, CurrentItem);
+                        mFactory.CreateAnnouncement(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
                         break;
                 }
 
@@ -120,68 +130,10 @@ namespace N2.Messaging.Messaging.UI.Parts
 
         }
 
-
-        private void CreateLetter(string from, string to, string owner, string subject, string text, string[] urlToFile, BaseStore store, MailBox CurItem)
+        protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Letter letter = Engine.Definitions.CreateInstance<Letter>(store);
-            letter.Title = "letter";
-            letter.From = from;
-            letter.To = to;
-            letter.Owner = owner;
-            letter.Subject = subject;
-            letter.Text = text;
-            letter.Attachments = urlToFile;
-            letter.mailBox = CurItem;
-            Engine.Persister.Save(letter);
+            Response.Redirect(CurrentPage.Url);
         }
-
-        private void CreateTask(string from, string to, string owner, string subject, string text, string[] urlToFile, BaseStore store, MailBox CurItem)
-        {
-            Task task = Engine.Definitions.CreateInstance<Task>(store);
-            task.Title = "task";
-            task.From = from;
-            task.To = to;
-            task.Owner = owner;
-            task.Subject = subject;
-            task.Text = text;
-            task.Attachments = urlToFile;
-            task.mailBox = CurItem;
-            Engine.Persister.Save(task);
-        }
-
-        private void CreateAnnouncement(string from, string to, string owner, string subject, string text, string[] urlToFile, BaseStore store, MailBox CurItem)
-        {
-            Announcement announcement = Engine.Definitions.CreateInstance<Announcement>(store);
-            announcement.Title = "announcement";
-            announcement.From = from;
-            announcement.To = to;
-            announcement.Owner = owner;
-            announcement.Subject = subject;
-            announcement.Text = text;
-            announcement.Attachments = urlToFile;
-            announcement.mailBox = CurItem;
-            Engine.Persister.Save(announcement);
-        }
-
-        private string[] UploadFile(HttpPostedFile myFile)
-        {
-            string[] urlToFile = new string[2];
-
-            //Short name of File.
-            string strFileName = Path.GetFileName(myFile.FileName);
-            string strUniqueName = Guid.NewGuid() + "$" + strFileName;
-
-            string strRootUpload = Server.MapPath("./Upload/");
-
-            string FilePath = strRootUpload + strUniqueName;
-
-            myFile.SaveAs(FilePath);
-
-            urlToFile[0] = "~/Messaging/UI/Views/Upload/" + strUniqueName;
-
-            return urlToFile;
-        }
-
         
     }
 }
