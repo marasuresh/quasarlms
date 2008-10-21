@@ -17,10 +17,10 @@
     [RestrictParents(typeof(MessageStore),typeof(RecycleBin),typeof(DraughtStore))]
     [NotThrowable, NotVersionable]
     public abstract class Message : AbstractContentPage
-    {
-        #region Properties
+	{
+		#region Properties
 
-        //public override string IconUrl { get { return "~/Lms/UI/Img/04/50.png"; } }
+		//public override string IconUrl { get { return "~/Lms/UI/Img/04/50.png"; } }
 
         public override string TemplateUrl { get { return "~/Messaging/UI/Views/Message.aspx"; } }
 

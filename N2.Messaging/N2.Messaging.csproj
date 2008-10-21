@@ -53,6 +53,7 @@
     <Compile Include="Facility\MailFactory.cs" />
     <Compile Include="Items\Announcement.cs" />
     <Compile Include="Items\BaseStore.cs" />
+    <Compile Include="Items\MailBox.Business.cs" />
     <Compile Include="Items\DraughtStore.cs" />
     <Compile Include="Items\Letter.cs" />
     <Compile Include="Items\MailBox.cs" />

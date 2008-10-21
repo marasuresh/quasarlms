@@ -13,15 +13,8 @@ namespace N2.Messaging
     [AllowedChildren(typeof(Message))]
     public abstract class BaseStore : AbstractContentPage
     {
-        public override string TemplateUrl
-        {
-            get
-            {
-                return "~/Templates/Secured/Go.aspx";
-            }
-        }
+        public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
 
-        public override string IconUrl { get { return "~/Lms/UI/Img/04/20.png"; } }
-
+		public override string IconUrl { get { return "~/Lms/UI/Img/04/20.png"; } }
     }
 }

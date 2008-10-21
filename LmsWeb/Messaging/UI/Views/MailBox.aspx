@@ -19,18 +19,21 @@
                     <tr>
                         <td align="left">
                             <a class='lettercss' href='<%= Url.Parse(CurrentPage.Url).AppendSegment("newLetter")%>'>
-                                Новое письмо&hellip;</a>
-                            <img src="/Lms/UI/Img/04/50.png" />
+                                <img src='<%= this.ResolveClientUrl("~/Messaging/UI/Images/email_open.png") %>' />
+                                Письмо&hellip;</a>
+                            
                         </td>
                         <td align="left">
                             <a class='announcementcss' href='<%= Url.Parse(CurrentPage.Url).AppendSegment("newAnnouncement")%>'>
-                                Новое объявление&hellip;</a>
-                            <img src="/Lms/UI/Img/04/19.png" />
+								<img src='<%= this.ResolveClientUrl("~/Messaging/UI/Images/bell.png") %>' />
+                                Объявление&hellip;</a>
+                            
                         </td>
                         <td align="left">
                             <a class='taskcss' href='<%= Url.Parse(CurrentPage.Url).AppendSegment("newTask")%>'>
-                                Новое Задание&hellip;</a>
-                            <img src="/Lms/UI/Img/04/15.png" />
+                                <img src='<%= this.ResolveClientUrl("~/Messaging/UI/Images/wrench.png") %>' />
+                                Задание&hellip;</a>
+                            
                         </td>
                     </tr>
                 </table>

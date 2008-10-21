@@ -14,6 +14,13 @@ namespace N2.Messaging
     [AllowedChildren(typeof(Message))]
     public class RecycleBin : BaseStore
     {
-        
+		public RecycleBin()
+		{
+			this.Title = "Корзина";
+		}
+
+		public override string IconUrl {
+			get { return "~/Messaging/UI/Images/basket_edit.png"; }
+		}
     }
 }

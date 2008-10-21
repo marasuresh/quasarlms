@@ -15,7 +15,7 @@ namespace N2.Messaging
     {
         #region Properties
 
-        public override string IconUrl { get { return "~/Lms/UI/Img/04/50.png"; } }
+        public override string IconUrl { get { return "~/Messaging/UI/Images/email_open.png"; } }
 
         public override string TemplateUrl { get { return "~/Messaging/UI/Views/Message.aspx"; } }
 

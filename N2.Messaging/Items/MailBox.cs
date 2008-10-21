@@ -1,7 +1,4 @@
-﻿
-
-
-using N2.Edit.Trash;
+﻿using N2.Edit.Trash;
 using N2.Persistence;
 
 namespace N2.Messaging
@@ -15,40 +12,62 @@ namespace N2.Messaging
     [Definition("Почта", "MailBox")]
     [NotThrowable, NotVersionable]
     [RestrictParents(typeof(IStructuralPage))]
-    public class MailBox : AbstractContentPage
-    {
-        public override string TemplateUrl
-        {
-            get { return string.Equals(Action, "newLetter", System.StringComparison.OrdinalIgnoreCase) ||
-                         string.Equals(Action, "newTask", System.StringComparison.OrdinalIgnoreCase) ||
-                         string.Equals(Action, "newAnnouncement", System.StringComparison.OrdinalIgnoreCase)
-            ? "~/Messaging/UI/Views/NewMessage.aspx"
-            : "~/Messaging/UI/Views/MailBox.aspx"; } }
+    public partial class MailBox : AbstractContentPage
+	{
+		#region System properties
+		
+		public override string TemplateUrl {
+            get { return string.Concat("~/Messaging/UI/Views/",
+					!string.IsNullOrEmpty(this.Action)
+						&& "newletter,newtask,newannouncement".Contains(this.Action.ToLower())
+						? "NewMessage" : "MailBox",
+					".aspx");
+			}
+		}
 
-        [EditableLink("Message Store", 1, HelpTitle = "Select an item, which contains all messages.")]
+		public override string IconUrl {
+			get {
+				this.Validate();
+				return string.Concat(
+					"~/Messaging/UI/Images/",
+					this.IsValid ? "email.png" : "email_error.png");
+			}
+		}
+
+		#endregion System properties
+
+		#region Lms properties
+		
+		[EditableLink("Message Store", 1,
+			HelpTitle = "Select an item, which contains all messages.",
+			Required = true)]
         public MessageStore MessageStore
         {
             get { return this.GetDetail("MessageStore") as MessageStore; }
             set { this.SetDetail<MessageStore>("MessageStore", value); }
         }
 
-        [EditableLink("Recycle Bin", 1, HelpTitle = "Select an item, which contains all delete messages.")]
+        [EditableLink("Recycle Bin", 1,
+			HelpTitle = "Select an item, which contains all delete messages.",
+			Required = true)]
         public RecycleBin RecycleBin
         {
             get { return this.GetDetail("RecycleBin") as RecycleBin; }
             set { this.SetDetail<RecycleBin>("RecycleBin", value); }
         }
 
-        [EditableLink("Draught Store", 1, HelpTitle = "Select an item, which contains all draught messages.")]
+        [EditableLink("Draught Store", 1,
+			HelpTitle = "Select an item, which contains all draught messages.",
+			Required = true)]
         public DraughtStore DraughtStore
         {
             get { return this.GetDetail("DraughtStore") as DraughtStore; }
             set { this.SetDetail<DraughtStore>("DraughtStore", value); }
-        }
+		}
 
-        
-        
-        public string Action { get; set; }
+		#endregion Lms properties
+
+		public string Action { get; set; }
 
         public override ContentItem GetChild(string childName)
         {
