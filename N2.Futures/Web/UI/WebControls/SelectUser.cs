@@ -17,32 +17,32 @@ namespace N2.Web.UI.WebControls
 	{
 		public bool AllowMultipleSelection
 		{
-			get { return this.tree.AllowMultipleSelection; }
-			set { this.tree.AllowMultipleSelection = value; }
+			get { this.EnsureChildControls(); return this.tree.AllowMultipleSelection; }
+			set { this.EnsureChildControls(); this.tree.AllowMultipleSelection = value; }
 		}
 
 		public bool DisplayEmptyRoles
 		{
-			get { return this.tree.DisplayEmptyRoles; }
-			set { this.tree.DisplayEmptyRoles = value; }
+			get { this.EnsureChildControls(); return this.tree.DisplayEmptyRoles; }
+			set { this.EnsureChildControls(); this.tree.DisplayEmptyRoles = value; }
 		}
 		
 		public bool ExpandRoles
 		{
-			get { return this.tree.ExpandRoles; }
-			set { this.tree.ExpandRoles = value; }
+			get { this.EnsureChildControls(); return this.tree.ExpandRoles; }
+			set { this.EnsureChildControls(); this.tree.ExpandRoles = value; }
 		}
 
 		public UserTree.DisplayModeEnum DisplayMode
 		{
-			get { return this.tree.DisplayMode; }
-			set { this.tree.DisplayMode = value; }
+			get { this.EnsureChildControls(); return this.tree.DisplayMode; }
+			set { this.EnsureChildControls(); this.tree.DisplayMode = value; }
 		}
 
 		public UserTree.DisplayModeEnum SelectionMode
 		{
-			get { return this.tree.SelectionMode; }
-			set { this.tree.SelectionMode = value; }
+			get { this.EnsureChildControls(); return this.tree.SelectionMode; }
+			set { this.EnsureChildControls(); this.tree.SelectionMode = value; }
 		}
 
 		#region Properties
