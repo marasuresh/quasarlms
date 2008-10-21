@@ -32,13 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
-    <Reference Include="N2, Version=1.0.403.22991, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2, Version=1.0.403.25809, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Convert\bin\Debug\N2.dll</HintPath>
+      <HintPath>..\..\n2cms\src\wwwroot\bin\N2.dll</HintPath>
     </Reference>
-    <Reference Include="N2.Templates, Version=1.0.403.22995, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2.Templates, Version=1.0.403.26116, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Convert\bin\Debug\N2.Templates.dll</HintPath>
+      <HintPath>..\..\n2cms\src\wwwroot\bin\N2.Templates.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
