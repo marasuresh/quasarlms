@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using XL = Microsoft.Office.Interop.Excel;
 using System.IO;
+using System.Web.Security;
 
 namespace N2.ACalendar
 {
@@ -11,18 +12,7 @@ namespace N2.ACalendar
     {
         public static string ExportToFile(IList<N2.ContentItem> acalendars)
         {
-            Microsoft.Office.Interop.Excel.Application aXL = null;
-                try
-                {
-                    aXL = System.Runtime.InteropServices.Marshal.GetActiveObject("Excel.Application")
-                        as Microsoft.Office.Interop.Excel.Application;
-                }
-                catch
-                {
-                    // aXL = null;
-                }
-            if (aXL == null) aXL = new Microsoft.Office.Interop.Excel.Application();
-
+            Microsoft.Office.Interop.Excel.Application aXL = startExcel();
             string _path =  "C:\\work\\Lms\\LmsWeb\\Upload\\"; 
             string _fileName = "ac.xls";
 
@@ -76,11 +66,89 @@ namespace N2.ACalendar
     //End With
 
              //worksheet.get_Range("E21", "E22").Interior.Pattern = "xlGray25";
-             aXL.Visible = true;
-            //aXL.Save( wb);
-            //FinishExcel(aXL);
-            return _fileName;
+             wb.Save();
+             //aXL.Save( wb);
+             //FinishExcel(aXL);
+             aXL.Quit();
+             return _fileName;
         }
+
+        public static string ExportToFileZV(MembershipUserCollection users )
+        {
+            Microsoft.Office.Interop.Excel.Application aXL = startExcel();
+            string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
+            string _fileName = "zv.xls";
+            aXL.Workbooks.Open(
+                     _path +_fileName, // FileName
+                        false, // UpdateLinks
+                        false, //  ReadOnly
+                        Type.Missing, // Format
+                        Type.Missing, // Password
+                        Type.Missing, // WriteResPassword
+                        Type.Missing, // IgnoreReadOnlyRecommended
+                        Type.Missing, // Origin
+                        Type.Missing, // Delimiter
+                        true, // Editable
+                        Type.Missing, //  Notify
+                        Type.Missing, // Converter
+                        false, // AddToMru
+                        Type.Missing, // Local
+                        Type.Missing // CorruptLoad
+                    );
+
+            XL.Workbook wb = aXL.ActiveWorkbook; // или создать новую рабочую книгу, а то может поверх написать -  oXL.Workbooks.Add(Type.Missing);
+            XL.Worksheet worksheet = (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet; //  (Microsoft.Office.Interop.Excel.Worksheet)oXL.ActiveSheet;
+
+            string[,] data = new string[users.Count, 3];
+            int _row = 20;
+            foreach (MembershipUser _u in users)
+            {
+
+                data[(_row - 20),0] = (_row - 19).ToString();
+                data[(_row - 20),1] = _u.UserName ;
+                data[(_row - 20),2] = "";
+                if (Roles.GetRolesForUser(_u.UserName).Any()) data[(_row - 20), 2] = (Roles.GetRolesForUser(_u.UserName))[0];
+                _row++;
+            }
+            worksheet.get_Range("A20", "C" + (_row - 1).ToString()).Value2 = data;
+
+            //Range("M31").Select
+            //With Selection.Interior
+            //    .ColorIndex = 0
+            //    .Pattern = xlGray25
+            //    .PatternColorIndex = xlAutomatic
+            //End With
+
+            //worksheet.get_Range("E21", "E22").Interior.Pattern = "xlGray25";
+            aXL.Visible = false;
+            wb.Save();
+            //aXL.Save( wb);
+            FinishExcel(aXL);
+
+            return _fileName;
+
+        }
+
+
+        private static Microsoft.Office.Interop.Excel.Application startExcel()
+        {
+            Microsoft.Office.Interop.Excel.Application aXL = null;
+            try
+            {
+                aXL = System.Runtime.InteropServices.Marshal.GetActiveObject("Excel.Application")
+                    as Microsoft.Office.Interop.Excel.Application;
+            }
+            catch
+            {
+                // aXL = null;
+            }
+            if (aXL == null) aXL = new Microsoft.Office.Interop.Excel.Application();
+            aXL.DisplayAlerts = false;
+            aXL.Visible = false;
+            return aXL;
+        }
+
+
 
         private static void FinishExcel(Microsoft.Office.Interop.Excel.Application XL)
         {
