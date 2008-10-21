@@ -15,9 +15,46 @@ namespace N2.Web.UI.WebControls
 	[ToolboxData("<{0}:SelectUser runat=server></{0}:SelectUser>")]
 	public class SelectUser : CompositeControl
 	{
-		#region Properties
+        #region PublicProperties
 
-		string m_delayedSelectedUserValue;
+        #endregion PublicProperties
+
+        public bool AllowMultipleSelection
+        {
+            get { return this.tree.AllowMultipleSelection; }
+            set { this.tree.AllowMultipleSelection = (bool)value; }
+        }
+
+        public bool DisplayEmptyRoles
+        {
+            get { return this.tree.DisplayEmptyRoles; }
+            set { this.tree.DisplayEmptyRoles = (bool)value; }
+        }
+        public bool ExpandRoles
+        {
+            get { return this.tree.ExpandRoles; }
+            set { this.tree.ExpandRoles  = (bool)value; }
+        }
+
+
+        public UserTree.DisplayModeEnum DisplayMode
+        {
+            get { return this.tree.DisplayMode;  }
+            set { this.tree.DisplayMode = value; }
+        }
+
+        public UserTree.DisplayModeEnum SelectionMode
+        {
+            get { return this.tree.SelectionMode;  }
+            set { this.tree.SelectionMode = value; }
+        }
+
+
+
+
+        #region Properties
+
+        string m_delayedSelectedUserValue;
 
 		public string SelectedUser {
 			get {
