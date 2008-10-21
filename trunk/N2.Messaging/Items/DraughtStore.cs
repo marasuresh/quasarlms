@@ -14,6 +14,11 @@ namespace N2.Messaging
     [AllowedChildren(typeof(Message))]
     public class DraughtStore : BaseStore
     {
-        
+		public DraughtStore()
+		{
+			this.Title = "Черновики";
+		}
+
+		public override string IconUrl { get { return "~/Messaging/UI/Images/script_edit.png"; } }
     }
 }

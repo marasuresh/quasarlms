@@ -133,6 +133,14 @@
     <Content Include="Messaging\UI\Views\Message.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Messaging\UI\Images\basket_edit.png" />
+    <Content Include="Messaging\UI\Images\bell.png" />
+    <Content Include="Messaging\UI\Images\database.png" />
+    <Content Include="Messaging\UI\Images\email.png" />
+    <Content Include="Messaging\UI\Images\email_error.png" />
+    <Content Include="Messaging\UI\Images\email_open.png" />
+    <Content Include="Messaging\UI\Images\script_edit.png" />
+    <Content Include="Messaging\UI\Images\wrench.png" />
     <Content Include="Messaging\UI\Parts\App_LocalResources\Message.ascx.resx" />
   </ItemGroup>
   <ItemGroup>
