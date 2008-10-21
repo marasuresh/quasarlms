@@ -70,23 +70,30 @@ namespace N2.Workflow
 				}
 			}
 		}
-
-		public static ItemState PerformAction(
-			this ContentItem item,
+		
+		static ItemState PerformActionInternal(this ContentItem item,
 			ActionDefinition action,
-			string user,
-			string comment)
+			string user, string comment,
+			IDictionary<string, object> stateParameters,
+			Func<Type, ItemState> instanceProvider)
 		{
-			var _currentState = item.GetCurrentState();
-
+			ItemState _currentState = item.GetCurrentState();
+			
 			if (null != _currentState.ToState.GetChild(action.Name)) {
-				var _newCS = Context.Definitions.CreateInstance<ItemState>(item);
+				var _newCS = instanceProvider(action.StateType ?? typeof(ItemState));
 				_newCS.FromState = _currentState.ToState;
 				_newCS.Action = action;
 				_newCS.ToState = action.LeadsTo;
 				_newCS.Comment = comment;
 				_newCS.SavedBy = user;
 				_newCS.AddTo(item);
+
+				//append additional state information
+				if(null != stateParameters) {
+					foreach (var _kv in stateParameters) {
+						_newCS[_kv.Key] = _kv.Value;
+					}
+				}
 
 				//Expire item if it's a final transition
 				if (!action.LeadsTo.Actions.Any()) {
@@ -107,11 +114,31 @@ namespace N2.Workflow
 			return item.GetCurrentState();
 		}
 
-		public static ItemState PerformAction(
-			this ContentItem item,
+		public static T PerformAction<T>(this ContentItem item,
+			ActionDefinition action,
+			string user, string comment,
+			IDictionary<string, object> stateParameters)
+			where T: ItemState
+		{
+			return
+				(T)PerformActionInternal(item, action, user, comment, stateParameters,
+					t => N2.Context.Definitions.CreateInstance<T>(item));
+		}
+
+		public static ItemState PerformAction(this ContentItem item,
+			ActionDefinition action,
+			string user, string comment,
+			IDictionary<string, object> stateParameters)
+		{
+			return
+				PerformActionInternal(item, action, user, comment, stateParameters,
+					t => (ItemState)N2.Context.Definitions.CreateInstance(t, item));
+		}
+
+		public static ItemState PerformAction(this ContentItem item,
 			string actionName,
-			string user,
-			string comment)
+			string user, string comment,
+			IDictionary<string, object> stateParameters)
 		{
 			Trace.WriteLine("Performing action: " + actionName);
 
@@ -126,7 +153,13 @@ namespace N2.Workflow
 
 			Trace.WriteLineIf(null != _action, "Action name resolved: " + _action.Name, "Workflow");
 
-			return PerformAction(item, _action, user, comment);
+			return PerformAction(item, _action, user, comment, stateParameters);
+		}
+
+		public static ItemState PerformGenericAction(this ContentItem item,
+			string actionName, string user, string comment)
+		{
+			return PerformAction(item, actionName, user, comment, null);
 		}
 
 	}

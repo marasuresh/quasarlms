@@ -24,6 +24,8 @@ namespace N2.Lms.Items
 				throw new ArgumentException("user");
 			}
 
+			//var _that = N2.Context.Persister.Get<RequestContainer>(this.ID);
+
 			if (this.MyActiveCourses.Any(_course => _course.ID == course.ID)) {
 				throw new ArgumentException("You're already participating in course " + course.Title, "course");
 			}
@@ -31,12 +33,12 @@ namespace N2.Lms.Items
 //TODO check if user is eligible for this course
 
 			Request _request = N2.Context.Definitions.CreateInstance<Request>(this);
-
+			
 			_request.User = _request.SavedBy = user;
 			_request.Title = _request.Name;
 			_request.Course = course;
 			N2.Context.Persister.Save(_request);
-
+			
 			return _request;
 		}
 		
@@ -67,10 +69,9 @@ namespace N2.Lms.Items
 		public IEnumerable<TrainingTicket> MyActiveTrainingTickets {
 			get {
 				return
-					from _request in this.GetChildren(/*filtered by current user*/).OfType<Request>()
-					let _currentState = _request.GetCurrentState() as ApprovedState
-					where _currentState != null && null != _currentState.Ticket
-					select _currentState.Ticket;
+					from _approvedState in this.MyApprovedApplications
+					where null != _approvedState.Ticket
+					select _approvedState.Ticket;
 			}
 		}
 
@@ -82,9 +83,22 @@ namespace N2.Lms.Items
 				return (
 					from _req in this.GetChildren(/*filtered by current user*/).OfType<Request>()
 					let _currentState = _req.GetCurrentState()
-					where !_currentState.IsFinalState()
+					where !_currentState.IsFinalState() && null != _req.Course
 					select _req.Course
 				).Distinct();
+			}
+		}
+
+		/// <summary>
+		/// Courses i've finished, awaiting grading by instructor
+		/// </summary>
+		public IEnumerable<Request> MyFinishedAssignments {
+			get {
+				return
+					from _request in this.GetChildren().OfType<Request>()
+					let _currentState = _request.GetCurrentState()
+					where string.Equals(_currentState.ToState.Title, "Pending Validation", StringComparison.InvariantCultureIgnoreCase)
+					select _request;
 			}
 		}
 	}

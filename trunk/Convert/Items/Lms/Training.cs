@@ -13,7 +13,7 @@ namespace N2.Lms.Items
 	using N2.Collections;
 	using N2.Workflow.Items;
 	
-	[RestrictParents(typeof(TrainingList))]
+	[RestrictParents(typeof(TrainingContainer))]
 	[Definition, WithEditableTitle]
 	[WithEditableDateRange("Validity period", 50, "StartOn", "FinishOn", ContainerName="lms")]
 	[TabPanel("lms", "LMS", 200)]

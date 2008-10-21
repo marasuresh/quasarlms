@@ -21,8 +21,9 @@
 
 		#region System properties
 		
-		public override bool IsPage { get { return true; } }
 		public override string IconUrl { get { return null == this.Training ? Icons.Error : base.IconUrl; } }
+		//public override bool IsPage { get { return true; } }
+		public override string TemplateUrl { get { return "~/Lms/UI/Parts/MyAssignmentList/MyTrainings/BeginTraining.ascx"; } }
 
 		#endregion System properties
 		

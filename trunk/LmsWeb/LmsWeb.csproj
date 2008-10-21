@@ -174,13 +174,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Browsers\Templates.browser" />
+    <Content Include="Lms\UI\Img\accept.png" />
+    <Content Include="Lms\UI\Img\arrow_undo.png" />
+    <Content Include="Lms\UI\Img\cancel.png" />
     <Content Include="Lms\UI\Img\database.png" />
     <Content Include="Lms\UI\Img\database_error.png" />
     <Content Include="Lms\UI\Parts\MyAssignmentList.ascx" />
     <Content Include="Lms\UI\Css\MyAssignmentList.css" />
+    <Content Include="Lms\UI\Parts\MyAssignmentList\MyTrainingsToGrade.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Lms\UI\Parts\MyAssignmentList\MyTrainings\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

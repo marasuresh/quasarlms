@@ -71,14 +71,7 @@ namespace N2.Web.UI.WebControls
 		}
 
 		#endregion
-
-/*		protected override void LoadViewState(object savedState)
-		{
-			base.LoadViewState(savedState);
-			Trace.WriteLine("View State Loaded", "Workflow");
-			this._CreateChildControls();
-		}
-*/
+		
 		ItemState GetNewStateStub()
 		{
 			if (!string.IsNullOrEmpty(this.NewStateTypeName)) {

@@ -12,6 +12,7 @@
 <%@ Register TagPrefix="lms" TagName="MyCourses" Src="~/Lms/UI/Parts/MyAssignmentList/MyCourses.ascx" %>
 <%@ Register TagPrefix="lms" TagName="MyRequests" Src="~/Lms/UI/Parts/MyAssignmentList/MyRequests.ascx" %>
 <%@ Register TagPrefix="lms" TagName="MyTrainings" Src="~/Lms/UI/Parts/MyAssignmentList/MyTrainings.ascx" %>
+<%@ Register TagPrefix="lms" TagName="MyTrainingsToGrade" Src="~/Lms/UI/Parts/MyAssignmentList/MyTrainingsToGrade.ascx" %>
 
 <script runat="server">
 	protected override void OnInit(EventArgs e)
@@ -53,7 +54,9 @@
 		</asp:WizardStep>
 		
 		<asp:WizardStep runat="server" Title="Оценки">
-		
+			<lms:MyTrainingsToGrade
+					ID="MyTrainingsToGrade1"
+					runat="server" />
 		</asp:WizardStep>
 	</WizardSteps>
 

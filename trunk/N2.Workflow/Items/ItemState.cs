@@ -85,16 +85,6 @@ namespace N2.Workflow.Items
 
 		public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
 
-		public override bool Visible
-		{
-			get
-			{
-				return false;
-			}
-			set
-			{
-				base.Visible = value;
-			}
-		}
+		public override bool Visible { get { return false; } }
 	}
 }
