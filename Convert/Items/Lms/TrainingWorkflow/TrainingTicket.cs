@@ -14,17 +14,19 @@
 	[WithWorkflowAction(Name = "Workflow", SortOrder = 3)]
 	[NotVersionable, NotThrowable]
 	[WithWorkflowAuditTrail(Name = "Audit Trail")]
-	public partial class TrainingTicket: AbstractContentPage
+	public partial class TrainingTicket: ContentItem
 	{
 		#region System properties
 
 		public override string IconUrl {
-			get { return null == this.Training ? "~/Lms/UI/Img/error.png" : this.GetIconFromState(); }
+			get { return null == this.Training ? Icons.Error : this.GetIconFromState(); }
 		}
 
 		public override string TemplateUrl {
-			get { return "~/Lms/UI/Player.aspx"; }
+			get { return "~/Templates/UI/Parts/Empty.ascx"; }
 		}
+
+		public override bool IsPage { get { return false; } }
 		
 		#endregion System properties
 

@@ -51,7 +51,7 @@
 			15)]
 		public string User
 		{
-			get { return this.GetDetail<string>("User", item => this.User = this.SavedBy); }
+			get { return this.GetDetail<string>("User", null); }
 			set { this.SetDetail<string>("User", value); }
 		}
 

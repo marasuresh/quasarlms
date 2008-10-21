@@ -15,7 +15,7 @@
 			case "DeleteRequest": {
 					var _request = this.Engine.Persister.Get<Request>(int.Parse((string)e.CommandArgument));
 					Trace.Write("Lms", _request.GetType().Name);
-					_request.PerformAction("Cancel", Profile.UserName, "Canceled");
+					_request.PerformGenericAction("Cancel", Profile.UserName, "Canceled");
 					//this.Engine.Persister.Save(_request);
 					BindData();
 				}

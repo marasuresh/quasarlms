@@ -1,4 +1,6 @@
-﻿namespace N2.Lms.Items.Lms.RequestStates
+﻿using System.Diagnostics;
+
+namespace N2.Lms.Items.Lms.RequestStates
 {
 	using System.Linq;
 	using N2.Details;
@@ -22,13 +24,18 @@
 			TrainingTicket _ticket = this.GetChild("ticket") as TrainingTicket;
 
 			if (null == _ticket) {
-				_ticket = this.GetChildren(new TypeFilter(typeof(TrainingTicket))).Cast<TrainingTicket>().FirstOrDefault();
-				
-				if (null == _ticket) {
-					_ticket = N2.Context.Definitions.CreateInstance<TrainingTicket>(this);
-					_ticket.Name = "ticket";
-					_ticket.Title = this.Training.Title;
-					N2.Context.Persister.Save(_ticket);
+
+				if (null != this.Training) {
+					_ticket = this.GetChildren(new TypeFilter(typeof(TrainingTicket))).Cast<TrainingTicket>().FirstOrDefault();
+
+					if (null == _ticket) {
+						_ticket = N2.Context.Definitions.CreateInstance<TrainingTicket>(this);
+						_ticket.Name = "ticket";
+						_ticket.Title = this.Training.Title;
+						N2.Context.Persister.Save(_ticket);
+					}
+				} else {
+					Trace.TraceError("Training is not asigned to state {0}", this.ID);
 				}
 			}
 
