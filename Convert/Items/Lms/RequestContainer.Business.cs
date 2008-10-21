@@ -83,7 +83,9 @@ namespace N2.Lms.Items
 				return (
 					from _req in this.GetChildren(/*filtered by current user*/).OfType<Request>()
 					let _currentState = _req.GetCurrentState()
-					where !_currentState.IsFinalState() && null != _req.Course
+					where
+						"new,active,pending validation".Contains(_currentState.ToState.Title.ToLower())
+						&& null != _req.Course
 					select _req.Course
 				).Distinct();
 			}
