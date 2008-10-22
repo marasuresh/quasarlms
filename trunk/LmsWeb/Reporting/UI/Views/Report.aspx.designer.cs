@@ -22,15 +22,6 @@ public partial class Reporting_UI_Report {
     protected global::System.Web.UI.WebControls.DropDownList ddlReportType;
     
     /// <summary>
-    /// chblRoles control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.CheckBoxList chblRoles;
-    
-    /// <summary>
     /// SelectUser control.
     /// </summary>
     /// <remarks>
@@ -40,24 +31,6 @@ public partial class Reporting_UI_Report {
     protected global::N2.Web.UI.WebControls.SelectUser SelectUser;
     
     /// <summary>
-    /// hlnkReport control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.HyperLink hlnkReport;
-    
-    /// <summary>
-    /// SelectUsertest control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::N2.Web.UI.WebControls.Test.UserTreeTestBed SelectUsertest;
-    
-    /// <summary>
     /// btnGet control.
     /// </summary>
     /// <remarks>
@@ -65,4 +38,13 @@ public partial class Reporting_UI_Report {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.Button btnGet;
+    
+    /// <summary>
+    /// hlnkReport control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.HyperLink hlnkReport;
 }
