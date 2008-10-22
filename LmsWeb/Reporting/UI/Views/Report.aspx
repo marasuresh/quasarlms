@@ -9,7 +9,8 @@
     <div style="width: 100%">
         <table>
             <tr>
-                <td align="left" colspan="3">
+                <td align="left" colspan="2">
+                    <b><span style="font-size: medium">Вид отчета: </span></b>&nbsp;
                     <asp:DropDownList ID="ddlReportType" runat="server" 
                         onselectedindexchanged="ddlReportType_SelectedIndexChanged">
                         <asp:ListItem Value="erv">
@@ -34,41 +35,43 @@
                             Информация о ренабельности потоков
                         </asp:ListItem>
                     </asp:DropDownList>
-                    <asp:CheckBoxList ID="chblRoles" runat="server">
-                    </asp:CheckBoxList>
-                    <cc1:SelectUser ID="SelectUser" runat="server" />
-        <asp:HyperLink ID="hlnkReport" runat="server"></asp:HyperLink>
-                    <cc2:UserTreeTestBed ID="SelectUsertest" runat="server" />
+        
+<%--<cc2:UserTreeTestBed ID="SelectUsertest" runat="server" />
+                 
                     <asp:Button ID="btnGet" runat="server" Text="Сформировать" OnClick="btnGet_Click" />
-                </td>
+ --%>               
+                      
+                   
+                    </td>
             </tr>
             <tr>
-                <td>
-                    <% if (this.Courses.Any())
-                       { %>
-                    <table>
-                        <tr>
-                            <th>
-                                Курсы
-                            </th>
-                        </tr>
-                        <% foreach (var _cou in this.Courses)
-                           { %>
-                        <tr>
-                            <td>
-                                <a href='<%= _cou.TemplateUrl %>'>
-                                    <%= _cou.Title%></a>
-                            </td>
-                        </tr>
-                        <% } %>
-                    </table>
-                    <% }
-                       else
-                       { %>
-                    no Сourses
-                        <% } %>
+                <td align="left" colspan="2">
+                    <b><span style="font-size: medium">Студент/группа: </span></b>
                     
-                </td>
+                   
+                                    <cc1:SelectUser ID="SelectUser" runat="server"  AllowMultipleSelection ="false" DisplayMode=Roles SelectionMode = Roles    />
+        
+                   
+                    <asp:Button ID="btnGet" runat="server" Text="Сформировать" 
+                        onclick="btnGet_Click" Width="95px" />
+                      
+                   
+  </td>
+            </tr>
+            <tr>
+                <td align="left" colspan="2">
+                      
+                   
+        <asp:HyperLink ID="hlnkReport" runat="server"></asp:HyperLink>
+        
+  </td>
+            </tr>
+  <%-- 
+            <tr>
+                <td>
+                    
+                   
+                                    &nbsp;</td>
                 <td>
                     <% if (this.Requests.Any())
                        { %>
@@ -84,7 +87,8 @@
                             <td>
                                 <a href='<%= _req.TemplateUrl %>'>
                                     <%= _req.Title%></a>
-                                <%= _req.SavedBy%>
+                                <%= _req.RequestDate%>
+                                <%= _req.Comments%>
                                 
                             </td>
                         </tr>
@@ -97,20 +101,20 @@
                                             <% } %>
 
                 </td>
-                <td>
-                    <% if (this.users.Count > 0)
+               <td>
+                    <% if (this.Trainings.Any())
                        { %>
                     <table>
                         <tr>
                             <th>
-                                Пользователи
+                                Тренинги
                             </th>
                         </tr>
-                        <% foreach (MembershipUser _u in this.users)
+                        <% foreach (Training _t in this.Trainings)
                            { %>
                         <tr>
                             <td>
-                                <%= _u.UserName %>
+                                <%= _t.Title %>
                             </td>
                         </tr>
                         <% } %>
@@ -118,11 +122,12 @@
                     <% }
                        else
                        { %>
-                    no User
+                    no Trainings
                                             <% } %>
 
                 </td>
-            </tr>
+--%>            
+           </tr>
         </table>
     </div>
 </asp:Content>
