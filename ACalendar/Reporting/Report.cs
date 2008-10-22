@@ -45,6 +45,16 @@ namespace N2.ACalendar.Reporting
             set { this.SetDetail<RequestContainer>("RequestContainer", value); }
         }
 
+
+        //[EditableLink(
+        //    "Training Container", 07,
+        //    Required = true)]
+        //public TrainingContainer TrainingContainer
+        //{
+        //    get { return this.GetDetail("TrainingContainer") as TrainingContainer; }
+        //    set { this.SetDetail<TrainingContainer>("TrainingContainer", value); }
+        //}
+
         #endregion Lms properties
 
         #region Lms collection properties
