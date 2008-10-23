@@ -1,7 +1,4 @@
-﻿<%@ Control
-		Language="C#"
-		AutoEventWireup="true"
-		Inherits="N2.Templates.Web.UI.TemplateUserControl`2[[N2.Templates.Items.AbstractContentPage, N2.Templates], [N2.Lms.Items.MyAssignmentList, N2.Lms]], N2.Templates" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="N2.Templates.Web.UI.TemplateUserControl`2[[N2.Templates.Items.AbstractContentPage, N2.Templates], [N2.Lms.Items.MyAssignmentList, N2.Lms]], N2.Templates" %>
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="N2.Lms.Items" %>
@@ -11,93 +8,128 @@
 <%@ Import Namespace="N2.Lms.Items.TrainingWorkflow" %>
 
 <script runat="server">
-	protected override void OnInit(EventArgs e)
-	{
-		this.rpt.ItemCommand += (_o, _e) => {
-			
-			var _request = N2.Context.Persister.Get<Request>(int.Parse((string)_e.CommandArgument));
+    
+    protected override void OnInit(EventArgs e)
+    {
+        MyAssignmentList myAss = this.CurrentItem;
+        
+        if (this.Context.User.IsInRole("Students"))
+        {
+            this.mvTrain.ActiveViewIndex = 1;
+        }
+        else
+        {
+            this.mvTrain.ActiveViewIndex = 0;
 
-			switch (_e.CommandName.ToLower()) {
-				case "grade":
-					TextBox _tb = ((Control)_e.CommandSource).NamingContainer.FindControl("tbGrade") as TextBox;
+            this.rpt.ItemCommand += (_o, _e) =>
+            {
 
-					int _grade = int.Parse(_tb.Text);
+                var _request = N2.Context.Persister.Get<Request>(int.Parse((string)_e.CommandArgument));
 
-					_request.PerformAction(
-						"Accept",
-						Profile.UserName,
-						string.Concat("Graded by ", Context.User.Identity.Name, " for ", _grade),
-						new Dictionary<string, object>{{
+                switch (_e.CommandName.ToLower())
+                {
+                    case "grade":
+                        TextBox _tb = ((Control)_e.CommandSource).NamingContainer.FindControl("tbGrade") as TextBox;
+
+                        int _grade = int.Parse(_tb.Text);
+
+                        _request.PerformAction(
+                            "Accept",
+                            Profile.UserName,
+                            string.Concat("Graded by ", Context.User.Identity.Name, " for ", _grade),
+                            new Dictionary<string, object>{{
 							"Grade", _grade
 						}});
-					this.BindData(_request.Parent as RequestContainer);
-					break;
-				case "replay":
-					_request.PerformAction(
-						"Decline",
-						Profile.UserName,
-						string.Concat("Declined by ", Context.User.Identity.Name),
-						null);
-					this.BindData(_request.Parent as RequestContainer);
-					break;
-			}
-		};
-		
-		if (!this.IsPostBack) {
-			this.BindData(this.CurrentItem.RequestContainer);
-		}
-		
-		base.OnInit(e);
-	}
+                        this.BindData(_request.Parent as RequestContainer);
+                        break;
+                    case "replay":
+                        _request.PerformAction(
+                            "Decline",
+                            Profile.UserName,
+                            string.Concat("Declined by ", Context.User.Identity.Name),
+                            null);
+                        this.BindData(_request.Parent as RequestContainer);
+                        break;
+                }
+            };
 
-	protected override void OnLoad(EventArgs e)
-	{
-		
-		base.OnLoad(e);
-	}
+            if (!this.IsPostBack)
+            {
+                this.BindData(this.CurrentItem.RequestContainer);
+            }
+        }
 
-	void BindData(RequestContainer rc)
-	{
-		this.rpt.DataSource = rc.MyFinishedAssignments;
-		this.rpt.DataBind();
-	}
+        base.OnInit(e);
+    }
+
+    protected override void OnLoad(EventArgs e)
+    {
+
+        base.OnLoad(e);
+    }
+
+    void BindData(RequestContainer rc)
+    {
+        this.rpt.DataSource = rc.MyFinishedAssignments;
+
+        this.rpt.DataBind();
+
+    }
 </script>
 
-<asp:Repeater runat="server" ID="rpt">
-	<HeaderTemplate><table></HeaderTemplate>
-	<FooterTemplate></table></FooterTemplate>
-	<ItemTemplate>
-	
-	<tr><td><%# Eval("Course.Title") %></td>
-		<td><asp:TextBox
-				runat="server"
-				ID="tbGrade"
-				ValidationGroup='<%# "vg" + Eval("ID") %>' />
-			<asp:RequiredFieldValidator
-					runat="server"
-					ControlToValidate="tbGrade"
-					ErrorMessage="*"
-					ValidationGroup='<%# "vg" + Eval("ID") %>'
-					Display="Dynamic" />
-			<asp:CompareValidator
-					runat="server"
-					ControlToValidate="tbGrade"
-					ErrorMessage="*"
-					ValidationGroup='<%# "vg" + Eval("ID") %>'
-					Display="Dynamic"
-					Operator="DataTypeCheck"
-					Type="Integer" /></td>
-		<td><asp:ImageButton
-				runat="server"
-				ImageUrl="~/Lms/UI/Img/accept.png"
-				CommandName="Grade"
-				ValidationGroup='<%# "vg" + Eval("ID") %>'
-				CausesValidation="true"
-				CommandArgument='<%# Eval("ID") %>' />
-			<asp:ImageButton
-				runat="server"
-				ImageUrl="~/Lms/UI/Img/arrow_undo.png"
-				CommandName="Replay"
-				CommandArgument='<%# Eval("ID") %>' /></td></tr>
-	</ItemTemplate>
-</asp:Repeater>
+<asp:MultiView ID="mvTrain" runat="server">
+    <asp:View ID="View1" runat="server">
+        <asp:Repeater runat="server" ID="rpt">
+            <HeaderTemplate>
+                <table>
+            </HeaderTemplate>
+            <FooterTemplate>
+                </table></FooterTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td>
+                        <%# Eval("Course.Title") %>
+                    </td>
+                    <td>
+                        <asp:TextBox runat="server" ID="tbGrade" ValidationGroup='<%# "vg" + Eval("ID") %>' />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbGrade"
+                            ErrorMessage="*" ValidationGroup='<%# "vg" + Eval("ID") %>' Display="Dynamic" />
+                        <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="tbGrade"
+                            ErrorMessage="*" ValidationGroup='<%# "vg" + Eval("ID") %>' Display="Dynamic"
+                            Operator="DataTypeCheck" Type="Integer" />
+                    </td>
+                    <td>
+                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Lms/UI/Img/accept.png"
+                            CommandName="Grade" ValidationGroup='<%# "vg" + Eval("ID") %>' CausesValidation="true"
+                            CommandArgument='<%# Eval("ID") %>' />
+                        <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Lms/UI/Img/arrow_undo.png"
+                            CommandName="Replay" CommandArgument='<%# Eval("ID") %>' />
+                    </td>
+                </tr>
+            </ItemTemplate>
+        </asp:Repeater>
+    </asp:View>
+    <asp:View ID="View2" runat="server">
+        <table>
+            <tr>
+                <th>
+                    Тренинг
+                </th>
+                <th>
+                    Оценка
+                </th>
+            </tr>
+            <% foreach (Request _req in this.CurrentItem.RequestContainer.MyGradedAssignments)
+               { %>
+            <tr>
+                <td>
+                    <%= _req.Course.Title %>
+                </td>
+                <td>
+                    <%= ((AcceptedState)_req.GetCurrentState()).Grade %>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </asp:View>
+</asp:MultiView>

@@ -103,5 +103,20 @@ namespace N2.Lms.Items
 					select _request;
 			}
 		}
+
+        /// <summary>
+        /// Courses i've finished and grading by instructor
+        /// </summary>
+        public IEnumerable<Request> MyGradedAssignments
+        {
+            get
+            {
+                return
+                    from _request in this.GetChildren(/*filtered by current user*/).OfType<Request>()
+                    let _currentState = _request.GetCurrentState()
+                    where _currentState is AcceptedState && ((AcceptedState)_currentState).Grade != 1
+                    select _request;
+            }
+        }
 	}
 }
