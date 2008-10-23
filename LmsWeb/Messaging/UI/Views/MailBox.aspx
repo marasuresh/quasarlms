@@ -4,7 +4,8 @@
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="N2.Web" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TextContent" runat="Server">
-    <asp:Menu ID="mnuMailBox" runat="server" Orientation="Horizontal" Width="100%" OnMenuItemClick="mnuMailBox_MenuItemClick">
+    <asp:Menu ID="mnuMailBox" runat="server" Orientation="Horizontal" Width="100%" 
+        OnMenuItemClick="mnuMailBox_MenuItemClick" BackColor="White">
         <Items>
             <asp:MenuItem Text="Все сообщения" Value="0" Selected="True"></asp:MenuItem>
             <asp:MenuItem Text="Черновики" Value="1"></asp:MenuItem>
