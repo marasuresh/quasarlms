@@ -14,7 +14,7 @@ namespace N2.Workflow.Tests
 	/// <summary>
 	/// Description of MyClass.
 	/// </summary>
-	public class WorkflowManager.Tests
+	public class WorkflowManager_Tests
 	{
 		
 	}

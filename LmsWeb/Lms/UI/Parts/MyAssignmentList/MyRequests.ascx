@@ -31,7 +31,9 @@
 
 	protected override void OnInit(EventArgs e)
 	{
-		this.BindData();
+		if (!this.IsPostBack) {
+			this.BindData();
+		}
 		base.OnInit(e);
 	}
 </script>
