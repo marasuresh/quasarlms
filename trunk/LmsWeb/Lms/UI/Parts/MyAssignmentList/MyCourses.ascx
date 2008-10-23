@@ -27,7 +27,12 @@
 			BindData();
 		};
 		
-		this.BindData();
+		//this.lv.ItemEditing += (_o, _e) => { };
+
+		if (!this.IsPostBack) {
+			this.BindData();
+		}
+		
 		base.OnInit(e);
 	}
 </script>
@@ -46,7 +51,7 @@
 	</HeaderTemplate>
 	<FooterTemplate></table></FooterTemplate>
 	<ItemTemplate>
-		<tr bgcolor='<%# 2 == Container.ItemIndex % 2 ? "#FFFFFF" : "#F6F6F6" %>'>
+	<tr bgcolor='<%# 2 == Container.ItemIndex % 2 ? "#FFFFFF" : "#F6F6F6" %>'>
 			<td><asp:ImageButton
 						runat="server"
 						ImageUrl="~/Lms/UI/Img/03/02.png"
