@@ -6,11 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using N2.Templates.Web.UI;
 using N2.Web;
+using N2.Web.UI.WebControls;
 
 namespace N2.Messaging.Messaging.UI.Parts
 {
     public partial class Message : TemplateUserControl<N2.Messaging.Message, N2.Messaging.Message>
     {
+        
         private string msgContainer; 
 
         protected override void OnInit(EventArgs e)
@@ -21,8 +23,6 @@ namespace N2.Messaging.Messaging.UI.Parts
 
             btnToRecBin.Click += btnToRecBin_Click;
             btnRestore.Click += btnRestore_Click;
-
-            btnUsers.Click += btnUsers_Click;
             
             btnExit.Click += btnExit_Click;
             btnExit2.Click += btnExit_Click;
@@ -79,7 +79,8 @@ namespace N2.Messaging.Messaging.UI.Parts
 
                 mvMsgContent.ActiveViewIndex = 1;
 
-                txtTo.Text = CurrentItem.To;
+                //txtTo.Text = CurrentItem.To;
+                selUser.SelectedUser = CurrentItem.To;
                 txtSubject.Text = CurrentItem.Subject;
                 ftaEdit.Text = CurrentItem.Text;
 
@@ -151,7 +152,19 @@ namespace N2.Messaging.Messaging.UI.Parts
             #endregion
         }
 
-        
+        protected override void OnPreRender(EventArgs e)
+        {
+            var ut = (this.selUser.FindControl("ut") as N2.Web.UI.WebControls.UserTree);
+            if (ut != null)
+            {
+                ut.AllowMultipleSelection = true;
+                ut.SelectionMode = UserTree.DisplayModeEnum.Users;
+                ut.DisplayMode = UserTree.DisplayModeEnum.Users;
+            }
+
+            base.OnPreRender(e);
+        }
+
         
         void btnRestore_Click(object sender, EventArgs e)
         {
@@ -181,7 +194,8 @@ namespace N2.Messaging.Messaging.UI.Parts
             if (Page.IsValid)
             {
                 //Сохраняем изменения.
-                CurrentItem.To = txtTo.Text;
+                //CurrentItem.To = txtTo.Text;
+                CurrentItem.To = selUser.SelectedUser;
                 CurrentItem.Subject = txtSubject.Text;
                 CurrentItem.Text = ftaEdit.Text;
                 CurrentItem.Expires = DateTime.Now.AddDays(60);
@@ -214,7 +228,8 @@ namespace N2.Messaging.Messaging.UI.Parts
 
                 string curUser = Context.User.Identity.Name;
 
-                string to = txtTo.Text;
+                //string to = txtTo.Text;
+                string to = selUser.SelectedUser;
                 string subject = txtSubject.Text;
                 string text = ftaEdit.Text;
 

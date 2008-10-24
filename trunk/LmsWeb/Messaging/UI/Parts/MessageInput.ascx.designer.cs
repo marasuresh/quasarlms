@@ -32,31 +32,13 @@ namespace N2.Messaging.Messaging.UI.Parts {
         protected global::System.Web.UI.WebControls.Label lblTo;
         
         /// <summary>
-        /// txtTo control.
+        /// selUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTo;
-        
-        /// <summary>
-        /// rfvTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTo;
-        
-        /// <summary>
-        /// btnUsers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUsers;
+        protected global::N2.Web.UI.WebControls.SelectUser selUser;
         
         /// <summary>
         /// lblSubject control.
