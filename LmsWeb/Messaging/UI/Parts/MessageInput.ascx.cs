@@ -6,12 +6,26 @@ using N2.Templates;
 using N2.Messaging;
 using N2.Templates.Web.UI;
 using N2.Web;
+using N2.Web.UI.WebControls;
 
 namespace N2.Messaging.Messaging.UI.Parts
 {
     public partial class MessageInput : TemplateUserControl<N2.Messaging.MailBox, N2.Messaging.MailBox>
     {
-        
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            var ut = (this.selUser.FindControl("ut") as N2.Web.UI.WebControls.UserTree);
+            if (ut != null)
+            {
+                ut.AllowMultipleSelection = true;
+                ut.SelectionMode = UserTree.DisplayModeEnum.Users;
+                ut.DisplayMode = UserTree.DisplayModeEnum.Users;
+            }
+
+            base.OnPreRender(e);
+        }
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Page.Validate("CommentInput");
@@ -26,7 +40,8 @@ namespace N2.Messaging.Messaging.UI.Parts
 
                 string curUser = Context.User.Identity.Name;
                 
-                string to = txtTo.Text;
+                //string to = txtTo.Text;
+                string to = selUser.SelectedUser;
                
                 string subject = txtSubject.Text;
                 string text = txtText.Text;
@@ -91,7 +106,8 @@ namespace N2.Messaging.Messaging.UI.Parts
 
                 string curUser = Context.User.Identity.Name;
 
-                string to = txtTo.Text;
+                //string to = txtTo.Text;
+                string to = selUser.SelectedUser;
 
                 string subject = txtSubject.Text;
                 string text = txtText.Text;
@@ -125,10 +141,6 @@ namespace N2.Messaging.Messaging.UI.Parts
             }
         }
         
-        protected void btnUsers_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {

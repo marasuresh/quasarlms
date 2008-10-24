@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Message.ascx.cs" Inherits="N2.Messaging.Messaging.UI.Parts.Message" %>
 <%@ Import Namespace="N2.Web" %>
+<%@ Register assembly="N2.Futures" namespace="N2.Web.UI.WebControls" tagprefix="uc" %>
 <n2:Box ID="messageBox" runat="server" CssClass="box" meta:resourcekey="BoxResource1">
     <div style="width: 100%">
         <asp:MultiView ID="mvMsgContent" runat="server">
@@ -61,17 +62,11 @@
                     <tbody>
                         <tr>
                             <td width="20%">
-                                <asp:Label ID="lblTo" runat="server" Text="lblTo" AssociatedControlID="txtTo" CssClass="label"
+                                <asp:Label ID="lblTo" runat="server" Text="lblTo" AssociatedControlID="selUser" CssClass="label"
                                     meta:resourcekey="lblToResource1" />
                             </td>
                             <td>
-                                <asp:TextBox ID="txtTo" runat="server" CssClass="tb" meta:resourcekey="txtToResource1"
-                                    Width="90%" />
-                                <asp:RequiredFieldValidator ID="rfvTo" runat="server" ValidationGroup="CommentInput"
-                                    ControlToValidate="txtTo" Text="*" Display="Dynamic" meta:resourcekey="rfvToResource1" />
-                            </td>
-                            <td width="5%">
-                                <asp:Button ID="btnUsers" runat="server" Text="..." />
+                                <uc:SelectUser ID="selUser" runat="server"/>
                             </td>
                         </tr>
                         <tr>
@@ -84,8 +79,6 @@
                                     Width="90%" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="CommentInput"
                                     ControlToValidate="txtSubject" Text="*" Display="Dynamic" meta:resourcekey="rfvSubjectResource1" />
-                            </td>
-                            <td>
                             </td>
                         </tr>
                         <tr>
