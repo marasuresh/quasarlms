@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using XL = Microsoft.Office.Interop.Excel;
 using System.IO;
 using System.Web.Security;
@@ -68,30 +69,7 @@ namespace N2.ACalendar
 
 		public static string ExportToFileZV(string[] users)
 		{
-			Microsoft.Office.Interop.Excel.Application aXL = startExcel();
-			aXL.Visible = false;
-			string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
-			string _fileName = "zv.xls";
-			aXL.Workbooks.Open(
-					 _path + _fileName, // FileName
-						false, // UpdateLinks
-						false, //  ReadOnly
-						Type.Missing, // Format
-						Type.Missing, // Password
-						Type.Missing, // WriteResPassword
-						Type.Missing, // IgnoreReadOnlyRecommended
-						Type.Missing, // Origin
-						Type.Missing, // Delimiter
-						true, // Editable
-						Type.Missing, //  Notify
-						Type.Missing, // Converter
-						false, // AddToMru
-						Type.Missing, // Local
-						Type.Missing // CorruptLoad
-					);
-
-			XL.Workbook wb = aXL.ActiveWorkbook; // или создать новую рабочую книгу, а то может поверх написать -  oXL.Workbooks.Add(Type.Missing);
-			XL.Worksheet worksheet = (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet; //  (Microsoft.Office.Interop.Excel.Worksheet)oXL.ActiveSheet;
+			
 
 			string[,] data = new string[users.Length, 3];
 			int _row = 20;
@@ -103,7 +81,48 @@ namespace N2.ACalendar
 				if (Roles.GetRolesForUser(_u).Any()) data[(_row - 20), 2] = (Roles.GetRolesForUser(_u))[0];
 				_row++;
 			}
-			worksheet.get_Range("A20", "C" + (_row - 1).ToString()).Value2 = data;
+
+            Microsoft.Office.Interop.Excel.Application aXL = null;
+            string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
+            //_path  = Configuration.  
+            string _fileName = "zv.xls";
+
+            try
+            {
+                aXL = startExcel();
+                aXL.Visible = false;
+            }
+            catch
+            {
+                _fileName=_fileName.Replace(".xls",".xml");
+                ExportToXML(data, _path + _fileName);
+                return _fileName;
+
+            }
+            aXL.Workbooks.Open(
+                     _path + _fileName, // FileName
+                        false, // UpdateLinks
+                        false, //  ReadOnly
+                        Type.Missing, // Format
+                        Type.Missing, // Password
+                        Type.Missing, // WriteResPassword
+                        Type.Missing, // IgnoreReadOnlyRecommended
+                        Type.Missing, // Origin
+                        Type.Missing, // Delimiter
+                        true, // Editable
+                        Type.Missing, //  Notify
+                        Type.Missing, // Converter
+                        false, // AddToMru
+                        Type.Missing, // Local
+                        Type.Missing // CorruptLoad
+                    );
+
+            XL.Workbook wb = aXL.ActiveWorkbook; // или создать новую рабочую книгу, а то может поверх написать -  oXL.Workbooks.Add(Type.Missing);
+            XL.Worksheet worksheet = (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet; //  (Microsoft.Office.Interop.Excel.Worksheet)oXL.ActiveSheet;
+
+            
+            
+            worksheet.get_Range("A20", "C" + (_row - 1).ToString()).Value2 = data;
 			worksheet.get_Range("A" + (_row).ToString(), "C" + (_row + 20).ToString()).ClearContents();
 
 			//Range("M31").Select
@@ -123,6 +142,47 @@ namespace N2.ACalendar
 			return _fileName;
 
 		}
+
+
+        private static void ExportToXML(string[,] data, string fileName)
+        {
+            string[][] ss = new string[data.GetUpperBound(0)+1][];
+            for (int i=0 ; i<=data.GetUpperBound(0); i++) 
+            {
+                string[] s = new string[data.GetUpperBound(1)+1];               
+                for (int j=0 ; j<=data.GetUpperBound(1); j++) 
+                {
+                    s[j] = data[i,j];
+                }
+                ss[i] = s;
+            }
+
+            var sr = new System.Xml.Serialization.XmlSerializer(ss.GetType()); 
+                    using(FileStream fs = new FileStream(fileName, FileMode.Create))
+                    {
+                        sr.Serialize(fs,ss);
+                    }
+ 
+           
+            //StringBuilder sb = new StringBuilder();
+            
+            //StringWriter w = new StringWriter(sb, System.Globalization.CultureInfo.InvariantCulture);
+            
+            //// сериализуем
+            //sr.Serialize(w, data);// получаем строку Xml
+            //string xml = sb.ToString();
+            //Console.WriteLine(xml); 
+            //Serialization.XmlReader.
+             //DataSet ds = new DataSet ();
+
+            // создаем reader
+            //StringReader reader = new StringReader(xml);// создаем XmlSerializer
+            //XmlSerializer dsr = new XmlSerializer(typeof(DataClass));
+            //// десериализуем 
+            //DataClass clone = (DataClass)dsr.Deserialize(reader);            
+            
+            //throw new NotImplementedException();
+        }
 
 		public static string ExportToFileOZ(Request[] reqs, string studName)
 		{
@@ -316,6 +376,28 @@ namespace N2.ACalendar
 		}
 
 
-
 	}
+ 
+    //[ XmlRoot("Data")] // изменим имя корневого элемента 
+//    public class DataClass
+//    {
+//        public DataClassZV() { }
+
+//        [XmlAttribute]
+//        public string N  = Guid.NewGuid().ToString();
+//        [XmlAttribute]
+//        public string Name = "Just Name";
+//        [XmlAttribute]
+//        public string Name = "Just Name";
+
+
+
+////        [XmlElement("Reserved")] // изменим имя xml элемента 
+//        [XmlAttribute]
+//        public Decimal Count = 10;
+//        [XmlIgnore]
+//        public DateTime Date = DateTime.Now;
+//    }
+
+
 }
