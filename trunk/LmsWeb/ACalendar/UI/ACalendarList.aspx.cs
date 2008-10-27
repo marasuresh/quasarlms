@@ -1,8 +1,16 @@
 ﻿using N2.ACalendar;
 
-public partial class ACalendar_UI_ACalendarList : N2.Web.UI.ContentPage<ACalendarList>
+public partial class ACalendar_UI_ACalendarList :   N2.Templates.Web.UI.TemplatePage<N2.ACalendar.ACalendarList>
 {
-	//protected ACalendar[] ACalendaries
+    //protected ACalendar[] ACalendaries
+    //{
+    //    get
+    //    {
+    //        return CurrentItem.ACalendarContainer.MyCalendars  ;  
+    //    }
+
+    //}
+    //protected ACalendar[] ACalendaries
 	//{
 	//    get
 	//    {
