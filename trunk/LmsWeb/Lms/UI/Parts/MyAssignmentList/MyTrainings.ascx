@@ -44,7 +44,7 @@
 	<HeaderTemplate><table></HeaderTemplate>
 	<FooterTemplate></table></FooterTemplate>
 	<ItemTemplate>
-	<tr><td><a href='<%# this.ResolveClientUrl((string)Eval("Url")) %>'><%# Eval("Ticket.Training") != null ? Eval("Ticket.Training.Title") : "Error: Training is NULL" %></a></td>
+	<tr><td><a href='<%# this.ResolveClientUrl(string.Concat("~/Lms/UI/Player.aspx?id=", Eval("Ticket.ID").ToString())) %>'><%# Eval("Ticket.Training") != null ? Eval("Ticket.Training.Title") : "Error: Training is NULL" %></a></td>
 		<td><asp:ImageButton
 					runat="server"
 					ID="btnMarkComplete"

@@ -6,10 +6,45 @@
 <%@ Register Src="~/Lms/UI/Player/Player.ascx" TagName="Content" TagPrefix="player" %>
 <%@ Import Namespace="System.Web.UI.WebControls" %>
 <%@ Import Namespace="N2.Lms.Items" %>
+<%@ Import Namespace="N2.Lms.Items.TrainingWorkflow" %>
+<script runat="server">
+	protected override void OnInit(EventArgs e)
+	{
+		int _ticketId;
+		TrainingTicket _ticket;
+		if (int.TryParse(this.Request["id"], out _ticketId)
+				&& null != (_ticket = N2.Context.Current.Persister.Get<TrainingTicket>(_ticketId))) {
+			if (_ticket.Parent.Parent.IsAuthorized(this.Context.User)) {
+				this.InjectCurrentItem(_ticket);
+				TrainingPlayer _player = (TrainingPlayer)this.LoadControl("~/Lms/UI/Player/Player.ascx");
+				_player.CurrentItem = this.CurrentItem;
+				this.phPlayer.Controls.Add(_player);
+				base.OnInit(e);
+			} else {
+				Response.StatusCode = 403;
+				Response.End();
+			}
+		} else {
+			Response.StatusCode = 404;
+			Response.End();
+		}
+	}
+
+	void InjectCurrentItem(TrainingTicket ticket)
+	{
+		this.CurrentPage = ticket;
+	}
+	
+	protected override void OnLoad(EventArgs e)
+	{
+		
+		base.OnLoad(e);
+	}
+</script>
 
 <asp:Content runat="server" ContentPlaceHolderID="Top">
 	<div id="Header">
-	<n2:EditableDisplay runat="server" PropertyName="Title" />
+	<%--<n2:EditableDisplay runat="server" PropertyName="Title" />--%>
 	</div>
 </asp:Content>
 
@@ -17,5 +52,5 @@
 		ID="Content2"
 		ContentPlaceHolderID="PageWrapper"
 		Runat="Server">
-	<player:Content Runat="Server" />
+	<asp:PlaceHolder runat="Server" ID="phPlayer" />
 </asp:Content>

@@ -14,7 +14,7 @@
 	[WithWorkflowAction(Name = "Workflow", SortOrder = 3)]
 	[NotVersionable, NotThrowable]
 	[WithWorkflowAuditTrail(Name = "Audit Trail")]
-	public partial class TrainingTicket: ContentItem
+	public partial class TrainingTicket: AbstractContentPage
 	{
 		#region System properties
 
