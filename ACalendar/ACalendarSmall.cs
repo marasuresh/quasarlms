@@ -14,6 +14,11 @@ namespace N2.ACalendar
 	[RestrictParents(typeof(IStructuralPage))]
 	public class ACalendarSmall : SidebarItem, ILink
 	{
+		public ACalendarSmall()
+		{
+			this.Title = "Календарик";
+		}
+
 		#region System properties
 		
 		public override string TemplateUrl { get { return "~/ACalendar/UI/Parts/ACalendar_small.ascx"; } }

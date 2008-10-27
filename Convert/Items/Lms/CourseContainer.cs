@@ -9,12 +9,17 @@
 	using N2.Integrity;
 
 	[Definition("Course Container", "CourseContainer", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
-	[WithEditableTitle("Title", 10)]
+	//[WithEditableTitle("Title", 10)]
 	[NotThrowable, NotVersionable]
 	public class CourseContainer: AbstractContentPage
 	{
+		public CourseContainer()
+		{
+			this.Title = "Хранилище курсов";
+		}
+
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/17.png"; } }
 
-		public override string TemplateUrl { get { return "~/Lms/UI/CourseList.aspx"; } }
+		public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
 	}
 }

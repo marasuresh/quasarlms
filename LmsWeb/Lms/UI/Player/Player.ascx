@@ -1,7 +1,7 @@
 ﻿<%@ Control
 		Language="C#"
 		ClassName="TrainingPlayer"
-		Inherits="N2.Web.UI.ContentUserControl`1[[N2.Lms.Items.TrainingWorkflow.TrainingTicket, N2.Lms]], N2" %>
+		Inherits="N2.Web.UI.ContentUserControl`2[[N2.Templates.Items.AbstractContentPage, N2.Templates], [N2.Lms.Items.TrainingWorkflow.TrainingTicket, N2.Lms]], N2" %>
 <%@ Reference Control="~/Lms/UI/Test.ascx" %>
 <%@ Reference Control="~/Lms/UI/Module.ascx" %>
 
