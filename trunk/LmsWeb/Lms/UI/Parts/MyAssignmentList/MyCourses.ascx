@@ -1,71 +1,86 @@
 ﻿<%@ Control
 		Language="C#"
 		AutoEventWireup="true"
-		Inherits="N2.Templates.Web.UI.TemplateUserControl`2[[N2.Templates.Items.AbstractContentPage, N2.Templates], [N2.Lms.Items.MyAssignmentList, N2.Lms]], N2.Templates" %>
-<%@ Import Namespace="System.Collections.Generic" %>
-<%@ Import Namespace="System.Diagnostics" %>
-<%@ Import Namespace="N2.Workflow" %>
+		ClassName="MyCourses"
+		Inherits="N2.Lms.Web.UI.MyAssignmentListControl`1[[N2.Lms.MyCoursesDAO, LmsWeb]], N2.Lms" %>
+<%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls" TagPrefix="n2" %>
 
 <script runat="server">
-	void BindData()
+	protected void lv_ItemUpdating(object sender, ListViewUpdateEventArgs e)
 	{
-		this.rpt.DataSource = this.CurrentItem.MyAvailableCourses;
-		this.rpt.DataBind();
-	}
-
-	protected override void OnInit(EventArgs e)
-	{
-		this.rpt.ItemCommand += (o, e0) => {
-			var _courseId = int.Parse(((string)e0.CommandArgument));
-			Course _course = this.Engine.Persister.Get<Course>(_courseId);
-			
-			this.CurrentItem.RequestContainer.SubscribeTo(
-				_course,
-				this.Page.User.Identity.Name);
-			
-			Debug.WriteLine("e.CommandArgument: " + _courseId.ToString(), "Lms");
-			BindData();
-		};
+		var _lv = sender as ListView;
 		
-		//this.lv.ItemEditing += (_o, _e) => { };
-
-		if (!this.IsPostBack) {
-			this.BindData();
-		}
-		
-		base.OnInit(e);
+		e.NewValues.Add("courseId", _lv.DataKeys[_lv.EditIndex]);
+		e.NewValues.Add("begin", ((DatePicker)_lv.EditItem.FindControl("dtBegin")).SelectedDate);
+		e.NewValues.Add("end", ((DatePicker)_lv.EditItem.FindControl("dtEnd")).SelectedDate);
+		e.NewValues.Add("comments", ((TextBox)_lv.EditItem.FindControl("tbComment")).Text);
 	}
 </script>
 
-<asp:Repeater
+<asp:ObjectDataSource 
+	ID="dsCourses"
+	runat="server"
+	SelectMethod="FindAll"
+	UpdateMethod="InsertRequest"
+	TypeName="N2.Lms.MyCoursesDAO"
+	onobjectcreating="ds_ObjectCreating" EnableCaching="True" >
+	<UpdateParameters>
+		<asp:Parameter Name="courseId" Type="Int32" />
+		<asp:Parameter Name="begin" Type="DateTime" />
+		<asp:Parameter Name="end" Type="DateTime" />
+		<asp:Parameter Name="comments" Type="String" />
+	</UpdateParameters>
+</asp:ObjectDataSource>
+
+<n2:ChromeBox runat="Server">
+<asp:ListView
+		ID="lv"
+		DataKeyNames="ID"
 		runat="server"
-		ID="rpt">
-	<HeaderTemplate>
-		<table	cellspacing="0"
-				cellpadding="3"
-				border="0"
-				align="center">
-			<tr><th></th>
-				<th><%= Resources.CourseRequests.tableAccessibleCourses_tableHeader_02%></th>
-				<th><%= Resources.CourseRequests.tableAccessibleCourses_tableHeader_03%></th></tr>
-	</HeaderTemplate>
-	<FooterTemplate></table></FooterTemplate>
+		DataSourceID="dsCourses" 
+		onitemupdating="lv_ItemUpdating">
+	
+	<LayoutTemplate>
+		<table class="gridview" cellpadding="0" cellspacing="0">
+			<tr class="header">
+				<th></th>
+				<th>Title</th>
+			<tr id="itemPlaceholder" runat="server" />
+		</table>
+	</LayoutTemplate>
+	
 	<ItemTemplate>
-	<tr bgcolor='<%# 2 == Container.ItemIndex % 2 ? "#FFFFFF" : "#F6F6F6" %>'>
-			<td><asp:ImageButton
-						runat="server"
-						ImageUrl="~/Lms/UI/Img/03/02.png"
-						CommandArgument='<%# Eval("ID") %>'
-						CommandName="PostRequest"
-						AlternateText='<%$ Resources: CourseRequests, tableAccessibleCourses_tableHeader_01 %>' />
-					<td><n2:DatePicker
-								runat="server"
-								SelectedDate='<%# System.DateTime.Now %>' /></td>
-					<td title="<%# Eval("DescriptionUrl") %>">
-						<asp:HyperLink
-								runat="server"
-								NavigateUrl='<%# ((Course)Container.DataItem).Url %>'
-								Text='<%# Eval("Title") %>' /></td>
-				</tr>
+		<tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>'>
+			<td class="command"><asp:LinkButton ID="btnEdit" runat="server" Text="View" CommandName="Edit" /></td>
+			<td><%# Eval("Title") %></td>
+		</tr>
 	</ItemTemplate>
-</asp:Repeater>
+	
+	<EditItemTemplate>
+		<tr class='edit-info <%# Container.DataItemIndex == 0 ? "first" : string.Empty %>'>
+			<td class="command"><asp:LinkButton ID="btnEdit" runat="server" Text="Cancel" CommandName="Cancel" /></td>
+			<td><%# Eval("Title") %></td>
+		</tr>
+		<tr><td class="edit" colspan="2">
+				<div class="details">
+					<div class="header">Edit details for '<%# Eval("Title")%>'</div>
+					<table class="detailview" cellpadding="0" cellspacing="0">
+						<tr><th>Begin</th>
+							<td><n2:DatePicker ID="dpBegin" runat="server" /></td></tr>
+						<tr><th>End</th>
+							<td><n2:DatePicker ID="dtEnd" runat="server" /></td>
+						</tr>
+						<tr><th>Comments</th>
+							<td><asp:TextBox ID="tbComment" TextMode="MultiLine" runat="server" /></td>
+						</tr> 
+					</table>
+					<div class="footer command">
+						<asp:LinkButton ID="btnSave" runat="server" Text="Subscribe" CommandName="Update" />
+						<asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CommandName="Cancel" />
+					</div>
+				</div>
+			</td>
+		</tr>
+	</EditItemTemplate>
+</asp:ListView>
+</n2:ChromeBox>

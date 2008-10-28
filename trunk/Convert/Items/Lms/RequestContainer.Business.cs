@@ -14,7 +14,7 @@ namespace N2.Lms.Items
 	{
 		#region Methods
 
-		public Request SubscribeTo(Course course, string user)
+		public Request SubscribeTo(Course course, string user, DateTime? begin, DateTime? end, string comment)
 		{
 			if (null == course) {
 				throw new ArgumentException("course");
@@ -37,6 +37,11 @@ namespace N2.Lms.Items
 			_request.User = _request.SavedBy = user;
 			_request.Title = _request.Name;
 			_request.Course = course;
+			
+			_request.StartDate = begin ?? DateTime.Now;
+			_request.RequestDate = end ?? DateTime.Now.AddDays(7);
+			
+			_request.Comments = comment;
 			N2.Context.Persister.Save(_request);
 			
 			return _request;

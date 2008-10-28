@@ -138,6 +138,7 @@
     <Content Include="Lms\UI\TrainingSelector.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lms\UI\MyCoursesDAO.cs" />
     <Compile Include="Lms\UI\CourseIntro.ascx.cs">
       <DependentUpon>CourseIntro.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -168,17 +169,32 @@
       <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
       <Name>N2.Lms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\N2.Workflow\N2.Workflow.csproj">
+      <Project>{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}</Project>
+      <Name>N2.Workflow</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="yafnet.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Browsers\Templates.browser" />
+    <Content Include="Lms\UI\_assets\css\grid.css" />
+    <Content Include="Lms\UI\_assets\css\round.css" />
     <Content Include="Lms\UI\Img\accept.png" />
     <Content Include="Lms\UI\Img\arrow_undo.png" />
     <Content Include="Lms\UI\Img\cancel.png" />
     <Content Include="Lms\UI\Img\database.png" />
     <Content Include="Lms\UI\Img\database_error.png" />
+    <Content Include="Lms\UI\_assets\img\b.gif" />
+    <Content Include="Lms\UI\_assets\img\bl.gif" />
+    <Content Include="Lms\UI\_assets\img\br.gif" />
+    <Content Include="Lms\UI\_assets\img\hdr.gif" />
+    <Content Include="Lms\UI\_assets\img\l.gif" />
+    <Content Include="Lms\UI\_assets\img\r.gif" />
+    <Content Include="Lms\UI\_assets\img\t.gif" />
+    <Content Include="Lms\UI\_assets\img\tl.gif" />
+    <Content Include="Lms\UI\_assets\img\tr.gif" />
     <Content Include="Lms\UI\Js\Player.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList.ascx" />
     <Content Include="Lms\UI\Css\MyAssignmentList.css" />
@@ -187,6 +203,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DAO\" />
+    <Folder Include="Lms\UI\Css\inline\" />
+    <Folder Include="Lms\UI\Img\inline\" />
     <Folder Include="Lms\UI\Parts\MyAssignmentList\MyTrainings\" />
     <Folder Include="Properties\" />
   </ItemGroup>
