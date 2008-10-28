@@ -1,0 +1,255 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2ADE1375-8EA4-43B4-A415-85081B612BDF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.LearningComponent</RootNamespace>
+    <AssemblyName>LearningComponentWeb</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkSubset>Full</TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\lib\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Forum, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2Forum\output\bin\Forum.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.LearningComponents, Version=1.3.0.2, Culture=neutral, PublicKeyToken=24e5ae139825747e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Microsoft.LearningComponents.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.LearningComponents.Compression, Version=1.3.0.2, Culture=neutral, PublicKeyToken=24e5ae139825747e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Microsoft.LearningComponents.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.LearningComponents.MRCI, Version=1.3.0.2, Culture=neutral, PublicKeyToken=24e5ae139825747e, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Microsoft.LearningComponents.MRCI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.LearningComponents.Storage, Version=1.3.0.2, Culture=neutral, PublicKeyToken=24e5ae139825747e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Microsoft.LearningComponents.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="N2, Version=1.0.403.22714, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\src\N2\obj\Debug\N2.dll</HintPath>
+    </Reference>
+    <Reference Include="N2.Edit, Version=1.0.403.22720, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\src\wwwroot\bin\N2.Edit.dll</HintPath>
+    </Reference>
+    <Reference Include="N2.Templates, Version=1.0.403.22719, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\src\wwwroot\bin\N2.Templates.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.SysCache2, Version=2.0.0.1001, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\lib\NHibernate.Caches.SysCache2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.52.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\lib\System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Convert\N2.Lms.csproj">
+      <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
+      <Name>N2.Lms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotNetSCORM.LearningApi\LearningComponent.csproj">
+      <Project>{FDDB1A38-8827-46CA-8BA6-D140C700F9B9}</Project>
+      <Name>LearningComponent</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LearningComponent\CreateAttempt.aspx" />
+    <Content Include="LearningComponent\Default.aspx" />
+    <Content Include="LearningComponent\DeletePackages.aspx" />
+    <Content Include="LearningComponent\Frameset\Bottom.htm" />
+    <Content Include="LearningComponent\Frameset\ChangeActivity.aspx" />
+    <Content Include="LearningComponent\Frameset\ClearContent.aspx" />
+    <Content Include="LearningComponent\Frameset\Content.aspx" />
+    <Content Include="LearningComponent\Frameset\Frameset.aspx" />
+    <Content Include="LearningComponent\Frameset\Global.asax" />
+    <Content Include="LearningComponent\Frameset\Hidden.aspx" />
+    <Content Include="LearningComponent\Frameset\Images\BoxOff.gif" />
+    <Content Include="LearningComponent\Frameset\Images\BoxOffCorrect.gif" />
+    <Content Include="LearningComponent\Frameset\Images\BoxOn.gif" />
+    <Content Include="LearningComponent\Frameset\Images\BoxOnCorrect.gif" />
+    <Content Include="LearningComponent\Frameset\Images\BoxOnWrong.gif" />
+    <Content Include="LearningComponent\Frameset\Images\ButtonOff.gif" />
+    <Content Include="LearningComponent\Frameset\Images\ButtonOffCorrect.gif" />
+    <Content Include="LearningComponent\Frameset\Images\ButtonOnCorrect.gif" />
+    <Content Include="LearningComponent\Frameset\Images\ButtonOnWrong.gif" />
+    <Content Include="LearningComponent\Frameset\Images\Correct.gif" />
+    <Content Include="LearningComponent\Frameset\Images\Incorrect.gif" />
+    <Content Include="LearningComponent\Frameset\Images\SaveAndClose.gif" />
+    <Content Include="LearningComponent\Frameset\Include\FramesetMgr.js" />
+    <Content Include="LearningComponent\Frameset\Include\Nav.js" />
+    <Content Include="LearningComponent\Frameset\Include\parser.js" />
+    <Content Include="LearningComponent\Frameset\Include\Parser1p2.js" />
+    <Content Include="LearningComponent\Frameset\Include\Rte1p2Api.js" />
+    <Content Include="LearningComponent\Frameset\Include\Rte2004Api.js" />
+    <Content Include="LearningComponent\Frameset\Include\RteApiSite.js" />
+    <Content Include="LearningComponent\Frameset\Include\Toc.js" />
+    <Content Include="LearningComponent\Frameset\Include\typevalidators.js" />
+    <Content Include="LearningComponent\Frameset\Include\typevalidators1p2.js" />
+    <Content Include="LearningComponent\Frameset\Include\vernum.js" />
+    <Content Include="LearningComponent\Frameset\MainFrames.aspx" />
+    <Content Include="LearningComponent\Frameset\NavClosed.aspx" />
+    <Content Include="LearningComponent\Frameset\NavOpen.aspx" />
+    <Content Include="LearningComponent\Frameset\NoScroll.htm" />
+    <Content Include="LearningComponent\Frameset\Theme\1px.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\Error.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\HeadCornerRt.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\HeadShadow.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\Info.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\Leaf.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\MinusBtn.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\nav_bg.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\Next.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\NextHover.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\PlusBtn.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\Prev.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\PrevHover.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\Save.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\SaveHover.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\Styles.css" />
+    <Content Include="LearningComponent\Frameset\Theme\TocClose.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\TocClosedTab.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\TocCloseHover.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\TocOpen.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\TocOpenHover.gif" />
+    <Content Include="LearningComponent\Frameset\Theme\TopShadow.gif" />
+    <Content Include="LearningComponent\Frameset\Title.htm" />
+    <Content Include="LearningComponent\Frameset\TOC.aspx" />
+    <Content Include="LearningComponent\SequencingLog.aspx" />
+    <Content Include="LearningComponent\Styles.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\FramesetResources.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FramesetResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LearningComponent\CreateAttempt.aspx.cs">
+      <DependentUpon>CreateAttempt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\CreateAttempt.aspx.designer.cs">
+      <DependentUpon>CreateAttempt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LearningComponent\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LearningComponent\DeletePackages.aspx.cs">
+      <DependentUpon>DeletePackages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\DeletePackages.aspx.designer.cs">
+      <DependentUpon>DeletePackages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LearningComponent\SequencingLog.aspx.cs">
+      <DependentUpon>SequencingLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\SequencingLog.aspx.designer.cs">
+      <DependentUpon>SequencingLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LearningComponent\UploadPackage.aspx.cs">
+      <DependentUpon>UploadPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\UploadPackage.aspx.designer.cs">
+      <DependentUpon>UploadPackage.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LearningComponent\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\FramesetResources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>FramesetResources.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="LearningComponent\UploadPackage.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\ContentTypeMapping.xml" />
+    <Content Include="LearningComponent\UI\Css\CreateAttempt.css" />
+    <Content Include="LearningComponent\UI\Css\Styles.css" />
+    <Content Include="LearningComponent\UI\Js\Script.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.connectionStrings.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>4137</DevelopmentServerPort>
+          <DevelopmentServerVPath>/LmsWeb/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,30 @@
+﻿    .Grid TR
+    {
+        height: 17pt;
+    }
+    .Grid .Select_
+    {
+        width: 1%;
+    }
+    .Grid .Name_
+    {
+        width: 96%;
+    }
+    .Grid .Uploaded_
+    {
+        width: 1%;
+    }
+    .Grid .Status_
+    {
+        width: 1%;
+    }
+    .Grid .Score_
+    {
+        width: 1%;
+    }
+    .MessageTable
+    {
+        width: 100%;
+        height: 100pt;
+        text-align: center;
+    }
