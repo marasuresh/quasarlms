@@ -184,7 +184,7 @@ namespace N2.Messaging.Messaging.UI.Parts
 
         void btnToRecBin_Click(object sender, EventArgs e)
         {
-            Engine.Persister.Move(CurrentItem, CurrentItem.mailBox.RecycleBin);
+            Engine.Persister.Move(CurrentItem, CurrentItem.mailBox.MessageStore.RecycleBin);
             Response.Redirect(Url.Parse(CurrentItem.mailBox.Url).AppendSegment("MessageStore").Path);
         }
 

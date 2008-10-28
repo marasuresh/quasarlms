@@ -12,6 +12,7 @@ namespace N2.Messaging
     [WithEditableTitle("Title", 10)]
     [NotThrowable, NotVersionable]
     [AllowedChildren(typeof(Message))]
+	[RestrictParents(typeof(MessageStore))]
     public class RecycleBin : BaseStore
     {
 		public RecycleBin()

@@ -16,8 +16,8 @@ namespace N2.Messaging
 		150)]
 	[WithEditableTitle("Title", 10)]
 	[NotThrowable, NotVersionable]
-	[AllowedChildren(typeof(Message))]
-	public class MessageStore : BaseStore
+	[AllowedChildren(typeof(Message), typeof(DraughtStore), typeof(RecycleBin))]
+	public partial class MessageStore : BaseStore
 	{
 		public MessageStore()
 		{

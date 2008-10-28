@@ -51,18 +51,26 @@
     <Compile Include="Collections\UserMsgFilter.cs" />
     <Compile Include="Collections\UserNewMsgFilter.cs" />
     <Compile Include="Facility\MailFactory.cs" />
-    <Compile Include="Items\Announcement.cs" />
-    <Compile Include="Items\BaseStore.cs" />
+    <Compile Include="Facility\MessageExtensions.cs" />
+    <Compile Include="Items\Containers\MessageStore.Business.cs" />
+    <Compile Include="Items\Message\Announcement.cs" />
+    <Compile Include="Items\Containers\BaseStore.cs" />
     <Compile Include="Items\MailBox.Business.cs" />
-    <Compile Include="Items\DraughtStore.cs" />
-    <Compile Include="Items\Letter.cs" />
+    <Compile Include="Items\Containers\Drafts.cs" />
+    <Compile Include="Items\Message\Letter.cs" />
     <Compile Include="Items\MailBox.cs" />
-    <Compile Include="Items\Message.cs" />
-    <Compile Include="Items\MessageStore.cs" />
+    <Compile Include="Items\Message\Message.cs" />
+    <Compile Include="Items\Containers\MessageStore.cs" />
     <Compile Include="Items\msgFilter.cs" />
     <Compile Include="Items\NewMessageList.cs" />
-    <Compile Include="Items\RecycleBin.cs" />
-    <Compile Include="Items\Task.cs" />
+    <Compile Include="Items\Containers\RecycleBin.cs" />
+    <Compile Include="Items\Message\Task.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\N2.Futures\N2.Futures.csproj">
+      <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
+      <Name>N2.Futures</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

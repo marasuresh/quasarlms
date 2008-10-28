@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Details\WithWorkflowAuditTrailAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ContentItemExtensions.cs" />
     <Compile Include="DefaultIconProvider.cs" />
     <Compile Include="Details\EditableStateTypeDropDownAttribute.cs" />
     <Compile Include="Details\WithWorkflowActionAttribute.cs" />

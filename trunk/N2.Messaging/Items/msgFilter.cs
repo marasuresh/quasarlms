@@ -8,45 +8,39 @@ namespace N2.Messaging
     public static class msgFilter
     {
         //Прочтенные сообщения.
-        public static Message[] GetReadMsg(Message[] filtMessages)
+        public static IEnumerable<Message> GetReadMsg(this IEnumerable<Message> filtMessages)
         {
-            return (from child in filtMessages
-                    where (child.isRead)
-                    select child).ToArray();
+            return filtMessages.Where(child => child.isRead);
         }
         
         //Непрочтенные сообщения.
-        public static Message[] GetNotReadMsg(Message[] filtMessages)
+        public static IEnumerable<Message> GetNotReadMsg(this IEnumerable<Message> filtMessages)
         {
-            return (from child in filtMessages
-                    where (!child.isRead)
-                    select child).ToArray();
+            return filtMessages.Where(child => !child.isRead);
         }
 
         //Невыполненные задания.
-        public static Task[] GetNotDoneTsk(Task[] filtMessages)
+        public static IEnumerable<Task> GetNotDoneTsk(this IEnumerable<Task> filtMessages)
         {
-            return (from child in filtMessages
-                    where (!child.isDone)
-                    select child).ToArray();
+			return filtMessages.Where(child => !child.isDone);
         }
 
         //Входящие сообщения текущего пользователя.
-        public static Message[] GetIncomingMsg(Message[] filtMessages, string userName)
+        public static IEnumerable<Message> GetIncomingMsg(this IEnumerable<Message> filtMessages, string userName)
         {
-            return (from child in filtMessages
+            return from child in filtMessages
                     where (string.Equals(child.To, userName, StringComparison.OrdinalIgnoreCase)
                             )
-                    select child).ToArray();
+                    select child;
         }
 
         //Исходящие сообщения текущего пользователя.
-        public static Message[] GetSentMsg(Message[] filtMessages, string userName)
+        public static IEnumerable<Message> GetSentMsg(this IEnumerable<Message> filtMessages, string userName)
         {
-            return (from child in filtMessages
+            return from child in filtMessages
                         where (string.Equals(child.From, userName, StringComparison.OrdinalIgnoreCase)
                                 )
-                        select child).ToArray();
+                        select child;
         }
     }
 }

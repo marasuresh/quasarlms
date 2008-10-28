@@ -179,6 +179,7 @@
     <Content Include="Lms\UI\Img\cancel.png" />
     <Content Include="Lms\UI\Img\database.png" />
     <Content Include="Lms\UI\Img\database_error.png" />
+    <Content Include="Lms\UI\Js\Player.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList.ascx" />
     <Content Include="Lms\UI\Css\MyAssignmentList.css" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\MyTrainingsToGrade.ascx" />
