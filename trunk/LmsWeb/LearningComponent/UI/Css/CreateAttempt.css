@@ -1,0 +1,20 @@
+﻿HTML
+    {
+        overflow: hidden;
+    }
+    BODY
+    {
+        height: 100%;
+        margin: 0;
+    }
+    .MessagePanel .Content_
+    {
+        height: 35%;
+        padding: 8pt;
+        overflow-x: hidden; /* works best in IE */
+    }
+    .ActionButton
+    {
+        width: 60pt;
+        margin: 6pt;
+    }
