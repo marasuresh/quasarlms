@@ -107,6 +107,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ItemExtensions.cs" />
+    <Compile Include="Web\UI\MyAssignmentListControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -131,7 +134,7 @@
   <ItemGroup>
     <Folder Include="Custom\" />
     <Folder Include="Details\" />
-    <Folder Include="Web\UI\" />
+    <Folder Include="Web\UI\WebControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,7 +14,9 @@
 <script runat="server">
     protected override void OnInit(EventArgs e)
     {
-        N2.Resources.Register.StyleSheet(this.Page, "~/Lms/UI/Css/MyAssignmentList.css");
+		Register.StyleSheet(this.Page, "~/Lms/UI/_assets/css/grid.css");
+		Register.StyleSheet(this.Page, "~/Lms/UI/_assets/css/round.css");
+		Register.StyleSheet(this.Page, "~/Lms/UI/Css/MyAssignmentList.css");
         base.OnInit(e);
     }
 </script>
@@ -27,7 +29,7 @@
             display: none;
         }
     </style>
-    <% if (this.Context.User.IsInRole("Students"))
+    <% if (!this.Context.User.IsInRole("Administrators"))
        {%>
     <asp:Wizard runat="server" ID="Wizard1" Font-Names="Verdana" Font-Size="0.8em" CssClass="wza"
         BackColor="#EFF3FB" Height="300" Width="100%">
