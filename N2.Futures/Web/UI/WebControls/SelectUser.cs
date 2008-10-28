@@ -75,14 +75,15 @@ namespace N2.Web.UI.WebControls
 
 			base.CreateChildControls();
 
-			if (this.InSelectionMode) {
+            if (this.InSelectionMode) {
 
 				Debug.WriteLine("SelectUser.CreateChildControls: Tree", "UserTree");
 
 				this.tree = new UserTree {
 					ID = "ut",
 				};
-				this.tree.Style.Add("float", "left");
+
+                this.tree.Style.Add("float", "left");
 				this.tree.SelectionChanged += UserTree_SelectionChanged;
 				
 				this.Controls.Add(this.tree);

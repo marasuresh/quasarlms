@@ -182,7 +182,8 @@
     <Content Include="Lms\UI\Js\Player.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList.ascx" />
     <Content Include="Lms\UI\Css\MyAssignmentList.css" />
-    <Content Include="Lms\UI\Parts\MyAssignmentList\MyTrainingsToGrade.ascx" />
+    <Content Include="Lms\UI\Parts\MyAssignmentList\MyGradedTrainings.ascx" />
+    <Content Include="Lms\UI\Parts\MyAssignmentList\TrainingsToGrade.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -304,6 +304,9 @@ namespace N2.Web.UI.WebControls
 				EnableViewState = false,
 			};
 
+            this.CssClass = "ut";
+            this.Style.Add("background-color", "white");
+
 			this.SelectButton.Click += this.SelectButton_Click;
 			this.Controls.Add(this.SelectButton);
 

@@ -7,12 +7,20 @@ using N2.Messaging;
 using N2.Templates.Web.UI;
 using N2.Web;
 using N2.Web.UI.WebControls;
+using N2.Resources;
 
 namespace N2.Messaging.Messaging.UI.Parts
 {
     public partial class MessageInput : TemplateUserControl<N2.Messaging.MailBox, N2.Messaging.MailBox>
     {
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            Register.JQuery(this.Page);
+        }
+        
         protected override void OnPreRender(EventArgs e)
         {
             var ut = (this.selUser.FindControl("ut") as N2.Web.UI.WebControls.UserTree);
