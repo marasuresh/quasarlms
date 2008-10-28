@@ -53,7 +53,6 @@ namespace N2.Lms.Items
 			get {
 				return base.Title ?? (this.Topic != null ? this.Topic.Title : string.Empty);
 			}
-			set { base.Title = value; }
 		}
 
 		[EditableCheckBox("Is Open", 30)]

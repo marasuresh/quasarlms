@@ -31,20 +31,21 @@
 		base.OnInit(e);
 	}
 </script>
-
 <asp:Wizard
 		runat="server"
 		ID="wzTopics"
-		BackColor="#EFF3FB" 
 		BorderWidth="0px" 
 		Font-Names="Verdana"
 		Width="100%"
 		Height="100%"
 		CssClass="wztr">
-	<StepStyle ForeColor="#333333" />
+	<StepStyle BackColor="White" />
+	<NavigationStyle Height="0" CssClass="hidden" />
+	
 	<SideBarButtonStyle
 		ForeColor="White"
 		Font-Names="Verdana" />
+	
 	<NavigationButtonStyle
 		BackColor="White"
 		BorderColor="#507CD1" 
@@ -57,23 +58,17 @@
 		VerticalAlign="Top"
 		Font-Size="0.8em"
 		Width="150px"
+		CssClass="sb"
 		Wrap="true" />
-	<HeaderStyle
-		BackColor="#284E98"
-		BorderStyle="Solid"
-		Font-Bold="True" 
-		ForeColor="White"
-		HorizontalAlign="Center" 
-		BorderColor="#EFF3FB"
-		BorderWidth="2px" />
-	
+
 	<SideBarTemplate>
 		<asp:DataList
 				runat="server"
 				ID="SideBarList"
 				RepeatLayout="Flow"
 				CssClass="sbl"
-				SelectedItemStyle-Font-Italic="true">
+				SelectedItemStyle-CssClass="selected"
+				SelectedItemStyle-Font-Bold="true">
 			<ItemTemplate>
 				<asp:LinkButton
 					runat="server"
@@ -84,4 +79,3 @@
 		
 	</SideBarTemplate>
 </asp:Wizard>
-

@@ -47,24 +47,6 @@ namespace N2.Messaging
             set { this.SetDetail<MessageStore>("MessageStore", value); }
         }
 
-        [EditableLink("Recycle Bin", 1,
-			HelpTitle = "Select an item, which contains all delete messages.",
-			Required = true)]
-        public RecycleBin RecycleBin
-        {
-            get { return this.GetDetail("RecycleBin") as RecycleBin; }
-            set { this.SetDetail<RecycleBin>("RecycleBin", value); }
-        }
-
-        [EditableLink("Draught Store", 1,
-			HelpTitle = "Select an item, which contains all draught messages.",
-			Required = true)]
-        public DraughtStore DraughtStore
-        {
-            get { return this.GetDetail("DraughtStore") as DraughtStore; }
-            set { this.SetDetail<DraughtStore>("DraughtStore", value); }
-		}
-
 		#endregion Lms properties
 
 		public string Action { get; set; }

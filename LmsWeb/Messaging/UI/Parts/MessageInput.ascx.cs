@@ -100,7 +100,7 @@ namespace N2.Messaging.Messaging.UI.Parts
             {
                 MailFactory mFactory = new MailFactory();
 
-                BaseStore store = CurrentItem.DraughtStore;
+                BaseStore store = CurrentItem.MessageStore.DraftsFolder;
 
                 string msgType = CurrentItem.Action;
 

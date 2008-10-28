@@ -8,18 +8,23 @@ form {
 }
 div#wrap > table,
 div#wrap {
+	height:100%;
 	width:100%;
 }
+
+/*Module Wizard*/
 .wzm .sb {
 	width: 200px;
+	padding:15px;
+	padding-right:0px;
 }
-.wzm .sb > TABLE {
-	
+.wzm .sbl td{
+	padding-bottom:5px;
+	padding-top:5px;
+	border-bottom:1px dotted blue;
 }
-.wzm A.sba {
+.wzm .sbl A.sba {
 	display:block;
-	padding:4px;
-	padding-left:7px;
 	width: 100%;
 }
 .wzm A.sba:HOVER {
@@ -27,20 +32,34 @@ div#wrap {
 }
 .wzm .sbl .selected A.sba {
 	background-color: Beige;
-}
-
-.wztr SPAN.sbl
-{
-	display:block;
-	width:100%;
+	font-weight:bold;
 }
 .wzm div.uc {
-	height:100%;
+	
 }
-
+/*Training Wizard*/
+.wztr .sb {
+	width:150px;
+	padding:15px;
+	padding-right:0px;
+}
+.wztr .sbl td {
+	padding-bottom:5px;
+	padding-top:5px;
+	border-bottom:1px dotted blue;
+}
+.wztr div.uc {
+	
+}
+.wztr div.uc > div {
+	
+}
+/*jQuery Spliter set up*/
 #splitter { height: 510px; }
 #leftPane { width: 200px; min-width: 50px; float:left; background:#fff }
 #rightPane { min-width: 50px; overflow: hidden; width:790px; float:left; background:#fff }
 #splitter .vsplitbar { width: 5px; background: #d3d6d5 url(../img/splitter.gif) no-repeat 50% 50%; }
 #splitter .vsplitbar.active, #splitter .vsplitbar:hover { background-color: #a5acb0; }
 #splitter iframe{ width:100%; }
+
+.hidden{display:none;}

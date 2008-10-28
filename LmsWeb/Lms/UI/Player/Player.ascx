@@ -38,27 +38,15 @@
 		N2.Resources.Register.StyleSheet(this.Page, "~/Lms/UI/Player/Player.css");
 		this.EnsureChildControls();
 		this.wzModules.ActiveStepIndex = 0;
-
+		
 		Register.JQuery(this.Page);
-		Register.JavaScript(this.Page, @"
-$('#wrap').bind('resize', function(){ this.height(document.documentElement.clientHeight) });
-", ScriptOptions.DocumentReady);
-				this.Page.ClientScript.RegisterClientScriptInclude(
-					"jQuery.splitter",
-					this.Page.ResolveClientUrl("~/Edit/Js/plugins/jquery.splitter.js")
-				);
-				Register.JavaScript(this.Page, @"
-		var _oldWizard = $('table.wzm');
-		var _leftPane = $('<div id=""leftPane"" class=""sb""/>');
-		var _rightPane = $('<div id=""rightPane""/>');
-		$('td.sb', _oldWizard).contents().appendTo(_leftPane);
-		$('td.sb', _oldWizard).next().contents().appendTo(_rightPane);
-		var _newWizard = $('<div class=""wzm"" id=""splitter"">');
-		_leftPane.appendTo(_newWizard);
-		_rightPane.appendTo(_newWizard);
-		_oldWizard.replaceWith(_newWizard);
-		_newWizard.splitter({type:'v', initA: true});
-		", ScriptOptions.DocumentReady);
+		
+		this.Page.ClientScript.RegisterClientScriptInclude(
+				"jQuery.splitter",
+				this.Page.ResolveClientUrl("~/Edit/Js/plugins/jquery.splitter.js")
+		);
+
+		Register.JavaScript(this.Page, this.Page.ResolveClientUrl("~/Lms/UI/Js/Player.js"));
 	}
 
 	protected WizardStepBase AddModuleStep(ScheduledTopic module)
@@ -69,8 +57,8 @@ $('#wrap').bind('resize', function(){ this.height(document.documentElement.clien
 			StepType = WizardStepType.Auto
 		};
 		this.wzModules.WizardSteps.Add(_step);
-		
-		((ASP.Module)((IContainable)module).AddTo(_step)).CurrentItem = module;
+
+		((N2.Templates.Web.UI.TemplateUserControl<N2.Templates.Items.AbstractContentPage, N2.Lms.Items.ScheduledTopic>)((IContainable)module).AddTo(_step)).CurrentItem = module;
 
 		return _step;
 	}
@@ -85,7 +73,7 @@ $('#wrap').bind('resize', function(){ this.height(document.documentElement.clien
 		
 		this.wzModules.WizardSteps.Add(_step);
 		
-		var _uc = ((ASP.TestPlayer)((IContainable)test).AddTo(_step)).CurrentItem = test;
+		((ASP.TestPlayer)((IContainable)test).AddTo(_step)).CurrentItem = test;
 		
 		return _step;
 	}
@@ -97,8 +85,8 @@ $('#wrap').bind('resize', function(){ this.height(document.documentElement.clien
 		BorderColor="#B5C7DE"
 		BorderStyle="None"
 		Font-Names="Verdana"
-		CssClass="wzm"
-		Height="80%">
+		CssClass="wzm">
+	<NavigationStyle Height="0" CssClass="hidden" />
 	<StepStyle ForeColor="#333333" VerticalAlign="Top" />
 	<SideBarButtonStyle
 			CssClass="sbLink" />
@@ -128,7 +116,8 @@ $('#wrap').bind('resize', function(){ this.height(document.documentElement.clien
 				runat="server"
 				ID="SideBarList"
 				CssClass="sbl"
-				SelectedItemStyle-CssClass="selected">
+				SelectedItemStyle-CssClass="selected"
+				SelectedItemStyle-Font-Bold="true">
 			<ItemTemplate>
 				<asp:LinkButton
 					runat="server"

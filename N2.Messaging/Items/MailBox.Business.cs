@@ -19,16 +19,6 @@ namespace N2.Messaging
 				this.ValidationMessages.Add("Message store is not assigned");
 				this.IsValid = false;
 			}
-
-			if (null == this.DraughtStore) {
-				this.ValidationMessages.Add("Draft store is not assigned");
-				this.IsValid = false;
-			}
-
-			if (null == this.RecycleBin) {
-				this.ValidationMessages.Add("Recycle bin is not assigned");
-				this.IsValid = false;
-			}
 		}
 
 		#region ILink Members

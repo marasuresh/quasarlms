@@ -26,5 +26,31 @@ namespace N2
 					? defaultValueProvider(item)
 					: default(ItemType));
 		}
+
+		//ditto
+		public static ChildItemType GetChild<ChildItemType>(
+				this ContentItem item,
+				string childName,
+				Func<ChildItemType, ChildItemType> defaultValueMutator)
+			where ChildItemType : ContentItem
+		{
+			Func<ChildItemType> _defaultValueCreator = () => {
+				ChildItemType _newChild = Context.Current.Definitions.CreateInstance<ChildItemType>(item);
+				_newChild.Name = childName;
+				_newChild.AddTo(item);
+				N2.Context.Persister.Save(_newChild);
+				return _newChild;
+			};
+			
+			return
+				item.GetChild(childName) as ChildItemType
+				?? (null != defaultValueMutator
+					
+					//construct new child and inject it into hierarchy
+					? defaultValueMutator(_defaultValueCreator())
+					
+					: _defaultValueCreator()
+				);
+		}
 	}
 }

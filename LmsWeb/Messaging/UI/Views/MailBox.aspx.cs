@@ -6,11 +6,15 @@ using System.Web.UI.WebControls;
 using System.Web;
 using N2.Resources;
 using N2.Web;
+using N2.Templates.Web.UI;
+using System.Collections;
+using System.Collections.Generic;
 
-public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<MailBox>
+public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
 {
-	protected string CurrentUserName {
-		get { return this.Context.User.Identity.Name; }
+	protected string CurrentUserName
+	{
+		get { return HttpContext.Current.User.Identity.Name; }
 	}
 
     protected DropDownList ddlMsgType;
@@ -49,84 +53,11 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
         ShowMsgContainer(msgContainerIndex);
     }
     
-    
-
- //Все сообщения текущего пользователя.
-    protected Message[] Messages
-    {
-        get
-        {
-            return (from child in CurrentItem.MessageStore.Children.OfType<Message>()
-                    where ((string.Equals(child.Owner, CurrentUserName, StringComparison.OrdinalIgnoreCase))                        
-                            )
-                    select child).ToArray();
-        }
-    }
-    
-    
-    //Письма.
-    protected Letter[] Letters
-    {
-        get
-        {
-            return (from child in CurrentItem.MessageStore.Children.OfType<Letter>()
-                    where (string.Equals(child.Owner, this.CurrentUserName, StringComparison.OrdinalIgnoreCase))
-                    select child).ToArray();
-        }
-    }
-    
-    //Задания.
-    protected Task[] Tasks
-    {
-        get
-        {
-            return (from child in CurrentItem.MessageStore.Children.OfType<Task>()
-                    where (string.Equals(child.Owner, this.CurrentUserName, StringComparison.OrdinalIgnoreCase))
-                    select child).ToArray();
-        }
-    }
-    
-    //Объявления.
-    protected Announcement[] Announcements
-    {
-        get
-        {
-            return (from child in CurrentItem.MessageStore.Children.OfType<Announcement>()
-                    where (string.Equals(child.Owner, this.CurrentUserName, StringComparison.OrdinalIgnoreCase))
-                    select child).ToArray();
-        }
-    }
-
-
-
-    //В черновиках.
-    protected Message[] inDraughtStore
-    {
-        get
-        {
-            return (from child in CurrentItem.DraughtStore.Children.OfType<Message>()
-                    where (string.Equals(child.Owner, this.CurrentUserName, StringComparison.OrdinalIgnoreCase))
-                    select child).ToArray();
-        }
-    }
-
-    //В корзине.
-    protected Message[] inRecycleBin
-    {
-        get
-        {
-            return (from child in CurrentItem.RecycleBin.Children.OfType<Message>()
-                    where (string.Equals(child.Owner, this.CurrentUserName, StringComparison.OrdinalIgnoreCase))
-                    select child).ToArray();
-        }
-    }
-
-
     private void ShowMsgContainer(int tabIndex)
     {
         mvMailBox.ActiveViewIndex = tabIndex;
 
-        Message[] showingMsg = null;
+        IEnumerable<Message> showingMsg = new Message[0];
 
         switch (tabIndex)
         {
@@ -136,16 +67,16 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
                 switch (ddlMsgType.SelectedValue)
                 {
                     case "all":
-                        showingMsg = Messages;
+						showingMsg = this.CurrentItem.MessageStore.MyMessages;
                         break;
                     case "letters":
-                        showingMsg = Letters;
+						showingMsg = (IEnumerable<Message>)this.CurrentItem.MessageStore.MyLetters;
                         break;
                     case "tasks":
-                        showingMsg = Tasks;
+						showingMsg = (IEnumerable<Message>)this.CurrentItem.MessageStore.MyTasks;
                         break;
                     case "announcements":
-                        showingMsg = Announcements;
+						showingMsg = (IEnumerable<Message>)this.CurrentItem.MessageStore.MyAnnouncements;
                         break;
                 }
 
@@ -164,11 +95,11 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
                 break;
             
             case 1:
-                showingMsg = inDraughtStore;
+                showingMsg = this.CurrentItem.MessageStore.MyDrafts;
                 break;
 
             case 2:
-                showingMsg = inRecycleBin;
+                showingMsg = this.CurrentItem.MessageStore.MyRecycled;
                 break;
         }
 
@@ -196,7 +127,7 @@ public partial class Messaging_UI_MailBox : N2.Templates.Web.UI.TemplatePage<Mai
     
     protected void btnEmptyRecBin_Click(object sender, EventArgs e)
     {
-        foreach (Message msg in inRecycleBin)
+        foreach (Message msg in this.CurrentItem.MessageStore.MyRecycled)
         {
             Engine.Persister.Delete(msg);
             Response.Redirect(Url.Parse(CurrentItem.Url).AppendSegment("RecycleBin").Path);

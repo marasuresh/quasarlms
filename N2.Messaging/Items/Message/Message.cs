@@ -94,17 +94,7 @@
             Utility.Insert(this, newParent, "Published DESC");
         }
 
-        public override bool Visible
-        {
-            get
-            {
-                return false;
-            }
-            set
-            {
-                base.Visible = value;
-            }
-        }
+        public override bool Visible { get { return false; } }
 
         #endregion
     }
