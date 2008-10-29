@@ -1,4 +1,18 @@
-﻿.wza {
+﻿/*Wizard of Assignment List*/
+	.wzal .sb {
+		margin-top:11px;
+	}
+	.wzal A.sba {
+		display:block;
+		width: 100%;
+		font-family: Verdana;
+		padding:4px;
+	}
+	.wzal .selected A.sba {
+		background-color: #D0DAE2;
+	}
+/*Wizard of Course Player*/
+.wza {
 	border-top: 1px solid #B5C7DE;
 	vertical-align:top;
 }
@@ -11,21 +25,17 @@
 	margin-left:7px;
 	color:#445599;
 }
-.wza a:hover.sba: {
+.wza A:HOVER.sba: {
 	background-color: Beige;
 }
 .wza .selected A.sba {
 	background-color: White;
 }
-.wza .wzs table {
+.wza .wzs TABLE {
 	border:none;
 	width:100%;
 }
 
-.grid {
-	width:100%;
-}
-.grid .top {
-	float:inherit!important;
-	padding:0px!important;
-}
+.grid { width:100%; }
+.grid .top { float:inherit!important; padding:0px!important; }
+.hidden { display: none;}
