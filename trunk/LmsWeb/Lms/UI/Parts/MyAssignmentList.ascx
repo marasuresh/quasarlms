@@ -22,17 +22,17 @@
 </script>
 
 <n2:H4 runat="server" Text='<%$ CurrentItem: Title %>' />
-<n2:Box runat="server">
-    <style>
-        .hidden
-        {
-            display: none;
-        }
-    </style>
     <% if (!this.Context.User.IsInRole("Administrators"))
        {%>
-    <asp:Wizard runat="server" ID="Wizard1" Font-Names="Verdana" Font-Size="0.8em" CssClass="wza"
-        BackColor="#EFF3FB" Height="300" Width="100%">
+	<asp:Wizard
+			runat="server"
+			ID="wz"
+			Font-Names="Verdana"
+			Font-Size="0.8em"
+			CssClass="wzal"
+			BackColor="#ffffff"
+			Height="300"
+			Width="100%">
         <NavigationStyle Height="0" CssClass="hidden" />
         <StepStyle Font-Size="0.8em" ForeColor="#333333" VerticalAlign="Top" />
         <WizardSteps>
@@ -50,9 +50,14 @@
             </asp:WizardStep>
         </WizardSteps>
         <StepStyle BackColor="White" CssClass="wzs" />
-        <SideBarStyle VerticalAlign="Top" Width="150" />
+        <SideBarStyle VerticalAlign="Top" Width="100" />
         <SideBarTemplate>
-            <asp:DataList runat="server" ID="SideBarList" Width="100%" SelectedItemStyle-CssClass="selected">
+			<asp:DataList
+					runat="server"
+					ID="SideBarList"
+					Width="100%"
+					SelectedItemStyle-CssClass="selected"
+					CssClass="sb">
                 <ItemTemplate>
                     <asp:LinkButton runat="server" ID="SideBarButton" CssClass="sba" />
                 </ItemTemplate>
@@ -86,4 +91,3 @@
         </SideBarTemplate>
     </asp:Wizard>
     <% } %>
-</n2:Box>
