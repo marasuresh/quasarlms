@@ -56,17 +56,21 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
        
             //Фильтровка сообщений выводимых на экран.
             string strURL = "~/Reporting/ReportFiles/" ;
+            this.hlnkReport.Text = "-";
 
             switch (this.ddlReportType.SelectedValue)
             {
                 case "erv"://Экзаменационно рейтинговые ведомости
+                    if (this.SelectUser.SelectedUser.Length <1) return;
                     strURL += ExcelExport.ExportToFileZV(Roles.GetUsersInRole(this.SelectUser.SelectedUser));
                     this.hlnkReport.NavigateUrl = strURL;
                     this.hlnkReport.Text = "Экзаменационно рейтинговые ведомости группа " + this.SelectUser.SelectedUser;
                     break;
                 case "svrs"://Сводные ведомости по результатам сессии
+                    if (this.SelectUser.SelectedUser.Length < 1) return;
+                    strURL += ExcelExport.ExportToFileZV(Roles.GetUsersInRole(this.SelectUser.SelectedUser));
                     this.hlnkReport.NavigateUrl = strURL;
-                    this.hlnkReport.Text = "не реализовано";
+                    this.hlnkReport.Text = "Сводные ведомости по результатам сессии";
                     break;
                 case "oaz"://Отчеты по академическим задолженностиям
                     this.hlnkReport.Text = "не реализовано";
@@ -78,6 +82,7 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
                     this.hlnkReport.Text = "не реализовано";
                     break;
                 case "oz"://Отчет по заявкам
+                    if (this.SelectUser.SelectedUser.Length < 1) return;
                     var reqs = Requests;
                     strURL += ExcelExport.ExportToFileOZ(reqs, this.SelectUser.SelectedUser);
                     this.hlnkReport.NavigateUrl = strURL;
@@ -127,7 +132,7 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
         {
             //this.Trace.Write("Lms", this.ddlReportType.SelectedValue);
             //string strURL = "~/Reporting/ReportFiles/";
- 
+            this.SelectUser.Visible = true;
             switch (this.ddlReportType.SelectedValue)
             {
                 case "erv"://Экзаменационно рейтинговые ведомости
@@ -135,8 +140,8 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
                     _displayMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
                     break;
                 case "svrs"://Сводные ведомости по результатам сессии
-                    //this.hlnkReport.NavigateUrl = strURL;
-                    this.hlnkReport.Text = "не реализовано";
+                    _selectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
+                    _displayMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
                     break;
                 case "oaz"://Отчеты по академическим задолженностиям
                     this.hlnkReport.Text = "не реализовано";
