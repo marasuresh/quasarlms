@@ -138,7 +138,7 @@
     <Content Include="Lms\UI\TrainingSelector.ascx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lms\UI\MyCoursesDAO.cs" />
+    <Compile Include="DAO\MyCoursesDAO.cs" />
     <Compile Include="Lms\UI\CourseIntro.ascx.cs">
       <DependentUpon>CourseIntro.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -203,7 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DAO\" />
     <Folder Include="Lms\UI\Css\inline\" />
     <Folder Include="Lms\UI\Img\inline\" />
     <Folder Include="Lms\UI\Parts\MyAssignmentList\MyTrainings\" />
