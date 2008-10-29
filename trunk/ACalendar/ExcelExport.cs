@@ -78,8 +78,14 @@ namespace N2.ACalendar
 				data[(_row - 20), 0] = (_row - 19).ToString();
 				data[(_row - 20), 1] = _u;
 				data[(_row - 20), 2] = "";
-				if (Roles.GetRolesForUser(_u).Any()) data[(_row - 20), 2] = (Roles.GetRolesForUser(_u))[0];
-				_row++;
+                string [] roles = Roles.GetRolesForUser(_u);
+                if (roles.Any())
+                {
+                 foreach (string r in roles )
+                    if (!r.ToLower().StartsWith("st")  )  //ищем название группы
+                        data[(_row - 20), 2] = r;
+                }
+                    _row++;
 			}
 
             Microsoft.Office.Interop.Excel.Application aXL = null;
@@ -186,10 +192,40 @@ namespace N2.ACalendar
 
 		public static string ExportToFileOZ(Request[] reqs, string studName)
 		{
-			Microsoft.Office.Interop.Excel.Application aXL = startExcel();
-			aXL.Visible = false;
-			string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
-			string _fileName = "oz.xls";
+            Microsoft.Office.Interop.Excel.Application aXL = null;
+            string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
+            string _fileName = "oz.xls";
+            string[,] data = new string[reqs.Length, 5];
+            int _row = 13;
+            foreach (Request _r in reqs)
+            {
+                N2.Workflow.Items.ItemState _s = _r.GetCurrentState();
+                data[(_row - 13), 0] = (_row - 12).ToString(); ;
+                data[(_row - 13), 1] = (_r.Course != null ? _r.Course.Title : string.Empty);
+                data[(_row - 13), 2] = _r.RequestDate.ToShortDateString();
+                data[(_row - 13), 3] = _r.User.ToString() ;
+                data[(_row - 13), 4] = "-";
+                if ((_s is AcceptedState) && ((AcceptedState)_s).Grade != 1)
+                    data[(_row - 13), 4] = ((AcceptedState)_s).Grade.ToString();
+
+                //if (Roles.GetRolesForUser(_u).Any()) data[(_row - 20), 2] = (Roles.GetRolesForUser(_u))[0];
+                _row++;
+            }
+
+            try
+            {
+                aXL = startExcel();
+                aXL.Visible = false;
+            }
+            catch
+            {
+                _fileName = _fileName.Replace(".xls", ".xml");
+                ExportToXML(data, _path + _fileName);
+                return _fileName;
+
+            }
+            
+            
 			aXL.Workbooks.Open(
 					 _path + _fileName, // FileName
 						false, // UpdateLinks
@@ -211,8 +247,12 @@ namespace N2.ACalendar
 			XL.Workbook wb = aXL.ActiveWorkbook; // или создать новую рабочую книгу, а то может поверх написать -  oXL.Workbooks.Add(Type.Missing);
 			XL.Worksheet worksheet = (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet; //  (Microsoft.Office.Interop.Excel.Worksheet)oXL.ActiveSheet;
 			worksheet.get_Range("B6", "B6").Value2 = studName;
-			if (Roles.GetRolesForUser(studName).Any())
-				worksheet.get_Range("B7", "B7").Value2 = Roles.GetRolesForUser(studName)[0];
+			string[] roles = Roles.GetRolesForUser(studName);
+                if (roles.Any()) 
+                    foreach (string r in roles )
+                         if (!r.ToLower().StartsWith("st")  )  //ищем название группы
+                             worksheet.get_Range("C7", "C7").Value2 = r;
+
 
 			//            <a href='<%= _req.TemplateUrl %>'>
 			//    <%= _req.Title%></a>
@@ -220,21 +260,8 @@ namespace N2.ACalendar
 			//<%= _req.Comments%>
 
 
-			string[,] data = new string[reqs.Length, 5];
-			int _row = 13;
-			foreach (Request _r in reqs) {
-				N2.Workflow.Items.ItemState _s = _r.GetCurrentState();
-				data[(_row - 13), 0] = (_row - 12).ToString(); ;
-				data[(_row - 13), 1] = (_r.Course != null ? _r.Course.Title : string.Empty);
-				data[(_row - 13), 2] = _r.RequestDate.ToShortDateString();
-				data[(_row - 13), 3] = _r.GetCurrentState().Title;
-				data[(_row - 13), 4] = "-";
-				if ((_s is AcceptedState) && ((AcceptedState)_s).Grade != 1)
-					data[(_row - 13), 4] = ((AcceptedState)_s).Grade.ToString();
 
-				//if (Roles.GetRolesForUser(_u).Any()) data[(_row - 20), 2] = (Roles.GetRolesForUser(_u))[0];
-				_row++;
-			}
+
 			worksheet.get_Range("A13", "E" + (_row - 1).ToString()).Value2 = data;
 			worksheet.get_Range("A" + (_row).ToString(), "E" + (_row + 20).ToString()).ClearContents();
 
@@ -258,11 +285,40 @@ namespace N2.ACalendar
 
 		public static string ExportToFileIRP(Request[] reqs)
 		{
-			Microsoft.Office.Interop.Excel.Application aXL = startExcel();
-			aXL.Visible = false;
+			Microsoft.Office.Interop.Excel.Application aXL = null;
 			string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
 			string _fileName = "irp.xls";
-			aXL.Workbooks.Open(
+ 
+            var corses_req = from req in reqs group req by req.Course.Title into corsesGroup select new { cour = corsesGroup.Key, requests = corsesGroup.Count() };
+
+            string[,] data = new string[reqs.Length, 5];
+            int _row = 10;
+            foreach (var _cours in corses_req)
+            {
+                data[(_row - 10), 0] = (_row - 9).ToString();
+                data[(_row - 10), 1] = _cours.cour;
+                //int _reqsCount = 0;  foreach (var _reqs in _cours.requests) _reqsCount++;
+                data[(_row - 10), 2] = _cours.requests.ToString();
+                _row++;
+            }
+
+            try
+            {
+                aXL = startExcel();
+                aXL.Visible = false;
+            }
+            catch
+            {
+                _fileName = _fileName.Replace(".xls", ".xml");
+                ExportToXML(data, _path + _fileName);
+                return _fileName;
+
+            }
+          
+            
+            
+            
+            aXL.Workbooks.Open(
 					 _path + _fileName, // FileName
 						false, // UpdateLinks
 						false, //  ReadOnly
@@ -288,17 +344,6 @@ namespace N2.ACalendar
 			//foreach (var group in groups){Console.WriteLine("Слова длиной {0} символов", group.Length);
 			//    foreach (string word in group.Words)Console.WriteLine(" " + word);
 
-			var corses_req = from req in reqs group req by req.Course.Title into corsesGroup select new { cour = corsesGroup.Key, requests = corsesGroup.Count() };
-
-			string[,] data = new string[reqs.Length, 5];
-			int _row = 10;
-			foreach (var _cours in corses_req) {
-				data[(_row - 10), 0] = (_row - 9).ToString();
-				data[(_row - 10), 1] = _cours.cour;
-				//int _reqsCount = 0;  foreach (var _reqs in _cours.requests) _reqsCount++;
-				data[(_row - 10), 2] = _cours.requests.ToString();
-				_row++;
-			}
 			worksheet.get_Range("A10", "C" + (_row - 1).ToString()).Value2 = data;
 			worksheet.get_Range("A" + (_row).ToString(), "C" + (_row + 20).ToString()).ClearContents();
 
