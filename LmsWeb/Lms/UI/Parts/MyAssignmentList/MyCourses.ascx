@@ -10,7 +10,7 @@
 	{
 		var _lv = sender as ListView;
 		
-		e.NewValues.Add("courseId", _lv.DataKeys[_lv.EditIndex]);
+		//e.NewValues.Add("courseId", _lv.DataKeys[_lv.EditIndex]);
 		e.NewValues.Add("begin", ((DatePicker)_lv.EditItem.FindControl("dtBegin")).SelectedDate);
 		e.NewValues.Add("end", ((DatePicker)_lv.EditItem.FindControl("dtEnd")).SelectedDate);
 		e.NewValues.Add("comments", ((TextBox)_lv.EditItem.FindControl("tbComment")).Text);
@@ -23,11 +23,12 @@
 	SelectMethod="FindAll"
 	UpdateMethod="InsertRequest"
 	TypeName="N2.Lms.MyCoursesDAO"
-	onobjectcreating="ds_ObjectCreating" EnableCaching="True" >
+	onobjectcreating="ds_ObjectCreating"
+	EnableCaching="True">
 	<UpdateParameters>
-		<asp:Parameter Name="courseId" Type="Int32" />
-		<asp:Parameter Name="begin" Type="DateTime" />
-		<asp:Parameter Name="end" Type="DateTime" />
+		<%--<asp:Parameter Name="courseId" Type="Int32" ConvertEmptyStringToNull="true" />--%>
+		<asp:Parameter Name="begin" Type="DateTime" ConvertEmptyStringToNull="true" />
+		<asp:Parameter Name="end" Type="DateTime" ConvertEmptyStringToNull="true" />
 		<asp:Parameter Name="comments" Type="String" />
 	</UpdateParameters>
 </asp:ObjectDataSource>
@@ -66,7 +67,7 @@
 					<div class="header">Edit details for '<%# Eval("Title")%>'</div>
 					<table class="detailview" cellpadding="0" cellspacing="0">
 						<tr><th>Begin</th>
-							<td><n2:DatePicker ID="dpBegin" runat="server" /></td></tr>
+							<td><n2:DatePicker ID="dtBegin" runat="server" /></td></tr>
 						<tr><th>End</th>
 							<td><n2:DatePicker ID="dtEnd" runat="server" /></td>
 						</tr>

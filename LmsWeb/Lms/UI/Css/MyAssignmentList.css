@@ -1,16 +1,12 @@
 ﻿/*Wizard of Assignment List*/
-	.wzal .sb {
-		margin-top:11px;
-	}
+	.wzal .sb { margin-top:11px; }
 	.wzal A.sba {
 		display:block;
 		width: 100%;
 		font-family: Verdana;
 		padding:4px;
 	}
-	.wzal .selected A.sba {
-		background-color: #D0DAE2;
-	}
+	.wzal .selected A.sba { background-color: #D0DAE2; }
 /*Wizard of Course Player*/
 .wza {
 	border-top: 1px solid #B5C7DE;
@@ -25,17 +21,13 @@
 	margin-left:7px;
 	color:#445599;
 }
-.wza A:HOVER.sba: {
-	background-color: Beige;
-}
-.wza .selected A.sba {
-	background-color: White;
-}
-.wza .wzs TABLE {
-	border:none;
-	width:100%;
-}
+.wza A:HOVER.sba: { background-color: Beige; }
+.wza .selected A.sba { background-color: White; }
+.wza .wzs TABLE { border:none; width:100%; }
 
+.hidden { display: none;}
+
+/*inline grid fixes*/
 .grid { width:100%; }
 .grid .top { float:inherit!important; padding:0px!important; }
-.hidden { display: none;}
+.grid TABLE.gridview { border-collapse: separate!important; }
