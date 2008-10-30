@@ -49,10 +49,12 @@ namespace N2.Lms.Items
 		
 		#endregion Methods
 
+		public virtual IEnumerable<Request> MyRequests { get { return GetChildren().OfType<Request>(); } }
+
 		public IEnumerable<ApprovedState> MyApprovedApplications {
 			get {
 				return
-					from _req in this.GetChildren(/*filtered by current user*/).OfType<Request>()
+					from _req in this.MyRequests
 					let _currentState = _req.GetCurrentState() as ApprovedState
 					where null != _currentState
 					select _currentState;
@@ -62,7 +64,7 @@ namespace N2.Lms.Items
 		public IEnumerable<Request> MyPendingRequests {
 			get {
 				return
-					from _req in this.GetChildren(/*filtered by current user*/).OfType<Request>()
+					from _req in this.MyRequests
 					where _req.GetCurrentState().IsInitialState()
 					select _req;
 			}
@@ -86,7 +88,7 @@ namespace N2.Lms.Items
 		internal IEnumerable<Course> MyActiveCourses {
 			get {
 				return (
-					from _req in this.GetChildren(/*filtered by current user*/).OfType<Request>()
+					from _req in this.MyRequests
 					let _currentState = _req.GetCurrentState()
 					where
 						"new,active,pending validation".Contains(_currentState.ToState.Title.ToLower())
@@ -102,7 +104,7 @@ namespace N2.Lms.Items
 		public IEnumerable<Request> MyFinishedAssignments {
 			get {
 				return
-					from _request in this.GetChildren().OfType<Request>()
+					from _request in this.MyRequests
 					let _currentState = _request.GetCurrentState()
 					where string.Equals(_currentState.ToState.Title, "Pending Validation", StringComparison.InvariantCultureIgnoreCase)
 					select _request;
@@ -117,7 +119,7 @@ namespace N2.Lms.Items
             get
             {
                 return
-                    from _request in this.GetChildren(/*filtered by current user*/).OfType<Request>()
+                    from _request in this.MyRequests
                     let _currentState = _request.GetCurrentState()
                     where _currentState is AcceptedState && ((AcceptedState)_currentState).Grade != 1
                     select _request;

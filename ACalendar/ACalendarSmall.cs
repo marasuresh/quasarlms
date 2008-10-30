@@ -5,7 +5,6 @@ using N2.Templates.Items;
 
 namespace N2.ACalendar
 {
-	using N2.Lms;
 	using N2.Web;
 	
 	[Definition("ACalendarSmall", "ACalendarSmall", "Маленький календарь", "", 160)]
