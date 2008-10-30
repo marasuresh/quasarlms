@@ -8,24 +8,33 @@
 	using N2.Templates.Items;
 	using N2.Workflow.Items;
 
-	[Definition("Request Container", "RequestContainer", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
+	[Definition(
+		"Request Container",
+		"RequestContainer",
+		"",
+		"",
+		2000,
+		Installer = InstallerHint.NeverRootOrStartPage)]
 	[WithEditableTitle("Title", 10)]
 	[ItemAuthorizedRoles(Roles = new string[0])]
 	[RestrictParents(typeof(IStructuralPage))]
 	[AllowedChildren(typeof(Request))]
 	public partial class RequestContainer: ContentItem, IWorkflowItemContainer
 	{
+
+		public RequestContainer()
+		{
+			this.Title = "Request Container";
+		}
+
+		#region System properties
+		
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/50.png"; } }
-
-		//public override bool IsPage { get { return false; } }
-
+		public override string TemplateUrl { get { return "~/Templates/UI/Parts/Empty.ascx"; } }
+		public override bool IsPage { get { return false; } }
 		public override bool Visible { get { return false; } set { base.Visible = value; } }
 
-		[EditableChildren("Pending requests", "", "Requests", 110)]
-		public virtual IList<ContentItem> Requests
-		{
-			get { return GetChildren(); }
-		}
+		#endregion System properties
 
 		[EditableLink("Workflow", 107)]
 		public Workflow Workflow {

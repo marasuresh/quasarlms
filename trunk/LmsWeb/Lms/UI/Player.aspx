@@ -34,12 +34,6 @@
 	{
 		this.CurrentPage = ticket;
 	}
-	
-	protected override void OnLoad(EventArgs e)
-	{
-		
-		base.OnLoad(e);
-	}
 </script>
 
 <asp:Content runat="server" ContentPlaceHolderID="Top">

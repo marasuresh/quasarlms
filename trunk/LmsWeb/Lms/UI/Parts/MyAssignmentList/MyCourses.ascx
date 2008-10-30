@@ -24,8 +24,7 @@
 	SelectMethod="FindAll"
 	UpdateMethod="InsertRequest"
 	TypeName="N2.Lms.MyCoursesDAO"
-	onobjectcreating="ds_ObjectCreating" 
-    OldValuesParameterFormatString="original_{0}" >
+	onobjectcreating="ds_ObjectCreating">
 	<UpdateParameters>
 		<%--<asp:Parameter Name="courseId" Type="Int32" ConvertEmptyStringToNull="true" />--%>
 		<asp:Parameter Name="begin" Type="DateTime" ConvertEmptyStringToNull="true" />

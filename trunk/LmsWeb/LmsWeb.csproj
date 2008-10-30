@@ -138,6 +138,7 @@
     <Content Include="Lms\UI\TrainingSelector.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\MyTrainingsDAO.cs" />
     <Compile Include="DAO\MyCoursesDAO.cs" />
     <Compile Include="DAO\MyGradedTrainingsDAO.cs" />
     <Compile Include="DAO\MyRequestsDAO.cs" />

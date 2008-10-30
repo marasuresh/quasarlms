@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace N2
 {
@@ -28,12 +29,26 @@ namespace N2
 		}
 
 		//ditto
-		public static ChildItemType GetChild<ChildItemType>(
+		public static ChildItemType GetOrFindOrCreateChild<ChildItemType>(
 				this ContentItem item,
 				string childName,
 				Func<ChildItemType, ChildItemType> defaultValueMutator)
 			where ChildItemType : ContentItem
 		{
+			/// Attempts to find a first child of a given ChildItemType and reset it's name to childName
+			/// adjust existing child name and persist it
+			Func<ChildItemType> _defaultValueResolver = () => {
+				var _existingItem = item.Children.OfType<ChildItemType>().FirstOrDefault();
+				if (null != _existingItem) {
+					_existingItem.Name = childName;
+					N2.Context.Persister.Save(_existingItem);
+					return _existingItem;
+				} else {
+					return null;
+				}
+			};
+
+			/// Construct new child of a given ChildItemType and inject it into hierarchy
 			Func<ChildItemType> _defaultValueCreator = () => {
 				ChildItemType _newChild = Context.Current.Definitions.CreateInstance<ChildItemType>(item);
 				_newChild.Name = childName;
@@ -41,16 +56,16 @@ namespace N2
 				N2.Context.Persister.Save(_newChild);
 				return _newChild;
 			};
-			
+
+			if (null == defaultValueMutator) {
+				defaultValueMutator = i => i;
+			}
+
 			return
 				item.GetChild(childName) as ChildItemType
-				?? (null != defaultValueMutator
-					
-					//construct new child and inject it into hierarchy
-					? defaultValueMutator(_defaultValueCreator())
-					
-					: _defaultValueCreator()
-				);
+				?? defaultValueMutator(
+					_defaultValueResolver()
+					?? _defaultValueCreator());
 		}
 	}
 }

@@ -18,9 +18,9 @@ namespace N2.Messaging
 		
 		#region Sub-containers
 		
-		public RecycleBin RecycleBin { get { return this.GetChild<RecycleBin>("RecycleBin", item => item); } }
+		public RecycleBin RecycleBin { get { return this.GetOrFindOrCreateChild<RecycleBin>("RecycleBin", item => item); } }
 
-		public DraughtStore DraftsFolder { get { return this.GetChild<DraughtStore>("Drafts", item => item); } }
+		public DraughtStore DraftsFolder { get { return this.GetOrFindOrCreateChild<DraughtStore>("Drafts", item => item); } }
 		
 		#endregion Sub-containers
 
