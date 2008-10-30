@@ -97,7 +97,7 @@ namespace N2.Workflow
 
 				//Expire item if it's a final transition
 				if (!action.LeadsTo.Actions.Any()) {
-					item.Expires = DateTime.Now;
+					item.Expires = DateTime.Today.AddDays(1);
 				}
 
 				item.AssignCurrentState(_newCS);

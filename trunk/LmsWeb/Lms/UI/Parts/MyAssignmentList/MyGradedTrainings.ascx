@@ -1,4 +1,7 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="N2.Templates.Web.UI.TemplateUserControl`2[[N2.Templates.Items.AbstractContentPage, N2.Templates], [N2.Lms.Items.MyAssignmentList, N2.Lms]], N2.Templates" %>
+﻿<%@ Import Namespace="System.ComponentModel"%>
+<%@ Control Language="C#" 
+            AutoEventWireup="true" 
+            Inherits="N2.Lms.Web.UI.MyAssignmentListControl`1[[N2.Lms.MyGradedTrainingsDAO, LmsWeb]], N2.Lms" %>
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="N2.Lms.Items" %>
@@ -7,32 +10,39 @@
 <%@ Import Namespace="N2.Workflow" %>
 <%@ Import Namespace="N2.Lms.Items.TrainingWorkflow" %>
 
-<script runat="server">
-    
-    protected override void OnInit(EventArgs e)
-    {
-        MyAssignmentList myAss = this.CurrentItem;
-    }
-</script>
+<%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls" TagPrefix="n2" %>
 
-<table>
-    <tr>
-        <th>
-            Тренинг
-        </th>
-        <th>
-            Оценка
-        </th>
-    </tr>
-    <% foreach (Request _req in this.CurrentItem.RequestContainer.MyGradedAssignments)
-       { %>
-    <tr>
-        <td>
-            <%= _req.Course.Title %>
-        </td>
-        <td>
-            <%= ((AcceptedState)_req.GetCurrentState()).Grade %>
-        </td>
-    </tr>
-    <% } %>
-</table>
+<asp:ObjectDataSource 
+	ID="dsMyGradedTrainings"
+	runat="server"
+	SelectMethod="FindAll"
+	TypeName="N2.Lms.MyGradedTrainingsDAO"
+	onobjectcreating="ds_ObjectCreating" EnableCaching="False" 
+    OldValuesParameterFormatString="original_{0}" >
+</asp:ObjectDataSource>
+
+<n2:ChromeBox ID="ChromeBox1" runat="Server">
+<asp:ListView
+		ID="lv"
+		runat="server"
+		DataSourceID="dsMyGradedTrainings" >
+	
+	<LayoutTemplate>
+		<table class="gridview" cellpadding="0" cellspacing="0">
+			<tr class="header">
+				<th>Тренинг</th>
+				<th>Оценка</th>
+			<tr id="itemPlaceholder" runat="server" />
+		</table>
+	</LayoutTemplate>
+	
+	<ItemTemplate>
+		<tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>'>
+			<td><%# ((Request)Container.DataItem).Course.Title %> </td>
+			<td><%# ((AcceptedState)((Request)Container.DataItem).GetCurrentState()).Grade %> </td>
+		</tr>
+	</ItemTemplate>
+</asp:ListView>
+</n2:ChromeBox>
+
+

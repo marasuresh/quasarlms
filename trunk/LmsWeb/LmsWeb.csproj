@@ -139,6 +139,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\MyCoursesDAO.cs" />
+    <Compile Include="DAO\MyGradedTrainingsDAO.cs" />
+    <Compile Include="DAO\MyRequestsDAO.cs" />
     <Compile Include="Lms\UI\CourseIntro.ascx.cs">
       <DependentUpon>CourseIntro.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -179,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Browsers\Templates.browser" />
+    <Content Include="Lms\UI\Parts\MyAssignmentList\Requests.ascx" />
     <Content Include="Lms\UI\_assets\css\grid.css" />
     <Content Include="Lms\UI\_assets\css\round.css" />
     <Content Include="Lms\UI\Img\accept.png" />

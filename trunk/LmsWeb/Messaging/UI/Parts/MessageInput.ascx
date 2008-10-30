@@ -4,14 +4,7 @@
             Inherits="N2.Messaging.Messaging.UI.Parts.MessageInput" %>
 <%@ Import Namespace="N2.Web"%>
 <%@ Register assembly="N2.Futures" namespace="N2.Web.UI.WebControls" tagprefix="uc" %>
-<script type="text/javascript" src="../Js/jQuery.intellisense.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-            $(".ut").hide();
-            $(".ut").slideDown(2000);
-    });
-</script>
-
+<%--<script type="text/javascript" src="../Js/jQuery.intellisense.js"></script>--%>
 <n2:Box ID="commentInput" runat="server" CssClass="box" meta:resourcekey="BoxResource1">
     <table style="table-layout: fixed" cellspacing="0" cellpadding="0" width="100%">
         <tbody>
@@ -24,7 +17,6 @@
                     <%--<asp:TextBox ID="txtTo" runat="server" CssClass="tb"
                         meta:resourcekey="txtToResource1" Width="90%" /> --%>
                     <uc:SelectUser ID="selUser" runat="server"/> 
-                    <input id="Button1" type="button" value="button" class='btnTemp' />    
                 </td>
             </tr>
             <tr>

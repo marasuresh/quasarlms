@@ -31,10 +31,10 @@
                     <th>
                     </th>
                     <th>
-                        Наименование курса
+                        Студент
                     </th>
                     <th>
-                        Дата
+                        Наименование курса
                     </th>
                     <tr id="itemPlaceholder" runat="server" />
             </table>
@@ -45,11 +45,10 @@
                     <asp:LinkButton ID="btnEdit" runat="server" Text="детали..." CommandName="Edit" />
                 </td>
                 <td>
-                    <%# N2.Web.Link.To(((Request)Container.DataItem).Course).ToString() %>
+                    <%# ((Request)Container.DataItem).User %>
                 </td>
                 <td>
-                    <small>
-                        <%# ((Request)Container.DataItem).Published.Value.ToShortDateString() %></small>
+                    <%# N2.Web.Link.To(((Request)Container.DataItem).Course).ToString() %>
                 </td>
             </tr>
         </ItemTemplate>
@@ -59,11 +58,10 @@
                     <asp:LinkButton ID="btnEdit" runat="server" Text="Отмена" CommandName="Cancel" />
                 </td>
                 <td>
-                    <%# (((Request)Container.DataItem).Course).Title %>
+                    <%# ((Request)Container.DataItem).User %>
                 </td>
                 <td>
-                    <small>
-                        <%# ((Request)Container.DataItem).Published.Value.ToShortDateString() %></small>
+                    <%# (((Request)Container.DataItem).Course).Title %>
                 </td>
             </tr>
             <tr>
@@ -83,7 +81,8 @@
                             </tr>
                         </table>
                         <div class="footer command">
-                            <asp:LinkButton ID="btnDelete" runat="server" Text="Удалить курс" CommandName="Update" />
+                            <asp:LinkButton ID="btnReject" runat="server" Text="Отклонить" CommandName="Update" CommandArgument="Reject" />
+                            <asp:LinkButton ID="btnAccept" runat="server" Text="Принять" CommandName="Update" CommandArgument="Accept" />
                         </div>
                     </div>
                 </td>

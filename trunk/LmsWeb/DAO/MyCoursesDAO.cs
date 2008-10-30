@@ -26,8 +26,8 @@ namespace N2.Lms
 		[DataObjectMethod(DataObjectMethodType.Update, true)]
 		public void InsertRequest(
 				int id,
-				DateTime? begin,
-				DateTime? end,
+				Object begin,
+                Object end,
 				string comments)
 		{
 			Course _course = N2.Context.Persister.Get<Course>(id);
@@ -35,8 +35,8 @@ namespace N2.Lms
 			this.MyAssignmentList.RequestContainer.SubscribeTo(
 				_course,
 				HttpContext.Current.User.Identity.Name,
-				begin,
-				end,
+				(DateTime?)begin,
+                (DateTime?)end,
 				comments);
 		}
 	}

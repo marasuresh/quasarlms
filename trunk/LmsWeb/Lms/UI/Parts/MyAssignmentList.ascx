@@ -7,6 +7,7 @@
 <%@ Import Namespace="N2.Lms.Items.TrainingWorkflow" %>
 <%@ Register TagPrefix="lms" TagName="MyCourses" Src="~/Lms/UI/Parts/MyAssignmentList/MyCourses.ascx" %>
 <%@ Register TagPrefix="lms" TagName="MyRequests" Src="~/Lms/UI/Parts/MyAssignmentList/MyRequests.ascx" %>
+<%@ Register TagPrefix="lms" TagName="Requests" Src="~/Lms/UI/Parts/MyAssignmentList/Requests.ascx" %>
 <%@ Register TagPrefix="lms" TagName="MyTrainings" Src="~/Lms/UI/Parts/MyAssignmentList/MyTrainings.ascx" %>
 <%@ Register TagPrefix="lms" TagName="TrainingsToGrade" Src="~/Lms/UI/Parts/MyAssignmentList/TrainingsToGrade.ascx" %>
 <%@ Register TagPrefix="lms" TagName="MyGradedTrainings" Src="~/Lms/UI/Parts/MyAssignmentList/MyGradedTrainings.ascx" %>
@@ -74,7 +75,7 @@
         <StepStyle Font-Size="0.8em" ForeColor="#333333" VerticalAlign="Top" />
         <WizardSteps>
             <asp:WizardStep runat="server" Title="Заявки">
-                <lms:MyRequests runat="server" />
+                <lms:Requests ID="Requests1" runat="server" />
             </asp:WizardStep>
             <asp:WizardStep runat="server" Title="Оценки">
                 <lms:TrainingsToGrade ID="TrainingsToGrade1" runat="server" />

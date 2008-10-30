@@ -172,35 +172,30 @@
     </Compile>
     <Compile Include="LearningComponent\CreateAttempt.aspx.cs">
       <DependentUpon>CreateAttempt.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="LearningComponent\CreateAttempt.aspx.designer.cs">
       <DependentUpon>CreateAttempt.aspx</DependentUpon>
     </Compile>
     <Compile Include="LearningComponent\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="LearningComponent\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="LearningComponent\DeletePackages.aspx.cs">
       <DependentUpon>DeletePackages.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="LearningComponent\DeletePackages.aspx.designer.cs">
       <DependentUpon>DeletePackages.aspx</DependentUpon>
     </Compile>
     <Compile Include="LearningComponent\SequencingLog.aspx.cs">
       <DependentUpon>SequencingLog.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="LearningComponent\SequencingLog.aspx.designer.cs">
       <DependentUpon>SequencingLog.aspx</DependentUpon>
     </Compile>
     <Compile Include="LearningComponent\UploadPackage.aspx.cs">
       <DependentUpon>UploadPackage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="LearningComponent\UploadPackage.aspx.designer.cs">
       <DependentUpon>UploadPackage.aspx</DependentUpon>
