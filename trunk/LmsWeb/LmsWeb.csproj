@@ -203,9 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Lms\UI\Css\inline\" />
-    <Folder Include="Lms\UI\Img\inline\" />
-    <Folder Include="Lms\UI\Parts\MyAssignmentList\MyTrainings\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

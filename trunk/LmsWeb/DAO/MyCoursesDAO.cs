@@ -25,12 +25,12 @@ namespace N2.Lms
 
 		[DataObjectMethod(DataObjectMethodType.Update, true)]
 		public void InsertRequest(
-				int courseId,
+				int id,
 				DateTime? begin,
 				DateTime? end,
 				string comments)
 		{
-			Course _course = N2.Context.Persister.Get<Course>(courseId);
+			Course _course = N2.Context.Persister.Get<Course>(id);
 			
 			this.MyAssignmentList.RequestContainer.SubscribeTo(
 				_course,

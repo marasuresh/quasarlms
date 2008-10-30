@@ -38,7 +38,7 @@
 <p class="help">
     <%= Resources.CourseRequests.Help1 %><br />
     <%= Resources.CourseRequests.Help2 %></p>
-<asp:Repeater runat="server" ID="rptRequests" Visible='<%# this.CurrentItem.RequestContainer.MyApprovedApplications.Any() %>'
+<asp:Repeater runat="server" ID="rptRequests"
     OnItemCommand="List_Command">
     <HeaderTemplate>
         <table cellspacing="0" cellpadding="3" align="center">
