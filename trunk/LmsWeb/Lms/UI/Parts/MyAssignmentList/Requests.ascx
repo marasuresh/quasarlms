@@ -1,5 +1,5 @@
 ﻿<%@ Import Namespace="System.ComponentModel" %>
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="N2.Lms.Web.UI.MyAssignmentListControl`1[[N2.Lms.MyRequestsDAO, LmsWeb]], N2.Lms" %>
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="N2.Lms.Web.UI.MyAssignmentListControl`1[[N2.Lms.RequestsDAO, LmsWeb]], N2.Lms" %>
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="N2.Lms.Items" %>
@@ -8,18 +8,24 @@
 <%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls" TagPrefix="n2" %>
 
 <script runat="server">
+    
     protected void lv_ItemUpdating(object sender, ListViewUpdateEventArgs e)
     {
         var _lv = sender as ListView;
 
-        e.NewValues.Add("UserName", Profile.UserName);
+        e.NewValues.Add("trainingID", ((DropDownList)_lv.EditItem.FindControl("ddlTrainings")).SelectedValue);
+        e.NewValues.Add("comments", ((TextBox)_lv.EditItem.FindControl("tbComment")).Text);
     }
 </script>
 
-<asp:ObjectDataSource ID="dsRequests" runat="server" SelectMethod="FindAll" UpdateMethod="CancelRequest"
-    TypeName="N2.Lms.MyRequestsDAO" OnObjectCreating="ds_ObjectCreating">
+<asp:ObjectDataSource ID="dsRequests" runat="server" 
+    SelectMethod="FindAll" 
+    UpdateMethod="GoRequest"
+    TypeName="N2.Lms.RequestsDAO" 
+    OnObjectCreating="ds_ObjectCreating">
     <UpdateParameters>
-        <asp:Parameter Name="UserName" Type="String" />
+        <asp:Parameter Name="trainingID" Type="String" />
+        <asp:Parameter Name="comments" Type="String" />
     </UpdateParameters>
 </asp:ObjectDataSource>
 <n2:ChromeBox ID="ChromeBox1" runat="Server">
@@ -71,18 +77,57 @@
                             Edit details for '<%# Eval("Course.DescriptionUrl") %>'</div>
                         <table class="detailview" cellpadding="0" cellspacing="0">
                             <tr>
-                                <th>
-                                    Комментарий:
-                                </th>
+                                <td>
+                                    Комментарий студента:
+                                </td>
                                 <td>
                                     <em>
                                         <%# Eval("Comments") %></em>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    Дата начала:
+                                </td>
+                                <td>
+                                    <small>
+                                        <%# ((Request)Container.DataItem).StartDate.ToShortDateString() %></small>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Дата окончания:
+                                </td>
+                                <td>
+                                    <small>
+                                        <%# ((Request)Container.DataItem).RequestDate.ToShortDateString() %></small>
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <table class="detailview" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <th>
+                                    Тренинг:
+                                </th>
+                                <td>
+                                    <asp:DropDownList ID="ddlTrainings" runat="server" DataSource='<%# ((Request)Container.DataItem).Course.Trainings %>'
+                                        DataValueField="ID" DataTextField="Title">
+                                    </asp:DropDownList>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Комментарий:
+                                </th>
+                                <td>
+                                    <asp:TextBox ID="tbComment" TextMode="MultiLine" runat="server" />
+                                </td>
+                            </tr>
                         </table>
                         <div class="footer command">
-                            <asp:LinkButton ID="btnReject" runat="server" Text="Отклонить" CommandName="Update" CommandArgument="Reject" />
-                            <asp:LinkButton ID="btnAccept" runat="server" Text="Принять" CommandName="Update" CommandArgument="Accept" />
+                            <asp:LinkButton ID="btnReject" runat="server" Text="Отклонить" CommandName="Update" />
+                            <asp:LinkButton ID="btnAccept" runat="server" Text="Принять" CommandName="Update" />
                         </div>
                     </div>
                 </td>
