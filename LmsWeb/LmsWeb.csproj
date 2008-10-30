@@ -142,6 +142,7 @@
     <Compile Include="DAO\MyCoursesDAO.cs" />
     <Compile Include="DAO\MyGradedTrainingsDAO.cs" />
     <Compile Include="DAO\MyRequestsDAO.cs" />
+    <Compile Include="DAO\RequestsDAO.cs" />
     <Compile Include="Lms\UI\CourseIntro.ascx.cs">
       <DependentUpon>CourseIntro.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
