@@ -17,8 +17,8 @@ using System.Data;
 public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.ACalendar.Reporting.Report>
     {
 
-    protected N2.Web.UI.WebControls.UserTree.DisplayModeEnum _displayMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
-    protected N2.Web.UI.WebControls.UserTree.DisplayModeEnum _selectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
+    private N2.Web.UI.WebControls.UserTree.DisplayModeEnum _displayMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
+    private N2.Web.UI.WebControls.UserTree.DisplayModeEnum _selectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
 
 
 
@@ -34,6 +34,8 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
 
             if (!IsPostBack)
             {
+                
+                
                 //foreach (string s in  Roles.GetAllRoles()) chblRoles.Items.Add(s);
                 //this.chblRoles.DataBind();
             }
@@ -51,24 +53,44 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
             base.OnPreRender(e);
         }
 
+        public N2.Web.UI.WebControls.UserTree.DisplayModeEnum SelectionMode
+        {
+            set {
+                _selectionMode = value;
+                OnPreRender(new EventArgs());
+                 }
+        }
+
+        public N2.Web.UI.WebControls.UserTree.DisplayModeEnum DisplayMode
+        {
+            set
+            {
+                _displayMode = value;
+                OnPreRender(new EventArgs());
+            }
+        }
+
+
+
         protected void btnGet_Click(object sender, EventArgs e)
         {
-       
+             //var ut = this.Panel1.FindControl("ddlRT");
+            //string arg = e.ToString();
             //Фильтровка сообщений выводимых на экран.
             string strURL = "~/Reporting/ReportFiles/" ;
             this.hlnkReport.Text = "-";
-
+            
             switch (this.ddlReportType.SelectedValue)
             {
                 case "erv"://Экзаменационно рейтинговые ведомости
                     if (this.SelectUser.SelectedUser.Length <1) return;
-                    strURL += ExcelExport.ExportToFileZV(Roles.GetUsersInRole(this.SelectUser.SelectedUser));
+                    strURL += ExcelExport.ExportToFileZV(Roles.GetUsersInRole(this.SelectUser.SelectedUser), Server.MapPath("../../Reporting/ReportFiles/"));
                     this.hlnkReport.NavigateUrl = strURL;
                     this.hlnkReport.Text = "Экзаменационно рейтинговые ведомости группа " + this.SelectUser.SelectedUser;
                     break;
                 case "svrs"://Сводные ведомости по результатам сессии
                     if (this.SelectUser.SelectedUser.Length < 1) return;
-                    strURL += ExcelExport.ExportToFileZV(Roles.GetUsersInRole(this.SelectUser.SelectedUser));
+                    strURL += ExcelExport.ExportToFileZV(Roles.GetUsersInRole(this.SelectUser.SelectedUser), Server.MapPath("../../Reporting/ReportFiles/"));
                     this.hlnkReport.NavigateUrl = strURL;
                     this.hlnkReport.Text = "Сводные ведомости по результатам сессии";
                     break;
@@ -84,12 +106,12 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
                 case "oz"://Отчет по заявкам
                     if (this.SelectUser.SelectedUser.Length < 1) return;
                     var reqs = Requests;
-                    strURL += ExcelExport.ExportToFileOZ(reqs, this.SelectUser.SelectedUser);
+                    strURL += ExcelExport.ExportToFileOZ(reqs, this.SelectUser.SelectedUser, Server.MapPath("../../Reporting/ReportFiles/"));
                     this.hlnkReport.NavigateUrl = strURL;
                     this.hlnkReport.Text = "Отчет по заявкам студента " + this.SelectUser.SelectedUser;
                     break;
                  case "irp"://Информация о ренабельности потоков
-                    strURL += ExcelExport.ExportToFileIRP(Requests);
+                    strURL += ExcelExport.ExportToFileIRP(Requests, Server.MapPath("../../Reporting/ReportFiles/"));
                     this.hlnkReport.NavigateUrl = strURL;
                      this.hlnkReport.Text = "Информация о ренабельности потоков";
                     break;
@@ -130,18 +152,18 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
 
         protected void ddlReportType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             //this.Trace.Write("Lms", this.ddlReportType.SelectedValue);
             //string strURL = "~/Reporting/ReportFiles/";
-            this.SelectUser.Visible = true;
             switch (this.ddlReportType.SelectedValue)
             {
                 case "erv"://Экзаменационно рейтинговые ведомости
-                    _selectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
-                    _displayMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
+                    this.SelectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
+                    this.DisplayMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
                     break;
                 case "svrs"://Сводные ведомости по результатам сессии
-                    _selectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
-                    _displayMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
+                    this.SelectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
+                    this.DisplayMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Roles;
                     break;
                 case "oaz"://Отчеты по академическим задолженностиям
                     this.hlnkReport.Text = "не реализовано";
@@ -154,17 +176,21 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
                     break;
                 case "oz"://Отчет по заявкам
                     //var reqs = from req in Requests where ( Roles.GetUsersInRole(this.SelectUser.SelectedUser).Contains(req.User)) select req;
-                    _selectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Users;
-                    _displayMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.UsersAndRoles;
+                    this.SelectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.Users;
+                    this.DisplayMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.UsersAndRoles;
                     break;
                 case "irp"://Информация о ренабельности потоков
-                    this.SelectUser.Visible = false;
-                    //this.hlnkReport.Text = "Информация о ренабельности потоков";
+                    //this.SelectUser.Visible = false;
+                    this.hlnkReport.Text = "Информация о ренабельности потоков";
                     break;
             }
 
 
         }
+
+
+
+
 
 
     }

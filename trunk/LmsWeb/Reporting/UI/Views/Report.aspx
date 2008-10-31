@@ -2,17 +2,86 @@
     AutoEventWireup="true" CodeBehind="Report.aspx.cs" Inherits="Reporting_UI_Report" %>
 
 <%@ Import Namespace="System.Linq" %>
-<%@ Register assembly="System.Web.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" namespace="System.Web.UI.WebControls" tagprefix="asp" %>
-<%@ Register assembly="N2.Futures" namespace="N2.Web.UI.WebControls" tagprefix="cc1" %>
-<%@ Register assembly="N2.Futures" namespace="N2.Web.UI.WebControls.Test" tagprefix="cc2" %>
+<%@ Register Assembly="System.Web.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+    Namespace="System.Web.UI.WebControls" TagPrefix="asp" %>
+<%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls" TagPrefix="cc1" %>
+<%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls.Test" TagPrefix="cc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TextContent" runat="Server">
+    <asp:PlaceHolder ID="PlaceHolder2" runat="server" Visible="false">
+
+       <script type="text/javascript" src="~/Lms/UI/Js/jQuery.intellisense.js"></script>
+
+    </asp:PlaceHolder>
+
+    <script type="text/javascript">
+
+        $(function() {
+            if(<%= (!IsPostBack).ToString().ToLower() %>) 
+            {
+            $('#su').hide();
+            $('#<%= this.btnGet.ClientID %>').hide();
+            }
+
+            $('#<%= this.ddlReportType.ClientID %>').click(
+            function() {
+                $('#<%= this.btnGet.ClientID %>').hide();
+                $('#<%= this.hlnkReport.ClientID %>').hide();  
+                $('#su').show('slow');
+
+            });
+            
+             $('#<%= this.SelectUser.ClientID %>').click(
+            function() {
+                $('#<%= this.btnGet.ClientID %>').show('slow');
+            });
+           
+//              $('#<%= this.btnGet.ClientID %>').click(
+//            function() {
+//                $('#<%= this.btnGet.ClientID %>').hide('slow');
+//                $('#su').hide('slow');
+//            });
+//           
+               $('#<%= this.hlnkReport.ClientID %>').change(
+            function() {
+                $('#<%= this.btnGet.ClientID %>').hide('slow');
+                $('#su').hide('slow');
+            });
+
+            //$('#ddlRT').change(function() {
+            //onchange = "$('#<%= this.btnGet.ClientID %>').show();"
+
+
+        });
+
+
+//        function reptype() {
+//            $('#hidableTr').show();
+//        };
+
+//        function arg() {
+//            var dd = document.getElementById("ddlRT");
+//            return dd.value;
+//        };
+
+        //
+    </script>
+
     <div style="width: 100%">
         <table>
             <tr>
-                <td align="left" colspan="2">
-                    <b><span style="font-size: medium">Вид отчета: </span></b>&nbsp;
-                    <asp:DropDownList ID="ddlReportType" runat="server" 
-                        onselectedindexchanged="ddlReportType_SelectedIndexChanged">
+                <td align="left">
+                    <b><span style="font-size: medium">Вид отчета: </span></b>&nbsp;&nbsp;
+<%--                    <select id="ddlRT" onchange="reptype();" >
+                        <option value="Экзаменационно рейтинговые ведомости">Экзаменационно рейтинговые ведомости
+                        </option>
+                        <option value="экзаменационная сессия">экзаменационная сессия</option>
+                        <option value="каникулы, отпуск">каникулы, отпуск</option>
+                        <option value="войсковая стажировка">войсковая стажировка</option>
+                        <option value="аттестационная комиссия">аттестационная комиссия</option>
+                        <option value="учеба">учеба</option>
+                    </select>
+--%>                    
+                    <asp:DropDownList ID="ddlReportType" runat="server"  OnSelectedIndexChanged=" ddlReportType_SelectedIndexChanged">
                         <asp:ListItem Value="erv">
                             Экзаменационно рейтинговые ведомости
                         </asp:ListItem>
@@ -35,99 +104,32 @@
                             Информация о ренабельности потоков
                         </asp:ListItem>
                     </asp:DropDownList>
-        
-<%--<cc2:UserTreeTestBed ID="SelectUsertest" runat="server" />
+                    <%--<cc2:UserTreeTestBed ID="SelectUsertest" runat="server" />
                  
                     <asp:Button ID="btnGet" runat="server" Text="Сформировать" OnClick="btnGet_Click" />
- --%>               
-                      
-                   
-                    </td>
+ --%>
+                </td>
             </tr>
-            <tr>
-                <td align="left" colspan="2">
+            <tr id="su">
+                <td align="left">
                     <b><span style="font-size: medium">Студент/группа: </span></b>
-                    
-                   
-                                    <cc1:SelectUser ID="SelectUser" runat="server"  AllowMultipleSelection ="false" DisplayMode=Roles SelectionMode = Roles    />
-        
-                   
-                    <asp:Button ID="btnGet" runat="server" Text="Сформировать" 
-                        onclick="btnGet_Click" Width="95px" />
-                      
-                   
-  </td>
+                    <cc1:SelectUser ID="SelectUser" runat="server" AllowMultipleSelection="false" DisplayMode='Roles'
+                        SelectionMode='Roles' />
+                    &nbsp;
+                    <%--                        ;   --%>
+                </td>
             </tr>
             <tr>
-                <td align="left" colspan="2">
-                      
-                   
-        <asp:HyperLink ID="hlnkReport" runat="server"></asp:HyperLink>
-        
-  </td>
+                <td align="left">
+                    <asp:Button ID="btnGet" runat="server" Text="Сформировать" OnClick="btnGet_Click"
+                         Width="95px" />
+                </td>
             </tr>
-  <%-- 
             <tr>
-                <td>
-                    
-                   
-                                    &nbsp;</td>
-                <td>
-                    <% if (this.Requests.Any())
-                       { %>
-                    <table>
-                        <tr>
-                            <th>
-                                Заявки
-                            </th>
-                        </tr>
-                        <% foreach (var _req in this.Requests)
-                           { %>
-                        <tr>
-                            <td>
-                                <a href='<%= _req.TemplateUrl %>'>
-                                    <%= _req.Title%></a>
-                                <%= _req.RequestDate%>
-                                <%= _req.Comments%>
-                                
-                            </td>
-                        </tr>
-                        <% } %>
-                    </table>
-                    <% }
-                       else
-                       { %>
-                    no Requests
-                                            <% } %>
-
+                <td align="left">
+                    <asp:HyperLink ID="hlnkReport" runat="server"></asp:HyperLink>
                 </td>
-               <td>
-                    <% if (this.Trainings.Any())
-                       { %>
-                    <table>
-                        <tr>
-                            <th>
-                                Тренинги
-                            </th>
-                        </tr>
-                        <% foreach (Training _t in this.Trainings)
-                           { %>
-                        <tr>
-                            <td>
-                                <%= _t.Title %>
-                            </td>
-                        </tr>
-                        <% } %>
-                    </table>
-                    <% }
-                       else
-                       { %>
-                    no Trainings
-                                            <% } %>
-
-                </td>
---%>            
-           </tr>
+            </tr>
         </table>
     </div>
 </asp:Content>
