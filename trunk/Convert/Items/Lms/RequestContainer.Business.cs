@@ -51,7 +51,19 @@ namespace N2.Lms.Items
 
 		public virtual IEnumerable<Request> MyRequests { get { return GetChildren().OfType<Request>(); } }
 
-		public IEnumerable<ApprovedState> MyApprovedApplications {
+        public IEnumerable<Request> MyApprovedRequests
+        {
+            get
+            {
+                return
+                    from _request in this.MyRequests
+                    let _currentState = _request.GetCurrentState() as ApprovedState
+                    where null != _currentState
+                    select _request;
+            }
+        }
+        
+        public IEnumerable<ApprovedState> MyApprovedApplications {
 			get {
 				return
 					from _req in this.MyRequests
