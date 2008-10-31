@@ -3,25 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using N2.Web.UI.WebControls;
 using System.Web.UI.WebControls;
 using N2.ACalendar;
 using N2.Resources;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Web.Security;
+using N2.Collections;
+using N2.Lms.Items;
+
 
 public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePage<N2.ACalendar.ACalendar>,  ICallbackEventHandler
 
 {
-    //protected TextBox event_data_in;
-    //protected TextBox event_data_out;
+
     public string sCallBack = string.Empty;
+    protected global::System.Web.UI.WebControls.HyperLink linkExcel; 
+
+    protected bool IsEditable {
+        get
+        {
+            return  Roles.IsUserInRole(this.User.Identity.Name, "Administrators");
+        }
+    }
 
     protected void Page_Load(object sender, EventArgs e)
     {
         sCallBack = Page.ClientScript.GetCallbackEventReference(this,
             "message", "TikeInformation", "context");
-
         
+        //this.eventProp.Visible = false;
         
         //string _current = "";
         //foreach (AEvent _e in AEvents)
@@ -31,7 +43,21 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
         //if (_current.Length > 1) _current = _current.Remove(_current.Length - 1);
         //this.event_data_in.Text = _current;
     }
- 
+
+    //protected override void OnPreRender(EventArgs e)
+    //{
+    //    var ut = (this.SelectUser.FindControl("ut") as UserTree);
+    //    if (ut != null)
+    //    {
+    //        ut.SelectionMode = UserTree.DisplayModeEnum.UsersAndRoles;
+
+    //    }
+
+    //    base.OnPreRender(e);
+    //}
+
+
+
     // Обработчик события обратного вызова на серверной стороне
  void ICallbackEventHandler.RaiseCallbackEvent(string e)
  {
@@ -107,20 +133,25 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
  
     protected void btnExcel_Click(object sender, EventArgs e)
     {
-        var  cals =   ((ACalendarContainer)this.CurrentItem.Parent).Children;
-        Response.Redirect(Server.MapPath("../../Upload") + "/" + ExcelExport.ExportToFile(cals));
-
+        var  cals =  (this.CurrentItem.Parent).Children.ToArray() ;
+        string strURL = "~/Reporting/ReportFiles/"; 
+         string path = Server.MapPath("../../Reporting/ReportFiles/");
+       //strURL += ExcelExport.ExportToFile(cals, path);
+        //Response.Redirect( ExcelExport.ExportToFile(cals, path))
+        this.linkExcel.NavigateUrl = strURL;
+        this.linkExcel.Text = "Академические календари";
     }
 
 
 
     protected void save(JsonAEvent _e)
     {
+        //((N2.ACalendar.ACalendar)this.CurrentItem).Text = this.SelectUser.SelectedUser;
         switch (_e.act)
         {
             case "а":
                 AEventAK ev = this.Engine.Definitions.CreateInstance<AEventAK>(this.CurrentItem);
-                ev.Act = _e.act;
+                ev.Act = _e.act; 
                 ev.DateStart = _e.dateStart;
                 ev.DateEnd = _e.dateEnd;
                 this.Engine.Persister.Save(ev);
@@ -174,26 +205,27 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
     }
 
 
-    protected void btnSave_Click(object sender, EventArgs e)
-    {
-        string _current = ""; 
-            _current = "[" + _current + "]";
+    //protected void btnSave_Click(object sender, EventArgs e)
+    //{
+    //    string _current = ""; 
+    //        _current = "[" + _current + "]";
  
         
 
-            int _c =  this.CurrentItem.AEvents.Count();
-            while (this.CurrentItem.AEvents.Count() > 0)
-            {
-                AEvent _ce = this.CurrentItem.AEvents.First();
-                this.Engine.Persister.Delete(_ce);
-            }
-        DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(JsonAEvent[]));
-        MemoryStream ms = new MemoryStream(System.Text.Encoding.Unicode.GetBytes(_current));
+    //        int _c =  this.CurrentItem.AEvents.Count();
+    //        while (this.CurrentItem.AEvents.Count() > 0)
+    //        {
+    //            AEvent _ce = this.CurrentItem.AEvents.First();
+    //            this.Engine.Persister.Delete(_ce);
+    //        }
+    //    DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(JsonAEvent[]));
+    //    MemoryStream ms = new MemoryStream(System.Text.Encoding.Unicode.GetBytes(_current));
 
-        var events = ser.ReadObject(ms) as JsonAEvent[];
-        foreach (JsonAEvent _e in events) if (_e.act != null) save(_e);
+    //    var events = ser.ReadObject(ms) as JsonAEvent[];
+    //    foreach (JsonAEvent _e in events) if (_e.act != null) save(_e);
 
-    }
+    //}
     public class JsonAEvent { public string act; public string dateStart; public string dateEnd;}
+
 
 }

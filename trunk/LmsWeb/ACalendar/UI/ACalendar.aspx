@@ -1,5 +1,8 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Templates/UI/Layouts/Top+SubMenu.Master" AutoEventWireup="true" CodeFile="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACalendar" %>
+<%@ Page Language="C#" MasterPageFile="~/Reporting/UI/Layouts/Top+SubMenu.Master" 
+AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACalendar" %>
 
+
+<%@ Register assembly="N2.Futures" namespace="N2.Web.UI.WebControls" tagprefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TextContent" Runat="Server">
 
 
@@ -11,10 +14,10 @@
      <script type="text/javascript" src="~/Lms/UI/Js/jQuery.intellisense.js" ></script>  
      </asp:PlaceHolder>
 
-	<script type ="text/javascript">
+	<script type ="text/javascript">//(new Date().getMonth < 8)?new Date().getFullYear-1:
 	    $(document).ready(function() {
 	        $('#calOne').jCal({
-	            day: new Date(2008, 8,1 ),
+	            day: new Date( 2008, 8,1),  // текущий год ставим (надо проверять еще месяц ) 
 	            days: 7,
 	            showMonths: 12,
 	            forceWeek: true, // force full week selection
@@ -29,11 +32,14 @@
 	            selectedBG:     'rgb(255, 255, 255)',   
 	            callback: function(day, days) 
 	            {
+                  if (<%=this.IsEditable.ToString().ToLower()%>)
+                  {
 	                var MinMilli = 1000 * 60;       //Initialize variables.
 	                var HrMilli = MinMilli * 60;
 	                var DyMilli = HrMilli * 24;
-	                var YaerMilli = DyMilli * 365;
-
+	                var YearMilli = DyMilli * 365;
+ // comment: 604800000=1000millisec*60sec*60min*24hour*7day
+ 
 	                //записываем данные вниз таблицы
 	                var dateEnd = new Date(day.valueOf()); // + (1000 * 60 * 60 * 24 * days) );
 	                dateEnd.setDate(dateEnd.getDate() + days);
@@ -61,12 +67,13 @@
 	                    }
 	                    dCursor.setDate(dCursor.getDate() + 1);
 	                }
+	              }
 	 	        }    
 	        })
 	    }).ready(function() {
 
 	        show_event();
-	    })
+	    });
 
 
 	</script>
@@ -171,31 +178,39 @@
 
 
 	<table width="100%">
+        <% if (this.IsEditable)
+      { %>
 			<tr>
-				<td align=left id="Td1" valign=top style="padding:10px; background:#E3E3E3;">
-			Деятельность
-			<select id="eventtype" >
-				<option value="полевой выход" selected >полевой выход</option><option value="экзаменационная сессия">экзаменационная сессия</option><option value="каникулы, отпуск">каникулы, отпуск</option>
-				<option value="войсковая стажировка" >войсковая стажировка</option><option value="аттестационная комиссия">аттестационная комиссия</option><option value="учеба">учеба</option>
-			</select>				
+   				            <td align=left id="Td1" valign=top style="padding:10px; background:#E3E3E3;">
+			            Деятельность
+			            <select id="eventtype" >
+				            <option value="полевой выход" selected >полевой выход</option><option value="экзаменационная сессия">экзаменационная сессия</option><option value="каникулы, отпуск">каникулы, отпуск</option>
+				            <option value="войсковая стажировка" >войсковая стажировка</option><option value="аттестационная комиссия">аттестационная комиссия</option><option value="учеба">учеба</option>
+			            </select>				
 
-				</td>
+				            </td>
 
-				<td align=left id="weekSelect" valign=top style="padding:10px; background:#E3E3E3;">
-		
+				            <td align=left id="weekSelect" valign=top style="padding:10px; background:#E3E3E3;">
+            		
 
-	      &nbsp;Кол-во недель
-			<select id="weeks">
-				<option value="1" selected>1</option><option value="2">2</option><option value="3">3</option>
-				<option value="4" >4</option><option value="5">5</option>
-			</select>				
-				</td>
-			<tr>
+	                  &nbsp;Кол-во недель
+			            <select id="weeks">
+				            <option value="1" selected>1</option><option value="2">2</option><option value="3">3</option>
+				            <option value="4" >4</option><option value="5">5</option>
+			            </select>				
+				            </td>             
+			</tr>
+			<% } %>
 		<tr>
 			<td colspan=2 align=left id="calOne" valign=top style="padding:10px; background:#E3E3E3;">
-				loading calendar one
-			</td>
+				loading calendar
+			    </td>
 		</tr>
+
+
+        <% if (this.IsEditable)
+      { %>
+        
         <tr>
 				<td align=left id="calOneResult" valign=top style="padding:10px; background:#E3E3E3;">
 
@@ -206,8 +221,7 @@
     <% foreach (var _ev in this.AEvents)
               { %>
        <div>
-          <%= _ev.Title%> &nbsp;&nbsp;/ <%= (_ev.DateStart)%> - <%= _ev.DateEnd%>
-       </div>
+          <%= _ev.Title%> &nbsp;&nbsp;</div>
 	<% 
     i++;
               }
@@ -215,21 +229,20 @@
 
 				</td>
 		        <td align=left id="Td2" valign=top style="padding:10px; background:#E3E3E3;">
-<%--			<asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="Записать" /> 
-				<button ID="btnShow" >Показать</button> 
---%>                
-                <asp:Button ID="btnExcel" runat="server" onclick="btnExcel_Click" Text="Excel" /> 
-
-
+                    <asp:Button ID="btnExcel" runat="server" onclick="btnExcel_Click" Text="Excel" />
+				    <asp:HyperLink ID="linkExcel" runat="server"></asp:HyperLink>
+                     
 				</td>				
 			
 			</tr>
+						<% } %>
+
 	</table>
 
 
 
 
-</asp:Content>
+    </asp:Content>
 
 
 
