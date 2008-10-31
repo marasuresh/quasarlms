@@ -1,4 +1,5 @@
-﻿<%@ Import Namespace="System.ComponentModel" %>
+﻿<%@ Import Namespace="N2.Lms.Items.Lms.RequestStates"%>
+<%@ Import Namespace="System.ComponentModel" %>
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="N2.Lms.Web.UI.MyAssignmentListControl`1[[N2.Lms.RequestsDAO, LmsWeb]], N2.Lms" %>
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="System.Collections.Generic" %>
@@ -8,11 +9,35 @@
 <%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls" TagPrefix="n2" %>
 
 <script runat="server">
+
+    private string _command;
+    
+    protected override void OnInit(EventArgs e)
+    {
+        this.lv.ItemCommand += (_o, _e) =>
+        {
+            if (string.Equals(_e.CommandName, "Accept", StringComparison.InvariantCultureIgnoreCase))
+            {
+                _command = "Accept";
+                lv.UpdateItem(int.Parse((string)_e.CommandArgument), true);
+            }
+            else if (string.Equals(_e.CommandName, "Reject", StringComparison.InvariantCultureIgnoreCase))
+            {
+                _command = "Reject";
+                lv.UpdateItem(int.Parse((string)_e.CommandArgument), true);
+            }
+
+            
+        };
+        
+        base.OnInit(e);
+    }
     
     protected void lv_ItemUpdating(object sender, ListViewUpdateEventArgs e)
     {
         var _lv = sender as ListView;
 
+        e.NewValues.Add("command", _command);
         e.NewValues.Add("trainingID", ((DropDownList)_lv.EditItem.FindControl("ddlTrainings")).SelectedValue);
         e.NewValues.Add("comments", ((TextBox)_lv.EditItem.FindControl("tbComment")).Text);
     }
@@ -24,6 +49,7 @@
     TypeName="N2.Lms.RequestsDAO" 
     OnObjectCreating="ds_ObjectCreating">
     <UpdateParameters>
+        <asp:Parameter Name="command" Type="String" />
         <asp:Parameter Name="trainingID" Type="String" />
         <asp:Parameter Name="comments" Type="String" />
     </UpdateParameters>
@@ -126,8 +152,8 @@
                             </tr>
                         </table>
                         <div class="footer command">
-                            <asp:LinkButton ID="btnReject" runat="server" Text="Отклонить" CommandName="Update" />
-                            <asp:LinkButton ID="btnAccept" runat="server" Text="Принять" CommandName="Update" />
+                            <asp:LinkButton ID="btnReject" runat="server" Text="Отклонить" CommandName="Reject" CommandArgument='<%# Container.DataItemIndex %>' />
+                            <asp:LinkButton ID="btnAccept" runat="server" Text="Принять" CommandName="Accept" CommandArgument='<%# Container.DataItemIndex %>' />
                         </div>
                     </div>
                 </td>
