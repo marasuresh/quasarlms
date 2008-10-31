@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Web;
+using N2.Workflow;
 
 namespace N2.Lms
 {
@@ -19,26 +20,25 @@ namespace N2.Lms
 		}
 
 		[DataObjectMethod(DataObjectMethodType.Select, true)]
-		public IEnumerable<ApprovedState> FindAll()
+		public IEnumerable<Request> FindAll()
 		{
-			return this.MyAssignmentList.RequestContainer.MyApprovedApplications;
+			return this.MyAssignmentList.RequestContainer.MyApprovedRequests;
 		}
 
 		[DataObjectMethod(DataObjectMethodType.Update, true)]
-		public void InsertRequest(
+		public void GoRequest(
 				int id,
-				Object begin,
-                Object end,
 				string comments)
 		{
-			Course _course = N2.Context.Persister.Get<Course>(id);
-			
-			this.MyAssignmentList.RequestContainer.SubscribeTo(
-				_course,
-				HttpContext.Current.User.Identity.Name,
-				(DateTime?)begin,
-                (DateTime?)end,
-				comments);
+            Request _request = N2.Context.Persister.Get<Request>(id);
+            
+            string user = HttpContext.Current.User.Identity.Name;
+
+            _request.PerformAction(
+                    "Finish",
+                    user,
+                    comments,
+                    null);
 		}
 	}
 }

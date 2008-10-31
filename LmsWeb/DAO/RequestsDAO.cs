@@ -26,6 +26,7 @@ namespace N2.Lms
 
         [DataObjectMethod(DataObjectMethodType.Update, true)]
         public void GoRequest(
+                string command,
                 string trainingID,
                 string comments,
                 int ID)
@@ -33,7 +34,26 @@ namespace N2.Lms
             Request _request = N2.Context.Persister.Get<Request>(ID);
             Training _training = N2.Context.Persister.Get<Training>(int.Parse(trainingID));
 
+            string user = HttpContext.Current.User.Identity.Name;
 
+            switch (command)
+            {
+                case "Accept":
+                    _request.PerformAction(
+                    "Approve",
+                    user,
+                    comments,
+                    new Dictionary<string, object> { { "Training", _training } });
+                    break;
+                case "Reject":
+                    _request.PerformAction(
+                    "Cancel",
+                    user,
+                    comments,
+                    null);
+                    break;
+                    break;
+            }
             //_request.PerformGenericAction("Cancel", UserName, "Canceled");
         }
     }
