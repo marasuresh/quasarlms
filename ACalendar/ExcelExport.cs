@@ -17,14 +17,47 @@ namespace N2.ACalendar
 	
 	public static class ExcelExport
 	{
-		public static string ExportToFile(IEnumerable<ContentItem> acalendars)
+        public static string ExportToFile(N2.Collections.ItemList acalendars, string path)
 		{
-			Application aXL = startExcel();
-			string _path = "C:\\work\\Lms\\LmsWeb\\Upload\\";
+            Application aXL;
+			//string path =  "C:\\work\\Lms\\LmsWeb\\Upload\\";
 			string _fileName = "ac.xls";
+            string[,] data = new string[acalendars.Count(), 54];
+            int _row = 21;
+            foreach (var _a in acalendars)
+            {
+                data[(_row - 21), 0] = _a.Title;
+                foreach (var _e in ((ACalendar)_a).Children)
+                {
+                    int first_week = week_for_date(((AEvent)_e).DateStart);
+                    int last_week = week_for_date(((AEvent)_e).DateEnd);
+
+                    for (int j = first_week; j < last_week; j++)
+                    {
+                        data[(_row - 21), j + 1] = ((AEvent)_e).Title.Remove(1);
+                    }
+                }
+                //worksheet.get_Range("A" + _row.ToString(), "A" + _row.ToString()).Value2 = _a.Title;
+                _row++;
+            }
+
+            try
+            {
+                aXL =  startExcel();
+                aXL.Visible = false;
+            }
+            catch
+            {
+                _fileName = _fileName.Replace(".xls", ".xml");
+                ExportToXML(data, path + _fileName);
+                return _fileName;
+
+            }
+		
+            
 
 			aXL.Workbooks.Open(
-					_path + _fileName, // FileName
+					path + _fileName, // FileName
 						false, // UpdateLinks
 						false, //  ReadOnly
 						Type.Missing, // Format
@@ -45,29 +78,15 @@ namespace N2.ACalendar
 
 			XL.Workbook wb = aXL.ActiveWorkbook; // или создать новую рабочую книгу, а то может поверх написать -  oXL.Workbooks.Add(Type.Missing);
 			XL.Worksheet worksheet = (Microsoft.Office.Interop.Excel.Worksheet)wb.Worksheets["График УП"]; //  (Microsoft.Office.Interop.Excel.Worksheet)oXL.ActiveSheet;
-			string[,] data = new string[acalendars.Count(), 52];
-			int _row = 21;
-			foreach (var _a in acalendars) {
-
-				foreach (var _e in ((ACalendar)_a).Children) {
-					int first_week = week_for_date(((AEvent)_e).DateStart);
-					int last_week = week_for_date(((AEvent)_e).DateEnd);
-
-					for (int j = first_week; j < last_week; j++) {
-						data[(_row - 21), j - 1] = ((AEvent)_e).Title.Remove(1);
-					}
-				}
-				worksheet.get_Range("A" + _row.ToString(), "A" + _row.ToString()).Value2 = _a.Title;
-				_row++;
-			}
-			worksheet.get_Range("C21", "BB" + (_row - 1).ToString()).Value2 = data;
+			worksheet.get_Range("A21", "BB" + (_row - 1).ToString()).Value2 = data;
 
 			wb.Save();
 			aXL.Quit();
-			return _fileName;
+            aXL = null;
+            return  _fileName;
 		}
 
-		public static string ExportToFileZV(string[] users)
+        public static string ExportToFileZV(string[] users, string path)
 		{
 			
 
@@ -89,7 +108,7 @@ namespace N2.ACalendar
 			}
 
             Microsoft.Office.Interop.Excel.Application aXL = null;
-            string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
+            //string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
             //_path  = Configuration.  
             string _fileName = "zv.xls";
 
@@ -101,12 +120,12 @@ namespace N2.ACalendar
             catch
             {
                 _fileName=_fileName.Replace(".xls",".xml");
-                ExportToXML(data, _path + _fileName);
+                ExportToXML(data, path + _fileName);
                 return _fileName;
 
             }
             aXL.Workbooks.Open(
-                     _path + _fileName, // FileName
+                     path + _fileName, // FileName
                         false, // UpdateLinks
                         false, //  ReadOnly
                         Type.Missing, // Format
@@ -190,26 +209,29 @@ namespace N2.ACalendar
             //throw new NotImplementedException();
         }
 
-		public static string ExportToFileOZ(Request[] reqs, string studName)
+		public static string ExportToFileOZ(Request[] reqs, string studName , string path)
 		{
             Microsoft.Office.Interop.Excel.Application aXL = null;
-            string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
+            //string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
             string _fileName = "oz.xls";
             string[,] data = new string[reqs.Length, 5];
             int _row = 13;
             foreach (Request _r in reqs)
             {
+                if (String.Equals(  studName, _r.User.ToString(),StringComparison.InvariantCultureIgnoreCase))
+                {
                 N2.Workflow.Items.ItemState _s = _r.GetCurrentState();
                 data[(_row - 13), 0] = (_row - 12).ToString(); ;
                 data[(_row - 13), 1] = (_r.Course != null ? _r.Course.Title : string.Empty);
                 data[(_row - 13), 2] = _r.RequestDate.ToShortDateString();
-                data[(_row - 13), 3] = _r.User.ToString() ;
+                data[(_row - 13), 3] = _s.Action.ToString() ;
                 data[(_row - 13), 4] = "-";
                 if ((_s is AcceptedState) && ((AcceptedState)_s).Grade != 1)
                     data[(_row - 13), 4] = ((AcceptedState)_s).Grade.ToString();
 
                 //if (Roles.GetRolesForUser(_u).Any()) data[(_row - 20), 2] = (Roles.GetRolesForUser(_u))[0];
                 _row++;
+                }
             }
 
             try
@@ -220,14 +242,14 @@ namespace N2.ACalendar
             catch
             {
                 _fileName = _fileName.Replace(".xls", ".xml");
-                ExportToXML(data, _path + _fileName);
+                ExportToXML(data, path + _fileName);
                 return _fileName;
 
             }
             
             
 			aXL.Workbooks.Open(
-					 _path + _fileName, // FileName
+					 path + _fileName, // FileName
 						false, // UpdateLinks
 						false, //  ReadOnly
 						Type.Missing, // Format
@@ -283,10 +305,10 @@ namespace N2.ACalendar
 
 		}
 
-		public static string ExportToFileIRP(Request[] reqs)
+        public static string ExportToFileIRP(Request[] reqs, string path)
 		{
 			Microsoft.Office.Interop.Excel.Application aXL = null;
-			string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
+			//string _path = "C:\\work\\Lms\\LmsWeb\\Reporting\\ReportFiles\\";
 			string _fileName = "irp.xls";
  
             var corses_req = from req in reqs group req by req.Course.Title into corsesGroup select new { cour = corsesGroup.Key, requests = corsesGroup.Count() };
@@ -310,7 +332,7 @@ namespace N2.ACalendar
             catch
             {
                 _fileName = _fileName.Replace(".xls", ".xml");
-                ExportToXML(data, _path + _fileName);
+                ExportToXML(data, path + _fileName);
                 return _fileName;
 
             }
@@ -319,7 +341,7 @@ namespace N2.ACalendar
             
             
             aXL.Workbooks.Open(
-					 _path + _fileName, // FileName
+					 path + _fileName, // FileName
 						false, // UpdateLinks
 						false, //  ReadOnly
 						Type.Missing, // Format
