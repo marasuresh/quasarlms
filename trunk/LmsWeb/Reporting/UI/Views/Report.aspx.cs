@@ -84,7 +84,7 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
             {
                 case "erv"://Экзаменационно рейтинговые ведомости
                     if (this.SelectUser.SelectedUser.Length <1) return;
-                    strURL += ExcelExport.ExportToFileZV(Roles.GetUsersInRole(this.SelectUser.SelectedUser), Server.MapPath("../../Reporting/ReportFiles/"));
+                    strURL += ExcelExport.ExportToFileZV(Roles.GetUsersInRole(this.SelectUser.SelectedUser), Server.MapPath(strURL));
                     this.hlnkReport.NavigateUrl = strURL;
                     this.hlnkReport.Text = "Экзаменационно рейтинговые ведомости группа " + this.SelectUser.SelectedUser;
                     break;

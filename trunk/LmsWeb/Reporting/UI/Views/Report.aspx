@@ -7,12 +7,13 @@
 <%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls" TagPrefix="cc1" %>
 <%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls.Test" TagPrefix="cc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TextContent" runat="Server">
+<%--    
     <asp:PlaceHolder ID="PlaceHolder2" runat="server" Visible="false">
 
        <script type="text/javascript" src="~/Lms/UI/Js/jQuery.intellisense.js"></script>
 
     </asp:PlaceHolder>
-
+--%>
     <script type="text/javascript">
 
         $(function() {
@@ -52,18 +53,7 @@
 
 
         });
-
-
-//        function reptype() {
-//            $('#hidableTr').show();
-//        };
-
-//        function arg() {
-//            var dd = document.getElementById("ddlRT");
-//            return dd.value;
-//        };
-
-        //
+       
     </script>
 
     <div style="width: 100%">
@@ -71,16 +61,7 @@
             <tr>
                 <td align="left">
                     <b><span style="font-size: medium">¬ид отчета: </span></b>&nbsp;&nbsp;
-<%--                    <select id="ddlRT" onchange="reptype();" >
-                        <option value="Ёкзаменационно рейтинговые ведомости">Ёкзаменационно рейтинговые ведомости
-                        </option>
-                        <option value="экзаменационна€ сесси€">экзаменационна€ сесси€</option>
-                        <option value="каникулы, отпуск">каникулы, отпуск</option>
-                        <option value="войскова€ стажировка">войскова€ стажировка</option>
-                        <option value="аттестационна€ комисси€">аттестационна€ комисси€</option>
-                        <option value="учеба">учеба</option>
-                    </select>
---%>                    
+             
                     <asp:DropDownList ID="ddlReportType" runat="server"  OnSelectedIndexChanged=" ddlReportType_SelectedIndexChanged">
                         <asp:ListItem Value="erv">
                             Ёкзаменационно рейтинговые ведомости
@@ -88,7 +69,7 @@
                         <asp:ListItem Value="svrs">
                             —водные ведомости по результатам сессии
                         </asp:ListItem>
-                        <asp:ListItem Value="oaz">
+<%--                        <asp:ListItem Value="oaz">
                             ќтчеты по академическим задолженности€м
                         </asp:ListItem>
                         <asp:ListItem Value="pv">
@@ -96,7 +77,7 @@
                         </asp:ListItem>
                         <asp:ListItem Value="oes">
                             ќтчеты по экзаменационным сесси€м
-                        </asp:ListItem>
+                        </asp:ListItem>--%>
                         <asp:ListItem Value="oz">
                             ќтчет по за€вкам
                         </asp:ListItem>
@@ -104,10 +85,7 @@
                             »нформаци€ о ренабельности потоков
                         </asp:ListItem>
                     </asp:DropDownList>
-                    <%--<cc2:UserTreeTestBed ID="SelectUsertest" runat="server" />
-                 
-                    <asp:Button ID="btnGet" runat="server" Text="—формировать" OnClick="btnGet_Click" />
- --%>
+
                 </td>
             </tr>
             <tr id="su">
@@ -116,7 +94,6 @@
                     <cc1:SelectUser ID="SelectUser" runat="server" AllowMultipleSelection="false" DisplayMode='Roles'
                         SelectionMode='Roles' />
                     &nbsp;
-                    <%--                        ;   --%>
                 </td>
             </tr>
             <tr>
