@@ -56,7 +56,7 @@ public partial class ACalendar_UI_ACalendarList :   N2.Templates.Web.UI.Template
         strURL += ExcelExport.ExportToFile(ACalendaries, path);
         //Response.Redirect( ExcelExport.ExportToFile(cals, path))
         this.lnkExcel.NavigateUrl = strURL;
-        this.lnkExcel.Text = "Академические календари";
+        this.lnkExcel.Text = "открыть";
 
     }
 }
