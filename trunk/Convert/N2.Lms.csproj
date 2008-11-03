@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="GuidService.cs" />
+    <Compile Include="Items\Lms\Training.Business.cs" />
     <Compile Include="Items\Lms\Storage.Business.cs" />
     <Compile Include="Items\Lms\Storage.cs" />
     <Compile Include="Items\Lms\MyAssignmentList.Business.cs" />

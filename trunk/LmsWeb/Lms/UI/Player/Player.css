@@ -37,23 +37,6 @@ div#wrap {
 .wzm div.uc {
 	
 }
-/*Training Wizard*/
-.wztr .sb {
-	width:150px;
-	padding:15px;
-	padding-right:0px;
-}
-.wztr .sbl td {
-	padding-bottom:5px;
-	padding-top:5px;
-	border-bottom:1px dotted blue;
-}
-.wztr div.uc {
-	
-}
-.wztr div.uc > div {
-	
-}
 /*jQuery Spliter set up*/
 #splitter { height: 510px; }
 #leftPane { width: 200px; min-width: 50px; float:left; background:#fff }
@@ -63,3 +46,25 @@ div#wrap {
 #splitter iframe{ width:100%; }
 
 .hidden{display:none;}
+
+.sbl {
+	overflow:auto;
+	height:500px;
+	width:200px;
+	display:block;
+	background-color:White;
+	border:1px solid Silver;
+}
+
+.sba { white-space:nowrap; }
+
+/*http://www.csstemplatesweb.com/2008/07/17/pure-css-tooltip/*/
+	a:hover.sba{
+		position:absolute;
+		z-index:102;
+		width:auto!important;
+		background-color:white!important;
+	}
+	li span{
+		height:17px;
+	}

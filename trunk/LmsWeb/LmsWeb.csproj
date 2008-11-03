@@ -148,6 +148,10 @@
       <DependentUpon>CourseIntro.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Lms\UI\Player\Player.ascx.cs">
+      <DependentUpon>Player.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lms\UI\Web.config" />
@@ -157,10 +161,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lms\UI\Img\error.png" />
-    <Content Include="Lms\UI\Module.ascx" />
     <Content Include="Lms\UI\Player\Player.css" />
     <Content Include="Lms\UI\TestQuestion.ascx" />
-    <Content Include="Lms\UI\Test.ascx" />
     <Content Include="Lms\UI\TopicContainer.ascx" />
     <Content Include="Lms\UI\Img\03\01.png" />
     <Content Include="Lms\UI\Img\03\02.png" />
@@ -184,6 +186,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Browsers\Templates.browser" />
+    <Content Include="Lms\UI\Js\jquery.treeview.css" />
+    <Content Include="Lms\UI\Js\jquery.treeview.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\Requests.ascx" />
     <Content Include="Lms\UI\_assets\css\grid.css" />
     <Content Include="Lms\UI\_assets\css\round.css" />

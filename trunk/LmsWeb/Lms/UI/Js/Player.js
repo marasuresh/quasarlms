@@ -1,14 +1,22 @@
 ﻿$(function() {
 	$(window).bind('resize', function() {
-		$('#wrap').height($(window).height());
+		$('#wrap').height($(document).height());
 
 		var _uc = $('.wzm div.uc');
 		_uc.height(_uc.parent().height());
 
 		_uc = $('.wztr div.uc');
 		_uc.height(_uc.parent().height());
+
+		_uc = $('.sbl');
+		_uc.height(_uc.parent().height());
 	}).resize();
-	
+	$('#moduleTree').treeview({
+		control:'#treecontrol',
+		//collapsed:true,
+		animated:'fast',
+		persist: 'location'
+	});
 });
 function Split() {
 	var _oldWizard = $('.wzm');

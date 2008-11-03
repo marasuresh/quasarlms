@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Diagnostics;
 
 namespace N2.Lms.Items
 {
-	using N2.Security.Items;
 	using N2.Details;
 	using N2.Integrity;
 	using N2.Templates.Items;
 	using N2.Web.UI;
-	using N2.Collections;
-	using N2.Workflow.Items;
-	
+
 	[RestrictParents(typeof(TrainingContainer))]
 	[Definition, WithEditableTitle]
 	[WithEditableDateRange("Validity period", 50, "StartOn", "FinishOn", ContainerName="lms")]
@@ -53,27 +48,6 @@ namespace N2.Lms.Items
 			set { this.SetDetail<DateTime>("FinishOn", value); }
 		}
 
-		public IEnumerable<User> Members {
-			get;
-			set;
-		}
-
 		#endregion Lms Properties
-
-		Workflow m_workflow;
-		
-		[EditableItem("Workflow", 44, ContainerName = "lms")]
-		public Workflow Workflow {
-			get {
-				if (null == this.m_workflow) {
-					this.m_workflow = this.GetChild("workflow") as Workflow;
-
-					if (null == this.m_workflow) {
-						this.m_workflow = this.GenerateDefaultWorkflow();
-					}
-				}
-				return this.m_workflow;
-			}
-		}
 	}
 }
