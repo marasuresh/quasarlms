@@ -24,8 +24,11 @@ namespace N2.Messaging
 		
 		public override string TemplateUrl {
             get { return string.Concat(
-					"~/Messaging/UI/Views/", 
-					(this.Action != ActionEnum.List ? "NewMessage" : "MailBox"),
+					"~/Messaging/UI/Views/",
+                    (this.Action != ActionEnum.List && 
+                     this.Action != ActionEnum.Delete && 
+                     this.Action != ActionEnum.Restore &&
+                     this.Action != ActionEnum.Destroy ? "NewMessage" : "MailBox"),
 					".aspx");
 			}
 		}

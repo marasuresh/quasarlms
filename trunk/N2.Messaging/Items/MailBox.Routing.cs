@@ -15,7 +15,10 @@ namespace N2.Messaging
 			List,
 			Reply,
 			Forward,
-			Create
+			Create,
+            Delete,
+            Restore,
+            Destroy
 		}
 
 		public ActionEnum Action { get; set; }
@@ -62,6 +65,27 @@ namespace N2.Messaging
 							this.EditedItem.To = this.EditedItem.From;
 						}
 						break;
+                    case ActionEnum.Delete:
+                        {
+                            int _id = int.Parse(_match.BoundVariables["id"]);
+                            var _original = Context.Persister.Get(_id);
+                            Context.Persister.Move(_original, MessageStore.RecycleBin);
+                        }
+                        break;
+                    case ActionEnum.Restore:
+                        {
+                            int _id = int.Parse(_match.BoundVariables["id"]);
+                            var _original = Context.Persister.Get(_id);
+                            Context.Persister.Move(_original, MessageStore);
+                        }
+                        break;
+                    case ActionEnum.Destroy:
+                        {
+                            int _id = int.Parse(_match.BoundVariables["id"]);
+                            var _original = Context.Persister.Get(_id);
+                            Context.Persister.Delete(_original);
+                        }
+                        break;
 					}
 				
 				return this;
@@ -86,6 +110,9 @@ namespace N2.Messaging
 				new KeyValuePair<UriTemplate, object>(new UriTemplate("folder/{folder}"), ActionEnum.List),
 				new KeyValuePair<UriTemplate, object>(new UriTemplate("reply/{id}"), ActionEnum.Reply),
 				new KeyValuePair<UriTemplate, object>(new UriTemplate("forward/{id}"), ActionEnum.Forward),
+                new KeyValuePair<UriTemplate, object>(new UriTemplate("delete/{id}"), ActionEnum.Delete),
+                new KeyValuePair<UriTemplate, object>(new UriTemplate("restore/{id}"), ActionEnum.Restore),
+                new KeyValuePair<UriTemplate, object>(new UriTemplate("destroy/{id}"), ActionEnum.Destroy),
 				new KeyValuePair<UriTemplate, object>(new UriTemplate("new"), ActionEnum.Create),
 			};
 

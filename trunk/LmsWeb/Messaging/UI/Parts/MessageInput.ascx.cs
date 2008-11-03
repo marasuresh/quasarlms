@@ -59,6 +59,7 @@ namespace N2.Messaging.Messaging.UI.Parts
 			this.CurrentPage.EditedItem.Subject = this.txtSubject.Text;
 			this.CurrentPage.EditedItem.To = this.selUser.SelectedUser;
 			this.CurrentPage.EditedItem.From = this.Context.User.Identity.Name;
+            this.CurrentPage.EditedItem.Owner = this.Context.User.Identity.Name;
 			this.CurrentPage.EditedItem.Attachments = attacments;
 			this.CurrentPage.EditedItem.Expires = DateTime.Now.AddDays(60);
 			this.CurrentPage.EditedItem.MessageType = (MessageTypeEnum)Enum.Parse(typeof(MessageTypeEnum), this.rblMessageType.SelectedValue);
@@ -75,11 +76,14 @@ namespace N2.Messaging.Messaging.UI.Parts
 
                 //Создание копий получалелей.
                 Array.ForEach(
-					new MailFactory().GetRecipients(this.CurrentPage.EditedItem.To),
-					recipient => {
-						var _copy = (N2.Messaging.Message)this.CurrentPage.EditedItem.Clone(false);
-						_copy.To = recipient;
-					});
+                    new MailFactory().GetRecipients(this.CurrentPage.EditedItem.To),
+                    recipient =>
+                    {
+                        var _copy = (N2.Messaging.Message)this.CurrentPage.EditedItem.Clone(false);
+                        _copy.To = recipient;
+                        _copy.Owner = recipient;
+                        _copy.Save();
+                    });
 
                 Response.Redirect(Url.Parse(CurrentPage.Url).AppendSegment("folder/" + MailBox.C.Folders.Inbox).Path);
                     
