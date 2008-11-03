@@ -26,9 +26,10 @@ namespace N2.Messaging
 
 		#region Item collections
 
-		//Все сообщения текущего пользователя.
+		//Входящие сообщения текущего пользователя.
 		public IEnumerable<Message> MyInbox { get {
-			return this.Children.OfType<Message>().Where(_msg => string.Equals(_msg.To, HttpContext.Current.User.Identity.Name, StringComparison.OrdinalIgnoreCase));
+		    return this.GetMyMessages().Where(
+		        _msg => string.Equals(_msg.To, HttpContext.Current.User.Identity.Name, StringComparison.OrdinalIgnoreCase));
 		} }
 
 		//В черновиках.
@@ -37,8 +38,10 @@ namespace N2.Messaging
 		//В корзине.
 		public IEnumerable<Message> MyRecycled { get { return this.RecycleBin.GetMyMessages(); } }
 
-		public IEnumerable<Message> MyOutbox { get {
-			return this.Children.OfType<Message>().Where(_msg => string.Equals(_msg.From, HttpContext.Current.User.Identity.Name, StringComparison.OrdinalIgnoreCase));
+		//Отправленные.
+        public IEnumerable<Message> MyOutbox { get {
+            return this.GetMyMessages().Where(
+                _msg => string.Equals(_msg.From, HttpContext.Current.User.Identity.Name, StringComparison.OrdinalIgnoreCase));
 		} }
 
 		#endregion Item collections

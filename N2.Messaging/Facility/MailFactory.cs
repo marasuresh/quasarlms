@@ -8,7 +8,7 @@ namespace N2.Messaging
     {
         public string[] UploadFile(HttpPostedFile myFile, string UploadPath, string UploadVirtualPath)
         {
-            string[] urlToFile = new string[2];
+            string[] urlToFile = new string[1];
 
             //Short name of File.
             string strFileName = Path.GetFileName(myFile.FileName);

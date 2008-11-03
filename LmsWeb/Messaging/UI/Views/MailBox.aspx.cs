@@ -60,4 +60,5 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
 	{
 		e.ObjectInstance = this.CurrentItem;
 	}
+
 }
