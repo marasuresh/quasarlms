@@ -18,7 +18,7 @@ namespace N2.Messaging.Collections
             {
                 bool match = ((Message)item).To == User.Identity.Name &&
                              ((Message)item).Owner == User.Identity.Name &&
-                             !((Message)item).isRead;
+                             !((Message)item).IsRead;
                 return match;
             }
 

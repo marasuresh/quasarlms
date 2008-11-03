@@ -1,4 +1,6 @@
-﻿namespace N2.Messaging
+﻿using System.Linq;
+
+namespace N2.Messaging
 {
     using N2.Persistence;
     using N2.Details;
@@ -6,24 +8,30 @@
     using N2.Edit.Trash;
     using N2.Templates.Items;
 
-    public enum msgType
+    public enum MessageTypeEnum
     {
-        letter,
-        task,
-        announcement
-    } ;
+        Letter,
+        Task,
+        Announcement
+    }
 
     [Definition("Сообщение","Message")]
     [RestrictParents(typeof(MessageStore),typeof(RecycleBin),typeof(DraughtStore))]
     [NotThrowable, NotVersionable]
-    public abstract class Message : AbstractContentPage
+    public class Message : AbstractContentPage
 	{
 		#region Properties
 
-		//public override string IconUrl { get { return "~/Lms/UI/Img/04/50.png"; } }
+		public override string IconUrl { get {
+			switch(this.MessageType) {
+				default:
+					return "~/Messaging/UI/Images/email_open.png";
+				case MessageTypeEnum.Announcement:
+					return "~/Messaging/UI/Images/bell.png";
+				case MessageTypeEnum.Task:
+					return "~/Messaging/UI/Images/wrench.png"; } } }
 
-        public override string TemplateUrl { get { return "~/Messaging/UI/Views/Message.aspx"; } }
-
+		public override bool IsPage { get { return false; } }
 
         [EditableTextBox("Отправитель", 1)]
         public string From
@@ -55,7 +63,7 @@
 
         //Признак прочтения.
         [EditableCheckBox("Прочитано", 10)]
-        public bool isRead
+        public bool IsRead
         {
             get { return (bool)(GetDetail("isRead") ?? false); }
             set { SetDetail("isRead", value); }
@@ -67,19 +75,26 @@
             set { SetDetail("Attachments", value); }
         }
 
-        public virtual string TypeOfMessage
+        public MessageTypeEnum MessageType
         {
-            get { return ""; }
+            get { return this.GetDetail<MessageTypeEnum>("MessageType", MessageTypeEnum.Letter); }
+			set { this.SetDetail<MessageTypeEnum>("MessageType", value); }
         }
-
-        public MailBox mailBox
-        {
-            get { return GetDetail("mailBox") as MailBox; }
-            set { SetDetail("mailBox", value); }
-        }
-        
 
         #endregion Properties
+
+		MessageStore m_store;
+		public MessageStore Store {
+			get {
+				return
+					this.m_store ?? (
+						this.m_store = this.Parent.Parent as MessageStore //speed up for modules
+						?? this.Parent as MessageStore
+						?? N2.Find.EnumerateParents(this)
+							.OfType<MessageStore>()
+							.FirstOrDefault());
+			}
+		}
 
         #region Methods
 

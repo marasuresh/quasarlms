@@ -20,7 +20,7 @@
                         </td>
                         <td style="width:1%"></td>
                         <td style="vertical-align:middle; text-align:center; width:auto">
-                            <a href='<%# Eval("Url") %>' title='<%#Eval("From") + "   " + Eval("Published") %>'><label class="<%# Eval("TypeOfMessage") %>"><%# Eval("Subject") %></label></a>
+                            <a href='<%# Eval("Url") %>' title='<%#Eval("From") + "   " + Eval("Published") %>'><label class="<%# Eval("MessageType") %>"><%# Eval("Subject") %></label></a>
                         </td>
                     </tr>
                 </table>
