@@ -11,7 +11,7 @@ namespace N2.Messaging
     [Definition]
     [NotThrowable, NotVersionable]
     [AllowedChildren(typeof(Message))]
-    public abstract class BaseStore : AbstractContentPage
+    public abstract class BaseStore : AbstractItem
     {
         public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
 

@@ -1,77 +1,50 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Messaging/Top+SubMenu.master" AutoEventWireup="true"
-    CodeBehind="MailBox.aspx.cs" Inherits="Messaging_UI_MailBox" %>
+﻿<%@ Page
+		Language="C#"
+		MasterPageFile="~/Messaging/Top+SubMenu.master"
+		AutoEventWireup="true"
+		CodeBehind="MailBox.aspx.cs"
+		Inherits="Messaging_UI_MailBox" %>
+
+<script runat="server">
+	protected override void OnInit(EventArgs e)
+	{
+		Register.StyleSheet(this.Page, "~/Lms/UI/_assets/css/grid.css");
+		Register.StyleSheet(this.Page, "~/Lms/UI/_assets/css/round.css");
+		Register.StyleSheet(this.Page, "~/Lms/UI/Css/MyAssignmentList.css");
+		base.OnInit(e);
+	}
+</script>
 
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="N2.Web" %>
+<%@ Import Namespace="N2.Messaging" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TextContent" runat="Server">
-    <asp:Menu ID="mnuMailBox" runat="server" Orientation="Horizontal" Width="100%" 
-        OnMenuItemClick="mnuMailBox_MenuItemClick" BackColor="White">
-        <Items>
-            <asp:MenuItem Text="Все сообщения" Value="0" Selected="True"></asp:MenuItem>
-            <asp:MenuItem Text="Черновики" Value="1"></asp:MenuItem>
-            <asp:MenuItem Text="Корзина" Value="2"></asp:MenuItem>
-        </Items>
-    </asp:Menu>
     <asp:MultiView ID="mvMailBox" runat="server" ActiveViewIndex="0">
         <asp:View ID="Tab1" runat="server">
             <div style="width: 100%;">
                 <br />
-                <table style="width: 100%">
-                    <tr>
-                        <td align="left">
-                            <a class='lettercss' href='<%= Url.Parse(CurrentPage.Url).AppendSegment("newLetter")%>'>
-                                <img src='<%= this.ResolveClientUrl("~/Messaging/UI/Images/email_open.png") %>' />
-                                Письмо&hellip;</a>
-                            
-                        </td>
-                        <td align="left">
-                            <a class='announcementcss' href='<%= Url.Parse(CurrentPage.Url).AppendSegment("newAnnouncement")%>'>
-								<img src='<%= this.ResolveClientUrl("~/Messaging/UI/Images/bell.png") %>' />
-                                Объявление&hellip;</a>
-                            
-                        </td>
-                        <td align="left">
-                            <a class='taskcss' href='<%= Url.Parse(CurrentPage.Url).AppendSegment("newTask")%>'>
-                                <img src='<%= this.ResolveClientUrl("~/Messaging/UI/Images/wrench.png") %>' />
-                                Задание&hellip;</a>
-                            
-                        </td>
-                    </tr>
-                </table>
-                <br />
-                <table style="width: 100%">
-                    <tr>
-                        <td align="center">
-                            <asp:Button ID="btnShowMsg" runat="server" Text="Показать" />
-                            <asp:DropDownList ID="ddlMsgType" runat="server">
-                                <asp:ListItem Value="all" Selected="True">
-                                    Все
-                                </asp:ListItem>
-                                <asp:ListItem Value="letters">
-                                    Письма
-                                </asp:ListItem>
-                                <asp:ListItem Value="tasks">
-                                    Задания
-                                </asp:ListItem>
-                                <asp:ListItem Value="announcements">
-                                    Объявления
-                                </asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:DropDownList ID="ddlDirection" runat="server">
-                                <asp:ListItem Value="all">
-                                    Все
-                                </asp:ListItem>
-                                <asp:ListItem Value="incoming" Selected="True">
-                                    Полученные
-                                </asp:ListItem>
-                                <asp:ListItem Value="sent">
-                                    Отправленные
-                                </asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:CheckBox ID="cboxOnlyNew" runat="server" Text=" непрочитанные" />
-                        </td>
-                    </tr>
-                </table>
+
+<%	var _url = Url.Parse(this.CurrentPage.Url);
+	var _filterLinks = new[] {
+		new { Filter = MailBox.C.Filter.Letters, Image = "email_open", Title = "Письма" },
+		new { Filter = MailBox.C.Filter.Announcements, Image = "bell", Title = "Объявления" },
+		new { Filter = MailBox.C.Filter.Tasks, Image = "wrench", Title = "Задания" },
+	};
+	foreach (var _link in _filterLinks) { %>
+	<a href='<%= _url.AppendSegment(string.Concat(
+			"folder/",
+			this.CurrentItem.Folder,
+			"/filter/",
+			_link.Filter)) %>'><img
+				src='<%= this.ResolveClientUrl("~/Messaging/UI/Images/" + _link.Image + ".png") %>' />
+		<%= _link.Title %>
+	</a>
+	<%
+	}
+%>
+<p>
+<a href='<%= _url.AppendSegment("new") %>'>Создать новое сообщение&hellip;</a>
+</p>
                 <br />
             </div>
         </asp:View>
@@ -88,50 +61,80 @@
             <br />
         </asp:View>
     </asp:MultiView>
-    <table width="100%">
-        <tr>
-            <td>
-                <asp:GridView ID="gvMailBox" runat="server" PageSize="15" Width="100%" CssClass="Grid"
-                    AllowPaging="False" DataKeyNames="ID" AutoGenerateColumns="false" GridLines="Horizontal">
-                    <HeaderStyle CssClass="GridHeader"></HeaderStyle>
-                    <RowStyle CssClass="GridItem" />
-                    <AlternatingRowStyle CssClass="GridAltItem" />
-                    <EmptyDataTemplate>
-                        <div style="text-align: center">
-                            У вас нет сообщений.
-                        </div>
-                    </EmptyDataTemplate>
-                    <Columns>
-                        <asp:TemplateField HeaderText="Тип" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:HyperLink ID="hlDeletedItem" runat="server" NavigateUrl='<%#  Eval("RewrittenUrl") %>'>
-                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("IconUrl") %>' />
-                                </asp:HyperLink>
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                        </asp:TemplateField>
-                        <asp:BoundField HeaderText="Автор" DataField="From" HeaderStyle-HorizontalAlign="Left">
-                            <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
-                        </asp:BoundField>
-                        <asp:BoundField HeaderText="Получатель" DataField="To" HeaderStyle-HorizontalAlign="Left">
-                            <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
-                        </asp:BoundField>
-                        <%--<asp:BoundField HeaderText="Тема" DataField="Subject" HeaderStyle-HorizontalAlign="Left" ItemStyle-Width="50%"/>--%>
-                        <asp:TemplateField HeaderText="Тема" HeaderStyle-HorizontalAlign="Left" ItemStyle-Width="50%">
-                            <ItemTemplate>
-                                <asp:HyperLink ID="hlMsgLocation" runat="server" NavigateUrl='<%# Eval("RewrittenUrl") %>'>
-						                        <%# Eval("Subject")%>
-                                </asp:HyperLink>
-                            </ItemTemplate>
-                            <HeaderStyle HorizontalAlign="Left"></HeaderStyle>
-                            <ItemStyle Width="50%"></ItemStyle>
-                        </asp:TemplateField>
-                        <asp:BoundField HeaderText="Дата" DataField="Created" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
-                            <ItemStyle HorizontalAlign="Center" Width="20%"></ItemStyle>
-                        </asp:BoundField>
-                    </Columns>
-                </asp:GridView>
-            </td>
-        </tr>
-    </table>
+	<n2:ChromeBox runat="server">
+		<asp:ObjectDataSource runat="server" ID="ds" 
+			OldValuesParameterFormatString="original_{0}" 
+			SelectMethod="GetFilteredFolderMessages" TypeName="N2.Messaging.MailBox" 
+			onobjectcreating="ds_ObjectCreating" />
+		
+		<asp:ListView
+				ID="lv"
+				DataKeyNames="ID"
+				runat="server"
+				DataSourceID="ds">
+	
+			<LayoutTemplate>
+				<table class="gridview" cellpadding="0" cellspacing="0">
+					<col align="center" />
+					<col align="left" />
+					<col align="left" />
+					<col align="left" width="50%" />
+					<col align="center" width="20%" />
+					
+					<tr class="header">
+						<th>Тип</th>
+						<th>Автор</th>
+						<th>Получатель</th>
+						<th>Тема</th>
+						<th>Дата</th>
+					</tr>
+					<tr id="itemPlaceholder" runat="server" />
+				</table>
+			</LayoutTemplate>
+		
+			<EmptyDataTemplate>
+				<tr><td colspan="5" align="center">У вас нет сообщений.</td></tr>
+			</EmptyDataTemplate>
+			
+			<ItemTemplate>
+				<tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>'>
+					<td><asp:LinkButton runat="server" CommandName="Edit">
+							<asp:Image runat="server" ImageUrl='<%# Eval("IconUrl") %>' />
+						</asp:LinkButton></td>
+					<td><%# Eval("From") %></td>
+					<td><%# Eval("To") %></td>
+					<td><asp:LinkButton runat="server" CommandName="Edit" Text='<%# Eval("Subject")%>' /></td>
+					<td><%# Eval("Created") %></td>
+				</tr>
+			</ItemTemplate>
+	
+			<EditItemTemplate>
+				<tr class='edit-info <%# Container.DataItemIndex == 0 ? "first" : string.Empty %>'>
+					<td><asp:LinkButton ID="LinkButton1" runat="server" CommandName="Cancel">
+							<asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("IconUrl") %>' />
+						</asp:LinkButton></td>
+					<td><%# Eval("From") %></td>
+					<td><%# Eval("To") %></td>
+					<td><asp:LinkButton runat="server" CommandName="Cancel" Text='<%# Eval("Subject")%>' /></td>
+					<td><%# Eval("Created") %></td>
+				</tr>
+				<tr><td class="edit" colspan="5">
+				<div class="details">
+					<div class="header">Edit details for '<%# Eval("Title")%>'</div>
+					<table class="detailview" cellpadding="0" cellspacing="0">
+						<tr><th>Текст</th>
+							<td><asp:TextBox Width="100%" Height="100%" ID="tbComment" TextMode="MultiLine" ReadOnly="true" runat="server" Text='<%# Eval("Text") %>' /></td>
+						</tr> 
+					</table>
+					<div class="footer command">
+						<a href='<%# Url.Parse(this.CurrentPage.Url).AppendSegment("reply/" + Eval("ID").ToString()) %>'>Ответить</a>
+						<a href='<%# Url.Parse(this.CurrentPage.Url).AppendSegment("forward/" + Eval("ID").ToString()) %>'>Переслать</a>
+						<asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CommandName="Cancel" />
+					</div>
+				</div>
+			</td>
+				</tr>
+			</EditItemTemplate>
+		</asp:ListView>
+	</n2:ChromeBox>
 </asp:Content>

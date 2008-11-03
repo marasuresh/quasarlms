@@ -27,22 +27,19 @@ namespace N2.Messaging
 		#region Item collections
 
 		//Все сообщения текущего пользователя.
-		public IEnumerable<Message> MyMessages { get { return this.GetMyMessages(); } }
-
-		//Письма.
-		public IEnumerable<Letter> MyLetters { get { return this.MyMessages.OfType<Letter>(); } }
-
-		//Задания.
-		public IEnumerable<Task> MyTasks { get { return this.MyMessages.OfType<Task>(); } }
-
-		//Объявления.
-		public IEnumerable<Announcement> MyAnnouncements { get { return this.MyMessages.OfType<Announcement>(); } }
+		public IEnumerable<Message> MyInbox { get {
+			return this.Children.OfType<Message>().Where(_msg => string.Equals(_msg.To, HttpContext.Current.User.Identity.Name, StringComparison.OrdinalIgnoreCase));
+		} }
 
 		//В черновиках.
 		public IEnumerable<Message> MyDrafts { get { return this.DraftsFolder.GetMyMessages(); } }
 
 		//В корзине.
 		public IEnumerable<Message> MyRecycled { get { return this.RecycleBin.GetMyMessages(); } }
+
+		public IEnumerable<Message> MyOutbox { get {
+			return this.Children.OfType<Message>().Where(_msg => string.Equals(_msg.From, HttpContext.Current.User.Identity.Name, StringComparison.OrdinalIgnoreCase));
+		} }
 
 		#endregion Item collections
 	}

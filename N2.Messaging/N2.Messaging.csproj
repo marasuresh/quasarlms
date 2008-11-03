@@ -44,6 +44,9 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -53,18 +56,16 @@
     <Compile Include="Facility\MailFactory.cs" />
     <Compile Include="Facility\MessageExtensions.cs" />
     <Compile Include="Items\Containers\MessageStore.Business.cs" />
-    <Compile Include="Items\Message\Announcement.cs" />
+    <Compile Include="Items\MailBox.Routing.cs" />
+    <Compile Include="Items\MailBox.Constants.cs" />
     <Compile Include="Items\Containers\BaseStore.cs" />
     <Compile Include="Items\MailBox.Business.cs" />
     <Compile Include="Items\Containers\Drafts.cs" />
-    <Compile Include="Items\Message\Letter.cs" />
     <Compile Include="Items\MailBox.cs" />
     <Compile Include="Items\Message\Message.cs" />
     <Compile Include="Items\Containers\MessageStore.cs" />
-    <Compile Include="Items\msgFilter.cs" />
     <Compile Include="Items\NewMessageList.cs" />
     <Compile Include="Items\Containers\RecycleBin.cs" />
-    <Compile Include="Items\Message\Task.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\N2.Futures\N2.Futures.csproj">

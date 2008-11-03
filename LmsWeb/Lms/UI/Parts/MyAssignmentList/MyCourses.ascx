@@ -45,7 +45,7 @@
 		<table class="gridview" cellpadding="0" cellspacing="0">
 			<tr class="header">
 				<th></th>
-				<th>Title</th>
+				<th>Title</th></tr>
 			<tr id="itemPlaceholder" runat="server" />
 		</table>
 	</LayoutTemplate>

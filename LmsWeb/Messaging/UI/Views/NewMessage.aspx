@@ -6,5 +6,5 @@ Inherits="N2.Templates.Web.UI.TemplatePage`1[[N2.Messaging.MailBox, N2.Messaging
     Src="~\Messaging\UI\Parts\MessageInput.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TextContent" Runat="Server">
-            <uc:MessageInput id="miNewMsg" runat="server"/>
+	<uc:MessageInput id="miNewMsg" runat="server"/>
 </asp:Content>

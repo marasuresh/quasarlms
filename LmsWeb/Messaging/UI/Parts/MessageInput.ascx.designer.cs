@@ -23,15 +23,6 @@ namespace N2.Messaging.Messaging.UI.Parts {
         protected global::N2.Templates.Web.UI.WebControls.Box commentInput;
         
         /// <summary>
-        /// lblTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTo;
-        
-        /// <summary>
         /// selUser control.
         /// </summary>
         /// <remarks>
@@ -39,15 +30,6 @@ namespace N2.Messaging.Messaging.UI.Parts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::N2.Web.UI.WebControls.SelectUser selUser;
-        
-        /// <summary>
-        /// lblSubject control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSubject;
         
         /// <summary>
         /// txtSubject control.
@@ -68,15 +50,6 @@ namespace N2.Messaging.Messaging.UI.Parts {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// lblUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUpload;
-        
-        /// <summary>
         /// btnFileUpload control.
         /// </summary>
         /// <remarks>
@@ -84,6 +57,15 @@ namespace N2.Messaging.Messaging.UI.Parts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload btnFileUpload;
+        
+        /// <summary>
+        /// rblMessageType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rblMessageType;
         
         /// <summary>
         /// txtText control.
@@ -104,15 +86,6 @@ namespace N2.Messaging.Messaging.UI.Parts {
         protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
-        /// btnCancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
-        
-        /// <summary>
         /// btnToDr control.
         /// </summary>
         /// <remarks>
@@ -120,5 +93,14 @@ namespace N2.Messaging.Messaging.UI.Parts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnToDr;
+        
+        /// <summary>
+        /// hlCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlCancel;
     }
 }

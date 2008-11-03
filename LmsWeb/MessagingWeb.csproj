@@ -93,13 +93,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messaging\UI\Parts\Message.ascx.cs">
-      <DependentUpon>Message.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Messaging\UI\Parts\Message.ascx.designer.cs">
-      <DependentUpon>Message.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Messaging\UI\Parts\MessageInput.ascx.cs">
       <DependentUpon>MessageInput.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -121,7 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Messaging\UI\Parts\App_LocalResources\MessageInput.ascx.resx" />
-    <Content Include="Messaging\UI\Views\NewMessage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Messaging\Top+SubMenu.Master" />
@@ -129,8 +121,6 @@
   <ItemGroup>
     <Content Include="Messaging\UI\Images\attach.png" />
     <Content Include="Messaging\UI\Images\eye.png" />
-    <Content Include="Messaging\UI\Parts\Message.ascx" />
-    <Content Include="Messaging\UI\Views\Message.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Messaging\UI\Images\basket_edit.png" />
@@ -143,6 +133,7 @@
     <Content Include="Messaging\UI\Images\wrench.png" />
     <Content Include="Messaging\UI\Js\jQuery.intellisense.js" />
     <Content Include="Messaging\UI\Parts\App_LocalResources\Message.ascx.resx" />
+    <Content Include="Messaging\UI\Views\NewMessage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

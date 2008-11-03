@@ -1,9 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Web;
-using N2.Edit;
-using N2.Templates;
-using N2.Messaging;
 using N2.Templates.Web.UI;
 using N2.Web;
 using N2.Web.UI.WebControls;
@@ -11,9 +7,20 @@ using N2.Resources;
 
 namespace N2.Messaging.Messaging.UI.Parts
 {
-    public partial class MessageInput : TemplateUserControl<N2.Messaging.MailBox, N2.Messaging.MailBox>
+    public partial class MessageInput : TemplateUserControl<MailBox, MailBox>
     {
 
+		protected override void OnInit(EventArgs e)
+		{
+			base.OnInit(e);
+
+			this.hlCancel.NavigateUrl = this.CurrentPage.Url;
+
+			this.txtSubject.Text = this.CurrentItem.EditedItem.Subject;
+			this.txtText.Text = this.CurrentItem.EditedItem.Text;
+			this.selUser.SelectedUser = this.CurrentItem.EditedItem.To;
+			
+		}
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -34,69 +41,47 @@ namespace N2.Messaging.Messaging.UI.Parts
             base.OnPreRender(e);
         }
 
+		void UpdateEditedMessage()
+		{
+			string[] attacments = new string[0];
+
+			//Upload file.
+			if (btnFileUpload.HasFile)  // File was sent
+                {
+				// Get a reference to PostedFile object
+				HttpPostedFile myFile = btnFileUpload.PostedFile;
+
+				attacments = new MailFactory().UploadFile(myFile, Server.MapPath("./Upload/"), "~/Messaging/UI/Views/Upload/");
+			}
+
+			this.CurrentPage.EditedItem.ID = 0;
+			this.CurrentPage.EditedItem.Text = this.txtText.Text;
+			this.CurrentPage.EditedItem.Subject = this.txtSubject.Text;
+			this.CurrentPage.EditedItem.To = this.selUser.SelectedUser;
+			this.CurrentPage.EditedItem.From = this.Context.User.Identity.Name;
+			this.CurrentPage.EditedItem.Attachments = attacments;
+			this.CurrentPage.EditedItem.Expires = DateTime.Now.AddDays(60);
+			this.CurrentPage.EditedItem.MessageType = (MessageTypeEnum)Enum.Parse(typeof(MessageTypeEnum), this.rblMessageType.SelectedValue);
+
+			this.CurrentPage.EditedItem.Save();
+		}
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Page.Validate("CommentInput");
             if (Page.IsValid)
             {
+				this.UpdateEditedMessage();
 
-                MailFactory mFactory = new MailFactory();
-
-                BaseStore store = CurrentItem.MessageStore;
-
-                string msgType = CurrentItem.Action;
-
-                string curUser = Context.User.Identity.Name;
-                
-                //string to = txtTo.Text;
-                string to = selUser.SelectedUser;
-               
-                string subject = txtSubject.Text;
-                string text = txtText.Text;
-
-                string[] attacments = null;
-
-                //Upload file.
-                if (btnFileUpload.HasFile)  // File was sent
-                {
-                    // Get a reference to PostedFile object
-                    HttpPostedFile myFile = btnFileUpload.PostedFile;
-
-                    attacments = mFactory.UploadFile(myFile, Server.MapPath("./Upload/"), "~/Messaging/UI/Views/Upload/");
-                }
-                
-                //Создание копии отправителя.
-                switch (msgType)
-                {
-                    case "newLetter":
-                        mFactory.CreateLetter(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
-                        break;
-                    case "newTask":
-                        mFactory.CreateTask(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
-                        break;
-                    case "newAnnouncement":
-                        mFactory.CreateAnnouncement(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
-                        break;
-                }
                 //Создание копий получалелей.
-                string[] recipients = mFactory.GetRecipients(to);
-                foreach (string recipient in recipients)
-                {
-                    switch (msgType)
-                    {
-                        case "newLetter":
-                            mFactory.CreateLetter(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem);
-                            break;
-                        case "newTask":
-                            mFactory.CreateTask(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem);
-                            break;
-                        case "newAnnouncement":
-                            mFactory.CreateAnnouncement(curUser, recipient, recipient, subject, text, attacments, store, CurrentItem);
-                            break;
-                    }    
-                }
+                Array.ForEach(
+					new MailFactory().GetRecipients(this.CurrentPage.EditedItem.To),
+					recipient => {
+						var _copy = (N2.Messaging.Message)this.CurrentPage.EditedItem.Clone(false);
+						_copy.To = recipient;
+					});
 
-                Response.Redirect(Url.Parse(CurrentPage.Url).AppendSegment("inbox").Path);
+                Response.Redirect(Url.Parse(CurrentPage.Url).AppendSegment("folder/" + MailBox.C.Folders.Inbox).Path);
                     
             }
         }
@@ -106,54 +91,10 @@ namespace N2.Messaging.Messaging.UI.Parts
             Page.Validate("CommentInput");
             if (Page.IsValid)
             {
-                MailFactory mFactory = new MailFactory();
-
-                BaseStore store = CurrentItem.MessageStore.DraftsFolder;
-
-                string msgType = CurrentItem.Action;
-
-                string curUser = Context.User.Identity.Name;
-
-                //string to = txtTo.Text;
-                string to = selUser.SelectedUser;
-
-                string subject = txtSubject.Text;
-                string text = txtText.Text;
-
-                string[] attacments = null;
-
-                //Upload file.
-                if (btnFileUpload.HasFile)  // File was sent
-                {
-                    // Get a reference to PostedFile object
-                    HttpPostedFile myFile = btnFileUpload.PostedFile;
-
-                    attacments = mFactory.UploadFile(myFile, Server.MapPath("./Upload/"), "~/Messaging/UI/Views/Upload/");
-                }
-
-                switch (msgType)
-                {
-                    case "newLetter":
-                        mFactory.CreateLetter(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
-                        break;
-                    case "newTask":
-                        mFactory.CreateTask(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
-                        break;
-                    case "newAnnouncement":
-                        mFactory.CreateAnnouncement(curUser, to, curUser, subject, text, attacments, store, CurrentItem);
-                        break;
-                }
-
-                Response.Redirect(Url.Parse(CurrentPage.Url).AppendSegment("inbox").Path);
-
+				this.UpdateEditedMessage();
+				N2.Context.Persister.Move(this.CurrentPage.EditedItem, this.CurrentPage.MessageStore.DraftsFolder);
+                Response.Redirect(Url.Parse(CurrentPage.Url).AppendSegment("folder/" + MailBox.C.Folders.Inbox).Path);
             }
         }
-        
-
-        protected void btnCancel_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(CurrentPage.Url);
-        }
-        
     }
 }
