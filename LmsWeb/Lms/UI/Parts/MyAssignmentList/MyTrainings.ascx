@@ -50,7 +50,7 @@
 	<ItemTemplate>
 		<tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>'>
 			<td class="command"><asp:LinkButton ID="btnEdit" runat="server" Text="View" CommandName="Edit" /></td>
-			<td><a href='<%# this.ResolveClientUrl("~/Lms/UI/Player.aspx?id=" + ((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Ticket.ID).ToString()%>'><%# ((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Training.Title%></a></td>
+			<td><a target="_blank" href='<%# this.ResolveClientUrl("~/Lms/UI/Player.aspx?id=" + ((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Ticket.ID).ToString()%>'><%# ((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Training.Title%></a></td>
 		</tr>
 	</ItemTemplate>
 	

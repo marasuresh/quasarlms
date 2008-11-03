@@ -2,14 +2,11 @@
 {
 	using System.Collections.Generic;
 	using System.Linq;
-
+	using N2.Definitions;
 	using N2.Details;
 	using N2.Installation;
 	using N2.Integrity;
-	using N2.Edit.Trash;
 	using N2.Templates.Items;
-	using N2.Definitions;
-	using N2.Collections;
 
 	[Definition("Topic", "Topic", Installer = InstallerHint.NeverRootOrStartPage)]
 	[RestrictParents(typeof(TopicList), typeof(Topic))]
@@ -61,11 +58,6 @@
 		public bool Mandatory {
 			get { return (bool?)this.GetDetail("Mandatory") ?? true; }
 			set { this.SetDetail<bool>("Mandatory", value); }
-		}
-
-		//[EditableItem("Practice", 90, Required = false)]
-		public Test Practice {
-			get { return this.GetChildren(new TypeFilter(typeof(Test))).FirstOrDefault() as Test; }
 		}
 		
 		#endregion Lms Properties
