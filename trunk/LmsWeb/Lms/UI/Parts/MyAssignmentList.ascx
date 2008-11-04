@@ -14,7 +14,12 @@
 		this.CreateControlHierarchy();
 		this.ClearChildViewState();
 	}
-
+	//TODO move to common library
+	static bool IsSelected(WizardStep step)
+	{
+		return step == step.Wizard.ActiveStep;
+	}
+	
 	protected void CreateControlHierarchy()
 	{
 		var _adminQuerySet = new Dictionary<string, Type> {
@@ -79,10 +84,13 @@
 					runat="server"
 					ID="SideBarList"
 					Width="100%"
+					AdapterEnabled="true"
 					SelectedItemStyle-CssClass="selected"
 					CssClass="sb">
                 <ItemTemplate>
-                    <asp:LinkButton runat="server" ID="SideBarButton" CssClass="sba" />
+					<%# IsSelected((WizardStep)Container.DataItem) ? "<span class='selected'>" : string.Empty %>
+                    <asp:LinkButton runat="server" ID="SideBarButton" CssClass='sba' />
+                    <%# IsSelected((WizardStep)Container.DataItem) ? "</span>" : string.Empty %>
                 </ItemTemplate>
             </asp:DataList>
         </SideBarTemplate>

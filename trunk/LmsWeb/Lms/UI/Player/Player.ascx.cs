@@ -9,12 +9,13 @@ using N2.Resources;
 using N2.Templates.Items;
 using N2.Templates.Web.UI;
 using N2.Web.UI;
+using System.Collections.Generic;
 
 public partial class Player : ContentUserControl<AbstractContentPage, TrainingTicket>
 {
 	protected Wizard wz;
 
-	int Indentation { get; set; }
+	Stack<int> Indent = new Stack<int>();
 
 	protected override void CreateChildControls()
 	{
@@ -23,22 +24,45 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 		this.ClearChildViewState();
 	}
 
-	protected virtual void CreateControlHierarchy()
+	Func<T, string> GetItemClassifier<T>(IEnumerable<T> sequence)
 	{
-		foreach (var _scheduledTopic in this.CurrentItem.Training.Modules) {
-			AddTopicStep(_scheduledTopic);
-
-			if (_scheduledTopic.HasTest) {
-				this.AddPracticeStep(_scheduledTopic.Topic.Practice);
-			}
-
+		if (!sequence.Any()) {
+			return item => string.Empty;
 		}
 
+		var _first = sequence.First();
+		var _last = sequence.Last();
+
+		return object.ReferenceEquals(_first, _last)
+			? new Func<T, string>(item => "S")
+			: new Func<T, string>(item => object.ReferenceEquals(item, _first)
+				? "F"
+				: object.ReferenceEquals(item, _last)
+					? "L"
+					: "M");
+	}
+
+	protected virtual void CreateControlHierarchy()
+	{
+		this.Indent.Push(0);
+		
+		var _items = this.CurrentItem.Training.Modules.Cast<N2.ContentItem>().ToList();
+		
 		//TODO: take test from training schedule rather then from course definition
 		var _test = this.CurrentItem.Training.Course.Test;
 		if (null != _test) {
-			Debug.WriteLine(_test.Title, "Lms");
-			this.AddPracticeStep(_test).StepType = WizardStepType.Finish;
+			_items.Add(_test);
+		}
+
+		var _classifier = this.GetItemClassifier<N2.ContentItem>(_items);
+
+		foreach (var _item in _items) {
+			if (_item is ScheduledTopic) {
+				this.AddModuleStep(_item as ScheduledTopic, _classifier(_item));
+			} else if(_item is Test) {
+				this.AddPracticeStep(_item as Test, _classifier(_item)).StepType = WizardStepType.Finish;
+			}
+
 		}
 	}
 
@@ -61,13 +85,13 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 		Register.JavaScript(this.Page, this.Page.ResolveClientUrl("~/Lms/UI/Js/Player.js"));
 	}
 
-	protected WizardStepBase AddTopicStep(ScheduledTopic module)
+	protected WizardStepBase AddModuleStep(ScheduledTopic module, string tag)
 	{
 		WizardStep _step = new WizardStep {
 			ID = module.Name,
 			Title = module.Title,
 			StepType = WizardStepType.Auto,
-			SkinID = "BeginTopic",
+			SkinID = module.Topic.Topics.Any() ? tag + "c" : tag,
 		};
 		this.wz.WizardSteps.Add(_step);
 
@@ -75,17 +99,17 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 			(TemplateUserControl<AbstractContentPage, Topic>)((IContainable)module.Topic).AddTo(_step)
 		).CurrentItem = module.Topic;
 		
-		this.CreateControlHierarchy(module);
+		this.CreateControlHierarchy(module.Topic);
 		return _step;
 	}
 
-	protected WizardStepBase AddPracticeStep(Test test)
+	protected WizardStepBase AddPracticeStep(Test test, string tag)
 	{
 		WizardStep _step = new WizardStep {
 			ID = test.Name,
 			Title = test.Title,
 			StepType = WizardStepType.Auto,
-			SkinID = "BeginTopic",
+			SkinID = test.Questions.Any() ? tag + "c" : tag,
 		};
 
 		this.wz.WizardSteps.Add(_step);
@@ -98,12 +122,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 		var _questions = test.Questions.ToList();
 
 		if (_questions.Any()) {
-			if (1 == _questions.Count()) {
-				_questions[0]["tag"] = "SingleChild";
-			} else {
-				_questions.Last()["tag"] = "LastChild";
-				_questions.First()["tag"] = "FirstChild";
-			}
+			var _classifier = this.GetItemClassifier<TestQuestion>(test.Questions);
 
 			foreach (var _q in _questions) {
 
@@ -111,7 +130,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 					ID = _q.Name,
 					StepType = WizardStepType.Auto,
 					Title = _q.Title,
-					SkinID = (string)_q["tag"],//inject begin sub-topic mark on the first/last step
+					SkinID = _classifier(_q),//inject begin sub-topic mark on the first/last step
 				};
 
 				this.wz.WizardSteps.Add(_step);
@@ -120,63 +139,92 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 			}
 		}
 	}
-	
-	void CreateControlHierarchy(Topic topic)
+
+	protected WizardStepBase AddTopicStep(Topic topic, string tag)
 	{
-		var _topics = topic.Topics.ToList();
+		WizardStep _step = new WizardStep {
+			ID = topic.Name,
+			Title = topic.Title,
+			StepType = WizardStepType.Auto,
+			SkinID = topic.Topics.Any() ? tag + "c" : tag,
+		};
 
-		if (_topics.Any()) {
+		this.wz.WizardSteps.Add(_step);
 
-			if (1 == _topics.Count()) {
-				_topics[0]["tag"] = "SingleChild";
-			} else {
-				_topics.Last()["tag"] = "LastChild";
-				_topics.First()["tag"] = "FirstChild";
-			}
+		((TemplateUserControl<AbstractContentPage, Topic>)((IContainable)topic)
+			.AddTo(_step))
+			.CurrentItem = topic;
 
-			foreach (var _topic in _topics) {
-				WizardStep _step = new WizardStep {
-					ID = _topic.Name,
-					Title = _topic.Title,
-					StepType = WizardStepType.Auto,
-					SkinID = (string)_topic["tag"],
-				};
+		this.CreateControlHierarchy(topic);
 
-				this.wz.WizardSteps.Add(_step);
-
-				((TemplateUserControl<AbstractContentPage, Topic>)((IContainable)_topic)
-					.AddTo(_step))
-					.CurrentItem = _topic;
-
-				this.CreateControlHierarchy(_topic);
-			}
-		}
+		return _step;
 	}
 
-	void CreateControlHierarchy(ScheduledTopic module)
+	void CreateControlHierarchy(Topic topic)
 	{
-		this.CreateControlHierarchy(module.Topic);
+		var _topics = topic.Topics.Cast<N2.ContentItem>().ToList();
+
+		if (null != topic.Practice) {
+			_topics.Add(topic.Practice);
+		}
+
+		if (_topics.Any()) {
+			var _classifier = this.GetItemClassifier<N2.ContentItem>(_topics);
+
+			foreach (var _topic in _topics) {
+				if (_topic is Topic) {
+					this.AddTopicStep(_topic as Topic, _classifier(_topic));
+				} else if (_topic is Test) {
+					this.AddPracticeStep(_topic as Test, _classifier(_topic));
+				}
+			}
+		}
 	}
 
 	#region GUI methods
 
 	protected string RenderEndHtml(WizardStep step)
 	{
-		return
-			step.SkinID == "LastChild" || step.SkinID == "SingleChild"
-				? "</li></ul></li>"
-				: step.SkinID == "BeginTopic" ? string.Empty : "</li>";
+		string _result = "</li>";
+		
+		if (step.SkinID.Length == 2) {
+			_result = "<ul>";
+		} else if (step.SkinID == "M" || step.SkinID == "F") {
+			_result = "</li>";
+		} else if (step.SkinID == "S" || step.SkinID == "L") {
+			_result = string.Join(string.Empty, Enumerable.Repeat(
+				"</li></ul></li>",
+				this.Indent.Count > 0
+					? this.Indent.Pop()
+					: 0).ToArray());
+		}
+
+		if (this.Indent.Count > 0) {
+			_result += "<!--" + this.Indent.Peek().ToString() + "-->";
+		}
+
+		return _result;
 	}
 
 	protected string RenderBeginHtml(WizardStep step)
 	{
-		if (step.SkinID == "FirstChild" || step.SkinID == "SingleChild") {
-			this.Indentation++;
-			return "<ul><li>";
-		} else {
-			return "<li>";
+		if (step.SkinID == "Fc" || step.SkinID == "Sc") {
+			this.Indent.Push(1);
+		} else if (/*step.SkinID == "F" || step.SkinID == "S" ||*/ step.SkinID == "Lc" || step.SkinID == "Mc") {
+			if (this.Indent.Count > 0) {
+				var i = this.Indent.Pop();
+				this.Indent.Push(++i);
+			}
 		}
+		
+		return "<li><!--" + step.SkinID + "-->";
 	}
 
 	#endregion GUI methods
+
+	//TODO move to common library
+	public static bool IsSelected(WizardStep step)
+	{
+		return step == step.Wizard.ActiveStep;
+	}
 }

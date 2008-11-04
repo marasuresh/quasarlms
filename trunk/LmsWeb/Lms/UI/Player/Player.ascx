@@ -41,22 +41,19 @@
 		<asp:DataList
 				runat="server"
 				ID="SideBarList"
-				CssClass="sbl"
-				SelectedItemStyle-CssClass="selected"
-				SelectedItemStyle-Font-Bold="true"
 				RepeatLayout="Flow"
 				RepeatDirection="Horizontal">
-			<HeaderTemplate></span><ul id="moduleTree" class="filetree"><span></HeaderTemplate>
-			<FooterTemplate></span></ul><span></FooterTemplate>
-			<ItemTemplate></span>
+			<HeaderTemplate><ul id="moduleTree" class="filetree"></HeaderTemplate>
+			<FooterTemplate></ul></FooterTemplate>
+			<ItemTemplate>
 				<%# this.RenderBeginHtml((WizardStep)Container.DataItem) %>
-				<span class="file"><asp:LinkButton
+				<span class='file<%# IsSelected((WizardStep)Container.DataItem) ? " selected" : string.Empty %>'><asp:LinkButton
 					runat="server"
 					ID="SideBarButton"
 					CssClass='sba' />
 				</span>
 				<%# this.RenderEndHtml((WizardStep)Container.DataItem) %>
-			<span></ItemTemplate>
+			</ItemTemplate>
 		</asp:DataList>
 		
 	</SideBarTemplate>

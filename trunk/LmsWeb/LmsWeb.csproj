@@ -185,7 +185,7 @@
     <Content Include="yafnet.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Browsers\Templates.browser" />
+    <Content Include="App_Browsers\fixDataList.browser" />
     <Content Include="Lms\UI\Js\jquery.treeview.css" />
     <Content Include="Lms\UI\Js\jquery.treeview.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\Requests.ascx" />

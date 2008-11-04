@@ -8,7 +8,7 @@
 		_uc = $('.wztr div.uc');
 		_uc.height(_uc.parent().height());
 
-		_uc = $('.sbl');
+		_uc = $('.AspNet-DataList');
 		_uc.height(_uc.parent().height());
 	}).resize();
 	$('#moduleTree').treeview({
