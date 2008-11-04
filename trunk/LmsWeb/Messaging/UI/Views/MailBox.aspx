@@ -155,7 +155,8 @@
                     <td class="edit" colspan="5">
                         <div class="details">
                             <div class="header">
-                                Edit details for '<%# Eval("Title")%>'</div>
+                                Edit details for '<%# Eval("Title")%>'
+                            </div>
                             <table class="detailview" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <th>
@@ -163,7 +164,8 @@
                                     </th>
                                     <td style="width: 85%">
                                         <div style="width: 100%; height: 100%; background-color: Gainsboro; border: solid 1px Silver">
-                                            <%# Eval("Text") %></div>
+                                            <%# Eval("Text") %>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
