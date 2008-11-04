@@ -17,7 +17,7 @@ namespace N2.Web.UI.WebControls
 
 		public override void RenderEndTag(System.Web.UI.HtmlTextWriter writer)
 		{
-			writer.Write(@"</div></div></div><div class='bottom-outer'><div class='bottom-inner'><div class='bottom'></div></div></div>");
+            writer.Write(@"</div></div></div><div class='bottom-outer'><div class='bottom-inner'><div class='bottom'></div></div></div></div>");
 			base.RenderEndTag(writer);
 		}
 	}
