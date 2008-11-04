@@ -93,11 +93,11 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
 
     function  colors( currentAct) {
     	        var _color = '0000FF';
-	            if (currentAct == 'п') _color = '55FF00'; //салатовый
-	            if (currentAct == 'э') _color = 'FFFF00'; //красный
-	            if (currentAct == 'в') _color = '0000FF'; //синий
-	            if (currentAct == 'а') _color = 'ВС143С'; //светло-коричневый
-	            if (currentAct == 'к') _color = '87CEFA';  //голубой
+	            if (currentAct == 'п') _color = '90FF90'; 
+	            if (currentAct == 'э') _color = 'FFC0C0'; 
+	            if (currentAct == 'в') _color = 'B0B000'; 
+	            if (currentAct == 'а') _color = 'FFD080'; 
+	            if (currentAct == 'к') _color = '87CEFA';  
                 return _color;
     }
 
@@ -211,8 +211,8 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
         <% if (this.IsEditable)
       { %>
         
-        <tr>
-				<td align=left id="calOneResult" valign=top style="padding:10px; background:#E3E3E3;">
+        <tr ><%--style="background-position: #E3E3E3; padding: 10px; background: #E3E3E3; visibility: hidden;"--%>
+				<td colspan=2 align=left id="calOneResult" valign=top style="padding:10px; background:#E3E3E3;">
 
 <% if (this.AEvents.Length > 0)
    {
@@ -221,18 +221,18 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
     <% foreach (var _ev in this.AEvents)
               { %>
        <div>
-          <%= _ev.Title%> &nbsp;&nbsp;</div>
+          <%= _ev.Title%> &nbsp;<%= _ev.DateStart + "-" + _ev.DateEnd%>&nbsp;</div>
 	<% 
     i++;
               }
    } %>
 
 				</td>
-		        <td align=left id="Td2" valign=top style="padding:10px; background:#E3E3E3;">
+<%--		        <td align=left id="Td2" valign=top >
                     <asp:Button ID="btnExcel" runat="server" onclick="btnExcel_Click" Text="Excel" />
 				    <asp:HyperLink ID="linkExcel" runat="server"></asp:HyperLink>
                      
-				</td>				
+				</td>	--%>			
 			
 			</tr>
 						<% } %>
