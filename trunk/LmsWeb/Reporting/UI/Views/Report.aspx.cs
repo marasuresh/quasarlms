@@ -90,7 +90,7 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
                     break;
                 case "svrs"://Сводные ведомости по результатам сессии
                     if (this.SelectUser.SelectedUser.Length < 1) return;
-                    strURL += ExcelExport.ExportToFileZV(Roles.GetUsersInRole(this.SelectUser.SelectedUser), Server.MapPath("../../Reporting/ReportFiles/"));
+                    strURL += ExcelExport.ExportToFileZV(Roles.GetUsersInRole(this.SelectUser.SelectedUser), Server.MapPath(strURL));
                     this.hlnkReport.NavigateUrl = strURL;
                     this.hlnkReport.Text = "Сводные ведомости по результатам сессии";
                     break;
@@ -106,12 +106,12 @@ public partial class Reporting_UI_Report : N2.Templates.Web.UI.TemplatePage<N2.A
                 case "oz"://Отчет по заявкам
                     if (this.SelectUser.SelectedUser.Length < 1) return;
                     var reqs = Requests;
-                    strURL += ExcelExport.ExportToFileOZ(reqs, this.SelectUser.SelectedUser, Server.MapPath("../../Reporting/ReportFiles/"));
+                    strURL += ExcelExport.ExportToFileOZ(reqs, this.SelectUser.SelectedUser, Server.MapPath(strURL));
                     this.hlnkReport.NavigateUrl = strURL;
                     this.hlnkReport.Text = "Отчет по заявкам студента " + this.SelectUser.SelectedUser;
                     break;
                  case "irp"://Информация о ренабельности потоков
-                    strURL += ExcelExport.ExportToFileIRP(Requests, Server.MapPath("../../Reporting/ReportFiles/"));
+                    strURL += ExcelExport.ExportToFileIRP(Requests, Server.MapPath(strURL));
                     this.hlnkReport.NavigateUrl = strURL;
                      this.hlnkReport.Text = "Информация о ренабельности потоков";
                     break;
