@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\eval\n2cms\lib\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="CSSFriendly, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\CssFriendly\Web\Bin\CSSFriendly.dll</HintPath>
+    </Reference>
     <Reference Include="N2, Version=1.0.401.29980, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\eval\n2cms\src\N2\obj\Debug\N2.dll</HintPath>

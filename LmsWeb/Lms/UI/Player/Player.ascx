@@ -6,8 +6,9 @@
 <span class="player">
 <asp:Wizard
 		runat="server"
-		ID="wz">
-	<NavigationStyle Height="0" />
+		ID="wz"
+		StartNextButtonText="Next"
+		FinishCompleteButtonText="Finish">
 	<NavigationButtonStyle
 			BackColor="White"
 			BorderColor="#507CD1"
