@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Lms", "Convert\N2.Lms.csproj", "{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}"
-EndProject
+# Visual Web Developer Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{4F7EC6A5-6048-4FB7-B76E-1BC045857145}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Futures.Tests", "N2.Futures.Tests\N2.Futures.Tests.csproj", "{2212CEDF-8C0C-4D25-B80B-9D96B1589CA2}"
@@ -27,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningComponentWeb", "Lms
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningComponent", "DotNetSCORM.LearningApi\LearningComponent.csproj", "{FDDB1A38-8827-46CA-8BA6-D140C700F9B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Lms", "N2.Lms\N2.Lms.csproj", "{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -43,26 +43,6 @@ Global
 		Release|Mixed Platforms = Release|Mixed Platforms
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.DL Server Deployment|.NET.ActiveCfg = Debug|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.DL Server Deployment|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.DL Server Deployment|Any CPU.Build.0 = Debug|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.DL Server Deployment|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.DL Server Deployment|Mixed Platforms.Build.0 = Debug|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Local deployment|.NET.ActiveCfg = Release|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Local deployment|Any CPU.ActiveCfg = Release|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Local deployment|Any CPU.Build.0 = Release|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Local deployment|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Local deployment|Mixed Platforms.Build.0 = Release|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|.NET.ActiveCfg = Release|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4F7EC6A5-6048-4FB7-B76E-1BC045857145}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -301,6 +281,26 @@ Global
 		{FDDB1A38-8827-46CA-8BA6-D140C700F9B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FDDB1A38-8827-46CA-8BA6-D140C700F9B9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{FDDB1A38-8827-46CA-8BA6-D140C700F9B9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.DL Server Deployment|.NET.ActiveCfg = Debug|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.DL Server Deployment|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.DL Server Deployment|Any CPU.Build.0 = Debug|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.DL Server Deployment|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.DL Server Deployment|Mixed Platforms.Build.0 = Debug|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Local deployment|.NET.ActiveCfg = Release|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Local deployment|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Local deployment|Any CPU.Build.0 = Release|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Local deployment|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Local deployment|Mixed Platforms.Build.0 = Release|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|.NET.ActiveCfg = Release|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
