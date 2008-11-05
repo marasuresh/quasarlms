@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
 using N2.Definitions;
@@ -9,8 +9,13 @@ using N2.Resources;
 using N2.Templates.Items;
 using N2.Templates.Web.UI;
 using N2.Web.UI;
-using System.Collections.Generic;
 
+/// <summary>
+/// <remarks>SkinID is used to tagging nodes to reconstruct their hierarchy in HTML from a plain wizard step collection.
+/// f(irst), l(ast), m(iddle), s(ingle) = f && l,
+/// capital means "with children", lowercase -- otherwise
+/// </remarks>
+/// </summary>
 public partial class Player : ContentUserControl<AbstractContentPage, TrainingTicket>
 {
 	protected Wizard wz;
@@ -34,12 +39,12 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 		var _last = sequence.Last();
 
 		return object.ReferenceEquals(_first, _last)
-			? new Func<T, string>(item => "S")
+			? new Func<T, string>(item => "s")
 			: new Func<T, string>(item => object.ReferenceEquals(item, _first)
-				? "F"
+				? "f"
 				: object.ReferenceEquals(item, _last)
-					? "L"
-					: "M");
+					? "l"
+					: "m");
 	}
 
 	protected virtual void CreateControlHierarchy()
@@ -60,7 +65,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 			if (_item is ScheduledTopic) {
 				this.AddModuleStep(_item as ScheduledTopic, _classifier(_item));
 			} else if(_item is Test) {
-				this.AddPracticeStep(_item as Test, _classifier(_item)).StepType = WizardStepType.Finish;
+				this.AddPracticeStep(_item as Test, _classifier(_item)).StepType = WizardStepType.Auto;
 			}
 
 		}
@@ -91,7 +96,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 			ID = module.Name,
 			Title = module.Title,
 			StepType = WizardStepType.Auto,
-			SkinID = module.Topic.Topics.Any() ? tag + "c" : tag,
+			SkinID = module.Topic.Topics.Any() ? tag.ToUpper() : tag,
 		};
 		this.wz.WizardSteps.Add(_step);
 
@@ -109,7 +114,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 			ID = test.Name,
 			Title = test.Title,
 			StepType = WizardStepType.Auto,
-			SkinID = test.Questions.Any() ? tag + "c" : tag,
+			SkinID = test.Questions.Any() ? tag.ToUpper() : tag,
 		};
 
 		this.wz.WizardSteps.Add(_step);
@@ -146,7 +151,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 			ID = topic.Name,
 			Title = topic.Title,
 			StepType = WizardStepType.Auto,
-			SkinID = topic.Topics.Any() ? tag + "c" : tag,
+			SkinID = topic.Topics.Any() ? tag.ToUpper() : tag,
 		};
 
 		this.wz.WizardSteps.Add(_step);
@@ -189,11 +194,11 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 
 		int _indent = this.Indent.Count > 0 ? this.Indent.Peek() : -1;
 			
-		if (step.SkinID.Length == 2) {
+		if (new[] {"F", "S", "M", "L"}.Contains(step.SkinID)) {
 			_result = "<ul>";
-		} else if (step.SkinID == "M" || step.SkinID == "F") {
+		} else if (step.SkinID == "m" || step.SkinID == "f") {
 			_result = "</li>";
-		} else if (step.SkinID == "S" || step.SkinID == "L") {
+		} else if (step.SkinID == "s" || step.SkinID == "l") {
 			_result = string.Join(string.Empty, Enumerable.Repeat(
 				"</li></ul></li>",
 				_indent >= 0 ? this.Indent.Pop() : 0).ToArray());
@@ -204,15 +209,13 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 
 	protected string RenderBeginHtml(WizardStep step)
 	{
-		if (step.SkinID == "Fc" || step.SkinID == "Sc") {
+		if (new[] {"F", "S", "M"}.Contains(step.SkinID)) {
 			this.Indent.Push(1);
-		} else if (/*step.SkinID == "F" || step.SkinID == "S" ||*/ step.SkinID == "Lc") {
+		} else if (/*step.SkinID == "f" || step.SkinID == "s" ||*/ step.SkinID == "L") {
 			if (this.Indent.Count > 0) {
 				var i = this.Indent.Pop();
 				this.Indent.Push(++i);
 			}
-		} else if(step.SkinID == "Mc") {
-			this.Indent.Push(1);
 		}
 		
 		return "<li><!--" + step.SkinID + "-->";

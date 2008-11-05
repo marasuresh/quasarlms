@@ -1,4 +1,6 @@
-﻿namespace N2.Lms.Items
+﻿using System.Web.UI.WebControls;
+
+namespace N2.Lms.Items
 {
 	using System.Collections.Generic;
 	using System.Linq;
@@ -31,20 +33,27 @@
 		#endregion System properties
 
 		#region Lms Properties
-		
+		[EditableTextBox(
+			"Content URLs",
+			13,
+			TextMode = TextBoxMode.MultiLine)]
+		public string ContentUrls {
+			get {
+				return string.Join("\n", this.Content.Cast<string>().ToArray());
+			}
+			set {
+				this.Content.Clear();
+				this.Content.AddRange(
+					from _line in  value.Split('\n', '\r')
+					select new N2.Details.StringDetail(this, string.Empty, _line)
+					);
+			}
+		}
+
 		internal DetailCollection Content {
 			get {
 				return
 					this.GetDetailCollection("Content", true);
-			}
-		}
-
-		public IEnumerable<string> ContentLinks {
-			get {
-				DetailCollection _col = this.GetDetailCollection("Content", false);
-				return null != _col
-					? _col.OfType<string>()
-					: Enumerable.Empty<string>();
 			}
 		}
 
