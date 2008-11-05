@@ -1,30 +1,24 @@
 ﻿/*Wizard of Assignment List*/
-	.wzal .sb { margin-top:11px; }
-	.wzal A.sba {
+	.assignment-list .wizard .sidebar {
+		margin-top:11px;
+		width: 25%;
+		float:left;
+	}
+	.assignment-list .wizard .step {
+		clear:right;
+		float:right;
+		width:75%;
+	}
+	.assignment-list .wizard .nav {
+		display:none;
+	}
+	.assignment-list .wizard .sidebar A.sba {
 		display:block;
 		width: 100%;
 		font-family: Verdana;
 		padding:4px;
 	}
-	.wzal .selected A.sba { background-color: #D0DAE2; }
-/*Wizard of Course Player*/
-.wza {
-	border-top: 1px solid #B5C7DE;
-	vertical-align:top;
-}
-.wza A.sba {
-	display:block;
-	padding:4px;
-	padding-left:7px;
-	width: 100%;
-	font-family: Verdana;
-	margin-left:7px;
-	color:#445599;
-}
-.wza A:HOVER.sba: { background-color: Beige; }
-.wza .selected A.sba { background-color: White; }
-.wza .wzs TABLE { border:none; width:100%; }
-
+	.assignment-list .wizard .sidebar .selected A.sba { background-color: #D0DAE2; }
 .hidden { display: none;}
 
 /*inline grid fixes*/

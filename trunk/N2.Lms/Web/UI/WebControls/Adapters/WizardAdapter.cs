@@ -3,6 +3,7 @@ using System.Web.UI;
 
 namespace CSSFriendly
 {
+	using N2.Resources;
     /// <summary>
     /// The wizard adpater will render the standard wizard control using div's rather than
     /// tables.
@@ -345,13 +346,15 @@ namespace CSSFriendly
             if (wizard.DisplaySideBar)
             {
                 WebControlAdapterExtender.WriteBeginDiv(writer, CSS_SIDEBAR);
-                Control container = wizard.FindControl(CONTAINERID_SIDEBAR);
+				Control container = wizard.FindControl(CONTAINERID_SIDEBAR);
 
                 if (wizard.SideBarTemplate != null)
                 {
+					
                     // Not sure why I don't need this line but it works anyway!
-                    //wizard.SideBarTemplate.InstantiateIn(container);
-                    container.RenderControl(writer);
+					foreach(Control _ctl in container.Controls) {
+						_ctl.RenderControl(writer);
+					}
                 }
                 else
                 {
@@ -406,13 +409,12 @@ namespace CSSFriendly
 
 		protected override void OnInit(System.EventArgs e)
 		{/*
-			if (this.Extender.AdapterEnabled) {
-				Helpers.RegisterEmbeddedCSS(
-				"N2.Lms.Web.UI.WebControls.Adapters.WizardAdapter.css",
-				typeof(WizardAdapter),
-				this.Page);
-			}*/
-
+			Register.StyleSheet(
+				this.Page,
+				this.Page.ClientScript.GetWebResourceUrl(
+					typeof(WizardAdapter),
+					"N2.Lms.Web.UI.WebControls.Adapters.WizardAdapter.css"));
+			*/
 			base.OnInit(e);
 		}
 	}

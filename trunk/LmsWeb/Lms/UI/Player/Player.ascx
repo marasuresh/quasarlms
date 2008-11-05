@@ -3,19 +3,11 @@
 		ClassName="TrainingPlayer"
 		Inherits="Player"
 		CodeBehind="Player.ascx.cs" %>
-
+<span class="player">
 <asp:Wizard
 		runat="server"
-		ID="wz"
-		BackColor="#EFF3FB"
-		BorderColor="#B5C7DE"
-		BorderStyle="None"
-		Font-Names="Verdana"
-		CssClass="wzm">
+		ID="wz">
 	<NavigationStyle Height="0" />
-	<StepStyle ForeColor="#333333" VerticalAlign="Top" />
-	<SideBarButtonStyle
-			CssClass="sbLink" />
 	<NavigationButtonStyle
 			BackColor="White"
 			BorderColor="#507CD1"
@@ -24,19 +16,6 @@
 			Font-Names="Verdana"
 			Font-Size="0.8em"
 			ForeColor="#284E98" />
-	<SideBarStyle
-			VerticalAlign="Top"
-			CssClass="sb"
-			Wrap="true" />
-	<HeaderStyle
-			BackColor="#284E98"
-			BorderColor="#EFF3FB"
-			BorderStyle="Solid"
-			BorderWidth="2px"
-			Font-Bold="True"
-			Font-Size="0.9em"
-			ForeColor="White"
-			HorizontalAlign="Center" />
 	<SideBarTemplate>
 		<asp:DataList
 				runat="server"
@@ -58,3 +37,4 @@
 		
 	</SideBarTemplate>
 </asp:Wizard>
+</span>
