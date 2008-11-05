@@ -1,0 +1,73 @@
+﻿.foo
+{
+}
+/* W3C CSS validator likes CSS files to start with a class rather than a comment. Soooooo.... */
+
+div.wizard
+{
+	width: 600px;
+	height: 400px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+}
+
+div.wizard .header
+{
+	float: right;
+	width: 75%;
+	height: 5%;
+	text-align: center;
+	background-color: #5D7B9D;
+	color: White;
+	font-weight: bold;
+}
+
+div.wizard .sidebar
+{
+	float: left;
+	width: 25%;
+	height: 100%;
+	background-color: #7C6F57;
+}
+
+div.wizard .sidebar a
+{
+	margin: 4px;
+	display:block;
+	text-decoration: none;
+	color: White;
+}
+
+div.wizard .sidebar a.active
+{
+	font-weight:bold;
+}
+
+div.wizard .step
+{
+	clear: right;
+	float: right;
+	width: 75%;
+	height: 90%;
+	background-color: #F7F6F3;
+}
+
+div.wizard .nav
+{
+	clear: right;
+	float: right;
+	width: 75%;
+	height: 5%;
+	text-align:right;
+	vertical-align:middle;
+	background-color: #F7F6F3;
+}
+
+div.wizard .nav input[type="submit"]
+{
+	background-color: #F7F6F3;
+	color: #5D7B9D;
+	border-color: #7C6F57;
+	border-style: solid;
+	border-width: thin;
+}

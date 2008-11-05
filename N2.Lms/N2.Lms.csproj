@@ -114,6 +114,8 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Web\UI\WebControls\Adapters\DataListAdapter.cs" />
+    <Compile Include="Web\UI\WebControls\Adapters\Helpers.cs" />
+    <Compile Include="Web\UI\WebControls\Adapters\WizardAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -138,6 +140,9 @@
       <Project>{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}</Project>
       <Name>N2.Workflow</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Web\UI\WebControls\Adapters\WizardAdapter.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Custom\" />

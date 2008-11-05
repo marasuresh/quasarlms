@@ -7,11 +7,11 @@ using N2.Definitions;
 using N2.Details;
 using N2.Edit.Trash;
 using N2.Integrity;
-using N2.Lms.Items;
 using N2.Persistence;
 using N2.Templates;
 using N2.Templates.Items;
 using N2.Workflow;
+using N2.Lms.Items;
 
 
 namespace N2.ACalendar.Reporting

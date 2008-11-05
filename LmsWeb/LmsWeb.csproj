@@ -172,7 +172,7 @@
     <Content Include="Web.connectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Convert\N2.Lms.csproj">
+    <ProjectReference Include="..\N2.Lms\N2.Lms.csproj">
       <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
       <Name>N2.Lms</Name>
     </ProjectReference>
@@ -185,7 +185,7 @@
     <Content Include="yafnet.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Browsers\fixDataList.browser" />
+    <Content Include="App_Browsers\lms.browser" />
     <Content Include="Lms\UI\Js\jquery.treeview.css" />
     <Content Include="Lms\UI\Js\jquery.treeview.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\Requests.ascx" />

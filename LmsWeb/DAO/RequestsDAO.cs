@@ -52,7 +52,6 @@ namespace N2.Lms
                     comments,
                     null);
                     break;
-                    break;
             }
             //_request.PerformGenericAction("Cancel", UserName, "Canceled");
         }
