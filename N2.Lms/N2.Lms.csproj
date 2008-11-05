@@ -47,10 +47,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\eval\n2cms\src\wwwroot\bin\N2.Templates.dll</HintPath>
     </Reference>
-    <Reference Include="N2.Tests, Version=1.0.204.29993, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\src\N2.Tests\bin\N2.Tests.exe</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -114,7 +110,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Web\UI\WebControls\Adapters\DataListAdapter.cs" />
-    <Compile Include="Web\UI\WebControls\Adapters\Helpers.cs" />
     <Compile Include="Web\UI\WebControls\Adapters\WizardAdapter.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,27 +13,47 @@ div#wrap {
 }
 
 /*Module Wizard*/
-.wzm .sb {
-	width: 200px;
-	padding:15px;
+.player {
+	display: block;
+}
+.player .wizard
+{
+	height:100%;
+}
+.player .wizard .sidebar {
+	width: 25%;
+	float:left;
+	padding:1%;
+	height:94%;
 	padding-right:0px;
 }
-.wzm .sbl td{
-	padding-bottom:5px;
-	padding-top:5px;
-	border-bottom:1px dotted blue;
+
+.player .wizard .sidebar .AspNet-DataList {
+	height:100%;
 }
-.wzm .sbl A.sba {
-	display:block;
-	width: 100%;
-}
-.wzm A.sba:HOVER {
+.player .wizard .sidebar A.sba:HOVER {
 	background-color: ButtonHighlight;
 }
-.wzm .sbl A.selected,
+.player .wizard .sidebar SPAN.selected A.sba,
 .AspNet-DataList SPAN.selected A.sba {
 	background-color: Beige;
 	font-weight:bold!important;
+}
+
+.player .wizard .step {
+	float: right;
+	clear:right;
+	width:73%;
+	height:90%;
+}
+.player .wizard .step div,
+.player .wizard .step iframe {
+	height: 100%;
+}
+.player .wizard .nav {
+	clear:right;
+	float:right;
+	width:73%;
 }
 
 /*jQuery Spliter set up*/
@@ -66,8 +86,6 @@ div#wrap {
 .AspNet-DataList,
 .sbl {
 	overflow:auto;
-	height:500px;
-	width:200px;
 	display:block;
 	background-color:White;
 	border:1px solid Silver;

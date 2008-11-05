@@ -31,13 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="N2, Version=1.0.403.27113, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2, Version=1.0.403.20650, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\output\Templates\wwwroot\Bin\N2.dll</HintPath>
+      <HintPath>..\..\eval\n2cms\src\N2\obj\Debug\N2.dll</HintPath>
     </Reference>
-    <Reference Include="N2.Templates, Version=1.0.403.26130, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2.Edit, Version=1.0.403.20651, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\output\Templates\wwwroot\Bin\N2.Templates.dll</HintPath>
+      <HintPath>..\..\eval\n2cms\src\wwwroot\obj\Debug\N2.Edit.dll</HintPath>
+    </Reference>
+    <Reference Include="N2.Templates, Version=1.0.403.20650, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\eval\n2cms\src\wwwroot\obj\Debug\N2.Templates.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

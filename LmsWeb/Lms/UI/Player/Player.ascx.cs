@@ -186,7 +186,9 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 	protected string RenderEndHtml(WizardStep step)
 	{
 		string _result = "</li>";
-		
+
+		int _indent = this.Indent.Count > 0 ? this.Indent.Peek() : -1;
+			
 		if (step.SkinID.Length == 2) {
 			_result = "<ul>";
 		} else if (step.SkinID == "M" || step.SkinID == "F") {
@@ -194,15 +196,9 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 		} else if (step.SkinID == "S" || step.SkinID == "L") {
 			_result = string.Join(string.Empty, Enumerable.Repeat(
 				"</li></ul></li>",
-				this.Indent.Count > 0
-					? this.Indent.Pop()
-					: 0).ToArray());
+				_indent >= 0 ? this.Indent.Pop() : 0).ToArray());
 		}
-
-		if (this.Indent.Count > 0) {
-			_result += "<!--" + this.Indent.Peek().ToString() + "-->";
-		}
-
+		_result += "<!--" + _indent.ToString() + "-->";
 		return _result;
 	}
 
@@ -210,11 +206,13 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 	{
 		if (step.SkinID == "Fc" || step.SkinID == "Sc") {
 			this.Indent.Push(1);
-		} else if (/*step.SkinID == "F" || step.SkinID == "S" ||*/ step.SkinID == "Lc" || step.SkinID == "Mc") {
+		} else if (/*step.SkinID == "F" || step.SkinID == "S" ||*/ step.SkinID == "Lc") {
 			if (this.Indent.Count > 0) {
 				var i = this.Indent.Pop();
 				this.Indent.Push(++i);
 			}
+		} else if(step.SkinID == "Mc") {
+			this.Indent.Push(1);
 		}
 		
 		return "<li><!--" + step.SkinID + "-->";

@@ -37,4 +37,4 @@ using System.Web.UI;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: InternalsVisibleTo("N2.Edit")]
 [assembly: InternalsVisibleTo("N2")]
-[assembly: WebResource("WizardAdapter.css", "text/css")]
+[assembly: WebResource("N2.Lms.Web.UI.WebControls.Adapters.WizardAdapter.css", "text/css")]

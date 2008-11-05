@@ -64,14 +64,13 @@
 		this.wz.ActiveStepIndex = 0;
     }
 </script>
-
+<span class="assignment-list">
 <n2:H4 runat="server" Text='<%$ CurrentItem: Title %>' />
 	<asp:Wizard
 			runat="server"
 			ID="wz"
 			Font-Names="Verdana"
 			Font-Size="0.8em"
-			CssClass="wzal"
 			BackColor="#ffffff"
 			Height="300"
 			Width="100%">
@@ -95,3 +94,4 @@
             </asp:DataList>
         </SideBarTemplate>
     </asp:Wizard>
+</span>

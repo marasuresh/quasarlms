@@ -41,7 +41,7 @@
     </Reference>
     <Reference Include="Forum, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2Forum\output\bin\Forum.dll</HintPath>
+      <HintPath>..\..\eval\n2Forum\src\Forum\obj\Debug\Forum.dll</HintPath>
     </Reference>
     <Reference Include="N2, Version=1.0.403.22714, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
