@@ -31,9 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="N2, Version=1.0.402.20818, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2, Version=1.0.403.35057, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\src\N2\obj\Debug\N2.dll</HintPath>
+      <HintPath>..\Lib\N2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

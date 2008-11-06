@@ -33,23 +33,23 @@
   <ItemGroup>
     <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\lib\Castle.Core.dll</HintPath>
+      <HintPath>..\Lib\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="N2, Version=1.0.403.22714, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2, Version=1.0.403.35057, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\src\N2\obj\Debug\N2.dll</HintPath>
+      <HintPath>..\Lib\N2.dll</HintPath>
     </Reference>
-    <Reference Include="N2.Edit, Version=1.0.403.22720, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2.Edit, Version=1.0.403.35063, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\src\wwwroot\bin\N2.Edit.dll</HintPath>
+      <HintPath>..\Lib\N2.Edit.dll</HintPath>
     </Reference>
-    <Reference Include="N2.Templates, Version=1.0.403.22719, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2.Templates, Version=1.0.403.35058, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\src\wwwroot\bin\N2.Templates.dll</HintPath>
+      <HintPath>..\Lib\N2.Templates.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.Caches.SysCache2, Version=2.0.0.1001, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\lib\NHibernate.Caches.SysCache2.dll</HintPath>
+      <HintPath>..\Lib\NHibernate.Caches.SysCache2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -103,7 +103,7 @@
       <Project>{08BB3289-C88F-4F23-A021-52BFE895FAC8}</Project>
       <Name>N2.ACalendar</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Convert\N2.Lms.csproj">
+    <ProjectReference Include="..\N2.Lms\N2.Lms.csproj">
       <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
       <Name>N2.Lms</Name>
     </ProjectReference>
@@ -128,6 +128,9 @@
     <Compile Include="ACalendar\UI\ACalendarList.aspx.cs">
       <DependentUpon>ACalendarList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ACalendar\UI\ACalendarList.aspx.designer.cs">
+      <DependentUpon>ACalendarList.aspx</DependentUpon>
     </Compile>
     <Compile Include="ACalendar\UI\Parts\ACalendar_small.ascx.cs">
       <DependentUpon>ACalendar_small.ascx</DependentUpon>

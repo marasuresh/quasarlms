@@ -33,27 +33,27 @@
   <ItemGroup>
     <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\lib\Castle.Core.dll</HintPath>
+      <HintPath>..\Lib\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="N2, Version=1.0.403.22714, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2, Version=1.0.403.35057, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\src\N2\obj\Debug\N2.dll</HintPath>
+      <HintPath>..\Lib\N2.dll</HintPath>
     </Reference>
-    <Reference Include="N2.Edit, Version=1.0.403.22720, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2.Edit, Version=1.0.403.35063, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\src\wwwroot\bin\N2.Edit.dll</HintPath>
+      <HintPath>..\Lib\N2.Edit.dll</HintPath>
     </Reference>
     <Reference Include="N2.Futures, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\N2.Futures\bin\Debug\N2.Futures.dll</HintPath>
     </Reference>
-    <Reference Include="N2.Templates, Version=1.0.403.20650, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2.Templates, Version=1.0.403.35058, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\src\wwwroot\obj\Debug\N2.Templates.dll</HintPath>
+      <HintPath>..\Lib\N2.Templates.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.Caches.SysCache2, Version=2.0.0.1001, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\lib\NHibernate.Caches.SysCache2.dll</HintPath>
+      <HintPath>..\Lib\NHibernate.Caches.SysCache2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -62,7 +62,7 @@
     </Reference>
     <Reference Include="System.Data.SQLite, Version=1.0.52.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2cms\lib\System.Data.SQLite.DLL</HintPath>
+      <HintPath>..\Lib\System.Data.SQLite.DLL</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
