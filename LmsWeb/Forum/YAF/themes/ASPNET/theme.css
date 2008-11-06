@@ -1,0 +1,141 @@
+.yaf {
+	FONT-SIZE: 8pt; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif
+}
+.yaf TD {
+	FONT-SIZE: 8pt; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; 
+}
+.yaf INPUT {
+	FONT: 8pt Verdana,Arial,Helvetica,sans-serif
+}
+.yaf SELECT {
+	BACKGROUND: #ffffff; FONT: 8pt Verdana,Arial,Helvetica,sans-serif
+}
+.yaf TEXTAREA {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 2px; BACKGROUND: #ffffff; PADDING-BOTTOM: 2px; FONT: 8pt Verdana,Arial,Helvetica,sans-serif; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid
+}
+.yaf FORM {
+	DISPLAY: inline
+}
+.yaf INPUT {
+	BORDER-RIGHT: #606060 1px solid; BORDER-TOP: #606060 1px solid; FONT-SIZE: 8pt; BORDER-LEFT: #606060 1px solid; BORDER-BOTTOM: #606060 1px solid
+}
+.yaf INPUT.pbutton {
+	BACKGROUND: #ffffff
+}
+.yaf IMG {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+.yaf a,.yaf a:link,.yaf a:active,.yaf a:visited { text-decoration: none; color : navy; }
+.yaf a:hover	{ text-decoration: none; color : #000000; }
+
+.yaf .header1 {
+	FONT-WEIGHT: bold; font-size: 12px; COLOR: #ffffff; border:0px #006699 solid; HEIGHT: 28px; background-color: #81B4E8; 
+}
+.yaf TR.header1 A {
+	COLOR: #FFFFFF;; TEXT-DECORATION: none; 
+}
+.yaf TR.header1 A:hover {
+	COLOR: #c0c0ff; TEXT-DECORATION: none
+}
+.yaf .header2 {
+height: 28px; color: #333333; border-color: #A9B8C2; border-style: solid; font-size: 12px; background-color: #CECDCE; white-space: nowrap; border-width: 0px 0px 0px 0px; font-weight: bold;
+}
+.yaf .footer1 {
+	FONT-SIZE: 7pt; COLOR: #ffffff; HEIGHT: 22px;
+}
+.yaf .footer1 SELECT {
+	FONT-SIZE: 7pt
+}
+.yaf .footer1 TD {
+	FONT-SIZE: 7pt;
+
+}
+.yaf .postformheader {
+	FONT-WEIGHT: bold; BACKGROUND-COLOR: #c8c8c8
+}
+.yaf .postheader {
+	BACKGROUND-COLOR: #DDEEFF
+}
+.yaf .post {
+	background-color: #CFDDF8; padding: 4px; font-family: Verdana, Helvetica, sans-serif; font-size: 10px; border-color: #FFFFFF; border-style: solid; border-width: 1px 1px 1px 1px; 
+}
+.yaf .post_alt {
+	background-color: #c0d3f8;
+}
+.yaf .post_priority {
+	FONT-WEIGHT: bold
+}
+.yaf .post_link {
+	FONT-WEIGHT: bold
+}
+.yaf .postfooter {
+	BACKGROUND-COLOR: #95B4F3
+}
+.yaf .postsep {
+	background-color: #2163E8;
+	height: 1px;  
+}
+.yaf .content {
+	BORDER: #a9b8c2 1px solid; PADDING: 0px; FONT-SIZE: 8pt; COLOR: #000000; PADDING-TOP: 0px; FONT-FAMILY: verdana,Arial,Helvetica,sans-serif; background-color: #E6ECF7; 
+}
+.yaf .content TD {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px
+}
+.yaf #RichEdit TD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+/*.content A {
+	COLOR: navy; TEXT-DECORATION: underline
+}
+.content A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}*/
+
+.yaf .quote,.yaf  .code  {   margin-LEFT: 40px; margin-right:40px;  padding:0px; border-width: 1px; border-style: solid; border-color: #A9B8C2; color: black; background-color: #DCE1E5; font-size: 8pt; }
+.yaf .innerquote,.yaf  .innercode {PADDING: 4px; border-top: 1px #A9B8C2 solid; color: black; font-weight: normal; font-size: 8pt; font-family: Verdana, sans-serif; background-color: #B2C8F6; }
+
+.yaf .innercode {
+FONT-FAMILY: Courier New,Courier; BACKGROUND-COLOR: #ffffff /*FFFFFF*/
+}
+.yaf .smallfont {
+	FONT-SIZE: 7.5pt; COLOR: #111111
+}
+.yaf .largefont {
+	FONT-SIZE: 9pt; COLOR: #111111
+}
+.yaf A.imagelink {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #000080
+}
+.yaf A.imagelink:hover {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+.yaf .posteditor {
+	FONT-SIZE: 8pt; WIDTH: 100%; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; HEIGHT: 200px
+}
+.yaf TABLE.command {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+}
+.yaf .navlinks {
+	FONT-WEIGHT: bold; COLOR: #000000
+}
+/*.navlinks A {
+	COLOR: #000080; TEXT-DECORATION: none
+}
+.navlinks A:hover {
+	COLOR: #808080
+}*/
+.yaf .print {
+	BORDER-RIGHT: #c0c0c0 1px solid; BORDER-TOP: #c0c0c0 1px solid; BORDER-LEFT: #c0c0c0 1px solid; BORDER-BOTTOM: #c0c0c0 1px solid
+}
+.yaf .printheader {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 4px; COLOR: #000000; PADDING-TOP: 4px; BACKGROUND-COLOR: #dddddd
+}
+.yaf .printbody {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 4px; COLOR: #000000; PADDING-TOP: 4px; BACKGROUND-COLOR: #ffffff
+}
+.yaf .message {
+	
+}
+/*.post TR{
+border: 10px #00ff00 solid;
+}*/

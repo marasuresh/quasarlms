@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.UI.WebControls;
 using N2.Messaging;
@@ -14,12 +15,57 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
 	}
 
     protected MultiView mvMailBox;
+    protected ListView lv;
 
     protected override void OnInit(EventArgs e)
     {
         base.OnInit(e);
-        Register.StyleSheet(Page, "/Messaging/UI/Css/Messaging.css", Media.All);      
+        Register.StyleSheet(Page, "/Messaging/UI/Css/Messaging.css", Media.All);
+        
+        lv.DataBound += new EventHandler(lv_DataBound);
     }
+
+    void lv_DataBound(object sender, EventArgs e)
+    {
+        if (!this.Page.IsPostBack)
+        {
+            int _msg;
+            if (int.TryParse(this.Request["msg"], out _msg))
+            {
+                int i = 0;
+                foreach (DataKey dKey in lv.DataKeys)
+                {
+
+                    if ((int)dKey.Value == _msg)
+                    {
+                        this.lv.EditIndex = i;
+                        
+                    }
+                    i++;
+                }
+            }
+
+        }
+        int editIndex = ((ListView)sender).EditIndex;
+
+        if (editIndex > -1)
+        {
+            int selID = (int)((ListView)sender).DataKeys[editIndex].Value;
+
+
+
+            var msg = N2.Context.Persister.Get<Message>(selID);
+
+            //Помечаем сообщение как прочтенное.
+            if (!msg.IsRead)
+            {
+                msg.IsRead = true;
+                msg.Save();
+                this.Page.DataBind();
+            }
+        }
+    }
+    
 
     protected void Page_Load(object sender, EventArgs e)
     {

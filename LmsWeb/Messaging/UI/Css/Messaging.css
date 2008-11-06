@@ -18,7 +18,10 @@
 {
      color:Blue;
 }
-
+.NotReadMsg
+{
+    font-weight:bold;
+}
 .Grid { border: solid 1px #FFFFFF; }
 .Grid td
 {
