@@ -21,6 +21,7 @@
 	{
 		var _ctl = new CheckBoxList {
 			ID = "cbl",
+			AutoPostBack = true,
 		};
 
 		foreach (var _option in options) {
@@ -33,7 +34,7 @@
 	protected Control CreateRadioAnswerControl(IEnumerable<string> options)
 	{
 		var _ctl = new RadioButtonList {
-			ID = "rbl"
+			ID = "rbl", AutoPostBack = true,
 		};
 
 		foreach (var _option in options) {
@@ -60,13 +61,27 @@
 	protected virtual void CreateControlHierarchy()
 	{
 		TestQuestion _question = this.CurrentItem;
+
+		Control _questionCotrol;
+
+		switch (_question.Type) {
+			case TestQuestion.QuestionTypeEnum.Url:
+				_questionCotrol = new LiteralControl(
+					string.Concat(
+						"<p><iframe src='",
+						this.ResolveClientUrl("~/Upload/Courses/" + _question.Title),
+						"'></iframe></p>"));
+				break;
+			default:
+				_questionCotrol = new LiteralControl(
+					string.Concat(
+						"<p><strong>",
+						_question.Title,
+						"</strong></p>"));
+				break;
+		}
 		
-		this.Controls.Add(new LiteralControl(string.Format(
-@"<p><strong>{1}</strong></p>",
-				null,
-				_question.Title,
-				_question.Type,
-				_question.AnswerType)));
+		this.Controls.Add(_questionCotrol);
 
 		if (this.CurrentItem.Test.HintType == Test.HintTypeEnum.Single
 			|| this.CurrentItem.Test.HintType == Test.HintTypeEnum.Both) {
