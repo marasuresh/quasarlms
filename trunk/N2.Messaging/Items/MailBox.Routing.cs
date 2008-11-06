@@ -24,6 +24,7 @@ namespace N2.Messaging
 		public ActionEnum Action { get; set; }
 		public string Folder { get; set; }
 		public string Filter { get; set; }
+        public int msgID { get; set; }
 
 
 		public override ContentItem GetChild(string childName)

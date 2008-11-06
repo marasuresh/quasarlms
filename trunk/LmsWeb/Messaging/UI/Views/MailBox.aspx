@@ -109,7 +109,7 @@
                 </tr>
             </EmptyDataTemplate>
             <ItemTemplate>
-                <tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>'>
+                <tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>  <%# ((Message)Container.DataItem).IsRead ? "" : "NotReadMsg" %>'>
                     <td>
                         <asp:LinkButton runat="server" CommandName="Edit">
 							<asp:Image runat="server" ImageUrl='<%# Eval("IconUrl") %>' />
@@ -169,9 +169,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan=2>
-                                        <asp:Repeater ID="rAttach" runat="server" DataSource='<%# ((Message)Container.DataItem).Attachments %>' >
-                                            <HeaderTemplate><br /><table></HeaderTemplate>
+                                    <td colspan="2">
+                                        <asp:Repeater ID="rAttach" runat="server" DataSource='<%# ((Message)Container.DataItem).Attachments %>'>
+                                            <HeaderTemplate>
+                                                <br />
+                                                <table>
+                                            </HeaderTemplate>
                                             <ItemTemplate>
                                                 <tr>
                                                     <td>
@@ -180,7 +183,8 @@
                                                     </td>
                                                 </tr>
                                             </ItemTemplate>
-                                            <FooterTemplate></table></FooterTemplate>
+                                            <FooterTemplate>
+                                                </table></FooterTemplate>
                                         </asp:Repeater>
                                     </td>
                                 </tr>
@@ -221,5 +225,12 @@
                 </tr>
             </EditItemTemplate>
         </asp:ListView>
+        <%--<div style="text-align:center">
+            <asp:DataPager ID="DataPager1" PagedControlID="lv" PageSize="2" runat="server">
+                <Fields>
+                    <asp:NumericPagerField />
+                </Fields>
+            </asp:DataPager>
+        </div>--%>
     </n2:ChromeBox>
 </asp:Content>

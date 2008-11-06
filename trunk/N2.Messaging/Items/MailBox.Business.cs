@@ -47,7 +47,7 @@ namespace N2.Messaging
 		#endregion
 
 		[DataObjectMethod(DataObjectMethodType.Select, true)]
-		public IEnumerable<Message> GetFilteredFolderMessages()
+        public IEnumerable<Message> GetFilteredFolderMessages(/*int maximumRows, int startRowIndex*/)
 		{
 			switch (this.Folder) {
 				default:
