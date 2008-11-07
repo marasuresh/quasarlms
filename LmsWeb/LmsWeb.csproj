@@ -172,6 +172,10 @@
     <Content Include="Web.connectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\N2.Futures\N2.Futures.csproj">
+      <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
+      <Name>N2.Futures</Name>
+    </ProjectReference>
     <ProjectReference Include="..\N2.Lms\N2.Lms.csproj">
       <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
       <Name>N2.Lms</Name>
@@ -180,9 +184,6 @@
       <Project>{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}</Project>
       <Name>N2.Workflow</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="yafnet.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Browsers\lms.browser" />
