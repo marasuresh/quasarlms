@@ -47,7 +47,7 @@ namespace N2.Messaging
 		#endregion
 
 		[DataObjectMethod(DataObjectMethodType.Select, true)]
-        public IEnumerable<Message> GetFilteredFolderMessages(/*int maximumRows, int startRowIndex*/)
+        public IEnumerable<Message> GetFilteredFolderMessages()
 		{
 			switch (this.Folder) {
 				default:
@@ -64,6 +64,61 @@ namespace N2.Messaging
 						this.Filter);
 			}
 		}
+
+        [DataObjectMethod(DataObjectMethodType.Select, true)]
+        public IEnumerable<Message> GetFilteredFolderMessages(int maximumRows, int startRowIndex)
+        {
+            IEnumerable<Message> retMessages;
+            
+            switch (this.Folder)
+            {
+                default:
+                    retMessages = GetFilteredMessages(
+                        this.MessageStore.MyInbox,
+                        this.Filter);
+                    break;
+                case C.Folders.Drafts:
+                    retMessages = this.MessageStore.MyDrafts;
+                    break;
+                case C.Folders.RecyleBin:
+                    retMessages = this.MessageStore.MyRecycled;
+                    break;
+                case C.Folders.Outbox:
+                    retMessages = GetFilteredMessages(
+                        this.MessageStore.MyOutbox,
+                        this.Filter);
+                    break;
+            }
+
+            return retMessages.Skip(startRowIndex).Take(maximumRows);
+        }
+
+        public Int32 TotalNumberOfMessage()
+        {
+            IEnumerable<Message> retMessages;
+
+            switch (this.Folder)
+            {
+                default:
+                    retMessages = GetFilteredMessages(
+                        this.MessageStore.MyInbox,
+                        this.Filter);
+                    break;
+                case C.Folders.Drafts:
+                    retMessages = this.MessageStore.MyDrafts;
+                    break;
+                case C.Folders.RecyleBin:
+                    retMessages = this.MessageStore.MyRecycled;
+                    break;
+                case C.Folders.Outbox:
+                    retMessages = GetFilteredMessages(
+                        this.MessageStore.MyOutbox,
+                        this.Filter);
+                    break;
+            }
+
+            return retMessages.Count();
+        }
 
 		static IEnumerable<Message> GetFilteredMessages(IEnumerable<Message> list, string filter)
 		{
