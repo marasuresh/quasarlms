@@ -65,7 +65,6 @@
     }
 </script>
 <span class="assignment-list">
-<n2:H4 runat="server" Text='<%$ CurrentItem: Title %>' />
 	<asp:Wizard
 			runat="server"
 			ID="wz"

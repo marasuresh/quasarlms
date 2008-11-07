@@ -3,26 +3,14 @@
 		ClassName="TrainingPlayer"
 		Inherits="Player"
 		CodeBehind="Player.ascx.cs" %>
-<span class="player">
+<%--<span class="player">
 <asp:Wizard
 		runat="server"
-		ID="wz"
-		StartNextButtonText="Next"
-		FinishCompleteButtonText="Finish">
-	<NavigationButtonStyle
-			BackColor="White"
-			BorderColor="#507CD1"
-			BorderStyle="Solid"
-			BorderWidth="1px"
-			Font-Names="Verdana"
-			Font-Size="0.8em"
-			ForeColor="#284E98" />
+		ID="wz">
 	<SideBarTemplate>
 		<asp:DataList
 				runat="server"
-				ID="SideBarList"
-				RepeatLayout="Flow"
-				RepeatDirection="Horizontal">
+				ID="SideBarList">
 			<HeaderTemplate><ul id="moduleTree" class="filetree"></HeaderTemplate>
 			<FooterTemplate></ul></FooterTemplate>
 			<ItemTemplate>
@@ -35,7 +23,6 @@
 				<%# this.RenderEndHtml((WizardStep)Container.DataItem) %>
 			</ItemTemplate>
 		</asp:DataList>
-		
 	</SideBarTemplate>
 </asp:Wizard>
-</span>
+</span>--%>

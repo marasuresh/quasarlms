@@ -20,7 +20,7 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
     protected override void OnInit(EventArgs e)
     {
         base.OnInit(e);
-        Register.StyleSheet(Page, "/Messaging/UI/Css/Messaging.css", Media.All);
+        Register.StyleSheet(Page, "~/Messaging/UI/Css/Messaging.css", Media.All);
         
         lv.DataBound += new EventHandler(lv_DataBound);
     }
