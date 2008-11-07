@@ -72,7 +72,9 @@
     </asp:MultiView>
     <n2:ChromeBox runat="server">
         <asp:ObjectDataSource runat="server" ID="ds" OldValuesParameterFormatString="original_{0}"
-            SelectMethod="GetFilteredFolderMessages" TypeName="N2.Messaging.MailBox" OnObjectCreating="ds_ObjectCreating" />
+            SelectMethod="GetFilteredFolderMessages" SelectCountMethod="TotalNumberOfMessage" TypeName="N2.Messaging.MailBox" 
+            OnObjectCreating="ds_ObjectCreating" EnablePaging="True" >
+        </asp:ObjectDataSource>
         <asp:ListView ID="lv" DataKeyNames="ID" runat="server" DataSourceID="ds">
             <LayoutTemplate>
                 <table class="gridview" cellpadding="0" cellspacing="0">
@@ -225,12 +227,12 @@
                 </tr>
             </EditItemTemplate>
         </asp:ListView>
-        <%--<div style="text-align:center">
-            <asp:DataPager ID="DataPager1" PagedControlID="lv" PageSize="2" runat="server">
+        <div style="text-align:center">
+            <asp:DataPager ID="DataPager1" PagedControlID="lv" PageSize="15" runat="server">
                 <Fields>
                     <asp:NumericPagerField />
                 </Fields>
             </asp:DataPager>
-        </div>--%>
+        </div>
     </n2:ChromeBox>
 </asp:Content>

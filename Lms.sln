@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Web Developer Express 2008
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{4F7EC6A5-6048-4FB7-B76E-1BC045857145}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Futures.Tests", "N2.Futures.Tests\N2.Futures.Tests.csproj", "{2212CEDF-8C0C-4D25-B80B-9D96B1589CA2}"
@@ -25,13 +25,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningComponentWeb", "Lms
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningComponent", "DotNetSCORM.LearningApi\LearningComponent.csproj", "{FDDB1A38-8827-46CA-8BA6-D140C700F9B9}"
 EndProject
-<<<<<<< .mine
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum", "LmsWeb\Forum.csproj", "{FFCC8155-304F-42F5-94C3-E98BE009697F}"
 EndProject
-=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Lms", "N2.Lms\N2.Lms.csproj", "{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}"
 EndProject
->>>>>>> .r126
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat", "LmsWeb\Chat\Chat.csproj", "{1B7255A5-5D85-43C5-8335-E4D02B7271D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -286,7 +285,6 @@ Global
 		{FDDB1A38-8827-46CA-8BA6-D140C700F9B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FDDB1A38-8827-46CA-8BA6-D140C700F9B9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{FDDB1A38-8827-46CA-8BA6-D140C700F9B9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-<<<<<<< .mine
 		{FFCC8155-304F-42F5-94C3-E98BE009697F}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{FFCC8155-304F-42F5-94C3-E98BE009697F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FFCC8155-304F-42F5-94C3-E98BE009697F}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -307,7 +305,6 @@ Global
 		{FFCC8155-304F-42F5-94C3-E98BE009697F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FFCC8155-304F-42F5-94C3-E98BE009697F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{FFCC8155-304F-42F5-94C3-E98BE009697F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-=======
 		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -328,7 +325,26 @@ Global
 		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
->>>>>>> .r126
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.DL Server Deployment|.NET.ActiveCfg = Debug|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.DL Server Deployment|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.DL Server Deployment|Any CPU.Build.0 = Debug|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.DL Server Deployment|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.DL Server Deployment|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Local deployment|.NET.ActiveCfg = Release|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Local deployment|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Local deployment|Any CPU.Build.0 = Release|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Local deployment|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Local deployment|Mixed Platforms.Build.0 = Release|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Release|.NET.ActiveCfg = Release|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1B7255A5-5D85-43C5-8335-E4D02B7271D8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
