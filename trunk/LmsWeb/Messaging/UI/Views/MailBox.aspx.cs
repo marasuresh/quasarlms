@@ -6,6 +6,7 @@ using N2.Messaging;
 using N2.Resources;
 using N2.Templates.Web.UI;
 using N2.Web;
+using System.Linq;
 
 public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
 {
@@ -94,22 +95,12 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
     
     protected void btnEmptyRecBin_Click(object sender, EventArgs e)
     {
-        var delMsgs = new Dictionary<int,Message>();
-        int index = 0;
-
-        foreach (Message msg in this.CurrentItem.MessageStore.MyRecycled)
+        var delMessages = this.CurrentItem.MessageStore.MyRecycled.ToArray();
+        foreach (Message msg in delMessages)
         {
-            delMsgs.Add(index, msg);
-            index++;
-            
-		}
-
-        for (int i = 0; i < delMsgs.Count; i++ )
-        {
-            Message msg;
-            delMsgs.TryGetValue(i, out msg);
             Engine.Persister.Delete(msg);
         }
+        
 
 		Response.Redirect(Url.Parse(CurrentItem.Url).AppendSegment("folder/" + MailBox.C.Folders.RecyleBin).Path);
         
