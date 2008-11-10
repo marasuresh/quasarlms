@@ -3,7 +3,7 @@
 		Language="C#"
 		AutoEventWireup="true"
 		ClassName="MyCourses"
-		Inherits="N2.Lms.Web.UI.MyAssignmentListControl`1[[N2.Lms.MyCoursesDAO, LmsWeb]], N2.Lms" %>
+		Inherits="N2.Lms.Web.UI.MyAssignmentListControl" %>
 <%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls" TagPrefix="n2" %>
 
 <script runat="server">
@@ -21,9 +21,9 @@
 <asp:ObjectDataSource 
 	ID="dsCourses"
 	runat="server"
-	SelectMethod="FindAll"
+	SelectMethod="FindMyCourses"
 	UpdateMethod="InsertRequest"
-	TypeName="N2.Lms.MyCoursesDAO"
+	TypeName="N2.Lms.Items.MyAssignmentList"
 	onobjectcreating="ds_ObjectCreating">
 	<UpdateParameters>
 		<%--<asp:Parameter Name="courseId" Type="Int32" ConvertEmptyStringToNull="true" />--%>

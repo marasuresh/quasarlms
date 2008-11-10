@@ -39,6 +39,7 @@ namespace N2
 			/// adjust existing child name and persist it
 			Func<ChildItemType> _defaultValueResolver = () => {
 				var _existingItem = item.Children.OfType<ChildItemType>().FirstOrDefault();
+				
 				if (null != _existingItem) {
 					_existingItem.Name = childName;
 					N2.Context.Persister.Save(_existingItem);
@@ -53,7 +54,12 @@ namespace N2
 				ChildItemType _newChild = Context.Current.Definitions.CreateInstance<ChildItemType>(item);
 				_newChild.Name = childName;
 				_newChild.AddTo(item);
-				N2.Context.Persister.Save(_newChild);
+
+				//prevent "object references an unsaved transient instance" error
+				if (null != Context.Persister.Get(item.ID)) {
+					Context.Persister.Save(_newChild);
+				}
+				
 				return _newChild;
 			};
 

@@ -7,13 +7,11 @@ namespace N2.Lms.Web.UI
 	using N2.Templates.Items;
 	using N2.Templates.Web.UI;
 	
-	public class MyAssignmentListControl<DaoType>: TemplateUserControl<AbstractContentPage, MyAssignmentList>
+	public class MyAssignmentListControl: TemplateUserControl<AbstractContentPage, MyAssignmentList>
 	{
 		protected void ds_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
 		{
-			e.ObjectInstance = Activator.CreateInstance(
-				typeof(DaoType),
-				this.CurrentItem ?? this.FallbackCurrentItem);
+			e.ObjectInstance = this.CurrentItem ?? this.FallbackCurrentItem;
 		}
 
 		/// <summary>

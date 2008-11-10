@@ -1,5 +1,5 @@
 ﻿<%@ Import Namespace="System.ComponentModel" %>
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="N2.Lms.Web.UI.MyAssignmentListControl`1[[N2.Lms.MyRequestsDAO, LmsWeb]], N2.Lms" %>
+<%@ Control Language="C#" Inherits="N2.Lms.Web.UI.MyAssignmentListControl" %>
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="N2.Lms.Items" %>
@@ -16,8 +16,13 @@
     }
 </script>
 
-<asp:ObjectDataSource ID="dsRequests" runat="server" SelectMethod="FindAll" UpdateMethod="CancelRequest"
-    TypeName="N2.Lms.MyRequestsDAO" OnObjectCreating="ds_ObjectCreating">
+<asp:ObjectDataSource
+		ID="dsRequests"
+		runat="server"
+		SelectMethod="FindPendingRequests"
+		UpdateMethod="CancelRequest"
+		TypeName="N2.Lms.Items.MyAssignmentList"
+		OnObjectCreating="ds_ObjectCreating">
     <UpdateParameters>
         <asp:Parameter Name="UserName" Type="String" />
     </UpdateParameters>

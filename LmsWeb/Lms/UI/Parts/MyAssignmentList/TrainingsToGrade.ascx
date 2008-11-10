@@ -6,7 +6,7 @@
 <%@ Import Namespace="System.Diagnostics" %>
 <%@ Import Namespace="N2.Workflow" %>
 <%@ Import Namespace="N2.Lms.Items.TrainingWorkflow" %>
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="N2.Lms.Web.UI.MyAssignmentListControl`1[[N2.Lms.TrainingsToGradeDAO, LmsWeb]], N2.Lms" %>
+<%@ Control Language="C#" Inherits="N2.Lms.Web.UI.MyAssignmentListControl" %>
 <%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls" TagPrefix="n2" %>
 
 <script runat="server">
@@ -45,8 +45,9 @@
     }
 </script>
 
-<asp:ObjectDataSource ID="dsRequests" runat="server" SelectMethod="FindAll" UpdateMethod="GoRequest"
-    TypeName="N2.Lms.TrainingsToGradeDAO" OnObjectCreating="ds_ObjectCreating">
+<asp:ObjectDataSource ID="dsRequests" runat="server"
+	 SelectMethod="FindRequestsToGrade" UpdateMethod="GoRequest"
+    TypeName="N2.Lms.Items.MyAssignmentList" OnObjectCreating="ds_ObjectCreating">
     <UpdateParameters>
         <asp:Parameter Name="command" Type="String" />
         <asp:Parameter Name="comments" Type="String" />

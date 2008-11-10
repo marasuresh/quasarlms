@@ -5,7 +5,7 @@
 		Language="C#"
 		AutoEventWireup="true"
 		ClassName="MyTrainings"
-		Inherits="N2.Lms.Web.UI.MyAssignmentListControl`1[[N2.Lms.MyTrainingsDAO, LmsWeb]], N2.Lms" %>
+		Inherits="N2.Lms.Web.UI.MyAssignmentListControl" %>
 <%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls" TagPrefix="n2" %>
 
 <script runat="server">
@@ -22,9 +22,9 @@
 <asp:ObjectDataSource 
 	ID="dsRequests"
 	runat="server"
-	SelectMethod="FindAll"
+	SelectMethod="FindApprovedRequests"
 	UpdateMethod="GoRequest"
-	TypeName="N2.Lms.MyTrainingsDAO"
+	TypeName="N2.Lms.Items.MyAssignmentList"
 	onobjectcreating="ds_ObjectCreating">
 	<UpdateParameters>
         <asp:Parameter Name="comments" Type="String" />

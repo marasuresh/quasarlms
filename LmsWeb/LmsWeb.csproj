@@ -134,12 +134,6 @@
     <Content Include="Lms\UI\TrainingSelector.ascx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\MyTrainingsDAO.cs" />
-    <Compile Include="DAO\MyCoursesDAO.cs" />
-    <Compile Include="DAO\MyGradedTrainingsDAO.cs" />
-    <Compile Include="DAO\MyRequestsDAO.cs" />
-    <Compile Include="DAO\RequestsDAO.cs" />
-    <Compile Include="DAO\TrainingsToGradeDAO.cs" />
     <Compile Include="Lms\UI\CourseIntro.ascx.cs">
       <DependentUpon>CourseIntro.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -195,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Browsers\lms.browser" />
+    <Content Include="Lms\UI\TopicInFrame.ascx" />
     <Content Include="Lms\UI\Js\jquery.treeview.css" />
     <Content Include="Lms\UI\Js\jquery.treeview.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\Requests.ascx" />
@@ -208,9 +203,6 @@
     <Content Include="Lms\UI\Css\MyAssignmentList.css" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\MyGradedTrainings.ascx" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\TrainingsToGrade.ascx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Web.n2.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
