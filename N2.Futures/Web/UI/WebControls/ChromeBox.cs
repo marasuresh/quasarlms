@@ -2,11 +2,26 @@
 
 namespace N2.Web.UI.WebControls
 {
+	using System;
+	using N2.Resources;
+
 	public class ChromeBox: Panel
 	{
 		public ChromeBox()
 		{
 			this.CssClass = "grid";
+		}
+
+		protected override void OnInit(System.EventArgs e)
+		{
+			Array.ForEach(
+				new[] {"N2.Futures.Css.grid.css", "N2.Futures.Css.round.css", "N2.Futures.Css.grid-fix-n2.css"},
+				url => Register.StyleSheet(
+					this.Page,
+					this.Page.ClientScript.GetWebResourceUrl(
+						typeof(ChromeBox), url)));
+			
+			base.OnInit(e);
 		}
 
 		public override void RenderBeginTag(System.Web.UI.HtmlTextWriter writer)

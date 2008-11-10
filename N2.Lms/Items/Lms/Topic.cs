@@ -21,13 +21,11 @@ namespace N2.Lms.Items
 		#region System properties
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/19.png"; } }
-		
-		public override string TemplateUrl { get { return "~/Lms/UI/Topic.ascx"; } }
-		
-		public override string ZoneName {
-			get { return "Topics"; }
-			set { base.ZoneName = value; }
-		}
+		public override string TemplateUrl { get {
+			return this.UseExternalLink
+				? "~/Lms/UI/Topic.ascx"
+				: "~/Lms/UI/TopicText.ascx"; } }
+		public override string ZoneName { get { return "Topics"; } }
 		public override bool IsPage { get { return false; } }
 
 		#endregion System properties
@@ -48,6 +46,14 @@ namespace N2.Lms.Items
 					select new N2.Details.StringDetail(this, string.Empty, _line)
 					);
 			}
+		}
+
+		[EditableCheckBox("Использовать внешний файл содержания", 15,
+			HelpTitle = "Указание на то, откуда брать содержимое урока.",
+			HelpText = "Содержание урока может браться")]
+		public bool UseExternalLink {
+			get { return this.GetDetail<bool>("UseExternalLink", true); }
+			set { this.SetDetail<bool>("UseExternalLink", value); }
 		}
 
 		internal DetailCollection Content {

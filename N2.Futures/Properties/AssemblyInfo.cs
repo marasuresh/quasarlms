@@ -40,3 +40,17 @@ using System.Web.UI;
 [assembly: WebResource("N2.Futures.Images.user_green.png", "image/png")]
 [assembly: WebResource("N2.Futures.Images.user_orange.png", "image/png")]
 [assembly: WebResource("N2.Futures.Images.user_red.png", "image/png")]
+
+[assembly: WebResource("N2.Futures.Images.tl.gif", "image/gif")]
+[assembly: WebResource("N2.Futures.Images.t.gif", "image/gif")]
+[assembly: WebResource("N2.Futures.Images.tr.gif", "image/gif")]
+[assembly: WebResource("N2.Futures.Images.l.gif", "image/gif")]
+[assembly: WebResource("N2.Futures.Images.r.gif", "image/gif")]
+[assembly: WebResource("N2.Futures.Images.bl.gif", "image/gif")]
+[assembly: WebResource("N2.Futures.Images.b.gif", "image/gif")]
+[assembly: WebResource("N2.Futures.Images.br.gif", "image/gif")]
+[assembly: WebResource("N2.Futures.Images.hdr.gif", "image/gif")]
+
+[assembly: WebResource("N2.Futures.Css.grid.css", "text/css", PerformSubstitution = true)]
+[assembly: WebResource("N2.Futures.Css.round.css", "text/css", PerformSubstitution = true)]
+[assembly: WebResource("N2.Futures.Css.grid-fix-n2.css", "text/css")]

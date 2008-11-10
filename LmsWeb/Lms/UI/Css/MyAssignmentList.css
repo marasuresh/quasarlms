@@ -20,8 +20,3 @@
 	}
 	.assignment-list .wizard .sidebar .selected A.sba { background-color: #D0DAE2; }
 .hidden { display: none;}
-
-/*inline grid fixes*/
-.grid { width:100%; }
-.grid .top { float:inherit!important; padding:0px!important; }
-.grid TABLE.gridview { border-collapse: separate!important; }

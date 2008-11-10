@@ -46,7 +46,7 @@
 }    
 .grid .gridview .header TH
 {
-	background:url(../img/hdr.gif) repeat-x;
+	background:url(<%= WebResource("N2.Futures.Images.hdr.gif") %>) repeat-x;
 	height:22px;
 	line-height:22px;
 	color:#fff;

@@ -9,7 +9,7 @@
 	using N2.Integrity;
 
 	[Definition("Course Container", "CourseContainer", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
-	//[WithEditableTitle("Title", 10)]
+	[RestrictParents(typeof(IStructuralPage), typeof(IStorageItem))]
 	[NotThrowable, NotVersionable]
 	public class CourseContainer: AbstractContentPage
 	{

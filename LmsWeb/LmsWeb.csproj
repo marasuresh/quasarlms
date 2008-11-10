@@ -39,10 +39,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="Forum, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\eval\n2Forum\src\Forum\obj\Debug\Forum.dll</HintPath>
-    </Reference>
     <Reference Include="N2, Version=1.0.403.35057, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\N2.dll</HintPath>
@@ -172,9 +168,21 @@
     <Content Include="Web.connectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\N2.Chat\N2.Chat.csproj">
+      <Project>{1B7255A5-5D85-43C5-8335-E4D02B7271D8}</Project>
+      <Name>N2.Chat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\N2.Forum\N2.Forum.csproj">
+      <Project>{FFCC8155-304F-42F5-94C3-E98BE009697F}</Project>
+      <Name>N2.Forum</Name>
+    </ProjectReference>
     <ProjectReference Include="..\N2.Futures\N2.Futures.csproj">
       <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
       <Name>N2.Futures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\N2.Lms.Install\N2.Lms.Install.csproj">
+      <Project>{76DA9449-0C0D-4818-A543-1BAA8676778F}</Project>
+      <Name>N2.Lms.Install</Name>
     </ProjectReference>
     <ProjectReference Include="..\N2.Lms\N2.Lms.csproj">
       <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
@@ -190,22 +198,11 @@
     <Content Include="Lms\UI\Js\jquery.treeview.css" />
     <Content Include="Lms\UI\Js\jquery.treeview.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\Requests.ascx" />
-    <Content Include="Lms\UI\_assets\css\grid.css" />
-    <Content Include="Lms\UI\_assets\css\round.css" />
     <Content Include="Lms\UI\Img\accept.png" />
     <Content Include="Lms\UI\Img\arrow_undo.png" />
     <Content Include="Lms\UI\Img\cancel.png" />
     <Content Include="Lms\UI\Img\database.png" />
     <Content Include="Lms\UI\Img\database_error.png" />
-    <Content Include="Lms\UI\_assets\img\b.gif" />
-    <Content Include="Lms\UI\_assets\img\bl.gif" />
-    <Content Include="Lms\UI\_assets\img\br.gif" />
-    <Content Include="Lms\UI\_assets\img\hdr.gif" />
-    <Content Include="Lms\UI\_assets\img\l.gif" />
-    <Content Include="Lms\UI\_assets\img\r.gif" />
-    <Content Include="Lms\UI\_assets\img\t.gif" />
-    <Content Include="Lms\UI\_assets\img\tl.gif" />
-    <Content Include="Lms\UI\_assets\img\tr.gif" />
     <Content Include="Lms\UI\Js\Player.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList.ascx" />
     <Content Include="Lms\UI\Css\MyAssignmentList.css" />
@@ -213,7 +210,12 @@
     <Content Include="Lms\UI\Parts\MyAssignmentList\TrainingsToGrade.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Web.n2.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Lms\UI\_assets\css\" />
+    <Folder Include="Lms\UI\_assets\img\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

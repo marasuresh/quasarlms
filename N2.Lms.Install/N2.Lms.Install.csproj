@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</ProjectGuid>
+    <ProjectGuid>{76DA9449-0C0D-4818-A543-1BAA8676778F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>N2.Futures</RootNamespace>
-    <AssemblyName>N2.Futures</AssemblyName>
+    <RootNamespace>N2.Lms.Install</RootNamespace>
+    <AssemblyName>N2.Lms.Install</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,13 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Castle.Core.dll</HintPath>
-    </Reference>
     <Reference Include="N2, Version=1.0.403.35057, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\N2.dll</HintPath>
+    </Reference>
+    <Reference Include="N2.Edit, Version=1.0.403.35063, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\N2.Edit.dll</HintPath>
     </Reference>
     <Reference Include="N2.Templates, Version=1.0.403.35058, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -47,51 +47,42 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions">
+    <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentItemExtensions.cs" />
-    <Compile Include="Definitions\EnsureChildAttribute.cs" />
-    <Compile Include="ItemBuilder.cs" />
-    <Compile Include="ItemBuilderInitializer.cs" />
-    <Compile Include="Items\ProxyItem.cs" />
+    <Compile Include="Items\StartPage.cs" />
+    <Compile Include="Items\Storage.Business.cs" />
+    <Compile Include="Items\Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web\UI\Extensions.cs" />
-    <Compile Include="Web\UI\GenericTemplate.cs" />
-    <Compile Include="Web\UI\WebControls\ChromeBox.cs" />
-    <Compile Include="Web\UI\WebControls\MembershipUserValidator.cs" />
-    <Compile Include="Web\UI\WebControls\Test\UserTreeTestBed.cs" />
-    <Compile Include="Web\UI\WebControls\UserTree.cs" />
-    <Compile Include="Web\UI\WebControls\SelectUser.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\group.png" />
-    <EmbeddedResource Include="Images\user_green.png" />
-    <EmbeddedResource Include="Images\user_orange.png" />
-    <EmbeddedResource Include="Images\user_red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Css\grid-fix-n2.css" />
-    <EmbeddedResource Include="Css\grid.css" />
-    <EmbeddedResource Include="Css\round.css" />
-    <EmbeddedResource Include="Images\b.gif" />
-    <EmbeddedResource Include="Images\bl.gif" />
-    <EmbeddedResource Include="Images\br.gif" />
-    <EmbeddedResource Include="Images\hdr.gif" />
-    <EmbeddedResource Include="Images\l.gif" />
-    <EmbeddedResource Include="Images\r.gif" />
-    <EmbeddedResource Include="Images\t.gif" />
-    <EmbeddedResource Include="Images\tl.gif" />
-    <EmbeddedResource Include="Images\tr.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Details\" />
+    <ProjectReference Include="..\ACalendar\N2.ACalendar.csproj">
+      <Project>{08BB3289-C88F-4F23-A021-52BFE895FAC8}</Project>
+      <Name>N2.ACalendar</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\N2.Futures\N2.Futures.csproj">
+      <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
+      <Name>N2.Futures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\N2.Lms\N2.Lms.csproj">
+      <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
+      <Name>N2.Lms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\N2.Messaging\N2.Messaging.csproj">
+      <Project>{38548097-B909-4682-A9F3-A33719A38CC6}</Project>
+      <Name>N2.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\N2.Workflow\N2.Workflow.csproj">
+      <Project>{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}</Project>
+      <Name>N2.Workflow</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
