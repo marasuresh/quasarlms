@@ -1,6 +1,5 @@
 ﻿namespace N2.Lms.Items
 {
-	using System.Collections.Generic;
 	using N2.Definitions;
 	using N2.Details;
 	using N2.Installation;
@@ -36,9 +35,13 @@
 
 		#endregion System properties
 
-		[EditableLink("Workflow", 107)]
+		[EditableItem("Workflow", 107)]
 		public Workflow Workflow {
-			get { return this.GetDetail("Workflow") as Workflow; }
+			get { return this.GetDetail<Workflow>(
+				"Workflow",
+				this.GetOrFindOrCreateChild<Workflow>(
+					"Workflow",
+					wf => this.InitializeDefaultWorkflow(wf))); }
 			set { this.SetDetail<Workflow>("Workflow", value); }
 		}
 	}

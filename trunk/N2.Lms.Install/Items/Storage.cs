@@ -24,7 +24,7 @@
 
 		#region System Properties
 
-		public override string IconUrl { get { return "~/Lms/UI/Img/04/17.png"; } }
+		public override string IconUrl { get { return "~/Messaging/UI/Images/database.png"; } }
 		public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
 		public override bool IsPage { get { return false; } }
 
