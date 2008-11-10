@@ -106,17 +106,21 @@ namespace N2.Messaging
 
 		static UriTemplateTable GetRoutes()
 		{
-			var _uris = new[] {
-				new KeyValuePair<UriTemplate, object>(new UriTemplate("folder/{folder}/filter/{filter}"), ActionEnum.List),
-				new KeyValuePair<UriTemplate, object>(new UriTemplate("folder/{folder}"), ActionEnum.List),
-				new KeyValuePair<UriTemplate, object>(new UriTemplate("reply/{id}"), ActionEnum.Reply),
-				new KeyValuePair<UriTemplate, object>(new UriTemplate("forward/{id}"), ActionEnum.Forward),
-                new KeyValuePair<UriTemplate, object>(new UriTemplate("delete/{id}"), ActionEnum.Delete),
-                new KeyValuePair<UriTemplate, object>(new UriTemplate("restore/{id}"), ActionEnum.Restore),
-                new KeyValuePair<UriTemplate, object>(new UriTemplate("destroy/{id}"), ActionEnum.Destroy),
-				new KeyValuePair<UriTemplate, object>(new UriTemplate("new"), ActionEnum.Create),
-			};
-
+			var _uris =
+				from _pair in new Dictionary<string, ActionEnum> {
+					{ "folder/{folder}/filter/{filter}", ActionEnum.List },
+					{ "folder/{folder}", ActionEnum.List },
+					{ "reply/{id}", ActionEnum.Reply },
+					{ "forward/{id}", ActionEnum.Forward },
+					{ "delete/{id}", ActionEnum.Delete },
+					{ "restore/{id}", ActionEnum.Restore },
+					{ "destroy/{id}", ActionEnum.Destroy },
+					{ "new", ActionEnum.Create } }
+				select
+					new KeyValuePair<UriTemplate, object>(
+						new UriTemplate(_pair.Key),
+						_pair.Value);
+			
 			return new UriTemplateTable(BaseUri, _uris);
 		}
 
