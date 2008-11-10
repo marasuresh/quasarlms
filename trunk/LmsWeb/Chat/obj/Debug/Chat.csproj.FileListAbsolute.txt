@@ -1,5 +1,0 @@
-D:\WorkDir\MyProjects\DO\Lms\LmsWeb\Chat\bin\Chat.dll
-D:\WorkDir\MyProjects\DO\Lms\LmsWeb\Chat\bin\Chat.pdb
-D:\WorkDir\MyProjects\DO\Lms\LmsWeb\Chat\obj\Debug\ResolveAssemblyReference.cache
-D:\WorkDir\MyProjects\DO\Lms\LmsWeb\Chat\obj\Debug\Chat.dll
-D:\WorkDir\MyProjects\DO\Lms\LmsWeb\Chat\obj\Debug\Chat.pdb
