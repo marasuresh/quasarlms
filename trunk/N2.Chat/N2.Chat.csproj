@@ -74,6 +74,7 @@
     <Compile Include="Core\Utilities\AutonumericList.cs" />
     <Compile Include="Core\Utilities\MessagesCollection.cs" />
     <Compile Include="Items\Chat.cs" />
+    <Compile Include="Items\ChatBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
