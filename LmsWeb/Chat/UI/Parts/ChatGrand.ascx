@@ -13,9 +13,8 @@
     .sc_chat_container
     {
         /*height: 160px;*/
-        width: 350px;
+        width: 100%;
         font-family: arial;
-        border: solid 1px black;
         padding: 1px;
         font-size: 11px;
         background-color: #ffffff;

@@ -61,6 +61,13 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chat\UI\Parts\ChatBox.ascx.cs">
+      <DependentUpon>ChatBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chat\UI\Parts\ChatBox.ascx.designer.cs">
+      <DependentUpon>ChatBox.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Chat\UI\Parts\ChatGrand.ascx.cs">
       <DependentUpon>ChatGrand.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -85,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Chat\UI\Images\chat.png" />
+    <Content Include="Chat\UI\Parts\ChatBox.ascx" />
     <Content Include="Chat\UI\Views\ChatPage.aspx" />
     <Content Include="Web.connectionStrings.config" />
   </ItemGroup>
