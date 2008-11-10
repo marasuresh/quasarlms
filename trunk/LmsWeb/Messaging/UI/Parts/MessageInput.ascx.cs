@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Web;
 using N2.Templates.Web.UI;
 using N2.Web;
@@ -57,9 +58,10 @@ namespace N2.Messaging.Messaging.UI.Parts
 			this.CurrentPage.EditedItem.ID = 0;
 			this.CurrentPage.EditedItem.Text = this.txtText.Text;
 			this.CurrentPage.EditedItem.Subject = this.txtSubject.Text;
-			this.CurrentPage.EditedItem.To = this.selUser.SelectedUser;
+            this.CurrentPage.EditedItem.To = Regex.Replace(this.selUser.SelectedUser, ";", "; ");
 			this.CurrentPage.EditedItem.From = this.Context.User.Identity.Name;
             this.CurrentPage.EditedItem.Owner = this.Context.User.Identity.Name;
+            this.CurrentPage.EditedItem.IsRead = true;
 			this.CurrentPage.EditedItem.Attachments = attacments;
 			this.CurrentPage.EditedItem.Expires = DateTime.Now.AddDays(60);
 			this.CurrentPage.EditedItem.MessageType = (MessageTypeEnum)Enum.Parse(typeof(MessageTypeEnum), this.rblMessageType.SelectedValue);
@@ -82,6 +84,7 @@ namespace N2.Messaging.Messaging.UI.Parts
                         var _copy = (N2.Messaging.Message)this.CurrentPage.EditedItem.Clone(false);
                         _copy.To = recipient;
                         _copy.Owner = recipient;
+                        _copy.IsRead = false;
                         _copy.Save();
                     });
 
