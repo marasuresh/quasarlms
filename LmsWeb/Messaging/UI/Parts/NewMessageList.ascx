@@ -20,7 +20,7 @@
                         </td>
                         <td style="width:1%"></td>
                         <td style="vertical-align:middle; text-align:center; width:auto">
-                            <a href='<%# Url.Parse(this.CurrentItem.MailBox.Url).AppendQuery("msg",Eval("ID").ToString()) %>' title='<%#Eval("From") + "   " + Eval("Published") %>'><label class="<%# Eval("MessageType") %>"><%# Eval("Subject") %></label></a>
+                            <a href='<%# Url.Parse(this.CurrentItem.MailBox.Url).AppendQuery("msg",Eval("ID").ToString()) %>' title='<%#Eval("From") + "   " + Eval("Published") %>'><%# Eval("Subject") %></a>
                         </td>
                     </tr>
                 </table>
