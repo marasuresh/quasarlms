@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Forum/UI/Top+SubMenu.Master" AutoEventWireup="true" CodeBehind="Forum.aspx.cs" Inherits="N2.Templates.Forum.UI.Views.Forum" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Forum.aspx.cs" Inherits="N2.Templates.Forum.UI.Views.Forum" %>
 
 <%@ Register TagPrefix="yaf" Namespace="yaf" Assembly="yaf" %>
 <%@ Register TagPrefix="yc" Namespace="yaf.controls" Assembly="yaf" %>

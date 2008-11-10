@@ -17,7 +17,7 @@
 		Installer = InstallerHint.NeverRootOrStartPage)]
 	[WithEditableTitle("Title", 10)]
 	[ItemAuthorizedRoles(Roles = new string[0])]
-	[RestrictParents(typeof(IStructuralPage))]
+	[RestrictParents(typeof(IStructuralPage), typeof(IStorageItem))]
 	[AllowedChildren(typeof(Request))]
 	public partial class RequestContainer: ContentItem, IWorkflowItemContainer
 	{

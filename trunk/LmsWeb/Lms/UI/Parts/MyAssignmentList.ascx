@@ -54,8 +54,6 @@
 	
 	protected override void OnInit(EventArgs e)
     {
-		Register.StyleSheet(this.Page, "~/Lms/UI/_assets/css/grid.css");
-		Register.StyleSheet(this.Page, "~/Lms/UI/_assets/css/round.css");
 		Register.StyleSheet(this.Page, "~/Lms/UI/Css/MyAssignmentList.css");
 		
 		base.OnInit(e);

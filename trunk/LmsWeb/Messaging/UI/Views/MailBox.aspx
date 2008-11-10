@@ -4,14 +4,6 @@
     CodeBehind="MailBox.aspx.cs" Inherits="Messaging_UI_MailBox" %>
 
 <script runat="server">
-    protected override void OnInit(EventArgs e)
-    {
-        Register.StyleSheet(this.Page, "~/Lms/UI/_assets/css/grid.css");
-        Register.StyleSheet(this.Page, "~/Lms/UI/_assets/css/round.css");
-        Register.StyleSheet(this.Page, "~/Lms/UI/Css/MyAssignmentList.css");
-        base.OnInit(e);
-    }
-
     private static string GetAttachmentName(string attachFileUrl)
     {
         if (attachFileUrl != null)
