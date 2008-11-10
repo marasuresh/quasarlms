@@ -35,15 +35,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="N2, Version=1.0.403.35057, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="N2, Version=1.0.403.25809, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\N2.dll</HintPath>
+      <HintPath>..\..\n2cms\src\wwwroot\bin\N2.dll</HintPath>
     </Reference>
-    <Reference Include="N2.Templates, Version=1.0.403.35058, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2.Templates, Version=1.0.403.26116, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\N2.Templates.dll</HintPath>
+      <HintPath>..\..\n2cms\src\wwwroot\bin\N2.Templates.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -71,6 +74,7 @@
     <Compile Include="AEvent.cs" />
     <Compile Include="ACalendarContainer.Business.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Curriculum.cs" />
     <Compile Include="ExcelExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporting\Report.cs" />
@@ -79,7 +83,7 @@
     <Content Include="Web.connectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\N2.Lms\N2.Lms.csproj">
+    <ProjectReference Include="..\Convert\N2.Lms.csproj">
       <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
       <Name>N2.Lms</Name>
     </ProjectReference>
@@ -87,6 +91,9 @@
       <Project>{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}</Project>
       <Name>N2.Workflow</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
