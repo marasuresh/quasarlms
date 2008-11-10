@@ -1,6 +1,6 @@
 ﻿<%@ Import Namespace="N2.Lms.Items.Lms.RequestStates"%>
 <%@ Import Namespace="System.ComponentModel" %>
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="N2.Lms.Web.UI.MyAssignmentListControl`1[[N2.Lms.RequestsDAO, LmsWeb]], N2.Lms" %>
+<%@ Control Language="C#" Inherits="N2.Lms.Web.UI.MyAssignmentListControl" %>
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="N2.Lms.Items" %>
@@ -44,9 +44,9 @@
 </script>
 
 <asp:ObjectDataSource ID="dsRequests" runat="server" 
-    SelectMethod="FindAll" 
+    SelectMethod="FindRequestsToApprove" 
     UpdateMethod="GoRequest"
-    TypeName="N2.Lms.RequestsDAO" 
+    TypeName="N2.Lms.Items.MyAssignmentList" 
     OnObjectCreating="ds_ObjectCreating">
     <UpdateParameters>
         <asp:Parameter Name="command" Type="String" />

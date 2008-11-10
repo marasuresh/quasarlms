@@ -2,7 +2,6 @@
 
 namespace N2.Lms.Items
 {
-	using System.Collections.Generic;
 	using System.Linq;
 	using N2.Definitions;
 	using N2.Details;
@@ -23,18 +22,15 @@ namespace N2.Lms.Items
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/19.png"; } }
 		public override string TemplateUrl { get {
 			return this.UseExternalLink
-				? "~/Lms/UI/Topic.ascx"
-				: "~/Lms/UI/TopicText.ascx"; } }
+				? "~/Lms/UI/TopicInFrame.ascx"
+				: "~/Lms/UI/Topic.ascx"; } }
 		public override string ZoneName { get { return "Topics"; } }
 		public override bool IsPage { get { return false; } }
 
 		#endregion System properties
 
 		#region Lms Properties
-		[EditableTextBox(
-			"Content URLs",
-			13,
-			TextMode = TextBoxMode.MultiLine)]
+		[EditableTextBox("Файлы содержания", 17, TextMode = TextBoxMode.MultiLine)]
 		public string ContentUrls {
 			get {
 				return string.Join("\n", this.Content.Cast<string>().ToArray());
@@ -48,12 +44,18 @@ namespace N2.Lms.Items
 			}
 		}
 
-		[EditableCheckBox("Использовать внешний файл содержания", 15,
+		[EditableCheckBox("Использовать внешние файлы содержания", 15,
 			HelpTitle = "Указание на то, откуда брать содержимое урока.",
-			HelpText = "Содержание урока может браться")]
+			HelpText = "Содержание урока может браться из внешнего файла в формате <strong>.html</strong> (чаще всего это происходит при импорте существующих курсов), или содержаться прямо в системе. В последнем случае для редактирования можно пользоваться встроенным редактором.")]
 		public bool UseExternalLink {
 			get { return this.GetDetail<bool>("UseExternalLink", true); }
 			set { this.SetDetail<bool>("UseExternalLink", value); }
+		}
+
+		[EditableFreeTextArea("Содержание", 13)]
+		public string Text {
+			get { return this.GetDetail<string>("Text", string.Empty); }
+			set { this.SetDetail<string>("Text", value); }
 		}
 
 		internal DetailCollection Content {

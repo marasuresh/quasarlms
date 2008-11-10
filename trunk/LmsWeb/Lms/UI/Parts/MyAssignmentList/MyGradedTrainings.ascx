@@ -1,7 +1,7 @@
 ﻿<%@ Import Namespace="System.ComponentModel"%>
 <%@ Control Language="C#" 
             AutoEventWireup="true" 
-            Inherits="N2.Lms.Web.UI.MyAssignmentListControl`1[[N2.Lms.MyGradedTrainingsDAO, LmsWeb]], N2.Lms" %>
+            Inherits="N2.Lms.Web.UI.MyAssignmentListControl" %>
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="N2.Lms.Items" %>
@@ -15,8 +15,8 @@
 <asp:ObjectDataSource 
 	ID="dsMyGradedTrainings"
 	runat="server"
-	SelectMethod="FindAll"
-	TypeName="N2.Lms.MyGradedTrainingsDAO"
+	SelectMethod="FindMyGradedRequests"
+	TypeName="N2.Lms.Items.MyAssignmentList"
 	onobjectcreating="ds_ObjectCreating" EnableCaching="False" 
     OldValuesParameterFormatString="original_{0}" >
 </asp:ObjectDataSource>

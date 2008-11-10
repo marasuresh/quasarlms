@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace N2.Lms.Items
 {
-	using N2.Workflow;
-	using N2.Workflow.Items;
 	using Lms.RequestStates;
+	using N2.Workflow;
 	using TrainingWorkflow;
 	
 	partial class RequestContainer
