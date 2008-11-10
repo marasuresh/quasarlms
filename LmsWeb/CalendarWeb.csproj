@@ -33,55 +33,23 @@
   <ItemGroup>
     <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-<<<<<<< .mine
-      <HintPath>..\..\n2cms\output\Templates\wwwroot\Bin\Castle.Core.dll</HintPath>
-=======
       <HintPath>..\Lib\Castle.Core.dll</HintPath>
->>>>>>> .r141
     </Reference>
-<<<<<<< .mine
-    <Reference Include="N2, Version=1.0.403.20200, Culture=neutral, processorArchitecture=MSIL">
-=======
     <Reference Include="N2, Version=1.0.403.35057, Culture=neutral, processorArchitecture=MSIL">
->>>>>>> .r141
       <SpecificVersion>False</SpecificVersion>
-<<<<<<< .mine
-      <HintPath>..\..\n2cms\output\Templates\wwwroot\Bin\N2.dll</HintPath>
-=======
       <HintPath>..\Lib\N2.dll</HintPath>
->>>>>>> .r141
     </Reference>
-<<<<<<< .mine
-    <Reference Include="N2.Edit, Version=1.0.403.20203, Culture=neutral, processorArchitecture=MSIL">
-=======
     <Reference Include="N2.Edit, Version=1.0.403.35063, Culture=neutral, processorArchitecture=MSIL">
->>>>>>> .r141
       <SpecificVersion>False</SpecificVersion>
-<<<<<<< .mine
-      <HintPath>..\..\n2cms\output\Templates\wwwroot\Bin\N2.Edit.dll</HintPath>
-=======
       <HintPath>..\Lib\N2.Edit.dll</HintPath>
->>>>>>> .r141
     </Reference>
-<<<<<<< .mine
-    <Reference Include="N2.Templates, Version=1.0.403.20204, Culture=neutral, processorArchitecture=MSIL">
-=======
     <Reference Include="N2.Templates, Version=1.0.403.35058, Culture=neutral, processorArchitecture=MSIL">
->>>>>>> .r141
       <SpecificVersion>False</SpecificVersion>
-<<<<<<< .mine
-      <HintPath>..\..\n2cms\output\Templates\wwwroot\Bin\N2.Templates.dll</HintPath>
-=======
       <HintPath>..\Lib\N2.Templates.dll</HintPath>
->>>>>>> .r141
     </Reference>
     <Reference Include="NHibernate, Version=2.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-<<<<<<< .mine
-      <HintPath>..\..\n2cms\output\Templates\wwwroot\Bin\NHibernate.dll</HintPath>
-=======
       <HintPath>..\Lib\NHibernate.Caches.SysCache2.dll</HintPath>
->>>>>>> .r141
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -206,7 +174,6 @@
     <Content Include="Curriculum\UI\Views\CurriculumList.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

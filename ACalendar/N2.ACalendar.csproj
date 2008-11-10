@@ -83,7 +83,7 @@
     <Content Include="Web.connectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Convert\N2.Lms.csproj">
+    <ProjectReference Include="..\N2.Lms\N2.Lms.csproj">
       <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
       <Name>N2.Lms</Name>
     </ProjectReference>
@@ -91,9 +91,6 @@
       <Project>{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}</Project>
       <Name>N2.Workflow</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
