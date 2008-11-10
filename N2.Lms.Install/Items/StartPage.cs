@@ -13,7 +13,9 @@
 		[EditableItem("MyLearningPage", 3)]
 		public n2.TextPage MyLearningPage { get {
 				return this.GetOrFindOrCreateChild<n2.TextPage>("MyLearningPage", _page => {
-					
+
+					_page.Name = "Learn";
+					_page.Title = "Рабочий кабинет";
 					_page.GetOrFindOrCreateChild<MyAssignmentList>(
 						"MyAssignments", null);
 					

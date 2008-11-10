@@ -36,7 +36,7 @@ namespace N2.Lms.Items
 		[DataObjectMethod(DataObjectMethodType.Select, true)]
 		public IEnumerable<Course> FindMyCourses()
 		{
-			return this.MyAvailableCourses;
+			return this.MyAvailableCourses.ToArray();
 		}
 
 		[DataObjectMethod(DataObjectMethodType.Update, true)]
@@ -63,7 +63,7 @@ namespace N2.Lms.Items
 		[DataObjectMethod(DataObjectMethodType.Select, true)]
 		public IEnumerable<Request> FindApprovedRequests()
 		{
-			return this.RequestContainer.MyApprovedRequests;
+			return this.RequestContainer.MyApprovedRequests.ToArray();
 		}
 
 		[DataObjectMethod(DataObjectMethodType.Update, true)]
@@ -89,7 +89,7 @@ namespace N2.Lms.Items
 		[DataObjectMethod(DataObjectMethodType.Select, true)]
 		public IEnumerable<Request> FindRequestsToGrade()
 		{
-			return this.RequestContainer.MyFinishedAssignments;
+			return this.RequestContainer.MyFinishedAssignments.ToArray();
 		}
 
 		[DataObjectMethod(DataObjectMethodType.Update, true)]
@@ -132,7 +132,7 @@ namespace N2.Lms.Items
 		[DataObjectMethod(DataObjectMethodType.Select, true)]
 		public IEnumerable<Request> FindRequestsToApprove()
 		{
-			return this.RequestContainer.MyPendingRequests;
+			return this.RequestContainer.MyPendingRequests.ToArray();
 		}
 
 		[DataObjectMethod(DataObjectMethodType.Update, true)]
@@ -173,7 +173,7 @@ namespace N2.Lms.Items
 		[DataObjectMethod(DataObjectMethodType.Select, true)]
 		public IEnumerable<Request> FindMyGradedRequests()
 		{
-			return this.RequestContainer.MyGradedAssignments;
+			return this.RequestContainer.MyGradedAssignments.ToArray();
 		}
 
 		#endregion My Graded Trainings
