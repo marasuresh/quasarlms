@@ -94,10 +94,23 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
     
     protected void btnEmptyRecBin_Click(object sender, EventArgs e)
     {
+        var delMsgs = new Dictionary<int,Message>();
+        int index = 0;
+
         foreach (Message msg in this.CurrentItem.MessageStore.MyRecycled)
         {
-            Engine.Persister.Delete(msg);
+            delMsgs.Add(index, msg);
+            index++;
+            
 		}
+
+        for (int i = 0; i < delMsgs.Count; i++ )
+        {
+            Message msg;
+            delMsgs.TryGetValue(i, out msg);
+            Engine.Persister.Delete(msg);
+        }
+
 		Response.Redirect(Url.Parse(CurrentItem.Url).AppendSegment("folder/" + MailBox.C.Folders.RecyleBin).Path);
         
     }
