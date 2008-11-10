@@ -25,7 +25,7 @@ namespace Subgurim.Chat
             addJS("Scroll");
             //addJS("Tools");
             addJS("User");
-            addJS("xml");
+            addJS("Xml");
 
             base.OnPreRender(e);
         }

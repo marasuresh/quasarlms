@@ -77,7 +77,12 @@
     {
         /*width: 45px;
         text-align:center;*/
-    }    
+    }
+    
+    /*inline grid fixes*/
+    .grid { width:100%; }
+    .grid .top { float:inherit!important; padding:0px!important; }
+    .grid TABLE.gridview { border-collapse: separate!important; }   
 
     </style>
 
