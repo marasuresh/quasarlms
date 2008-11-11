@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using N2.Lms.Items;
@@ -31,8 +32,17 @@ namespace N2.Calendar.Curriculum.UI.Views
             }
         }
 
+        protected bool IsEditable
+        {
+            get
+            {
+                return Roles.IsUserInRole(this.User.Identity.Name, "Administrators");
+            }
+        }
+
         CourseContainer m_container;  //локальная коллекция курсов
 
+        
         public int ParentItemId
         {
             get { return (int?)this.ViewState["ParentItemId"] ?? 0; }
@@ -141,7 +151,7 @@ namespace N2.Calendar.Curriculum.UI.Views
 
         protected void btnAddTUP_Click(object sender, EventArgs e)
         {
-
+            if (!this.IsEditable) return;
             var _container = this.CurrentItem.CourseContainer;
             string tupToBeAdded = this.txtAddTUP.Text;
             _container.GetDetailCollection(tupToBeAdded, true).AddRange(
@@ -183,7 +193,8 @@ namespace N2.Calendar.Curriculum.UI.Views
 
        protected void cc_Changed(object sender, EventArgs e)
         {
-           this.btSave.Visible = true;
+            if (!this.IsEditable) return;
+            this.btSave.Visible = true;
         }
 
         protected void ddltup_SelectedIndexChanged(object sender, EventArgs e)
@@ -199,6 +210,7 @@ namespace N2.Calendar.Curriculum.UI.Views
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            if (!this.IsEditable) return;
             DetailCollection dc=  
                 this.CurrentItem.CourseContainer.GetDetailCollection(this.ddltup.SelectedValue, false);
             IEnumerable<string> dcToSave = this.CurrentCurriculum.DetailCollection;
@@ -213,6 +225,7 @@ namespace N2.Calendar.Curriculum.UI.Views
 
         protected void btnDelTUP_Click(object sender, ImageClickEventArgs e)
         {
+            if (!this.IsEditable) return;
             string tupToBeDeleted = this.ddltup.SelectedValue;
             this.CurrentItem.CourseContainer.DetailCollections.Remove(tupToBeDeleted);
             N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
