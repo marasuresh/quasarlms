@@ -40,11 +40,11 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
 	                var YearMilli = DyMilli * 365;
  // comment: 604800000=1000millisec*60sec*60min*24hour*7day
  
-	                //записываем данные вниз таблицы
-	                var dateEnd = new Date(day.valueOf()); // + (1000 * 60 * 60 * 24 * days) );
+	                //записываем данные
+	                var dateEnd = new Date(day.valueOf()); // + 3600000+ one hour
 	                dateEnd.setDate(dateEnd.getDate() + days);
-	                var str_dateStart = day.getFullYear() + '/' + (day.getMonth() + 1) + '/' + day.getDate()
-	                var str_dateEnd = dateEnd.getFullYear() + '/' + (dateEnd.getMonth() + 1) + '/' + dateEnd.getDate()
+	                var str_dateStart =day.getFullYear()  + '/' + (day.getMonth() + 1) + '/' + (day.getDate() )
+	                var str_dateEnd =dateEnd.getFullYear()  + '/' + (dateEnd.getMonth() + 1) + '/' + dateEnd.getDate()
 	                var _act = $('#eventtype').val().substr(0, 1);
                       var message = '{"act": "' + _act + '", "dateStart":"' + str_dateStart + '","dateEnd":"' + str_dateEnd + '"}'; 
                       var context = 'add'; 
@@ -58,20 +58,20 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
 	                for (var di = 0; di < days; di++) 
 	                {
 	                    var currDay = $(this._target).find('[id*=d_' + (dCursor.getMonth() + 1) + '_' + dCursor.getDate() + '_' + dCursor.getFullYear() + ']');
-
-	                    if (_act == "у") {
-	                        if (currDay.length) currDay.find("div").remove();
-	                    }
-	                    else {
-	                        if (currDay.length) currDay.append('<div class="dInfo" style="background-color: #' + colors(_act) + '"><span style="color:#ccc"></span>' + _act + '</div>');
+                        if (currDay.length) 
+                        {
+                        currDay.find("div").remove();
+	                    if (_act != "у") currDay.append('<div class="dInfo" style="background-color: #' + colors(_act) + '"><span style="color:#ccc"></span>' + _act + '</div>');
 	                    }
 	                    dCursor.setDate(dCursor.getDate() + 1);
 	                }
+	                
+	                
+	                
 	              }
 	 	        }    
 	        })
 	    }).ready(function() {
-
 	        show_event();
 	    });
 
@@ -175,7 +175,7 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
     });
 
 	</script>
-
+<n2:ChromeBox ID="ChromeBox1" runat="server">
 
 	<table width="100%">
         <% if (this.IsEditable)
@@ -221,7 +221,7 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
     <% foreach (var _ev in this.AEvents)
               { %>
        <div>
-          <%= _ev.Title%> &nbsp;<%= _ev.DateStart + "-" + _ev.DateEnd%>&nbsp;</div>
+          <%= _ev.Title%> &nbsp;<%= ConvertDateString( _ev.DateStart) + " - " + ConvertDateString(_ev.DateEnd)%>&nbsp;</div>
 	<% 
     i++;
               }
@@ -239,7 +239,7 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
 
 	</table>
 
-
+  </n2:ChromeBox>
 
 
     </asp:Content>
