@@ -8,7 +8,7 @@
 		"N2.Lms.Items.StartPage",
 		"",
 		"", 0)]
-	public class StartPage: n2.StartPage//, ILmsStartPage
+	public class LmsStartPage: n2.StartPage//, ILmsStartPage
 	{
 		[EditableItem("MyLearningPage", 3)]
 		public n2.TextPage MyLearningPage { get {
