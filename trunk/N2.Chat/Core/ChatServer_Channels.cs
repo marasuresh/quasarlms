@@ -17,12 +17,13 @@ namespace Subgurim.Chat.Server
         /// Adds a channel to the system
         /// </summary>
         /// <param name="channel"></param>
+        /// <param name="categoria"></param>
         /// <returns>
         /// 1: correctly added
         /// 0: it already exists!!
         /// -1: error
         /// </returns>
-        internal static int channel_Add(string channel, string categoria)
+        public static int channel_Add(string channel, string categoria)
         {
             Channel c = new Channel(channel, categoria);
 
@@ -156,7 +157,7 @@ namespace Subgurim.Chat.Server
         /// <returns></returns>
         private static int channel_maintenance()
         {
-            Dictionary<string, Channel> channels = (Dictionary<string, Channel>) (myCache.Get(channel_Key_List()));
+            var channels = (Dictionary<string, Channel>) (myCache.Get(channel_Key_List()));
 
             if (channels != null)
             {
@@ -202,6 +203,26 @@ namespace Subgurim.Chat.Server
         private static bool channels_Exists(string channel)
         {
             return ((Dictionary<string, Channel>) (myCache.Get(channel_Key_List()))).ContainsKey(channel);
+        }
+
+        /// <summary>
+        /// Find a channel by name
+        /// </summary>
+        /// <param name="channel"></param>
+        /// <returns></returns>
+        public static Channel GetChannelByName(string channel)
+        {
+            foreach (string key in channels_List().Keys)
+            {
+                if (key.Equals(channel, StringComparison.OrdinalIgnoreCase))
+                {
+                    Channel c;
+                    ((Dictionary<string, Channel>) (myCache.Get(channel_Key_List()))).TryGetValue(key, out c);
+                    return c; 
+                }
+                    
+            }
+            return null;
         }
 
         #endregion

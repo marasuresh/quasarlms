@@ -80,7 +80,7 @@ namespace Subgurim.Chat.Server
             return null;
         }
 
-        #region 'Borrar Canales'
+        #region 'Delete Channel from DB'
 
         internal static int channel_Delete(Channel c)
         {

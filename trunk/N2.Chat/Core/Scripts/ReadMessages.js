@@ -10,7 +10,7 @@ function leerMensajes(channel)
     var accion = '?accion=leerMensajes';
     
     //string channel, long autoN, long tick, string userName
-    channel = (channel && (channel != 'undefined')) ? channel : 'SubgurimChat';
+    channel = channel || ChannelID || 'SubgurimChat';
     var argumentos = '&channel=' + escape(channel) +'&ticks=' + ticks + '&autoN=' + autoN + '&userName=' + escape(userName)+'&i=' + sc_random();
     
     xmlHttp.onreadystatechange = leerMensajes_Callback;
