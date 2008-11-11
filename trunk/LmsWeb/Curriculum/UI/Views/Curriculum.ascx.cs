@@ -42,7 +42,9 @@ namespace N2.Calendar.Curriculum.UI.Views
         {
             get
             {
-                return
+                
+                    if (_detailCollection== null)  return null;
+return
                     from _stringdetail in _detailCollection //  this.CurrentCurriculum.Details 
                     select new CourseInfo
                     {
@@ -132,16 +134,25 @@ namespace N2.Calendar.Curriculum.UI.Views
             ((Label)e.Item.FindControl("l10")).Text = ((HiddenField)e.Item.FindControl("hf")).Value;
         }
 
+        public event EventHandler Changed;
+
+        protected virtual void OnChanged(EventArgs e)
+        {
+            if (this.Changed != null) this.Changed(this, e);
+        
+        }
+
         protected void rbl_SelectedIndexChanged(object sender, EventArgs e)
         {
             //((Label)e.Item.FindControl("l10")).Text = ((HiddenField)e.Item.FindControl("hf")).Value;
             string currCurseID = ((HiddenField)((RadioButtonList)sender).NamingContainer.FindControl("hf")).Value;
             string currValue = ((RadioButtonList)sender).SelectedValue;
-            this.Label.Text = "courseID: " + currCurseID + "  value=" + ((RadioButtonList)sender).SelectedValue;
-            
-
+            //this.Label.Text = "courseID: " + currCurseID + "  value=" + ((RadioButtonList)sender).SelectedValue;
+         
                 string[] _dc = this.DetailCollection.ToArray();
-            
+
+            OnChanged(EventArgs.Empty);
+           
             for (int i=0; i < _dc.Length; i++)
             {
                 if (string.Equals(_dc[i].Substring(1), currCurseID))
@@ -152,6 +163,8 @@ namespace N2.Calendar.Curriculum.UI.Views
 
                 }
             }
+
+
 
         }
 

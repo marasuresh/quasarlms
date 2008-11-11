@@ -14,13 +14,13 @@ namespace N2.Calendar.Curriculum.UI.Views {
     public partial class Curriculum {
         
         /// <summary>
-        /// Label control.
+        /// ChromeBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label;
+        protected global::N2.Web.UI.WebControls.ChromeBox ChromeBox1;
         
         /// <summary>
         /// rpt control.
