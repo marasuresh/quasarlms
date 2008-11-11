@@ -23,6 +23,24 @@ namespace N2.Calendar.Curriculum.UI.Views {
         protected global::System.Web.UI.WebControls.DropDownList ddltup;
         
         /// <summary>
+        /// btSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btSave;
+        
+        /// <summary>
+        /// btnDelTUP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnDelTUP;
+        
+        /// <summary>
         /// txtAddTUP control.
         /// </summary>
         /// <remarks>
@@ -41,33 +59,6 @@ namespace N2.Calendar.Curriculum.UI.Views {
         protected global::System.Web.UI.WebControls.Button btnAddTUP;
         
         /// <summary>
-        /// btnDelTUP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDelTUP;
-        
-        /// <summary>
-        /// rpt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpt;
-        
-        /// <summary>
-        /// debugl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label debugl;
-        
-        /// <summary>
         /// CurrentCurriculum control.
         /// </summary>
         /// <remarks>
@@ -75,14 +66,5 @@ namespace N2.Calendar.Curriculum.UI.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::N2.Calendar.Curriculum.UI.Views.Curriculum CurrentCurriculum;
-        
-        /// <summary>
-        /// btnSave control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
     }
 }

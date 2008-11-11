@@ -18,17 +18,16 @@ namespace N2.Calendar.Curriculum.UI.Views
             //this ViewState["ParentItemId"] = ParentItem.ID;
             if (!this.IsPostBack)
             {
-                this.CurrentCurriculum.CourseContainerId = this.CurrentItem.CourseContainer.ID;
-                this.CurrentCurriculum.CurrentCurriculumName =
-                    (this.ParentItem.DetailCollections.Select(_c => _c.Key)).First();
 
                 var _dummy = this.CurrCurriculum;
 
                this.ddltup.DataSource = CollectionNames;
                 this.ddltup.DataBind();
+                this.CurrentCurriculum.CourseContainerId = this.CurrentItem.CourseContainer.ID;
+                //this.CurrentCurriculum.CurrentCurriculumName =
+                //    (this.ParentItem.DetailCollections.Select(_c => _c.Key)).First();
+                ddltup_SelectedIndexChanged(this.ddltup, new EventArgs());
 
-                this.rpt.DataSource = this.CurrCurriculum;
-                this.rpt.DataBind();
             }
         }
 
@@ -71,14 +70,14 @@ namespace N2.Calendar.Curriculum.UI.Views
 
             var _tup = _container.GetDetailCollection("", true);
 
-            _tup.Clear();
+            //_tup.Clear();
 
-            _tup.AddRange(
-                from _item in this.rpt.Items.Cast<RepeaterItem>()
-                select new N2.Details.IntegerDetail(
-                    this.ParentItem,
-                    ((HiddenField)_item.FindControl("hf")).Value,
-                    int.Parse(((RadioButtonList)_item.FindControl("rbl")).SelectedValue)));
+            //_tup.AddRange(
+            //    from _item in this.rpt.Items.Cast<RepeaterItem>()
+            //    select new N2.Details.IntegerDetail(
+            //        this.ParentItem,
+            //        ((HiddenField)_item.FindControl("hf")).Value,
+            //        int.Parse(((RadioButtonList)_item.FindControl("rbl")).SelectedValue)));
 
             return _container;
         }
@@ -182,25 +181,21 @@ namespace N2.Calendar.Curriculum.UI.Views
             
         }
 
-        protected void btnDelTUP_Click(object sender, EventArgs e)
+       protected void cc_Changed(object sender, EventArgs e)
         {
-            string tupToBeDeleted = this.ddltup.SelectedValue;
-            this.CurrentItem.CourseContainer.DetailCollections.Remove(tupToBeDeleted);
-            N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
-            this.ddltup.DataSource = CollectionNames;
-            this.ddltup.DataBind();
-
+           this.btSave.Visible = true;
         }
 
         protected void ddltup_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.debugl.Text = ((DropDownList)sender).SelectedValue;
             this.CurrentCurriculum.CourseContainerId = this.CurrentItem.CourseContainer.ID;
             DetailCollection dc=  
                 this.CurrentItem.CourseContainer.GetDetailCollection(((DropDownList)sender).SelectedValue, false);
             this.CurrentCurriculum.DetailCollection = dc.Cast<String>(); 
             this.CurrentCurriculum.CurrentCurriculumName = ((DropDownList)sender).SelectedValue;
         }
+
+
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -213,6 +208,17 @@ namespace N2.Calendar.Curriculum.UI.Views
                 from str in dcToSave 
                 select new StringDetail(this.CurrentItem.CourseContainer, this.ddltup.SelectedValue, str));
             N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
+            this.btSave.Visible = false;
+        }
+
+        protected void btnDelTUP_Click(object sender, ImageClickEventArgs e)
+        {
+            string tupToBeDeleted = this.ddltup.SelectedValue;
+            this.CurrentItem.CourseContainer.DetailCollections.Remove(tupToBeDeleted);
+            N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
+            this.ddltup.DataSource = CollectionNames;
+            this.ddltup.DataBind();
+
         }
 
     }
