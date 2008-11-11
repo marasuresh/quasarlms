@@ -69,11 +69,39 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
 
    var _event = ser.ReadObject(ms) as JsonAEvent;
 
-   if (_event.act == "у") del(_event);  
-   else  save(_event);
+       foreach (AEvent _e in AEvents)
+           if (_e.DateStart == _event.dateStart)
+           {
+               if (_event.act == "у")
+               {
+                   del(_e);
+                   return;
+               }
+ 
+               if (Convert.ToDateTime(_e.DateEnd) > Convert.ToDateTime(_event.dateEnd)) //существующее событие дольше
+               {
+                   
+                   _e.DateStart = oneDayMore(_event.dateEnd);
+                   this.Engine.Persister.Save(_e);
+                   
+               }
+                 else
+               {
+                   del(_e);
+               }
+         
+           }
+       save(_event);
+   }
 
-
+ protected string oneDayMore(string inputDate)
+ {
+     DateTime dt = Convert.ToDateTime(inputDate);
+     dt.AddDays(1);
+     return dt.Year.ToString() + "/" + dt.Month.ToString() + "/" + dt.Day.ToString();
  }
+
+ 
 
  //Выдача результата
  string ICallbackEventHandler.GetCallbackResult()
@@ -185,23 +213,20 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
                 this.Engine.Persister.Save(vs);
                 break;
             default:
-                Console.WriteLine("Учеба однако:(");
+                //Console.WriteLine("Учеба однако:(");
                 break;
         }
     }
-    protected void del(JsonAEvent _e)
+    protected void del(AEvent _e)
     {
-        foreach (AEvent _ce in this.CurrentItem.AEvents)
-        {
-            if (_ce.DateStart == _e.dateStart)
-            {
-                // можно написать проверку если конец не совпадает то обрезать только часть
-            this.Engine.Persister.Delete(_ce);
-            return;
-            }
+            this.Engine.Persister.Delete(_e);
+    }
 
-        }
-     
+    protected string ConvertDateString(string inputDate)
+    {
+        string[] s = inputDate.Split(new Char[] { '/' });
+        if (s[2]!="1") s[2] = (Convert.ToInt32(s[2]) ).ToString();
+        return s[2]+"."+ s[1]+ "."+ s[0];
     }
 
 
