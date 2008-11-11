@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,14 +27,15 @@ namespace N2.Templates.Chat.UI.Parts
             trChannels.Add(trChannel);
 
             //Создаем каналы согласно списка активных тренингов.
-            foreach (N2.Lms.Items.Request req in CurrentItem.ApprovedRequests)
+            foreach (N2.Lms.Items.Request req in CurrentItem.ApprovedRequests.ToList())
             {
                 string newChannelID = ((ApprovedState)req.GetCurrentState()).Training.ID.ToString();
                 string newChannelName = ((ApprovedState) req.GetCurrentState()).Training.Title;
                 var errm = ChatServer.channel_Add(newChannelID, "1");
                 
                 var tc = new TrainingChannel() { channelID = newChannelID, channelName = newChannelName };
-                trChannels.Add(tc);
+
+                if (!trChannels.Contains(tc, new ChannelComparer())) trChannels.Add(tc);
             }
 
             lbDefChannel.DataSource = trChannels;
@@ -54,6 +56,8 @@ namespace N2.Templates.Chat.UI.Parts
             base.OnInit(e);
         }
 
+        
+
        /// <summary>
        /// Переключение активного канала.
        /// </summary>
@@ -64,7 +68,20 @@ namespace N2.Templates.Chat.UI.Parts
                MyChatGrande1.ActiveChannel = channel;
        }
 
-       private class TrainingChannel
+        private class ChannelComparer : IEqualityComparer<TrainingChannel>
+        {
+            public bool Equals(TrainingChannel x, TrainingChannel y)
+            {
+                return x.channelID == y.channelID && x.channelName == y.channelName ;
+            }
+
+            public int GetHashCode(TrainingChannel obj)
+            {
+                return obj.GetHashCode();
+            }
+        }
+
+        private class TrainingChannel
         {
             public string channelID { set; get; }
 
