@@ -90,8 +90,6 @@
     <Compile Include="Items\RequestWorkflow\Transitions\AcceptedState.cs" />
     <Compile Include="Items\RequestWorkflow\Transitions\ApprovedState.Business.cs" />
     <Compile Include="Items\RequestWorkflow\Transitions\ApprovedState.cs" />
-    <Compile Include="Items\Storage.Business.cs" />
-    <Compile Include="Items\Storage.cs" />
     <Compile Include="Items\Test.Business.cs" />
     <Compile Include="Items\Test.cs" />
     <Compile Include="Items\TestQuestion.Business.cs" />
