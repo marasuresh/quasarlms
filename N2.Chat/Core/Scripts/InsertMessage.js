@@ -82,8 +82,8 @@ function getMensaje(channel)
     
     _mensaje.autor = userName;
     _mensaje.texto = document.getElementById(tb_message_id).value;
-    
-    channel = (channel && (channel != 'undefined')) ? channel : 'SubgurimChat';
+
+    channel = channel || ChannelID || 'SubgurimChat';
     _mensaje.canal = channel;
     
     _mensaje.autonumeric = autoN

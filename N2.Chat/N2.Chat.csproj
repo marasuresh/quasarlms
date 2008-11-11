@@ -74,6 +74,7 @@
     <Compile Include="Core\Utilities\AutonumericList.cs" />
     <Compile Include="Core\Utilities\MessagesCollection.cs" />
     <Compile Include="Items\Chat.cs" />
+    <Compile Include="Items\ChatBox.Business.cs" />
     <Compile Include="Items\ChatBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -95,6 +96,16 @@
     <EmbeddedResource Include="Core\Scripts\Tools.js" />
     <EmbeddedResource Include="Core\Scripts\User.js" />
     <EmbeddedResource Include="Core\Scripts\Xml.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\N2.Lms\N2.Lms.csproj">
+      <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
+      <Name>N2.Lms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\N2.Workflow\N2.Workflow.csproj">
+      <Project>{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}</Project>
+      <Name>N2.Workflow</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

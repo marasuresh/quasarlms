@@ -105,6 +105,14 @@
       <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
       <Name>N2.Futures</Name>
     </ProjectReference>
+    <ProjectReference Include="..\N2.Lms\N2.Lms.csproj">
+      <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
+      <Name>N2.Lms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\N2.Workflow\N2.Workflow.csproj">
+      <Project>{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}</Project>
+      <Name>N2.Workflow</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
