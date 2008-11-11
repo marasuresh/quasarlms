@@ -15,7 +15,7 @@ using System.Web.UI;
 /// <summary>
 /// <remarks>SkinID is used to tagging nodes to reconstruct their hierarchy in HTML from a plain wizard step collection.
 /// f(irst), l(ast), m(iddle), s(ingle) = f && l,
-/// capital means "with children", lowercase -- otherwise
+/// capitalized means "with children", lowercase -- otherwise
 /// </remarks>
 /// </summary>
 public partial class Player : ContentUserControl<AbstractContentPage, TrainingTicket>
@@ -152,7 +152,9 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 			ID = module.Name,
 			Title = module.Title,
 			StepType = WizardStepType.Auto,
-			SkinID = module.Topic.Topics.Any() ? tag.ToUpper() : tag,
+			SkinID = module.Topic.Topics.Any() || null != module.Topic.Practice
+				? tag.ToUpper()
+				: tag,
 		};
 		this.Decorator.Items.Add(_step.ID, module);
 		this.wz.WizardSteps.Add(_step);
@@ -210,7 +212,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 			ID = topic.Name,
 			Title = topic.Title,
 			StepType = WizardStepType.Auto,
-			SkinID = topic.Topics.Any() ? tag.ToUpper() : tag,
+			SkinID = topic.Topics.Any() || null != topic.Practice ? tag.ToUpper() : tag,
 		};
 		this.Decorator.Items.Add(_step.ID, topic);
 		this.wz.WizardSteps.Add(_step);

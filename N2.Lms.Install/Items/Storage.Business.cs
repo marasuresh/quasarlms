@@ -19,7 +19,7 @@
 		public CourseContainer Courses { get {
 				return this.GetOrFindOrCreateChild<CourseContainer>("CourseContainer", null);
 		} set { this.SetDetail<CourseContainer>("CourseContainer", value); } }
-
+		
 		[EditableItem("RequestContainer", "", 5, Title = "Request container")]
 		public RequestContainer Requests { get {
 				return this.GetOrFindOrCreateChild<RequestContainer>("RequestContainer", null);

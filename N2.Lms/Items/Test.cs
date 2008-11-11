@@ -9,6 +9,7 @@
 	[Definition]
 	[AllowedChildren(typeof(TestQuestion))]
 	[RestrictParents(typeof(TopicList), typeof(Topic))]
+	[WithEditableTitle("Название", 1)]
 	public partial class Test: AbstractItem, ISurvey
 	{
 		#region System properties
@@ -18,7 +19,6 @@
 		public override string TemplateUrl { get { return "~/Lms/UI/Test.ascx"; } }
 		public override string ZoneName {
 			get { return "Topics"; }
-			set { base.ZoneName = value; }
 		}
 		
 		#endregion System properties
