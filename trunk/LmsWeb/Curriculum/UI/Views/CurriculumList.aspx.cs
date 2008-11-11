@@ -218,7 +218,7 @@ namespace N2.Calendar.Curriculum.UI.Views
             dc.Clear();
             dc.AddRange(
                 from str in dcToSave 
-                select new StringDetail(this.CurrentItem.CourseContainer, this.ddltup.SelectedValue, str));
+                select new StringDetail(this.CurrentItem.CourseContainer, str.Substring(1), str));
             N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
             this.btSave.Visible = false;
         }
