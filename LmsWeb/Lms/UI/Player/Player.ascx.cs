@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using N2.Definitions;
 using N2.Lms.Items;
@@ -9,8 +10,6 @@ using N2.Resources;
 using N2.Templates.Items;
 using N2.Templates.Web.UI;
 using N2.Web.UI;
-using System.ComponentModel;
-using System.Web.UI;
 
 /// <summary>
 /// <remarks>SkinID is used to tagging nodes to reconstruct their hierarchy in HTML from a plain wizard step collection.
@@ -114,6 +113,8 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 	{
 		this.CreateWizard();
 
+		this.Page.Title = this.CurrentItem.Training.Title;
+
 		var _items = this.CurrentItem.Training.Modules.Cast<N2.ContentItem>().ToList();
 		
 		//TODO: take test from training schedule rather then from course definition
@@ -173,12 +174,22 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 			ID = test.Name,
 			Title = test.Title,
 			StepType = WizardStepType.Auto,
-			SkinID = test.Questions.Any() ? tag.ToUpper() : tag,
+			SkinID = test.Questions.Any() && test.DisplayMultiplePages
+				? tag.ToUpper()
+				: tag,
 		};
+		
 		this.Decorator.Items.Add(_step.ID, test);
 		this.wz.WizardSteps.Add(_step);
 
-		this.CreateControlHierarchy(test);
+		(
+			(TemplateUserControl<AbstractContentPage, Test>)((IContainable)test).AddTo(_step)
+		).CurrentItem = test;
+
+		if (test.DisplayMultiplePages) {
+			this.CreateControlHierarchy(test);
+		}
+		
 		return _step;
 	}
 
