@@ -8,7 +8,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>N2.Lms</RootNamespace>
+    <RootNamespace>N2</RootNamespace>
     <AssemblyName>LmsWeb</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkSubset>Full</TargetFrameworkSubset>
@@ -38,6 +38,10 @@
     <Reference Include="Castle.Windsor, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="ComfortASP, Version=0.70.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\ComfortASP.dll</HintPath>
     </Reference>
     <Reference Include="N2, Version=1.0.403.35057, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -142,6 +146,13 @@
       <DependentUpon>CourseIntro.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Lms\UI\Parts\Test.ascx.cs">
+      <DependentUpon>Test.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Lms\UI\Parts\Test.ascx.designer.cs">
+      <DependentUpon>Test.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Lms\UI\Player\Player.ascx.cs">
       <DependentUpon>Player.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -213,7 +224,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lms\UI\TestQuestion.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\MyRequests.ru.resx" />
+    <Content Include="Lms\UI\Parts\Test.ascx" />
+    <Content Include="Lms\UI\Parts\TestMultiPages.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

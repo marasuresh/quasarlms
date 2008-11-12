@@ -46,8 +46,8 @@ div#wrap {
 	width:73%;
 	height:90%;
 }
-.player .wizard .step div,
-.player .wizard .step iframe {
+.player .wizard .step > div,
+.player .wizard .step > iframe {
 	height: 100%;
 }
 .player .wizard .nav {
@@ -89,6 +89,14 @@ div#wrap {
 	display:block;
 	background-color:White;
 	border:1px solid Silver;
+}
+
+.player .testControl .correct {
+	border: 1px solid Lime!important;
+}
+
+.player .testControl .incorrect {
+	border: 1px solid Red!important;
 }
 
 .coursetree li { padding: 3px 0 2px 16px; }

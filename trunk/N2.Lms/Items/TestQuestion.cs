@@ -17,6 +17,7 @@
 		public override string IconUrl { get { return "~/Lms/UI/Img/page_tick.gif"; } }
 		public override string TemplateUrl { get { return "~/Lms/UI/TestQuestion.ascx"; } }
 		public override bool IsPage { get { return false; } }
+		public override string ZoneName { get { return "Questions"; } }
 
 		#endregion System properties
 
@@ -91,22 +92,32 @@
 			HelpTitle = "Возможные варианты ответа, по одному в каждой строчке")]
 		public string Options {
 			get { return string.Join("\n", OptionList.ToArray()); }
-			set { this.OptionList = value.Split('\n').Select(_line => _line.Trim()); }
+			set { this.OptionList = value.Split('\n').Select(_line => _line.Trim()).ToList(); }
 		}
 
 		internal DetailCollection OptionCollection {
 			get { return this.GetDetailCollection("Options", true); }
 		}
 
-		public IEnumerable<string> OptionList {
+		public IList<string> OptionList {
 			get {
-				return this.OptionCollection.Cast<string>();
+				return this.OptionCollection.Cast<string>().ToList();
 			}
 			set {
 				this.OptionCollection.Clear();
 				this.OptionCollection.AddRange(value);
 			}
 		}
+
+		protected IList<bool> AnswersMask {
+			get {
+				return (
+					from _char in this.Answers
+					select _char == '1'
+				).ToList().AsReadOnly();
+			}
+		}
+
 		
 		#endregion Lms collection properties
 

@@ -14,12 +14,20 @@
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/page_script.gif"; } }
 		public override bool IsPage { get { return false; } }
-		public override string TemplateUrl { get { return "~/Lms/UI/Test.ascx"; } }
-		public override string ZoneName { get { return "Topics"; } }
+		public override string TemplateUrl { get { return
+			this.DisplayMultiplePages
+				? "~/Lms/UI/Parts/TestMultiPages.ascx"
+				: "~/Lms/UI/Parts/Test.ascx"; } }
 		
 		#endregion System properties
 
 		#region Lms properties
+
+		[EditableCheckBox("Expanded view", 09)]
+		public bool DisplayMultiplePages {
+			get { return this.GetDetail<bool>("DisplayMultiplePages", false); }
+			set { this.SetDetail<bool>("DisplayMultiplePages", value); }
+		}
 
 		[EditableEnum("Test type", 11, typeof(TestTypeEnum))]
 		public int TestType {

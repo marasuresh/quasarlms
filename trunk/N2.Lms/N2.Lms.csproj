@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="Web\UI\WebControls\Adapters\DataListAdapter.cs" />
     <Compile Include="Web\UI\WebControls\Adapters\WizardAdapter.cs" />
+    <Compile Include="Web\UI\WebControls\TestQuestionEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
