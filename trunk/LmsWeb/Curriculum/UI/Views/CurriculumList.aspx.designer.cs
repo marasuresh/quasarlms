@@ -66,5 +66,23 @@ namespace N2.Calendar.Curriculum.UI.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::N2.Calendar.Curriculum.UI.Views.Curriculum CurrentCurriculum;
+        
+        /// <summary>
+        /// SelectUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::N2.Web.UI.WebControls.SelectUser SelectUser;
+        
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

@@ -37,11 +37,13 @@
                 </asp:DropDownList>
                 <% if (this.IsEditable)
                    { %>
-                <asp:ImageButton ID="btSave" runat="server" OnClick="btnSave_Click" ImageUrl="../../../Edit/img/ico/png/accept.png"
+                <asp:ImageButton ID="btSave" runat="server" OnClick="btnSave_Click" ImageUrl="../../../Edit/img/ico/png/accept.png" alt = "Сохранить"
                     Visible="False" />
-                <asp:ImageButton ID="btnDelTUP" runat="server" OnClick="btnDelTUP_Click" ImageUrl="../../../Edit/img/ico/png/delete.png" />
-                <img id="shAdd" src="../../../Edit/img/ico/png/add.png" />
+                <asp:ImageButton ID="btnDelTUP" runat="server" OnClick="btnDelTUP_Click" ImageUrl="../../../Edit/img/ico/png/delete.png" alt = "Удалить" />
+                <img id="shAdd" src="../../../Edit/img/ico/png/add.png" alt = "Новый" />
+               
             </td>
+            
             <td id="add">
                 <asp:TextBox ID="txtAddTUP" runat="server"></asp:TextBox>
                 <asp:Button ID="btnAddTUP" runat="server" Text="OK" OnClick="btnAddTUP_Click" />
@@ -53,14 +55,24 @@
                 <uc1:Curriculum ID="CurrentCurriculum" runat="server" OnChanged="cc_Changed" />
             </td>
         </tr>
-        <%-- <tr>
-<td colspan=2>
-      <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" 
-        Text="Сохранить" />
-</td>
-</tr>
---%>
+
+                  <% if (this.IsEditable)
+                   { %>
+        <tr>
+            <td >
+                <n2:SelectUser ID="SelectUser" runat=server ></n2:SelectUser>
+              </td>
+            
+            <td >   
+                <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
+                    Text="Присвоить пользователям" />
+            </td>
+        </tr>
+                   <% } %>
+     
+        
     </table>
+    
     <% }
        else
        {
