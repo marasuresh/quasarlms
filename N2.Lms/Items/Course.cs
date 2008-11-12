@@ -1,26 +1,19 @@
 ﻿namespace N2.Lms.Items
 {
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Diagnostics;
-
-	using N2.Details;
 	using N2.Definitions;
+	using N2.Details;
 	using N2.Installation;
 	using N2.Integrity;
-	using N2.Edit.Trash;
-	using N2.Templates.Items;
 	using N2.Serialization;
 	using N2.Web.UI;
-	using N2.Collections;
 
 	[Definition("Course", "Course", Installer = InstallerHint.NeverRootOrStartPage)]
 	[RestrictParents(typeof(CourseContainer))]
 	//[WithEditableTitle("Title", 20)]
 	[TabPanel("lms", "LMS", 200)]
-	[	EnsureChild(Course.TopicContainerName, typeof(TopicList)),
+	[	EnsureChild(Course.TopicContainerName, typeof(TopicContainer)),
 		EnsureChild(Course.TrainingContainerName, typeof(TrainingContainer))]
-	public partial class Course : AbstractContentPage
+	public partial class Course : ContentItem// AbstractContentPage
 	{
 		#region Constants
 		
@@ -33,11 +26,8 @@
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/15.png"; } }
 		public override string TemplateUrl { get { return "~/Lms/UI/CourseInfo.aspx"; } }
-
-		public override string ZoneName {
-			get { return "Content"; }
-			set { base.ZoneName = value; }
-		}
+		public override string ZoneName { get { return "Content"; } }
+		public override bool IsPage { get { return false; } }
 
 		#endregion Properties
 

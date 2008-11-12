@@ -155,7 +155,7 @@ namespace N2.Calendar.Curriculum.UI.Views
             var _container = this.CurrentItem.CourseContainer;
             string tupToBeAdded = this.txtAddTUP.Text;
             _container.GetDetailCollection(tupToBeAdded, true).AddRange(
-                from _course in _container.GetChildren<Course>()
+                from _course in _container.GetChildren().OfType<Course>()
                 select new StringDetail(_container, _course.ID.ToString(), "0" + _course.ID.ToString())
             );
 

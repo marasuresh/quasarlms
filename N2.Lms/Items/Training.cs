@@ -5,23 +5,21 @@ namespace N2.Lms.Items
 {
 	using N2.Details;
 	using N2.Integrity;
-	using N2.Templates.Items;
 	using N2.Web.UI;
 
 	[RestrictParents(typeof(TrainingContainer))]
 	[Definition, WithEditableTitle]
 	[WithEditableDateRange("Validity period", 50, "StartOn", "FinishOn", ContainerName="lms")]
 	[TabPanel("lms", "LMS", 200)]
-	public partial class Training : AbstractContentPage
+	public partial class Training : ContentItem
 	{
 		#region System properties
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/01/43.png"; } }
 		public override string TemplateUrl { get { return "~/Lms/UI/Training.aspx"; } }
-
+		public override bool IsPage { get { return false; } }
 		public override string Title {
 			get { return base.Title ?? (base.Title = this.Course.Title); }
-			set { base.Title = value; }
 		}
 
 		#endregion System properties

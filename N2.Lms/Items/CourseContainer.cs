@@ -11,15 +11,15 @@
 	[Definition("Course Container", "CourseContainer", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
 	[RestrictParents(typeof(IStructuralPage), typeof(IStorageItem))]
 	[NotThrowable, NotVersionable]
-	public class CourseContainer: AbstractContentPage
+	public class CourseContainer: ContentItem
 	{
 		public CourseContainer()
 		{
-			this.Title = "Хранилище курсов";
+			this.Title = "Courses";
 		}
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/17.png"; } }
-
 		public override string TemplateUrl { get { return "~/Templates/Secured/Go.aspx"; } }
+		public override bool IsPage { get { return false; } }
 	}
 }

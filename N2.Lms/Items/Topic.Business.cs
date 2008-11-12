@@ -8,7 +8,7 @@ namespace N2.Lms.Items
 
 	partial class Topic
 	{
-		public bool IsTopLevel { get { return this.Parent is TopicList; } }
+		public bool IsTopLevel { get { return this.Parent is TopicContainer; } }
 		
 		Course m_course;
 		public Course Course {

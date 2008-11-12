@@ -10,12 +10,12 @@ namespace N2.Lms.Items
 	using N2.Templates.Items;
 
 	[Definition("Topic", "Topic", Installer = InstallerHint.NeverRootOrStartPage)]
-	[RestrictParents(typeof(TopicList), typeof(Topic))]
+	[RestrictParents(typeof(TopicContainer), typeof(Topic))]
 	[WithEditableName("Name (Guid)", 03)]
 	[WithEditableTitle("Title", 05)]
 	[WithEditablePublishedRange("Published between", 07)]
 	[ReplaceDefinitions(typeof(AbstractContentPage), typeof(ContentItem))]
-	public partial class Topic : AbstractItem
+	public partial class Topic : ContentItem
 	{
 		#region System properties
 

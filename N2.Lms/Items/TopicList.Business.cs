@@ -4,7 +4,7 @@
 	using System.Linq;
 	using N2.Collections;
 
-	partial class TopicList
+	partial class TopicContainer
 	{
 		internal IEnumerable<Topic> Topics {
 			get { return this.GetChildren(

@@ -49,14 +49,27 @@
 	
 	<ItemTemplate>
 		<tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>'>
-			<td class="command"><asp:LinkButton ID="btnEdit" runat="server" Text="View" CommandName="Edit" /></td>
+			<td class="command">
+				<asp:ImageButton
+						ID="ImageButton1"
+						runat="server"
+						ImageUrl="~/Lms/UI/Img/clear.gif"
+						CssClass="LibC_c"
+						AlternateText="детали..."
+						CommandName="Edit" /></td>
 			<td><a target="_blank" href='<%# this.ResolveClientUrl("~/Lms/UI/Player.aspx?id=" + ((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Ticket.ID).ToString()%>'><%# ((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Training.Title%></a></td>
 		</tr>
 	</ItemTemplate>
 	
 	<EditItemTemplate>
 		<tr class='edit-info <%# Container.DataItemIndex == 0 ? "first" : string.Empty %>'>
-			<td class="command"><asp:LinkButton ID="btnEdit" runat="server" Text="Отмена" CommandName="Cancel" /></td>
+			<td class="command">
+				<asp:ImageButton
+						ID="btnCancel"
+						runat="server"
+						ImageUrl="~/Lms/UI/Img/clear.gif"
+						CssClass="LibC_o"
+						CommandName="Cancel" /></td>
 			<td><%# ((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Training.Title %></td>
 		</tr>
 		<tr><td class="edit" colspan="2">
@@ -68,6 +81,7 @@
 						</tr> 
 					</table>
 					<div class="footer command">
+						<asp:Image runat="server" ImageUrl="~/Edit/Img/ico/accept.gif" />
 						<asp:LinkButton ID="btnSave" runat="server" Text="Закончить курс" CommandName="Update" />
 					</div>
 				</div>

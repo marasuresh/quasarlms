@@ -1,18 +1,16 @@
 ﻿namespace N2.Lms.Items
 {
 	using System.Collections.Generic;
-	using System;
 	using System.Linq;
+	using System.Web.UI.WebControls;
 	using N2.Details;
 	using N2.Integrity;
-	using System.Web.UI.WebControls;
-	using N2.Templates.Items;
 
 	[Definition]
 	[RestrictParents(typeof(Test))]
 	[AllowedChildren]
 	[WithEditableTitle(Required = true)]
-	public partial class TestQuestion: AbstractItem
+	public partial class TestQuestion: ContentItem
 	{
 		#region System properties
 		

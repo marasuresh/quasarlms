@@ -3,23 +3,19 @@
 	using System;
 	using N2.Details;
 	using N2.Integrity;
-	using System.Collections.Generic;
-	using N2.Templates.Items;
 
 	[Definition]
 	[AllowedChildren(typeof(TestQuestion))]
-	[RestrictParents(typeof(TopicList), typeof(Topic))]
+	[RestrictParents(typeof(TopicContainer), typeof(Topic))]
 	[WithEditableTitle("Название", 1)]
-	public partial class Test: AbstractItem, ISurvey
+	public partial class Test: ContentItem//, ISurvey
 	{
 		#region System properties
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/page_script.gif"; } }
 		public override bool IsPage { get { return false; } }
 		public override string TemplateUrl { get { return "~/Lms/UI/Test.ascx"; } }
-		public override string ZoneName {
-			get { return "Topics"; }
-		}
+		public override string ZoneName { get { return "Topics"; } }
 		
 		#endregion System properties
 

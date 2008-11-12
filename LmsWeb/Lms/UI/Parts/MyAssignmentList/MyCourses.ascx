@@ -52,14 +52,27 @@
 	
 	<ItemTemplate>
 		<tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>'>
-			<td class="command"><asp:LinkButton ID="btnEdit" runat="server" Text="View" CommandName="Edit" /></td>
+			<td class="command">
+				<asp:ImageButton
+						ID="ImageButton1"
+						runat="server"
+						ImageUrl="~/Lms/UI/Img/clear.gif"
+						CssClass="LibC_c"
+						AlternateText="детали..."
+						CommandName="Edit" /></td>
 			<td><%# Eval("Title") %></td>
 		</tr>
 	</ItemTemplate>
 	
 	<EditItemTemplate>
 		<tr class='edit-info <%# Container.DataItemIndex == 0 ? "first" : string.Empty %>'>
-			<td class="command"><asp:LinkButton ID="btnEdit" runat="server" Text="Cancel" CommandName="Cancel" /></td>
+			<td class="command">
+				<asp:ImageButton
+						ID="ImageButton2"
+						runat="server"
+						ImageUrl="~/Lms/UI/Img/clear.gif"
+						CssClass="LibC_o"
+						CommandName="Cancel" /></td>
 			<td><%# Eval("Title") %></td>
 		</tr>
 		<tr><td class="edit" colspan="2">

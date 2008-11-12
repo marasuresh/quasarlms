@@ -35,9 +35,7 @@
                 <tr class="header">
                     <th>
                     </th>
-                    <th>
-                        Наименование курса
-                    </th>
+                    <th>Курс</th>
                     <th>
                         Дата
                     </th>
@@ -47,7 +45,13 @@
         <ItemTemplate>
             <tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>'>
                 <td class="command">
-                    <asp:LinkButton ID="btnEdit" runat="server" Text="детали..." CommandName="Edit" />
+					<asp:ImageButton
+						ID="btnEdit"
+						runat="server"
+						ImageUrl="~/Lms/UI/Img/clear.gif"
+						CssClass="LibC_c"
+						AlternateText="детали..."
+						CommandName="Edit" />
                 </td>
                 <td>
                     <%# N2.Web.Link.To(((Request)Container.DataItem).Course).ToString() %>
@@ -61,7 +65,12 @@
         <EditItemTemplate>
             <tr class='edit-info <%# Container.DataItemIndex == 0 ? "first" : string.Empty %>'>
                 <td class="command">
-                    <asp:LinkButton ID="btnEdit" runat="server" Text="Отмена" CommandName="Cancel" />
+					<asp:ImageButton
+						ID="btnCancel"
+						runat="server"
+						ImageUrl="~/Lms/UI/Img/clear.gif"
+						CssClass="LibC_o"
+						CommandName="Cancel" />
                 </td>
                 <td>
                     <%# (((Request)Container.DataItem).Course).Title %>
@@ -88,7 +97,14 @@
                             </tr>
                         </table>
                         <div class="footer command">
-                            <asp:LinkButton ID="btnDelete" runat="server" Text="Удалить курс" CommandName="Update" />
+							<asp:Image runat="server"
+								ImageUrl="~/Edit/Img/ico/cancel.gif" />
+                            <asp:LinkButton
+								ID="btnDelete"
+								runat="server"
+								meta:resourcekey="btnDelete"
+								Text="Убрать заявку"
+								CommandName="Update" />
                         </div>
                     </div>
                 </td>
