@@ -47,6 +47,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\N2.Edit.dll</HintPath>
     </Reference>
+    <Reference Include="N2.Security, Version=1.0.404.18872, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\N2.Security.dll</HintPath>
+    </Reference>
     <Reference Include="N2.Templates, Version=1.0.403.35058, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\N2.Templates.dll</HintPath>
