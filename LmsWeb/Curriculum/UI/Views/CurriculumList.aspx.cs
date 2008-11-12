@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Profile;
+
 using N2.Lms.Items;
 using N2.Details;
 
@@ -30,6 +32,18 @@ namespace N2.Calendar.Curriculum.UI.Views
                 ddltup_SelectedIndexChanged(this.ddltup, new EventArgs());
 
             }
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            var ut = (this.SelectUser.FindControl("ut") as N2.Web.UI.WebControls.UserTree);
+            if (ut != null)
+            {
+                ut.SelectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.UsersAndRoles;
+                ut.AllowMultipleSelection = true;
+            }
+
+            base.OnPreRender(e);
         }
 
         protected bool IsEditable
@@ -221,6 +235,10 @@ namespace N2.Calendar.Curriculum.UI.Views
                 select new StringDetail(this.CurrentItem.CourseContainer, str.Substring(1), str));
             N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
             this.btSave.Visible = false;
+
+
+
+
         }
 
         protected void btnDelTUP_Click(object sender, ImageClickEventArgs e)
@@ -231,6 +249,36 @@ namespace N2.Calendar.Curriculum.UI.Views
             N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
             this.ddltup.DataSource = CollectionNames;
             this.ddltup.DataBind();
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            string[] users = this.SelectUser.SelectedUser.Split(new Char[] { ';' });
+            foreach (string _u in users)
+            {
+                MembershipUser _user = Membership.GetUser(_u);
+                if (_user != null)
+                {
+                   
+                   var cp=ProfileBase.Create(_u);
+                    cp.SetPropertyValue("Curriculum",this.ddltup.SelectedValue);
+                    cp.Save();
+
+                }
+                else if (Roles.RoleExists(_u))
+                {
+                    string[] _uc = Roles.GetUsersInRole(_u);
+                    foreach (string _userName in _uc)
+                    {
+                    var cpu=ProfileBase.Create(_userName);
+                    cpu.SetPropertyValue("Curriculum",this.ddltup.SelectedValue);
+                    cpu.Save();
+                    }
+                }
+                
+            } 
 
         }
 
