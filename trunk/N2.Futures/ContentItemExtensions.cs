@@ -56,7 +56,7 @@ namespace N2
 				_newChild.AddTo(item);
 
 				//prevent "object references an unsaved transient instance" error
-				if (null != Context.Persister.Get(item.ID)) {
+				if (item.IsPersistent()) {
 					Context.Persister.Save(_newChild);
 				}
 				
@@ -72,6 +72,12 @@ namespace N2
 				?? defaultValueMutator(
 					_defaultValueResolver()
 					?? _defaultValueCreator());
+		}
+
+		public static bool IsPersistent(this ContentItem item)
+		{
+			var _item = Context.Persister.Get(item.ID);
+			return null != _item;
 		}
 	}
 }

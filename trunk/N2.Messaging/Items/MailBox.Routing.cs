@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace N2.Messaging
 {
+	using N2.Web;
 	using N2.Collections;
 
 	partial class MailBox
@@ -26,10 +27,9 @@ namespace N2.Messaging
 		public string Filter { get; set; }
         public int msgID { get; set; }
 
-
-		public override ContentItem GetChild(string childName)
+		public override TemplateData FindTemplate(string remainingUrl)
 		{
-			var _matches = Routes.Match(new Uri(BaseUri, childName));
+			var _matches = Routes.Match(new Uri(BaseUri, remainingUrl));
 
 			if (_matches.Any()) {
 
@@ -89,10 +89,10 @@ namespace N2.Messaging
                         break;
 					}
 				
-				return this;
+				return new TemplateData(this, remainingUrl, this.TemplateUrl);
 			}
 
-			return base.GetChild(childName);
+			return base.FindTemplate(remainingUrl);
 		}
 		
 		#endregion MVC implementation

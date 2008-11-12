@@ -26,8 +26,7 @@
 		} }
 
 		[EditableItem("MessageStore", "", 7, Title = "Message store")]
-		public MessageStore Messages {
-			get {
+		public MessageStore Messages { get {
 				return this.GetOrFindOrCreateChild<MessageStore>("MessageStore", null);
 			}
 		}
