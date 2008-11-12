@@ -107,12 +107,12 @@
     <Compile Include="Items\TrainingWorkflow\TrainingTicket.Business.cs" />
     <Compile Include="Items\TrainingWorkflow\TrainingTicket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="ItemExtensions.cs" />
+    <Compile Include="Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Web\UI\MyAssignmentListControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -121,10 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -134,16 +130,16 @@
       <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
       <Name>N2.Futures</Name>
     </ProjectReference>
-    <ProjectReference Include="..\N2.Messaging\N2.Messaging.csproj">
-      <Project>{38548097-B909-4682-A9F3-A33719A38CC6}</Project>
-      <Name>N2.Messaging</Name>
-    </ProjectReference>
     <ProjectReference Include="..\N2.Workflow\N2.Workflow.csproj">
       <Project>{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}</Project>
       <Name>N2.Workflow</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Web\UI\WebControls\Adapters\WizardAdapter.css" />
   </ItemGroup>
   <ItemGroup>

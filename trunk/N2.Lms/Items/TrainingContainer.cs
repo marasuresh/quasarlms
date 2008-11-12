@@ -17,11 +17,17 @@
 	[RestrictParents(typeof(Course))]
 	[AllowedChildren(typeof(Training))]
 	[Disable]
-	public class TrainingContainer: AbstractContentPage
+	public class TrainingContainer: ContentItem
 	{
+		public TrainingContainer()
+		{
+			this.Title = "Trainings";
+		}
+
 		#region System properties
 		
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/20.png"; } }
+		public override bool IsPage { get { return false; } }
 
 		#endregion System properties
 

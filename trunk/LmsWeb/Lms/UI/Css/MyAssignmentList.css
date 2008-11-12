@@ -20,3 +20,37 @@
 	}
 	.assignment-list .wizard .sidebar .selected A.sba { background-color: #D0DAE2; }
 .hidden { display: none;}
+/* stolen at msdn.microsoft.com/library */
+	.LibC_o{background:url(../Img/LibC.gif) 0 0;width:16px;height:16px}
+	.LibC_e{background:url(../Img/LibC.gif) -16px 0;width:16px;height:16px}
+	.LibC_c{background:url(../Img/LibC.gif) -32px 0;width:16px;height:16px}
+	.LibC_s{background:url(../Img/LibC.gif) -48px 0;width:16px;height:16px}
+	.LibC_b{background:url(../Img/LibC.gif) -64px 0;width:4px;height:13px}
+	.LibC_arrow-off{background:url(../Img/LibC.gif) -68px 0;width:15px;height:17px;vertical-align:middle}
+	.LibC_arrow-on{background:url(../Img/LibC.gif) -83px 0;width:15px;height:17px;vertical-align:middle}
+	.LibC_rtg_comCon{background:url(../Img/LibC.gif) -98px 0;width:16px;height:16px}
+	.LibC_rtg_email{background:url(../Img/LibC.gif) -114px 0;width:16px;height:16px}
+	.LibC_rtg_print{background:url(../Img/LibC.gif) -130px 0;width:16px;height:16px}
+	.LibC_rtg_save{background:url(../Img/LibC.gif) -146px 0;width:16px;height:16px}
+	.LibC_help{background:url(../Img/LibC.gif) -162px 0;width:16px;height:16px}
+	.LibC_lib_grippy{background:url(../Img/LibC.gif) -178px 0;width:5px;height:20px}
+	.LibC_rss_button{background:url(../Img/LibC.gif) -183px 0;width:16px;height:16px}
+	.LibC_spinner{background:url(../Img/LibC.gif) -199px 0;width:31px;height:29px}
+	.LibC_wiki{background:url(../Img/LibC.gif) -230px 0;width:42px;height:42px}
+	.LibC_starBlue{background:url(../Img/LibC.gif) -272px 0;width:16px;height:16px}
+	.LibC_starGold{background:url(../Img/LibC.gif) -288px 0;width:16px;height:16px}
+	.LibC_starWhite{background:url(../Img/LibC.gif) -304px 0;width:16px;height:16px}
+	.LibC_copy_off{background:url(../Img/LibC.gif) -320px 0;width:15px;height:13px}
+	.LibC_space{background:url(../Img/LibC.gif) -335px 0;width:10px;height:10px}
+	.LibC_popdownarrow{background:url(../Img/LibC.gif) -345px 0;width:7px;height:4px}
+	.LibC_search{background:url(../Img/LibC.gif) -352px 0;width:20px;height:20px}
+	.LibC_websearch{background:url(../Img/LibC.gif) -372px 0;width:1px;height:20px}
+	.LibC_arrowdwn{background:url(../Img/LibC.gif) -373px 0;width:13px;height:7px}
+	.LibC_arrowrgt{background:url(../Img/LibC.gif) -386px 0;width:13px;height:7px}
+	.LibC_panel_corner_botleft{background:url(../Img/LibC.gif) -399px 0;width:5px;height:5px}
+	.LibC_panel_corner_botright{background:url(../Img/LibC.gif) -404px 0;width:5px;height:5px}
+	.LibC_panel_corner_upleft{background:url(../Img/LibC.gif) -409px 0;width:5px;height:5px}
+	.LibC_panel_corner_upright{background:url(../Img/LibC.gif) -414px 0;width:5px;height:5px}
+	.LibC_panel_header{background:url(../Img/LibC.gif) -419px 0;width:1px;height:24px}
+	.LibC_panel_header_left{background:url(../Img/LibC.gif) -420px 0;width:5px;height:25px}
+	.LibC_panel_header_right{background:url(../Img/LibC.gif) -425px 0;width:5px;height:25px}

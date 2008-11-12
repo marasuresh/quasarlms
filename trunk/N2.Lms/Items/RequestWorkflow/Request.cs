@@ -4,10 +4,8 @@
 	using System.Web.UI.WebControls;
 	using N2.Details;
 	using N2.Integrity;
-	using N2.Web.UI.WebControls;
 	using N2.Workflow;
-	using N2.Workflow.Items;
-	
+
 	[Definition("Request", "CourseRequest")]
 	[RestrictParents(typeof(RequestContainer))]
 	[AllowedChildren(Types = new Type[0])]
@@ -21,11 +19,10 @@
 			return null == this.Course ? "~/Lms/UI/Img/error.png" : this.GetIconFromState();
 		} }
 		
-//		public override bool IsPage { get { return false; } }
+		public override bool IsPage { get { return false; } }
 
 		public override string Title {
 			get { return base.Title ?? (base.Title = this.GetDafaultName()); }
-			set { base.Title = value; }
 		}
 
 		string GetDafaultName()

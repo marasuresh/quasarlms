@@ -14,28 +14,22 @@
 	[Definition("Topic List", "Topics", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
 	[NotThrowable, NotVersionable]
 	[RestrictParents(typeof(Course))]
+	[WithEditableTitle("Title", 10)]
 	[Disable]
-	public partial class TopicList: AbstractItem
+	public partial class TopicContainer: ContentItem
 	{
+		public TopicContainer()
+		{
+			this.Title = "Topics";
+		}
+
 		#region System properties
 		
 		public override string IconUrl { get { return "~/Lms/UI/Img/01/46.png"; } }
-
 		public override string TemplateUrl { get { return "~/Lms/UI/TopicContainer.ascx"; } }
-
-		public override string ZoneName {
-			get { return "TopicContainer"; }
-			set { base.ZoneName = value; }
-		}
-		
+		public override string ZoneName { get { return "TopicContainer"; } }
 		public override bool IsPage { get { return false; } }
 
 		#endregion System properties
-
-		[EditableTextBox("Title", 10)]
-		public override string Title {
-			get { return base.Title ?? "Topics"; }
-			set { base.Title = value; }
-		}
 	}
 }

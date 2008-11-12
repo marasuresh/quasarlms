@@ -205,6 +205,13 @@
     <Content Include="Lms\UI\Parts\MyAssignmentList\TrainingsToGrade.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\MyRequests.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\MyRequests.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Properties\" />
   </ItemGroup>

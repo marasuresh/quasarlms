@@ -5,10 +5,10 @@
 	
 	[Definition(
 		"LMS Start Page",
-		"N2.Lms.Items.StartPage",
+		"LmsStartPage",
 		"",
 		"", 0)]
-	public class LmsStartPage: n2.StartPage//, ILmsStartPage
+	public class LmsStartPage: n2.StartPage, ILmsStartPage
 	{
 		[EditableItem("MyLearningPage", 3)]
 		public n2.TextPage MyLearningPage { get {
@@ -25,7 +25,7 @@
 		}
 
 		[EditableItem("Storage", 5)]
-		public Storage Storage { get {
+		public IStorageItem Storage { get {
 				return this.GetOrFindOrCreateChild<Storage>("Storage", null);
 			}
 		}

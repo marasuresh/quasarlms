@@ -11,7 +11,7 @@
 	//[ItemAuthorizedRoles(Roles = new string[0])]
 	//[NotThrowable, NotVersionable]
 	//[AllowedChildren(typeof(ACalendar))]
-	[RestrictParents(typeof(IStructuralPage))]
+	[RestrictParents(typeof(IStructuralPage), typeof(N2.Lms.Items.IStorageItem))]
 	public partial class ACalendarContainer : AbstractContentPage
 	{
 		#region System Properties

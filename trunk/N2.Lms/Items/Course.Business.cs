@@ -2,16 +2,6 @@
 {
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Diagnostics;
-
-	using N2.Details;
-	using N2.Definitions;
-	using N2.Installation;
-	using N2.Integrity;
-	using N2.Edit.Trash;
-	using N2.Templates.Items;
-	using N2.Serialization;
-	using N2.Web.UI;
 	using N2.Collections;
 
 	partial class Course
@@ -21,13 +11,13 @@
 		/// <summary>
 		/// Storage node for topic hierarchy
 		/// </summary>
-		internal TopicList TopicContainer {
+		internal TopicContainer TopicContainer {
 			//Cannot just GetChild by Course.TopicContainerName
 			// because TopicList may be created not only by [EnsureChild]
 			// but as a result of the import procedure, in which case
 			// Name will be assigned an arbitrary value, such as course code.
-			get { return this.GetChildren(new TypeFilter(typeof(TopicList)))
-				.Cast<TopicList>()
+			get { return this.GetChildren(new TypeFilter(typeof(TopicContainer)))
+				.Cast<TopicContainer>()
 				.First(); }
 		}
 

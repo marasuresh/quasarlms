@@ -23,7 +23,8 @@
 
 		public RequestContainer()
 		{
-			this.Title = "Request Container";
+			this.Name = "requests";
+			this.Title = global::N2.Lms.Strings.RequestContainer_Title;
 		}
 
 		#region System properties

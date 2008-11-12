@@ -8,7 +8,7 @@
 
 	[Definition(
 		"Global LMS Storage Container",
-		"Lms.Storage",
+		"LmsStorage",
 		"",
 		"", 9999, Installer = InstallerHint.NeverRootOrStartPage)]
 	[WithEditableTitle("Title", 1)]
