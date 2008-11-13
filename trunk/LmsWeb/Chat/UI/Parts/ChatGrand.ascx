@@ -92,7 +92,7 @@
             </div>
             <div class="sc_options_box">
                 <div>
-                    <input type="text" size="15" id="username" class="sc_chat_username" value="<%= nombreUsuario() %>" onfocus="this.focus();this.select();" />
+                    <input type="text" size="15" id="username" style="display:none;" class="sc_chat_username" value="<%= nombreUsuario() %>" onfocus="this.focus();this.select();" />
                 </div>
                 <div>
                     <input type="text" size="15" id="message" class="sc_chat_message" onkeypress="return sc_KeyPress(this, event);" />

@@ -11,11 +11,13 @@
 	[Definition("Course Container", "CourseContainer", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
 	[RestrictParents(typeof(IStructuralPage), typeof(IStorageItem))]
 	[NotThrowable, NotVersionable]
+	[WithEditableTitle]
 	public class CourseContainer: ContentItem
 	{
 		public CourseContainer()
 		{
-			this.Title = "Courses";
+			this.Name = "courses";
+			this.Title = N2.Lms.Strings.CourseContainer_Title;
 		}
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/17.png"; } }

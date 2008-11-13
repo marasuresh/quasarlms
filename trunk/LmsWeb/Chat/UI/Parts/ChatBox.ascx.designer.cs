@@ -14,15 +14,6 @@ namespace N2.Templates.Chat.UI.Parts {
     public partial class ChatBox {
         
         /// <summary>
-        /// ChromeBox2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::N2.Web.UI.WebControls.ChromeBox ChromeBox2;
-        
-        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -39,15 +30,6 @@ namespace N2.Templates.Chat.UI.Parts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lbDefChannel;
-        
-        /// <summary>
-        /// ChromeBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::N2.Web.UI.WebControls.ChromeBox ChromeBox1;
         
         /// <summary>
         /// MyChatGrande1 control.

@@ -1,26 +1,23 @@
 ﻿namespace N2.Lms.Items
 {
-	using System.Linq;
-	using System.Collections.Generic;
 	using N2.Definitions;
 	using N2.Details;
 	using N2.Edit.Trash;
 	using N2.Installation;
 	using N2.Integrity;
 	using N2.Persistence;
-	using N2.Collections;
-	using N2.Templates.Items;
-	
+
 	[Definition("Topic List", "Topics", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
 	[NotThrowable, NotVersionable]
 	[RestrictParents(typeof(Course))]
-	[WithEditableTitle("Title", 10)]
+	[WithEditableTitle]
 	[Disable]
 	public partial class TopicContainer: ContentItem
 	{
 		public TopicContainer()
 		{
-			this.Title = "Topics";
+			this.Name = "topics";
+			this.Title = N2.Lms.Strings.TopicContainer_Title;
 		}
 
 		#region System properties

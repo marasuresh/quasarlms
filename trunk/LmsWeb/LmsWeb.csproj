@@ -227,6 +227,7 @@
     <Compile Include="Lms\UI\TestQuestion.ascx.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Content Include="Lms\UI\Js\fixValidatorsInChrome.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\MyRequests.ru.resx" />
     <Content Include="Lms\UI\Parts\Test.ascx" />
     <Content Include="Lms\UI\Parts\TestMultiPages.ascx" />

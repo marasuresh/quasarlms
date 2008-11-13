@@ -30,27 +30,26 @@ namespace N2.Lms.UI.Parts
 
 		protected Control CreateCheckBoxAnswerControl(IEnumerable<string> options)
 		{
-			var _ctl = new CheckBoxList {
+			var _ctl = new ValidatableCheckBoxList {
 				ID = "cbl",
-				AutoPostBack = true,
 			};
 
 			foreach (var _option in options) {
 				_ctl.Items.Add(new ListItem(_option));
 			}
 
-			_ctl.SelectedIndexChanged += (sender, e) => {
-				var _cbl = sender as CheckBoxList;
-				string _selection = string.Empty;
+			var _panel = new Panel();
+			var _chk = new Button { Text = "Check", };
 
-				foreach (var _item in _cbl.Items.Cast<ListItem>()) {
-					_selection += _item.Selected ? "1" : "0";
-				}
-
-				this.OnAnswerChanged(_selection, _cbl);
+			_chk.Click += (sender, e) => {
+				var _cbl = _ctl as ValidatableCheckBoxList;
+				this.OnAnswerChanged(_cbl.CheckedMask, _panel);
 			};
 
-			return _ctl;
+			_panel.Controls.Add(_ctl);
+			_panel.Controls.Add(_chk);
+
+			return _panel;
 		}
 
 		protected Control CreateRadioAnswerControl(IEnumerable<string> options)
@@ -158,15 +157,18 @@ namespace N2.Lms.UI.Parts
 					Disable = true,
 				};
 
+				//Allow subscriber to alter params..
 				this.AnswerChanged(this, _args);
 
 				if (_args.Disable) {
 					ctl.Enabled = false;
-				}
 
-				ctl.CssClass += _args.IsCorrect
-					? " correct"
-					: " incorrect";
+					ctl.CssClass = string.Join(" ",
+						ctl.CssClass.Split(' ').Concat(new[] {
+							_args.IsCorrect
+								? "correct"
+								: "incorrect" }).ToArray());
+				}
 			}
 		}
 	}

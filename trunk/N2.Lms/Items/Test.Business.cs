@@ -8,7 +8,6 @@
 
 	partial class Test
 	{
-		[EditableChildren("Вопросы", null, "Questions", 10)]
 		public virtual IEnumerable<TestQuestion> Questions
 		{
 			get { return

@@ -12,7 +12,8 @@ namespace N2.Templates.Chat.Items
 {
     [Definition("ChatBox", "ChatBox", "Общение онлайн.", "", 160)]
     [WithEditableTitle("Title", 10, Required = false)]
-    [AllowedZones(Zones.RecursiveAbove, Zones.RecursiveBelow, Zones.SiteTop, Zones.Content)]
+    [AllowedZones(Zones.RecursiveAbove,
+		Zones.RecursiveBelow, Zones.SiteTop, Zones.Content, Zones.SiteRight, Zones.RecursiveRight)]
     [RestrictParents(typeof(IStructuralPage))]
     public partial class ChatBox : SidebarItem
     {

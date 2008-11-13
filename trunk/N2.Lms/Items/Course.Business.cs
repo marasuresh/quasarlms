@@ -3,7 +3,11 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using N2.Collections;
+	using N2.Web.UI;
+	using N2.Details;
+	using N2;
 
+	[TabPanel("advanced", "Advanced", 300)]
 	partial class Course
 	{
 		#region Lms Collection Properties
@@ -11,14 +15,17 @@
 		/// <summary>
 		/// Storage node for topic hierarchy
 		/// </summary>
-		internal TopicContainer TopicContainer {
+		[EditableItem("TopicContainer", "", 301,
+			Title = "Topic Container",
+			ContainerName = "advanced")]
+		public TopicContainer TopicContainer {
 			//Cannot just GetChild by Course.TopicContainerName
 			// because TopicList may be created not only by [EnsureChild]
 			// but as a result of the import procedure, in which case
 			// Name will be assigned an arbitrary value, such as course code.
-			get { return this.GetChildren(new TypeFilter(typeof(TopicContainer)))
-				.Cast<TopicContainer>()
-				.First(); }
+			get {
+				return this.GetOrFindOrCreateChild<TopicContainer>("TopicContainer", null);
+			}
 		}
 
 		public IEnumerable<Topic> Topics { get { return this.TopicContainer.Topics; } }
@@ -26,7 +33,10 @@
 		/// <summary>
 		/// Storage node for trainings
 		/// </summary>
-		internal TrainingContainer TrainingContainer {
+		[EditableItem("TrainingContainer", "", 303,
+			Title = "Training Container",
+			ContainerName = "advanced")]
+		public TrainingContainer TrainingContainer {
 			get { return this.GetChildren(new TypeFilter(typeof(TrainingContainer)))
 				.Cast<TrainingContainer>()
 				.First(); }
