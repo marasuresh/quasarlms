@@ -15,6 +15,8 @@
 	[WithWorkflowAuditTrail(Name = "Audit Trail")]
 	public class Request : ContentItem
 	{
+		#region System properties
+		
 		public override string IconUrl { get {
 			return null == this.Course ? "~/Lms/UI/Img/error.png" : this.GetIconFromState();
 		} }
@@ -24,6 +26,8 @@
 		public override string Title {
 			get { return base.Title ?? (base.Title = this.GetDafaultName()); }
 		}
+
+		#endregion System properties
 
 		string GetDafaultName()
 		{

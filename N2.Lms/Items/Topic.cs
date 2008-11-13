@@ -12,7 +12,7 @@ namespace N2.Lms.Items
 	[Definition("Topic", "Topic", Installer = InstallerHint.NeverRootOrStartPage)]
 	[RestrictParents(typeof(TopicContainer), typeof(Topic))]
 	[WithEditableName("Name (Guid)", 03)]
-	[WithEditableTitle("Title", 05)]
+	[WithEditableTitle]
 	[WithEditablePublishedRange("Published between", 07)]
 	[ReplaceDefinitions(typeof(AbstractContentPage), typeof(ContentItem))]
 	public partial class Topic : ContentItem

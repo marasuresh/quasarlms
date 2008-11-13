@@ -33,8 +33,7 @@ using System.Web.UI;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: InternalsVisibleTo("N2.Edit")]
 [assembly: InternalsVisibleTo("N2")]
 [assembly: WebResource("N2.Lms.Web.UI.WebControls.Adapters.WizardAdapter.css", "text/css")]

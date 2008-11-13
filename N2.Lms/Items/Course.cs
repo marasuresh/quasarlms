@@ -11,10 +11,15 @@
 	[RestrictParents(typeof(CourseContainer))]
 	//[WithEditableTitle("Title", 20)]
 	[TabPanel("lms", "LMS", 200)]
-	[	EnsureChild(Course.TopicContainerName, typeof(TopicContainer)),
+	[	//EnsureChild(Course.TopicContainerName, typeof(TopicContainer)),
 		EnsureChild(Course.TrainingContainerName, typeof(TrainingContainer))]
-	public partial class Course : ContentItem// AbstractContentPage
+	[WithEditableTitle]
+	public partial class Course : ContentItem
 	{
+		public Course()
+		{
+		}
+
 		#region Constants
 		
 		public const string TopicContainerName = "Topics";
@@ -33,10 +38,10 @@
 
 		#region Lms Properties
 
-		[EditableFreeTextArea("Text", 345, ContainerName = "lms")]
+		[EditableFreeTextArea("Text", 345, ContainerName = "lms", LocalizationClassKey = "Course")]
 		public string Text { get { return (string)this.GetDetail("Text"); } set { this.SetDetail<string>("Text", value); } }
 
-		[EditableCheckBox("Is Public", 350, ContainerName = "lms")]
+		[EditableCheckBox("Is Public", 350, ContainerName = "lms", LocalizationClassKey = "Course")]
 		public bool IsPublic
 		{
 			get { return (bool?)this.GetDetail("Public") ?? false; }

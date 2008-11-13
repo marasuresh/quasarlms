@@ -15,6 +15,11 @@ namespace N2.Lms.Items
 	[WithEditableTitle]
 	public partial class MyAssignmentList: AbstractItem
 	{
+		public MyAssignmentList()
+		{
+			this.Title = N2.Lms.Strings.MyAssignmentList_Title;
+		}
+
 		#region Lms properties
 
 		[EditableLink(

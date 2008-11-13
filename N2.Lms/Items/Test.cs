@@ -7,7 +7,7 @@
 	[Definition]
 	[AllowedChildren(typeof(TestQuestion))]
 	[RestrictParents(typeof(TopicContainer), typeof(Topic))]
-	[WithEditableTitle("Название", 1)]
+	[WithEditableTitle]
 	public partial class Test: ContentItem//, ISurvey
 	{
 		#region System properties
@@ -27,6 +27,13 @@
 		public bool DisplayMultiplePages {
 			get { return this.GetDetail<bool>("DisplayMultiplePages", false); }
 			set { this.SetDetail<bool>("DisplayMultiplePages", value); }
+		}
+
+		[EditableCheckBox("Enable instant check", 10,
+			HelpTitle = "Allows trainee check correctness immediatlly upon answering a question")]
+		public bool InstantCheckEnabled {
+			get { return this.GetDetail<bool>("InstantCheckEnabled", true); }
+			set { this.SetDetail<bool>("InstantCheckEnabled", value); }
 		}
 
 		[EditableEnum("Test type", 11, typeof(TestTypeEnum))]

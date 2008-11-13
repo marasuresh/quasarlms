@@ -69,6 +69,7 @@
     <Compile Include="Web\UI\WebControls\Test\UserTreeTestBed.cs" />
     <Compile Include="Web\UI\WebControls\UserTree.cs" />
     <Compile Include="Web\UI\WebControls\SelectUser.cs" />
+    <Compile Include="Web\UI\WebControls\ValidatableCheckBoxList.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\group.png" />
