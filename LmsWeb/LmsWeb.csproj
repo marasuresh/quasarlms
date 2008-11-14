@@ -224,13 +224,45 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\MyAssignmentList_MyCourses.designer.cs">
+      <DependentUpon>MyAssignmentList_MyCourses.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\MyAssignmentList_MyCourses.ru.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyAssignmentList_MyCourses.ru.resx</DependentUpon>
+    </Compile>
     <Compile Include="Lms\UI\TestQuestion.ascx.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_GlobalResources\MyAssignmentList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyAssignmentList.resx</DependentUpon>
     </Compile>
     <Content Include="Lms\UI\Js\fixValidatorsInChrome.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\MyRequests.ru.resx" />
     <Content Include="Lms\UI\Parts\Test.ascx" />
     <Content Include="Lms\UI\Parts\TestMultiPages.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\MyAssignmentList_MyCourses.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MyAssignmentList_MyCourses.designer.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="App_GlobalResources\MyAssignmentList.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyAssignmentList.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\MyCourses.ascx.ru.resx" />
+    <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\MyCourses.ascx.resx">
+    </Content>
+    <Content Include="App_GlobalResources\MyAssignmentList_MyCourses.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MyAssignmentList_MyCourses.ru.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

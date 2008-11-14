@@ -129,7 +129,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 			if (_item is ScheduledTopic) {
 				this.AddModuleStep(_item as ScheduledTopic, _classifier(_item));
 			} else if(_item is Test) {
-				this.AddPracticeStep(_item as Test, _classifier(_item)).StepType = WizardStepType.Auto;
+				this.AddPracticeStep(_item as Test, _classifier(_item));//.StepType = WizardStepType.Auto;
 			}
 		}
 	}
@@ -150,7 +150,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 	protected WizardStepBase AddModuleStep(ScheduledTopic module, string tag)
 	{
 		WizardStep _step = new WizardStep {
-			ID = module.Name,
+			ID = module.Topic.ID.ToString(),
 			Title = module.Title,
 			StepType = WizardStepType.Auto,
 			SkinID = module.Topic.Topics.Any() || null != module.Topic.Practice
@@ -171,7 +171,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 	protected WizardStepBase AddPracticeStep(Test test, string tag)
 	{
 		WizardStep _step = new WizardStep {
-			ID = test.Name,
+			ID = test.ID.ToString(),
 			Title = test.Title,
 			StepType = WizardStepType.Auto,
 			SkinID = test.Questions.Any() && test.DisplayMultiplePages
@@ -203,7 +203,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 			foreach (var _q in _questions) {
 
 				var _step = new WizardStep {
-					ID = _q.Name,
+					ID = _q.ID.ToString(),
 					StepType = WizardStepType.Auto,
 					Title = _q.Title,
 					SkinID = _classifier(_q),//inject begin sub-topic mark on the first/last step
@@ -220,7 +220,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 	protected WizardStepBase AddTopicStep(Topic topic, string tag)
 	{
 		WizardStep _step = new WizardStep {
-			ID = topic.Name,
+			ID = topic.ID.ToString(),
 			Title = topic.Title,
 			StepType = WizardStepType.Auto,
 			SkinID = topic.Topics.Any() || null != topic.Practice ? tag.ToUpper() : tag,

@@ -23,8 +23,8 @@
 	protected void CreateControlHierarchy()
 	{
 		var _adminQuerySet = new Dictionary<string, Type> {
-			{ "Заявки", typeof(ASP.lms_ui_parts_myassignmentlist_requests_ascx) },
-			{ "Оценки", typeof(ASP.lms_ui_parts_myassignmentlist_trainingstograde_ascx) },
+			{ Resources.MyAssignmentList.MyRequestsTitle, typeof(ASP.lms_ui_parts_myassignmentlist_requests_ascx) },
+			{ Resources.MyAssignmentList.MyGradesTitle, typeof(ASP.lms_ui_parts_myassignmentlist_trainingstograde_ascx) },
 		};
 
 		var _studentQuerySet = new Dictionary<string, Type> {

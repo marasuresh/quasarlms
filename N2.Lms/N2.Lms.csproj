@@ -74,6 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Items\TrainingWorkflow\LearningSession\HistoryItem.cs" />
+    <Compile Include="Items\TrainingWorkflow\LearningSession\TestState.cs" />
     <Compile Include="Strings.ru.Designer.cs">
       <DependentUpon>Strings.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>

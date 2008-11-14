@@ -13,7 +13,7 @@
             
              $('#add').hide();
 
-             $('#shAdd').click(
+             $('#<%= this.shAdd.ClientID %>').click(
             function() {
                $('#add').show('slow');
             });           
@@ -33,15 +33,22 @@
     <table>
         <tr>
             <td>
-                <asp:DropDownList ID="ddltup" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddltup_SelectedIndexChanged">
+                <asp:DropDownList
+						ID="ddltup"
+						runat="server"
+						AutoPostBack="true"
+						OnSelectedIndexChanged="ddltup_SelectedIndexChanged">
                 </asp:DropDownList>
                 <% if (this.IsEditable)
                    { %>
                 <asp:ImageButton ID="btSave" runat="server" OnClick="btnSave_Click" ImageUrl="../../../Edit/img/ico/png/accept.png" alt = "Сохранить"
                     Visible="False" />
                 <asp:ImageButton ID="btnDelTUP" runat="server" OnClick="btnDelTUP_Click" ImageUrl="../../../Edit/img/ico/png/delete.png" alt = "Удалить" />
-                <img id="shAdd" src="../../../Edit/img/ico/png/add.png" alt = "Новый" />
-               
+                <asp:Image
+						runat="server"
+						ImageUrl="~/Edit/img/ico/png/add.png"
+						AlternateText="Новый"
+						ID="shAdd" />
             </td>
             
             <td id="add">

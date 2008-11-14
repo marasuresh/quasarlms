@@ -1,175 +1,135 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using N2.Lms.Items;
-using N2.Details;
 
 namespace N2.Calendar.Curriculum.UI.Views
 {
-    public partial class Curriculum : System.Web.UI.UserControl
-    {
+	public partial class Curriculum : System.Web.UI.UserControl
+	{
+		public int CourseContainerId { get; set; }
 
-        public int CourseContainerId { get; set; }
+		string _currentCurriculumName = string.Empty;
+		public string CurrentCurriculumName {
+			get {
+				return _currentCurriculumName;
+			}
+			set {
+				_currentCurriculumName = value;
+			}
+		}
 
-        string _currentCurriculumName = string.Empty;
-        public string CurrentCurriculumName
-        {
-            get 
-            {
-                return _currentCurriculumName;
-            }
+		protected IEnumerable<CourseInfo> CourseInfos {
+			get {
 
-            set
-            {
-                _currentCurriculumName = value;
-                //if (this.CurrentCurriculum != null)
-                //{
-                //    this.rpt.DataSource = CourseInfos;
-                //    this.rpt.DataBind();
-                //}
+				return
+					from _data in this.CourseData
+					let _id = int.Parse(_data.Key)
+					let _course = N2.Context.Current.Persister.Get<Course>(_id)
+					select new CourseInfo {
+						CourseID = _id,
+						CourseName = _course.Title,
+						CourseExclude = _data.Value,
+					};
+			}
+		}
 
-            }
-        }
+		#region Types
+		
+		protected class CourseInfo
+		{
+			public int CourseID { get; set; }
+			public string CourseName { get; set; }
+			public int CourseExclude { get; set; }
+			public bool CourseObligatory { get; set; }
+			public bool CourseOptional { get; set; }
+		}
 
+		#endregion Types
 
+		protected void Page_Load(object sender, EventArgs e)
+		{
 
-        protected IEnumerable<CourseInfo> CourseInfos
-        {
-            get
-            {
-                
-                    if (_detailCollection== null)  return null;
-return
-                    from _stringdetail in _detailCollection //  this.CurrentCurriculum.Details 
-                    select new CourseInfo
-                    {
-                        CourseID = Convert.ToInt32( _stringdetail.ToString().Substring(1)),
-                        CourseName = (N2.Context.Current.Persister.Get<Course>
-                        (Convert.ToInt32(_stringdetail.ToString().Substring(1)))).Title,
-                        CourseExclude = Convert.ToInt32(_stringdetail.ToString().Remove(1)),
-                        
-                        //_stringdetail.Value.ToString().Substring(0, 1)  ,                               //CourseExclude = Convert.ToBoolean(Convert.ToInt32(_stringdetail.Value.ToString().Substring(0, 1))),
-                        //CourseObligatory = Convert.ToBoolean(_stringdetail.Value.ToString().Substring(1, 1)),
-                        //CourseOptional = Convert.ToBoolean(_stringdetail.Value.ToString().Substring(2, 1)),
-                    };
-                //return CurrentItem.RequestContainer.GetChildren(/*filtered by current user*/).OfType<Request>().ToArray();  
-            }
-        }
-        protected class CourseInfo 
-        {
-            public int CourseID { get; set; }
-            public string CourseName { get; set; }
-            public int CourseExclude { get; set; }
-            public bool CourseObligatory { get; set; }
-            public bool CourseOptional { get; set; }
+			if (!IsPostBack) {
+				if (this.CurrentCurriculum != null) {
+					this.rpt.DataSource = CourseInfos;
+					this.rpt.DataBind();
+				}
+			}
 
-        }
+		}
+		
+		protected CourseContainer CourseContainer {
+			get {
+				return string.IsNullOrEmpty(this.CourseContainerId.ToString()) ?
+					 null : N2.Context.Current.Persister.Get<CourseContainer>(this.CourseContainerId);
+			}
+		}
+		
+		public N2.Details.DetailCollection CurrentCurriculum
+		{
+			get
+			{
+				return string.IsNullOrEmpty(_currentCurriculumName) ?
+					  null : this.CourseContainer.GetDetailCollection(_currentCurriculumName, false);
+				//add 
+			}
+		}
 
+		protected IDictionary<string, int> m_courseData;
+		public IDictionary<string, int> CourseData {
+			get {
+				if (m_courseData == null) {
+					this.m_courseData = new Dictionary<string, int>();
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
+					this.m_courseData = (
+						from _item in this.rpt.Items.Cast<RepeaterItem>()
+						let _rbl = _item.FindControl("rbl") as RadioButtonList
+						let _hf = _item.FindControl("hf") as HiddenField
+						select new {
+							Key = _hf.Value,
+							Value = _rbl.SelectedIndex,
+						}).ToDictionary(i => i.Key, i => i.Value);
+				}
 
-            if (!IsPostBack)
-            {
-                if (this.CurrentCurriculum != null)
-                {
-                    this.rpt.DataSource = CourseInfos;
-                    this.rpt.DataBind();
-                }
-            }
+				return m_courseData;
+			}
+			set {
+				m_courseData = value;
+				if (m_courseData.Any()) {
+					this.rpt.DataSource = CourseInfos;
+					this.rpt.DataBind();
+				}
+			}
+		}
 
-        }
-        protected CourseContainer CourseContainer
-        {
-            get
-            {
-                return string.IsNullOrEmpty(this.CourseContainerId.ToString()) ?
-                     null : N2.Context.Current.Persister.Get<CourseContainer>(this.CourseContainerId);
-            }
-        }
-        public N2.Details.DetailCollection CurrentCurriculum
-        {
-            get
-            {
-                return string.IsNullOrEmpty(_currentCurriculumName) ?
-                      null : this.CourseContainer.GetDetailCollection(_currentCurriculumName, false);
-                //add 
-            }
-        }
+		protected void rpt_ItemCommand(object source, RepeaterCommandEventArgs e)
+		{
+			((Label)e.Item.FindControl("l10")).Text = ((HiddenField)e.Item.FindControl("hf")).Value;
+		}
 
-        protected IEnumerable<String> _detailCollection;
-        public IEnumerable<String> DetailCollection
-            {
-                get {
-                    if (_detailCollection == null)
-                    {
-                        ArrayList _dc = new ArrayList();
-                        foreach (RepeaterItem ri in this.rpt.Items)
-                        {
-                            _dc.Add(((RadioButtonList)ri.FindControl("rbl")).SelectedValue + ((HiddenField)ri.FindControl("hf")).Value);
-                        }
-                        _detailCollection = _dc.Cast<string>();
-                    }
- 
-                    return _detailCollection; 
-                
-                
-                }
-                set { _detailCollection = value;
-                if (_detailCollection.Any())
-                {
-                    this.rpt.DataSource = CourseInfos;
-                    this.rpt.DataBind();
-                }
-                }
-            }
+		public event EventHandler Changed;
 
-        protected void rpt_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            ((Label)e.Item.FindControl("l10")).Text = ((HiddenField)e.Item.FindControl("hf")).Value;
-        }
+		protected virtual void OnChanged(EventArgs e)
+		{
+			if (this.Changed != null) {
+				this.Changed(this, e);
+			}
+		}
 
-        public event EventHandler Changed;
+		protected void rbl_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			var _rbl = sender as RadioButtonList;
+			var _hf = _rbl.NamingContainer.FindControl("hf") as HiddenField;
+			var _selectedCourseId = _hf.Value;
+			int _selectedValue = _rbl.SelectedIndex;
 
-        protected virtual void OnChanged(EventArgs e)
-        {
-            if (this.Changed != null) this.Changed(this, e);
-        
-        }
+			OnChanged(EventArgs.Empty);
 
-        protected void rbl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //((Label)e.Item.FindControl("l10")).Text = ((HiddenField)e.Item.FindControl("hf")).Value;
-            string currCurseID = ((HiddenField)((RadioButtonList)sender).NamingContainer.FindControl("hf")).Value;
-            string currValue = ((RadioButtonList)sender).SelectedValue;
-            //this.Label.Text = "courseID: " + currCurseID + "  value=" + ((RadioButtonList)sender).SelectedValue;
-         
-                string[] _dc = this.DetailCollection.ToArray();
-
-            OnChanged(EventArgs.Empty);
-           
-            for (int i=0; i < _dc.Length; i++)
-            {
-                if (string.Equals(_dc[i].Substring(1), currCurseID))
-                {
-                    _dc[i] = currValue + currCurseID;
-                    _detailCollection = (IEnumerable<String>)_dc;
-                    return;
-
-                }
-            }
-
-
-
-        }
-
-
-
-
-    }
+			if (this.CourseData.ContainsKey(_selectedCourseId)) {
+				this.CourseData[_selectedCourseId] = _selectedValue;
+			}
+		}
+	}
 }

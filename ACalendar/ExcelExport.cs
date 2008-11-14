@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-using XL = Microsoft.Office.Interop.Excel;
 using System.IO;
+using System.Linq;
 using System.Web.Security;
-using N2.Workflow;
 using N2.Lms.Items;
 using N2.Lms.Items.Lms.RequestStates;
+using N2.Workflow;
+using XL = Microsoft.Office.Interop.Excel;
 
 namespace N2.ACalendar
 {
-	using N2;
 	using Microsoft.Office.Interop.Excel;
 	
 	public static class ExcelExport

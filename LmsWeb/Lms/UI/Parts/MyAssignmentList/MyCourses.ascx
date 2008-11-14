@@ -45,7 +45,11 @@
 		<table class="gridview" cellpadding="0" cellspacing="0">
 			<tr class="header">
 				<th></th>
-				<th>Title</th></tr>
+				<th><asp:Literal
+						runat="server"
+						Text="Курс"
+						meta:resourecekey="CourseColumn" /></th></tr>
+			<tr><td colspan="2"><%# this.Profile.Curriculum %></td></tr>
 			<tr id="itemPlaceholder" runat="server" />
 		</table>
 	</LayoutTemplate>
@@ -79,18 +83,26 @@
 				<div class="details">
 					<div class="header">Edit details for '<%# Eval("Title")%>'</div>
 					<table class="detailview" cellpadding="0" cellspacing="0">
-						<tr><th>Begin</th>
+						<tr><th><asp:Localize runat="server" meta:resourcekey="StartOn" /></th>
 							<td><n2:DatePicker ID="dtBegin" runat="server" /></td></tr>
-						<tr><th>End</th>
+						<tr><th><%# Resources.MyAssignmentList_MyCourses.FinishedOn %></th>
 							<td><n2:DatePicker ID="dtEnd" runat="server" /></td>
 						</tr>
-						<tr><th>Comments</th>
+						<tr><th><%# Resources.MyAssignmentList_MyCourses.Comments %></th>
 							<td><asp:TextBox ID="tbComment" TextMode="MultiLine" runat="server" /></td>
 						</tr> 
 					</table>
 					<div class="footer command">
-						<asp:LinkButton ID="btnSave" runat="server" Text="Subscribe" CommandName="Update" />
-						<asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CommandName="Cancel" />
+						<asp:LinkButton
+								ID="btnSave"
+								runat="server"
+								meta:resourcekey="btnSave"
+								CommandName="Update" />
+						<asp:LinkButton
+								ID="btnCancel"
+								runat="server"
+								meta:resourcekey="btnCancel"
+								CommandName="Cancel" />
 					</div>
 				</div>
 			</td>

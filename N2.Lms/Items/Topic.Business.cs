@@ -23,8 +23,7 @@ namespace N2.Lms.Items
 		}
 
 		//[EditableItem("Practice", 90, Required = false)]
-		public Test Practice
-		{
+		public Test Practice {
 			get { return this.GetChildren(new TypeFilter(typeof(Test))).FirstOrDefault() as Test; }
 		}
 
