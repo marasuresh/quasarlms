@@ -1,286 +1,286 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Profile;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Profile;
-
-using N2.Lms.Items;
 using N2.Details;
-
-
+using N2.Lms.Items;
 
 namespace N2.Calendar.Curriculum.UI.Views
 {
-    public partial class CurriculumList : N2.Templates.Web.UI.TemplatePage<N2.ACalendar.Curriculum>
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            //this ViewState["ParentItemId"] = ParentItem.ID;
-            if (!this.IsPostBack)
-            {
+	public partial class CurriculumList : N2.Templates.Web.UI.TemplatePage<N2.ACalendar.Curriculum>
+	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
+			//this ViewState["ParentItemId"] = ParentItem.ID;
+			if (!this.IsPostBack) {
 
-                var _dummy = this.CurrCurriculum;
+				var _dummy = this.CurrCurriculum;
 
-               this.ddltup.DataSource = CollectionNames;
-                this.ddltup.DataBind();
-                this.CurrentCurriculum.CourseContainerId = this.CurrentItem.CourseContainer.ID;
-                //this.CurrentCurriculum.CurrentCurriculumName =
-                //    (this.ParentItem.DetailCollections.Select(_c => _c.Key)).First();
-                ddltup_SelectedIndexChanged(this.ddltup, new EventArgs());
+				this.ddltup.DataSource = CollectionNames;
+				this.ddltup.DataBind();
+				this.CurrentCurriculum.CourseContainerId = this.CurrentItem.CourseContainer.ID;
+				//this.CurrentCurriculum.CurrentCurriculumName =
+				//    (this.ParentItem.DetailCollections.Select(_c => _c.Key)).First();
+				ddltup_SelectedIndexChanged(this.ddltup, new EventArgs());
 
-            }
-        }
+			}
+		}
 
-        protected override void OnPreRender(EventArgs e)
-        {
-            var ut = (this.SelectUser.FindControl("ut") as N2.Web.UI.WebControls.UserTree);
-            if (ut != null)
-            {
-                ut.SelectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.UsersAndRoles;
-                ut.AllowMultipleSelection = true;
-            }
+		protected override void OnPreRender(EventArgs e)
+		{
+			var ut = (this.SelectUser.FindControl("ut") as N2.Web.UI.WebControls.UserTree);
+			if (ut != null) {
+				ut.SelectionMode = N2.Web.UI.WebControls.UserTree.DisplayModeEnum.UsersAndRoles;
+				ut.AllowMultipleSelection = true;
+			}
 
-            base.OnPreRender(e);
-        }
+			base.OnPreRender(e);
+		}
 
-        protected bool IsEditable
-        {
-            get
-            {
-                return Roles.IsUserInRole(this.User.Identity.Name, "Administrators");
-            }
-        }
+		protected bool IsEditable
+		{
+			get
+			{
+				return Roles.IsUserInRole(this.User.Identity.Name, "Administrators");
+			}
+		}
 
-        CourseContainer m_container;  //локальная коллекция курсов
+		CourseContainer m_container;  //локальная коллекция курсов
 
-        
-        public int ParentItemId
-        {
-            get { return (int?)this.ViewState["ParentItemId"] ?? 0; }
-            set { this.ViewState["ParentItemId"] = value; }
-        }
 
-        protected CourseContainer ParentItem
-        {
-            get
-            {
-                return m_container ?? (m_container =  LoadParentItem()) ;
-            }
-            set {
-                this.m_container = value;
-                
-                if (this.m_container != null)
-                {
-                    this.ParentItemId = this.m_container.ID;
-                }
-                
-            }
-        }
+		public int ParentItemId
+		{
+			get { return (int?)this.ViewState["ParentItemId"] ?? 0; }
+			set { this.ViewState["ParentItemId"] = value; }
+		}
 
-        CourseContainer LoadParentItem()
-        {
-            var _container = N2.Context.Current.Persister.Get<CourseContainer>(this.ParentItemId)
+		protected CourseContainer ParentItem
+		{
+			get
+			{
+				return m_container ?? (m_container = LoadParentItem());
+			}
+			set
+			{
+				this.m_container = value;
 
-                ?? new CourseContainer
-            {
-                Children = new List<N2.ContentItem>(new[] {
+				if (this.m_container != null) {
+					this.ParentItemId = this.m_container.ID;
+				}
+			}
+		}
+
+		CourseContainer LoadParentItem()
+		{
+			var _container = N2.Context.Current.Persister.Get<CourseContainer>(this.ParentItemId)
+
+				?? new CourseContainer {
+					Children = new List<N2.ContentItem>(new[] {
                             new Course { Name = "Course 1", Title = "Course 1", },
                             new Course { Name = "Course 2", Title = "Course 2", },
                              })
-            };
+				};
 
-            var _tup = _container.GetDetailCollection("", true);
+			var _tup = _container.GetDetailCollection("", true);
 
-            //_tup.Clear();
+			//_tup.Clear();
 
-            //_tup.AddRange(
-            //    from _item in this.rpt.Items.Cast<RepeaterItem>()
-            //    select new N2.Details.IntegerDetail(
-            //        this.ParentItem,
-            //        ((HiddenField)_item.FindControl("hf")).Value,
-            //        int.Parse(((RadioButtonList)_item.FindControl("rbl")).SelectedValue)));
+			//_tup.AddRange(
+			//    from _item in this.rpt.Items.Cast<RepeaterItem>()
+			//    select new N2.Details.IntegerDetail(
+			//        this.ParentItem,
+			//        ((HiddenField)_item.FindControl("hf")).Value,
+			//        int.Parse(((RadioButtonList)_item.FindControl("rbl")).SelectedValue)));
 
-            return _container;
-        }
+			return _container;
+		}
 
-        protected IEnumerable<string> CollectionNames //набор коллекций в текущих курсах
-        {
-            get { return this.CurrentItem.CourseContainer.DetailCollections.Select(_c => _c.Key); }
-        }
+		protected IEnumerable<string> CollectionNames //набор коллекций в текущих курсах
+		{
+			get { return this.CurrentItem.CourseContainer.DetailCollections.Select(_c => _c.Key); }
+		}
 
+		protected N2.Details.DetailCollection CurrCurriculum
+		{
+			get
+			{
+				return
+					this.ParentItem.GetDetailCollection(this.CurrentTup, true);
+			}
+		}
 
-        protected N2.Details.DetailCollection CurrCurriculum
-        {
-            get
-            {
-                return
-                    this.ParentItem.GetDetailCollection(this.CurrentTup, true);
-            }
-        }
+		string m_currentTup;
+		protected string CurrentTup
+		{  //   имя коллекции
+			get
+			{
+				var _currentCollectionName = this.CollectionNames.FirstOrDefault();
+				// from dd read
+				return
+					(this.m_currentTup =
+					string.IsNullOrEmpty(_currentCollectionName)
+					||
+					string.IsNullOrEmpty(this.m_currentTup) ?
+					 "Default"
+					: _currentCollectionName);
+			}
+			set { this.m_currentTup = value; }
+		}
 
+		protected class CourseInfo : Course
+		{
+			public int Info { get; set; }
+		}
 
-        string m_currentTup;
-        protected string CurrentTup
-        {  //   имя коллекции
-            get
-            {
-                var _currentCollectionName = this.CollectionNames.First();
-                // from dd read
-                return
-                    (this.m_currentTup = string.IsNullOrEmpty(this.m_currentTup) ?
-                     "Default"
-                    : _currentCollectionName);
-            }
-            set { this.m_currentTup = value; }
-        }
+		protected IEnumerable<CourseInfo> CourseInfos
+		{
+			get
+			{
+				return
+					from _course in ParentItem.Children.OfType<Course>()
+					join _tupInfo in this.CurrCurriculum.Details
+						on _course.Name equals _tupInfo.Name
+						into _tupInfos
+					from _ti in _tupInfos.DefaultIfEmpty()
+					select new CourseInfo {
+						Name = _course.Name,
+						Title = _course.Title,
+						ID = _course.ID,
+						Info = _ti != null ? ((IntegerDetail)_ti).IntValue : 0,
+					};
+				//return CurrentItem.RequestContainer.GetChildren(/*filtered by current user*/).OfType<Request>().ToArray();  
+			}
+		}
 
-        protected class CourseInfo : Course
-        {
-            public int Info { get; set; }
-        }
-
-        protected IEnumerable<CourseInfo> CourseInfos
-        {
-            get
-            {
-                return
-                    from _course in ParentItem.Children.OfType<Course>()
-                    join _tupInfo in this.CurrCurriculum.Details
-                        on _course.Name equals _tupInfo.Name
-                        into _tupInfos
-                    from _ti in _tupInfos.DefaultIfEmpty()
-                    select new CourseInfo
-                    {
-                        Name = _course.Name,
-                        Title = _course.Title,
-                        ID = _course.ID,
-                        Info = _ti != null ? ((IntegerDetail)_ti).IntValue : 0,
-                    };
-                //return CurrentItem.RequestContainer.GetChildren(/*filtered by current user*/).OfType<Request>().ToArray();  
-            }
-        }
-
-        protected void btnAddTUP_Click(object sender, EventArgs e)
-        {
-            if (!this.IsEditable) return;
-            var _container = this.CurrentItem.CourseContainer;
-            string tupToBeAdded = this.txtAddTUP.Text;
-            _container.GetDetailCollection(tupToBeAdded, true).AddRange(
-                from _course in _container.GetChildren().OfType<Course>()
-                select new StringDetail(_container, _course.ID.ToString(), "0" + _course.ID.ToString())
-            );
-
-
-            
-            //List<StringDetail> a = new List<StringDetail>();
-            //foreach (CourseInfo _ci in CourseInfos)
-            //{
-            //    var _detail = new N2.Details.IntegerDetail(ParentItem, _ci.Title, 1);
-            //    a.Add( _detail );
-            //}
- 
-            //foreach (Course _c in _container.GetChildren<Course>())
-            //{
-            //    var _detail = new N2.Details.StringDetail( _container, _c.ID.ToString(), "100");
-            //    a.Add(_detail);
-            //}
-
-
-            //var _details = new N2.Details.DetailCollection(ParentItem, this.txtAddTUP.Text, a);
-            //this.CurrentItem.CourseContainer.DetailCollections.Add(this.txtAddTUP.Text, _details);
-            N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
-
-
-            this.CurrentTup = tupToBeAdded;
-            this.ddltup.DataSource = CollectionNames;
-            this.ddltup.DataBind();
- 
-            foreach (ListItem li in this.ddltup.Items) 
-            {
-                if (li.Value == tupToBeAdded) li.Selected = true;
-            }
-            
-        }
-
-       protected void cc_Changed(object sender, EventArgs e)
-        {
-            if (!this.IsEditable) return;
-            this.btSave.Visible = true;
-        }
-
-        protected void ddltup_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.CurrentCurriculum.CourseContainerId = this.CurrentItem.CourseContainer.ID;
-            DetailCollection dc=  
-                this.CurrentItem.CourseContainer.GetDetailCollection(((DropDownList)sender).SelectedValue, false);
-            this.CurrentCurriculum.DetailCollection = dc.Cast<String>(); 
-            this.CurrentCurriculum.CurrentCurriculumName = ((DropDownList)sender).SelectedValue;
-        }
+		protected void btnAddTUP_Click(object sender, EventArgs e)
+		{
+			if (!this.IsEditable) return;
+			var _container = this.CurrentItem.CourseContainer;
+			string tupToBeAdded = this.txtAddTUP.Text;
+			_container.GetDetailCollection(tupToBeAdded, true).AddRange(
+				from _course in _container.GetChildren().OfType<Course>()
+				select new IntegerDetail(
+					_container,
+					_course.ID.ToString(),
+					0)
+			);
 
 
 
-        protected void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!this.IsEditable) return;
-            DetailCollection dc=  
-                this.CurrentItem.CourseContainer.GetDetailCollection(this.ddltup.SelectedValue, false);
-            IEnumerable<string> dcToSave = this.CurrentCurriculum.DetailCollection;
-            if (dcToSave == null) return;
-            dc.Clear();
-            dc.AddRange(
-                from str in dcToSave 
-                select new StringDetail(this.CurrentItem.CourseContainer, str.Substring(1), str));
-            N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
-            this.btSave.Visible = false;
+			//List<StringDetail> a = new List<StringDetail>();
+			//foreach (CourseInfo _ci in CourseInfos)
+			//{
+			//    var _detail = new N2.Details.IntegerDetail(ParentItem, _ci.Title, 1);
+			//    a.Add( _detail );
+			//}
+
+			//foreach (Course _c in _container.GetChildren<Course>())
+			//{
+			//    var _detail = new N2.Details.StringDetail( _container, _c.ID.ToString(), "100");
+			//    a.Add(_detail);
+			//}
 
 
+			//var _details = new N2.Details.DetailCollection(ParentItem, this.txtAddTUP.Text, a);
+			//this.CurrentItem.CourseContainer.DetailCollections.Add(this.txtAddTUP.Text, _details);
+			N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
 
 
-        }
+			this.CurrentTup = tupToBeAdded;
+			this.ddltup.DataSource = CollectionNames;
+			this.ddltup.DataBind();
 
-        protected void btnDelTUP_Click(object sender, ImageClickEventArgs e)
-        {
-            if (!this.IsEditable) return;
-            string tupToBeDeleted = this.ddltup.SelectedValue;
-            this.CurrentItem.CourseContainer.DetailCollections.Remove(tupToBeDeleted);
-            N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
-            this.ddltup.DataSource = CollectionNames;
-            this.ddltup.DataBind();
+			foreach (ListItem li in this.ddltup.Items) {
+				if (li.Value == tupToBeAdded) li.Selected = true;
+			}
 
-        }
+		}
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
+		protected void cc_Changed(object sender, EventArgs e)
+		{
+			if (!this.IsEditable) return;
+			this.btSave.Visible = true;
+		}
 
-            string[] users = this.SelectUser.SelectedUser.Split(new Char[] { ';' });
-            foreach (string _u in users)
-            {
-                MembershipUser _user = Membership.GetUser(_u);
-                if (_user != null)
-                {
-                   
-                   var cp=ProfileBase.Create(_u);
-                    cp.SetPropertyValue("Curriculum",this.ddltup.SelectedValue);
-                    cp.Save();
+		protected void ddltup_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			var _ddl = sender as DropDownList;
+			var _dcName = _ddl.SelectedValue;
 
-                }
-                else if (Roles.RoleExists(_u))
-                {
-                    string[] _uc = Roles.GetUsersInRole(_u);
-                    foreach (string _userName in _uc)
-                    {
-                    var cpu=ProfileBase.Create(_userName);
-                    cpu.SetPropertyValue("Curriculum",this.ddltup.SelectedValue);
-                    cpu.Save();
-                    }
-                }
-                
-            } 
+			this.CurrentCurriculum.CourseContainerId = this.CurrentItem.CourseContainer.ID;
 
-        }
+			var _dc = this.CurrentItem.CourseContainer.GetDetailCollection(_dcName, true);
+			this.CurrentCurriculum.CourseData =
+				_dc.Details.Cast<IntegerDetail>().ToDictionary(
+					i => i.Name,
+					i => i.IntValue
+				);
+			this.CurrentCurriculum.CurrentCurriculumName = _dcName;
+		}
+		
+		protected void btnSave_Click(object sender, EventArgs e)
+		{
+			if (!this.IsEditable) return;
+			
+			DetailCollection dc =
+				this.CurrentItem.CourseContainer.GetDetailCollection(
+					this.ddltup.SelectedValue,
+					false);
+			
+			var dcToSave = this.CurrentCurriculum.CourseData;
+			
+			if (dcToSave == null) return;
+			
+			dc.Clear();
+			dc.AddRange(
+				from _item in dcToSave
+				select new IntegerDetail(
+					this.CurrentItem.CourseContainer,
+					_item.Key,
+					_item.Value));
+			
+			N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
+			this.btSave.Visible = false;
+		}
 
-    }
+		protected void btnDelTUP_Click(object sender, ImageClickEventArgs e)
+		{
+			if (!this.IsEditable) return;
+			string tupToBeDeleted = this.ddltup.SelectedValue;
+			this.CurrentItem.CourseContainer.DetailCollections.Remove(tupToBeDeleted);
+			N2.Context.Current.Persister.Save(this.CurrentItem.CourseContainer);
+			this.ddltup.DataSource = CollectionNames;
+			this.ddltup.DataBind();
+
+		}
+
+		protected void Button1_Click(object sender, EventArgs e)
+		{
+
+			string[] users = this.SelectUser.SelectedUser.Split(new Char[] { ';' });
+			foreach (string _u in users) {
+				MembershipUser _user = Membership.GetUser(_u);
+				if (_user != null) {
+
+					var cp = ProfileBase.Create(_u);
+					cp.SetPropertyValue("Curriculum", this.ddltup.SelectedValue);
+					cp.Save();
+
+				} else if (Roles.RoleExists(_u)) {
+					string[] _uc = Roles.GetUsersInRole(_u);
+					foreach (string _userName in _uc) {
+						var cpu = ProfileBase.Create(_userName);
+						cpu.SetPropertyValue("Curriculum", this.ddltup.SelectedValue);
+						cpu.Save();
+					}
+				}
+
+			}
+
+		}
+
+	}
 }

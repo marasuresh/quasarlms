@@ -1,37 +1,41 @@
-﻿namespace N2.Lms.Items.TrainingWorkflow
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace N2.Lms.Items.TrainingWorkflow
 {
-	using System;
-	using N2.Templates.Items;
-	using System.Diagnostics;
+	using N2.Details;
+	using N2.Lms.LearningSession;
 
 	partial class TrainingTicket
 	{
-		public Topic CurrentTopic
+		public IDictionary<int, TestState> Tests
 		{
-			get;
-			protected set;
+			get
+			{
+				return (
+					from _ts in this.GetDetailCollection("TestState", true).Cast<ObjectDetail>()
+					select new { Name = _ts.Name, Value = _ts.Value as TestState, }
+				).ToDictionary(i => int.Parse(i.Name), i => i.Value);
+			}
+			set
+			{
+				var _collection = this.GetDetailCollection("TestState", true);
+				_collection.Clear();
+
+				_collection.AddRange(
+					from i in value
+					select new ObjectDetail(this, i.Key.ToString(), i.Value)
+				);
+			}
 		}
 
-		public override ContentItem GetChild(string childName)
-		{
-			Uri _base = new Uri("http://localhost");
-			UriTemplate _template = new UriTemplate("topic/{topic}");
-			UriTemplateMatch _match = _template.Match(_base, new Uri(_base, childName));
-
-			Trace.WriteLine("TrainingTicket.GetChild: " + childName, "Lms");
-
-			if(null != _match) {
-				string _topicName = _match.BoundVariables["topic"];
-				Trace.WriteLine("Matched: " + _topicName, "Lms");
-				
-				this.CurrentTopic = (Topic)this.Training.Course.TopicContainer.GetChild(_topicName);
-				
-				
-				
-				return this;
+		public IEnumerable<HistoryItem> TopicHistory {
+			get {
+				return this.GetDetail<IEnumerable<HistoryItem>>("TopicHistory", new HistoryItem[0]);
 			}
-
-			return base.GetChild(childName);
+			set {
+				this.SetDetail<IEnumerable<HistoryItem>>("TopicHistory", value);
+			}
 		}
 	}
 }
