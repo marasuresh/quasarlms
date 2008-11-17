@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Security;
 
 namespace N2.Lms.Items
 {
@@ -14,7 +15,7 @@ namespace N2.Lms.Items
 		#region Lms collection properties
 
 		/// <summary>
-		/// Courses, i'm not currently studying
+		/// Courses available to me and i'm not currently studying
 		/// </summary>
 		public IEnumerable<Course> MyAvailableCourses {
 			get {
@@ -23,7 +24,7 @@ namespace N2.Lms.Items
 		}
 
 		/// <summary>
-		/// All Courses i have access to
+		/// All Courses i have access to according to Course item permission
 		/// </summary>
 		internal IEnumerable<Course> AllCourses {
 			get {

@@ -19,7 +19,6 @@
 	[AllowedChildren(typeof(Request))]
 	public partial class RequestContainer: ContentItem, IWorkflowItemContainer
 	{
-
 		public RequestContainer()
 		{
 			this.Name = "requests";

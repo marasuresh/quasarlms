@@ -33,10 +33,26 @@ namespace N2.Lms.Items
 
 		#region My Courses
 
-		[DataObjectMethod(DataObjectMethodType.Select, true)]
-		public IEnumerable<Course> FindMyCourses()
+		public class CourseViewData
 		{
-			return this.MyAvailableCourses.ToArray();
+			public int Id { get; internal set; }
+			public string Title { get; internal set; }
+			public bool IsRequired { get; internal set; }
+		}
+
+		[DataObjectMethod(DataObjectMethodType.Select, true)]
+		public IEnumerable<CourseViewData> FindMyCourses()
+		{
+			return (
+				from _course in this.MyAvailableCourses
+				join _curriculumCourse in this.CourseContainer.MyCurriculumCourses
+					on _course.ID equals _curriculumCourse.Id
+				where _curriculumCourse.Status > 0
+				select new CourseViewData {
+					Id = _course.ID,
+					Title = _course.Title,
+					IsRequired = 1 == _curriculumCourse.Status,
+				}).ToArray();
 		}
 
 		[DataObjectMethod(DataObjectMethodType.Update, true)]

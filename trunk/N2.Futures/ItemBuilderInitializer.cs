@@ -1,8 +1,10 @@
-﻿namespace N2.Definitions
+﻿using System;
+
+namespace N2.Definitions
 {
 	using N2.Plugin;
 
-	[AutoInitialize]
+	[AutoInitialize, Obsolete]
 	public class ItemBuilderInitializer: IPluginInitializer
 	{
 		#region IPluginInitializer Members
