@@ -71,7 +71,7 @@ namespace N2.Web.UI.WebControls
 
 		protected override void CreateChildControls()
 		{
-			Debug.WriteLine("SelectUser.CreateChildControls: IsPostBack=" + this.Page.IsPostBack.ToString(), "UserTree");
+			//Debug.WriteLine("SelectUser.CreateChildControls: IsPostBack=" + this.Page.IsPostBack.ToString(), "UserTree");
 
 			base.CreateChildControls();
 
