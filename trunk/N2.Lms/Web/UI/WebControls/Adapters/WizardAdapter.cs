@@ -106,26 +106,27 @@ namespace CSSFriendly
 					// Render WizardStep
 					RenderStep(writer, wizard);
 
-					// If ActiveStep.StepType is Auto then we determine the type of navigation
-					// by the order in which the steps are declared
-					bool auto = (wizard.ActiveStep.StepType == WizardStepType.Auto);
-					int numberOfSteps = wizard.WizardSteps.Count;
-					int index = wizard.ActiveStepIndex;
+					if (null != wizard.ActiveStep) {
+						// If ActiveStep.StepType is Auto then we determine the type of navigation
+						// by the order in which the steps are declared
+						bool auto = (wizard.ActiveStep.StepType == WizardStepType.Auto);
+						int numberOfSteps = wizard.WizardSteps.Count;
+						int index = wizard.ActiveStepIndex;
 
-					// If on first page of wizard
-					if ((auto && index == 0) ||
-					   wizard.ActiveStep.StepType == WizardStepType.Start) {
-						RenderStartNavigation(writer, wizard);
-					} else if ((auto && index >= 0 && index < numberOfSteps - 1) ||
-					   wizard.ActiveStep.StepType == WizardStepType.Step) {
-						RenderStepNavigation(writer, wizard);
-					} else if ((auto && index == numberOfSteps - 1) ||
-						 wizard.ActiveStep.StepType == WizardStepType.Finish) {
-						RenderFinishNavigation(writer, wizard);
-					} else {
-						// Yikes
+						// If on first page of wizard
+						if ((auto && index == 0) ||
+						   wizard.ActiveStep.StepType == WizardStepType.Start) {
+							RenderStartNavigation(writer, wizard);
+						} else if ((auto && index >= 0 && index < numberOfSteps - 1) ||
+						   wizard.ActiveStep.StepType == WizardStepType.Step) {
+							RenderStepNavigation(writer, wizard);
+						} else if ((auto && index == numberOfSteps - 1) ||
+							 wizard.ActiveStep.StepType == WizardStepType.Finish) {
+							RenderFinishNavigation(writer, wizard);
+						} else {
+							// Yikes
+						}
 					}
-
 				}
 			} else {
 				// Use the default rendering of the control
@@ -277,8 +278,12 @@ namespace CSSFriendly
 			//}
 			//else
 			{
-				foreach (Control control in wizard.ActiveStep.Controls) {
-					control.RenderControl(writer);
+				var _activeStep = wizard.ActiveStep;
+
+				if (null != _activeStep) {
+					foreach (Control control in _activeStep.Controls) {
+						control.RenderControl(writer);
+					}
 				}
 			}
 			WebControlAdapterExtender.WriteEndDiv(writer);

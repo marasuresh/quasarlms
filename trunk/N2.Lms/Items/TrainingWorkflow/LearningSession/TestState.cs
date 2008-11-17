@@ -11,5 +11,6 @@ namespace N2.Lms.LearningSession
 		public IOrderedEnumerable<int> QuestionOrder { get; set; }
 		public DateTimeOffset StartedOn { get; set; }
 		public IDictionary<int, string> Answers { get; set; }
+		public int Score { get; set; }
 	}
 }
