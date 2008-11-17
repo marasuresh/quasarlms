@@ -2,111 +2,111 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
-using N2.Lms.Items;
 
 namespace N2.Calendar.Curriculum.UI.Views
 {
+	using N2.Lms.Items;
+	using N2.Details;
+
 	public partial class Curriculum : System.Web.UI.UserControl
 	{
-		public int CourseContainerId { get; set; }
+		/// <summary>
+		/// Holds an ID of a container object -- an absolute minimum information that is needed to recreate it
+		/// </summary>
+		public int? CourseContainerId {
+			get { return (int?)this.ViewState["CourseContainerId"]; }
+			protected set { this.ViewState["CourseContainerId"] = value; }
+		}
 
-		string _currentCurriculumName = string.Empty;
+		/// <summary>
+		/// Holds a collection name currently being edited
+		/// </summary>
 		public string CurrentCurriculumName {
+			get { return (string)this.ViewState["CurriculumName"]; }
+			set { this.ViewState["CurriculumName"] = value; }
+		}
+
+		CourseContainer m_container;
+		/// <summary>
+		/// An instance of a container, that can be recreated if neccessary
+		/// </summary>
+		public CourseContainer CourseContainer {
 			get {
-				return _currentCurriculumName;
+				return
+					this.m_container
+					?? (this.m_container = this.CourseContainerId.HasValue
+						? N2.Context.Persister.Get<CourseContainer>(this.CourseContainerId.Value)
+						: null);
 			}
 			set {
-				_currentCurriculumName = value;
-			}
-		}
-
-		protected IEnumerable<CourseInfo> CourseInfos {
-			get {
-
-				return
-					from _data in this.CourseData
-					let _id = int.Parse(_data.Key)
-					let _course = N2.Context.Current.Persister.Get<Course>(_id)
-					select new CourseInfo {
-						CourseID = _id,
-						CourseName = _course.Title,
-						CourseExclude = _data.Value,
-					};
-			}
-		}
-
-		#region Types
-		
-		protected class CourseInfo
-		{
-			public int CourseID { get; set; }
-			public string CourseName { get; set; }
-			public int CourseExclude { get; set; }
-			public bool CourseObligatory { get; set; }
-			public bool CourseOptional { get; set; }
-		}
-
-		#endregion Types
-
-		protected void Page_Load(object sender, EventArgs e)
-		{
-
-			if (!IsPostBack) {
-				if (this.CurrentCurriculum != null) {
-					this.rpt.DataSource = CourseInfos;
-					this.rpt.DataBind();
+				if (null != value) {
+					this.CourseContainerId = value.ID;
 				}
+				this.m_container = value;
 			}
+		}
 
-		}
-		
-		protected CourseContainer CourseContainer {
+		IDictionary<string, int> m_curriculum;
+		/// <summary>
+		/// Detail collection, wrapped into dictionary
+		/// </summary>
+		protected IDictionary<string, int> CurrentCurriculum {
 			get {
-				return string.IsNullOrEmpty(this.CourseContainerId.ToString()) ?
-					 null : N2.Context.Current.Persister.Get<CourseContainer>(this.CourseContainerId);
+				if (null == this.m_curriculum
+						&& !string.IsNullOrEmpty(this.CurrentCurriculumName)
+						&& null != this.CourseContainer) {
+					
+					this.m_curriculum = this.CourseContainer
+							.GetDetailCollection(this.CurrentCurriculumName, true)
+							.AsDictionary<int>();
+				}
+
+				return m_curriculum;
 			}
 		}
-		
-		public N2.Details.DetailCollection CurrentCurriculum
+
+		/// <summary>
+		/// Merge Detail collection content with that in edit interface
+		/// </summary>
+		public bool Update()
 		{
-			get
-			{
-				return string.IsNullOrEmpty(_currentCurriculumName) ?
-					  null : this.CourseContainer.GetDetailCollection(_currentCurriculumName, false);
-				//add 
+			var _curriculum = this.CurrentCurriculum;
+			if (null != _curriculum) {
+				return this.UpdateCurriculumFromControls(ref _curriculum);
 			}
+
+			return false;
 		}
 
-		protected IDictionary<string, int> m_courseData;
-		public IDictionary<string, int> CourseData {
-			get {
-				if (m_courseData == null) {
-					this.m_courseData = new Dictionary<string, int>();
-
-					this.m_courseData = (
+		/// <summary>
+		/// Internal merging implementation ..
+		/// </summary>
+		/// <param name="original"></param>
+		bool UpdateCurriculumFromControls(ref IDictionary<string, int> original)
+		{
+			var _dataFromControls = (
 						from _item in this.rpt.Items.Cast<RepeaterItem>()
 						let _rbl = _item.FindControl("rbl") as RadioButtonList
 						let _hf = _item.FindControl("hf") as HiddenField
 						select new {
 							Key = _hf.Value,
 							Value = _rbl.SelectedIndex,
-						}).ToDictionary(i => i.Key, i => i.Value);
-				}
+						}
+					).ToDictionary(i => i.Key, i => i.Value);
 
-				return m_courseData;
-			}
-			set {
-				m_courseData = value;
-				if (m_courseData.Any()) {
-					this.rpt.DataSource = CourseInfos;
-					this.rpt.DataBind();
+			var _result = false;
+
+			foreach(var _name in _dataFromControls
+					.Keys
+					.Concat(original.Keys)
+					.Distinct()) {
+				if(original[_name] != _dataFromControls[_name]) {
+					original[_name] = _dataFromControls[_name];
+					_result = true;
 				}
 			}
-		}
 
-		protected void rpt_ItemCommand(object source, RepeaterCommandEventArgs e)
-		{
-			((Label)e.Item.FindControl("l10")).Text = ((HiddenField)e.Item.FindControl("hf")).Value;
+			return _result;
 		}
 
 		public event EventHandler Changed;
@@ -120,16 +120,17 @@ namespace N2.Calendar.Curriculum.UI.Views
 
 		protected void rbl_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var _rbl = sender as RadioButtonList;
-			var _hf = _rbl.NamingContainer.FindControl("hf") as HiddenField;
-			var _selectedCourseId = _hf.Value;
-			int _selectedValue = _rbl.SelectedIndex;
-
 			OnChanged(EventArgs.Empty);
+		}
 
-			if (this.CourseData.ContainsKey(_selectedCourseId)) {
-				this.CourseData[_selectedCourseId] = _selectedValue;
-			}
+		protected void ds_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+		{
+			e.InputParameters["curriculumName"] = this.CurrentCurriculumName;
+		}
+
+		protected void ds_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
+		{
+			e.ObjectInstance = this.CourseContainer;
 		}
 	}
 }

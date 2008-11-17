@@ -49,7 +49,6 @@
 						runat="server"
 						Text="Курс"
 						meta:resourecekey="CourseColumn" /></th></tr>
-			<tr><td colspan="2"><%# this.Profile.Curriculum %></td></tr>
 			<tr id="itemPlaceholder" runat="server" />
 		</table>
 	</LayoutTemplate>
@@ -64,7 +63,8 @@
 						CssClass="LibC_c"
 						AlternateText="детали..."
 						CommandName="Edit" /></td>
-			<td><%# Eval("Title") %></td>
+			<td><%# Eval("Title") %>
+				<%# (bool)Eval("IsRequired") ? " <img src='" + this.Page.ResolveClientUrl("~/Lms/UI/Img/asterisk_orange.png") + "' style='width:16px;height:16px;' alt='Required' />" : string.Empty %></td>
 		</tr>
 	</ItemTemplate>
 	

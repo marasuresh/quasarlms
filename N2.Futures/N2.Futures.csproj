@@ -58,6 +58,11 @@
   <ItemGroup>
     <Compile Include="ContentItemExtensions.cs" />
     <Compile Include="Definitions\EnsureChildAttribute.cs" />
+    <Compile Include="Details\DetailCollectionExtensions.cs" />
+    <Compile Include="Details\DetailCollectionDictionaryWrapper.cs" />
+    <Compile Include="Details\DetailCollectionListWrapper.cs" />
+    <Compile Include="Details\EditableUserControlAttribute.cs" />
+    <Compile Include="Details\WithEditableUserControlAttribute.cs" />
     <Compile Include="ItemBuilder.cs" />
     <Compile Include="ItemBuilderInitializer.cs" />
     <Compile Include="Items\ProxyItem.cs" />
@@ -90,9 +95,6 @@
     <EmbeddedResource Include="Images\t.gif" />
     <EmbeddedResource Include="Images\tl.gif" />
     <EmbeddedResource Include="Images\tr.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Details\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

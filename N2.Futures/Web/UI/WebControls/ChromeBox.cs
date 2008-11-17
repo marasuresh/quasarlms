@@ -5,6 +5,9 @@ namespace N2.Web.UI.WebControls
 	using System;
 	using N2.Resources;
 
+	/// <summary>
+	/// Display a frame with rounded corners via CSS
+	/// </summary>
 	public class ChromeBox: Panel
 	{
 		public ChromeBox()

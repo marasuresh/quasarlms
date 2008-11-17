@@ -11,6 +11,7 @@ namespace N2.Definitions
 		AttributeTargets.Class,
 		AllowMultiple = true,
 		Inherited = true)]
+	[Obsolete]
 	public class EnsureChildAttribute: Attribute
 	{
 		#region Constructors

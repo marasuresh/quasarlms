@@ -12,6 +12,10 @@ namespace N2.Web.UI.WebControls
 	using System.Diagnostics;
 	using System.Web.Security;
 
+	/// <summary>
+	/// Displays a TreeView populated with users and roles, taken from ASP.Net membership.
+	/// Allows flexible presentation and selection.
+	/// </summary>
 	[ToolboxData("<{0}:UserTree runat=\"server\"></{0}:UserTree>")]
 	public class UserTree : fx.CompositeControl
 	{
@@ -51,6 +55,7 @@ namespace N2.Web.UI.WebControls
 					: this.TreeView.SelectedValue;
 			}
 			set {
+///TODO implement setting selection state
 				//this.EnsureChildControls();
 				//this.TreeView..ViewState["SelectedUser"] = value;
 			}

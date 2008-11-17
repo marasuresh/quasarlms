@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Items\CourseContainer.Business.cs" />
     <Compile Include="Items\TrainingWorkflow\LearningSession\HistoryItem.cs" />
     <Compile Include="Items\TrainingWorkflow\LearningSession\TestState.cs" />
     <Compile Include="Strings.ru.Designer.cs">

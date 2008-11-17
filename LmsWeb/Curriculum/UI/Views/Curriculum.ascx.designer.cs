@@ -14,15 +14,6 @@ namespace N2.Calendar.Curriculum.UI.Views {
     public partial class Curriculum {
         
         /// <summary>
-        /// ChromeBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::N2.Web.UI.WebControls.ChromeBox ChromeBox1;
-        
-        /// <summary>
         /// rpt control.
         /// </summary>
         /// <remarks>
@@ -30,5 +21,14 @@ namespace N2.Calendar.Curriculum.UI.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rpt;
+        
+        /// <summary>
+        /// ds control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ds;
     }
 }

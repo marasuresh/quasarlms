@@ -6,8 +6,9 @@ using System.Web.UI.WebControls;
 
 namespace N2.Web.UI.WebControls.Test
 {
-	using System.Collections.Generic;
-	
+	/// <summary>
+	/// Demo control for a UserTree
+	/// </summary>
 	[DefaultProperty("Text")]
 	[ToolboxData("<{0}:UserTreeTestBed runat=server></{0}:UserTreeTest>")]
 	public class UserTreeTestBed : CompositeControl

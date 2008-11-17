@@ -1,10 +1,13 @@
-﻿namespace N2.Definitions
+﻿using System;
+
+namespace N2.Definitions
 {
 	using System.Diagnostics;
 	using Castle.Core;
 	using N2.Persistence;
 	using N2.Plugin;
 
+	[Obsolete]
 	public class ItemBuilder : IStartable, IAutoStart
 	{
 		readonly IPersister persister;

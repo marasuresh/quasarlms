@@ -12,7 +12,14 @@
 	[RestrictParents(typeof(IStructuralPage), typeof(IStorageItem))]
 	[NotThrowable, NotVersionable]
 	[WithEditableTitle]
-	public class CourseContainer: ContentItem
+	[WithEditableUserControl(
+		"Curriculum",
+		"~/Curriculum/UI/Views/CurriculumList.ascx",
+		"",
+		"ParentItem",
+		100,
+		"")]
+	public partial class CourseContainer: ContentItem
 	{
 		public CourseContainer()
 		{

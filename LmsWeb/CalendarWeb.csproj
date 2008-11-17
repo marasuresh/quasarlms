@@ -146,12 +146,10 @@
     <Compile Include="Curriculum\UI\Views\Curriculum.ascx.designer.cs">
       <DependentUpon>Curriculum.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Curriculum\UI\Views\CurriculumList.aspx.cs">
-      <DependentUpon>CurriculumList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Curriculum\UI\Views\CurriculumList.aspx.designer.cs">
-      <DependentUpon>CurriculumList.aspx</DependentUpon>
+    <Compile Include="Curriculum\UI\Views\App_LocalResources\CurriculumList.ascx.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurriculumList.ascx.resx</DependentUpon>
     </Compile>
     <Compile Include="Reporting\UI\Views\Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>
@@ -171,7 +169,15 @@
   <ItemGroup>
     <Content Include="Curriculum\UI\Layouts\Top+SubMenu.Master" />
     <Content Include="Curriculum\UI\Views\Curriculum.ascx" />
-    <Content Include="Curriculum\UI\Views\CurriculumList.aspx" />
+    <Content Include="Curriculum\UI\Views\CurriculumList.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Curriculum\UI\Views\App_LocalResources\CurriculumList.ascx.ru.resx">
+    </Content>
+    <EmbeddedResource Include="Curriculum\UI\Views\App_LocalResources\CurriculumList.ascx.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CurriculumList.ascx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

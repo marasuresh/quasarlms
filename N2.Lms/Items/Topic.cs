@@ -1,4 +1,5 @@
 ﻿using System.Web.UI.WebControls;
+using System.Collections.Generic;
 
 namespace N2.Lms.Items
 {
@@ -37,10 +38,10 @@ namespace N2.Lms.Items
 			}
 			set {
 				this.Content.Clear();
-				this.Content.AddRange(
-					from _line in  value.Split('\n', '\r')
-					select new N2.Details.StringDetail(this, string.Empty, _line)
-					);
+				
+				foreach(var _line in value.Split('\n', '\r')) {
+					this.Content.Add(_line);
+				}
 			}
 		}
 
@@ -58,10 +59,11 @@ namespace N2.Lms.Items
 			set { this.SetDetail<string>("Text", value); }
 		}
 
-		internal DetailCollection Content {
+		internal IList<string> Content {
 			get {
 				return
-					this.GetDetailCollection("Content", true);
+					this.GetDetailCollection("Content", true)
+						.AsList<string>();
 			}
 		}
 

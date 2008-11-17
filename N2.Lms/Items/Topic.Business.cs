@@ -30,14 +30,5 @@ namespace N2.Lms.Items
 		public IEnumerable<Topic> Topics {
 			get { return this.GetChildren(new TypeFilter(typeof(Topic))).OfType<Topic>(); }
 		}
-
-		public IEnumerable<string> ContentLinks {
-			get {
-				DetailCollection _col = this.Content;
-				return null != _col
-					? _col.OfType<string>()
-					: Enumerable.Empty<string>();
-			}
-		}
 	}
 }
