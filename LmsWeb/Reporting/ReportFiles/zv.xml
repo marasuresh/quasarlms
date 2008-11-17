@@ -2,12 +2,7 @@
 <ArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfString>
     <string>1</string>
-    <string>studa</string>
-    <string>0510131</string>
-  </ArrayOfString>
-  <ArrayOfString>
-    <string>2</string>
-    <string>studb</string>
-    <string>0510131</string>
+    <string>student01</string>
+    <string />
   </ArrayOfString>
 </ArrayOfArrayOfString>

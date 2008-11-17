@@ -14,7 +14,7 @@
 			N2.Resources.ScriptPosition.Header,
 			N2.Resources.ScriptOptions.Include);
 
-		if (this.CurrentItem.ContentLinks.Count() > 1) {
+		if (this.CurrentItem.Content.Count > 1) {
 			Register.StyleSheet(this.Page, "~/Lms/UI/Js/jQuery.tabs.css");
 			Register.JavaScript(this.Page, "~/Lms/UI/Js/jQuery.tabs.js");
 			Register.JavaScript(this.Page, @"
@@ -29,8 +29,8 @@ $('div#tabs').tabs({ fxAutoHeight: true });
 
 <h3 class="cap3"><%= this.CurrentItem.Title %></h3>
 
-<% var _content = this.CurrentItem.ContentLinks; %>
-<% var _displayTabs = _content.Count() > 1; %>
+<% var _content = this.CurrentItem.Content; %>
+<% var _displayTabs = _content.Count > 1; %>
 <% var i = 0; %>
 <% if (_displayTabs) { %>
 <div id="tabs">

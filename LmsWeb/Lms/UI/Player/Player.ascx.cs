@@ -140,7 +140,10 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 		Register.StyleSheet(this.Page, "~/Lms/UI/Player/Player.css");
 		Register.StyleSheet(this.Page, "~/Lms/UI/Js/jquery.treeview.css");
 		this.EnsureChildControls();
-		this.wz.ActiveStepIndex = 0;
+
+		if (this.wz.ActiveStepIndex == -1 && this.wz.WizardSteps.Count > 0) {
+			this.wz.ActiveStepIndex = 0;
+		}
 
 		Register.JQuery(this.Page);
 		Register.JavaScript(this.Page, "~/Lms/UI/Js/jQuery.treeview.js");

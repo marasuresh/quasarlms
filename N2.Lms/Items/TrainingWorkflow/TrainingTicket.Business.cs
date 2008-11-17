@@ -8,33 +8,19 @@ namespace N2.Lms.Items.TrainingWorkflow
 
 	partial class TrainingTicket
 	{
-		public IDictionary<int, TestState> Tests
-		{
-			get
-			{
-				return (
-					from _ts in this.GetDetailCollection("TestState", true).Cast<ObjectDetail>()
-					select new { Name = _ts.Name, Value = _ts.Value as TestState, }
-				).ToDictionary(i => int.Parse(i.Name), i => i.Value);
-			}
-			set
-			{
-				var _collection = this.GetDetailCollection("TestState", true);
-				_collection.Clear();
-
-				_collection.AddRange(
-					from i in value
-					select new ObjectDetail(this, i.Key.ToString(), i.Value)
-				);
+		public IDictionary<string, TestState> Tests {
+			get {
+				return this
+					.GetDetailCollection("TestState", true)
+					.AsDictionary<TestState>();
 			}
 		}
 
-		public IEnumerable<HistoryItem> TopicHistory {
+		public IList<HistoryItem> TopicHistory {
 			get {
-				return this.GetDetail<IEnumerable<HistoryItem>>("TopicHistory", new HistoryItem[0]);
-			}
-			set {
-				this.SetDetail<IEnumerable<HistoryItem>>("TopicHistory", value);
+				return this
+					.GetDetailCollection("TopicHistory", true)
+					.AsList<HistoryItem>();
 			}
 		}
 	}

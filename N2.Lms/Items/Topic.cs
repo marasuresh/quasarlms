@@ -59,7 +59,7 @@ namespace N2.Lms.Items
 			set { this.SetDetail<string>("Text", value); }
 		}
 
-		internal IList<string> Content {
+		public IList<string> Content {
 			get {
 				return
 					this.GetDetailCollection("Content", true)

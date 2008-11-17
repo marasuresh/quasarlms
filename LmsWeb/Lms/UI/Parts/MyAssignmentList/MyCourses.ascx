@@ -16,6 +16,14 @@
 		e.NewValues.Add("end", ((DatePicker)_lv.EditItem.FindControl("dtEnd")).SelectedDate);
 		e.NewValues.Add("comments", ((TextBox)_lv.EditItem.FindControl("tbComment")).Text);
 	}
+
+	protected string GetRequiredHtml(bool isRequired)
+	{
+		return
+			isRequired
+				? " <img src='" + this.Page.ResolveClientUrl("~/Lms/UI/Img/asterisk_orange.png") + "' style='width:16px;height:16px;' alt='Required' />"
+				: string.Empty;
+	}
 </script>
 
 <asp:ObjectDataSource 
@@ -64,7 +72,7 @@
 						AlternateText="детали..."
 						CommandName="Edit" /></td>
 			<td><%# Eval("Title") %>
-				<%# (bool)Eval("IsRequired") ? " <img src='" + this.Page.ResolveClientUrl("~/Lms/UI/Img/asterisk_orange.png") + "' style='width:16px;height:16px;' alt='Required' />" : string.Empty %></td>
+				<%# this.GetRequiredHtml((bool)Eval("IsRequired")) %></td>
 		</tr>
 	</ItemTemplate>
 	
@@ -77,7 +85,8 @@
 						ImageUrl="~/Lms/UI/Img/clear.gif"
 						CssClass="LibC_o"
 						CommandName="Cancel" /></td>
-			<td><%# Eval("Title") %></td>
+			<td><%# Eval("Title") %>
+				<%# this.GetRequiredHtml((bool)Eval("IsRequired")) %></td></td>
 		</tr>
 		<tr><td class="edit" colspan="2">
 				<div class="details">
