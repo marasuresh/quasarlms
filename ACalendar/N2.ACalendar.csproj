@@ -35,15 +35,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="N2, Version=1.0.403.25809, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2, Version=1.0.404.35974, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\n2cms\src\wwwroot\bin\N2.dll</HintPath>
+      <HintPath>..\Lib\N2.dll</HintPath>
     </Reference>
-    <Reference Include="N2.Templates, Version=1.0.403.26116, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="N2.Templates, Version=1.0.404.35975, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\n2cms\src\wwwroot\bin\N2.Templates.dll</HintPath>
+      <HintPath>..\Lib\N2.Templates.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

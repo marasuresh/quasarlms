@@ -66,13 +66,7 @@ namespace N2.Lms.Items
 						.AsList<string>();
 			}
 		}
-
-		/*		[EditableUrl("Content Url", 30)]
-		public string ContentUrl {
-			get { return (string)this.GetDetail("ContentUrl"); }
-			set { this.SetDetail<string>("ContentUrl", value); }
-		}
-*/
+		
 		[EditableCheckBox("Mandatory", 70)]
 		public bool Mandatory {
 			get { return (bool?)this.GetDetail("Mandatory") ?? true; }

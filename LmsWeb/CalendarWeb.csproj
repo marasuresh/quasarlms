@@ -58,7 +58,7 @@
     </Reference>
     <Reference Include="System.Data.SQLite, Version=1.0.52.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\n2cms\output\Templates\wwwroot\Bin\System.Data.SQLite.dll</HintPath>
+      <HintPath>..\Lib\System.Data.SQLite.DLL</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization">

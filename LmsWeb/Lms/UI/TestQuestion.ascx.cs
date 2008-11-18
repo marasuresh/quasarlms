@@ -17,22 +17,29 @@ namespace N2.Lms.UI.Parts
 		{
 			var _ctl = new TextBox {
 				ID = "tb",
-				TextMode = TextBoxMode.MultiLine
+				TextMode = TextBoxMode.MultiLine,
 			};
 
-			_ctl.TextChanged += (sender, e) => {
-				var _tb = sender as TextBox;
-				this.OnAnswerChanged(_tb.Text, _tb);
+			var _panel = new Panel();
+			var _chk = new Button { Text = "Check", };
+			this.PreRender += (sender, e) => _chk.Visible = this.InstantCheckEnabled;
+
+			_chk.Click += (sender, e) => {
+				this.OnAnswerChanged(_ctl.Text, _panel);
 			};
 
-			return _ctl;
+			this.AnswerMutator = val => _ctl.Text = val;
+			this.AnswerAccessor = () => _ctl.Text;
+
+			_panel.Controls.Add(_ctl);
+			_panel.Controls.Add(_chk);
+
+			return _panel;
 		}
 
 		protected Control CreateCheckBoxAnswerControl(IEnumerable<string> options)
 		{
-			var _ctl = new ValidatableCheckBoxList {
-				ID = "cbl",
-			};
+			var _ctl = new ValidatableCheckBoxList { ID = "cbl", };
 
 			foreach (var _option in options) {
 				_ctl.Items.Add(new ListItem(_option));
@@ -40,11 +47,15 @@ namespace N2.Lms.UI.Parts
 
 			var _panel = new Panel();
 			var _chk = new Button { Text = "Check", };
+			this.PreRender += (sender, e) => _chk.Visible = this.InstantCheckEnabled;
 
 			_chk.Click += (sender, e) => {
 				var _cbl = _ctl as ValidatableCheckBoxList;
 				this.OnAnswerChanged(_cbl.CheckedMask, _panel);
 			};
+
+			this.AnswerAccessor = () => _ctl.CheckedMask;
+			this.AnswerMutator = val => _ctl.CheckedMask = val;
 
 			_panel.Controls.Add(_ctl);
 			_panel.Controls.Add(_chk);
@@ -54,9 +65,9 @@ namespace N2.Lms.UI.Parts
 
 		protected Control CreateRadioAnswerControl(IEnumerable<string> options)
 		{
-			var _ctl = new RadioButtonList {
-				ID = "rbl", AutoPostBack = true,
-			};
+			var _ctl = new RadioButtonList { ID = "rbl", };
+			
+			this.PreRender += (sender, e) => _ctl.AutoPostBack = this.InstantCheckEnabled;
 
 			foreach (var _option in options) {
 				_ctl.Items.Add(new ListItem(_option));
@@ -66,6 +77,9 @@ namespace N2.Lms.UI.Parts
 				var _rbl = sender as RadioButtonList;
 				this.OnAnswerChanged(_rbl.SelectedValue, _rbl);
 			};
+
+			this.AnswerMutator = val => _ctl.SelectedValue = val;
+			this.AnswerAccessor = () => _ctl.SelectedValue;
 
 			return _ctl;
 		}
@@ -154,7 +168,7 @@ namespace N2.Lms.UI.Parts
 					Question = this.CurrentItem,
 					Answer = answer,
 					IsCorrect = this.CurrentItem.IsAnswerCorrect(answer),
-					Disable = true,
+					Disable = this.InstantCheckEnabled,
 				};
 
 				//Allow subscriber to alter params..
@@ -171,5 +185,37 @@ namespace N2.Lms.UI.Parts
 				}
 			}
 		}
+
+		#region Properties
+
+		Func<string> AnswerAccessor;//delayed getter of Answer property
+		Action<string> AnswerMutator;//ditto, but setter
+
+		public string Answer {
+			get {
+				return null != this.AnswerAccessor ? this.AnswerAccessor() : null;
+			}
+			set {
+				if (null != this.AnswerMutator) {
+					this.PreRender += (sender, e) => {
+						if (!string.IsNullOrEmpty(value)) {
+							this.AnswerMutator(value);
+						}
+					};
+				}
+			}
+		}
+
+		public int Score {
+			get { return
+				this.CurrentItem.IsAnswerCorrect(this.Answer) ? this.CurrentItem.Points : 0; }
+		}
+
+		public bool InstantCheckEnabled {
+			get { return (bool?)this.ViewState["InstantCheckEnabled"] ?? true; }
+			set { this.ViewState["InstantCheckEnabled"] = value; }
+		}
+
+		#endregion Properties
 	}
 }
