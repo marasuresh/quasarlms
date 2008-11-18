@@ -41,6 +41,9 @@
     <Content Include="20080826-lms-geography.xml" />
     <Content Include="20080826-lms-physics.xml" />
     <Content Include="20080826-lms-testing problems.xml" />
+    <None Include="scorm2n2.xslt">
+      <Generator>C:\usr\install\dev\dotnet\msxsl.exe</Generator>
+    </None>
     <None Include="convert.bat" />
     <None Include="fixAnswers.xslt">
       <Generator>C:\usr\install\dev\dotnet\msxsl.exe</Generator>
