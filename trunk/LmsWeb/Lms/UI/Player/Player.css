@@ -108,3 +108,5 @@ div#wrap {
 .coursetree span.topic { background: url(../Img/04/19.png) 0 0 no-repeat; }
 .coursetree span.testquestion { background: url(../Img/page_tick.gif) 0 0 no-repeat; }
 .coursetree span.test { background: url(../Img/page_script.gif) 0 0 no-repeat; }
+
+.notification { background-color:Yellow; border: 1px solid black; }

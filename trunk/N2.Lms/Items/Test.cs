@@ -30,7 +30,7 @@
 		}
 
 		[EditableCheckBox("Enable instant check", 10,
-			HelpTitle = "Allows trainee check correctness immediatlly upon answering a question")]
+			HelpTitle = "Allows trainee to check correctness immediatlly upon answering a question")]
 		public bool InstantCheckEnabled {
 			get { return this.GetDetail<bool>("InstantCheckEnabled", true); }
 			set { this.SetDetail<bool>("InstantCheckEnabled", value); }
