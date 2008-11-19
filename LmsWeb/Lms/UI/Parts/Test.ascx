@@ -7,18 +7,26 @@
 
 <%@ Reference Control="~/Lms/UI/TestQuestion.ascx" %>
 
-<asp:MultiView runat="server" ActiveViewIndex="0" ID="mv">
-	<asp:View runat="server" ID="vQuestion">
-		<h1><%= this.CurrentItem.Title %></h1>
-		<h3>Score: <%= this.Score %> / <%= this.CurrentItem.Points %></h3>
-		<h4>Elapsed: <span id='elapsedTime'><%= this.ElapsedTimeString %></span></h4>
-		<asp:Button
+<asp:PlaceHolder runat="server" ID="phExpired" Visible="false">
+	<div class="notification">Time has expired</div>
+</asp:PlaceHolder>
+
+<asp:Panel runat="server" ID="phQuestions">
+	<h1><%= this.CurrentItem.Title %></h1>
+	<h3>Score: <%= this.Score %> / <%= this.CurrentItem.Points %></h3>
+	<h4>Elapsed: <span id='elapsedTime'<%= this.StartedOn.HasValue
+		? string.Concat(
+			" title='",
+			this.StartedOn.Value.ToString(),
+			"'")
+		: string.Empty %>><%= this.ElapsedTimeString %></span></h4>
+	<asp:Button
 			runat="server"
-			Text="Check All"
+			Text="Submit Answers"
 			Visible="false"
 			ID="btnCheck"
 			OnClick="btnCheck_Click" />
-		<n2:Zone
+	<n2:Zone
 				runat="server"
 				ZoneName="Questions"
 				OnAddedItemTemplate="zone_AddedItemTemplate"
@@ -27,11 +35,4 @@
 			</HeaderTemplate>
 			<SeparatorTemplate><hr /></SeparatorTemplate>
 		</n2:Zone>
-	</asp:View>
-
-	<asp:View ID="vTimeExpired" runat="server">
-		<div class="notification">
-		Your test has expired
-		</div>
-	</asp:View>
-</asp:MultiView>
+</asp:Panel>

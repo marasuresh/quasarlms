@@ -14,22 +14,22 @@ namespace N2.Lms.UI.Parts {
     public partial class TestControl {
         
         /// <summary>
-        /// mv control.
+        /// phExpired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView mv;
+        protected global::System.Web.UI.WebControls.PlaceHolder phExpired;
         
         /// <summary>
-        /// vQuestion control.
+        /// phQuestions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View vQuestion;
+        protected global::System.Web.UI.WebControls.Panel phQuestions;
         
         /// <summary>
         /// btnCheck control.
@@ -48,14 +48,5 @@ namespace N2.Lms.UI.Parts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::N2.Web.UI.WebControls.Zone qz;
-        
-        /// <summary>
-        /// vTimeExpired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View vTimeExpired;
     }
 }

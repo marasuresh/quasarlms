@@ -1,17 +1,15 @@
-using System.Linq;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace N2.Lms.UI.Parts
 {
-	using N2.Templates.Items;
-	using N2.Templates.Web.UI;
 	using N2.Lms.Items;
 	using N2.Lms.Web.UI.WebControls;
 
-	public class TestQuestionControl : TemplateUserControl<AbstractContentPage, TestQuestion>
+	public class TestQuestionControl : BaseLearningControl<TestQuestion>
 	{
 		protected Control CreateTextAnswerControl()
 		{
@@ -20,12 +18,15 @@ namespace N2.Lms.UI.Parts
 				TextMode = TextBoxMode.MultiLine,
 			};
 
+			//Wire up a change event
+			_ctl.TextChanged += (sender, e) => this.OnChange();
+
 			var _panel = new Panel();
 			var _chk = new Button { Text = "Check", };
 			this.PreRender += (sender, e) => _chk.Visible = this.InstantCheckEnabled;
 
 			_chk.Click += (sender, e) => {
-				this.OnAnswerChanged(_ctl.Text, _panel);
+				this.OnSubmit(_ctl.Text, _panel);
 			};
 
 			this.AnswerMutator = val => _ctl.Text = val;
@@ -45,13 +46,16 @@ namespace N2.Lms.UI.Parts
 				_ctl.Items.Add(new ListItem(_option));
 			}
 
+			//Wire up a change event
+			_ctl.SelectedIndexChanged += (sender, e) => this.OnChange();
+
 			var _panel = new Panel();
 			var _chk = new Button { Text = "Check", };
 			this.PreRender += (sender, e) => _chk.Visible = this.InstantCheckEnabled;
 
 			_chk.Click += (sender, e) => {
 				var _cbl = _ctl as ValidatableCheckBoxList;
-				this.OnAnswerChanged(_cbl.CheckedMask, _panel);
+				this.OnSubmit(_cbl.CheckedMask, _panel);
 			};
 
 			this.AnswerAccessor = () => _ctl.CheckedMask;
@@ -72,10 +76,12 @@ namespace N2.Lms.UI.Parts
 			foreach (var _option in options) {
 				_ctl.Items.Add(new ListItem(_option));
 			}
-
+			
 			_ctl.SelectedIndexChanged += (sender, e) => {
+				//Wire up a change event
+				this.OnChange();
 				var _rbl = sender as RadioButtonList;
-				this.OnAnswerChanged(_rbl.SelectedValue, _rbl);
+				this.OnSubmit(_rbl.SelectedValue, _rbl);
 			};
 
 			this.AnswerMutator = val => _ctl.SelectedValue = val;
@@ -159,11 +165,22 @@ namespace N2.Lms.UI.Parts
 			this.Controls.Add(_answerControl);
 		}
 
-		public event EventHandler<TestQuestionEventArgs> AnswerChanged;
+		#region Events
 
-		protected virtual void OnAnswerChanged(string answer, WebControl ctl)
+		public event EventHandler Change;
+
+		protected virtual void OnChange()
 		{
-			if (null != this.AnswerChanged) {
+			if (null != this.Change) {
+				this.Change(this, EventArgs.Empty);
+			}
+		}
+
+		public event EventHandler<TestQuestionEventArgs> Submit;
+
+		protected virtual void OnSubmit(string answer, WebControl ctl)
+		{
+			if (null != this.Submit) {
 				var _args = new TestQuestionEventArgs {
 					Question = this.CurrentItem,
 					Answer = answer,
@@ -172,7 +189,7 @@ namespace N2.Lms.UI.Parts
 				};
 
 				//Allow subscriber to alter params..
-				this.AnswerChanged(this, _args);
+				this.Submit(this, _args);
 
 				if (_args.Disable) {
 					ctl.Enabled = false;
@@ -186,6 +203,8 @@ namespace N2.Lms.UI.Parts
 			}
 		}
 
+		#endregion Events
+
 		#region Properties
 
 		Func<string> AnswerAccessor;//delayed getter of Answer property
@@ -197,11 +216,16 @@ namespace N2.Lms.UI.Parts
 			}
 			set {
 				if (null != this.AnswerMutator) {
-					this.PreRender += (sender, e) => {
-						if (!string.IsNullOrEmpty(value)) {
+					if (!string.IsNullOrEmpty(value)) {
+						if (this.ChildControlsCreated) {
 							this.AnswerMutator(value);
+						} else {
+							//delay assiginig value to control until it is instantiated
+							this.Load += (sender, e) => {
+								this.AnswerMutator(value);
+							};
 						}
-					};
+					}
 				}
 			}
 		}
