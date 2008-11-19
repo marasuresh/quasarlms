@@ -10,6 +10,7 @@ using N2.Resources;
 using N2.Templates.Items;
 using N2.Templates.Web.UI;
 using N2.Web.UI;
+using N2.Lms.Web.UI.WebControls;
 
 /// <summary>
 /// <remarks>SkinID is used to tagging nodes to reconstruct their hierarchy in HTML from a plain wizard step collection.
@@ -185,9 +186,9 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 		this.Decorator.Items.Add(_step.ID, test);
 		this.wz.WizardSteps.Add(_step);
 
-		(
-			(TemplateUserControl<AbstractContentPage, Test>)((IContainable)test).AddTo(_step)
-		).CurrentItem = test;
+		var _testControl = (BaseLearningControl<Test>)((IContainable)test).AddTo(_step);
+		_testControl.CurrentItem = test;
+		_testControl.AttemptItem = this.CurrentItem;
 
 		if (test.DisplayMultiplePages) {
 			this.CreateControlHierarchy(test);
@@ -214,8 +215,9 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 
 				this.Decorator.Items.Add(_step.ID, _q);
 				this.wz.WizardSteps.Add(_step);
-				((TemplateUserControl<AbstractContentPage, TestQuestion>)((IContainable)_q).AddTo(_step))
-					.CurrentItem = _q;
+				var _tqControl = (BaseLearningControl<TestQuestion>)((IContainable)_q).AddTo(_step);
+				_tqControl.CurrentItem = _q;
+				_tqControl.AttemptItem = this.CurrentItem;
 			}
 		}
 	}

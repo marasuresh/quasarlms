@@ -127,6 +127,10 @@
     <Compile Include="Web\UI\WebControls\Adapters\DataListAdapter.cs" />
     <Compile Include="Web\UI\WebControls\Adapters\WizardAdapter.cs" />
     <Compile Include="Web\UI\WebControls\AnswerValidator.cs" />
+    <Compile Include="Web\UI\WebControls\BaseLearningControl`1.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\WebControls\TestChangedEventArgs.cs" />
     <Compile Include="Web\UI\WebControls\TestQuestionEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
