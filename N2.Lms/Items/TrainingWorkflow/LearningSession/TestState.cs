@@ -12,11 +12,11 @@ namespace N2.Lms.LearningSession
 		public IOrderedEnumerable<int> QuestionOrder { get; set; }
 		
 		public DateTimeOffset? StartedOn { get; set; }
+		public DateTimeOffset? FinishedOn { get; set; }
 
 		IDictionary<int, string> m_answers;
 		public IDictionary<int, string> Answers {
 			get { return this.m_answers ?? (this.m_answers = new Dictionary<int, string>()); }
-			set { this.m_answers = value; }
 		}
 		
 		public int Score { get; set; }

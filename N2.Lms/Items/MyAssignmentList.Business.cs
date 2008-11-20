@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Web.Security;
 
 namespace N2.Lms.Items
 {
-	using N2.Templates.Items;
-	using N2.Integrity;
-	using N2.Details;
+	using N2.Web;
 
+	[UriTemplate("learn/{attempt}", "~/Lms/UI/Player/Player.ascx")]
+	[UriTemplate("review/{attempt}", "~/Lms/UI/Player/Player.ascx")]
 	partial class MyAssignmentList
 	{
 		#region Lms collection properties
@@ -36,6 +34,5 @@ namespace N2.Lms.Items
 		}
 
 		#endregion Lms collection properties
-
 	}
 }

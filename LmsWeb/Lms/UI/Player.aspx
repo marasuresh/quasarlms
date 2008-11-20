@@ -12,7 +12,17 @@
 	{
 		int _ticketId;
 		TrainingTicket _ticket;
-		if (int.TryParse(this.Request["id"], out _ticketId)
+		
+		string _attemptId = this.Request["id"];
+		
+		var _uriTemplateData = Engine.RequestContext.CurrentTemplate as UriTemplateData;
+		
+		if (string.IsNullOrEmpty(_attemptId)
+				&& null != _uriTemplateData) {
+			_attemptId = _uriTemplateData.Match.BoundVariables["attempt"];
+		}
+		
+		if (int.TryParse(_attemptId, out _ticketId)
 				&& null != (_ticket = N2.Context.Current.Persister.Get<TrainingTicket>(_ticketId))) {
 			if (_ticket.Parent.Parent.IsAuthorized(this.Context.User)) {
 				this.InjectCurrentItem(_ticket);

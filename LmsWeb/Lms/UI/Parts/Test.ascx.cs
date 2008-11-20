@@ -17,50 +17,118 @@ namespace N2.Lms.UI.Parts
 
 		public int Score {
 			get { return (int?)this.ViewState["Score"] ?? 0; }
-			set { this.ViewState["Score"] = value; }
+			private set { this.ViewState["Score"] = value; }
 		}
 		
 		protected DateTimeOffset? StartedOn {
 			get { return (DateTimeOffset?)this.ViewState["StartedOn"]; }
-			set { this.ViewState["StartedOn"] = value; }
+			private set { this.ViewState["StartedOn"] = value; }
+		}
+
+		protected DateTimeOffset? FinishedOn {
+			get { return (DateTimeOffset?)this.ViewState["FinishedOn"]; }
+			private set { this.ViewState["FinishedOn"] = value; }
 		}
 
 		protected bool InstantCheckEnabled {
-			get { return false && this.CurrentItem.InstantCheckEnabled; }
+			get { return this.CurrentItem.InstantCheckEnabled; }
 		}
 
 		#endregion Properties
 
 		#region Rendering helpers
 
-		TimeSpan ElapsedTime {
+		protected TimeSpan ElapsedTime {
 			get {
 				return
 					this.StartedOn.HasValue
-						? DateTimeOffset.Now - this.StartedOn.Value
+						? (this.FinishedOn ?? DateTimeOffset.Now) - this.StartedOn.Value
 						: TimeSpan.MinValue;
 			}
 		}
 
-		protected string ElapsedTimeString {
-			get {
-				var _et = this.ElapsedTime;
-				return string.Join(":", new[] {
-						_et.Hours,
-						_et.Minutes,
-						_et.Seconds }
-					.Select(i => i.ToString("00"))
-					.ToArray());
-			}
+		protected TimeSpan AllowedTime {
+			get { return TimeSpan.FromMinutes(this.CurrentItem.Duration); }
 		}
 
 		#endregion Rendering helpers
 
+		/// <summary>
+		/// Either finishes a running session
+		///  OR reconfigure previously finished session as such
+		/// </summary>
 		protected void FinishSession()
 		{
+			//gather score from each question control
+			this.Score = this.CalculateTotalScore();
+			
+			if (!this.FinishedOn.HasValue) {
+				this.FinishedOn = DateTimeOffset.Now;
+			}
+
+			foreach (TestQuestionControl _ctl in this.QuestionControls) {
+				_ctl.DisplayAnswer = true;
+			}
+			
 			this.phQuestions.Enabled = false;
-			this.phExpired.Visible = true;
+
+			if (this.HasExpired) {
+				this.phExpired.Visible = true;
+			} else if (this.IsScoreReached) {
+				this.phComplete.Visible = true;
+			}
 		}
+		
+		#region Control state properties
+
+		#endregion Control state properties
+
+		#region Run-time state properties
+
+		/// <summary>
+		/// Tells if the time given to complete the test has expired
+		/// </summary>
+		protected bool HasExpired {
+			get {
+				return this.ElapsedTime >= this.AllowedTime;
+			}
+		}
+
+		protected bool IsScoreReached {
+			get {
+				return this.Score >= this.CurrentItem.Points;
+			}
+		}
+
+		protected bool IsEnabled {
+			get {
+				return
+					!this.HasExpired
+					&& !this.IsScoreReached
+					&& !this.HasFinished;
+			}
+		}
+
+		protected bool HasFinished {
+			get {
+				return
+					this.StartedOn.HasValue
+					&& this.FinishedOn.HasValue
+					&& this.FinishedOn.Value < DateTimeOffset.Now;
+			}
+		}
+
+		//Note: an equivalent to a common pattern of using IsPostBack in OnLoad()
+		// the major difference is that this control may be showed much later than
+		// Load happened, that is: some psot-backs can already occur
+		// before it gets showed for the first time
+		protected bool IsDisplayedForTheFirstTime {
+			get {
+				return !this.StartedOn.HasValue;
+			}
+		}
+
+		#endregion Run-time state properties
 
 		#region State data management
 
@@ -81,6 +149,11 @@ namespace N2.Lms.UI.Parts
 				_state.StartedOn = this.StartedOn;
 			}
 
+			if (!_state.FinishedOn.HasValue && this.FinishedOn.HasValue) {
+				_modified = true;
+				_state.FinishedOn = this.FinishedOn;
+			}
+
 			//persist answers
 			if (null != this.TestChangedArgumentsInstance) {
 				foreach (var _kvp in this.TestChangedArgumentsInstance.NewAnswers) {
@@ -98,7 +171,7 @@ namespace N2.Lms.UI.Parts
 			}
 		}
 
-		protected void RetrieveAttemptState()
+		protected virtual void RetrieveAttemptState()
 		{
 			var _testId = this.CurrentItem.ID.ToString();
 
@@ -107,6 +180,10 @@ namespace N2.Lms.UI.Parts
 
 				if (!this.StartedOn.HasValue && _testState.StartedOn.HasValue) {
 					this.StartedOn = _testState.StartedOn;
+				}
+
+				if (!this.FinishedOn.HasValue && _testState.FinishedOn.HasValue) {
+					this.FinishedOn = _testState.FinishedOn;
 				}
 
 				foreach (var _tqc in this.QuestionControls) {
@@ -127,23 +204,20 @@ namespace N2.Lms.UI.Parts
 
 		protected override void OnPreRender(EventArgs e)
 		{
-			//occurs on a first display
-			//Note: an equivalent to a common pattern of using IsPostBack in OnLoad()
-			// the major difference is that this control may be showed much later than
-			// Load happened, that is: some psot-backs can already occur
-			// before it gets showed for the first time
-			if (!this.StartedOn.HasValue) {
+			if (this.IsDisplayedForTheFirstTime) {
 				this.RetrieveAttemptState();
 			}
 			
-			this.PersistAttemptState();
 			///Trigger Change only if any child has changed
 			if(null != this.TestChangedArgumentsInstance) {
 				this.OnChanged();
 			}
 
-			if (this.ElapsedTime.TotalMinutes >= 1 + 0 * this.CurrentItem.Duration) {
+			if ((this.HasExpired || this.IsScoreReached)
+					&& this.CurrentItem.AutoFinish || !this.IsEnabled) {
 				this.FinishSession();
+			} else {
+				this.PersistAttemptState();
 			}
 
 			this.btnCheck.Visible = !this.InstantCheckEnabled;
@@ -193,7 +267,7 @@ namespace N2.Lms.UI.Parts
 				}
 			};
 
-			_ctl.Change += (_sender, _e) => {
+			_ctl.Changed += (_sender, _e) => {
 				var _tqc = _sender as TestQuestionControl;
 				
 				this.TestChangedArguments.NewAnswers.Add(
@@ -206,7 +280,8 @@ namespace N2.Lms.UI.Parts
 
 		protected void btnCheck_Click(object sender, EventArgs e)
 		{
-			this.Score = this.CalculateTotalScore();
+			this.FinishSession();
+			this.PersistAttemptState();
 		}
 
 		#endregion Event handlers
