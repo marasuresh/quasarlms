@@ -1,8 +1,38 @@
-<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="zv.xsl"?><?xml version="1.0"?>
 <ArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfString>
     <string>1</string>
-    <string>student01</string>
-    <string />
+    <string>Буйлов Олег</string>
+    <string>0510131</string>
+  </ArrayOfString>
+  <ArrayOfString>
+    <string>2</string>
+    <string>Костыркин Михаил</string>
+    <string>0510131</string>
+  </ArrayOfString>
+  <ArrayOfString>
+    <string>3</string>
+    <string>Кузнецов Антон</string>
+    <string>0510131</string>
+  </ArrayOfString>
+  <ArrayOfString>
+    <string>4</string>
+    <string>Легкий Антон</string>
+    <string>0510131</string>
+  </ArrayOfString>
+  <ArrayOfString>
+    <string>5</string>
+    <string>Расновский Александр</string>
+    <string>0510131</string>
+  </ArrayOfString>
+  <ArrayOfString>
+    <string>6</string>
+    <string>Сапига Виталий</string>
+    <string>0510131</string>
+  </ArrayOfString>
+  <ArrayOfString>
+    <string>7</string>
+    <string>Цыбульский Александр</string>
+    <string>0510131</string>
   </ArrayOfString>
 </ArrayOfArrayOfString>
