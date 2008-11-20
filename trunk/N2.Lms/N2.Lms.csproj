@@ -121,6 +121,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Web\UI\HtmlExtensions.cs" />
     <Compile Include="Web\UI\MyAssignmentListControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

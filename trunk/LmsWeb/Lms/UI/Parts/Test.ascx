@@ -4,11 +4,15 @@
 	CodeBehind="Test.ascx.cs"
 	ClassName="TestControl"
 	Inherits="N2.Lms.UI.Parts.TestControl" %>
-
+<%@ Import Namespace="N2.Lms.Web.UI" %>
 <%@ Reference Control="~/Lms/UI/TestQuestion.ascx" %>
 
 <asp:PlaceHolder runat="server" ID="phExpired" Visible="false">
-	<div class="notification">Time has expired</div>
+	<div class="notify expired">Time has expired</div>
+</asp:PlaceHolder>
+
+<asp:PlaceHolder runat="server" ID="phComplete" Visible="false">
+	<div class="notify score">Congratulations, you've gained enough score!</div>
 </asp:PlaceHolder>
 
 <asp:Panel runat="server" ID="phQuestions">
@@ -19,7 +23,7 @@
 			" title='",
 			this.StartedOn.Value.ToString(),
 			"'")
-		: string.Empty %>><%= this.ElapsedTimeString %></span></h4>
+		: string.Empty %>><%= this.ElapsedTime.ToHtmlString() %></span> / <%= this.AllowedTime.ToHtmlString() %></h4>
 	<asp:Button
 			runat="server"
 			Text="Submit Answers"
@@ -31,8 +35,6 @@
 				ZoneName="Questions"
 				OnAddedItemTemplate="zone_AddedItemTemplate"
 				ID="qz">
-			<HeaderTemplate>
-			</HeaderTemplate>
 			<SeparatorTemplate><hr /></SeparatorTemplate>
 		</n2:Zone>
 </asp:Panel>
