@@ -1,0 +1,101 @@
+<?xml-stylesheet type="text/xsl" href="irp.xsl"?><?xml version="1.0"?>
+<ArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfString>
+    <string>1</string>
+    <string>Древняя история России</string>
+    <string>2</string>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string>2</string>
+    <string>Уроки физики</string>
+    <string>6</string>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string>3</string>
+    <string>География тест ЕГЭ</string>
+    <string>3</string>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string>4</string>
+    <string>Проблемы тестирования в дистанционном обучении</string>
+    <string>3</string>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+  <ArrayOfString>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </ArrayOfString>
+</ArrayOfArrayOfString>
