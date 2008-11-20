@@ -39,7 +39,7 @@ namespace N2.ACalendar
 
             try
             {
-                aXL =  startExcel();
+                aXL = startExcel();
                 aXL.Visible = false;
             }
             catch
@@ -110,7 +110,7 @@ namespace N2.ACalendar
 
             try
             {
-                aXL = startExcel();
+                aXL =  startExcel();
                 aXL.Visible = false;
             }
             catch
@@ -178,14 +178,18 @@ namespace N2.ACalendar
                 ss[i] = s;
             }
 
-            var sr = new System.Xml.Serialization.XmlSerializer(ss.GetType()); 
-                    using(FileStream fs = new FileStream(fileName, FileMode.Create))
-                    {
-                        sr.Serialize(fs,ss);
-                    }
+            var sr = new System.Xml.Serialization.XmlSerializer(ss.GetType());
+            string xsl_ref = "<?xml-stylesheet type=\"text/xsl\" href=\"" 
+                + Path.GetFileNameWithoutExtension(fileName) + ".xsl\"?>";
  
-           
-            //StringBuilder sb = new StringBuilder();
+            var ee = from currchar in xsl_ref.ToCharArray() select Convert.ToByte(currchar);
+ 
+           using(FileStream fs = new FileStream(fileName, FileMode.Create))
+                    {
+                        fs.Write(ee.ToArray(), 0, xsl_ref.Length);       
+                        sr.Serialize (fs,ss);
+                    }
+             //StringBuilder sb = new StringBuilder();
             
             //StringWriter w = new StringWriter(sb, System.Globalization.CultureInfo.InvariantCulture);
             
@@ -232,7 +236,7 @@ namespace N2.ACalendar
 
             try
             {
-                aXL = startExcel();
+                aXL =  startExcel();
                 aXL.Visible = false;
             }
             catch
