@@ -28,6 +28,28 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
         }
     }
 
+    protected string MonthName(bool full)
+    {
+        string _result = "[";
+        for (int i=1; i<13; i++)  _result += "'" + GetMonthName(i, full) + "',";
+        return _result.TrimEnd( new char[] {','})  + "]";
+    }
+
+    protected string CurrentYear()
+    {
+        if (DateTime.Now.Month<7) return (DateTime.Now.Year-1).ToString();
+        return (DateTime.Now.Year).ToString();
+    }
+
+    protected string GetMonthName(int m, bool bFull)
+    {
+        if (bFull)
+        {
+            return System.Globalization.DateTimeFormatInfo.CurrentInfo.GetMonthName(m);
+        }
+        return System.Globalization.DateTimeFormatInfo.CurrentInfo.GetAbbreviatedMonthName(m);
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         sCallBack = Page.ClientScript.GetCallbackEventReference(this,

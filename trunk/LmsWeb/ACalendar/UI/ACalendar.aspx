@@ -17,14 +17,14 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
 	<script type ="text/javascript">//(new Date().getMonth < 8)?new Date().getFullYear-1:
 	    $(document).ready(function() {
 	        $('#calOne').jCal({
-	            day: new Date( 2008, 8,1),  // текущий год ставим (надо проверять еще месяц ) 
+	            day: new Date( <%= this.CurrentYear()%> , 8,1),  // текущий год ставим (надо проверять еще месяц ) 
 	            days: 7,
 	            showMonths: 12,
 	            forceWeek: true, // force full week selection
 	            dayOffset: 1, 	// start week on Monday
 	            dow: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
-	            ml: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-	            ms: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+	            ml: <%= this.MonthName(true)%> ,
+	            ms: <%= this.MonthName(false)%> ,
 	            //	            dCheck: function(day) {
 	            //	                return (day.getDate() != 3);
 	            //	            },
