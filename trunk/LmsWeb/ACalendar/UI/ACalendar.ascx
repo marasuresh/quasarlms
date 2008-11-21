@@ -13,9 +13,7 @@
 			<h3 class="cap3"><%= Resources.CourseIntro.Caption %></h3>
 			<h3 class="cap4" title='<%= this.CurrentItem.Text %>'></h3>
 			
-			<% if(!string.IsNullOrEmpty(this.CurrentItem.Duration.ToString())) { %>
-				<p>:&nbsp;<%= this.CurrentItem.Title%></p>
-			<% } %>
+			<p>:&nbsp;<%= this.CurrentItem.Title%></p>
 			
 <%--			<iframe	name="contFrame"
 					width="100%"

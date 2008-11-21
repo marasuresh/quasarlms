@@ -10,10 +10,13 @@ namespace System.Web.UI.WebControls
 
 		public string CheckedMask {
 			get {
-				return new string((
-					from _item in this.Items.Cast<ListItem>()
-					select _item.Selected ? SELECTED : UNSELECTED
-				).ToArray());
+				return
+					-1 == this.SelectedIndex
+						? null //..instead of a string with all zeroes
+						: new string((
+							from _item in this.Items.Cast<ListItem>()
+							select _item.Selected ? SELECTED : UNSELECTED
+						).ToArray());
 			}
 			set {
 				//reset check boxes state

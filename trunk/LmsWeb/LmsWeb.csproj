@@ -85,9 +85,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Lms\UI\CourseInfo.aspx" />
-    <Content Include="Lms\UI\CourseIntro.ascx" />
-    <Content Include="Lms\UI\CourseList.aspx" />
     <Content Include="Lms\UI\Img\01\43.png" />
     <Content Include="Lms\UI\Img\01\46.png" />
     <Content Include="Lms\UI\Img\02\02.png" />
@@ -136,16 +133,8 @@
     <Content Include="Lms\UI\Player.aspx" />
     <Content Include="Lms\UI\Player\Player.ascx" />
     <Content Include="Lms\UI\Topic.ascx" />
-    <Content Include="Lms\UI\Topic.aspx" />
-    <Content Include="Lms\UI\Training.aspx" />
-    <Content Include="Lms\UI\TrainingList.aspx" />
-    <Content Include="Lms\UI\TrainingSelector.ascx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lms\UI\CourseIntro.ascx.cs">
-      <DependentUpon>CourseIntro.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Lms\UI\Parts\Test.ascx.cs">
       <DependentUpon>Test.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
