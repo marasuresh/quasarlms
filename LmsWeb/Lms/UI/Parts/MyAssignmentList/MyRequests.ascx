@@ -27,18 +27,12 @@
         <asp:Parameter Name="UserName" Type="String" />
     </UpdateParameters>
 </asp:ObjectDataSource>
-<n2:ChromeBox ID="ChromeBox1" runat="Server">
     <asp:ListView ID="lv" DataKeyNames="ID" runat="server" DataSourceID="dsRequests"
         OnItemUpdating="lv_ItemUpdating">
         <LayoutTemplate>
             <table class="gridview" cellpadding="0" cellspacing="0">
                 <tr class="header">
-                    <th>
-                    </th>
-                    <th>Курс</th>
-                    <th>
-                        Дата
-                    </th>
+                    <th></th><th>Курс</th><th>Дата</th></tr>
                     <tr id="itemPlaceholder" runat="server" />
             </table>
         </LayoutTemplate>
@@ -111,4 +105,3 @@
             </tr>
         </EditItemTemplate>
     </asp:ListView>
-</n2:ChromeBox>

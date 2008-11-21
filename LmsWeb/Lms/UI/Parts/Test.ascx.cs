@@ -275,7 +275,7 @@ namespace N2.Lms.UI.Parts
 					_tqc.Answer);
 			};
 
-			_ctl.InstantCheckEnabled = this.InstantCheckEnabled;
+			_ctl.Load += (_sender, _e) => _ctl.InstantCheckEnabled = this.InstantCheckEnabled;
 		}
 
 		protected void btnCheck_Click(object sender, EventArgs e)

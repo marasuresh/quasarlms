@@ -24,11 +24,15 @@
 		
 		if (int.TryParse(_attemptId, out _ticketId)
 				&& null != (_ticket = N2.Context.Current.Persister.Get<TrainingTicket>(_ticketId))) {
-			if (_ticket.Parent.Parent.IsAuthorized(this.Context.User)) {
+			if (_ticket.Parent.Parent.IsAuthorized(this.Context.User)
+					|| this.Engine.SecurityManager.IsAdmin(this.Context.User)
+					|| this.Engine.SecurityManager.IsEditor(this.Context.User)) {
 				this.InjectCurrentItem(_ticket);
+				
 				TrainingPlayer _player = (TrainingPlayer)this.LoadControl("~/Lms/UI/Player/Player.ascx");
 				_player.CurrentItem = this.CurrentItem;
 				this.phPlayer.Controls.Add(_player);
+				
 				base.OnInit(e);
 			} else {
 				Response.StatusCode = 403;

@@ -41,7 +41,6 @@
 	</UpdateParameters>
 </asp:ObjectDataSource>
 
-<n2:ChromeBox runat="Server">
 <asp:ListView
 		ID="lv"
 		DataKeyNames="ID"
@@ -118,4 +117,3 @@
 		</tr>
 	</EditItemTemplate>
 </asp:ListView>
-</n2:ChromeBox>

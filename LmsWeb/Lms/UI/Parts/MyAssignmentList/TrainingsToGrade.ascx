@@ -1,9 +1,5 @@
 ﻿<%@ Import Namespace="System.ComponentModel" %>
-<%@ Import Namespace="System.Linq" %>
-<%@ Import Namespace="System.Collections.Generic" %>
-<%@ Import Namespace="N2.Lms.Items" %>
 <%@ Import Namespace="N2.Lms.Items.Lms.RequestStates" %>
-<%@ Import Namespace="System.Diagnostics" %>
 <%@ Import Namespace="N2.Workflow" %>
 <%@ Import Namespace="N2.Lms.Items.TrainingWorkflow" %>
 <%@ Control Language="C#" Inherits="N2.Lms.Web.UI.MyAssignmentListControl" %>
@@ -55,39 +51,27 @@
         <asp:Parameter Name="trainingID" Type="String" />
     </UpdateParameters>
 </asp:ObjectDataSource>
-<n2:ChromeBox ID="ChromeBox1" runat="Server">
     <asp:ListView ID="lv" DataKeyNames="ID" runat="server" DataSourceID="dsRequests"
         OnItemUpdating="lv_ItemUpdating">
         <LayoutTemplate>
             <table class="gridview" cellpadding="0" cellspacing="0">
                 <tr class="header">
-                    <th>
-                    </th>
-                    <th>
-                        Тренинг
-                    </th>
-                    <th>
-                        Студент
-                    </th>
-                    <tr id="itemPlaceholder" runat="server" />
+					<th></th><th>Тренинг</th><th>Студент</th></tr>
+					<tr id="itemPlaceholder" runat="server" />
             </table>
         </LayoutTemplate>
         <ItemTemplate>
             <tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>'>
                 <td class="command">
-                    <asp:ImageButton
+					<asp:ImageButton
 						ID="ImageButton1"
 						runat="server"
 						ImageUrl="~/Lms/UI/Img/clear.gif"
 						CssClass="LibC_c"
 						AlternateText="детали..."
 						CommandName="Edit" /></td>
-                <td>
-                    <%# ((Request)Container.DataItem).Course.Title %>
-                </td>
-                <td>
-                    <%# ((Request)Container.DataItem).User %>
-                </td>
+				<td><%# ((Request)Container.DataItem).Course.Title %></td>
+				<td><%# ((Request)Container.DataItem).User %></td>
             </tr>
         </ItemTemplate>
         <EditItemTemplate>
@@ -99,42 +83,54 @@
 						ImageUrl="~/Lms/UI/Img/clear.gif"
 						CssClass="LibC_o"
 						CommandName="Cancel" /></td>
-                <td>
-                    <%# ((Request)Container.DataItem).Course.Title %>
-                </td>
-                <td>
-                    <%# ((Request)Container.DataItem).User %>
-                </td>
+				<td><%# ((Request)Container.DataItem).Course.Title %></td>
+				<td><%# ((Request)Container.DataItem).User %></td>
             </tr>
-            <tr>
-                <td class="edit" colspan="3">
-                    <div class="details">
-                        <div class="header">
-                            Edit details for '<%# Eval("Title")%>'</div>
-                        <table class="detailview" cellpadding="0" cellspacing="0">
-                            <tr>
-                                <th>
-                                    Оценка:
-                                </th>
-                                <td>
-                                    <asp:TextBox runat="server" ID="tbGrade" ValidationGroup='Accept' />
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbGrade"
-                                        ErrorMessage="*" ValidationGroup='Accept' Display="Dynamic" />
-                                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="tbGrade"
-                                        ErrorMessage="*" ValidationGroup='Accept' Display="Dynamic"
-                                        Operator="DataTypeCheck" Type="Integer" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Комментарий:
-                                </th>
-                                <td>
-                                    <asp:TextBox ID="tbComment" TextMode="MultiLine" runat="server" />
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="footer command">
+			<tr><td class="edit" colspan="3">
+					<div class="details">
+					История прохождения:
+					<n2:ChromeBox runat="server">
+					<asp:Repeater runat="server" DataSource='<%# ((Request)Container.DataItem).GetWorkflowHistory().OfType<ApprovedState>() %>'>
+						<HeaderTemplate><table></HeaderTemplate>
+						
+						<FooterTemplate></table></FooterTemplate>
+						
+						<ItemTemplate>
+							<tr><td><%# this.GetPlayerUrl(((ApprovedState)Container.DataItem).Ticket) %>
+							</td></tr></ItemTemplate>
+					</asp:Repeater>
+					</n2:ChromeBox>
+					</div>
+					
+					<div class="details">
+						<div class="header">Edit details for '<%# Eval("Title")%>'</div>
+						<table class="detailview" cellpadding="0" cellspacing="0">
+							<tr><th>Оценка:</th>
+								<td><asp:TextBox runat="server" ID="tbGrade" ValidationGroup='Accept' />
+									<asp:RequiredFieldValidator
+											ID="rfv"
+											runat="server"
+											ControlToValidate="tbGrade"
+											ErrorMessage="*"
+											ValidationGroup='Accept'
+											Display="Dynamic" />
+									<asp:CompareValidator
+											ID="CompareValidator1"
+											runat="server"
+											ControlToValidate="tbGrade"
+											ErrorMessage="*"
+											ValidationGroup='Accept'
+											Display="Dynamic"
+											Operator="DataTypeCheck"
+											Type="Integer" /></td>
+							</tr>
+							<tr><th>Комментарий:</th>
+								<td><asp:TextBox
+											ID="tbComment"
+											TextMode="MultiLine"
+											runat="server" /></td></tr>
+						</table>
+						<div class="footer command">
                             <asp:LinkButton ID="btnSave" runat="server" Text="Оценить" CommandName="Accept" CommandArgument='<%# Container.DataItemIndex %>' ValidationGroup='Accept' />
                         </div>
                         <br />
@@ -158,7 +154,6 @@
             </tr>
         </EditItemTemplate>
     </asp:ListView>
-</n2:ChromeBox>
 
 
 <%--<script runat="server">

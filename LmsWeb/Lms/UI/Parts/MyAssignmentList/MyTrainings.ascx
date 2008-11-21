@@ -31,7 +31,6 @@
     </UpdateParameters>
 </asp:ObjectDataSource>
 
-<n2:ChromeBox runat="Server">
 <asp:ListView
 		ID="lv"
 		DataKeyNames="ID"
@@ -42,7 +41,7 @@
 		<table class="gridview" cellpadding="0" cellspacing="0">
 			<tr class="header">
 				<th></th>
-				<th>Тренинг</th>
+				<th>Тренинг</th></tr>
 			<tr id="itemPlaceholder" runat="server" />
 		</table>
 	</LayoutTemplate>
@@ -57,7 +56,9 @@
 						CssClass="LibC_c"
 						AlternateText="детали..."
 						CommandName="Edit" /></td>
-			<td><a target="_blank" href='<%# this.ResolveClientUrl("~/Lms/UI/Player.aspx?id=" + ((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Ticket.ID).ToString()%>'><%# ((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Training.Title%></a></td>
+			<td>
+			<%# this.GetPlayerUrl(((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Ticket) %>
+			</td>
 		</tr>
 	</ItemTemplate>
 	
@@ -89,4 +90,3 @@
 		</tr>
 	</EditItemTemplate>
 </asp:ListView>
-</n2:ChromeBox>

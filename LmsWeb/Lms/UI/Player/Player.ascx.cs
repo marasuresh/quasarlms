@@ -6,11 +6,11 @@ using System.Web.UI.WebControls;
 using N2.Definitions;
 using N2.Lms.Items;
 using N2.Lms.Items.TrainingWorkflow;
+using N2.Lms.Web.UI.WebControls;
 using N2.Resources;
 using N2.Templates.Items;
 using N2.Templates.Web.UI;
 using N2.Web.UI;
-using N2.Lms.Web.UI.WebControls;
 
 /// <summary>
 /// <remarks>SkinID is used to tagging nodes to reconstruct their hierarchy in HTML from a plain wizard step collection.

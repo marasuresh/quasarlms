@@ -6,7 +6,6 @@
 <%@ Import Namespace="N2.Lms.Items" %>
 <%@ Import Namespace="System.Diagnostics" %>
 <%@ Import Namespace="N2.Workflow" %>
-<%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls" TagPrefix="n2" %>
 
 <script runat="server">
 
@@ -54,7 +53,6 @@
         <asp:Parameter Name="comments" Type="String" />
     </UpdateParameters>
 </asp:ObjectDataSource>
-<n2:ChromeBox ID="ChromeBox1" runat="Server">
     <asp:ListView ID="lv" DataKeyNames="ID" runat="server" DataSourceID="dsRequests"
         OnItemUpdating="lv_ItemUpdating">
         <LayoutTemplate>
@@ -170,4 +168,3 @@
             </tr>
         </EditItemTemplate>
     </asp:ListView>
-</n2:ChromeBox>
