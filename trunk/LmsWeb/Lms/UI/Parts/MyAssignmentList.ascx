@@ -45,8 +45,9 @@
 					StepType = WizardStepType.Auto,
 					Title = _t.Key,
 			};
-
-			_ws.Controls.Add(this.LoadControl(_t.Value, new object[0]));
+			var _container = new N2.Web.UI.WebControls.ChromeBox();
+			_container.Controls.Add(this.LoadControl(_t.Value, new object[0]));
+			_ws.Controls.Add(_container);
 
 			this.wz.WizardSteps.Add(_ws);
 		}

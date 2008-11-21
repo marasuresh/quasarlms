@@ -21,7 +21,6 @@
     OldValuesParameterFormatString="original_{0}" >
 </asp:ObjectDataSource>
 
-<n2:ChromeBox ID="ChromeBox1" runat="Server">
 <asp:ListView
 		ID="lv"
 		runat="server"
@@ -31,7 +30,7 @@
 		<table class="gridview" cellpadding="0" cellspacing="0">
 			<tr class="header">
 				<th>Тренинг</th>
-				<th>Оценка</th>
+				<th>Оценка</th></tr>
 			<tr id="itemPlaceholder" runat="server" />
 		</table>
 	</LayoutTemplate>
@@ -43,6 +42,3 @@
 		</tr>
 	</ItemTemplate>
 </asp:ListView>
-</n2:ChromeBox>
-
-

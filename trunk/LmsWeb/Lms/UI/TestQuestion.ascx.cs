@@ -95,12 +95,12 @@ namespace N2.Lms.UI.Parts
 		}
 
 		#endregion Polymorphic answer control creation
-		/*
+		
 		protected override void OnInit(EventArgs e)
 		{
 			this.EnsureChildControls();
 			base.OnInit(e);
-		}*/
+		}
 
 		protected override void CreateChildControls()
 		{
