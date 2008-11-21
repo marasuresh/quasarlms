@@ -1,11 +1,13 @@
-﻿namespace N2.Lms.Items
+﻿using System;
+
+namespace N2.Lms.Items
 {
 	using N2;
 	using N2.Persistence;
 	using n2 = N2.Templates.Items;
 	using N2.Details;
 	using N2.Web.UI.WebControls;
-	
+
 	[Definition(
 		"LMS Start Page",
 		"LmsStartPage",
@@ -15,7 +17,7 @@
 		"Assignment List",
 		typeof(ItemEditorList),
 		"ParentItem", 4, "MyLearningPage")]
-	public class LmsStartPage: n2.StartPage, ILmsStartPage, IActiveContent
+	public class LmsStartPage: n2.StartPage, ILmsStartPage//, IActiveContent
 	{
 		#region Pages
 		
@@ -41,28 +43,28 @@
 			}
 		}
 
-		#region IActiveContent Members
+		//#region IActiveContent Members
 
-		ContentItem N2.Persistence.IActiveContent.CopyTo(ContentItem destination)
-		{
-			throw new System.NotImplementedException();
-		}
+		//ContentItem IActiveContent.CopyTo(ContentItem destination)
+		//{
+		//    throw new NotImplementedException();
+		//}
 
-		void N2.Persistence.IActiveContent.Delete()
-		{
-			N2.Context.Persister.Delete(this);
-		}
+		//void IActiveContent.Delete()
+		//{
+		//    Context.Persister.Delete(base.Clone(false));
+		//}
 
-		void N2.Persistence.IActiveContent.MoveTo(ContentItem destination)
-		{
-			throw new System.NotImplementedException();
-		}
+		//void IActiveContent.MoveTo(ContentItem destination)
+		//{
+		//    throw new NotImplementedException();
+		//}
 
-		void N2.Persistence.IActiveContent.Save()
-		{
-			throw new System.NotImplementedException();
-		}
+		//void IActiveContent.Save()
+		//{
+		//    throw new NotImplementedException();
+		//}
 
-		#endregion
+		//#endregion
 	}
 }

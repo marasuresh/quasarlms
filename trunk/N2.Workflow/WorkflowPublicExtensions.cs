@@ -7,6 +7,7 @@ namespace N2.Workflow
 {
 	using System.Diagnostics;
 	using N2.Workflow.Items;
+	using N2.Collections;
 
 	public static class WorkflowPublicExtensions
 	{
@@ -59,7 +60,7 @@ namespace N2.Workflow
 
 					return new ItemState {
 						Action = null,
-						FromState = null,
+						PreviousState = null,
 						ToState = item.GetWorkflow().InitialState,
 						Comment = string.Empty,
 					};
@@ -81,7 +82,7 @@ namespace N2.Workflow
 			
 			if (null != _currentState.ToState.GetChild(action.Name)) {
 				var _newCS = instanceProvider(action.StateType ?? typeof(ItemState));
-				_newCS.FromState = _currentState.ToState;
+				_newCS.PreviousState = _currentState;
 				_newCS.Action = action;
 				_newCS.ToState = action.LeadsTo;
 				_newCS.Comment = comment;
@@ -160,6 +161,12 @@ namespace N2.Workflow
 			string actionName, string user, string comment)
 		{
 			return PerformAction(item, actionName, user, comment, null);
+		}
+
+		public static IEnumerable<ItemState> GetWorkflowHistory(this ContentItem item)
+		{
+			return item.GetChildren(new TypeFilter(typeof(ItemState)))
+				.Cast<ItemState>();
 		}
 
 	}

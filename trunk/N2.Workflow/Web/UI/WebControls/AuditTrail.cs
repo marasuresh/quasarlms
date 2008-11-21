@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 namespace N2.Web.UI.WebControls
 {
 	using System.Linq;
+	using N2.Workflow;
 	using N2.Workflow.Items;
 	using N2.Collections;
 	using N2.Resources;
@@ -32,11 +33,11 @@ namespace N2.Web.UI.WebControls
 
 		protected override void RenderContents(HtmlTextWriter output)
 		{
-			var _history = this.ParentItem.GetChildren(new TypeFilter(typeof(ItemState)));
+			var _history = this.ParentItem.GetWorkflowHistory();
 
 			if (_history.Any()) {
 				var _rows =
-					from _state in _history.Cast<ItemState>()
+					from _state in _history
 					select new {
 						Date = _state.Created,
 						User = _state.SavedBy,

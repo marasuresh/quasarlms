@@ -1,11 +1,11 @@
-﻿using System;
-using System.Web.UI.WebControls;
+﻿using System.Web.UI.WebControls;
 
 namespace N2.Lms.Web.UI
 {
 	using N2.Lms.Items;
 	using N2.Templates.Items;
 	using N2.Templates.Web.UI;
+	using N2.Lms.Items.TrainingWorkflow;
 	
 	public class MyAssignmentListControl: TemplateUserControl<AbstractContentPage, MyAssignmentList>
 	{
@@ -26,5 +26,20 @@ namespace N2.Lms.Web.UI
 				).CurrentItem;
 			}
 		}
+
+		#region Rendering helpers
+
+		public string GetPlayerUrl(TrainingTicket attempt)
+		{
+			return
+				string.Concat(
+					"<a target='_blank' href='",
+					this.ResolveClientUrl("~/Lms/UI/Player.aspx?id=" + attempt.ID.ToString()),
+					"'>",
+					attempt.Title,
+					"</a>");
+		}
+		
+		#endregion
 	}
 }

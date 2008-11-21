@@ -71,7 +71,9 @@
 						ImageUrl="~/Lms/UI/Img/clear.gif"
 						CssClass="LibC_o"
 						CommandName="Cancel" /></td>
-			<td><%# ((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Training.Title %></td>
+			<td>
+			<%# this.GetPlayerUrl(((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Ticket) %>
+			</td>
 		</tr>
 		<tr><td class="edit" colspan="2">
 				<div class="details">
