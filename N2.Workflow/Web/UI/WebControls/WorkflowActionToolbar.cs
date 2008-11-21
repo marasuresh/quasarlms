@@ -81,7 +81,7 @@ namespace N2.Web.UI.WebControls
 				int[] _itemStateProperties = this.ViewState["itemStateProperties"] as int[];
 
 				if (_itemStateProperties != null && 3 == _itemStateProperties.Length) {
-					_itemState.FromState = N2.Context.Persister.Get<StateDefinition>(_itemStateProperties[0]);
+					_itemState.PreviousState = N2.Context.Persister.Get<ItemState>(_itemStateProperties[0]);
 					_itemState.Action = N2.Context.Persister.Get<ActionDefinition>(_itemStateProperties[1]);
 					_itemState.ToState = N2.Context.Persister.Get<StateDefinition>(_itemStateProperties[2]);
 				}
@@ -103,11 +103,11 @@ namespace N2.Web.UI.WebControls
 				itemState.ToState.ID);
 		}
 
-		void SaveNewStateStub(string typeName, int fromStateId, int actionId, int toStateId)
+		void SaveNewStateStub(string typeName, int previousStateId, int actionId, int toStateId)
 		{
 			this.NewStateTypeName = typeName;
 			this.ViewState["itemStateProperties"] = new int[] {
-				fromStateId,
+				previousStateId,
 				actionId,
 				toStateId
 			};
@@ -171,7 +171,7 @@ namespace N2.Web.UI.WebControls
 			
 			this.SaveNewStateStub(
 				_itemType.AssemblyQualifiedName,
-				this.InitialState.ToState.ID,
+				this.InitialState.ID,
 				_selectedAction.ID,
 				_selectedAction.LeadsTo.ID);
 			

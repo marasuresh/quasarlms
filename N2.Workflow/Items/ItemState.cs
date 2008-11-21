@@ -1,4 +1,5 @@
-﻿//#define CheckWorkflow
+﻿using System;
+//#define CheckWorkflow
 namespace N2.Workflow.Items
 {
 	using System.Web.UI.WebControls;
@@ -28,8 +29,15 @@ namespace N2.Workflow.Items
 			ContainerName = "workflow")]
 #endif
 		public StateDefinition FromState {
-			get { return this.GetDetail("FromState") as StateDefinition; }
-			set { this.SetDetail<StateDefinition>("FromState", value); }
+			get {
+				var _previous = this.PreviousState;
+
+				return
+					null != _previous && null != _previous.ToState
+						? _previous.ToState
+//TODO remove when remaining old-fashioned items will extinct
+						: this.GetDetail<StateDefinition>("FromState", null);
+			}
 		}
 
 #if CheckWorkflow
@@ -52,6 +60,11 @@ namespace N2.Workflow.Items
 		public ActionDefinition Action {
 			get { return this.GetDetail("Action") as ActionDefinition; }
 			set { this.SetDetail<ActionDefinition>("Action", value); }
+		}
+
+		public ItemState PreviousState {
+			get { return this.GetDetail<ItemState>("PreviousState", null); }
+			set { this.SetDetail<ItemState>("PreviousState", value); }
 		}
 
 		[Editable(

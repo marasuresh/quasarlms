@@ -87,7 +87,7 @@ namespace N2.Lms.Items
 				int id,
 				string comments)
 		{
-			Request _request = N2.Context.Persister.Get<Request>(id);
+			Request _request = Context.Persister.Get<Request>(id);
 
 			string user = HttpContext.Current.User.Identity.Name;
 
