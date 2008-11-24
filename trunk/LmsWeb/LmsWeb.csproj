@@ -245,6 +245,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MyAssignmentList.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\Requests.ascx.ru.resx" />
+    <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\Requests.ascx.resx">
+    </Content>
     <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\TrainingsToGrade.ascx.ru.resx" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\TrainingsToGrade.ascx.resx">
     </Content>

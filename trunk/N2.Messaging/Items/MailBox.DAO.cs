@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ComponentModel;
-using System.Web;
+using System.Linq;
 
 namespace N2.Messaging
 {
-	using N2.Web;
-	
+
 	[DataObject]
 	partial class MailBox
 	{

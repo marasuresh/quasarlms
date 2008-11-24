@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Web;
+using N2.Resources;
 using N2.Templates.Web.UI;
 using N2.Web;
 using N2.Web.UI.WebControls;
-using N2.Resources;
 
 namespace N2.Messaging.Messaging.UI.Parts
 {
@@ -93,7 +93,10 @@ namespace N2.Messaging.Messaging.UI.Parts
                         _copy.Save();
                     });
 
-                Response.Redirect(Url.Parse(CurrentPage.Url).AppendSegment("folder/" + MailBox.C.Folders.Inbox).Path);
+                Response.Redirect(Url.Parse(CurrentPage.Url)
+					.AppendSegment("folder")
+					.AppendSegment(MailBox.C.Folders.Inbox)
+					.Path);
                     
             }
         }
@@ -106,7 +109,10 @@ namespace N2.Messaging.Messaging.UI.Parts
 				this.UpdateEditedMessage();
 				Message _editedItem = this.CurrentItem.GetEditedItem();
 				N2.Context.Persister.Move(_editedItem, this.CurrentPage.MessageStore.DraftsFolder);
-                Response.Redirect(Url.Parse(CurrentPage.Url).AppendSegment("folder/" + MailBox.C.Folders.Inbox).Path);
+                Response.Redirect(Url.Parse(CurrentPage.Url)
+					.AppendSegment("folder")
+					.AppendSegment(MailBox.C.Folders.Inbox)
+					.Path);
             }
         }
     }

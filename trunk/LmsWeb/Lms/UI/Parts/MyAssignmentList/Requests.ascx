@@ -139,29 +139,36 @@
                             </tr>
                         </table>
                         <br />
-                        <table class="detailview" cellpadding="0" cellspacing="0">
-                            <tr>
-                                <th>
-                                    Тренинг:
-                                </th>
-                                <td>
-                                    <asp:DropDownList ID="ddlTrainings" runat="server" DataSource='<%# ((Request)Container.DataItem).Course.Trainings %>'
-                                        DataValueField="ID" DataTextField="Title">
-                                    </asp:DropDownList>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Комментарий:
-                                </th>
-                                <td>
-                                    <asp:TextBox ID="tbComment" TextMode="MultiLine" runat="server" />
-                                </td>
-                            </tr>
-                        </table>
-                        <ul class="buttons">
-                            <li><asp:LinkButton ID="btnReject" runat="server" Text="Отклонить" CommandName="Reject" CommandArgument='<%# Container.DataItemIndex %>' /></li>
-                            <li><asp:LinkButton ID="btnAccept" runat="server" Text="Принять" CommandName="Accept" CommandArgument='<%# Container.DataItemIndex %>' /></li>
+						<table class="detailview" cellpadding="0" cellspacing="0">
+							<tr><th><asp:Label
+											runat="server"
+											meta:resourcekey="lblTraining"
+											AssociatedControlID="ddlTrainings" /></th>
+								<td><asp:DropDownList
+											ID="ddlTrainings"
+											runat="server"
+											DataSource='<%# ((Request)Container.DataItem).Course.Trainings %>'
+											DataValueField="ID"
+											DataTextField="Title" /></td></tr>
+							<tr><th><asp:Label
+											runat="server"
+											meta:resourcekey="lblComment"
+											AssociatedControlID="tbComment" /></th>
+								<td><asp:TextBox
+											ID="tbComment"
+											TextMode="MultiLine"
+											runat="server" /></td></tr></table>
+						<ul class="buttons">
+							<li><asp:LinkButton
+									meta:resourcekey="btnReject"
+									runat="server"
+									CommandName="Reject"
+									CommandArgument='<%# Container.DataItemIndex %>' /></li>
+							<li><asp:LinkButton
+									meta:resourcekey="btnAccept"
+									runat="server"
+									CommandName="Accept"
+									CommandArgument='<%# Container.DataItemIndex %>' /></li>
                         </ul>
                     </div>
                 </td>
