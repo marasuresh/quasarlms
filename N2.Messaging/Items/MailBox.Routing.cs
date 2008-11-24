@@ -114,12 +114,9 @@ namespace N2.Messaging
 				from _pair in new Dictionary<string, ActionEnum> {
 					{ "folder/{folder}/filter/{filter}", ActionEnum.List },
 					{ "folder/{folder}", ActionEnum.List },
-//					{ "reply/{id}", ActionEnum.Reply },
-//					{ "forward/{id}", ActionEnum.Forward },
 					{ "delete/{id}", ActionEnum.Delete },
 					{ "restore/{id}", ActionEnum.Restore },
 					{ "destroy/{id}", ActionEnum.Destroy },
-//					{ "new", ActionEnum.Create }
 				}
 				select
 					new KeyValuePair<UriTemplate, object>(
