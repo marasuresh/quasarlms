@@ -90,16 +90,14 @@
                                 </td>
                             </tr>
                         </table>
-                        <div class="footer command">
-							<asp:Image runat="server"
-								ImageUrl="~/Edit/Img/ico/cancel.gif" />
-                            <asp:LinkButton
-								ID="btnDelete"
-								runat="server"
-								meta:resourcekey="btnDelete"
-								Text="Убрать заявку"
-								CommandName="Update" />
-                        </div>
+                        <ul class="buttons">
+							<li><asp:LinkButton
+									ID="btnDelete"
+									runat="server"
+									meta:resourcekey="btnDelete"
+									Text="Убрать заявку"
+									CommandName="Update" /></li>
+                        </ul>
                     </div>
                 </td>
             </tr>

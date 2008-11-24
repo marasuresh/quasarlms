@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web;
 using System.Web.UI.WebControls;
 using N2.Messaging;
@@ -22,7 +21,8 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
     {
         base.OnInit(e);
         Register.StyleSheet(Page, "~/Messaging/UI/Css/Messaging.css", Media.All);
-        
+		Register.StyleSheet(this.Page, "~/Lms/UI/Css/MyAssignmentList.css");
+
         lv.DataBound += new EventHandler(lv_DataBound);
     }
 
@@ -72,7 +72,9 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
     {
         int msgContainerIndex;
 
-		switch (this.CurrentItem.Folder) {
+		string _folder = this.Engine.RequestContext.CurrentTemplate.Argument.Split('/')[0];
+
+		switch (_folder) {
 			case MailBox.C.Folders.Drafts:
 				msgContainerIndex = 1;
 				break;

@@ -61,6 +61,7 @@
     <Compile Include="Facility\MailFactory.cs" />
     <Compile Include="Facility\MessageExtensions.cs" />
     <Compile Include="Items\Containers\MessageStore.Business.cs" />
+    <Compile Include="Items\MailBox.DAO.cs" />
     <Compile Include="Items\MailBox.Routing.cs" />
     <Compile Include="Items\MailBox.Constants.cs" />
     <Compile Include="Items\Containers\BaseStore.cs" />

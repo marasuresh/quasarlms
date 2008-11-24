@@ -83,10 +83,13 @@
 							<td><asp:TextBox ID="tbComment" TextMode="MultiLine" runat="server" /></td>
 						</tr> 
 					</table>
-					<div class="footer command">
-						<asp:Image runat="server" ImageUrl="~/Edit/Img/ico/accept.gif" />
-						<asp:LinkButton ID="btnSave" runat="server" Text="Закончить курс" CommandName="Update" />
-					</div>
+					<ul class="buttons">
+						<li><asp:LinkButton
+								ID="btnSave"
+								runat="server"
+								Text="Закончить курс"
+								CommandName="Update" /></li>
+					</ul>
 				</div>
 			</td>
 		</tr>

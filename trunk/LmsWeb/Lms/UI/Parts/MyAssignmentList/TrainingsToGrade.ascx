@@ -158,15 +158,15 @@
 											TextMode="MultiLine"
 											runat="server" /></td></tr>
 						</table>
-						<div class="footer command">
-							<asp:LinkButton
+						<ul class="buttons">
+							<li><asp:LinkButton
 									ID="btnSave"
 									meta:resourcekey="btnSave"
 									runat="server"
 									CommandName="Accept"
 									CommandArgument='<%# Container.DataItemIndex %>'
-									ValidationGroup='Accept' />
-						</div>
+									ValidationGroup='Accept' /></li>
+						</ul>
                         <br />
 						<table	class="detailview"
 								cellpadding="0"
@@ -183,13 +183,13 @@
 											DataTextField="Title" /></td>
 							</tr>
 						</table>
-						<div class="footer command">
-							<asp:LinkButton
+						<ul class="buttons">
+							<li><asp:LinkButton
 									runat="server"
 									meta:resourcekey="btnDecline"
 									CommandName="Decline"
-									CommandArgument='<%# Container.DataItemIndex %>' />
-                        </div>
+									CommandArgument='<%# Container.DataItemIndex %>' /></li>
+                        </ul>
                     </div>
                 </td>
             </tr>

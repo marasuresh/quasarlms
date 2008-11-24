@@ -54,3 +54,13 @@
 	.LibC_panel_header{background:url(../Img/LibC.gif) -419px 0;width:1px;height:24px}
 	.LibC_panel_header_left{background:url(../Img/LibC.gif) -420px 0;width:5px;height:25px}
 	.LibC_panel_header_right{background:url(../Img/LibC.gif) -425px 0;width:5px;height:25px}
+/* Ocean Mist Author URI: http://www.edmerritt.com/ */
+/* lists */
+.buttons {float: left; display: block; width: 100%; list-style: none; margin-left: 0; margin-bottom: 21px;}
+	*:first-child+html .buttons {float: none;}
+	.buttons li {float: left; margin: 0 18px 3px 0; padding: 0;}
+	.buttons ul {margin: 3px 0 0 0; list-style: none; padding-bottom: -5px;}
+	.buttons ul a, .buttons ul a:visited {padding: 3px 6px 4px 6px; font-weight: normal;}
+	* html .buttons li {margin: 0;}
+	.buttons a, .buttons a:visited {display: block; width: 145px; padding: 6px; text-align: center; background: url(../Img/menu.gif) bottom left no-repeat; border-top: 1px solid #D1E0F0; font-weight: bold;}
+	.buttons a:hover {background-position: bottom right;}

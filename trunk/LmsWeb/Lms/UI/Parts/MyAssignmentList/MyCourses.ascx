@@ -100,18 +100,19 @@
 							<td><asp:TextBox ID="tbComment" TextMode="MultiLine" runat="server" /></td>
 						</tr> 
 					</table>
-					<div class="footer command">
+						<ul class="buttons"><li>
 						<asp:LinkButton
 								ID="btnSave"
 								runat="server"
 								meta:resourcekey="btnSave"
 								CommandName="Update" />
+							</li><li>
 						<asp:LinkButton
 								ID="btnCancel"
 								runat="server"
 								meta:resourcekey="btnCancel"
-								CommandName="Cancel" />
-					</div>
+								CommandName="Cancel" /></li>
+						</ul>
 				</div>
 			</td>
 		</tr>

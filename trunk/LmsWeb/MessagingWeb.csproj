@@ -116,9 +116,6 @@
     <Content Include="Messaging\UI\Parts\App_LocalResources\MessageInput.ascx.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Messaging\Top+SubMenu.Master" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Messaging\UI\Images\attach.png" />
     <Content Include="Messaging\UI\Images\eye.png" />
   </ItemGroup>
