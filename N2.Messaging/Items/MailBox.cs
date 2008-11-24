@@ -17,22 +17,10 @@ namespace N2.Messaging
 		public MailBox()
 		{
 			this.Title = "Почта";
-			this.Folder = C.Folders.Inbox;
 		}
 
 		#region System properties
 		
-		public override string TemplateUrl {
-            get { return string.Concat(
-					"~/Messaging/UI/Views/",
-                    (this.Action != ActionEnum.List && 
-                     this.Action != ActionEnum.Delete && 
-                     this.Action != ActionEnum.Restore &&
-                     this.Action != ActionEnum.Destroy ? "NewMessage" : "MailBox"),
-					".aspx");
-			}
-		}
-
 		public override string IconUrl {
 			get {
 				this.Validate();
@@ -54,8 +42,6 @@ namespace N2.Messaging
             get { return this.GetDetail("MessageStore") as MessageStore; }
             set { this.SetDetail<MessageStore>("MessageStore", value); }
         }
-
-		public Message EditedItem { get; protected set; }
 
 		#endregion Lms properties
 	}

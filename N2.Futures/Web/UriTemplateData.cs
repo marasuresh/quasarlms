@@ -19,7 +19,7 @@ namespace N2.Web
 		#region Constructors
 		
 		internal UriTemplateData(ContentItem item, string templateUrl, UriTemplateMatch match)
-			:base(item, item.Path, templateUrl)
+			:base(item, templateUrl)
 		{
 			this.Match = match;
 		}

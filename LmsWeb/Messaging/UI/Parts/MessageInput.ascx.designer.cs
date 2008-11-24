@@ -83,7 +83,7 @@ namespace N2.Messaging.Messaging.UI.Parts {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        protected global::System.Web.UI.WebControls.LinkButton btnSubmit;
         
         /// <summary>
         /// btnToDr control.
@@ -92,7 +92,7 @@ namespace N2.Messaging.Messaging.UI.Parts {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnToDr;
+        protected global::System.Web.UI.WebControls.LinkButton btnToDr;
         
         /// <summary>
         /// hlCancel control.
@@ -101,6 +101,6 @@ namespace N2.Messaging.Messaging.UI.Parts {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlCancel;
+        protected global::System.Web.UI.WebControls.LinkButton hlCancel;
     }
 }

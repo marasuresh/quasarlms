@@ -132,7 +132,7 @@ namespace N2.Lms.UI.Parts
 
 		#region State data management
 
-		protected void PersistAttemptState()
+		protected virtual void PersistAttemptState()
 		{
 			var _testId = this.CurrentItem.ID.ToString();
 			TestState _state = this.AttemptItem.Tests[_testId];
@@ -224,8 +224,23 @@ namespace N2.Lms.UI.Parts
 			base.OnPreRender(e);
 		}
 
-		public virtual IEnumerable<TestQuestionControl> QuestionControls {
-			get { return this.qz.Controls.OfType<TestQuestionControl>(); }
+		IEnumerable<TestQuestionControl> m_questionControls;
+		/// <summary>
+		/// Controls, hodling question information.
+		/// They may be assigned externally
+		///		OR found by this control itself among it's children.
+		/// </summary>
+		internal IEnumerable<TestQuestionControl> QuestionControls {
+			get { return
+				this.m_questionControls
+					?? (this.m_questionControls = this.TryToLocateQuestionControlsAmongChildren());
+			}
+			set { this.m_questionControls = value; }
+		}
+
+		IEnumerable<TestQuestionControl> TryToLocateQuestionControlsAmongChildren()
+		{
+			return this.qz.Controls.OfType<TestQuestionControl>();
 		}
 
 		int CalculateTotalScore()

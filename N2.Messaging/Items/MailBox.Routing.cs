@@ -7,6 +7,18 @@ namespace N2.Messaging
 	using N2.Web;
 	using N2.Collections;
 
+	public class MailBoxTemplateAttribute : TemplateAttribute
+	{
+		public MailBoxTemplateAttribute(MailBox.ActionEnum actionUrlSegment, string actionTemplateUrl)
+			: base(actionUrlSegment.ToString(), actionTemplateUrl)
+		{
+		}
+	}
+
+	[Template("~/Messaging/UI/Views/MailBox.aspx")]
+	[MailBoxTemplate(ActionEnum.Create, "~/Messaging/UI/Views/NewMessage.aspx")]
+	[MailBoxTemplate(ActionEnum.Forward, "~/Messaging/UI/Views/NewMessage.aspx")]
+	[MailBoxTemplate(ActionEnum.Reply, "~/Messaging/UI/Views/NewMessage.aspx")]
 	partial class MailBox
 	{
 		#region MVC implementation
@@ -22,10 +34,7 @@ namespace N2.Messaging
             Destroy
 		}
 
-		public ActionEnum Action { get; set; }
-		public string Folder { get; set; }
-		public string Filter { get; set; }
-        public int msgID { get; set; }
+		public int msgID { get; set; }
 
 		public override TemplateData FindTemplate(string remainingUrl)
 		{
@@ -34,39 +43,16 @@ namespace N2.Messaging
 			if (_matches.Any()) {
 
 				var _match = _matches.First();
-				this.Action = (ActionEnum)_match.Data;
+				ActionEnum _action = (ActionEnum)_match.Data;
+				string _folder = C.Folders.Inbox;
+				string _filter = string.Empty;
 				
-				switch (this.Action) {
+				switch (_action) {
 					case ActionEnum.List:
-						this.Folder = _match.BoundVariables["folder"];
-						this.Filter = _match.BoundVariables["filter"];
+						_folder = _match.BoundVariables["folder"];
+						_filter = _match.BoundVariables["filter"];
 						break;
-					case ActionEnum.Create:
-						this.EditedItem = Context.Definitions.CreateInstance<Message>(this.MessageStore);
-						break;
-					case ActionEnum.Forward:
-						{
-							int _id = int.Parse(_match.BoundVariables["id"]);
-							var _original = Context.Persister.Get(_id);
-							this.EditedItem = (Message)_original.Clone(false);
-							this.EditedItem.ID = 0;
-							this.EditedItem.Name = null;
-							this.EditedItem.Subject = "Fw: " + this.EditedItem.Subject;
-							this.EditedItem.To = string.Empty;
-						}
-						break;
-					case ActionEnum.Reply:
-						{
-							int _id = int.Parse(_match.BoundVariables["id"]);
-							var _original = Context.Persister.Get(_id);
-							this.EditedItem = (Message)_original.Clone(false);
-							this.EditedItem.ID = 0;
-							this.EditedItem.Name = null;
-							this.EditedItem.Subject = "Re: " + this.EditedItem.Subject;
-							this.EditedItem.To = this.EditedItem.From;
-						}
-						break;
-                    case ActionEnum.Delete:
+					case ActionEnum.Delete:
                         {
                             int _id = int.Parse(_match.BoundVariables["id"]);
                             var _original = Context.Persister.Get(_id);
@@ -89,7 +75,25 @@ namespace N2.Messaging
                         break;
 					}
 				
-				return new TemplateData(this, remainingUrl, this.TemplateUrl);
+				return new TemplateData(
+					this,
+					string.Concat(
+						"~/Messaging/UI/Views/",
+						new[] {
+							ActionEnum.Create,
+							ActionEnum.Reply,
+							ActionEnum.Forward
+						}.Contains(_action)
+							? "NewMessage"
+							: "MailBox",
+							".aspx"),
+					_action.ToString(),
+					_match.BoundVariables["id"]
+						?? string.Concat(
+							_folder,
+							string.IsNullOrEmpty(_filter)
+								? string.Empty
+								: "/" + _filter));
 			}
 
 			return base.FindTemplate(remainingUrl);
@@ -110,12 +114,13 @@ namespace N2.Messaging
 				from _pair in new Dictionary<string, ActionEnum> {
 					{ "folder/{folder}/filter/{filter}", ActionEnum.List },
 					{ "folder/{folder}", ActionEnum.List },
-					{ "reply/{id}", ActionEnum.Reply },
-					{ "forward/{id}", ActionEnum.Forward },
+//					{ "reply/{id}", ActionEnum.Reply },
+//					{ "forward/{id}", ActionEnum.Forward },
 					{ "delete/{id}", ActionEnum.Delete },
 					{ "restore/{id}", ActionEnum.Restore },
 					{ "destroy/{id}", ActionEnum.Destroy },
-					{ "new", ActionEnum.Create } }
+//					{ "new", ActionEnum.Create }
+				}
 				select
 					new KeyValuePair<UriTemplate, object>(
 						new UriTemplate(_pair.Key),

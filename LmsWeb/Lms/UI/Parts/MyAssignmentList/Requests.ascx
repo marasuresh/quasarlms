@@ -159,10 +159,10 @@
                                 </td>
                             </tr>
                         </table>
-                        <div class="footer command">
-                            <asp:LinkButton ID="btnReject" runat="server" Text="Отклонить" CommandName="Reject" CommandArgument='<%# Container.DataItemIndex %>' />
-                            <asp:LinkButton ID="btnAccept" runat="server" Text="Принять" CommandName="Accept" CommandArgument='<%# Container.DataItemIndex %>' />
-                        </div>
+                        <ul class="buttons">
+                            <li><asp:LinkButton ID="btnReject" runat="server" Text="Отклонить" CommandName="Reject" CommandArgument='<%# Container.DataItemIndex %>' /></li>
+                            <li><asp:LinkButton ID="btnAccept" runat="server" Text="Принять" CommandName="Accept" CommandArgument='<%# Container.DataItemIndex %>' /></li>
+                        </ul>
                     </div>
                 </td>
             </tr>

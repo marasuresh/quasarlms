@@ -15,11 +15,12 @@ namespace N2.Messaging.Messaging.UI.Parts
 		{
 			base.OnInit(e);
 
-			this.hlCancel.NavigateUrl = this.CurrentPage.Url;
+			this.hlCancel.PostBackUrl = this.CurrentPage.Url;
+			Message _editedItem = this.CurrentItem.GetEditedItem();
 
-			this.txtSubject.Text = this.CurrentItem.EditedItem.Subject;
-			this.txtText.Text = this.CurrentItem.EditedItem.Text;
-			this.selUser.SelectedUser = this.CurrentItem.EditedItem.To;
+			this.txtSubject.Text = _editedItem.Subject;
+			this.txtText.Text = _editedItem.Text;
+			this.selUser.SelectedUser = _editedItem.To;
 			
 		}
         protected override void OnLoad(EventArgs e)
@@ -55,18 +56,20 @@ namespace N2.Messaging.Messaging.UI.Parts
 				attacments = new MailFactory().UploadFile(myFile, Server.MapPath("./Upload/"), "~/Messaging/UI/Views/Upload/");
 			}
 
-			this.CurrentPage.EditedItem.ID = 0;
-			this.CurrentPage.EditedItem.Text = this.txtText.Text;
-			this.CurrentPage.EditedItem.Subject = this.txtSubject.Text;
-            this.CurrentPage.EditedItem.To = Regex.Replace(this.selUser.SelectedUser, ";", "; ");
-			this.CurrentPage.EditedItem.From = this.Context.User.Identity.Name;
-            this.CurrentPage.EditedItem.Owner = this.Context.User.Identity.Name;
-            this.CurrentPage.EditedItem.IsRead = true;
-			this.CurrentPage.EditedItem.Attachments = attacments;
-			this.CurrentPage.EditedItem.Expires = DateTime.Now.AddDays(60);
-			this.CurrentPage.EditedItem.MessageType = (MessageTypeEnum)Enum.Parse(typeof(MessageTypeEnum), this.rblMessageType.SelectedValue);
+			Message _editedItem = this.CurrentPage.GetEditedItem();
 
-			this.CurrentPage.EditedItem.Save();
+			_editedItem.ID = 0;
+			_editedItem.Text = this.txtText.Text;
+			_editedItem.Subject = this.txtSubject.Text;
+            _editedItem.To = Regex.Replace(this.selUser.SelectedUser, ";", "; ");
+			_editedItem.From = this.Context.User.Identity.Name;
+            _editedItem.Owner = this.Context.User.Identity.Name;
+            _editedItem.IsRead = true;
+			_editedItem.Attachments = attacments;
+			_editedItem.Expires = DateTime.Now.AddDays(60);
+			_editedItem.MessageType = (MessageTypeEnum)Enum.Parse(typeof(MessageTypeEnum), this.rblMessageType.SelectedValue);
+
+			_editedItem.Save();
 		}
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -76,12 +79,14 @@ namespace N2.Messaging.Messaging.UI.Parts
             {
 				this.UpdateEditedMessage();
 
+				Message _editedItem = this.CurrentItem.GetEditedItem();
+
                 //Создание копий получалелей.
                 Array.ForEach(
-                    new MailFactory().GetRecipients(this.CurrentPage.EditedItem.To),
+                    new MailFactory().GetRecipients(_editedItem.To),
                     recipient =>
                     {
-                        var _copy = (N2.Messaging.Message)this.CurrentPage.EditedItem.Clone(false);
+                        var _copy = (N2.Messaging.Message)_editedItem.Clone(false);
                         _copy.To = recipient;
                         _copy.Owner = recipient;
                         _copy.IsRead = false;
@@ -99,7 +104,8 @@ namespace N2.Messaging.Messaging.UI.Parts
             if (Page.IsValid)
             {
 				this.UpdateEditedMessage();
-				N2.Context.Persister.Move(this.CurrentPage.EditedItem, this.CurrentPage.MessageStore.DraftsFolder);
+				Message _editedItem = this.CurrentItem.GetEditedItem();
+				N2.Context.Persister.Move(_editedItem, this.CurrentPage.MessageStore.DraftsFolder);
                 Response.Redirect(Url.Parse(CurrentPage.Url).AppendSegment("folder/" + MailBox.C.Folders.Inbox).Path);
             }
         }
