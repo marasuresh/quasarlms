@@ -54,3 +54,25 @@ using System.Web.UI;
 [assembly: WebResource("N2.Futures.Css.grid.css", "text/css", PerformSubstitution = true)]
 [assembly: WebResource("N2.Futures.Css.round.css", "text/css", PerformSubstitution = true)]
 [assembly: WebResource("N2.Futures.Css.grid-fix-n2.css", "text/css")]
+
+#region PopUpWindow.
+
+[assembly: WebResource("N2.Futures.Scripts.PopUpWindow.interface.js", "text/javascript")]
+[assembly: WebResource("N2.Futures.Scripts.PopUpWindow.interface.path.js", "text/javascript")]
+
+[assembly: WebResource("N2.Futures.Images.PopUpWindow.PUpWindow.png", "image/png")]
+
+[assembly: WebResource("N2.Futures.Images.PopUpWindow.window_bottom_end.png", "image/png")]
+[assembly: WebResource("N2.Futures.Images.PopUpWindow.window_bottom_start.png", "image/png")]
+[assembly: WebResource("N2.Futures.Images.PopUpWindow.window_top_end.png", "image/png")]
+[assembly: WebResource("N2.Futures.Images.PopUpWindow.window_top_start.png", "image/png")]
+
+[assembly: WebResource("N2.Futures.Images.PopUpWindow.window_close.png", "image/png")]
+[assembly: WebResource("N2.FuturesImages.PopUpWindow.window_max.png", "image/png")]
+[assembly: WebResource("N2.Futures.Images.PopUpWindow.window_min.png", "image/png")]
+
+[assembly: WebResource("N2.Futures.Images.PopUpWindow.window_resize.gif", "image/gif")]
+
+[assembly: WebResource("N2.Futures.Css.PopUpWindow.PopUpWindow.css", "text/css", PerformSubstitution = true)]
+
+#endregion
