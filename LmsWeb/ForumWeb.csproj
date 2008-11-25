@@ -853,10 +853,10 @@
     <Content Include="Forum\YAF\Web References\RegisterForum\Register.disco" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\forumdb.mdf">
+    <Content Include="App_Data\yaf.mdf">
     </Content>
-    <Content Include="App_Data\forumdb_log.ldf">
-      <DependentUpon>forumdb.mdf</DependentUpon>
+    <Content Include="App_Data\yaf_log.ldf">
+      <DependentUpon>yaf.mdf</DependentUpon>
     </Content>
     <Content Include="Forum\UI\Top+SubMenu.Master" />
     <Content Include="Forum\Web.config" />

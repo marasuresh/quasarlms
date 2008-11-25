@@ -19,7 +19,7 @@
 		public Storage()
 		{
 			this.Name = "storage";
-			this.Title = "Хранилище данных системы ДО";
+			this.Title = "Данные";
 		}
 
 		#region System Properties

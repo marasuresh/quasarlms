@@ -30,7 +30,7 @@
 		#region Properties
 
 		public override string IconUrl { get { return "~/Lms/UI/Img/04/15.png"; } }
-		public override string TemplateUrl { get { return "~/Lms/UI/CourseInfo.aspx"; } }
+		public override string TemplateUrl { get { return "~/Templates/UI/Secured/Empty.aspx"; } }
 		public override string ZoneName { get { return "Content"; } }
 		public override bool IsPage { get { return false; } }
 
