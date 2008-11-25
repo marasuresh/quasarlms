@@ -13,7 +13,7 @@ namespace N2.Web.UI.WebControls
 {
     [DefaultProperty("Title")]
     [ToolboxData("<{0}:PopUpWindow runat=server></{0}:PopUpWindow>")]
-    //[Designer(typeof(PopUpWindowDesigner))]
+    [Designer(typeof(PopUpWindowDesigner))]
     [ToolboxBitmap(typeof(PopUpWindow), "N2.Futures.Images.PopUpWindow.PUpWindow.png")]
     public class PopUpWindow : Panel
     {
