@@ -106,13 +106,7 @@
 								runat="server"
 								meta:resourcekey="btnSave"
 								CommandName="Update" />
-							</li><li>
-						<asp:LinkButton
-								ID="btnCancel"
-								runat="server"
-								meta:resourcekey="btnCancel"
-								CommandName="Cancel" /></li>
-						</ul>
+							</li></ul>
 				</div>
 			</td>
 		</tr>
