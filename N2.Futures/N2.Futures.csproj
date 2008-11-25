@@ -70,6 +70,7 @@
     <Compile Include="ItemBuilderInitializer.cs" />
     <Compile Include="Items\ProxyItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\UI\WebControls\PopUpWindow.cs" />
     <Compile Include="Web\UriTemplateAttribute.cs" />
     <Compile Include="Web\UI\Extensions.cs" />
     <Compile Include="Web\UI\GenericTemplate.cs" />
@@ -100,6 +101,22 @@
     <EmbeddedResource Include="Images\t.gif" />
     <EmbeddedResource Include="Images\tl.gif" />
     <EmbeddedResource Include="Images\tr.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\PopUpWindow\PUpWindow.png" />
+    <EmbeddedResource Include="Images\PopUpWindow\window_bottom_end.png" />
+    <EmbeddedResource Include="Images\PopUpWindow\window_bottom_start.png" />
+    <EmbeddedResource Include="Images\PopUpWindow\window_close.png" />
+    <EmbeddedResource Include="Images\PopUpWindow\window_max.png" />
+    <EmbeddedResource Include="Images\PopUpWindow\window_min.png" />
+    <EmbeddedResource Include="Images\PopUpWindow\window_resize.gif" />
+    <EmbeddedResource Include="Images\PopUpWindow\window_top_end.png" />
+    <EmbeddedResource Include="Images\PopUpWindow\window_top_start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Css\PopUpWindow\PopUpWindow.css" />
+    <EmbeddedResource Include="Scripts\PopUpWindow\interface.js" />
+    <EmbeddedResource Include="Scripts\PopUpWindow\interface.path.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

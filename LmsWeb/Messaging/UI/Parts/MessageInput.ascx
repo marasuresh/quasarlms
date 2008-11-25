@@ -11,7 +11,13 @@
 						AssociatedControlID="selUser"
 						CssClass="label"
 						meta:resourcekey="lblToResource1" /></td>
-			<td><n2:SelectUser ID="selUser" runat="server" /></td>
+			<td>
+			    <n2:SelectUser ID="selUser" runat="server" />
+			    <asp:TextBox ID="windowOpen" runat="server"></asp:TextBox>
+                <n2:PopUpWindow ID="PopUpWindow1" runat="server" Title="Выбор адресата..." AssociatedControlID="windowOpen" AllignTo="AssociatedControl">
+                    <div>Inside a window</div>
+                </n2:PopUpWindow>
+			</td>
 		</tr>
 		<tr><td><asp:Label
 						runat="server"

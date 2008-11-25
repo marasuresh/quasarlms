@@ -8,5 +8,10 @@
 		{
 			return step == step.Wizard.ActiveStep;
 		}
+
+        public static void WriteJScript(this HtmlTextWriter writer, string script)
+        {
+            writer.Write(@"<script type='text/javascript'>" + script + "</script>");
+        }
 	}
 }
