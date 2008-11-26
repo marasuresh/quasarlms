@@ -305,6 +305,7 @@ namespace N2.Web.UI.WebControls
 			this.SelectButton = new fx.Button {
 				ID = "btnSelect",
 				Visible = false,
+                CssClass = "btnSelectUsersInUserTree",
 				Text = "Select",
 				EnableViewState = false,
 			};

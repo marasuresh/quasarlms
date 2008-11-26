@@ -20,7 +20,7 @@ namespace N2.Messaging.Messaging.UI.Parts
 
 			this.txtSubject.Text = _editedItem.Subject;
 			this.txtText.Text = _editedItem.Text;
-			this.selUser.SelectedUser = _editedItem.To;
+            this.selUser.SelectedUser = _editedItem.To;
 			
 		}
         protected override void OnLoad(EventArgs e)

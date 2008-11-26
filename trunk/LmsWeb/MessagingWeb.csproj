@@ -107,6 +107,13 @@
     <Compile Include="Messaging\UI\Parts\NewMessageList.ascx.designer.cs">
       <DependentUpon>NewMessageList.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Messaging\UI\Parts\SelectUsers.ascx.cs">
+      <DependentUpon>SelectUsers.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Messaging\UI\Parts\SelectUsers.ascx.designer.cs">
+      <DependentUpon>SelectUsers.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Messaging\UI\Views\MailBox.aspx.cs">
       <DependentUpon>MailBox.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -130,6 +137,7 @@
     <Content Include="Messaging\UI\Images\wrench.png" />
     <Content Include="Messaging\UI\Js\jQuery.intellisense.js" />
     <Content Include="Messaging\UI\Parts\App_LocalResources\Message.ascx.resx" />
+    <Content Include="Messaging\UI\Parts\SelectUsers.ascx" />
     <Content Include="Messaging\UI\Views\NewMessage.aspx" />
   </ItemGroup>
   <ItemGroup>

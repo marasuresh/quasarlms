@@ -48,6 +48,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.ServiceModel.Web">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -70,6 +71,7 @@
     <Compile Include="ItemBuilderInitializer.cs" />
     <Compile Include="Items\ProxyItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\UI\WebControls.Design\PopUpWindowDesigner.cs" />
     <Compile Include="Web\UI\WebControls\PopUpWindow.cs" />
     <Compile Include="Web\UriTemplateAttribute.cs" />
     <Compile Include="Web\UI\Extensions.cs" />
