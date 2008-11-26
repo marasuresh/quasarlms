@@ -2,7 +2,9 @@
     Inherits="N2.Messaging.Messaging.UI.Parts.MessageInput" %>
 <%@ Import Namespace="N2.Web" %>
 <%@ Import Namespace="N2.Messaging" %>
-<%--<script type="text/javascript" src="../Js/jQuery.intellisense.js"></script>--%>
+<%@ Register TagPrefix="uc" TagName="SelectUsers" 
+    Src="~\Messaging\UI\Parts\SelectUsers.ascx" %>
+
 <n2:Box ID="commentInput" runat="server" CssClass="box" meta:resourcekey="BoxResource1">
 	<table style="table-layout: fixed" cellspacing="0" cellpadding="0" width="100%">
 		<tr><td width="20%">
@@ -12,11 +14,7 @@
 						CssClass="label"
 						meta:resourcekey="lblToResource1" /></td>
 			<td>
-			    <n2:SelectUser ID="selUser" runat="server" />
-			    <asp:TextBox ID="windowOpen" runat="server"></asp:TextBox>
-                <n2:PopUpWindow ID="PopUpWindow1" runat="server" Title="Выбор адресата..." AssociatedControlID="windowOpen" AllignTo="AssociatedControl">
-                    <div>Inside a window</div>
-                </n2:PopUpWindow>
+			    <uc:SelectUsers id="selUser" runat="server"/>
 			</td>
 		</tr>
 		<tr><td><asp:Label
@@ -29,7 +27,7 @@
 						runat="server"
 						CssClass="tb"
 						meta:resourcekey="txtSubjectResource1"
-						Width="90%" />
+						Width="100%" />
 				<asp:RequiredFieldValidator
 						ID="RequiredFieldValidator1"
 						runat="server"

@@ -29,25 +29,7 @@ namespace N2.Messaging.Messaging.UI.Parts {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::N2.Web.UI.WebControls.SelectUser selUser;
-        
-        /// <summary>
-        /// windowOpen control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox windowOpen;
-        
-        /// <summary>
-        /// PopUpWindow1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::N2.Web.UI.WebControls.PopUpWindow PopUpWindow1;
+        protected global::N2.Messaging.Messaging.UI.Parts.SelectUsers selUser;
         
         /// <summary>
         /// txtSubject control.

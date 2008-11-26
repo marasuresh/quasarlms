@@ -98,13 +98,7 @@
 	border: 1px solid #3F6FFF;
 	height: 255px;
 	width: 375px;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size: 11px;
 	background-color: #fff;
-}
-.PUpWindow #windowContent *
-{
-	margin: 10px;
 }
 .transferer2
 {
@@ -116,5 +110,5 @@
 }
 .openPUpWindowControl
 {
-	border:1px solid #3F6FFF
+	border:1px solid #A4D4F0
 }
