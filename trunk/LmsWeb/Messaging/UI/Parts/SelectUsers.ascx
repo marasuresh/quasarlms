@@ -5,22 +5,21 @@
 <script type="text/javascript">
     $(document).ready(
 	function() {
-	    $('.btnSelectUsersInUserTree').hide();
+        $('.btnSelectUsersInUserTree').hide();
+        $('.PUpWindow #windowMin').hide();
 	    $('div.ut > table :checkbox').bind('click',
 	        function() {
-	            var checkedUsers = '';
+	            var checkedUsers = Array();
 	            $('div.ut > table').each(
 	                function() {
 	                    if ($(this).find(':checked').length)
-	                        if (checkedUsers == '')
-	                        checkedUsers = $(this).find('span').text();
-	                    else
-	                        checkedUsers = checkedUsers + ';' + $(this).find('span').text();
+	                        checkedUsers.push($(this).find('span').text());
 	                });
-	                $('.openPUpWindowControl').val(checkedUsers);
+	                $('.openPUpWindowControl').val(checkedUsers.join(';'));
 	        });
 	});
 </script>
+
 <asp:TextBox ID="windowOpen" runat="server" Width="100%"></asp:TextBox>
 <n2:PopUpWindow ID="PopUpWindow1" runat="server" Title="Выбор адресата..." AssociatedControlID="windowOpen"
     AllignTo="AssociatedControl" Height="235px" Width="200px">
