@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SelectUsers.ascx.cs"
     Inherits="N2.Messaging.Messaging.UI.Parts.SelectUsers" %>
-<script type="text/javascript" src="../Js/jQuery.intellisense.js"></script>
+<%--<script type="text/javascript" src="../Js/jQuery.intellisense.js"></script>--%>
 
 <script type="text/javascript">
     $(document).ready(

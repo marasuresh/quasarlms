@@ -14,5 +14,7 @@ Inherits="N2.Templates.Web.UI.TemplatePage`1[[N2.Messaging.MailBox, N2.Messaging
 </script>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TextContent" Runat="Server">
-	<uc:MessageInput id="miNewMsg" runat="server"/>
+	<n2:ChromeBox ID="ChromeBox1" runat="server">
+	    <uc:MessageInput id="miNewMsg" runat="server"/>
+	</n2:ChromeBox>
 </asp:Content>
