@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#"  
 Inherits="N2.Templates.Web.UI.TemplatePage`1[[N2.Messaging.MailBox, N2.Messaging]], N2.Templates" %>
+<%@ Import Namespace="N2.Resources"%>
 <%@ Import Namespace="System.Linq" %>
 <%@ Import Namespace="N2.Web" %>
 <%@ Register TagPrefix="uc" TagName="MessageInput" 

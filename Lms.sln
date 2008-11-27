@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Web Developer Express 2008
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{4F7EC6A5-6048-4FB7-B76E-1BC045857145}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2.Futures.Tests", "N2.Futures.Tests\N2.Futures.Tests.csproj", "{2212CEDF-8C0C-4D25-B80B-9D96B1589CA2}"

@@ -14,6 +14,7 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
 		get { return HttpContext.Current.User.Identity.Name; }
 	}
 
+    protected int subMenuIndex;
     protected MultiView mvMailBox;
     protected ListView lv;
 
@@ -22,6 +23,7 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
         base.OnInit(e);
         Register.StyleSheet(Page, "~/Messaging/UI/Css/Messaging.css", Media.All);
 		Register.StyleSheet(this.Page, "~/Lms/UI/Css/MyAssignmentList.css");
+        Register.JQuery(this.Page);
 
         lv.DataBound += new EventHandler(lv_DataBound);
     }
@@ -76,23 +78,31 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
 
 		switch (_folder) {
 			case MailBox.C.Folders.Drafts:
-				msgContainerIndex = 1;
+                subMenuIndex = 1;
+                msgContainerIndex = 1;
 				break;
 			case MailBox.C.Folders.RecyleBin:
-				msgContainerIndex = 2;
+                subMenuIndex = 2;
+                msgContainerIndex = 2;
 				break;
 			case MailBox.C.Folders.Inbox:
+		        subMenuIndex = 0;
 				msgContainerIndex = 0;
 				break;
 			case MailBox.C.Folders.Outbox:
+                subMenuIndex = 3;
 				msgContainerIndex = 0;
 				break;
 			default:
+                subMenuIndex = 0;
 				msgContainerIndex = 0;
 				break;
 		}
 		mvMailBox.ActiveViewIndex = msgContainerIndex;
-
+        Register.JavaScript(Page, @"$(document).ready(function() {
+                                        $('ul.topMenu li.current ul a').eq(" + subMenuIndex + @")
+                                            .css('text-decoration','underline')
+                                            .css('color', '#8996A0');});", ScriptOptions.ScriptTags);
     }
     
     protected void btnEmptyRecBin_Click(object sender, EventArgs e)
