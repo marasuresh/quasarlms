@@ -1,7 +1,7 @@
 ﻿<%@ Import Namespace="System.ComponentModel" %>
 
-<%@ Page Language="C#" MasterPageFile="~/Templates/UI/Layouts/Top+SubMenu.master" AutoEventWireup="true"
-    CodeBehind="MailBox.aspx.cs" Inherits="Messaging_UI_MailBox" %>
+<%@ Page Language="C#" MasterPageFile="~/Templates/UI/Layouts/Top+SubMenu.master"
+    AutoEventWireup="true" CodeBehind="MailBox.aspx.cs" Inherits="Messaging_UI_MailBox" %>
 
 <script runat="server">
     private static string GetAttachmentName(string attachFileUrl)
@@ -14,21 +14,25 @@
         else
             return string.Empty;
     }
-	
-	string m_folder;
-	protected string Folder {
-		get {
-			if(string.IsNullOrEmpty(this.m_folder)) {
-				this.m_folder = this.Engine.RequestContext.CurrentTemplate.Argument.Split('/')[0];
-			}
-			
-			if(string.IsNullOrEmpty(this.m_folder)) {
-				this.m_folder = MailBox.C.Folders.Inbox;
-			}
-			
-			return this.m_folder;
-		}
-	}
+
+    string m_folder;
+    protected string Folder
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(this.m_folder))
+            {
+                this.m_folder = this.Engine.RequestContext.CurrentTemplate.Argument.Split('/')[0];
+            }
+
+            if (string.IsNullOrEmpty(this.m_folder))
+            {
+                this.m_folder = MailBox.C.Folders.Inbox;
+            }
+
+            return this.m_folder;
+        }
+    }
     
 </script>
 
@@ -58,9 +62,10 @@
                 <%
                     }
                 %>
-				<ul class="buttons">
-					<li><a href='<%= _url.AppendSegment(MailBox.ActionEnum.Create.ToString()) %>'>Новое &hellip;</a></li>
-				</ul>
+                <ul class="buttons">
+                    <li><a href='<%= _url.AppendSegment(MailBox.ActionEnum.Create.ToString()) %>'>Новое
+                        &hellip;</a></li>
+                </ul>
                 <br />
             </div>
         </asp:View>
@@ -71,18 +76,15 @@
         <asp:View ID="Tab3" runat="server">
             <br />
             <ul class="buttons">
-				<li><asp:LinkButton
-						ID="btnEmptyRecBin"
-						runat="server"
-						Text="Очистить"
-						OnClick="btnEmptyRecBin_Click" /></li></div>
-            <br />
+                <li>
+                    <asp:LinkButton ID="btnEmptyRecBin" runat="server" Text="Очистить" OnClick="btnEmptyRecBin_Click" /></li></div>
+                <br />
         </asp:View>
     </asp:MultiView>
     <n2:ChromeBox runat="server">
         <asp:ObjectDataSource runat="server" ID="ds" OldValuesParameterFormatString="original_{0}"
-            SelectMethod="GetFilteredFolderMessages" SelectCountMethod="TotalNumberOfMessage" TypeName="N2.Messaging.MailBox" 
-            OnObjectCreating="ds_ObjectCreating" EnablePaging="True" >
+            SelectMethod="GetFilteredFolderMessages" SelectCountMethod="TotalNumberOfMessage"
+            TypeName="N2.Messaging.MailBox" OnObjectCreating="ds_ObjectCreating" EnablePaging="True">
         </asp:ObjectDataSource>
         <asp:ListView ID="lv" DataKeyNames="ID" runat="server" DataSourceID="ds">
             <LayoutTemplate>
@@ -93,16 +95,31 @@
                     <col align="left" width="50%" />
                     <col align="center" width="20%" />
                     <tr class="header">
-						<th>Тип</th>
-						<th>Автор</th>
-						<th>Получатель</th>
-						<th>Тема</th>
-						<th>Дата</th></tr>
+                        <th>
+                            Тип
+                        </th>
+                        <th>
+                            Автор
+                        </th>
+                        <th>
+                            Получатель
+                        </th>
+                        <th>
+                            Тема
+                        </th>
+                        <th>
+                            Дата
+                        </th>
+                    </tr>
                     <tr id="itemPlaceholder" runat="server" />
                 </table>
             </LayoutTemplate>
             <EmptyDataTemplate>
-				<tr><td colspan="5" align="center">У вас нет сообщений.</td></tr>
+                <tr>
+                    <td colspan="5" align="center">
+                        У вас нет сообщений.
+                    </td>
+                </tr>
             </EmptyDataTemplate>
             <ItemTemplate>
                 <tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>  <%# ((Message)Container.DataItem).IsRead ? "" : "NotReadMsg" %>'>
@@ -133,20 +150,27 @@
                             <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("IconUrl") %>' />
                         </asp:LinkButton>
                     </td>
-					<td><%# Eval("From") %></td>
-					<td><%# Eval("To") %></td>
-					<td><asp:LinkButton
-							runat="server"
-							CommandName="Cancel"
-							Text='<%# Eval("Subject")%>' /></td>
-					<td><small><%# Eval("Created") %></small></td>
-				</tr>
-				<tr><td class="edit" colspan="5">
-						<div class="details">
-							<div class="header">
+                    <td>
+                        <%# Eval("From") %>
+                    </td>
+                    <td>
+                        <%# Eval("To") %>
+                    </td>
+                    <td>
+                        <asp:LinkButton runat="server" CommandName="Cancel" Text='<%# Eval("Subject")%>' />
+                    </td>
+                    <td>
+                        <small>
+                            <%# Eval("Created") %></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="edit" colspan="5">
+                        <div class="details">
+                            <div class="header">
                                 Edit details for '<%# Eval("Title")%>'
                             </div>
-							<table class="detailview" cellpadding="0" cellspacing="0">
+                            <table class="detailview" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <th>
                                         Текст:
@@ -157,52 +181,52 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr><td colspan="2">
-										<asp:Repeater ID="rAttach" runat="server" DataSource='<%# ((Message)Container.DataItem).Attachments %>'>
-											
-											<HeaderTemplate><br /><table></HeaderTemplate>
-											
-											<FooterTemplate></table></FooterTemplate>
-											
-											<ItemTemplate>
-												<tr><td><img src='<%= this.ResolveClientUrl("~/Messaging/UI/Images/attach.png") %>' />
-														<asp:HyperLink ID="hlAttach" runat="server" NavigateUrl='<%# (string)Container.DataItem %>'><%# GetAttachmentName(((string)Container.DataItem)) %></asp:HyperLink>
-													</td></tr>
-											</ItemTemplate>
-										
-										</asp:Repeater>
-									</td>
-								</tr>
-							</table>
+                                <tr>
+                                    <td colspan="2">
+                                        <asp:Repeater ID="rAttach" runat="server" DataSource='<%# ((Message)Container.DataItem).Attachments %>'>
+                                            <HeaderTemplate>
+                                                <br />
+                                                <table>
+                                            </HeaderTemplate>
+                                            <FooterTemplate>
+                                                </table></FooterTemplate>
+                                            <ItemTemplate>
+                                                <tr>
+                                                    <td>
+                                                        <img src='<%= this.ResolveClientUrl("~/Messaging/UI/Images/attach.png") %>' />
+                                                        <asp:HyperLink ID="hlAttach" runat="server" NavigateUrl='<%# (string)Container.DataItem %>'><%# GetAttachmentName(((string)Container.DataItem)) %></asp:HyperLink>
+                                                    </td>
+                                                </tr>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </td>
+                                </tr>
+                            </table>
                             <ul class="buttons">
                                 <% if (this.Folder == MailBox.C.Folders.Inbox ||
                                        this.Folder == MailBox.C.Folders.Outbox)
                                    { %>
-								<li><a href='<%# Url.Parse(this.CurrentPage.Url)
+                                <li><a href='<%# Url.Parse(this.CurrentPage.Url)
 									.AppendSegment(MailBox.ActionEnum.Delete.ToString())
-									.AppendSegment(Eval("ID").ToString()) %>'>
-                                    В корзину</a></li>
+									.AppendSegment(Eval("ID").ToString()) %>'>В корзину</a></li>
                                 <% } %>
                                 <% if (this.Folder == MailBox.C.Folders.Drafts)
                                    { %>
-								<li><a href='<%# Url.Parse(this.CurrentPage.Url)
+                                <li><a href='<%# Url.Parse(this.CurrentPage.Url)
 									.AppendSegment(MailBox.ActionEnum.Destroy.ToString())
-									.AppendSegment(Eval("ID").ToString()) %>'>
-                                    Удалить</a></li>
+									.AppendSegment(Eval("ID").ToString()) %>'>Удалить</a></li>
                                 <% } %>
                                 <% if (this.Folder == MailBox.C.Folders.RecyleBin)
                                    { %>
-								<li><a href='<%# Url.Parse(this.CurrentPage.Url)
+                                <li><a href='<%# Url.Parse(this.CurrentPage.Url)
 									.AppendSegment(MailBox.ActionEnum.Restore.ToString())
-									.AppendSegment(Eval("ID").ToString()) %>'>
-                                    Восстановить</a></li>
+									.AppendSegment(Eval("ID").ToString()) %>'>Восстановить</a></li>
                                 <% } %>
                                 <% if (this.Folder == MailBox.C.Folders.Inbox)
                                    { %>
-								<li><a href='<%# Url.Parse(this.CurrentPage.Url)
+                                <li><a href='<%# Url.Parse(this.CurrentPage.Url)
 									.AppendSegment(MailBox.ActionEnum.Reply.ToString())
-									.AppendSegment(Eval("ID").ToString()) %>'>
-                                    Ответить</a></li>
+									.AppendSegment(Eval("ID").ToString()) %>'>Ответить</a></li>
                                 <% } %>
                                 <% if (this.Folder == MailBox.C.Folders.Outbox ||
                                        this.Folder == MailBox.C.Folders.Inbox ||
@@ -210,8 +234,7 @@
                                    { %>
                                 <li><a href='<%# Url.Parse(this.CurrentPage.Url)
 									.AppendSegment(MailBox.ActionEnum.Forward.ToString())
-									.AppendSegment(Eval("ID").ToString()) %>'>
-                                    Переслать</a></li>
+									.AppendSegment(Eval("ID").ToString()) %>'>Переслать</a></li>
                                 <% } %>
                             </ul>
                         </div>
@@ -219,7 +242,7 @@
                 </tr>
             </EditItemTemplate>
         </asp:ListView>
-        <div style="text-align:center">
+        <div style="text-align: center">
             <asp:DataPager ID="DataPager1" PagedControlID="lv" PageSize="15" runat="server">
                 <Fields>
                     <asp:NumericPagerField />
