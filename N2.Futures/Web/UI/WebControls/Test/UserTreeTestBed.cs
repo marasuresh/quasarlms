@@ -71,25 +71,19 @@ namespace N2.Web.UI.WebControls.Test
 
 			//drop down list with Display Mode options
 			var _displayModeListItemsQuery =
-				from _name in new[] {
-					UserTree.DisplayModeEnum.Roles,
-					UserTree.DisplayModeEnum.Users,
-					UserTree.DisplayModeEnum.UsersAndRoles
-				}.Select(_item => _item.ToString())
+				from _name in Enum.GetNames(typeof(UserTree.DisplayModeEnum))
 				select new ListItem {
 					Text = _name, Value = _name,
 				};
 
 			//prepare drop down list with Filter Type options
-			var _filterTypeListItemsQuery =
-				from _name in new[] {
-					UserTree.FilterTypeEnum.None,
-					UserTree.FilterTypeEnum.Include,
-					UserTree.FilterTypeEnum.Exclude,
-				}.Select(_item => _item.ToString())
-				select new ListItem {
-					Text = _name, Value = _name,
-				};
+			var _filterTypeListItemsQuery = 
+				Array.ConvertAll(
+					Enum.GetNames(typeof(UserTree.FilterTypeEnum)),
+					_name => new ListItem {
+						Text = _name, Value = _name,
+					}
+				);
 
 			return
 			new[] {
