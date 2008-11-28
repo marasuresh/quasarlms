@@ -68,7 +68,7 @@ using System.Web.UI;
 [assembly: WebResource("N2.Futures.Images.PopUpWindow.window_top_start.png", "image/png")]
 
 [assembly: WebResource("N2.Futures.Images.PopUpWindow.window_close.png", "image/png")]
-[assembly: WebResource("N2.FuturesImages.PopUpWindow.window_max.png", "image/png")]
+[assembly: WebResource("N2.Futures.Images.PopUpWindow.window_max.png", "image/png")]
 [assembly: WebResource("N2.Futures.Images.PopUpWindow.window_min.png", "image/png")]
 
 [assembly: WebResource("N2.Futures.Images.PopUpWindow.window_resize.gif", "image/gif")]
