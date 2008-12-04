@@ -279,7 +279,7 @@
           <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>4135</DevelopmentServerPort>
-          <DevelopmentServerVPath>/LmsWeb/</DevelopmentServerVPath>
+          <DevelopmentServerVPath>/Lms Web/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
