@@ -10,6 +10,7 @@ Inherits="N2.Templates.Web.UI.TemplatePage`1[[N2.Messaging.MailBox, N2.Messaging
 	protected override void OnInit(EventArgs e)
 	{
 		Register.StyleSheet(this.Page, "~/Lms/UI/Css/MyAssignmentList.css");
+        Register.StyleSheet(this.Page, "~/Messaging/UI/Css/Messaging.css");
 		base.OnInit(e);
 	}
 </script>

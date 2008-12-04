@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Web;
 using N2.Resources;
@@ -13,7 +15,6 @@ namespace N2.Messaging.Messaging.UI.Parts
 
 		protected override void OnInit(EventArgs e)
 		{
-			base.OnInit(e);
 
 			this.hlCancel.PostBackUrl = this.CurrentPage.Url;
 			Message _editedItem = this.CurrentItem.GetEditedItem();
@@ -21,6 +22,14 @@ namespace N2.Messaging.Messaging.UI.Parts
 			this.txtSubject.Text = _editedItem.Subject;
 			this.txtText.Text = _editedItem.Text;
             this.selUser.SelectedUser = _editedItem.To;
+		    if (!IsPostBack && _editedItem.Attachments != null)
+		    {
+                this.multiUpload.attachedFiles = _editedItem.Attachments;
+		        multiUpload.DataBind();
+		    }
+                
+
+            base.OnInit(e);
 			
 		}
         protected override void OnLoad(EventArgs e)
@@ -45,18 +54,16 @@ namespace N2.Messaging.Messaging.UI.Parts
 
 		void UpdateEditedMessage()
 		{
-			string[] attacments = new string[0];
+            Message _editedItem = this.CurrentPage.GetEditedItem();
+            
+            var attacments = multiUpload.attachedFiles;
 
-			//Upload file.
-			if (btnFileUpload.HasFile)  // File was sent
-                {
-				// Get a reference to PostedFile object
-				HttpPostedFile myFile = btnFileUpload.PostedFile;
-
-				attacments = new MailFactory().UploadFile(myFile, Server.MapPath("./Upload/"), "~/Messaging/UI/Views/Upload/");
-			}
-
-			Message _editedItem = this.CurrentPage.GetEditedItem();
+			//Upload files.
+            if (multiUpload.HasFiles)
+            {
+                List<HttpPostedFile> lpf = multiUpload.postedFiles;
+                attacments.AddRange(new MailFactory().UploadFiles(lpf, Server.MapPath("./Upload/"), "~/Messaging/UI/Views/Upload/"));
+            }
 
 			_editedItem.ID = 0;
 			_editedItem.Text = this.txtText.Text;
@@ -83,7 +90,7 @@ namespace N2.Messaging.Messaging.UI.Parts
 
                 //Создание копий получалелей.
                 Array.ForEach(
-                    new MailFactory().GetRecipients(_editedItem.To),
+                    MailFactory.GetRecipients(_editedItem.To),
                     recipient =>
                     {
                         var _copy = (N2.Messaging.Message)_editedItem.Clone(false);
@@ -115,5 +122,6 @@ namespace N2.Messaging.Messaging.UI.Parts
 					.Path);
             }
         }
+
     }
 }

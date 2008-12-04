@@ -19,6 +19,7 @@ namespace N2.Messaging
 	[MailBoxTemplate(ActionEnum.Create, "~/Messaging/UI/Views/NewMessage.aspx")]
 	[MailBoxTemplate(ActionEnum.Forward, "~/Messaging/UI/Views/NewMessage.aspx")]
 	[MailBoxTemplate(ActionEnum.Reply, "~/Messaging/UI/Views/NewMessage.aspx")]
+    [MailBoxTemplate(ActionEnum.DrCreate, "~/Messaging/UI/Views/NewMessage.aspx")]
 	partial class MailBox
 	{
 		#region MVC implementation
@@ -29,6 +30,7 @@ namespace N2.Messaging
 			Reply,
 			Forward,
 			Create,
+            DrCreate,
             Delete,
             Restore,
             Destroy
@@ -43,13 +45,12 @@ namespace N2.Messaging
 			if (_matches.Any()) {
 
 				var _match = _matches.First();
-				ActionEnum _action = (ActionEnum)_match.Data;
-				string _folder = C.Folders.Inbox;
+				var _action = (ActionEnum)_match.Data;
+				string _folder = _match.BoundVariables["folder"] ?? C.Folders.Inbox;
 				string _filter = string.Empty;
 				
 				switch (_action) {
 					case ActionEnum.List:
-						_folder = _match.BoundVariables["folder"];
 						_filter = _match.BoundVariables["filter"];
 						break;
 					case ActionEnum.Delete:
@@ -81,6 +82,7 @@ namespace N2.Messaging
 						"~/Messaging/UI/Views/",
 						new[] {
 							ActionEnum.Create,
+                            ActionEnum.DrCreate,
 							ActionEnum.Reply,
 							ActionEnum.Forward
 						}.Contains(_action)
@@ -88,8 +90,9 @@ namespace N2.Messaging
 							: "MailBox",
 							".aspx"),
 					_action.ToString(),
-					_match.BoundVariables["id"]
-						?? string.Concat(
+					_match.BoundVariables["id"] != null ?
+                          string.Concat(_folder, "/" + _match.BoundVariables["id"])
+                        : string.Concat(
 							_folder,
 							string.IsNullOrEmpty(_filter)
 								? string.Empty
@@ -114,9 +117,12 @@ namespace N2.Messaging
 				from _pair in new Dictionary<string, ActionEnum> {
 					{ "folder/{folder}/filter/{filter}", ActionEnum.List },
 					{ "folder/{folder}", ActionEnum.List },
-					{ "delete/{id}", ActionEnum.Delete },
-					{ "restore/{id}", ActionEnum.Restore },
-					{ "destroy/{id}", ActionEnum.Destroy },
+					//{ "delete/{id}", ActionEnum.Delete },
+                    { "folder/{folder}/delete/{id}", ActionEnum.Delete },
+					//{ "restore/{id}", ActionEnum.Restore },
+                    { "folder/{folder}/restore/{id}", ActionEnum.Restore },
+					//{ "destroy/{id}", ActionEnum.Destroy },
+                    { "folder/{folder}/destroy/{id}", ActionEnum.Destroy },
 				}
 				select
 					new KeyValuePair<UriTemplate, object>(

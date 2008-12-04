@@ -50,13 +50,13 @@ namespace N2.Messaging.Messaging.UI.Parts {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// btnFileUpload control.
+        /// multiUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload btnFileUpload;
+        protected global::N2.Messaging.Messaging.UI.Parts.MultiUpload multiUpload;
         
         /// <summary>
         /// rblMessageType control.

@@ -100,6 +100,13 @@
     <Compile Include="Messaging\UI\Parts\MessageInput.ascx.designer.cs">
       <DependentUpon>MessageInput.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Messaging\UI\Parts\MultiUpload.ascx.cs">
+      <DependentUpon>MultiUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Messaging\UI\Parts\MultiUpload.ascx.designer.cs">
+      <DependentUpon>MultiUpload.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Messaging\UI\Parts\NewMessageList.ascx.cs">
       <DependentUpon>NewMessageList.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -137,6 +144,7 @@
     <Content Include="Messaging\UI\Images\wrench.png" />
     <Content Include="Messaging\UI\Js\jQuery.intellisense.js" />
     <Content Include="Messaging\UI\Parts\App_LocalResources\Message.ascx.resx" />
+    <Content Include="Messaging\UI\Parts\MultiUpload.ascx" />
     <Content Include="Messaging\UI\Parts\SelectUsers.ascx" />
     <Content Include="Messaging\UI\Views\NewMessage.aspx" />
   </ItemGroup>

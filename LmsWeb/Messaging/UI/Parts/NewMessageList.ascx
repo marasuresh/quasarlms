@@ -32,8 +32,8 @@
         </EmptyTemplate>
     </n2:Repeater>
     <br />
-    <div style="text-align:center">
+    </div
+    <div>
         <asp:HyperLink ID="hlMailBox" runat="server">Все сообщения</asp:HyperLink>    
-    </div>
     </div>
 </n2:Box>
