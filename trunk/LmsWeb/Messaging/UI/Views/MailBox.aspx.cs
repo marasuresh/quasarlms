@@ -14,7 +14,6 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
 		get { return HttpContext.Current.User.Identity.Name; }
 	}
 
-    protected int subMenuIndex;
     protected MultiView mvMailBox;
     protected ListView lv;
 
@@ -73,8 +72,9 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
     protected void Page_Load(object sender, EventArgs e)
     {
         int msgContainerIndex;
-
-		string _folder = this.Engine.RequestContext.CurrentTemplate.Argument.Split('/')[0];
+        int subMenuIndex;
+        var _folder = string.IsNullOrEmpty(Engine.RequestContext.CurrentTemplate.Argument) ? 
+                      MailBox.C.Folders.Inbox : Engine.RequestContext.CurrentTemplate.Argument.Split('/')[0];
 
 		switch (_folder) {
 			case MailBox.C.Folders.Drafts:

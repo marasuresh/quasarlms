@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 
 namespace N2.Messaging
 {
@@ -69,9 +70,9 @@ namespace N2.Messaging
             set { SetDetail("isRead", value); }
         }
 
-        public string[] Attachments
+        public ArrayList Attachments
         {
-            get { return GetDetail("Attachments") as string[]; }
+            get { return GetDetail("Attachments") as ArrayList; }
             set { SetDetail("Attachments", value); }
         }
 

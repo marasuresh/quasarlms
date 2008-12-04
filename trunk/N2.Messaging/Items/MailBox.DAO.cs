@@ -12,9 +12,20 @@ namespace N2.Messaging
 		[DataObjectMethod(DataObjectMethodType.Select, true)]
 		public IEnumerable<Message> GetFilteredFolderMessages()
 		{
-			var _args = Context.Current.RequestContext.CurrentTemplate.Argument.Split('/');
-			string _folder = _args[0] ?? C.Folders.Inbox;
-			string _filter = _args.Length > 1 ? _args[1] : C.Filter.All;
+		    string _folder;
+		    string _filter;
+            if (string.IsNullOrEmpty(Context.Current.RequestContext.CurrentTemplate.Argument))
+			{
+                _folder = C.Folders.Inbox;
+                _filter = C.Filter.All;   
+			}
+            else
+            {
+                var _args = Context.Current.RequestContext.CurrentTemplate.Argument.Split('/');
+                _folder = _args[0] ?? C.Folders.Inbox;
+                _filter = _args.Length > 1 ? _args[1] : C.Filter.All; 
+            }
+            
 
 			switch (_folder) {
 				default:
@@ -52,16 +63,29 @@ namespace N2.Messaging
 			if (null != this.m_editedItem) {
 				return this.m_editedItem;
 			}
+		    ActionEnum _action;
 
-			ActionEnum _action = (ActionEnum)Enum.Parse(
-				typeof(ActionEnum),
-				Context.Current.RequestContext.CurrentTemplate.Action);
+            if (string.IsNullOrEmpty(Context.Current.RequestContext.CurrentTemplate.Action))
+                _action = ActionEnum.Create;
+            else
+                _action = (ActionEnum)Enum.Parse(
+				            typeof(ActionEnum),
+				            Context.Current.RequestContext.CurrentTemplate.Action);
 
 			int _id;
 			int.TryParse(Context.Current.RequestContext.CurrentTemplate.Argument, out _id);
 
 			switch (_action) {
-				case ActionEnum.Forward: {
+                case ActionEnum.DrCreate:
+                    {
+                        var _original = (Message)Context.Persister.Get(_id);
+                        this.m_editedItem = Context.Definitions.CreateInstance<Message>(this.MessageStore);
+                        this.m_editedItem.Subject = _original.Subject;
+                        this.m_editedItem.Text = _original.Text;
+                        this.m_editedItem.Attachments = _original.Attachments;
+                    }
+                    break;
+                case ActionEnum.Forward: {
 						var _original = Context.Persister.Get(_id);
 						this.m_editedItem = (Message)_original.Clone(false);
 						this.m_editedItem.ID = 0;

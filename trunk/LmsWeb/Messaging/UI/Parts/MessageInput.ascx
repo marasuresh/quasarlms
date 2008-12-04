@@ -4,9 +4,11 @@
 <%@ Import Namespace="N2.Messaging" %>
 <%@ Register TagPrefix="uc" TagName="SelectUsers" 
     Src="~\Messaging\UI\Parts\SelectUsers.ascx" %>
+<%@ Register TagPrefix="uc" TagName="MultiUpload" 
+    Src="~\Messaging\UI\Parts\MultiUpload.ascx" %>
 
 <n2:Box ID="commentInput" runat="server" CssClass="box" meta:resourcekey="BoxResource1">
-	<table style="table-layout: fixed" cellspacing="0" cellpadding="0" width="100%">
+	<table style="table-layout: fixed" cellspacing="0" cellpadding="1" width="100%">
 		<tr><td width="20%">
 				<asp:Label
 						runat="server"
@@ -38,13 +40,13 @@
 						meta:resourcekey="rfvSubjectResource1" /></td></tr>
 		<tr><td><asp:Label
 						runat="server"
-						AssociatedControlID="btnFileUpload"
+						AssociatedControlID="multiUpload"
 						CssClass="label"
 						meta:resourcekey="lblUploadResource1" /></td>
-			<td><asp:FileUpload
-						ID="btnFileUpload"
-						runat="server"
-						Width="90%" /></td></tr>
+			<td>
+			    <uc:MultiUpload id="multiUpload" runat="server"/>
+			</td>
+		</tr>
 		<tr><td><asp:Label
 						runat="server"
 						AssociatedControlID="rblMessageType"

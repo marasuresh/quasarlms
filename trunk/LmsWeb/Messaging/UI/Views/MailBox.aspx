@@ -15,22 +15,30 @@
             return string.Empty;
     }
 
-    string m_folder;
+    static string m_folder;
     protected string Folder
     {
         get
         {
-            if (string.IsNullOrEmpty(this.m_folder))
-            {
-                this.m_folder = this.Engine.RequestContext.CurrentTemplate.Argument.Split('/')[0];
-            }
+            //if (string.IsNullOrEmpty(m_folder))
+            //{
+            //    m_folder = string.IsNullOrEmpty(Engine.RequestContext.CurrentTemplate.Argument) ? 
+            //                    MailBox.C.Folders.Inbox : Engine.RequestContext.CurrentTemplate.Argument.Split('/')[0];
+            //}
+            string arg = Engine.RequestContext.CurrentTemplate.Argument;
+            string arg_folder = "";
+            
+            if (string.IsNullOrEmpty(arg))
+                m_folder = MailBox.C.Folders.Inbox;
+            else
+                arg_folder = arg.Split('/')[0];
+                if (arg_folder.Equals(MailBox.C.Folders.Drafts, StringComparison.OrdinalIgnoreCase)||
+                    arg_folder.Equals(MailBox.C.Folders.Inbox, StringComparison.OrdinalIgnoreCase)||
+                    arg_folder.Equals(MailBox.C.Folders.Outbox, StringComparison.OrdinalIgnoreCase)||
+                    arg_folder.Equals(MailBox.C.Folders.RecyleBin, StringComparison.OrdinalIgnoreCase))
+                    m_folder = arg_folder;
 
-            if (string.IsNullOrEmpty(this.m_folder))
-            {
-                this.m_folder = MailBox.C.Folders.Inbox;
-            }
-
-            return this.m_folder;
+            return m_folder;
         }
     }
     
@@ -77,8 +85,10 @@
             <br />
             <ul class="buttons">
                 <li>
-                    <asp:LinkButton ID="btnEmptyRecBin" runat="server" Text="Очистить" OnClick="btnEmptyRecBin_Click" /></li></div>
-                <br />
+                    <asp:LinkButton ID="btnEmptyRecBin" runat="server" Text="Очистить" OnClick="btnEmptyRecBin_Click" />
+                </li>
+            </ul>
+            <br />
         </asp:View>
     </asp:MultiView>
     <n2:ChromeBox runat="server">
@@ -117,7 +127,7 @@
             <EmptyDataTemplate>
                 <tr>
                     <td colspan="5" align="center">
-                        У вас нет сообщений.
+                        Сообщений нет.
                     </td>
                 </tr>
             </EmptyDataTemplate>
@@ -170,19 +180,23 @@
                             <div class="header">
                                 Edit details for '<%# Eval("Title")%>'
                             </div>
+                            <div style="padding: 4px 4px 4px 4px; border: 1px solid #A4D4F0">
                             <table class="detailview" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <th>
                                         Текст:
                                     </th>
-                                    <td style="width: 85%">
-                                        <div style="width: 100%; height: 100%; background-color: Gainsboro; border: solid 1px Silver">
+                                    <td style="width: 90%">
+                                        <div style="width:auto; padding: 4px 4px 4px 4px; background-color: #F3F3F3; border: solid 1px Silver">
                                             <%# Eval("Text") %>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">
+                                    <th>
+                                        Файлы:
+                                    </th>
+                                    <td>
                                         <asp:Repeater ID="rAttach" runat="server" DataSource='<%# ((Message)Container.DataItem).Attachments %>'>
                                             <HeaderTemplate>
                                                 <br />
@@ -202,23 +216,43 @@
                                     </td>
                                 </tr>
                             </table>
+                            </div>
                             <ul class="buttons">
-                                <% if (this.Folder == MailBox.C.Folders.Inbox ||
+                                <%
+                                    var editIndex  = lv.EditIndex;
+
+                                    MessageTypeEnum msgType = MessageTypeEnum.Letter;
+                                    
+                                    if (lv.DataKeys[editIndex] != null)
+                                    {
+                                        var msgID = (int)lv.DataKeys[editIndex].Value;
+                                        var curMsg = (Message)N2.Context.Persister.Get(msgID);
+                                        msgType = curMsg.MessageType;
+                                    }
+                                    
+                                    if (this.Folder == MailBox.C.Folders.Inbox && msgType == MessageTypeEnum.Letter ||
                                        this.Folder == MailBox.C.Folders.Outbox)
                                    { %>
                                 <li><a href='<%# Url.Parse(this.CurrentPage.Url)
+                                    .AppendSegment("folder/" + Folder)
 									.AppendSegment(MailBox.ActionEnum.Delete.ToString())
 									.AppendSegment(Eval("ID").ToString()) %>'>В корзину</a></li>
                                 <% } %>
                                 <% if (this.Folder == MailBox.C.Folders.Drafts)
                                    { %>
                                 <li><a href='<%# Url.Parse(this.CurrentPage.Url)
+									.AppendSegment("folder/" + Folder)
 									.AppendSegment(MailBox.ActionEnum.Destroy.ToString())
 									.AppendSegment(Eval("ID").ToString()) %>'>Удалить</a></li>
+							    
+							    <li><a href='<%# Url.Parse(this.CurrentPage.Url)
+									.AppendSegment(MailBox.ActionEnum.DrCreate.ToString())
+									.AppendSegment(Eval("ID").ToString()) %>'>Переслать</a></li>
                                 <% } %>
                                 <% if (this.Folder == MailBox.C.Folders.RecyleBin)
                                    { %>
                                 <li><a href='<%# Url.Parse(this.CurrentPage.Url)
+									.AppendSegment("folder/" + Folder)
 									.AppendSegment(MailBox.ActionEnum.Restore.ToString())
 									.AppendSegment(Eval("ID").ToString()) %>'>Восстановить</a></li>
                                 <% } %>
@@ -229,8 +263,7 @@
 									.AppendSegment(Eval("ID").ToString()) %>'>Ответить</a></li>
                                 <% } %>
                                 <% if (this.Folder == MailBox.C.Folders.Outbox ||
-                                       this.Folder == MailBox.C.Folders.Inbox ||
-                                       this.Folder == MailBox.C.Folders.Drafts)
+                                       this.Folder == MailBox.C.Folders.Inbox)
                                    { %>
                                 <li><a href='<%# Url.Parse(this.CurrentPage.Url)
 									.AppendSegment(MailBox.ActionEnum.Forward.ToString())
