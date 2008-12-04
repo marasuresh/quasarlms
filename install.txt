@@ -1,0 +1,37 @@
+A steps to perform to get Lms running on IIS6 + Sql Server:
+
+1. Create SqlServer database:
+	1.1 `sqlcmd -E -S .\SqlExpress`
+	1.2 CREATE DATABASE LmsWeb
+	1.3 GO
+	1.4 sp_grantlogin 'NT AUTHORITY\NETWORK SERVICE' -- give IIS launcher permission to access Sql Server instance
+	1.5 GO
+	1.6 use LmsWeb
+	1.6 sp_grantdbaccess 'NT AUTHORITY\NETWORK SERVICE', 'LmsDbAdmin' -- give permission for the database
+	1.7 sp_addrolemember 'db_owner', 'NT AUTHORITY\NETWORK SERVICE' -- allows creating tables, etc..
+	1.8 GO
+
+2. Allows administrative access during installation: temporarily add beneth <system.web/> in web.config:
+		
+		<authentication mode="Forms">
+			<forms loginUrl="edit/login.aspx"
+				   protection="All"
+				   timeout="30000"
+				   path="/">
+				<credentials passwordFormat="Clear">
+					<!-- WARNING: Change this default password. Please do it now. -->
+					<user name="admin"
+						  password="changeme" />
+				</credentials>
+			</forms>
+		</authentication>
+
+
+3. Initialize N2 database:
+	3.1 Navigate to ~/Edit/Install/
+	3.2 Follow instructions until step 4
+	3.3 On step 4 select to import data from "Lms.n2.xml"
+	3.4 Ensure that web.config gets updated with initial node info:
+		..
+		<host rootID="1" startPageID="10"
+		..

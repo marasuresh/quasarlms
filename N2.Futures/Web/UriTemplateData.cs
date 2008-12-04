@@ -18,8 +18,20 @@ namespace N2.Web
 
 		#region Constructors
 		
-		internal UriTemplateData(ContentItem item, string templateUrl, UriTemplateMatch match)
-			:base(item, templateUrl)
+		internal UriTemplateData(
+				ContentItem item,
+				string templateUrl,
+			UriTemplateMatch match)
+			:this(item, templateUrl, DefaultAction, match)
+		{
+		}
+
+		internal UriTemplateData(
+				ContentItem item,
+				string templateUrl,
+				string action,
+				UriTemplateMatch match)
+			: base(item, templateUrl, action, string.Empty)
 		{
 			this.Match = match;
 		}
