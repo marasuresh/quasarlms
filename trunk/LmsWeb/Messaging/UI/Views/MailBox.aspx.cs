@@ -73,8 +73,8 @@ public partial class Messaging_UI_MailBox : TemplatePage<MailBox>
     {
         int msgContainerIndex;
         int subMenuIndex;
-        var _folder = string.IsNullOrEmpty(Engine.RequestContext.CurrentTemplate.Argument) ? 
-                      MailBox.C.Folders.Inbox : Engine.RequestContext.CurrentTemplate.Argument.Split('/')[0];
+        var _folder = string.IsNullOrEmpty(Engine.RequestContext.CurrentPath.Argument) ? 
+                      MailBox.C.Folders.Inbox : Engine.RequestContext.CurrentPath.Argument.Split('/')[0];
 
 		switch (_folder) {
 			case MailBox.C.Folders.Drafts:

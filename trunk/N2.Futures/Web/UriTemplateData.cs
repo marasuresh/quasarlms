@@ -2,7 +2,7 @@
 
 namespace N2.Web
 {
-	public class UriTemplateData: TemplateData
+	public class UriPathData: PathData
 	{
 		#region Fields
 		
@@ -18,7 +18,7 @@ namespace N2.Web
 
 		#region Constructors
 		
-		internal UriTemplateData(
+		internal UriPathData(
 				ContentItem item,
 				string templateUrl,
 			UriTemplateMatch match)
@@ -26,7 +26,7 @@ namespace N2.Web
 		{
 		}
 
-		internal UriTemplateData(
+		internal UriPathData(
 				ContentItem item,
 				string templateUrl,
 				string action,

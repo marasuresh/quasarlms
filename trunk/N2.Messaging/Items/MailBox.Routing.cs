@@ -38,7 +38,7 @@ namespace N2.Messaging
 
 		public int msgID { get; set; }
 
-		public override TemplateData FindTemplate(string remainingUrl)
+		public override PathData FindPath(string remainingUrl)
 		{
 			var _matches = Routes.Match(new Uri(BaseUri, remainingUrl));
 
@@ -76,7 +76,7 @@ namespace N2.Messaging
                         break;
 					}
 				
-				return new TemplateData(
+				return new PathData(
 					this,
 					string.Concat(
 						"~/Messaging/UI/Views/",
@@ -99,7 +99,7 @@ namespace N2.Messaging
 								: "/" + _filter));
 			}
 
-			return base.FindTemplate(remainingUrl);
+			return base.FindPath(remainingUrl);
 		}
 		
 		#endregion MVC implementation
