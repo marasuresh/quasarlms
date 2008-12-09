@@ -3,9 +3,9 @@
 <%@ Import Namespace="N2.Web" %>
 <%@ Import Namespace="N2.Messaging" %>
 <%@ Register TagPrefix="uc" TagName="SelectUsers" 
-    Src="~\Messaging\UI\Parts\SelectUsers.ascx" %>
+    Src="~/Messaging/UI/Parts/SelectUsers.ascx" %>
 <%@ Register TagPrefix="uc" TagName="MultiUpload" 
-    Src="~\Messaging\UI\Parts\MultiUpload.ascx" %>
+    Src="~/Messaging/UI/Parts/MultiUpload.ascx" %>
 
 <n2:Box ID="commentInput" runat="server" CssClass="box" meta:resourcekey="BoxResource1">
 	<table style="table-layout: fixed" cellspacing="0" cellpadding="1" width="100%">
@@ -51,15 +51,15 @@
 						runat="server"
 						AssociatedControlID="rblMessageType"
 						CssClass="label"
-						meta:resourcekey="rblMessageType"
-						Text="Тип" /></td>
+						meta:resourcekey="rblMessageTypeResource1"
+						Text="Type" /></td>
 			<td><asp:RadioButtonList
 						runat="server"
 						ID="rblMessageType"
 						RepeatDirection="Horizontal">
-					<asp:ListItem Value='Letter' Selected="True" Text="">Письмо</asp:ListItem>
-					<asp:ListItem Value='Announcement'>Объявление</asp:ListItem>
-					<asp:ListItem Value='Task'>Задача</asp:ListItem>
+					<asp:ListItem Value='Letter' Selected="True" Text="Letter" meta:resourcekey="liLetterResource1"></asp:ListItem>
+					<asp:ListItem Value='Announcement' Text="Announcement" meta:resourcekey="liAnnouncementrResource1"></asp:ListItem>
+					<asp:ListItem Value='Task' Text="Task" meta:resourcekey="liTaskResource1"></asp:ListItem>
 				</asp:RadioButtonList></td></tr>
 		<tr><td colspan="2"><br /></td></tr>
 		<tr><td align="center" colspan="2">

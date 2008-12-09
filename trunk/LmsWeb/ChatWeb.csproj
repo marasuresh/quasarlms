@@ -115,6 +115,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Chat\UI\Parts\App_LocalResources\ChatBox.ascx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Chat\UI\Parts\App_LocalResources\ChatBox.ascx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

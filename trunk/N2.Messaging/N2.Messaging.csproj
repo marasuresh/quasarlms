@@ -58,6 +58,11 @@
   <ItemGroup>
     <Compile Include="Collections\UserMsgFilter.cs" />
     <Compile Include="Collections\UserNewMsgFilter.cs" />
+    <Compile Include="MailBoxResource.ru.Designer.cs">
+      <DependentUpon>MailBoxResource.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Facility\MailFactory.cs" />
     <Compile Include="Facility\MessageExtensions.cs" />
     <Compile Include="Items\Containers\MessageStore.Business.cs" />
@@ -72,12 +77,27 @@
     <Compile Include="Items\Containers\MessageStore.cs" />
     <Compile Include="Items\NewMessageList.cs" />
     <Compile Include="Items\Containers\RecycleBin.cs" />
+    <Compile Include="MailBoxResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MailBoxResource.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\N2.Futures\N2.Futures.csproj">
       <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
       <Name>N2.Futures</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MailBoxResource.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MailBoxResource.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MailBoxResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MailBoxResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

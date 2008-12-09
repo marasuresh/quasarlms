@@ -117,85 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BoxResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="mnuDraftsTitle" xml:space="preserve">
+    <value>Черновики</value>
   </data>
-  <data name="btnCancelResource1.Text" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="mnuInboxTitle" xml:space="preserve">
+    <value>Входящие</value>
   </data>
-  <data name="btnCancelResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="mnuRecBinTitle" xml:space="preserve">
+    <value>Удаленные</value>
   </data>
-  <data name="btnSubmitResource1.Text" xml:space="preserve">
-    <value>Send</value>
-  </data>
-  <data name="btnSubmitResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnToDrResource1.Text" xml:space="preserve">
-    <value>To Drafts</value>
-  </data>
-  <data name="lblSubjectResource1.Text" xml:space="preserve">
-    <value>Sunject:</value>
-  </data>
-  <data name="lblSubjectResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lblToResource1.Text" xml:space="preserve">
-    <value>To:</value>
-  </data>
-  <data name="lblToResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lblUploadResource1.Text" xml:space="preserve">
-    <value>Files:</value>
-  </data>
-  <data name="liAnnouncementrResource1.Text" xml:space="preserve">
-    <value>Announcement</value>
-  </data>
-  <data name="liLetterResource1.Text" xml:space="preserve">
-    <value>Letter</value>
-  </data>
-  <data name="liTaskResource1.Text" xml:space="preserve">
-    <value>Task</value>
-  </data>
-  <data name="rblMessageTypeResource1.Text" xml:space="preserve">
-    <value>Type:</value>
-  </data>
-  <data name="rfvSubjectResource1.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvSubjectResource1.Text" xml:space="preserve">
-    <value>*</value>
-  </data>
-  <data name="rfvSubjectResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvToResource1.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvToResource1.Text" xml:space="preserve">
-    <value>*</value>
-  </data>
-  <data name="rfvToResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtSubjectResource1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtSubjectResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtTextResource1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtTextResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtToResource1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtToResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="mnuSendTitle" xml:space="preserve">
+    <value>Отправленные</value>
   </data>
 </root>

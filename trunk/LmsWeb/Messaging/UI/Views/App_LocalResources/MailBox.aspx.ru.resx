@@ -117,85 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BoxResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="btnEmptyRecBinResource1.Text" xml:space="preserve">
+    <value>Очистить</value>
   </data>
-  <data name="btnCancelResource1.Text" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="filesResource1.Text" xml:space="preserve">
+    <value>Файлы:</value>
   </data>
-  <data name="btnCancelResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="headerAuthorResource1.Text" xml:space="preserve">
+    <value>Автор</value>
   </data>
-  <data name="btnSubmitResource1.Text" xml:space="preserve">
-    <value>Send</value>
+  <data name="headerDateResource1.Text" xml:space="preserve">
+    <value>Дата</value>
   </data>
-  <data name="btnSubmitResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="headerRecipientResource1.Text" xml:space="preserve">
+    <value>Получатель</value>
   </data>
-  <data name="btnToDrResource1.Text" xml:space="preserve">
-    <value>To Drafts</value>
+  <data name="headerSubjectResource1.Text" xml:space="preserve">
+    <value>Тема</value>
   </data>
-  <data name="lblSubjectResource1.Text" xml:space="preserve">
-    <value>Sunject:</value>
+  <data name="headerTypeResource1.Text" xml:space="preserve">
+    <value>Тип</value>
   </data>
-  <data name="lblSubjectResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="mnuDeleteResource1.Text" xml:space="preserve">
+    <value>Удалить</value>
   </data>
-  <data name="lblToResource1.Text" xml:space="preserve">
-    <value>To:</value>
+  <data name="mnuForwardResource1.Text" xml:space="preserve">
+    <value>Переслать</value>
   </data>
-  <data name="lblToResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="mnuRecBinResource1.Text" xml:space="preserve">
+    <value>В Корзину</value>
   </data>
-  <data name="lblUploadResource1.Text" xml:space="preserve">
-    <value>Files:</value>
+  <data name="mnuReCreateResource1.Text" xml:space="preserve">
+    <value>Отослать</value>
   </data>
-  <data name="liAnnouncementrResource1.Text" xml:space="preserve">
-    <value>Announcement</value>
+  <data name="mnuReplyResource1.Text" xml:space="preserve">
+    <value>Ответить</value>
   </data>
-  <data name="liLetterResource1.Text" xml:space="preserve">
-    <value>Letter</value>
+  <data name="mnuRestoreResource1.Text" xml:space="preserve">
+    <value>Восстановить</value>
   </data>
-  <data name="liTaskResource1.Text" xml:space="preserve">
-    <value>Task</value>
+  <data name="newMsgResource1.Text" xml:space="preserve">
+    <value>Новое</value>
   </data>
-  <data name="rblMessageTypeResource1.Text" xml:space="preserve">
-    <value>Type:</value>
+  <data name="noMsgResource1.Text" xml:space="preserve">
+    <value>Сообщений нет</value>
   </data>
-  <data name="rfvSubjectResource1.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvSubjectResource1.Text" xml:space="preserve">
-    <value>*</value>
-  </data>
-  <data name="rfvSubjectResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvToResource1.ErrorMessage" xml:space="preserve">
-    <value />
-  </data>
-  <data name="rfvToResource1.Text" xml:space="preserve">
-    <value>*</value>
-  </data>
-  <data name="rfvToResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtSubjectResource1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtSubjectResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtTextResource1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtTextResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtToResource1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtToResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="textResource1.Text" xml:space="preserve">
+    <value>Текст:</value>
   </data>
 </root>

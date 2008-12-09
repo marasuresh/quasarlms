@@ -28,12 +28,12 @@
         </ItemTemplate>
         <FooterTemplate></div></FooterTemplate>
         <EmptyTemplate>
-            <div style="text-align:center">Новых сообщений нет</div>
+            <div style="text-align:center"><asp:Label ID="lblNoMsg" runat="server" Text="No New Messages" meta:resourcekey="lblNoMsgResource1"></asp:Label></div>
         </EmptyTemplate>
     </n2:Repeater>
     <br />
     </div
     <div>
-        <asp:HyperLink ID="hlMailBox" runat="server">Все сообщения</asp:HyperLink>    
+        <asp:HyperLink ID="hlMailBox" runat="server" Text="All messages" meta:resourcekey="hlMailBoxResource1"></asp:HyperLink>    
     </div>
 </n2:Box>
