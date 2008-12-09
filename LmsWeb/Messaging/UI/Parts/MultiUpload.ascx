@@ -34,7 +34,7 @@
                         <%# ((linkToFile)Container.DataItem).fileName %></div>
                 </td>
                 <td style="width: 15%">
-                    <asp:LinkButton ID="btnDeleteFile" runat="server" OnClick="btnDeleteFile_Click">[Удалить]</asp:LinkButton>
+                    <asp:LinkButton ID="btnDeleteFile" runat="server" OnClick="btnDeleteFile_Click" Text="[Delete]" meta:resourcekey="btnDeleteFileResource1"></asp:LinkButton>
                 </td>
             </tr>
         </ItemTemplate>
@@ -48,8 +48,8 @@
                 <asp:FileUpload ID="FileUpload1" runat="server" />
             </td>
             <td style="text-align: right">
-                <asp:Button ID="btnAddFile" runat="server" Text="Прикрепить" 
-                    onclick="btnAddFile_Click" />
+                <asp:Button ID="btnAddFile" runat="server" Text="Attach" 
+                    onclick="btnAddFile_Click" meta:resourcekey="btnAddFileResource1"/>
             </td>
         </tr>
     </table>

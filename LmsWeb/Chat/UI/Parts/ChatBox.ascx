@@ -6,7 +6,7 @@
 
 <n2:ChromeBox runat="server">
     <div style="text-align:center; font-weight:bold">
-        <asp:Label ID="Label1" runat="server" Text="Активный канал: " AssociatedControlID="lbDefChannel"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Active Channel: " AssociatedControlID="lbDefChannel" meta:resourcekey="lbActiveChannelResource1"></asp:Label>
         <asp:DropDownList ID="lbDefChannel" runat="server" AutoPostBack="True"></asp:DropDownList>    
     </div>
 	<uc:ChatGrande ID="MyChatGrande1" runat="server" />

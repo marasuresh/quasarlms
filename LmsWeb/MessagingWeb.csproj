@@ -127,7 +127,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Messaging\UI\Parts\App_LocalResources\MessageInput.ascx.resx" />
+    <Content Include="Messaging\UI\Parts\App_LocalResources\MessageInput.ascx.ru.resx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Messaging\UI\Images\attach.png" />
@@ -143,14 +143,43 @@
     <Content Include="Messaging\UI\Images\script_edit.png" />
     <Content Include="Messaging\UI\Images\wrench.png" />
     <Content Include="Messaging\UI\Js\jQuery.intellisense.js" />
-    <Content Include="Messaging\UI\Parts\App_LocalResources\Message.ascx.resx" />
     <Content Include="Messaging\UI\Parts\MultiUpload.ascx" />
     <Content Include="Messaging\UI\Parts\SelectUsers.ascx" />
     <Content Include="Messaging\UI\Views\NewMessage.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Messaging\UI\Parts\App_LocalResources\MessageInput.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Messaging\UI\Parts\App_LocalResources\MultiUpload.ascx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Messaging\UI\Parts\App_LocalResources\MultiUpload.ascx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Messaging\UI\Parts\App_LocalResources\NewMessageList.ascx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Messaging\UI\Parts\App_LocalResources\NewMessageList.ascx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Messaging\UI\Parts\App_LocalResources\SelectUsers.ascx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Messaging\UI\Parts\App_LocalResources\SelectUsers.ascx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Messaging\UI\Views\App_LocalResources\MailBox.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Messaging\UI\Views\App_LocalResources\MailBox.aspx.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Messaging\UI\Views\App_LocalResources\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -21,8 +21,8 @@
 </script>
 
 <asp:TextBox ID="windowOpen" runat="server" Width="100%"></asp:TextBox>
-<n2:PopUpWindow ID="PopUpWindow1" runat="server" Title="Выбор адресата..." AssociatedControlID="windowOpen"
-    AllignTo="AssociatedControl" Height="235px" Width="200px">
+<n2:PopUpWindow ID="PopUpWindow1" runat="server" Title="Select users..." AssociatedControlID="windowOpen"
+    AllignTo="AssociatedControl" Height="235px" Width="200px" meta:resourcekey="PopUpWindow1Resource1">
     <n2:UserTree ID="UserTree1" runat="server" AllowMultipleSelection="true" SelectionMode="Users"
         DisplayMode="Users" />
 </n2:PopUpWindow>

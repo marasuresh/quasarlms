@@ -96,7 +96,7 @@
                 </div>
                 <div>
                     <input type="text" size="15" id="message" class="sc_chat_message" onkeypress="return sc_KeyPress(this, event);" />
-                    <input type="button" value="Send" onclick="insertarMensaje()" class="botonSudoku" />
+                    <input type="button" value='<%= Resources.ChatGrand.btnSentText %>' onclick="insertarMensaje()" class="botonSudoku" meta:resourcekey="btnSendResource1"/>
                 </div>
             </div>
         </div>    

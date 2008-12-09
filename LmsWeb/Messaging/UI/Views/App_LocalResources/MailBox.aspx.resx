@@ -117,85 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BoxResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="btnEmptyRecBinResource1.Text" xml:space="preserve">
+    <value>Empty</value>
   </data>
-  <data name="btnCancelResource1.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="btnCancelResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnSubmitResource1.Text" xml:space="preserve">
-    <value>Send</value>
-  </data>
-  <data name="btnSubmitResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnToDrResource1.Text" xml:space="preserve">
-    <value>To Drafts</value>
-  </data>
-  <data name="lblSubjectResource1.Text" xml:space="preserve">
-    <value>Sunject:</value>
-  </data>
-  <data name="lblSubjectResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lblToResource1.Text" xml:space="preserve">
-    <value>To:</value>
-  </data>
-  <data name="lblToResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lblUploadResource1.Text" xml:space="preserve">
+  <data name="filesResource1.Text" xml:space="preserve">
     <value>Files:</value>
   </data>
-  <data name="liAnnouncementrResource1.Text" xml:space="preserve">
-    <value>Announcement</value>
+  <data name="headerAuthorResource1.Text" xml:space="preserve">
+    <value>Author</value>
   </data>
-  <data name="liLetterResource1.Text" xml:space="preserve">
-    <value>Letter</value>
+  <data name="headerDateResource1.Text" xml:space="preserve">
+    <value>Date</value>
   </data>
-  <data name="liTaskResource1.Text" xml:space="preserve">
-    <value>Task</value>
+  <data name="headerRecipientResource1.Text" xml:space="preserve">
+    <value>Recipient</value>
   </data>
-  <data name="rblMessageTypeResource1.Text" xml:space="preserve">
-    <value>Type:</value>
+  <data name="headerSubjectResource1.Text" xml:space="preserve">
+    <value>Subject</value>
   </data>
-  <data name="rfvSubjectResource1.ErrorMessage" xml:space="preserve">
-    <value />
+  <data name="headerTypeResource1.Text" xml:space="preserve">
+    <value>Type</value>
   </data>
-  <data name="rfvSubjectResource1.Text" xml:space="preserve">
-    <value>*</value>
+  <data name="mnuDeleteResource1.Text" xml:space="preserve">
+    <value>Delete</value>
   </data>
-  <data name="rfvSubjectResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="mnuForwardResource1.Text" xml:space="preserve">
+    <value>Forward</value>
   </data>
-  <data name="rfvToResource1.ErrorMessage" xml:space="preserve">
-    <value />
+  <data name="mnuRecBinResource1.Text" xml:space="preserve">
+    <value>To Recycle Bin</value>
   </data>
-  <data name="rfvToResource1.Text" xml:space="preserve">
-    <value>*</value>
+  <data name="mnuReCreateResource1.Text" xml:space="preserve">
+    <value>ReCreate</value>
   </data>
-  <data name="rfvToResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="mnuReplyResource1.Text" xml:space="preserve">
+    <value>Reply</value>
   </data>
-  <data name="txtSubjectResource1.Text" xml:space="preserve">
-    <value />
+  <data name="mnuRestoreResource1.Text" xml:space="preserve">
+    <value>Restore</value>
   </data>
-  <data name="txtSubjectResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="newMsgResource1.Text" xml:space="preserve">
+    <value>New</value>
   </data>
-  <data name="txtTextResource1.Text" xml:space="preserve">
-    <value />
+  <data name="noMsgResource1.Text" xml:space="preserve">
+    <value>No messages</value>
   </data>
-  <data name="txtTextResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtToResource1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtToResource1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="textResource1.Text" xml:space="preserve">
+    <value>Text:</value>
   </data>
 </root>

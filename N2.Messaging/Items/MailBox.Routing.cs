@@ -145,12 +145,12 @@ namespace N2.Messaging
 			if (this is FakeMailBox) {
 				return new ItemList();
 			}
-
+            
 			var _result = new ItemList(new[] {
-				new FakeMailBox { Title = "Входящие", Name = "folder/" + C.Folders.Inbox, Parent = this},
-				new FakeMailBox { Title = "Черновики", Name = "folder/" + C.Folders.Drafts, Parent = this},
-				new FakeMailBox { Title = "Удаленные", Name = "folder/" + C.Folders.RecyleBin, Parent = this},
-				new FakeMailBox { Title = "Отправленные", Name = "folder/" + C.Folders.Outbox, Parent = this},
+				new FakeMailBox { Title = MailBoxResource.mnuInboxTitle , Name = "folder/" + C.Folders.Inbox, Parent = this},
+				new FakeMailBox { Title = MailBoxResource.mnuDraftsTitle , Name = "folder/" + C.Folders.Drafts, Parent = this},
+				new FakeMailBox { Title = MailBoxResource.mnuRecBinTitle , Name = "folder/" + C.Folders.RecyleBin, Parent = this},
+				new FakeMailBox { Title = MailBoxResource.mnuSendTitle , Name = "folder/" + C.Folders.Outbox, Parent = this},
 			});
 
 			foreach (var _child in _result) {

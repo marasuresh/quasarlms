@@ -54,9 +54,9 @@
                 <br />
                 <%	var _url = Url.Parse(this.CurrentPage.Url);
                     var _filterLinks = new[] {
-		new { Filter = MailBox.C.Filter.Letters, Image = "email_open", Title = "Письма" },
-		new { Filter = MailBox.C.Filter.Announcements, Image = "bell", Title = "Объявления" },
-		new { Filter = MailBox.C.Filter.Tasks, Image = "wrench", Title = "Задания" },
+		new { Filter = MailBox.C.Filter.Letters, Image = "email_open", Title = Resources.MailBox.LettersFilterTitle },
+		new { Filter = MailBox.C.Filter.Announcements, Image = "bell", Title = Resources.MailBox.AnnouncementFilterTitle },
+		new { Filter = MailBox.C.Filter.Tasks, Image = "wrench", Title = Resources.MailBox.TaskFilterTitle },
 	};
                     foreach (var _link in _filterLinks)
                     { %>
@@ -71,7 +71,7 @@
                     }
                 %>
                 <ul class="buttons">
-                    <li><a href='<%= _url.AppendSegment(MailBox.ActionEnum.Create.ToString()) %>'>Новое
+                    <li><a href='<%= _url.AppendSegment(MailBox.ActionEnum.Create.ToString()) %>'><asp:Literal ID="Literal1" runat="server" Text="New" meta:resourcekey="newMsgResource1"/>
                         &hellip;</a></li>
                 </ul>
                 <br />
@@ -85,7 +85,7 @@
             <br />
             <ul class="buttons">
                 <li>
-                    <asp:LinkButton ID="btnEmptyRecBin" runat="server" Text="Очистить" OnClick="btnEmptyRecBin_Click" />
+                    <asp:LinkButton ID="btnEmptyRecBin" runat="server" Text="Empty" OnClick="btnEmptyRecBin_Click" meta:resourcekey="btnEmptyRecBinResource1"/>
                 </li>
             </ul>
             <br />
@@ -106,19 +106,19 @@
                     <col align="center" width="20%" />
                     <tr class="header">
                         <th>
-                            Тип
+                            <asp:Literal ID="Literal2" runat="server" Text="Type" meta:resourcekey="headerTypeResource1"/>
                         </th>
                         <th>
-                            Автор
+                            <asp:Literal ID="Literal3" runat="server" Text="Author" meta:resourcekey="headerAuthorResource1"/>
                         </th>
                         <th>
-                            Получатель
+                            <asp:Literal ID="Literal4" runat="server" Text="Recipient" meta:resourcekey="headerRecipientResource1"/>
                         </th>
                         <th>
-                            Тема
+                            <asp:Literal ID="Literal5" runat="server" Text="Subject" meta:resourcekey="headerSubjectResource1"/>
                         </th>
                         <th>
-                            Дата
+                            <asp:Literal ID="Literal6" runat="server" Text="Date" meta:resourcekey="headerDateResource1"/>
                         </th>
                     </tr>
                     <tr id="itemPlaceholder" runat="server" />
@@ -127,7 +127,7 @@
             <EmptyDataTemplate>
                 <tr>
                     <td colspan="5" align="center">
-                        Сообщений нет.
+                        <asp:Literal ID="Literal6" runat="server" Text="No messages" meta:resourcekey="noMsgResource1"/>
                     </td>
                 </tr>
             </EmptyDataTemplate>
@@ -184,7 +184,7 @@
                             <table class="detailview" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <th>
-                                        Текст:
+                                        <asp:Literal ID="Literal6" runat="server" Text="Text:" meta:resourcekey="textResource1"/>
                                     </th>
                                     <td style="width: 90%">
                                         <div style="width:auto; padding: 4px 4px 4px 4px; background-color: #F3F3F3; border: solid 1px Silver">
@@ -194,7 +194,7 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        Файлы:
+                                        <asp:Literal ID="Literal7" runat="server" Text="Files:" meta:resourcekey="filesResource1"/>
                                     </th>
                                     <td>
                                         <asp:Repeater ID="rAttach" runat="server" DataSource='<%# ((Message)Container.DataItem).Attachments %>'>
@@ -236,38 +236,38 @@
                                 <li><a href='<%# Url.Parse(this.CurrentPage.Url)
                                     .AppendSegment("folder/" + Folder)
 									.AppendSegment(MailBox.ActionEnum.Delete.ToString())
-									.AppendSegment(Eval("ID").ToString()) %>'>В корзину</a></li>
+									.AppendSegment(Eval("ID").ToString()) %>'><asp:Literal ID="Literal8" runat="server" Text="To RecycleBin" meta:resourcekey="mnuRecBinResource1"/></a></li>
                                 <% } %>
                                 <% if (this.Folder == MailBox.C.Folders.Drafts)
                                    { %>
                                 <li><a href='<%# Url.Parse(this.CurrentPage.Url)
 									.AppendSegment("folder/" + Folder)
 									.AppendSegment(MailBox.ActionEnum.Destroy.ToString())
-									.AppendSegment(Eval("ID").ToString()) %>'>Удалить</a></li>
+									.AppendSegment(Eval("ID").ToString()) %>'><asp:Literal ID="Literal9" runat="server" Text="Delete" meta:resourcekey="mnuDeleteResource1"/></a></li>
 							    
 							    <li><a href='<%# Url.Parse(this.CurrentPage.Url)
 									.AppendSegment(MailBox.ActionEnum.DrCreate.ToString())
-									.AppendSegment(Eval("ID").ToString()) %>'>Переслать</a></li>
+									.AppendSegment(Eval("ID").ToString()) %>'><asp:Literal ID="Literal13" runat="server" Text="ReCreate" meta:resourcekey="mnuReCreateResource1"/></a></li>
                                 <% } %>
                                 <% if (this.Folder == MailBox.C.Folders.RecyleBin)
                                    { %>
                                 <li><a href='<%# Url.Parse(this.CurrentPage.Url)
 									.AppendSegment("folder/" + Folder)
 									.AppendSegment(MailBox.ActionEnum.Restore.ToString())
-									.AppendSegment(Eval("ID").ToString()) %>'>Восстановить</a></li>
+									.AppendSegment(Eval("ID").ToString()) %>'><asp:Literal ID="Literal10" runat="server" Text="Restore" meta:resourcekey="mnuRestoreResource1"/></a></li>
                                 <% } %>
                                 <% if (this.Folder == MailBox.C.Folders.Inbox)
                                    { %>
                                 <li><a href='<%# Url.Parse(this.CurrentPage.Url)
 									.AppendSegment(MailBox.ActionEnum.Reply.ToString())
-									.AppendSegment(Eval("ID").ToString()) %>'>Ответить</a></li>
+									.AppendSegment(Eval("ID").ToString()) %>'><asp:Literal ID="Literal11" runat="server" Text="Reply" meta:resourcekey="mnuReplyResource1"/></a></li>
                                 <% } %>
                                 <% if (this.Folder == MailBox.C.Folders.Outbox ||
                                        this.Folder == MailBox.C.Folders.Inbox)
                                    { %>
                                 <li><a href='<%# Url.Parse(this.CurrentPage.Url)
 									.AppendSegment(MailBox.ActionEnum.Forward.ToString())
-									.AppendSegment(Eval("ID").ToString()) %>'>Переслать</a></li>
+									.AppendSegment(Eval("ID").ToString()) %>'><asp:Literal ID="Literal12" runat="server" Text="Forward" meta:resourcekey="mnuForwardResource1"/></a></li>
                                 <% } %>
                             </ul>
                         </div>

@@ -213,6 +213,26 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\ChatGrand.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChatGrand.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ChatGrand.ru.designer.cs">
+      <DependentUpon>ChatGrand.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\MailBox.ru.designer.cs">
+      <DependentUpon>MailBox.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\MailBox.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MailBox.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\MyAssignmentList_MyCourses.designer.cs">
       <DependentUpon>MyAssignmentList_MyCourses.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -240,6 +260,22 @@
     <Content Include="App_GlobalResources\MyAssignmentList_MyCourses.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>MyAssignmentList_MyCourses.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MailBox.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MailBox.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\MailBox.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>MailBox.ru.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ChatGrand.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ChatGrand.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\ChatGrand.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ChatGrand.ru.designer.cs</LastGenOutput>
     </Content>
     <EmbeddedResource Include="App_GlobalResources\MyAssignmentList.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -279,7 +315,7 @@
           <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>4135</DevelopmentServerPort>
-          <DevelopmentServerVPath>/Lms Web/</DevelopmentServerVPath>
+          <DevelopmentServerVPath>/LmsWeb/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
