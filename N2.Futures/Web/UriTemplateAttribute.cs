@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace N2.Web
 {
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-	public class UriTemplateAttribute: Attribute, ITemplateReference
+	public class UriTemplateAttribute: Attribute, IPathFinder
 	{
 		#region Fields
 
@@ -19,7 +19,7 @@ namespace N2.Web
 		#region Constructors
 
 		public UriTemplateAttribute(string uri, string templateUrl)
-			: this(uri, templateUrl, UriTemplateData.DefaultAction)
+			: this(uri, templateUrl, UriPathData.DefaultAction)
 		{
 		}
 
@@ -34,7 +34,7 @@ namespace N2.Web
 
 		#region ITemplateReference Members
 
-		public TemplateData GetTemplate(ContentItem item, string remainingUrl)
+		public PathData GetPath(ContentItem item, string remainingUrl)
 		{
 			var _nextSiblings = (
 				from _attr in item.GetType().GetCustomAttributes(typeof(UriTemplateAttribute), true).Cast<UriTemplateAttribute>()
@@ -50,7 +50,7 @@ namespace N2.Web
 					new Uri(BaseUrl, remainingUrl));
 
 				if (null != _match) {
-					return new UriTemplateData(item, _firstSibling.templateUrl, _match);
+					return new UriPathData(item, _firstSibling.templateUrl, _match);
 				}
 			} else {
 				var _uriTable = new UriTemplateTable(BaseUrl,
@@ -66,7 +66,7 @@ namespace N2.Web
 					var _firstMatch = _matches.First();
 					var _matchedAttribute = (UriTemplateAttribute)_firstMatch.Data;
 
-					return new UriTemplateData(
+					return new UriPathData(
 						item,
 						_matchedAttribute.templateUrl,
 						_matchedAttribute.action,

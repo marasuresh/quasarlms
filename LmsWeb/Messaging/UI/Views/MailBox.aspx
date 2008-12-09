@@ -25,7 +25,7 @@
             //    m_folder = string.IsNullOrEmpty(Engine.RequestContext.CurrentTemplate.Argument) ? 
             //                    MailBox.C.Folders.Inbox : Engine.RequestContext.CurrentTemplate.Argument.Split('/')[0];
             //}
-            string arg = Engine.RequestContext.CurrentTemplate.Argument;
+            string arg = Engine.RequestContext.CurrentPath.Argument;
             string arg_folder = "";
             
             if (string.IsNullOrEmpty(arg))

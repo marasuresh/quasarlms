@@ -14,14 +14,14 @@ namespace N2.Messaging
 		{
 		    string _folder;
 		    string _filter;
-            if (string.IsNullOrEmpty(Context.Current.RequestContext.CurrentTemplate.Argument))
+            if (string.IsNullOrEmpty(Context.Current.RequestContext.CurrentPath.Argument))
 			{
                 _folder = C.Folders.Inbox;
                 _filter = C.Filter.All;   
 			}
             else
             {
-                var _args = Context.Current.RequestContext.CurrentTemplate.Argument.Split('/');
+                var _args = Context.Current.RequestContext.CurrentPath.Argument.Split('/');
                 _folder = _args[0] ?? C.Folders.Inbox;
                 _filter = _args.Length > 1 ? _args[1] : C.Filter.All; 
             }
@@ -65,15 +65,15 @@ namespace N2.Messaging
 			}
 		    ActionEnum _action;
 
-            if (string.IsNullOrEmpty(Context.Current.RequestContext.CurrentTemplate.Action))
+            if (string.IsNullOrEmpty(Context.Current.RequestContext.CurrentPath.Action))
                 _action = ActionEnum.Create;
             else
                 _action = (ActionEnum)Enum.Parse(
 				            typeof(ActionEnum),
-				            Context.Current.RequestContext.CurrentTemplate.Action);
+							Context.Current.RequestContext.CurrentPath.Action);
 
 			int _id;
-			int.TryParse(Context.Current.RequestContext.CurrentTemplate.Argument, out _id);
+			int.TryParse(Context.Current.RequestContext.CurrentPath.Argument, out _id);
 
 			switch (_action) {
                 case ActionEnum.DrCreate:

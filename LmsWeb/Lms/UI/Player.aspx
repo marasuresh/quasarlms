@@ -15,7 +15,7 @@
 		
 		string _attemptId = this.Request["id"];
 		
-		var _uriTemplateData = Engine.RequestContext.CurrentTemplate as UriTemplateData;
+		var _uriTemplateData = Engine.RequestContext.CurrentPath as UriPathData;
 		
 		if (string.IsNullOrEmpty(_attemptId)
 				&& null != _uriTemplateData) {
