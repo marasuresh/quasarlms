@@ -74,12 +74,12 @@
 	padding:0px 10px;
 	color:#333;
 }    
-.grid .details .footer
+.grid .details div.footer
 {
 	text-align:right;
 	padding:10px 10px 0px 0px;
 } 
-.grid .details .header
+.grid .details div.header
 {
 	text-align:left;
 	padding:0px 10px;
