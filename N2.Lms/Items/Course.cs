@@ -11,8 +11,6 @@
 	[RestrictParents(typeof(CourseContainer))]
 	//[WithEditableTitle("Title", 20)]
 	[TabPanel("lms", "LMS", 200)]
-	[	//EnsureChild(Course.TopicContainerName, typeof(TopicContainer)),
-		EnsureChild(Course.TrainingContainerName, typeof(TrainingContainer))]
 	[WithEditableTitle]
 	public partial class Course : ContentItem
 	{

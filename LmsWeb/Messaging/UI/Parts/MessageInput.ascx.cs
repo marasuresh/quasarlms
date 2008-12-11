@@ -7,6 +7,7 @@ using N2.Resources;
 using N2.Templates.Web.UI;
 using N2.Web;
 using N2.Web.UI.WebControls;
+using System.Linq;
 
 namespace N2.Messaging.Messaging.UI.Parts
 {
@@ -15,28 +16,27 @@ namespace N2.Messaging.Messaging.UI.Parts
 
 		protected override void OnInit(EventArgs e)
 		{
-
-			this.hlCancel.PostBackUrl = this.CurrentPage.Url;
-			Message _editedItem = this.CurrentItem.GetEditedItem();
-
-			this.txtSubject.Text = _editedItem.Subject;
-			this.txtText.Text = _editedItem.Text;
-            this.selUser.SelectedUser = _editedItem.To;
-		    if (!IsPostBack && _editedItem.Attachments != null)
-		    {
-                this.multiUpload.attachedFiles = _editedItem.Attachments;
-		        multiUpload.DataBind();
-		    }
-                
-
-            base.OnInit(e);
-			
+			base.OnInit(e);
+			Register.JQuery(this.Page);
 		}
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
+		
+		protected override void OnLoad(EventArgs e)
+		{
+			if (!this.IsPostBack) {
+				this.hlCancel.PostBackUrl = this.CurrentPage.Url;
+				Message _editedItem = this.CurrentItem.GetEditedItem();
 
-            Register.JQuery(this.Page);
+				this.txtSubject.Text = _editedItem.Subject;
+				this.txtText.Text = _editedItem.Text;
+				this.selUser.SelectedUser = _editedItem.To;
+				
+				if (_editedItem.Attachments.Any()) {
+					this.multiUpload.Items = _editedItem.Attachments.ToArray();
+					multiUpload.DataBind();
+				}
+			}
+
+			base.OnLoad(e);
         }
         
         protected override void OnPreRender(EventArgs e)
@@ -55,15 +55,10 @@ namespace N2.Messaging.Messaging.UI.Parts
 		void UpdateEditedMessage()
 		{
             Message _editedItem = this.CurrentPage.GetEditedItem();
-            
-            var attacments = multiUpload.attachedFiles;
 
-			//Upload files.
-            if (multiUpload.HasFiles)
-            {
-                List<HttpPostedFile> lpf = multiUpload.postedFiles;
-                attacments.AddRange(new MailFactory().UploadFiles(lpf, Server.MapPath("./Upload/"), "~/Messaging/UI/Views/Upload/"));
-            }
+			_editedItem.Attachments.Clear();
+
+			Array.ForEach(this.multiUpload.Items, _editedItem.Attachments.Add);
 
 			_editedItem.ID = 0;
 			_editedItem.Text = this.txtText.Text;
@@ -72,7 +67,6 @@ namespace N2.Messaging.Messaging.UI.Parts
 			_editedItem.From = this.Context.User.Identity.Name;
             _editedItem.Owner = this.Context.User.Identity.Name;
             _editedItem.IsRead = true;
-			_editedItem.Attachments = attacments;
 			_editedItem.Expires = DateTime.Now.AddDays(60);
 			_editedItem.MessageType = (MessageTypeEnum)Enum.Parse(typeof(MessageTypeEnum), this.rblMessageType.SelectedValue);
 

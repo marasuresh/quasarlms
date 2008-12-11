@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace N2.Messaging
@@ -70,10 +70,12 @@ namespace N2.Messaging
             set { SetDetail("isRead", value); }
         }
 
-        public ArrayList Attachments
-        {
-            get { return GetDetail("Attachments") as ArrayList; }
-            set { SetDetail("Attachments", value); }
+        public IList<string> Attachments {
+            get {
+				return
+					this.GetDetailCollection("Attachments", true)
+						.AsList<string>();
+			}
         }
 
         public MessageTypeEnum MessageType

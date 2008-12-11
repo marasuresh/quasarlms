@@ -82,7 +82,10 @@ namespace N2.Messaging
                         this.m_editedItem = Context.Definitions.CreateInstance<Message>(this.MessageStore);
                         this.m_editedItem.Subject = _original.Subject;
                         this.m_editedItem.Text = _original.Text;
-                        this.m_editedItem.Attachments = _original.Attachments;
+						
+						_original.Attachments
+							.ToList()
+							.ForEach(this.m_editedItem.Attachments.Add);
                     }
                     break;
                 case ActionEnum.Forward: {

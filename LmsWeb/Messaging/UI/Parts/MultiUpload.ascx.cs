@@ -1,163 +1,69 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Collections.Generic;
 
 namespace N2.Messaging.Messaging.UI.Parts
 {
-    public partial class MultiUpload : System.Web.UI.UserControl
-    {
-        public enum typeOfAttachment
-        {
-            nowUpload,
-            alreadyAttached
-        }
+	using N2.Web.UI.WebControls;
+	
+	public partial class MultiUpload : UserControl
+	{
+        #region Event handlers
 
-        #region Properies
+		protected void btnAddFile_Click(object sender, EventArgs e)
+		{
+			this.Items = this.Items.Concat(new[] { string.Empty }).ToArray();
+		}
 
-        static private readonly ArrayList _fuControls = new ArrayList();
-        
-        public List<HttpPostedFile> postedFiles 
-        { 
-            get 
-            {
-                var list = new List<HttpPostedFile>();
-                foreach (FileUpload fu in _fuControls)
-                {
-                    list.Add(fu.PostedFile);
-                }
-                return list;
-            }
-        }
+		protected override void OnLoad(EventArgs e)
+		{
+			if (!this.IsPostBack) {
+				this.DataBind();
+			}
+			base.OnLoad(e);
+		}
 
-        static private ArrayList _attachedFiles = new ArrayList();
-        public ArrayList attachedFiles
-        {
-            set
-            {
-                _attachedFiles = value;
-            }
-            get
-            {
-                return _attachedFiles;
-            }
-        }
+		protected void rptFiles_ItemCommand(object sender, RepeaterCommandEventArgs e)
+		{
+			if (string.Equals("Delete", e.CommandName, StringComparison.OrdinalIgnoreCase)) {
+				var _itemToDelete = this.PhysicalItems.ToArray()[e.Item.ItemIndex];
+				this.Items = this.PhysicalItems.Except(new[] { _itemToDelete}).ToArray();
+			}
+		}
 
-        private List<linkToFile> attachmentDataSource
-        {
-            get
-            {
-                var ltf = new List<linkToFile>();
-                
-                for (int i = 0; i < attachedFiles.Count; i++)
-                {
-                    int index = ((string)attachedFiles[i]).IndexOf("$") + 1;
-                    var fileName =  ((string)attachedFiles[i]).Remove(0, index);
-                    
-                    var fLink = new linkToFile {indexInParentList = i,
-                                                fileName = fileName, 
-                                                type = typeOfAttachment.alreadyAttached};
-                    ltf.Add(fLink);
-                }
+		#endregion Event handlers
 
-                for (int i = 0; i < postedFiles.Count; i++ )
-                {
-                    var fLink = new linkToFile
-                    {
-                        indexInParentList = i,
-                        fileName = postedFiles[i].FileName,
-                        type = typeOfAttachment.nowUpload
-                    };
-                    ltf.Add(fLink);
-                }
+		#region Properties
 
-                return ltf;
-            }
-        }
+		protected IEnumerable<string> PhysicalItems {
+			get {
+				return this.rptFiles.Items
+						.OfType<RepeaterItem>()
+						.Where(_item =>
+							_item.ItemType == ListItemType.Item
+							|| _item.ItemType == ListItemType.AlternatingItem)
+						.Select(_item => _item.FindControl("fs"))
+						.Cast<FileSelector>()
+						.Select(_fs => _fs.Url);
+			}
+		}
 
-        public bool HasFiles
-        {
-            get
-            {
-                return postedFiles.Count > 0;
-            }
-        }
+		public string[] Items {
+			get {
+				return
+					this.PhysicalItems
+						.Where(_url => !string.IsNullOrEmpty(_url))
+						.Distinct()
+						.ToArray();
+			}
+			set {
+				this.rptFiles.DataSource = value;
+				this.rptFiles.DataBind();
+			}
+		}
 
-        #endregion
-
-        #region Methods
-
-        protected override void OnInit(EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                ClearAttachments();
-            }
-
-            RepeaterDataBind();
-            base.OnInit(e);
-        }
-
-        protected void btnAddFile_Click(object sender, EventArgs e)
-        {
-            if (Page.IsPostBack)
-            {
-                if (FileUpload1.HasFile)
-                {
-                    _fuControls.Add(FileUpload1);
-                    RepeaterDataBind();    
-                }
-            }
-        }
-
-        protected void btnDeleteFile_Click(object sender, EventArgs e)
-        {
-            int index = ((RepeaterItem) (((LinkButton) sender).Parent)).ItemIndex;
-            linkToFile ltf = attachmentDataSource[index];
-
-            switch (ltf.type)
-            {
-                case (typeOfAttachment.alreadyAttached):
-                    _attachedFiles.RemoveAt(ltf.indexInParentList);
-                    break;
-                case (typeOfAttachment.nowUpload):
-                    _fuControls.RemoveAt(ltf.indexInParentList);
-                    break;
-            }
-            RepeaterDataBind();
-        }
-
-        private void RepeaterDataBind()
-        {
-            UploadedFiles.DataSource = attachmentDataSource;
-            UploadedFiles.DataBind();
-        }
-
-        public override void DataBind()
-        {
-            RepeaterDataBind();
-            base.DataBind();
-        }
-
-        public void ClearAttachments()
-        {
-            _fuControls.Clear();
-            _attachedFiles.Clear();
-        }
-
-        #endregion
-
-        public class linkToFile
-        {
-            public int indexInParentList { set; get; }
-            
-            public string fileName { set; get; }
-
-            public typeOfAttachment type{ set; get;}
-
-        }
-    }
+		#endregion Properties
+	}
 }
