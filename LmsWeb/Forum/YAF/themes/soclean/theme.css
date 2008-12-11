@@ -204,8 +204,8 @@
 }
 
 /* links inside content table*/
-.yaf .content a		{ color: #C02020; text-decoration: underline; }
-.yaf .content a:hover	{ color: #C00000; text-decoration: none; }
+.yaf .content a		{ color: #0096DB; text-decoration: none; }
+.yaf .content a:hover	{ color: #0096DB; text-decoration: underline; }
 
 /* used for quoting messages */
 .yaf .quote 

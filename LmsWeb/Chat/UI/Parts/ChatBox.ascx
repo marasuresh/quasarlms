@@ -5,7 +5,7 @@
 <%@ Register Src="~/Chat/UI/Parts/ChatGrand.ascx" TagName="ChatGrande" TagPrefix="uc" %>
 
 <n2:ChromeBox runat="server">
-    <div style="text-align:center; font-weight:bold">
+    <div style="text-align:center; font-weight:bold; border-bottom: solid 2px #D8E4FE">
         <asp:Label ID="Label1" runat="server" Text="Active Channel: " AssociatedControlID="lbDefChannel" meta:resourcekey="lbActiveChannelResource1"></asp:Label>
         <asp:DropDownList ID="lbDefChannel" runat="server" AutoPostBack="True"></asp:DropDownList>    
     </div>
