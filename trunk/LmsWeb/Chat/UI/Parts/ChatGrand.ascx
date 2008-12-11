@@ -22,12 +22,6 @@
         text-align: left;
     }
     
-    .sc_chat_container input
-    {
-        margin: 0px;
-        border: 1px groove #bbbbbb;    
-    }
-    
     .sc_chat_box
     {
         height: 200px;
@@ -61,7 +55,7 @@
        
     .sc_chat_message
     {
-        width: 150px;
+        width: 83%;
         margin:0px;
     }    
     
@@ -69,7 +63,9 @@
     {
         font-family: verdana;
         font-size: 10px;
-        border: groove 1px black;
+        border: groove 1px gray;
+        font-family: Arial, Sans-Serif;
+        font-size: 12px;
     }
        
     .sc_chat_send
