@@ -37,9 +37,10 @@
 			Title = "Training Container",
 			ContainerName = "advanced")]
 		public TrainingContainer TrainingContainer {
-			get { return this.GetChildren(new TypeFilter(typeof(TrainingContainer)))
-				.Cast<TrainingContainer>()
-				.First(); }
+			get {
+				return
+					this.GetOrFindOrCreateChild<TrainingContainer>("Trainings", null);
+			}
 		}
 
 		public IEnumerable<Training> Trainings { get { return this.TrainingContainer.Trainings; } }

@@ -11,7 +11,7 @@ namespace N2.Messaging
 	[Definition("Почта", "MailBox")]
     [NotThrowable, NotVersionable]
     [RestrictParents(typeof(IStructuralPage))]
-	[ItemAuthorizedRoles("Everyone")]
+	//[ItemAuthorizedRoles("Everyone")]
     public partial class MailBox : AbstractContentPage
 	{
 		public MailBox()
