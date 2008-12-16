@@ -8,7 +8,7 @@ namespace N2.Templates.Items
 	/// Display an arbitrary aspx page through a dynamic template
 	/// </summary>
 	[Definition]
-	public class ProxyItem : AbstractContentPage, IStructuralPage
+	public class ProxyItem : ContentItem
 	{
 		public override string IconUrl { get { return "~/Lms/UI/Img/03/15.png"; } }
 

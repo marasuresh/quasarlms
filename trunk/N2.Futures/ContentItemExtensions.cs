@@ -53,6 +53,7 @@ namespace N2
 			Func<ChildItemType> _defaultValueCreator = () => {
 				ChildItemType _newChild = Context.Current.Definitions.CreateInstance<ChildItemType>(item);
 				_newChild.Name = childName;
+				_newChild.Title = childName;
 				_newChild.AddTo(item);
 
 				//prevent "object references an unsaved transient instance" error
