@@ -28,8 +28,18 @@ namespace N2.Workflow.Items
 			Title = "State Type", SortOrder = 23,
 			LocalizationClassKey = "Workflow.ActionDefinition")]
 		public Type StateType {
-			get { return this.GetDetail("StateType") as Type; }
-			set { this.SetDetail<Type>("StateType", value); }
+			get { return
+				string.IsNullOrEmpty(this.StateTypeName)
+					? typeof(ItemState)
+					: Type.GetType(this.StateTypeName, false)
+						?? typeof(ItemState);
+			}
+			set { this.StateTypeName = value.AssemblyQualifiedName; }
+		}
+
+		public string StateTypeName {
+			get { return this.GetDetail("StateTypeName") as string; }
+			set { this.SetDetail<string>("StateTypeName", value); }
 		}
 
 		#endregion Business properties
