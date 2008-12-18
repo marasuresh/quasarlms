@@ -8,8 +8,13 @@ namespace N2
 		public IEnumerable<ItemType> Items {
 			get { return this.GetChildren().OfType<ItemType>(); }
 		}
+	}
 
-		public IEnumerable<ItemType> ItemHierarchy {
+	public class ItemHierarchyContainer<ItemType>
+		: ItemContainer<ItemType>, IItemHierarchyContainer<ItemType>
+	{
+		public IEnumerable<ItemType> ItemHierarchy
+		{
 			get { return Find.EnumerateTree(this).OfType<ItemType>(); }
 		}
 	}
