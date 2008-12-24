@@ -122,6 +122,11 @@ namespace N2
 
 		public static bool IsPersistent(this ContentItem item)
 		{
+			//TODO ensure that this is a valid criteria..
+			if (0 == item.ID) {
+				return false;
+			}
+			
 			var _item = Context.Persister.Get(item.ID);
 			return null != _item;
 		}

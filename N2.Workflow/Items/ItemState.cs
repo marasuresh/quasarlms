@@ -36,7 +36,8 @@ namespace N2.Workflow.Items
 					null != _previous && null != _previous.ToState
 						? _previous.ToState
 //TODO remove when remaining old-fashioned items will extinct
-						: this.GetDetail<StateDefinition>("FromState", null);
+						: this.GetDetail<StateDefinition>("FromState", null)
+						?? this.Action.Parent as StateDefinition;
 			}
 		}
 

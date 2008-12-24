@@ -82,7 +82,11 @@ namespace N2.Workflow
 			
 			if (null != _currentState.ToState.GetChild(action.Name)) {
 				var _newCS = instanceProvider(action.StateType ?? typeof(ItemState));
-				_newCS.PreviousState = _currentState;
+				
+				if (_currentState.IsPersistent()) {
+					_newCS.PreviousState = _currentState;
+				}
+				
 				_newCS.Action = action;
 				_newCS.ToState = action.LeadsTo;
 				_newCS.Comment = comment;
