@@ -30,49 +30,94 @@ namespace N2
 
 		//ditto
 		public static ChildItemType GetOrFindOrCreateChild<ChildItemType>(
-				this ContentItem item,
+				this ContentItem parent,
 				string childName,
-				Func<ChildItemType, ChildItemType> defaultValueMutator)
+				Func<ChildItemType, ChildItemType> mutator)
 			where ChildItemType : ContentItem
 		{
 			/// Attempts to find a first child of a given ChildItemType and reset it's name to childName
 			/// adjust existing child name and persist it
 			Func<ChildItemType> _defaultValueResolver = () => {
-				var _existingItem = item.Children.OfType<ChildItemType>().FirstOrDefault();
+				var _existingItem = parent.Children.OfType<ChildItemType>().FirstOrDefault();
 				
 				if (null != _existingItem) {
 					_existingItem.Name = childName;
-					N2.Context.Persister.Save(_existingItem);
+					Context.Persister.Save(_existingItem);
 					return _existingItem;
 				} else {
 					return null;
 				}
 			};
+			
+			return
+				GetOrFindOrCreateChild<ChildItemType>(
+					parent,
+					childName,
+					_defaultValueResolver,
+					null,
+					mutator);
+		}
 
-			/// Construct new child of a given ChildItemType and inject it into hierarchy
-			Func<ChildItemType> _defaultValueCreator = () => {
-				ChildItemType _newChild = Context.Current.Definitions.CreateInstance<ChildItemType>(item);
-				_newChild.Name = childName;
-				_newChild.Title = childName;
-				_newChild.AddTo(item);
+		internal static ChildItemType GetOrFindOrCreateChild<ChildItemType>(
+				this ContentItem parent,
+				string childName,
+				Func<ChildItemType> resolver,
+				Func<ChildItemType> creator,
+				Func<ChildItemType, ChildItemType> mutator)
+			where ChildItemType : ContentItem
+		{
+			if (null == resolver) {
+				resolver = () => default(ChildItemType);
+			}
 
-				//prevent "object references an unsaved transient instance" error
-				if (item.IsPersistent()) {
-					Context.Persister.Save(_newChild);
-				}
-				
-				return _newChild;
-			};
+			if (null == creator) {
+				/// Construct new child of a given ChildItemType and inject it into hierarchy
+				creator = () => {
+					ChildItemType _newChild = Context.Definitions.CreateInstance<ChildItemType>(parent);
+					_newChild.Name = childName;
+					_newChild.Title = childName;
+					_newChild.AddTo(parent);
 
-			if (null == defaultValueMutator) {
-				defaultValueMutator = i => i;
+					//prevent "object references an unsaved transient instance" error
+					if (parent.IsPersistent()) {
+						Context.Persister.Save(_newChild);
+					}
+
+					return _newChild;
+				};
+			}
+
+			if (null == mutator) {
+				mutator = i => i;
 			}
 
 			return
-				item.GetChild(childName) as ChildItemType
-				?? defaultValueMutator(
-					_defaultValueResolver()
-					?? _defaultValueCreator());
+				parent.GetChild(childName) as ChildItemType
+					?? mutator(resolver() ?? creator());
+		}
+
+		public static ChildItemType GetOrCreateChild<ChildItemType>(
+				this ContentItem parent,
+				string childName)
+			where ChildItemType : ContentItem
+		{
+			return
+				GetOrCreateChild<ChildItemType>(parent, childName, null);
+		}
+
+		public static ChildItemType GetOrCreateChild<ChildItemType>(
+				this ContentItem parent,
+				string childName,
+				Func<ChildItemType, ChildItemType> mutator)
+			where ChildItemType : ContentItem
+		{
+			return
+				GetOrFindOrCreateChild<ChildItemType>(
+					parent,
+					childName,
+					null,
+					null,
+					mutator);
 		}
 
 		public static bool IsPersistent(this ContentItem item)
