@@ -15,7 +15,6 @@
 	[WithEditableUserControl(
 		"Curriculum",
 		"~/Curriculum/UI/Views/CurriculumList.ascx",
-		"",
 		"ParentItem",
 		100,
 		"")]
