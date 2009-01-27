@@ -416,9 +416,10 @@ namespace N2.ACalendar
 		public static int week_for_date(string _date)
 		{
 			DateTime in_date = Convert.ToDateTime(_date);
-			DateTime first_sept = new DateTime(DateTime.Now.Year, 9, 1);
+            int _year = DateTime.Now.Month < 8 ? DateTime.Now.Year - 1 : DateTime.Now.Year;
+            DateTime first_sept = new DateTime(_year, 9, 1);
 			int _d = 8 - Convert.ToInt32(first_sept.DayOfWeek);
-			DateTime first_dayofweek = new DateTime(DateTime.Now.Year, 9, 1 + _d);
+            DateTime first_dayofweek = first_sept.AddDays( _d);
 			if (first_dayofweek > in_date) return 1;
 			TimeSpan _weeks = in_date - first_dayofweek;
 			double _days = _weeks.Days / 7;
