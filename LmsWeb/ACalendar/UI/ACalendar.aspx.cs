@@ -86,7 +86,6 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
    var result  =  e ;
    
      DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(JsonAEvent));
-   //string json = @"{""Name"" : ""My Product""}";       
      MemoryStream ms = new MemoryStream(System.Text.Encoding.Unicode.GetBytes(result));
 
    var _event = ser.ReadObject(ms) as JsonAEvent;
@@ -181,16 +180,16 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
 
 
  
-    protected void btnExcel_Click(object sender, EventArgs e)
-    {
-        var  cals =  (this.CurrentItem.Parent).Children.ToArray() ;
-        string strURL = "~/Reporting/ReportFiles/"; 
-         string path = Server.MapPath("../../Reporting/ReportFiles/");
-       //strURL += ExcelExport.ExportToFile(cals, path);
-        //Response.Redirect( ExcelExport.ExportToFile(cals, path))
-        this.linkExcel.NavigateUrl = strURL;
-        this.linkExcel.Text = "Академические календари";
-    }
+    //protected void btnExcel_Click(object sender, EventArgs e)
+    //{
+    //    var  cals =  (this.CurrentItem.Parent).Children.ToArray() ;
+    //    string strURL = "~/Reporting/ReportFiles/"; 
+    //     string path = Server.MapPath("../../Reporting/ReportFiles/");
+    //   //strURL += ExcelExport.ExportToFile(cals, path);
+    //    //Response.Redirect( ExcelExport.ExportToFile(cals, path))
+    //    this.linkExcel.NavigateUrl = strURL;
+    //    this.linkExcel.Text = "Академические календари";
+    //}
 
 
 
@@ -247,31 +246,34 @@ public partial class ACalendar_UI_ACalendar :    N2.Templates.Web.UI.TemplatePag
     protected string ConvertDateString(string inputDate)
     {
         string[] s = inputDate.Split(new Char[] { '/' });
-        if (s[2]!="1") s[2] = (Convert.ToInt32(s[2]) ).ToString();
+        if (s.Length < 3) return inputDate;
+        s[2] = (Convert.ToInt32(s[2]) ).ToString();
         return s[2]+"."+ s[1]+ "."+ s[0];
     }
 
 
-    //protected void btnSave_Click(object sender, EventArgs e)
-    //{
-    //    string _current = ""; 
-    //        _current = "[" + _current + "]";
- 
-        
+    protected void btnSave_Click(object sender, EventArgs e)
+    {
 
-    //        int _c =  this.CurrentItem.AEvents.Count();
-    //        while (this.CurrentItem.AEvents.Count() > 0)
-    //        {
-    //            AEvent _ce = this.CurrentItem.AEvents.First();
-    //            this.Engine.Persister.Delete(_ce);
-    //        }
-    //    DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(JsonAEvent[]));
-    //    MemoryStream ms = new MemoryStream(System.Text.Encoding.Unicode.GetBytes(_current));
 
-    //    var events = ser.ReadObject(ms) as JsonAEvent[];
-    //    foreach (JsonAEvent _e in events) if (_e.act != null) save(_e);
+        string _current = data_in;
+        _current = "[" + _current + "]";
 
-    //}
+
+
+        int _c = this.CurrentItem.AEvents.Count();
+        while (this.CurrentItem.AEvents.Count() > 0)
+        {
+            AEvent _ce = this.CurrentItem.AEvents.First();
+            this.Engine.Persister.Delete(_ce);
+        }
+        DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(JsonAEvent[]));
+        MemoryStream ms = new MemoryStream(System.Text.Encoding.Unicode.GetBytes(_current));
+
+        var events = ser.ReadObject(ms) as JsonAEvent[];
+        foreach (JsonAEvent _e in events) if (_e.act != null) save(_e);
+
+    }
     public class JsonAEvent { public string act; public string dateStart; public string dateEnd;}
 
 
