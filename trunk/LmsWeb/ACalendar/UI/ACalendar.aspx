@@ -212,7 +212,9 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
       { %>
         
         <tr ><%--style="background-position: #E3E3E3; padding: 10px; background: #E3E3E3; visibility: hidden;"--%>
-				<td colspan=2 align=left id="calOneResult" valign=top style="padding:10px; background:#E3E3E3;">
+				<td align=left id="calOneResult" valign=top style="padding:10px; background:#E3E3E3;">
+ 
+    <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="Сохранить все" />
 
 <% if (this.AEvents.Length > 0)
    {
@@ -228,14 +230,66 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
    } %>
 
 				</td>
-<%--		        <td align=left id="Td2" valign=top >
-                    <asp:Button ID="btnExcel" runat="server" onclick="btnExcel_Click" Text="Excel" />
-				    <asp:HyperLink ID="linkExcel" runat="server"></asp:HyperLink>
-                     
-				</td>	--%>			
+				
+	<% } %>			
+		        <td align=left id="Td2" valign=top style="padding:10px; background:#E3E3E3;">
+    <table style="width: 100%;">
+        <tr>
+            <td style="background: #90FF90;">
+                п
+            </td>
+            <td>
+                &nbsp;&nbsp;полевой выход
+            </td>
+        </tr>
+        <tr>
+            <td style="background: #FFC0C0;">
+                э
+            </td>
+            <td>
+                &nbsp;&nbsp;экзаменационная сессия
+            </td>
+        </tr>
+        <tr>
+            <td style="background: #87CEFA;">
+                к
+            </td>
+            <td>
+                &nbsp;&nbsp;каникулы, отпуск
+            </td>
+        </tr>
+        <tr>
+            <td style="background: #B0B000;">
+                в
+            </td>
+            <td>
+                &nbsp;&nbsp;войсковая стажировка
+            </td>
+        </tr>
+        <tr>
+            <td style="background: #FFD080;">
+                а
+            </td>
+            <td>
+                &nbsp;&nbsp;аттестационная комиссия
+            </td>
+        </tr>
+        <tr>
+            <td style="background: #FFFFFF;">
+            </td>
+            <td>
+                &nbsp;&nbsp;учеба
+            </td>
+        </tr>
+    </table>
+    
+                
+<%--				    <asp:HyperLink ID="linkExcel" runat="server"></asp:HyperLink>
+   --%>                  
+				</td>				
 			
 			</tr>
-						<% } %>
+						
 
 	</table>
 
