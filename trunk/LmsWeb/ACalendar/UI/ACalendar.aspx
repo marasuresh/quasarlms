@@ -214,8 +214,8 @@ AutoEventWireup="true" CodeBehind="ACalendar.aspx.cs" Inherits="ACalendar_UI_ACa
         <tr ><%--style="background-position: #E3E3E3; padding: 10px; background: #E3E3E3; visibility: hidden;"--%>
 				<td align=left id="calOneResult" valign=top style="padding:10px; background:#E3E3E3;">
  
-    <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="Сохранить все" />
-
+<%--    <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="Сохранить все" />
+--%>
 <% if (this.AEvents.Length > 0)
    {
        int i = 1;
