@@ -11,13 +11,6 @@ namespace N2.Lms.Items
 	[DataObject]
 	partial class CourseContainer
 	{
-		public IEnumerable<Course> Courses {
-			get {
-				return
-					this.GetChildren(new TypeFilter(typeof(Course))).Cast<Course>();
-			}
-		}
-
 		IEnumerable<string> AdminRoles {
 			get {
 				var _sm = Context.SecurityManager as N2.Security.SecurityManager;
@@ -74,10 +67,10 @@ namespace N2.Lms.Items
 
 			return
 				from _combinedId in _curriculumCourses
-					.Concat(this.Courses.Select(_course => _course.ID))
+					.Concat(this.Items.Select(_course => _course.ID))
 					.Distinct()
 
-				join _course in this.Courses
+				join _course in this.Items
 					on _combinedId equals _course.ID
 					into _existingCourses
 

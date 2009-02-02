@@ -2,10 +2,13 @@
 
 namespace N2.Lms.Web.UI
 {
-	using N2.Lms.Items;
-	using N2.Templates.Items;
-	using N2.Templates.Web.UI;
-	using N2.Lms.Items.TrainingWorkflow;
+	using Items;
+	using Templates.Items;
+	using Templates.Web.UI;
+	using Items.TrainingWorkflow;
+	using Items.Lms.RequestStates;
+	using Workflow;
+	using Workflow.Items;
 	
 	public class MyAssignmentListControl: TemplateUserControl<AbstractContentPage, MyAssignmentList>
 	{
@@ -29,6 +32,12 @@ namespace N2.Lms.Web.UI
 
 		#region Rendering helpers
 
+		protected string GetPlayerUrl(Request request)
+		{
+			var _attempt = this.WorkflowProvider.GetCurrentState(request) as ApprovedState;
+			return this.GetPlayerUrl(_attempt.Ticket);
+		}
+
 		public string GetPlayerUrl(TrainingTicket attempt)
 		{
 			return
@@ -41,5 +50,21 @@ namespace N2.Lms.Web.UI
 		}
 		
 		#endregion
+
+		protected IItemState GetRequestState(Request request)
+		{
+			return
+				this.WorkflowProvider.GetCurrentState(request);
+		}
+
+		IWorkflowProvider m_wfp;
+		//Simplified access for a WorkflowProvider instance
+		protected IWorkflowProvider WorkflowProvider {
+			get {
+				return
+					this.m_wfp
+					?? (this.m_wfp = N2.Context.Current.Resolve<IWorkflowProvider>());
+			}
+		}
 	}
 }

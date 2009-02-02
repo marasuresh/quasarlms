@@ -28,7 +28,7 @@
 			}
 		}
 
-		public IEnumerable<Topic> Topics { get { return this.TopicContainer.Topics; } }
+		public IEnumerable<Topic> Topics { get { return this.TopicContainer.Items; } }
 
 		/// <summary>
 		/// Storage node for trainings
@@ -43,7 +43,7 @@
 			}
 		}
 
-		public IEnumerable<Training> Trainings { get { return this.TrainingContainer.Trainings; } }
+		public IEnumerable<Training> Trainings { get { return this.TrainingContainer.Items; } }
 
 		Test m_test;
 		public Test Test {

@@ -1,13 +1,10 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 
 namespace N2.Lms.Items.Lms.RequestStates
 {
-	using System.Linq;
-	using N2.Details;
-	using N2.Integrity;
-	using N2.Collections;
-	using N2.Workflow.Items;
-	using N2.Lms.Items.TrainingWorkflow;
+	using Collections;
+	using TrainingWorkflow;
 
 	partial class ApprovedState
 	{
@@ -29,10 +26,10 @@ namespace N2.Lms.Items.Lms.RequestStates
 					_ticket = this.GetChildren(new TypeFilter(typeof(TrainingTicket))).Cast<TrainingTicket>().FirstOrDefault();
 
 					if (null == _ticket) {
-						_ticket = N2.Context.Definitions.CreateInstance<TrainingTicket>(this);
+						_ticket = Context.Definitions.CreateInstance<TrainingTicket>(this);
 						_ticket.Name = "ticket";
 						_ticket.Title = this.Training.Title;
-						N2.Context.Persister.Save(_ticket);
+						Context.Persister.Save(_ticket);
 					}
 				} else {
 					Trace.TraceError("Training is not asigned to state {0}", this.ID);

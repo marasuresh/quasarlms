@@ -18,7 +18,9 @@
 		#region System properties
 		
 		public override string IconUrl { get {
-			return null == this.Course ? "~/Lms/UI/Img/error.png" : this.GetIconFromState();
+			return null == this.Course
+				? "~/Lms/UI/Img/error.png"
+				: this.GetIconFromState() ?? base.IconUrl;
 		} }
 		
 		public override bool IsPage { get { return false; } }
@@ -56,7 +58,8 @@
 			set { this.SetDetail<string>("User", value); }
 		}
 
-		[EditableLink("Course", 17, Required = true)]
+		//[EditableLink("Course", 17, Required = true)]
+		[EditableCourseDropDown(Title = "Course", SortOrder = 17, Required = true)]
 		public Course Course {
 			get { return this.GetDetail("Course") as Course; }
 			set { this.SetDetail<Course>("Course", value); }

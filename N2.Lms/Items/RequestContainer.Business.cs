@@ -55,7 +55,7 @@ namespace N2.Lms.Items
             {
                 return
                     from _request in this.MyRequests
-                    let _currentState = _request.GetCurrentState() as ApprovedState
+                    let _currentState = this.WorkflowProvider.GetCurrentState(_request) as ApprovedState
                     where null != _currentState
                     select _request;
             }
@@ -65,7 +65,7 @@ namespace N2.Lms.Items
 			get {
 				return
 					from _req in this.MyRequests
-					let _currentState = _req.GetCurrentState() as ApprovedState
+					let _currentState = this.WorkflowProvider.GetCurrentState(_req) as ApprovedState
 					where null != _currentState
 					select _currentState;
 			}
@@ -75,7 +75,7 @@ namespace N2.Lms.Items
 			get {
 				return
 					from _req in this.MyRequests
-					where _req.GetCurrentState().IsInitialState()
+					where this.WorkflowProvider.GetCurrentState(_req).IsInitialState()
 					select _req;
 			}
 		}
@@ -99,9 +99,9 @@ namespace N2.Lms.Items
 			get {
 				return (
 					from _req in this.MyRequests
-					let _currentState = _req.GetCurrentState()
+					let _currentState = this.WorkflowProvider.GetCurrentState(_req)
 					where
-						"new,active,pending validation".Contains(_currentState.ToState.Title.ToLower())
+						"new,active,pending validation".Contains(_currentState.Definition.Title.ToLower())
 						&& null != _req.Course
 					select _req.Course
 				).Distinct();
@@ -115,8 +115,8 @@ namespace N2.Lms.Items
 			get {
 				return
 					from _request in this.MyRequests
-					let _currentState = _request.GetCurrentState()
-					where string.Equals(_currentState.ToState.Title, "Pending Validation", StringComparison.InvariantCultureIgnoreCase)
+					let _currentState = this.WorkflowProvider.GetCurrentState(_request)
+					where string.Equals(_currentState.Definition.Title, "Pending Validation", StringComparison.InvariantCultureIgnoreCase)
 					select _request;
 			}
 		}
@@ -130,10 +130,16 @@ namespace N2.Lms.Items
             {
                 return
                     from _request in this.MyRequests
-                    let _currentState = _request.GetCurrentState()
+                    let _currentState = this.WorkflowProvider.GetCurrentState(_request)
                     where _currentState is AcceptedState && ((AcceptedState)_currentState).Grade != 1
                     select _request;
             }
         }
+
+		IWorkflowProvider m_wfp;
+		IWorkflowProvider WorkflowProvider {
+			get { return this.m_wfp
+				?? (this.m_wfp = Context.Current.Resolve<IWorkflowProvider>()); }
+		}
 	}
 }

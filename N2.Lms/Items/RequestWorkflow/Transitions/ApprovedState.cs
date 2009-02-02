@@ -1,14 +1,12 @@
 ﻿namespace N2.Lms.Items.Lms.RequestStates
 {
-	using System.Linq;
-	using N2.Details;
-	using N2.Integrity;
-	using N2.Workflow.Items;
-	using N2.Lms.Items.TrainingWorkflow;
+	using Details;
+	using Integrity;
 	using N2.Web;
+	using Workflow.Items;
 
 	[RestrictParents(typeof(Request))]
-	public partial class ApprovedState: ItemState, IWorkflowItemContainer, ILink
+	public partial class ApprovedState: ItemState, ILink
 	{
 		[EditableLink("Assign Training", 1, Required = true)]
 		public Training Training {

@@ -3,8 +3,8 @@ using System.Linq;
 
 namespace N2.Lms.Items
 {
-	using N2.Details;
-	using N2.Integrity;
+	using Details;
+	using Integrity;
 	using N2.Web.UI;
 
 	[RestrictParents(typeof(TrainingContainer))]

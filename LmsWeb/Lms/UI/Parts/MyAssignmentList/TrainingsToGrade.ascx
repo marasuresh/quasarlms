@@ -1,6 +1,7 @@
 ﻿<%@ Import Namespace="System.ComponentModel" %>
 <%@ Import Namespace="N2.Lms.Items.Lms.RequestStates" %>
 <%@ Import Namespace="N2.Workflow" %>
+<%@ Import Namespace="N2.Workflow.Items" %>
 <%@ Import Namespace="N2.Lms.Items.TrainingWorkflow" %>
 <%@ Control Language="C#" Inherits="N2.Lms.Web.UI.MyAssignmentListControl" %>
 <%@ Register Assembly="N2.Futures" Namespace="N2.Web.UI.WebControls" TagPrefix="n2" %>
@@ -39,6 +40,12 @@
         e.NewValues.Add("grade", ((TextBox)_lv.EditItem.FindControl("tbGrade")).Text);
         e.NewValues.Add("trainingID", ((DropDownList)_lv.EditItem.FindControl("ddlTrainings")).SelectedValue);
     }
+
+	protected IEnumerable<ApprovedState> ListApprovedRequests(Request request)
+	{
+		return this.WorkflowProvider.GetHistory(request)
+			.OfType<ApprovedState>();
+	}
 </script>
 
 <asp:ObjectDataSource
@@ -105,7 +112,7 @@
 					<div class="details">
 						<asp:Localize runat="server" meta:resourcekey="History" />
 						<n2:ChromeBox runat="server">
-					<asp:Repeater runat="server" DataSource='<%# ((Request)Container.DataItem).GetWorkflowHistory().OfType<ApprovedState>() %>'>
+					<asp:Repeater runat="server" DataSource='<%# this.ListApprovedRequests((Request)Container.DataItem) %>'>
 						<HeaderTemplate><table></HeaderTemplate>
 						
 						<FooterTemplate></table></FooterTemplate>
@@ -123,7 +130,7 @@
 							<tr><th><asp:Localize
 											runat="server"
 											meta:resourcekey="Comment" /></th>
-								<td><%# ((Request)Container.DataItem).GetCurrentState().Comment %></td></tr>
+								<td><%# this.GetRequestState((Request)Container.DataItem).Comment %></td></tr>
 							<tr><th><asp:Label
 											runat="server"
 											meta:resourcekey="Grade"

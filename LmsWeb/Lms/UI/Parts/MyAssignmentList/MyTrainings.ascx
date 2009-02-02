@@ -57,7 +57,7 @@
 						AlternateText="детали..."
 						CommandName="Edit" /></td>
 			<td>
-			<%# this.GetPlayerUrl(((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Ticket) %>
+			<%# this.GetPlayerUrl((Request)Container.DataItem) %>
 			</td>
 		</tr>
 	</ItemTemplate>
@@ -72,7 +72,7 @@
 						CssClass="LibC_o"
 						CommandName="Cancel" /></td>
 			<td>
-			<%# this.GetPlayerUrl(((ApprovedState)((Request)Container.DataItem).GetCurrentState()).Ticket) %>
+			<%# this.GetPlayerUrl((Request)Container.DataItem) %>
 			</td>
 		</tr>
 		<tr><td class="edit" colspan="2">
