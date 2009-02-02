@@ -1,14 +1,14 @@
-﻿using System.Web.UI.WebControls;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Web.UI.WebControls;
 
 namespace N2.Lms.Items
 {
 	using System.Linq;
-	using N2.Definitions;
-	using N2.Details;
-	using N2.Installation;
-	using N2.Integrity;
-	using N2.Templates.Items;
+	using Definitions;
+	using Details;
+	using Installation;
+	using Integrity;
+	using Templates.Items;
 
 	[Definition("Topic", "Topic", Installer = InstallerHint.NeverRootOrStartPage)]
 	[RestrictParents(typeof(TopicContainer), typeof(Topic))]

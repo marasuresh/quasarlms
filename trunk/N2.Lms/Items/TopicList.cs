@@ -1,18 +1,18 @@
 ﻿namespace N2.Lms.Items
 {
-	using N2.Definitions;
-	using N2.Details;
-	using N2.Edit.Trash;
-	using N2.Installation;
-	using N2.Integrity;
-	using N2.Persistence;
+	using Definitions;
+	using Details;
+	using Edit.Trash;
+	using Installation;
+	using Integrity;
+	using Persistence;
 
 	[Definition("Topic List", "Topics", "", "", 2000, Installer = InstallerHint.NeverRootOrStartPage)]
 	[NotThrowable, NotVersionable]
 	[RestrictParents(typeof(Course))]
 	[WithEditableTitle]
 	[Disable]
-	public partial class TopicContainer: ContentItem
+	public partial class TopicContainer: ItemContainer<Topic>
 	{
 		public TopicContainer()
 		{

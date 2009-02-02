@@ -10,6 +10,7 @@ using XL = Microsoft.Office.Interop.Excel;
 namespace N2.ACalendar
 {
 	using Microsoft.Office.Interop.Excel;
+	using Workflow.Items;
 	
 	public static class ExcelExport
 	{
@@ -220,7 +221,7 @@ namespace N2.ACalendar
             {
                 if (String.Equals(  studName, _r.User.ToString(),StringComparison.InvariantCultureIgnoreCase))
                 {
-                N2.Workflow.Items.ItemState _s = _r.GetCurrentState();
+                IItemState _s = Context.Current.Resolve<IWorkflowProvider>().GetCurrentState(_r);
                 data[(_row - 13), 0] = (_row - 12).ToString(); ;
                 data[(_row - 13), 1] = (_r.Course != null ? _r.Course.Title : string.Empty);
                 data[(_row - 13), 2] = _r.RequestDate.ToShortDateString();

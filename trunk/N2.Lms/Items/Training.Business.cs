@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace N2.Lms.Items
 {
-	using N2.Details;
-	using N2.Workflow.Items;
+	using Details;
+	using Workflow.Items;
 	
 	partial class Training
 	{

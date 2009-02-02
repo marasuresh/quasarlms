@@ -80,6 +80,10 @@
     <Content Include="Web.connectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\N2.Futures\N2.Futures.csproj">
+      <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
+      <Name>N2.Futures</Name>
+    </ProjectReference>
     <ProjectReference Include="..\N2.Lms\N2.Lms.csproj">
       <Project>{BEC90853-2BB6-45E7-BCDB-E26CFF8139A6}</Project>
       <Name>N2.Lms</Name>

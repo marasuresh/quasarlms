@@ -3,8 +3,8 @@ using System.Linq;
 
 namespace N2.Lms.Items
 {
-	using N2.Lms.Items.Lms.RequestStates;
-	using N2.Workflow.Items;
+	using Lms.RequestStates;
+	using Workflow.Items;
 
 	partial class RequestContainer
 	{

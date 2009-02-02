@@ -18,7 +18,7 @@
 		"ParentItem",
 		100,
 		"")]
-	public partial class CourseContainer: ContentItem
+	public partial class CourseContainer: ItemContainer<Course>
 	{
 		public CourseContainer()
 		{

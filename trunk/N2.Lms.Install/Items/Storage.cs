@@ -1,10 +1,9 @@
 ﻿namespace N2.Lms.Items
 {
-	using N2.Edit.Trash;
-	using N2.Installation;
-	using N2.Persistence;
-	using N2.Templates.Items;
-	using N2.Details;
+	using Details;
+	using Edit.Trash;
+	using Installation;
+	using Persistence;
 
 	[Definition(
 		"Global LMS Storage Container",

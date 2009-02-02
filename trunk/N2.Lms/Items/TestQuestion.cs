@@ -1,10 +1,11 @@
-﻿namespace N2.Lms.Items
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.UI.WebControls;
+
+namespace N2.Lms.Items
 {
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Web.UI.WebControls;
-	using N2.Details;
-	using N2.Integrity;
+	using Details;
+	using Integrity;
 
 	[Definition]
 	[RestrictParents(typeof(Test))]

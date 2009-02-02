@@ -25,8 +25,12 @@ namespace N2.Lms.Items
 				int ID)
 		{
 			Request _request = N2.Context.Persister.Get<Request>(ID);
-
-			_request.PerformGenericAction("Cancel", UserName, "Canceled");
+			
+			this.WorkflowProvider.PerformAction(_request,
+				new ActionArguments("Cancel") {
+					User = UserName,
+					Comment = "Canceled"
+				});
 		}
 
 		#endregion MyPendingRequest
@@ -91,11 +95,11 @@ namespace N2.Lms.Items
 
 			string user = HttpContext.Current.User.Identity.Name;
 
-			_request.PerformAction(
-					"Finish",
-					user,
-					comments,
-					null);
+			this.WorkflowProvider.PerformAction(_request,
+				new ActionArguments("Finish") {
+					User = user,
+					Comment = comments,
+				});
 		}
 
 		#endregion My Trainings
@@ -123,20 +127,24 @@ namespace N2.Lms.Items
 
 			switch (command) {
 				case "Accept":
-					_request.PerformAction(
-						"Accept",
-						user,
-						comments,
-						new Dictionary<string, object>{{
-							"Grade", grade
-						}});
+					this.WorkflowProvider.PerformAction(_request,
+						new ActionArguments("Accept") {
+							User = user,
+							Comment = comments,
+							Properties = new Dictionary<string, object>{{
+								"Grade", grade
+							}}
+						});
 					break;
 				case "Decline":
-					_request.PerformAction(
-						"Decline",
-						user,
-						comments,
-						new Dictionary<string, object> { { "Training", _training } });
+					this.WorkflowProvider.PerformAction(_request,
+						new ActionArguments("Decline") {
+							User = user,
+							Comment = comments,
+							Properties = new Dictionary<string, object> { {
+								"Training", _training
+							} }
+						});
 					break;
 			}
 		}
@@ -165,18 +173,21 @@ namespace N2.Lms.Items
 
 			switch (command) {
 				case "Accept":
-					_request.PerformAction(
-					"Approve",
-					user,
-					comments,
-					new Dictionary<string, object> { { "Training", _training } });
+					this.WorkflowProvider.PerformAction(_request,
+						new ActionArguments("Approve") {
+							User = user,
+							Comment = comments,
+							Properties = new Dictionary<string, object> { {
+								"Training", _training
+							} }
+						});
 					break;
 				case "Reject":
-					_request.PerformAction(
-					"Cancel",
-					user,
-					comments,
-					null);
+					this.WorkflowProvider.PerformAction(_request,
+						new ActionArguments("Cancel") {
+							User = user,
+							Comment = comments,
+						});
 					break;
 			}
 			//_request.PerformGenericAction("Cancel", UserName, "Canceled");
@@ -193,5 +204,10 @@ namespace N2.Lms.Items
 		}
 
 		#endregion My Graded Trainings
+
+		IWorkflowProvider m_wfp;
+		IWorkflowProvider WorkflowProvider {
+			get { return this.m_wfp ?? (this.m_wfp = Context.Current.Resolve<IWorkflowProvider>()); }
+		}
 	}
 }
