@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Web;
-using N2.Resources;
-using N2.Templates.Web.UI;
-using N2.Web;
-using N2.Web.UI.WebControls;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace N2.Messaging.Messaging.UI.Parts
 {
+	using Lms;
+	using Resources;
+	using Templates.Web.UI;
+	using Web;
+	using Web.UI.WebControls;
+		
     public partial class MessageInput : TemplateUserControl<MailBox, MailBox>
     {
-
 		protected override void OnInit(EventArgs e)
 		{
 			base.OnInit(e);
@@ -79,20 +77,10 @@ namespace N2.Messaging.Messaging.UI.Parts
             if (Page.IsValid)
             {
 				this.UpdateEditedMessage();
-
+				
 				Message _editedItem = this.CurrentItem.GetEditedItem();
 
-                //Создание копий получалелей.
-                Array.ForEach(
-                    MailFactory.GetRecipients(_editedItem.To),
-                    recipient =>
-                    {
-                        var _copy = (N2.Messaging.Message)_editedItem.Clone(false);
-                        _copy.To = recipient;
-                        _copy.Owner = recipient;
-                        _copy.IsRead = false;
-                        _copy.Save();
-                    });
+				Send(_editedItem);
 
                 Response.Redirect(Url.Parse(CurrentPage.Url)
 					.AppendSegment("folder")
@@ -101,6 +89,27 @@ namespace N2.Messaging.Messaging.UI.Parts
                     
             }
         }
+
+		static void Send(Message message)
+		{
+			ILmsProvider _provider = N2.Context.Current.Resolve<ILmsProvider>();
+			
+			//Создание копий получалелей.
+			Array.ForEach(
+				MailFactory.GetRecipients(message.To),
+				recipient => {
+					var _copy = (N2.Messaging.Message)message.Clone(false);
+					
+					if (null == _copy.Parent) {
+						_copy.Parent = message.Parent ?? _provider.Storage.Messages;
+					}
+					
+					_copy.To = recipient;
+					_copy.Owner = recipient;
+					_copy.IsRead = false;
+					_copy.Save();
+				});
+		}
 
         protected void btnToDr_Click(object sender, EventArgs e)
         {

@@ -6,7 +6,8 @@ using System.Web;
 
 namespace N2.Lms.Items
 {
-	using N2.Workflow;
+	using Workflow;
+	using Workflow.Items;
 	
 	[DataObject]
 	partial class MyAssignmentList
@@ -25,11 +26,13 @@ namespace N2.Lms.Items
 				int ID)
 		{
 			Request _request = N2.Context.Persister.Get<Request>(ID);
-			
+
 			this.WorkflowProvider.PerformAction(_request,
 				new ActionArguments("Cancel") {
-					User = UserName,
-					Comment = "Canceled"
+					State = new TransientState {
+						SavedBy = UserName,
+						Comment = "Canceled",
+					}
 				});
 		}
 
@@ -97,8 +100,10 @@ namespace N2.Lms.Items
 
 			this.WorkflowProvider.PerformAction(_request,
 				new ActionArguments("Finish") {
-					User = user,
-					Comment = comments,
+					State = new TransientState {
+						SavedBy = user,
+						Comment = comments,
+					}
 				});
 		}
 
@@ -129,8 +134,10 @@ namespace N2.Lms.Items
 				case "Accept":
 					this.WorkflowProvider.PerformAction(_request,
 						new ActionArguments("Accept") {
-							User = user,
-							Comment = comments,
+							State = new TransientState {
+								SavedBy = user,
+								Comment = comments,
+							},
 							Properties = new Dictionary<string, object>{{
 								"Grade", grade
 							}}
@@ -139,8 +146,10 @@ namespace N2.Lms.Items
 				case "Decline":
 					this.WorkflowProvider.PerformAction(_request,
 						new ActionArguments("Decline") {
-							User = user,
-							Comment = comments,
+							State = new TransientState {
+								SavedBy = user,
+								Comment = comments,
+							},
 							Properties = new Dictionary<string, object> { {
 								"Training", _training
 							} }
@@ -175,8 +184,10 @@ namespace N2.Lms.Items
 				case "Accept":
 					this.WorkflowProvider.PerformAction(_request,
 						new ActionArguments("Approve") {
-							User = user,
-							Comment = comments,
+							State = new TransientState {
+								SavedBy = user,
+								Comment = comments,
+							},
 							Properties = new Dictionary<string, object> { {
 								"Training", _training
 							} }
@@ -185,8 +196,10 @@ namespace N2.Lms.Items
 				case "Reject":
 					this.WorkflowProvider.PerformAction(_request,
 						new ActionArguments("Cancel") {
-							User = user,
-							Comment = comments,
+							State = new TransientState {
+								SavedBy = user,
+								Comment = comments,
+							}
 						});
 					break;
 			}

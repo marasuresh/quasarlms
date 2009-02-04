@@ -12,7 +12,6 @@ namespace N2.Lms.Items
 		{
 			public string Name { get; set; }
 			public string Destination { get; set; }
-			public Type Type { get; set; }
 		}
 
 		Workflow InitializeDefaultWorkflow(Workflow workflow)
@@ -23,39 +22,38 @@ namespace N2.Lms.Items
 				new {
 					Name = "New",
 					Icon = "04",
+					Type = typeof(ItemState),
 					Actions = new[] {
 						new ActionDeclaration {
 							Name = "Approve",
-							Destination = "Active",
-							Type = typeof(ApprovedState) },
+							Destination = "Active" },
 						new ActionDeclaration {
 							Name = "Cancel",
-							Destination = "Closed",
-							Type = typeof(ItemState) }}},
+							Destination = "Closed" }}},
 				new {
 					Name = "Active",
 					Icon = "02",
+					Type = typeof(ApprovedState),
 					Actions = new[] {
 						new ActionDeclaration {
 							Name = "Finish",
-							Destination = "Pending Validation",
-							Type = typeof(ItemState) }}},
+							Destination = "Pending Validation" }}},
 				new {
 					Name = "Closed",
 					Icon = "10",
+					Type = typeof(AcceptedState),
 					Actions = Enumerable.Empty<ActionDeclaration>().ToArray() },
 				new {
 					Name = "Pending Validation",
 					Icon = "06",
+					Type = typeof(ItemState),
 					Actions = new[] {
 						new ActionDeclaration {
 							Name = "Accept",
-							Destination = "Closed",
-							Type = typeof(AcceptedState) },
+							Destination = "Closed" },
 						new ActionDeclaration {
 							Name = "Decline",
-							Destination = "Active",
-							Type = typeof(ApprovedState) },
+							Destination = "Active" },
 				}},
 			};
 
@@ -64,6 +62,7 @@ namespace N2.Lms.Items
 				_state.Name = _state.Title = s.Name;
 				_state.Icon = string.Concat("~/Lms/UI/Img/Workflow/", s.Icon, ".png");
 				_state.SortOrder = ++_sortOrder;
+				_state.StateType = s.Type;
 				_state.AddTo(workflow);
 				return new { State = _state, Definition = s };
 			}).ToArray();
@@ -73,7 +72,6 @@ namespace N2.Lms.Items
 					var _action = Context.Definitions.CreateInstance<ActionDefinition>(state.State);
 					_action.Name = _action.Title = actionDef.Name;
 					_action.LeadsTo = _states.Single(_s => _s.Definition.Name == actionDef.Destination).State;
-					_action.StateType = actionDef.Type;
 					_action.AddTo(state.State);
 				});
 			});
