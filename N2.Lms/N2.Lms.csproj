@@ -144,6 +144,10 @@
       <Project>{C76C97D0-BE58-46C4-9B27-F3E6AB5EAE8E}</Project>
       <Name>N2.Futures</Name>
     </ProjectReference>
+    <ProjectReference Include="..\N2.Messaging\N2.Messaging.csproj">
+      <Project>{38548097-B909-4682-A9F3-A33719A38CC6}</Project>
+      <Name>N2.Messaging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\N2.Workflow\N2.Workflow.csproj">
       <Project>{2653FB6B-9E76-45B3-94D4-BBDC56B6D68F}</Project>
       <Name>N2.Workflow</Name>
