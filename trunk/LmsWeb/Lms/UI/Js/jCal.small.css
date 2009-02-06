@@ -7,14 +7,15 @@
 	vertical-align:top;
 }
 /* default dimensions and justification for each month not including title */
-.jCalMo {
-	width:133px;		/* each day width + border-left + border-right */
-	float:left;
-	overflow:visible;
-	height:100%;
-	padding-right:2px;
-	padding-left:2px;
-	white-space:nowrap;
+.jCalMo
+{
+    width: 133px; /* each day width + border-left + border-right */
+    float: left;
+    overflow: visible;
+    height: 150px;
+    padding-right: 2px;
+    padding-left: 2px;
+    white-space: nowrap;
 }
 /* top month display block - i.e. January */
 .jCal .month, .jCal .monthSelect, .jCal .monthName, .jCal .monthYear {
@@ -124,9 +125,9 @@
 }
 /* left month navigation button - no need to change */
 .jCal .left {
-	background:url(_left.gif) center center no-repeat;
-	width:16px;
-	height:16px;
+	/*background:url(_left.gif) center center no-repeat;*/
+	width:1px;
+	height:1px;
 	vertical-align:middle;
 	cursor:pointer;
 	float:left;
@@ -134,8 +135,8 @@
 /* right month navigation button - no need to change */
 .jCal .right {
 	background:url(_right.gif) center center no-repeat;
-	width:16px;
-	height:16px;
+	width:1px;
+	height:1px;
 	vertical-align:middle;
 	cursor:pointer;
 	float:right;
