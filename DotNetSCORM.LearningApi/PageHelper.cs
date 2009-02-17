@@ -12,13 +12,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Data;
+using System.IO;
 using System.Security.Principal;
-using System.Web;
 using System.Web.Configuration;
 using Microsoft.LearningComponents;
 using Microsoft.LearningComponents.Storage;
+//using DotNetSCORM.PortalAPI;
 using Schema = DotNetSCORM.LearningAPI.Schema;
 
 // <summary>
@@ -84,9 +86,18 @@ public class PageHelper : System.Web.UI.Page
 	/// "S-1-5-21-2127521184-...") as the user key.
 	/// </summary>
 	///
-	public virtual string UserKey {
-		get {
-			return this.m_userKey ?? (this.m_userKey =  HttpContext.Current.Profile.UserName);
+	public virtual string UserKey
+	{
+		get
+		{
+		    if (m_userKey == null)
+		    {
+				using (WindowsIdentity userIdentity = WindowsIdentity.GetCurrent()) {
+					m_userKey = userIdentity.User.ToString();
+				}
+		    }
+
+			return m_userKey;
 		}
 	}
 
@@ -95,9 +106,18 @@ public class PageHelper : System.Web.UI.Page
     /// Gets the name of the current user.
     /// </summary>
     ///
-    public virtual string UserName {
-        get {
-			return this.UserKey;
+    public virtual string UserName
+    {
+        get
+        {
+            if (m_userName == null)
+            {
+				using (WindowsIdentity userIdentity = WindowsIdentity.GetCurrent()) {
+					m_userName = userIdentity.Name;
+				}
+            }
+
+            return m_userName;
         }
     }
 
@@ -251,7 +271,7 @@ public class PageHelper : System.Web.UI.Page
 #else
 			// the following code uses the "name" portion of the user's
             // "domain\name" network account name as the name of the user
-            userName = this.UserName;
+            userName = UserName;
             int backslash = userName.IndexOf('\\');
             if (backslash >= 0)
                 userName = userName.Substring(backslash + 1);

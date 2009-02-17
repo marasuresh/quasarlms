@@ -2,10 +2,9 @@
 
 namespace N2.Lms.Items
 {
-	using N2;
-	using N2.Persistence;
+	using Persistence;
 	using n2 = N2.Templates.Items;
-	using N2.Details;
+	using Details;
 	using N2.Web.UI.WebControls;
 
 	[Definition(

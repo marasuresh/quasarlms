@@ -17,7 +17,7 @@
 function OnLoad()
 {
     // Get frameset manager
-    frameMgr = API_GetFramesetManager();
+    var frameMgr = API_GetFramesetManager();
     
     // Set data on frameset manager
     <%  WriteFrameMgrInit();  %>

@@ -9,25 +9,25 @@
 // Functions that do not start with FM_ are *not* member functions on FramesetManager and probably do not have a 'this' value.
 
 // Constants: Frame names
-CONTENT_FRAME = "frameContent";
-HIDDEN_FRAME = "frameHidden";
-NAVCLOSED_FRAME = "frameNavClosed";
-NAVOPEN_FRAME = "frameNavOpen";
-TITLE_FRAME = "frameTitle";
-TOC_FRAME = "frameToc";
-MAIN_FRAME = "frameLearnTask";
-PARENTUI_FRAMESET = "framesetParentUI"
+var CONTENT_FRAME = "frameContent";
+var HIDDEN_FRAME = "frameHidden";
+var NAVCLOSED_FRAME = "frameNavClosed";
+var NAVOPEN_FRAME = "frameNavOpen";
+var TITLE_FRAME = "frameTitle";
+var TOC_FRAME = "frameToc";
+var MAIN_FRAME = "frameLearnTask";
+var PARENTUI_FRAMESET = "framesetParentUI"
 
 // Commands
-CMD_NEXT = "N";
-CMD_PREVIOUS = "P";
-CMD_SAVE = "S"; // aka. Commit
-CMD_TERMINATE = "T";
-CMD_CHOICE = "C";
-CMD_TOC_CHOICE = "TC";  // The TOC is choosing an activity
-CMD_IS_CHOICE_VALID = "V";  // Is selecting an activity valid?
-CMD_IS_NAV_VALID = "NV";     // Is non-choice nav command valid?
-CMD_DO_SUBMIT = "DS";   // Do the submission of the attempt
+var CMD_NEXT = "N";
+var CMD_PREVIOUS = "P";
+var CMD_SAVE = "S"; // aka. Commit
+var CMD_TERMINATE = "T";
+var CMD_CHOICE = "C";
+var CMD_TOC_CHOICE = "TC";  // The TOC is choosing an activity
+var CMD_IS_CHOICE_VALID = "V";  // Is selecting an activity valid?
+var CMD_IS_NAV_VALID = "NV";     // Is non-choice nav command valid?
+var CMD_DO_SUBMIT = "DS";   // Do the submission of the attempt
 
 var L_ServerErrorTitle_TXT = "Unable to Process Request";
 var L_FormSubmitFailed_TXT = "The page could not be saved because one or more answers is invalid. If you are attaching a file, verify that the file path is correct."
@@ -95,7 +95,7 @@ function FramesetManager()
     this.IsClosing = FM_IsClosing;  // returns true if the frameset is closing.
         
     // Frames that have registered as being loaded
-    this.m_framesRegistered = new Array();
+    this.m_framesRegistered = [];
     //this.m_framesRegistered[CONTENT_FRAME] = false;   -- don't have to register this frame
     this.m_framesRegistered[HIDDEN_FRAME] = false;
     this.m_framesRegistered[TOC_FRAME] = false;
@@ -624,13 +624,13 @@ function FM_SetContentFrameUrl( url )
 // Do a GET request into the content frame.
 function LoadContentFrame ( url )
 {
-    g_frameMgr.DebugLog("SetContentFrameUrl: Begin. Url = " + url);
+	g_frameMgr.DebugLog("LoadContentFrame: Begin. Url = " + url);
     if ((url == null) || (url == undefined) || (url == ""))
         return;
        
     var fr = GetContentFrame();
     document.all ? fr.contentWindow.navigate(url) : (fr.contentWindow.location.href = url);
-    g_frameMgr.DebugLog("SetContentFrameUrl: End. Navigation complete. ");
+    g_frameMgr.DebugLog("LoadContentFrame: End. Navigation complete. ");
 }
 
 // Sets (does not commit) data model values
@@ -959,7 +959,7 @@ function CM_GetCommandData()
     for (i in this.m_commandData)
     {
         // Not all commands have associated data
-        cmdData = this.m_commandData[i];
+        var cmdData = this.m_commandData[i];
         if (cmdData != null)
             dataToSend += EncodeCommandData ( cmdData );
             

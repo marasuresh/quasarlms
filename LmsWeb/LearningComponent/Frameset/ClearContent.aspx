@@ -12,15 +12,15 @@
 	<LINK rel="stylesheet" type="text/css" href="./Theme/Styles.css"/>
 	<script src="./Include/FramesetMgr.js"></script>
 	
-	<script language="JavaScript">
+	<script language="JavaScript" type="text/javascript">
 	
 	function onLoad()
 	{ 
-	    frameMgr = API_GetFramesetManager();
+	    var frameMgr = API_GetFramesetManager();
 	    frameMgr.SetPostFrame(HIDDEN_FRAME);
         frameMgr.SetPostableForm(window.top.frames[MAIN_FRAME].document.getElementById(HIDDEN_FRAME).contentWindow.document.forms[0]);
         
-        contentIsCleared = frameMgr.ContentIsCleared();
+        var contentIsCleared = frameMgr.ContentIsCleared();
         
 	    if (contentIsCleared == true)
 	    {

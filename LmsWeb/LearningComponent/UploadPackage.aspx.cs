@@ -22,7 +22,6 @@ using System.Web.UI.WebControls;
 using Microsoft.LearningComponents;
 using Microsoft.LearningComponents.Storage;
 using Schema = DotNetSCORM.LearningAPI.Schema;
-using DotNetSCORM.LearningAPI;
 
 
 public partial class UploadPackage : BasicWebPlayerBase

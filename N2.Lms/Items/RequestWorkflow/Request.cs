@@ -2,17 +2,15 @@
 {
 	using System;
 	using System.Web.UI.WebControls;
-	using N2.Details;
-	using N2.Integrity;
-	using N2.Workflow;
+	using Details;
+	using Integrity;
+	using Workflow;
 
 	[Definition("Request", "CourseRequest")]
 	[RestrictParents(typeof(RequestContainer))]
 	[AllowedChildren(Types = new Type[0])]
 	[N2.Persistence.NotVersionable]
-	[WithWorkflowAction(Name="Workflow", SortOrder = 150)]
 	[WithEditableDateRange("Desired time span", 13, "RequestDate", "StartDate")]
-	[WithWorkflowAuditTrail(Name = "Audit Trail")]
 	public class Request : ContentItem
 	{
 		#region System properties

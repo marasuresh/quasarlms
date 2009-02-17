@@ -10,13 +10,16 @@
      NO WARRANTY OF TITLE OR NONINFRINGEMENT FOR THE SOURCE CODE. -->
 <head runat="server">
 <LINK rel="stylesheet" type="text/css" href="Theme/Styles.css" />
-<SCRIPT src="./Include/FramesetMgr.js" defer="defer"></SCRIPT>
-<SCRIPT src="./Include/Toc.js" defer="defer"></SCRIPT>
-<SCRIPT src="./Include/vernum.js" defer="defer"></SCRIPT>
+<SCRIPT src="./Include/FramesetMgr.js"></SCRIPT>
+<SCRIPT src="./Include/Toc.js"></SCRIPT>
+<SCRIPT src="./Include/vernum.js"></SCRIPT>
 
 <script language="JavaScript" defer="defer">
-	g_frameMgr = API_GetFramesetManager();
-    function body_onload() {
+
+	function body_onload() {
+		g_currentActivityId = null;
+		g_previousActivityId = null;
+		g_frameMgr = API_GetFramesetManager();
         // Tell frameMgr to call back when current activity changes
         g_frameMgr.ShowActivityId = SetCurrentElement;
         g_frameMgr.ResetActivityId = ResetToPreviousSelection;
@@ -33,10 +36,10 @@
 </head>
 <body class=NavBody onload="body_onload();">
 <DIV id=divMain style="visibility:hidden;MARGIN: 5px">
-	<DIV noWrap >
+	<div nowrap="nowrap" >
 		<!-- <p class="NavClosedPreviousBtnGrphic">&nbsp;</p> -->
 		<% WriteToc(); %>		
-    </DIV>
+    </div>
 </DIV>
 <script type="text/javascript" defer="true">
         

@@ -5,6 +5,7 @@ using System.Data;
 using System.Text;
 using Microsoft.LearningComponents;
 using Microsoft.LearningComponents.Storage;
+using DotNetSCORM.DataTools;
 using Schema = DotNetSCORM.LearningAPI.Schema;
 using DotNetSCORM.LearningAPI.LearningComponentsHelper;
 

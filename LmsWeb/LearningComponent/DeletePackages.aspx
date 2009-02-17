@@ -14,48 +14,20 @@
 
     <title>Delete Packages</title>
 
-    <script type="text/javascript">
-    
-        // allow this dialog box to post to itself
-        window.name = "ThisDialog";
-
-        // if this is a simulated dialog box (using window.open instead of
-		// showModalDialog), initialize dialogArguments from the parent window
-        if (typeof(dialogArguments) == "undefined")
-            dialogArguments = opener.dialogArguments;
-
-        function PleaseWait()
-        {
-            // clears content from the window and displays a "Please wait" message
-            document.body.innerHTML = "<table class='FullPageMessage'><tr><td>Please wait...</td></tr></table>";
-        }
-
+    <script type="text/javascript" defer="defer">
+    	DeletePackages_Main();
     </script>
     
-    <link rel="stylesheet" href="Styles.css" type="text/css" />
-
-    <style type="text/css">
-    HTML
-    {
-        overflow: hidden;
-    }
-    BODY
-    {
-        height: 100%;
-        margin: 0;
-    }
-    .MessagePanel .Content_
-    {
-        height: 35%;
-        padding: 8pt;
-        overflow-x: hidden; /* works best in IE */
-    }
-    .ActionButton
-    {
-        width: 60pt;
-        margin: 6pt;
-    }
-    </style>
+<script runat="server">
+	protected override void OnInit(EventArgs e)
+	{
+		base.OnInit(e);
+		Register.JQuery(this.Page);
+		Register.StyleSheet(this.Page, "UI/Css/Styles.css");
+		Register.StyleSheet(this.Page, "UI/Css/CreateAttempt.css");
+		Register.JavaScript(this.Page, "UI/Js/Script.js");
+	}
+</script>
 
 </head>
 
@@ -98,40 +70,19 @@
     
         // initialize the PackagesToDelete hidden field with the
 		// comma-separated list of packages to delete from the parent page
-        document.forms['pageForm'].PackagesToDelete.value = dialogArguments.PackagesToDelete;
+        $('form#pageForm #PackagesToDelete').val(dialogArguments.PackagesToDelete.get());
 
     </script>
 
     <asp:Literal ID="UpdateParentPageScript" Visible="false" runat="server">
     <script type="text/javascript" defer="defer">
-
-        // after a package are deleted, this script is executed to update the
-		// parent page: the hidden form element PackagesSuccessfullyDeleted
-		// contains a comma-delimited list of numerical IDs of packages that
-		// were deleted -- we need to call the parent page to update the
-		// TrainingGrid on that page
-        var strPackageIdList = document.forms['pageForm'].PackagesSuccessfullyDeleted.value;
-        if (strPackageIdList.length > 0)
-        {
-            var astrPackageId = strPackageIdList.split(",");
-		    for (var istrPackageId = 0; istrPackageId < astrPackageId.length; istrPackageId++)
-		    {
-		        var strPackageId = astrPackageId[istrPackageId];
-			    dialogArguments.DeleteRowsFromTrainingGrid("Package" + strPackageId);
-		    }
-    	    dialogArguments.AfterDeletingRows();
-        }
- 
+    	DeletePackages_UpdateParentPageScript();
     </script>
     </asp:Literal>
         
     <asp:Literal ID="CloseDialogScript" Visible="false" runat="server">
     <script type="text/javascript" defer="defer">
-        
-        // if the operation performed by this dialog was successful, this
-        // script is executed to close the dialog
-        window.close();
-        
+    	DeletePackages_CloseDialogScript();
     </script>
     </asp:Literal>
 
