@@ -29,8 +29,10 @@ namespace N2.Templates.Chat.UI.Parts
             //Создаем каналы согласно списка активных тренингов.
             foreach (N2.Lms.Items.Request req in CurrentItem.ApprovedRequests.ToList())
             {
-                string newChannelID = ((ApprovedState)req.GetCurrentState()).Training.ID.ToString();
-                string newChannelName = ((ApprovedState) req.GetCurrentState()).Training.Title;
+				var _wfProvider = Engine.Resolve<IWorkflowProvider>();
+				var _training = (_wfProvider.GetCurrentState(req) as ApprovedState).Training;
+				string newChannelID = _training.ID.ToString();
+                string newChannelName = _training.Title;
                 var errm = ChatServer.channel_Add(newChannelID, "1");
                 
                 var tc = new TrainingChannel() { channelID = newChannelID, channelName = newChannelName };

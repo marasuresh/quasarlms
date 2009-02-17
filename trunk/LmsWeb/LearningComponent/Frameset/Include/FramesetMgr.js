@@ -218,17 +218,17 @@ function FM_RegisterFrameLoad(frameName)
 function OnReadyStateChange_ContentFrame()
 {
     // Note that this is IE-specific behavior and would require retesting to verify support other browsers
-    
+    var _frame = GetContentFrame();
     g_frameMgr.DebugLog("OnReadyStateChange: Begin");        
-    g_frameMgr.DebugLog("\tGetContentFrame().readyState = " + GetContentFrame().readyState);
-    if (GetContentFrame().readyState == "complete")
+    g_frameMgr.DebugLog("\tGetContentFrame().readyState = " + _frame.readyState);
+    if (_frame.readyState == 4/*"complete"*/ || !document.all)
         g_frameMgr.ReadyStateReceived();
 }
 
 // Register for the ready state change event on the window.
-function FM_RegisterReadyStateChange_ContentFrame()
-{
-    GetContentFrame().onreadystatechange = OnReadyStateChange_ContentFrame;
+function FM_RegisterReadyStateChange_ContentFrame() {
+	var _frame = GetContentFrame();
+	_frame[document.all ? "onreadystatechange" : "onload"] = OnReadyStateChange_ContentFrame;
 }
 
 // Wait for the specified number of times the content frame is loaded before allowing another navigation request

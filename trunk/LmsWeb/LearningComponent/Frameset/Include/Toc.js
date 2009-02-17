@@ -61,6 +61,8 @@ function SetCurrentElement( strActivityIdNew ) {
 		if (element == undefined) {
 			// there's no 'a', so look for a div (indicating the leaf is invisible)
 			element = document.getElementById("div" + strActivityId);
+			//ERROR!
+			return element;
 		}
 		else {
 			// return the activity if it's visible
@@ -91,12 +93,15 @@ function SetCurrentElement( strActivityIdNew ) {
     // If the new activity id is -1, it's just initializing.
     if (strActivityIdNew == -1)
         return false;
-    
-    var elNewActivity = FindVisibleActivity( strActivityIdNew );
+
+       var elNewActivity = FindVisibleActivity(strActivityIdNew);
+       if (elNewActivity == null) {
+       	return false;
+       }
     elNewActivity.style.fontWeight = "bold";
     elNewActivity.setActive ? elNewActivity.setActive() : elNewActivity.focus();
-    
-    var elOldActivity = FindVisibleActivity( g_currentActivityId );
+
+    var elOldActivity = FindVisibleActivity(g_currentActivityId == undefined ? null : g_currentActivityId);
     if ((elOldActivity != null)
         && (elOldActivity.id != elNewActivity.id))  // in case user is moving between invisible activities of the same parent
     {

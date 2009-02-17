@@ -13,9 +13,22 @@
 	<script src="./Include/FramesetMgr.js"></script>
 	
 	<script language="JavaScript" type="text/javascript">
+
+		
 	
-	function onLoad()
-	{ 
+	function onLoad() {
+
+		function PleaseWait() {
+			try {
+				// clears content from the window and displays a "Please wait" message
+				document.body.innerHTML = "<table width='100%' class='ErrorTitle'><tr><td align='center'><%=PleaseWaitHtml %></td></tr></table>";
+			}
+			catch (e) {
+				// only happens in odd boundary cases. Retry the message after another timeout.
+				setTimeout(PleaseWait, 500);
+			}
+		}
+		
 	    var frameMgr = API_GetFramesetManager();
 	    frameMgr.SetPostFrame(HIDDEN_FRAME);
         frameMgr.SetPostableForm(window.top.frames[MAIN_FRAME].document.getElementById(HIDDEN_FRAME).contentWindow.document.forms[0]);
@@ -32,19 +45,7 @@
 	    }
 	}
 	
-	 function PleaseWait()
-    {
-        try
-        {
-            // clears content from the window and displays a "Please wait" message
-            document.body.innerHTML = "<table width='100%' class='ErrorTitle'><tr><td align='center'><%=PleaseWaitHtml %></td></tr></table>";
-        }
-        catch(e)
-        {
-            // only happens in odd boundary cases. Retry the message after another timeout.
-            setTimeout(PleaseWait, 500);
-        }
-    }
+	 
 	
 	</script>
 </head>
