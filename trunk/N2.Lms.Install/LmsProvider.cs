@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace N2.Lms.Install
+﻿namespace N2.Lms.Install
 {
-	using Persistence;
 	using Lms.Items;
+	using Persistence;
 	using N2.Web;
 	
 	class LmsProvider: ILmsProvider

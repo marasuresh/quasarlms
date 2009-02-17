@@ -275,7 +275,7 @@ function SetTocNodes( strNodeStates ) {
             continue;
         
         aActivityDisabled = activityPairs[i].split(",");
-        isDisabled = (aActivityDisabled[1] == "false");
+        var isDisabled = (aActivityDisabled[1] == "false");
         var elActivity = document.getElementById("a" + aActivityDisabled[0]);
         if (elActivity) {
         	if (document.all) {

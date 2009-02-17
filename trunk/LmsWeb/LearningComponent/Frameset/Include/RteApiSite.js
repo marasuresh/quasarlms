@@ -467,65 +467,65 @@ function ErrorMessageManager( strScormVer )
 	function InitializeDescriptions_2004()
     {
         // NOTE: These strings have 255 max length.
-        
-    	L_ERROR0_TXT = "No error";
-        L_ERROR101_TXT = "General Exception";
-        L_ERROR102_TXT = "General Initialization Failure: An error occured while attempting to initialize the communication session.";
-        L_ERROR103_TXT = "Session Already Initialized: Calling Initialize is not allowed because the session is already initialized.";
-        L_ERROR104_TXT = "Content Instance Terminated: Calling Initialize is not allowed after the session is terminated.";
 
-        L_ERROR111_TXT = "General Termination Failure: An error occurred while attempting to terminate the session.";
-        L_ERROR112_TXT = "Cannot Terminate Before Initialization: Calling Terminate is not allowed because the session is not initialized.";
-        L_ERROR113_TXT = "Session Already Terminated: Calling Terminate is not allowed because the session is already terminated.";
+    	var L_ERROR0_TXT = "No error";
+    	var L_ERROR101_TXT = "General Exception";
+    	var L_ERROR102_TXT = "General Initialization Failure: An error occured while attempting to initialize the communication session.";
+    	var L_ERROR103_TXT = "Session Already Initialized: Calling Initialize is not allowed because the session is already initialized.";
+    	var L_ERROR104_TXT = "Content Instance Terminated: Calling Initialize is not allowed after the session is terminated.";
 
-        L_ERROR122_TXT = "Cannot GetValue Before Initialization: Calling GetValue is not allowed because the session is not yet initialized.";
-        L_ERROR123_TXT = "Cannot GetValue After Termination: Calling GetValue is not allowed because the session is already terminated.";
-        L_ERROR132_TXT = "Cannot SetValue Before Initialization: Calling SetValue is not allowed because the session is not yet initialized.";
-        L_ERROR133_TXT = "Cannot SetValue After Termination: Calling SetValue is not allowed because the session is already terminated.";
-        L_ERROR142_TXT = "Cannot Commit Before Initialization: Calling Commit is not allowed because the session is not yet initialized.";
-        L_ERROR143_TXT = "Cannot Commit After Termination: Calling Commit is not allowed because the session is already terminated.";
+    	var L_ERROR111_TXT = "General Termination Failure: An error occurred while attempting to terminate the session.";
+    	var L_ERROR112_TXT = "Cannot Terminate Before Initialization: Calling Terminate is not allowed because the session is not initialized.";
+    	var L_ERROR113_TXT = "Session Already Terminated: Calling Terminate is not allowed because the session is already terminated.";
 
-        L_ERROR201_TXT = "General Argument Error";
-        L_ERROR2011_TXT = "An empty string must be passed to the {0} function.";
-        L_ERROR2012_TXT = "The parameter {0} must be a string.";
-        L_ERROR2013_TXT = "The parameter {0} cannot be null.";
-        		
-        L_ERROR301_TXT = "General GetValue Failure";
-        L_ERROR3011_TXT = "The keyword {0} is not supported by data model element {1}.";
-        L_ERROR3012_TXT = "The index {0} is expected to be smaller than {1}.";
-        L_ERROR3013_TXT = "The collection {0} has not been initialized.";
-        		
-        L_ERROR351_TXT = "General SetValue Failure";
-        L_ERROR3511_TXT = "The keyword {0} is not supported by data model element {1}.";
-        L_ERROR3512_TXT = "The index {0} is expected to be equal or smaller than {1}.";
-        L_ERROR3513_TXT = "The index of correct responses must be zero for interaction type {0}.";
-        L_ERROR3514_TXT = "The correct response pattern {0} is already used by {1}.";
-        L_ERROR3515_TXT = "The id {0} must be unique and it is already used by {1}.";
-        		
-        L_ERROR391_TXT = "General Commit Failure";
+    	var L_ERROR122_TXT = "Cannot GetValue Before Initialization: Calling GetValue is not allowed because the session is not yet initialized.";
+    	var L_ERROR123_TXT = "Cannot GetValue After Termination: Calling GetValue is not allowed because the session is already terminated.";
+    	var L_ERROR132_TXT = "Cannot SetValue Before Initialization: Calling SetValue is not allowed because the session is not yet initialized.";
+    	var L_ERROR133_TXT = "Cannot SetValue After Termination: Calling SetValue is not allowed because the session is already terminated.";
+    	var L_ERROR142_TXT = "Cannot Commit Before Initialization: Calling Commit is not allowed because the session is not yet initialized.";
+    	var L_ERROR143_TXT = "Cannot Commit After Termination: Calling Commit is not allowed because the session is already terminated.";
 
-        L_ERROR401_TXT = "Undefined Data Model Element";
-        L_ERROR4011_TXT = "{0} is not a valid data model element.";
-        		
-        L_ERROR402_TXT = "Unimplemented Data Model Element";
-        		
-        L_ERROR403_TXT = "Data Model Element Not Initialized";
-        L_ERROR4031_TXT = "The data model element {0} is not initialized.";
-        		
-        L_ERROR404_TXT = "Read-only Data Model Element";
-        L_ERROR4041_TXT = "The data model element {0} is read-only.";
-        		
-        L_ERROR405_TXT = "Write-only Data Model Element";
-        L_ERROR4051_TXT = "The data model element {0} is write-only.";
-        		
-        L_ERROR406_TXT = "Data Model Element Type Mismatch";
-        L_ERROR4061_TXT = "The value {0} is not valid for data model element {1}.";
-        	
-        L_ERROR407_TXT = "Value Out of Range";
-        L_ERROR4071_TXT = "The value {0} is not within the valid range for the {1} data model element.";
+    	var L_ERROR201_TXT = "General Argument Error";
+    	var L_ERROR2011_TXT = "An empty string must be passed to the {0} function.";
+    	var L_ERROR2012_TXT = "The parameter {0} must be a string.";
+    	var L_ERROR2013_TXT = "The parameter {0} cannot be null.";
 
-        L_ERROR408_TXT = "Dependency Not Established";
-        L_ERROR4081_TXT = "The data model element {0} is dependent on {1}, but {1} is not initialized.";
+    	var L_ERROR301_TXT = "General GetValue Failure";
+    	var L_ERROR3011_TXT = "The keyword {0} is not supported by data model element {1}.";
+    	var L_ERROR3012_TXT = "The index {0} is expected to be smaller than {1}.";
+    	var L_ERROR3013_TXT = "The collection {0} has not been initialized.";
+
+    	var L_ERROR351_TXT = "General SetValue Failure";
+    	var L_ERROR3511_TXT = "The keyword {0} is not supported by data model element {1}.";
+    	var L_ERROR3512_TXT = "The index {0} is expected to be equal or smaller than {1}.";
+    	var L_ERROR3513_TXT = "The index of correct responses must be zero for interaction type {0}.";
+    	var L_ERROR3514_TXT = "The correct response pattern {0} is already used by {1}.";
+    	var L_ERROR3515_TXT = "The id {0} must be unique and it is already used by {1}.";
+
+    	var L_ERROR391_TXT = "General Commit Failure";
+
+    	var L_ERROR401_TXT = "Undefined Data Model Element";
+    	var L_ERROR4011_TXT = "{0} is not a valid data model element.";
+
+    	var L_ERROR402_TXT = "Unimplemented Data Model Element";
+
+    	var L_ERROR403_TXT = "Data Model Element Not Initialized";
+    	var L_ERROR4031_TXT = "The data model element {0} is not initialized.";
+
+    	var L_ERROR404_TXT = "Read-only Data Model Element";
+    	var L_ERROR4041_TXT = "The data model element {0} is read-only.";
+
+    	var L_ERROR405_TXT = "Write-only Data Model Element";
+    	var L_ERROR4051_TXT = "The data model element {0} is write-only.";
+
+    	var L_ERROR406_TXT = "Data Model Element Type Mismatch";
+    	var L_ERROR4061_TXT = "The value {0} is not valid for data model element {1}.";
+
+    	var L_ERROR407_TXT = "Value Out of Range";
+    	var L_ERROR4071_TXT = "The value {0} is not within the valid range for the {1} data model element.";
+
+    	var L_ERROR408_TXT = "Dependency Not Established";
+    	var L_ERROR4081_TXT = "The data model element {0} is dependent on {1}, but {1} is not initialized.";
 	    
 	    errorDescriptions["0"] = L_ERROR0_TXT;
 	    errorDescriptions["101"] = L_ERROR101_TXT;

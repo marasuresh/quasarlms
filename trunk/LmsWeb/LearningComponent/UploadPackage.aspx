@@ -13,17 +13,17 @@
 <head runat="server">
 
     <title>Upload Package</title>
-
-    <script type="text/javascript">
+	<script runat="server">
+		protected override void OnInit(EventArgs e)
+		{
+			base.OnInit(e);
+			Register.JQuery(this.Page);
+			Register.JavaScript(this.Page, "UI/Js/Script.js");
+		}
+	</script>
     
-        // allow this dialog box to post to itself
-        window.name = "ThisDialog";
-        
-        // if this is a simulated dialog box (using window.open instead of
-		// showModalDialog), initialize dialogArguments from the parent window
-        if (typeof(dialogArguments) == "undefined")
-            dialogArguments = opener.dialogArguments;
-
+    <script type="text/javascript" defer="defer">
+    	DeletePackages_Main();
     </script>
 
     <link rel="stylesheet" href="Styles.css" type="text/css" />
@@ -48,24 +48,6 @@
 
 <body >
         
-    <script type="text/javascript">
-    
-        // allow this dialog box to post to itself
-        window.name = "ThisDialog";
-
-        // if this is a simulated dialog box (using window.open instead of
-		// showModalDialog), initialize dialogArguments from the parent window
-        if (typeof(dialogArguments) == "undefined")
-            dialogArguments = opener.dialogArguments;
-
-        function PleaseWait()
-        {
-            // clears content from the window and displays a "Please wait" message
-            document.body.innerHTML = "<table class='FullPageMessage'><tr><td>Please wait...</td></tr></table>";
-        }
-
-    </script>
-
     <form id="pageForm" target="ThisDialog" runat="server">
     
     <!-- panel that displays when this form is loaded -->
@@ -114,37 +96,13 @@
         
     <asp:Literal ID="UpdateParentPageScript" Visible="false" runat="server">
     <script type="text/javascript" defer="defer">
-        
-        // after a package is uploaded (successfully or with warnings, but no
-		// error), this script is executed to copy information about the
-		// uploaded package from the TrainingGrid table on this page to the
-		/// TrainingGrid table on the parent page
-    	var TrainingGrid = document.getElementById("TrainingGrid");
-        for (var iRow = 0; iRow < TrainingGrid.rows.length; iRow++)
-        {
-            var row = TrainingGrid.rows[iRow];
-            var aCells = new Array();
-            var aClassNames = new Array();
-            for (var iCell = 0; iCell < row.cells.length; iCell++)
-            {
-                var cell = row.cells[iCell];
-                aCells[iCell] = cell.innerHTML;
-                aClassNames[iCell] = cell.className;
-            }
-            dialogArguments.AddRowToTrainingGrid(row.id, aCells, aClassNames);
-        }
-        
-       
+    	DeletePackages_UpdateParentPageScript();
     </script>
     </asp:Literal>
         
     <asp:Literal ID="CloseDialogScript" Visible="false" runat="server">
     <script type="text/javascript" defer="true">
-        
-        // if the operation performed by this dialog was successful, this
-        // script is executed to close the dialog
-        window.close();
-        
+    	DeletePackages_CloseDialogScript();
     </script>
     </asp:Literal>
 

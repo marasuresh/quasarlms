@@ -6,9 +6,9 @@
 protected override void  OnInit(EventArgs e)
 {
 	Register.JQuery(this.Page);
-	Register.JavaScript(this.Page, this.Page.ResolveClientUrl("~/LearningComponent/UI/Js/Script.js"));
-	Register.StyleSheet(this.Page, this.Page.ResolveClientUrl("~/LearningComponent/Styles.css"));
-	Register.StyleSheet(this.Page, this.Page.ResolveClientUrl("~/LearningComponent/UI/Css/Styles.css"));
+	Register.JavaScript(this.Page, "UI/Js/Script.js");
+	Register.StyleSheet(this.Page, "Styles.css");
+	Register.StyleSheet(this.Page, "UI/Css/Styles.css");
 	base.OnInit(e);
 }
 	

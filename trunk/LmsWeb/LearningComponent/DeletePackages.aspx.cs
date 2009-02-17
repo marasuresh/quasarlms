@@ -31,8 +31,8 @@ using DotNetSCORM.LearningAPI.LearningComponentsHelper;
 public partial class DeletePackages : BasicWebPlayerBase
 {
     protected void DeletePackagesButton_Click(object sender, EventArgs e)
-	{
-		// the user clicked "Upload"...
+    {
+        // the user clicked "Upload"...
 
         // hide the confirmation panel
         ConfirmMessage.Visible = false;
@@ -46,9 +46,14 @@ public partial class DeletePackages : BasicWebPlayerBase
             // loop once for each package to delete
             foreach (string id in PackagesToDelete.Value.Split(','))
             {
+				Int64 _id = Int64.TryParse(id, out _id) ? _id : 0;
+
+				if (_id <= 0) {
+					continue;
+				}
+				
                 // set <packageId> to the ID of this package
-                PackageItemIdentifier packageId = new PackageItemIdentifier(
-                    Convert.ToInt64(id, CultureInfo.InvariantCulture));
+                PackageItemIdentifier packageId = new PackageItemIdentifier(_id);
 
                 // before we delete the package, we need to delete all attempts on the package --
                 // the following query looks for those attempts

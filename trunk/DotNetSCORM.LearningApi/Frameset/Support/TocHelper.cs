@@ -160,15 +160,10 @@ namespace Microsoft.LearningComponents.Frameset
                     sw.RenderEndTag();
                     sw.WriteLine();
 
-                    
+                    sw.AddAttribute(HtmlTextWriterAttribute.Href, "");
                     sw.AddAttribute(HtmlTextWriterAttribute.Id, ResHelper.FormatInvariant("a{0}", activityIdHtml));
-					if (!currentElement.IsValidChoiceNavigationDestination) {
-						sw.AddAttribute(HtmlTextWriterAttribute.Disabled, (HtmlString)null);
-						sw.AddAttribute(HtmlTextWriterAttribute.Class, "disabled");
-						sw.AddAttribute("href_bak", "");
-					} else {
-						sw.AddAttribute(HtmlTextWriterAttribute.Href, "");
-					}
+                    if (!currentElement.IsValidChoiceNavigationDestination)
+                        sw.AddAttribute(HtmlTextWriterAttribute.Disabled, (HtmlString)null);
                     sw.AddAttribute(HtmlTextWriterAttribute.Style,
                                         ResHelper.FormatInvariant("FONT-WEIGHT: normal;visibility:{0}", (currentElement.IsVisible ? "visible" : "hidden")));
                     sw.AddAttribute(HtmlTextWriterAttribute.Title, titleHtml);

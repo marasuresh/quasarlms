@@ -1,11 +1,14 @@
 <%-- Copyright (c) Microsoft Corporation. All rights reserved. --%>
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CreateAttempt.aspx.cs" Inherits="CreateAttempt" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CreateAttempt.aspx.cs" Inherits="CreateAttempt" %>
 <%@ Import Namespace="N2.Resources" %>
 <script runat="server">
 	protected override void OnInit(EventArgs e)
 	{
-		Register.StyleSheet(this.Page, this.Page.ResolveClientUrl("~/LearningComponent/UI/Css/CreateAttempt.css"));
-		Register.StyleSheet(this.Page, this.Page.ResolveClientUrl("~/LearningComponent/Styles.css"));
+		Register.StyleSheet(this.Page, "UI/Css/CreateAttempt.css");
+		Register.StyleSheet(this.Page, "Styles.css");
+
+		Register.JQuery(this.Page);
+		Register.JavaScript(this.Page, "UI/Js/Script.js");
 		base.OnInit(e);
 	}
 </script>
@@ -20,16 +23,8 @@
 
     <title>Begin Training</title>
 
-    <script type="text/javascript">
-    
-        // allow this dialog box to post to itself
-        window.name = "ThisDialog";
-
-        // if this is a simulated dialog box (using window.open instead of
-		// showModalDialog), initialize dialogArguments from the parent window
-        if (typeof(dialogArguments) == "undefined")
-            dialogArguments = opener.dialogArguments;
-
+    <script type="text/javascript" defer="defer">
+    	DeletePackages_Main();
     </script>
 </head>
 

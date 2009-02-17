@@ -143,7 +143,7 @@ public class BasicWebPlayerBase : PageHelper
 				htmlCell.CssClass = "Select_ NewPackage_";
 				CheckBox checkBox = new CheckBox();
 				checkBox.ID = "Select" + packageId.GetKey().ToString();
-				checkBox.Attributes.Add("onclick", "OnSelectionChanged(this)");
+				checkBox.Attributes.Add("onclick", "OnSelectionChanged()");
 				checkBox.ToolTip = "Select";
 				htmlCell.Controls.Add(checkBox);
 			}

@@ -1,6 +1,66 @@
 <%@ Page Language="C#" AutoEventWireup="true" Inherits="Microsoft.LearningComponents.Frameset.Frameset_Frameset" %>
 <%-- Copyright (c) Microsoft Corporation. All rights reserved. --%>
+<script runat="server">
+	protected override void OnInit(EventArgs e)
+	{
+		base.OnInit(e);
+		Register.JQuery(this.Page);
+		Register.JavaScript(this.Page, "~/Lms/UI/Js/jquery.debug.js");
+	}
 
+	protected override void OnPreRender(EventArgs e)
+	{
+		base.OnPreRender(e);
+		if (!ShowError) {// don't write script if there is an error on the page
+			// if this package does not require the RTE, then don't write the links?
+			new[]{
+				"Rte1p2Api.js",
+				"parser1p2.js",
+				"typevalidators1p2.js",
+				"Rte2004Api.js",
+				"parser.js",
+				"typevalidators.js",
+				"RteApiSite.js",
+				"FramesetMgr.js"
+			}.ToList()
+			.ForEach(_s => {
+				Register.JavaScript(this.Page, "~/LearningComponent/Frameset/Include/" + _s);
+			});
+
+			Register.JavaScript(this.Page, @"
+// debugger;
+
+    // Constants
+    var SCORM_2004 = 'V1p3';
+    var SCORM_12 = 'V1p2';
+
+    // FrameMgr is called from all frames
+    var g_frameMgr = new FramesetManager();
+    g_frameMgr.DebugLog = function(s) {
+		$.log(s);
+    };
+
+    // TODO (M2): The following code is only required if the package is SCORM
+    var g_scormVersion = '" + this.ScormVersionHtml + @"';	// Version of current session
+
+    var API_1484_11 = null; // Name of RTE object for 2004 -- name is determined by SCORM.
+    var API = null; // Name of RTE object for 1.2 -- name is determined by SCORM
+
+    // Internal RTE object -- it's the same object as the api objects, just easier to reference.
+    var g_API = g_frameMgr.GetRteApi(g_scormVersion, '" + this.RteRequired + @"');  
+
+    if (g_scormVersion == SCORM_2004)
+    {
+        API_1484_11 = g_API;
+    }
+    else
+    {
+        API  = g_API;
+    }", ScriptOptions.ScriptTags);
+
+		}
+	}
+</script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
@@ -12,52 +72,7 @@
     <title><%=PageTitleHtml%></title>
     <LINK rel="stylesheet" type="text/css" href="Theme/Styles.css" />
 
-<% if (!ShowError)  // don't write script if there is an error on the page
-{ 
-       // if this package does not require the RTE, then don't write the links?
-       %>
-    
-    <script src="./Include/Rte1p2Api.js"></script>
-    <script src="./Include/parser1p2.js"> </script>
-    <script src="./Include/typevalidators1p2.js"> </script>
-    
-    <script src="./Include/Rte2004Api.js" ></script> 
-    <script src="./Include/parser.js"> </script>
-    <script src="./Include/typevalidators.js"> </script>
-    
-    <script src="./Include/RteApiSite.js"> </script>
-    <script src="./Include/FramesetMgr.js"> </script>
-    
-    <script>
-// debugger;
 
-    // Constants
-    SCORM_2004 = "V1p3";
-    SCORM_12 = "V1p2";
-
-    // FrameMgr is called from all frames
-    var g_frameMgr = new FramesetManager;
-
-    // TODO (M2): The following code is only required if the package is SCORM
-    var g_scormVersion = "<%=ScormVersionHtml %>";	// Version of current session
-
-    var API_1484_11 = null; // Name of RTE object for 2004 -- name is determined by SCORM.
-    var API = null; // Name of RTE object for 1.2 -- name is determined by SCORM
-
-    // Internal RTE object -- it's the same object as the api objects, just easier to reference.
-    var g_API = g_frameMgr.GetRteApi(g_scormVersion, <%=RteRequired %>);  
-
-    if (g_scormVersion == SCORM_2004)
-    {
-        API_1484_11 = g_API;
-    }
-    else
-    {
-        API  = g_API;
-    }
-    	
-    </script>
-<% } %>
 
 </head>
 <% if (ShowError)
