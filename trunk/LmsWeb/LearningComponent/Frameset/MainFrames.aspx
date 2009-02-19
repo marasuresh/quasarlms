@@ -37,11 +37,30 @@
 
 	</FRAMESET>
 
-	<FRAME class=BottomFrame id=frameBottom tabIndex=-1 name=frameBottom 
-	            marginWidth=0 frameSpacing=0 marginHeight=0 src="Bottom.htm" frameBorder=0 noResize scrolling=no>
+	<FRAME	class="BottomFrame"
+			id="frameBottom"
+			tabIndex="-1"
+			name="frameBottom"
+			marginWidth="0"
+			frameSpacing="0"
+			marginHeight="0"
+			src="Bottom.htm.aspx"
+			frameBorder="0"
+			noResize="noresize"
+			scrolling="no" />
 	
-	<FRAME class=HiddenFrame id=frameHidden tabIndex=-1 name=frameHidden visible=false
-	            marginWidth=0 frameSpacing=0 marginHeight=0 src="<%=HiddenFrameUrl %>" frameBorder=0 noResize scrolling=no>
+	<FRAME	class="HiddenFrame"
+			id="frameHidden"
+			tabIndex="-1"
+			name="frameHidden"
+			visible="false"
+			marginWidth="0"
+			frameSpacing="0"
+			marginHeight="0"
+			src="<%=HiddenFrameUrl %>"
+			frameBorder="0"
+			noResize="noresize"
+			scrolling="no"/>
 
 </FRAMESET>
 </html>

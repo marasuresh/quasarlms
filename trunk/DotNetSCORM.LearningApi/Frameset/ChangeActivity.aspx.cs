@@ -176,6 +176,14 @@ namespace Microsoft.LearningComponents.Frameset
                 return ResHelper.GetMessage(FramesetResources.CON_PleaseWait); }
         }
 
+		public string GetFrameMgrInit()
+		{
+			return m_pageLoadSuccessful
+				? this.m_helper.GetFrameMgrInit()
+				: string.Empty;
+		}
+
+		[Obsolete]
         public void WriteFrameMgrInit()
         {
             // If the page did not load successfully, then don't write anything

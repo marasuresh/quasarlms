@@ -69,7 +69,7 @@
     <Content Include="LearningComponent\CreateAttempt.aspx" />
     <Content Include="LearningComponent\Default.aspx" />
     <Content Include="LearningComponent\DeletePackages.aspx" />
-    <Content Include="LearningComponent\Frameset\Bottom.htm" />
+    <Content Include="LearningComponent\Frameset\Bottom.htm.aspx" />
     <Content Include="LearningComponent\Frameset\ChangeActivity.aspx" />
     <Content Include="LearningComponent\Frameset\ClearContent.aspx" />
     <Content Include="LearningComponent\Frameset\Content.aspx" />
@@ -125,7 +125,7 @@
     <Content Include="LearningComponent\Frameset\Theme\TocOpen.gif" />
     <Content Include="LearningComponent\Frameset\Theme\TocOpenHover.gif" />
     <Content Include="LearningComponent\Frameset\Theme\TopShadow.gif" />
-    <Content Include="LearningComponent\Frameset\Title.htm" />
+    <Content Include="LearningComponent\Frameset\Title.htm.aspx" />
     <Content Include="LearningComponent\Frameset\TOC.aspx" />
     <Content Include="LearningComponent\SequencingLog.aspx" />
     <Content Include="LearningComponent\Styles.css" />
@@ -189,6 +189,9 @@
     <Content Include="LearningComponent\UI\Js\Script.js" />
     <Content Include="Web.config" />
     <Content Include="Web.connectionStrings.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
