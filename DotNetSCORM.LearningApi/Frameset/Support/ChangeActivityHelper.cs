@@ -11,6 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using Microsoft.LearningComponents.Storage;
 using System.Diagnostics.CodeAnalysis;
+using System.Text;
 
 namespace Microsoft.LearningComponents.Frameset
 {
@@ -58,15 +59,24 @@ namespace Microsoft.LearningComponents.Frameset
             }
         }
 
+		public string GetFrameMgrInit()
+		{
+			return
+				string.Join(Environment.NewLine,
+				new[] {
+					ResHelper.Format("frameMgr.SetAttemptId({0});\r\n", FramesetUtil.GetString(m_attemptId)),
+					ResHelper.Format("frameMgr.SetView({0});\r\n", FramesetUtil.GetString(m_view)),
+					"frameMgr.SetPostFrame(\"frameHidden\");\r\n",
+					"frameMgr.SetPostableForm(GetHiddenFrame().contentWindow.document.forms[0]);\r\n",
+					// Tell frameMgr to move to new activity
+					ResHelper.Format("frameMgr.DoChoice(\"{0}\", true);\r\n", FramesetUtil.GetStringInvariant(m_activityId)),
+				});
+		}
+
+		[Obsolete("Use GetFrameMgrInit()", false)]
         public void WriteFrameMgrInit()
         {
-            Response.Write(ResHelper.Format("frameMgr.SetAttemptId({0});\r\n", FramesetUtil.GetString(m_attemptId)));
-            Response.Write(ResHelper.Format("frameMgr.SetView({0});\r\n", FramesetUtil.GetString(m_view)));
-            Response.Write("frameMgr.SetPostFrame(\"frameHidden\");\r\n");
-            Response.Write("frameMgr.SetPostableForm(GetHiddenFrame().contentWindow.document.forms[0]);\r\n");
-
-            // Tell frameMgr to move to new activity
-            Response.Write(ResHelper.Format("frameMgr.DoChoice(\"{0}\", true);\r\n", FramesetUtil.GetStringInvariant(m_activityId)));
+            Response.Write(this.GetContentFrameUrl());
         }
 
         public string ErrorMessageHtml { get { return ErrorMessage; } }

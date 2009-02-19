@@ -432,10 +432,16 @@ namespace Microsoft.LearningComponents.Frameset
 
         // Write initialization code for frameset manager. This method is called when an "error" message 
         // is displayed. Note that this includes the case where the 'submit' page is displayed.
-        public void WriteFrameMgrInit()
+        [Obsolete]
+		public void WriteFrameMgrInit()
         {
             m_contentHelper.WriteFrameMgrInit();
         }
+
+		public string GetFrameMgrInit()
+		{
+			return this.m_contentHelper.GetFrameMgrInit(); 
+		}
 
         public string ErrorIcon
         {

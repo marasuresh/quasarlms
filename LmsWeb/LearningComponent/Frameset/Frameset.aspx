@@ -103,12 +103,17 @@
 </body>
 <%} else   // no error, so show frameset	
    { %>
-<frameset id="framesetOuter" name="framesetOuter" rows="53,*" framespacing="0" frameborder="0"
-	border="0">
+<frameset
+		id="framesetOuter"
+		name="framesetOuter"
+		rows="53,*"
+		framespacing="0"
+		frameborder="0"
+		border="0">
 
-	<FRAME	class="frameTitle"
+	<frame	class="frameTitle"
 			name="frameTitle"
-			src="Title.htm"
+			src="Title.htm.aspx"
 			id="frameTitle" 
 			marginwidth="0"
 			marginheight="0"
@@ -117,8 +122,15 @@
 			scrolling="no"
 			frameborder="0" />
 
-   <FRAME class="ShellFrame" id="frameLearnTask" name="frameLearnTask" src="<% =MainFramesUrl %>" 
-                scrolling="no" marginwidth="0" marginheight="0" framespacing="0" frameborder="0" />
+	<frame	class="ShellFrame"
+			id="frameLearnTask"
+			name="frameLearnTask"
+			src="<% =MainFramesUrl %>" 
+			scrolling="no"
+			marginwidth="0"
+			marginheight="0"
+			framespacing="0"
+			frameborder="0" />
 
 </frameset>
 <%} %>
