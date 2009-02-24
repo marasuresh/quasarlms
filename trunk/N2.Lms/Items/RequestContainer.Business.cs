@@ -5,7 +5,7 @@ using System.Linq;
 namespace N2.Lms.Items
 {
 	using Lms.RequestStates;
-	using N2.Workflow;
+	using Workflow;
 	using TrainingWorkflow;
 	
 	partial class RequestContainer
@@ -93,7 +93,7 @@ namespace N2.Lms.Items
 		}
 
 		/// <summary>
-		/// Courses i'm currently involved in in any form
+		/// Courses i'm currently involved in any form
 		/// </summary>
 		internal IEnumerable<Course> MyActiveCourses {
 			get {
@@ -116,7 +116,8 @@ namespace N2.Lms.Items
 				return
 					from _request in this.MyRequests
 					let _currentState = this.WorkflowProvider.GetCurrentState(_request)
-					where string.Equals(_currentState.Definition.Title, "Pending Validation", StringComparison.InvariantCultureIgnoreCase)
+					where string.Equals(
+						_currentState.Definition.Title, "Pending Validation", StringComparison.InvariantCultureIgnoreCase)
 					select _request;
 			}
 		}

@@ -131,11 +131,6 @@
     <Content Include="LearningComponent\Styles.css" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_GlobalResources\FramesetResources.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FramesetResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="LearningComponent\CreateAttempt.aspx.cs">
       <DependentUpon>CreateAttempt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -157,6 +152,42 @@
     <Compile Include="LearningComponent\DeletePackages.aspx.designer.cs">
       <DependentUpon>DeletePackages.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LearningComponent\Frameset\ChangeActivity.aspx.cs">
+      <DependentUpon>ChangeActivity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\Frameset\ClearContent.aspx.cs">
+      <DependentUpon>ClearContent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\Frameset\Content.aspx.cs">
+      <DependentUpon>Content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\Frameset\Frameset.aspx.cs">
+      <DependentUpon>Frameset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\Frameset\Hidden.aspx.cs">
+      <DependentUpon>Hidden.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\Frameset\MainFrames.aspx.cs">
+      <DependentUpon>MainFrames.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\Frameset\NavClosed.aspx.cs">
+      <DependentUpon>NavClosed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\Frameset\NavOpen.aspx.cs">
+      <DependentUpon>NavOpen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LearningComponent\Frameset\TOC.aspx.cs">
+      <DependentUpon>TOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="LearningComponent\SequencingLog.aspx.cs">
       <DependentUpon>SequencingLog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -176,10 +207,6 @@
     <Content Include="LearningComponent\web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\FramesetResources.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>FramesetResources.designer.cs</LastGenOutput>
-    </Content>
     <Content Include="LearningComponent\UploadPackage.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +218,7 @@
     <Content Include="Web.connectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_GlobalResources\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

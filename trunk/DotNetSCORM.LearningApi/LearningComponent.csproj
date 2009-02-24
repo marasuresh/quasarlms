@@ -69,27 +69,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FramesetResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Frameset\ChangeActivity.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Frameset\ClearContent.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Frameset\Content.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Frameset\Frameset.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Frameset\Hidden.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Frameset\MainFrames.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Frameset\NavClosed.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Frameset\Support\ChangeActivityHelper.cs" />
     <Compile Include="Frameset\Support\ContentHelper.cs" />
     <Compile Include="Frameset\Support\Encoding.cs" />
@@ -101,16 +80,10 @@
     <Compile Include="Frameset\Support\FrmPageHelper.cs" />
     <Compile Include="Frameset\Support\HiddenHelper.cs" />
     <Compile Include="Frameset\Support\Log.cs" />
-    <Compile Include="Frameset\NavOpen.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Frameset\Support\PostableFrameHelper.cs" />
     <Compile Include="Frameset\Support\Rte1p2DataModelConverter.cs" />
     <Compile Include="Frameset\Support\Rte2004DataModelConverter.cs" />
     <Compile Include="Frameset\Support\RteDataModelConverter.cs" />
-    <Compile Include="Frameset\TOC.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Frameset\Support\TocHelper.cs" />
     <Compile Include="HttpModule.cs" />
     <Compile Include="LStoreHelper.cs" />
@@ -125,7 +98,7 @@
   <ItemGroup>
     <EmbeddedResource Include="FramesetResources.resx">
       <SubType>Designer</SubType>
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FramesetResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

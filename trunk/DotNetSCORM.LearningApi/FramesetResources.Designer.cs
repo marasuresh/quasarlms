@@ -22,7 +22,7 @@ namespace DotNetSCORM.LearningAPI {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class FramesetResources {
+    public class FramesetResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace DotNetSCORM.LearningAPI {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DotNetSCORM.LearningAPI.FramesetResources", typeof(FramesetResources).Assembly);
@@ -51,7 +51,7 @@ namespace DotNetSCORM.LearningAPI {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -65,7 +65,7 @@ namespace DotNetSCORM.LearningAPI {
         ///        &lt;br&gt;&lt;br&gt; 
         ///        Invalid files:.
         /// </summary>
-        internal static string CON_AttachedFileDoesNotExistHtml {
+        public static string CON_AttachedFileDoesNotExistHtml {
             get {
                 return ResourceManager.GetString("CON_AttachedFileDoesNotExistHtml", resourceCulture);
             }
@@ -74,7 +74,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to There is a problem accessing the content. It cannot be displayed..
         /// </summary>
-        internal static string CON_ContentCannotBeDisplayedMsg {
+        public static string CON_ContentCannotBeDisplayedMsg {
             get {
                 return ResourceManager.GetString("CON_ContentCannotBeDisplayedMsg", resourceCulture);
             }
@@ -83,7 +83,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Cannot Access Content.
         /// </summary>
-        internal static string CON_ContentCannotBeDisplayedTitle {
+        public static string CON_ContentCannotBeDisplayedTitle {
             get {
                 return ResourceManager.GetString("CON_ContentCannotBeDisplayedTitle", resourceCulture);
             }
@@ -92,7 +92,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Click Continue to return to the current page..
         /// </summary>
-        internal static string CON_FileAttachmentErrorEndHtml {
+        public static string CON_FileAttachmentErrorEndHtml {
             get {
                 return ResourceManager.GetString("CON_FileAttachmentErrorEndHtml", resourceCulture);
             }
@@ -101,7 +101,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to File Attachment Error.
         /// </summary>
-        internal static string CON_FileAttachmentErrorTitleHtml {
+        public static string CON_FileAttachmentErrorTitleHtml {
             get {
                 return ResourceManager.GetString("CON_FileAttachmentErrorTitleHtml", resourceCulture);
             }
@@ -110,7 +110,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Please wait....
         /// </summary>
-        internal static string CON_PleaseWait {
+        public static string CON_PleaseWait {
             get {
                 return ResourceManager.GetString("CON_PleaseWait", resourceCulture);
             }
@@ -119,7 +119,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The page you requested cannot be found. Please select or move to a different page..
         /// </summary>
-        internal static string CON_ResourceNotFoundMsg {
+        public static string CON_ResourceNotFoundMsg {
             get {
                 return ResourceManager.GetString("CON_ResourceNotFoundMsg", resourceCulture);
             }
@@ -128,7 +128,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to File Not Found.
         /// </summary>
-        internal static string CON_ResourceNotFoundTitle {
+        public static string CON_ResourceNotFoundTitle {
             get {
                 return ResourceManager.GetString("CON_ResourceNotFoundTitle", resourceCulture);
             }
@@ -137,7 +137,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The data on this page cannot be updated while reviewing the training..
         /// </summary>
-        internal static string CONV_InvalidViewOnSetValue {
+        public static string CONV_InvalidViewOnSetValue {
             get {
                 return ResourceManager.GetString("CONV_InvalidViewOnSetValue", resourceCulture);
             }
@@ -146,7 +146,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Interaction and objective information has not been properly initialized..
         /// </summary>
-        internal static string CONV_MappingRequired {
+        public static string CONV_MappingRequired {
             get {
                 return ResourceManager.GetString("CONV_MappingRequired", resourceCulture);
             }
@@ -156,7 +156,7 @@ namespace DotNetSCORM.LearningAPI {
         ///   Looks up a localized string similar to There was a problem adding or updating comment data associated with this page.
         ///    More information: {0}.
         /// </summary>
-        internal static string CONV_SetValueComment {
+        public static string CONV_SetValueComment {
             get {
                 return ResourceManager.GetString("CONV_SetValueComment", resourceCulture);
             }
@@ -165,7 +165,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The value ({1}) is not a valid value for the {0} element. The data was not updated. More information: {2}.
         /// </summary>
-        internal static string CONV_SetValueException {
+        public static string CONV_SetValueException {
             get {
                 return ResourceManager.GetString("CONV_SetValueException", resourceCulture);
             }
@@ -175,7 +175,7 @@ namespace DotNetSCORM.LearningAPI {
         ///   Looks up a localized string similar to There was a problem adding or updating interaction data associated with this page.
         ///    More information: {0}.
         /// </summary>
-        internal static string CONV_SetValueInteraction {
+        public static string CONV_SetValueInteraction {
             get {
                 return ResourceManager.GetString("CONV_SetValueInteraction", resourceCulture);
             }
@@ -185,7 +185,7 @@ namespace DotNetSCORM.LearningAPI {
         ///   Looks up a localized string similar to The element named &apos;{0}&apos; could not be recognized. The data was not updated.
         ///    .
         /// </summary>
-        internal static string CONV_SetValueInvalidName {
+        public static string CONV_SetValueInvalidName {
             get {
                 return ResourceManager.GetString("CONV_SetValueInvalidName", resourceCulture);
             }
@@ -194,7 +194,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The value ({0}) is not a valid value for the {1} element. The data was not updated..
         /// </summary>
-        internal static string CONV_SetValueInvalidValue {
+        public static string CONV_SetValueInvalidValue {
             get {
                 return ResourceManager.GetString("CONV_SetValueInvalidValue", resourceCulture);
             }
@@ -204,7 +204,7 @@ namespace DotNetSCORM.LearningAPI {
         ///   Looks up a localized string similar to There was a problem adding or updating objective data associated with this page.
         ///    More information: {0}.
         /// </summary>
-        internal static string CONV_SetValueObjective {
+        public static string CONV_SetValueObjective {
             get {
                 return ResourceManager.GetString("CONV_SetValueObjective", resourceCulture);
             }
@@ -213,7 +213,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The {0} element cannot be modified. The data was not updated..
         /// </summary>
-        internal static string CONV_SetValueReadOnly {
+        public static string CONV_SetValueReadOnly {
             get {
                 return ResourceManager.GetString("CONV_SetValueReadOnly", resourceCulture);
             }
@@ -222,7 +222,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The page cannot be displayed. Select a different page..
         /// </summary>
-        internal static string FRM_ActivityIsNotActiveMsg {
+        public static string FRM_ActivityIsNotActiveMsg {
             get {
                 return ResourceManager.GetString("FRM_ActivityIsNotActiveMsg", resourceCulture);
             }
@@ -231,7 +231,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Training Not Available.
         /// </summary>
-        internal static string FRM_CannotDisplayContentTitle {
+        public static string FRM_CannotDisplayContentTitle {
             get {
                 return ResourceManager.GetString("FRM_CannotDisplayContentTitle", resourceCulture);
             }
@@ -240,7 +240,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to This training has been abandoned. You cannot make any further changes..
         /// </summary>
-        internal static string FRM_ExecuteViewAbandonedSessionMsg {
+        public static string FRM_ExecuteViewAbandonedSessionMsg {
             get {
                 return ResourceManager.GetString("FRM_ExecuteViewAbandonedSessionMsg", resourceCulture);
             }
@@ -249,7 +249,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to This training has been completed. You cannot make any further changes..
         /// </summary>
-        internal static string FRM_ExecuteViewCompletedSessionMsg {
+        public static string FRM_ExecuteViewCompletedSessionMsg {
             get {
                 return ResourceManager.GetString("FRM_ExecuteViewCompletedSessionMsg", resourceCulture);
             }
@@ -258,7 +258,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to This training has been suspended. You can return later to resume the training..
         /// </summary>
-        internal static string FRM_ExecuteViewSuspendedSessionMsg {
+        public static string FRM_ExecuteViewSuspendedSessionMsg {
             get {
                 return ResourceManager.GetString("FRM_ExecuteViewSuspendedSessionMsg", resourceCulture);
             }
@@ -267,7 +267,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Training Not Available.
         /// </summary>
-        internal static string FRM_InvalidAttemptStatusForViewTitle {
+        public static string FRM_InvalidAttemptStatusForViewTitle {
             get {
                 return ResourceManager.GetString("FRM_InvalidAttemptStatusForViewTitle", resourceCulture);
             }
@@ -276,7 +276,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The value ({1}) is not valid for the {0} parameter..
         /// </summary>
-        internal static string FRM_InvalidParameterMsg {
+        public static string FRM_InvalidParameterMsg {
             get {
                 return ResourceManager.GetString("FRM_InvalidParameterMsg", resourceCulture);
             }
@@ -285,7 +285,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Invalid Parameter Value.
         /// </summary>
-        internal static string FRM_InvalidParameterTitle {
+        public static string FRM_InvalidParameterTitle {
             get {
                 return ResourceManager.GetString("FRM_InvalidParameterTitle", resourceCulture);
             }
@@ -296,7 +296,7 @@ namespace DotNetSCORM.LearningAPI {
         ///        you do not have permission to view it. 
         ///    .
         /// </summary>
-        internal static string FRM_NotAvailableHtml {
+        public static string FRM_NotAvailableHtml {
             get {
                 return ResourceManager.GetString("FRM_NotAvailableHtml", resourceCulture);
             }
@@ -305,7 +305,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Training Not Available.
         /// </summary>
-        internal static string FRM_NotAvailableTitleHtml {
+        public static string FRM_NotAvailableTitleHtml {
             get {
                 return ResourceManager.GetString("FRM_NotAvailableTitleHtml", resourceCulture);
             }
@@ -314,7 +314,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The {0} parameter is required in order to display the training..
         /// </summary>
-        internal static string FRM_ParameterRequiredMsg {
+        public static string FRM_ParameterRequiredMsg {
             get {
                 return ResourceManager.GetString("FRM_ParameterRequiredMsg", resourceCulture);
             }
@@ -323,7 +323,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to {0} Parameter is Required.
         /// </summary>
-        internal static string FRM_ParameterRequiredTitle {
+        public static string FRM_ParameterRequiredTitle {
             get {
                 return ResourceManager.GetString("FRM_ParameterRequiredTitle", resourceCulture);
             }
@@ -332,7 +332,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Random access view is not supported in this application..
         /// </summary>
-        internal static string FRM_RAViewNotSupportedMsg {
+        public static string FRM_RAViewNotSupportedMsg {
             get {
                 return ResourceManager.GetString("FRM_RAViewNotSupportedMsg", resourceCulture);
             }
@@ -341,7 +341,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The requested resource could not be loaded..
         /// </summary>
-        internal static string FRM_ResourceNotFound {
+        public static string FRM_ResourceNotFound {
             get {
                 return ResourceManager.GetString("FRM_ResourceNotFound", resourceCulture);
             }
@@ -350,7 +350,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Review view is not supported in this application..
         /// </summary>
-        internal static string FRM_ReviewViewNotSupportedMsg {
+        public static string FRM_ReviewViewNotSupportedMsg {
             get {
                 return ResourceManager.GetString("FRM_ReviewViewNotSupportedMsg", resourceCulture);
             }
@@ -359,7 +359,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to This training has been completed. You cannot make any further changes..
         /// </summary>
-        internal static string FRM_SessionIsNotActiveMsg {
+        public static string FRM_SessionIsNotActiveMsg {
             get {
                 return ResourceManager.GetString("FRM_SessionIsNotActiveMsg", resourceCulture);
             }
@@ -368,7 +368,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Basic Web Player Training.
         /// </summary>
-        internal static string FRM_Title {
+        public static string FRM_Title {
             get {
                 return ResourceManager.GetString("FRM_Title", resourceCulture);
             }
@@ -377,7 +377,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to An error occurred. More information: {0}.
         /// </summary>
-        internal static string FRM_UnexpectedError {
+        public static string FRM_UnexpectedError {
             get {
                 return ResourceManager.GetString("FRM_UnexpectedError", resourceCulture);
             }
@@ -386,7 +386,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The training cannot be displayed. Try refreshing your browser..
         /// </summary>
-        internal static string FRM_UnexpectedErrorNoException {
+        public static string FRM_UnexpectedErrorNoException {
             get {
                 return ResourceManager.GetString("FRM_UnexpectedErrorNoException", resourceCulture);
             }
@@ -395,7 +395,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
-        internal static string FRM_UnexpectedErrorTitle {
+        public static string FRM_UnexpectedErrorTitle {
             get {
                 return ResourceManager.GetString("FRM_UnexpectedErrorTitle", resourceCulture);
             }
@@ -404,7 +404,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to An error occurred. More information: {0}.
         /// </summary>
-        internal static string FRM_UnknownExceptionMsg {
+        public static string FRM_UnknownExceptionMsg {
             get {
                 return ResourceManager.GetString("FRM_UnknownExceptionMsg", resourceCulture);
             }
@@ -413,7 +413,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
-        internal static string FRM_UnknownExceptionTitle {
+        public static string FRM_UnknownExceptionTitle {
             get {
                 return ResourceManager.GetString("FRM_UnknownExceptionTitle", resourceCulture);
             }
@@ -422,7 +422,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The requested view is not supported in this application..
         /// </summary>
-        internal static string FRM_ViewNotSupportedMsg {
+        public static string FRM_ViewNotSupportedMsg {
             get {
                 return ResourceManager.GetString("FRM_ViewNotSupportedMsg", resourceCulture);
             }
@@ -431,7 +431,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to View Not Supported.
         /// </summary>
-        internal static string FRM_ViewNotSupportedTitle {
+        public static string FRM_ViewNotSupportedTitle {
             get {
                 return ResourceManager.GetString("FRM_ViewNotSupportedTitle", resourceCulture);
             }
@@ -440,7 +440,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The activity id {0} is not valid..
         /// </summary>
-        internal static string HID_InvalidActivityId {
+        public static string HID_InvalidActivityId {
             get {
                 return ResourceManager.GetString("HID_InvalidActivityId", resourceCulture);
             }
@@ -449,7 +449,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to You cannot navigate to the next page at this time. Click Continue to return to the current page..
         /// </summary>
-        internal static string HID_MoveNextFailedHtml {
+        public static string HID_MoveNextFailedHtml {
             get {
                 return ResourceManager.GetString("HID_MoveNextFailedHtml", resourceCulture);
             }
@@ -458,7 +458,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to You cannot navigate to the previous page at this time. Click Continue to return to the current page..
         /// </summary>
-        internal static string HID_MovePreviousFailedHtml {
+        public static string HID_MovePreviousFailedHtml {
             get {
                 return ResourceManager.GetString("HID_MovePreviousFailedHtml", resourceCulture);
             }
@@ -467,7 +467,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to You cannot navigate to the selected page at this time. Click Continue to return to the current page..
         /// </summary>
-        internal static string HID_MoveToActivityFailedHtml {
+        public static string HID_MoveToActivityFailedHtml {
             get {
                 return ResourceManager.GetString("HID_MoveToActivityFailedHtml", resourceCulture);
             }
@@ -476,7 +476,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Continue.
         /// </summary>
-        internal static string HID_ReloadCurrentContent {
+        public static string HID_ReloadCurrentContent {
             get {
                 return ResourceManager.GetString("HID_ReloadCurrentContent", resourceCulture);
             }
@@ -485,7 +485,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Please select an activity to continue with the training..
         /// </summary>
-        internal static string HID_SelectActivityMsgHtml {
+        public static string HID_SelectActivityMsgHtml {
             get {
                 return ResourceManager.GetString("HID_SelectActivityMsgHtml", resourceCulture);
             }
@@ -494,7 +494,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Select an activity.
         /// </summary>
-        internal static string HID_SelectActivityTitleHtml {
+        public static string HID_SelectActivityTitleHtml {
             get {
                 return ResourceManager.GetString("HID_SelectActivityTitleHtml", resourceCulture);
             }
@@ -503,7 +503,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Processing Error.
         /// </summary>
-        internal static string HID_ServerErrorTitle {
+        public static string HID_ServerErrorTitle {
             get {
                 return ResourceManager.GetString("HID_ServerErrorTitle", resourceCulture);
             }
@@ -512,7 +512,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Training Abandoned.
         /// </summary>
-        internal static string HID_SessionAbandonedTitle {
+        public static string HID_SessionAbandonedTitle {
             get {
                 return ResourceManager.GetString("HID_SessionAbandonedTitle", resourceCulture);
             }
@@ -521,7 +521,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Training Completed.
         /// </summary>
-        internal static string HID_SessionCompletedTitle {
+        public static string HID_SessionCompletedTitle {
             get {
                 return ResourceManager.GetString("HID_SessionCompletedTitle", resourceCulture);
             }
@@ -530,7 +530,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Training Suspended.
         /// </summary>
-        internal static string HID_SessionSuspendedTitle {
+        public static string HID_SessionSuspendedTitle {
             get {
                 return ResourceManager.GetString("HID_SessionSuspendedTitle", resourceCulture);
             }
@@ -540,7 +540,7 @@ namespace DotNetSCORM.LearningAPI {
         ///   Looks up a localized string similar to Could not set one or more values as requested. &lt;br&gt;&lt;br&gt;
         ///    More information: .
         /// </summary>
-        internal static string HID_SetValueMappingFailedHtml {
+        public static string HID_SetValueMappingFailedHtml {
             get {
                 return ResourceManager.GetString("HID_SetValueMappingFailedHtml", resourceCulture);
             }
@@ -549,7 +549,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Data posted about the data model was invalid..
         /// </summary>
-        internal static string HID_SetValuePostedDataInvalid {
+        public static string HID_SetValuePostedDataInvalid {
             get {
                 return ResourceManager.GetString("HID_SetValuePostedDataInvalid", resourceCulture);
             }
@@ -561,7 +561,7 @@ namespace DotNetSCORM.LearningAPI {
         ///        If you are not ready to submit the assignment, you can finish the assignment or close this window. Your work is already saved.
         ///        .
         /// </summary>
-        internal static string HID_SubmitAttemptMessageHtml {
+        public static string HID_SubmitAttemptMessageHtml {
             get {
                 return ResourceManager.GetString("HID_SubmitAttemptMessageHtml", resourceCulture);
             }
@@ -571,7 +571,7 @@ namespace DotNetSCORM.LearningAPI {
         ///   Looks up a localized string similar to Submit this Assignment?
         ///        .
         /// </summary>
-        internal static string HID_SubmitAttemptTitleHtml {
+        public static string HID_SubmitAttemptTitleHtml {
             get {
                 return ResourceManager.GetString("HID_SubmitAttemptTitleHtml", resourceCulture);
             }
@@ -580,7 +580,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
-        internal static string HID_SubmitLink {
+        public static string HID_SubmitLink {
             get {
                 return ResourceManager.GetString("HID_SubmitLink", resourceCulture);
             }
@@ -592,7 +592,7 @@ namespace DotNetSCORM.LearningAPI {
         ///        If you are not ready to submit the training, click &lt;b&gt;Cancel&lt;/b&gt; to return to the previous page.
         ///        .
         /// </summary>
-        internal static string HID_SubmitPageMessageHtml {
+        public static string HID_SubmitPageMessageHtml {
             get {
                 return ResourceManager.GetString("HID_SubmitPageMessageHtml", resourceCulture);
             }
@@ -604,7 +604,7 @@ namespace DotNetSCORM.LearningAPI {
         ///        If you are not ready to submit the training, select an activity to continue the training.
         ///        .
         /// </summary>
-        internal static string HID_SubmitPageMessageNoCurrentActivityHtml {
+        public static string HID_SubmitPageMessageNoCurrentActivityHtml {
             get {
                 return ResourceManager.GetString("HID_SubmitPageMessageNoCurrentActivityHtml", resourceCulture);
             }
@@ -613,7 +613,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Submit this Training?.
         /// </summary>
-        internal static string HID_SubmitPageTitleHtml {
+        public static string HID_SubmitPageTitleHtml {
             get {
                 return ResourceManager.GetString("HID_SubmitPageTitleHtml", resourceCulture);
             }
@@ -623,7 +623,7 @@ namespace DotNetSCORM.LearningAPI {
         ///   Looks up a localized string similar to There was a problem processing a request from this page. Try selecting a different page.
         ///    More information: {0}.
         /// </summary>
-        internal static string HID_TerminateFailed {
+        public static string HID_TerminateFailed {
             get {
                 return ResourceManager.GetString("HID_TerminateFailed", resourceCulture);
             }
@@ -632,7 +632,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Show Contents.
         /// </summary>
-        internal static string NAV_MaximizeTitle {
+        public static string NAV_MaximizeTitle {
             get {
                 return ResourceManager.GetString("NAV_MaximizeTitle", resourceCulture);
             }
@@ -641,7 +641,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Hide Contents.
         /// </summary>
-        internal static string NAV_MinimizeTitle {
+        public static string NAV_MinimizeTitle {
             get {
                 return ResourceManager.GetString("NAV_MinimizeTitle", resourceCulture);
             }
@@ -650,7 +650,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
-        internal static string NAV_NextTitle {
+        public static string NAV_NextTitle {
             get {
                 return ResourceManager.GetString("NAV_NextTitle", resourceCulture);
             }
@@ -659,7 +659,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Previous.
         /// </summary>
-        internal static string NAV_PrevTitle {
+        public static string NAV_PrevTitle {
             get {
                 return ResourceManager.GetString("NAV_PrevTitle", resourceCulture);
             }
@@ -668,7 +668,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
-        internal static string NAV_SaveTitle {
+        public static string NAV_SaveTitle {
             get {
                 return ResourceManager.GetString("NAV_SaveTitle", resourceCulture);
             }
@@ -677,7 +677,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string POST_ContinueHtml {
+        public static string POST_ContinueHtml {
             get {
                 return ResourceManager.GetString("POST_ContinueHtml", resourceCulture);
             }
@@ -686,7 +686,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
-        internal static string POST_SubmitHtml {
+        public static string POST_SubmitHtml {
             get {
                 return ResourceManager.GetString("POST_SubmitHtml", resourceCulture);
             }
@@ -695,7 +695,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to The browser has cached an old version of files required for this page. Please refresh your browser..
         /// </summary>
-        internal static string TOC_InvalidJsVersion {
+        public static string TOC_InvalidJsVersion {
             get {
                 return ResourceManager.GetString("TOC_InvalidJsVersion", resourceCulture);
             }
@@ -704,7 +704,7 @@ namespace DotNetSCORM.LearningAPI {
         /// <summary>
         ///   Looks up a localized string similar to Submit Training.
         /// </summary>
-        internal static string TOC_SubmitAttempt {
+        public static string TOC_SubmitAttempt {
             get {
                 return ResourceManager.GetString("TOC_SubmitAttempt", resourceCulture);
             }
