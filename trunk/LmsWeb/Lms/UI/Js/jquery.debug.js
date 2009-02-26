@@ -30,16 +30,30 @@ var DEBUG = true;
 		return this
 	};
 	$.log = $.fn.log = function() {
-		if (DEBUG)
-			if ("console" in window && 'firebug' in console)
-			console.debug.apply('', arguments);
-		else
+		if (DEBUG) {
+			if ("console" in window) {
+				if ('firebug' in console) {
+					console.debug.apply('', arguments);
+				} else if('log' in console){
+					console.log($.map(arguments, function(o, i) {
+						return jsO(o, true)
+					}).join(' '));
+				}
+			}
+		} else
 			debug($.map(arguments, function(o, i) {
 				return jsO(o, true)
 			}).join(' '));
 		return this
 	};
-	if (!(("console" in window) && (("open" in console) || ("firebug" in console)))) {
+	if (!(
+			("console" in window)
+			&& (
+				("open" in console)
+				|| ("firebug" in console)
+				|| ("log" in console)
+			)
+		)) {
 		window.console =
 		{ timer: {}
 		, time: function(timer) { console.timer[timer] = new Date() }

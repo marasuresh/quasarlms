@@ -149,7 +149,7 @@ function FramesetManager()
     // FOR CHECKED-IN CODE, this should always be assigned to NoOp
     this.m_log = new Log();
     //this.DebugLog = FM_DebugLog;
-    this.DebugLog = FM_NoOp;
+    this.DebugLog = FM_NoOp;	
 }
 
 function FM_NoOp()
