@@ -10,7 +10,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-   <LINK rel="stylesheet" type="text/css" href="./Theme/Styles.css"></LINK>
+   <link rel="stylesheet" type="text/css" href="./Theme/Styles.css" />
 </head>
 <body class="BottomBody">
 </body>
