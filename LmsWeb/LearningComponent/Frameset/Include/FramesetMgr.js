@@ -176,41 +176,35 @@ function FM_SetPostFrame(frameName)
     this.m_postFrameName = frameName;
 }
 
-// Register that the frame has loaded. 
-function FM_RegisterFrameLoad(frameName)
-{
-    this.m_framesRegistered[frameName] = true;
-    if (AllFramesRegistered(this.m_framesRegistered))
-    {           
-        // If the training has been completed, then disable UI controls and show the message to the user.
-        if (this.IsTrainingComplete())
-        {
-            HideUIControls();
-            this.ShowErrorMessage( this.m_contentFrameErrorTitle, this.m_contentFrameErrorMessage, true );
-        }
-        else
-        {
-            // Register for ready state changes in content frame
-            this.RegisterReadyStateChange();
-            
-            // Update all the ui controls
-            UpdateNavVisibility(this.m_showNext, this.m_showPrevious, this.m_showAbandon, this.m_showExit, this.m_showSave);
-            UpdateTitle(this.m_title);
-            this.ShowActivityId( this.m_activityId );    // tell TOC about the activity
-            
-            // If there was an error in server processing, don't render content frame. Instead, show error message.
-            if (this.m_contentFrameErrorMessage != null)
-            {
-                this.ShowErrorMessage( this.m_contentFrameErrorTitle, this.m_contentFrameErrorMessage, this.m_contentFrameErrorAsInfo );
-            }
-            else
-            {   
-                LoadContentFrame( this.m_contentFrameUrl );
-            }
-        }
-        // Show the ui controls
-        this.MakeFramesVisible();
-    }
+// Register that the frame has loaded.
+function FM_RegisterFrameLoad(frameName) {
+	this.m_framesRegistered[frameName] = true;
+	if (AllFramesRegistered(this.m_framesRegistered)) {
+		// If the training has been completed, then disable UI controls and show the message to the user.
+		if (this.IsTrainingComplete()) {
+			HideUIControls();
+			this.ShowErrorMessage(this.m_contentFrameErrorTitle, this.m_contentFrameErrorMessage, true);
+		}
+		else {
+			// Register for ready state changes in content frame
+			this.RegisterReadyStateChange();
+
+			// Update all the ui controls
+			UpdateNavVisibility(this.m_showNext, this.m_showPrevious, this.m_showAbandon, this.m_showExit, this.m_showSave);
+			UpdateTitle(this.m_title);
+			this.ShowActivityId(this.m_activityId);    // tell TOC about the activity
+
+			// If there was an error in server processing, don't render content frame. Instead, show error message.
+			if (this.m_contentFrameErrorMessage != null) {
+				this.ShowErrorMessage(this.m_contentFrameErrorTitle, this.m_contentFrameErrorMessage, this.m_contentFrameErrorAsInfo);
+			}
+			else {
+				LoadContentFrame(this.m_contentFrameUrl);
+			}
+		}
+		// Show the ui controls
+		this.MakeFramesVisible();
+	}
 }
 
 
@@ -320,15 +314,16 @@ function GetNavFrame( navFrameName )
 
 function GetHiddenFrame()
 {
-	return window.top.frames[MAIN_FRAME].document.getElementById(HIDDEN_FRAME);    
+	return window.top.frames[MAIN_FRAME].document.getElementById(HIDDEN_FRAME);
+	//return $('frame#' + MAIN_FRAME +' #' + HIDDEN_FRAME, window.top).get(0);    
 }
 
 // Set all values in the various frames and then make them visible.
 function FM_MakeFramesVisible()
 {
     // Make title and toc visible
-    GetTitleDoc().getElementById("txtTitle").style.display = "block";
-    GetTocDoc().getElementById("divMain").style.visibility = "visible";
+	$("#txtTitle", GetTitleDoc()).show();
+	$("#divMain", GetTocDoc()).css('visibility', 'visible');
 }
 
 // Save the value to set the title string to. Later, call UpdateTitle to change the contents of the frame.
@@ -341,7 +336,7 @@ function FM_SetTitle(title)
 function UpdateTitle(title)
 {
     var titleDoc = GetTitleDoc();
-    titleDoc.getElementById("txtTitle").innerHTML = title;
+    $("#txtTitle", titleDoc).html(title);
 }
 
 // Returns true if the frameset is closing.
@@ -671,7 +666,7 @@ function FM_DoPost( bIsRetry )
     {
         try
         {
-        	form = window.top.frames[MAIN_FRAME].document.getElementById(this.m_postFrameName).contentWindow.document.forms[0];
+        	form = $('#'+this.m_postFrameName + ' form', window.top.frames[MAIN_FRAME]).get(0);
         }
         catch (e) { 
             // do nothing
@@ -780,8 +775,8 @@ function FM_PostIsComplete()
 
 // Set the hidden control with the specified 'ctrlName' to have the 'ctrlValue'. 
 // If the control doesn't already exist in the form, create it.
-function SetHiddenControl( form, ctrlName, ctrlValue )
-{
+function SetHiddenControl(form, ctrlName, ctrlValue) {
+	g_frameMgr.DebugLog(">>> SetHiddenControl: " + ctrlName + ' = ' + ctrlValue);
     var ctrl = form[ ctrlName ];
     if ( ctrl == null )
     {

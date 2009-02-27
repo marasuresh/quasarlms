@@ -15,6 +15,7 @@ using Microsoft.LearningComponents.Storage;
 
 namespace Microsoft.LearningComponents.Frameset
 {
+	#region Delegates
 	/// <summary>
 	/// Delegate to return previously registered error information.
 	/// </summary>
@@ -47,18 +48,17 @@ namespace Microsoft.LearningComponents.Frameset
 	/// <remarks>This method is not called if the current activity entry point is an absolute url.</remarks>
 	public delegate void AppendContentFrameDetails(LearningSession session, StringBuilder contentFrameUrl);
 
+	#endregion Delegates
+
 	/// <summary>
 	/// Code used to assist in rendering and processing the hidden frame. This code is shared between SLK and BWP framesets.
 	/// </summary>
 	public class HiddenHelper : PostableFrameHelper
 	{
-		Collection<HiddenControlInfo> m_hiddenControlInfos;
 		bool m_pageLoadSuccessful;  // set to true if doPageLoad completed without exception
 
 		private IsNavValidResponseData m_isNavValidResponse;    // information about Is*Valid request
-
-		private bool m_loadContentFrame;    // If true, the command is written to load the content frame with a new URL
-
+		
 		// If true, the page is being rendered for the first time, as part of frameset.
 		private bool m_isFramesetInitialization;
 
@@ -485,7 +485,7 @@ namespace Microsoft.LearningComponents.Frameset
 					scope.Complete();
 				}
 
-				InitHiddenControlInfo();
+				this.HiddenControls = this.GetHiddenControlInfo();
 
 				m_pageLoadSuccessful = true;
 			} catch (ThreadAbortException) {
@@ -500,218 +500,207 @@ namespace Microsoft.LearningComponents.Frameset
 		/// <summary>
 		/// Gets the list of hidden controls that will be rendered on the page.
 		/// </summary>
-		public Collection<HiddenControlInfo> HiddenControls
-		{
-			get
-			{
-				if (m_hiddenControlInfos == null)
-					m_hiddenControlInfos = new Collection<HiddenControlInfo>(new List<HiddenControlInfo>(50));
-
-				return m_hiddenControlInfos;
-			}
-		}
+		IEnumerable<HiddenControlInfo> HiddenControls { get; set; }
 
 		/// <summary>
 		/// Initialize information for the hidden controls. This sets up the information to create hidden fields in the form
 		/// and to update the framesetMgr on page load.
 		/// </summary>
 		[SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]   // it's not worth changing this now
-		private void InitHiddenControlInfo()
+		IEnumerable<HiddenControlInfo> GetHiddenControlInfo()
 		{
-			HiddenControlInfo hiddenCtrlInfo;
-			Collection<HiddenControlInfo> hiddenControlInfos = HiddenControls;
-			StringBuilder sb;
+			var hiddenControlInfos = new List<HiddenControlInfo>();
 
 			// If the session is attempt-based, then write attempt information
 			if (Session != null) {
-				hiddenCtrlInfo = new HiddenControlInfo();
-				hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.AttemptId);
-				hiddenCtrlInfo.Value = new PlainTextString(FramesetUtil.GetString(Session.AttemptId));
-				hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.FormatInvariant("frameMgr.SetAttemptId(document.getElementById({0}).value);",
-					JScriptString.QuoteString(HiddenFieldNames.AttemptId, false)));
-				hiddenControlInfos.Add(hiddenCtrlInfo);
+				hiddenControlInfos.Add(new HiddenControlInfo {
+					Id = HiddenFieldNames.AttemptId,
+					Value = FramesetUtil.GetString(Session.AttemptId),
+					FrameManagerInitializationScript = @"
+frameMgr.SetAttemptId({0});",
+				});
 			}
 
 			// If the session has ended (that is, is suspended, completed or abandoned), then just 
 			// tell the framesetmgr and return. Nothing else is required on the client.
 			if (SessionIsEnded) {
-				hiddenCtrlInfo = new HiddenControlInfo();
-				hiddenCtrlInfo.Id = null;    // no data to save
-				hiddenCtrlInfo.Value = null;
-				hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.Format("frameMgr.TrainingComplete({0}, {1});",
-						JScriptString.QuoteString(m_sessionEndedMsgTitle, false),
-						JScriptString.QuoteString(m_sessionEndedMsg, false)));
-				hiddenControlInfos.Add(hiddenCtrlInfo);
-				return;
+				hiddenControlInfos.Add(new HiddenControlInfo {
+					FrameManagerInitializationScript =
+						new JScriptString(ResHelper.Format(@"
+frameMgr.TrainingComplete({0}, {1});",
+								JScriptString.QuoteString(m_sessionEndedMsgTitle, false),
+								JScriptString.QuoteString(m_sessionEndedMsg, false))),
+				});
+				return hiddenControlInfos;
 			}
 
 			// Write view to display. 
-			hiddenCtrlInfo = new HiddenControlInfo();
-			hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.View);
-			hiddenCtrlInfo.Value = new PlainTextString(FramesetUtil.GetString(Session.View));
-			hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.FormatInvariant("frameMgr.SetView(document.getElementById({0}).value);",
-					JScriptString.QuoteString(HiddenFieldNames.View, false)));
-			hiddenControlInfos.Add(hiddenCtrlInfo);
+			hiddenControlInfos.Add(new HiddenControlInfo {
+				Id = HiddenFieldNames.View,
+				Value = FramesetUtil.GetString(Session.View),
+				FrameManagerInitializationScript = @"
+frameMgr.SetView({0});",
+			});
 
 			// Write frame and form to post. They depend on whether this is LRM content or SCORM content. If the submit 
 			// page is being displayed, it is always this hidden frame that is posted.
-			PlainTextString frameName;
-			JScriptString postableFormScript;
-
-			hiddenCtrlInfo = new HiddenControlInfo();
-			hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.PostFrame);
+			
 			// Post the content frame on the next post if LRM content is being displayed.
-			if (!m_saveOnly && !SubmitPageDisplayed && !HasError
-					&& (Session.HasCurrentActivity && (Session.CurrentActivityResourceType == ResourceType.Lrm))) {
-				frameName = new PlainTextString("frameContent");
-				postableFormScript = new JScriptString("frameMgr.SetPostableForm(GetContentFrame().contentWindow.document.forms[0]);");
-			} else {
-				// Post hidden frame if there is no current activity, if the current activity is not LRM content, or 
-				// if there is an error being displayed. This may happen if the current 
-				// activity was exited or suspended and a new activity was not automagically determined.
-				frameName = new PlainTextString("frameHidden");
-				postableFormScript = new JScriptString("frameMgr.SetPostableForm(document.forms[0]);");
-			}
-			hiddenCtrlInfo.Value = frameName;
-			hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.FormatInvariant("frameMgr.SetPostFrame(document.getElementById({0}).value);",
-					JScriptString.QuoteString(HiddenFieldNames.PostFrame, false)));
-			hiddenControlInfos.Add(hiddenCtrlInfo);
+			// -OR-
+			// Post hidden frame if there is no current activity, if the current activity is not LRM content, or 
+			// if there is an error being displayed. This may happen if the current 
+			// activity was exited or suspended and a new activity was not automagically determined.
+			var _condition =
+				!m_saveOnly
+				&& !SubmitPageDisplayed
+				&& !HasError
+				&& (Session.HasCurrentActivity
+					&& (Session.CurrentActivityResourceType == ResourceType.Lrm));
+			
+			hiddenControlInfos.Add(new HiddenControlInfo {
+				Id = HiddenFieldNames.PostFrame,
+				Value = _condition ? "frameContent" : "frameHidden",
+				FrameManagerInitializationScript = @"
+frameMgr.SetPostFrame({0});",
+			});
 
 			// Set postable form. 
-			hiddenCtrlInfo = new HiddenControlInfo();
-			hiddenCtrlInfo.FrameManagerInitializationScript = postableFormScript;
-			hiddenControlInfos.Add(hiddenCtrlInfo);
+			hiddenControlInfos.Add(new HiddenControlInfo {
+				FrameManagerInitializationScript =
+					ResHelper.Format(@"
+frameMgr.SetPostableForm({0});",
+						_condition
+							? "GetContentFrame().contentWindow.document.forms[0]"
+							: "$('form').get(0)"),
+			});
 
 			// If a new activity has been identified, then instruct frameMgr to reinitialize the RTE. 
 			// BE CAREFUL to do this before setting any other data related to the rte! 
 			if (ActivityHasChanged && !SubmitPageDisplayed) {
-				hiddenCtrlInfo = new HiddenControlInfo();
-				hiddenCtrlInfo.Id = null;   // No need to save data. Just write the script command
-				hiddenCtrlInfo.Value = null;
-				string initNewActivity = "false";
-				if (Session.HasCurrentActivity) {
-					initNewActivity = (CurrentActivityRequiresRte ? "true" : "false");
-				}
-				hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.FormatInvariant("frameMgr.InitNewActivity( {0} );", initNewActivity));
-				hiddenControlInfos.Add(hiddenCtrlInfo);
+				hiddenControlInfos.Add(new HiddenControlInfo {
+					FrameManagerInitializationScript =
+						ResHelper.FormatInvariant(@"
+frameMgr.InitNewActivity( {0} );",
+								(Session.HasCurrentActivity
+								&& CurrentActivityRequiresRte)
+									.ToString().ToLower()),
+				});
 			}
 
+			var _strCurrentActivityId =
+				FramesetUtil.GetStringInvariant(Session.CurrentActivityId);
+			
 			// Write the current activity Id if it has changed. 
 			// Write "SUBMIT" if the submit page is being shown. Otherwise, write -1 if there isn't a current activity.
-			hiddenCtrlInfo = new HiddenControlInfo();
-			hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.ActivityId);
-			PlainTextString setValue;      // the value to set in the frameMgr for the current activity id.
-			if (SubmitPageDisplayed) {
-				setValue = new PlainTextString(SubmitId);
-			} else {
-				// Only set the actual activity id if this is the first rendering or if it has changed in this rendering,
-				// and if there is a current activity.
-				if (m_isFramesetInitialization || ActivityHasChanged) {
-					setValue = new PlainTextString(Session.HasCurrentActivity ? FramesetUtil.GetStringInvariant(Session.CurrentActivityId) : "-1");
-				} else {
-					setValue = new PlainTextString("-1");
-				}
-			}
-			// The value of the field is always the current activity id. The value the frameMgr gets is the value of the TOC element.
-			hiddenCtrlInfo.Value = new PlainTextString(Session.HasCurrentActivity ? FramesetUtil.GetStringInvariant(Session.CurrentActivityId) : "-1");
-			hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.FormatInvariant("frameMgr.SetActivityId({0});",
-					JScriptString.QuoteString(setValue, false)));
-			hiddenControlInfos.Add(hiddenCtrlInfo);
+			hiddenControlInfos.Add(new HiddenControlInfo {
+				Id = HiddenFieldNames.ActivityId,
+				
+				// The value of the field is always the current activity id. The value the frameMgr gets is the value of the TOC element.
+				Value = Session.HasCurrentActivity
+						? _strCurrentActivityId
+						: "-1",
+				
+				FrameManagerInitializationScript =
+					ResHelper.FormatInvariant(@"
+frameMgr.SetActivityId({0});",
+						// the value to set in the frameMgr for the current activity id.
+						JScriptString.QuoteString(
+							SubmitPageDisplayed
+								? SubmitId
+							// Only set the actual activity id if this is the first rendering or if it has changed in this rendering,
+							// and if there is a current activity.
+								: (m_isFramesetInitialization || ActivityHasChanged)
+								&& Session.HasCurrentActivity
+									? _strCurrentActivityId
+									: "-1", false)),
+			});
 
 			// Write the navigation control state. Format of the control state is a series of T (to show) or F (to hide)
 			// values, separated by semi-colons. The order of controls is: 
 			// showNext, showPrevious, showAbandon, showExit, showSave
-			hiddenCtrlInfo = new HiddenControlInfo();
+			var _flags = new[] {
+				Session.ShowNext,
+				Session.ShowPrevious,
+				Session.ShowAbandon,
+				Session.ShowExit,
+				Session.ShowSave,
+			};
+			
+			hiddenControlInfos.Add(new HiddenControlInfo {
 			// Issue: What is the hidden field used for? 
-			hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.ShowUI);
-			sb = new StringBuilder(10);
-			sb.Append((Session.ShowNext) ? "T" : "F");
-			sb.Append(";");
-			sb.Append((Session.ShowPrevious) ? "T" : "F");
-			sb.Append(";");
-			sb.Append((Session.ShowAbandon) ? "T" : "F");
-			sb.Append(";");
-			sb.Append((Session.ShowExit) ? "T" : "F");
-			sb.Append(";");
-			sb.Append((Session.ShowSave) ? "T" : "F");
-			sb.Append(";");
-			hiddenCtrlInfo.Value = new PlainTextString(sb.ToString());
-			sb = new StringBuilder(1000);
-			sb.Append("");
-			if (SubmitPageDisplayed) {
-				// If the submit page is being displayed, don't show UI elements
-				sb.Append(ResHelper.FormatInvariant("frameMgr.SetNavVisibility( {0}, {1}, {2}, {3}, {4});",
-				("false"),  // showNext
-				("false"),  // showPrevious
-				("false"),  // showAbandon
-				("false"),  // showExit
-				("false")  // showSave
-				));
-			} else {
-				sb.Append(ResHelper.FormatInvariant("frameMgr.SetNavVisibility( {0}, {1}, {2}, {3}, {4});",
-				(Session.ShowNext ? "true" : "false"),
-				(Session.ShowPrevious ? "true" : "false"),
-				(Session.ShowAbandon ? "true" : "false"),
-				(Session.ShowExit ? "true" : "false"),
-				(Session.ShowSave ? "true" : "false")));
-			}
-			hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(sb.ToString());
-			hiddenControlInfos.Add(hiddenCtrlInfo);
+				Id = HiddenFieldNames.ShowUI,
+				
+				Value = string.Join(string.Empty,
+						Array.ConvertAll<bool, string>(_flags,
+							_flag => _flag.ToString()[0] + ";"
+							)),
+			
+				FrameManagerInitializationScript =
+					ResHelper.FormatInvariant(@"
+frameMgr.SetNavVisibility( {0}, {1}, {2}, {3}, {4});",
+						Array.ConvertAll<bool, string>(_flags,
+					// If the submit page is being displayed, don't show UI elements
+							_flag => (!this.SubmitPageDisplayed && _flag).ToString().ToLower()
+							)),
+			});
 
 			// If there was an error, write it to the client. Note that if the submit page is being rendered, this code 
 			// will execute, as it appears in the same form as an error message.
 			if (!String.IsNullOrEmpty(ErrorMessage)) {
-				hiddenCtrlInfo = new HiddenControlInfo();
-				hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.ErrorMessage);
-				hiddenCtrlInfo.Value = ErrorMessage;
-				if (String.IsNullOrEmpty(ErrorTitle)) {
-					hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.Format("frameMgr.SetErrorMessage(document.getElementById({0}).value);",
-						JScriptString.QuoteString(HiddenFieldNames.ErrorMessage, false)));
-				} else {
-					hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.Format("frameMgr.SetErrorMessage(document.getElementById({0}).value, {1}, {2});",
-						JScriptString.QuoteString(HiddenFieldNames.ErrorMessage, false),
-						JScriptString.QuoteString(ErrorTitle, false),
-						ErrorAsInfo ? "true" : "false"));
-				}
-				hiddenControlInfos.Add(hiddenCtrlInfo);
+				hiddenControlInfos.Add(new HiddenControlInfo {
+					Id = HiddenFieldNames.ErrorMessage,
+					Value = ErrorMessage,
+					FrameManagerInitializationScript =
+						ResHelper.Format(@"
+frameMgr.SetErrorMessage($({0}).val()"
+								+ (string.IsNullOrEmpty(ErrorTitle)
+									? ");"
+									: ", {1}, {2});"),
+								JScriptString.QuoteString(
+									"#"+HiddenFieldNames.ErrorMessage,
+									false),
+								JScriptString.QuoteString(ErrorTitle, false),
+								ErrorAsInfo.ToString().ToLower()),
+				});
 			}
 
 			// If this is the first time rendering the frameset, need to write initialization information.
 			if (m_isFramesetInitialization) {
-				hiddenCtrlInfo = new HiddenControlInfo();
-				hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.Title);
-				hiddenCtrlInfo.Value = GetSessionTitle(Session).ToHtmlString().ToString();
-				hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.Format("frameMgr.SetTitle(document.getElementById({0}).value);",
-					JScriptString.QuoteString(HiddenFieldNames.Title, false)));
-				hiddenControlInfos.Add(hiddenCtrlInfo);
+				hiddenControlInfos.Add(new HiddenControlInfo {
+					Id = HiddenFieldNames.Title,
+					Value = GetSessionTitle(Session).ToHtmlString().ToString(),
+					FrameManagerInitializationScript = @"
+frameMgr.SetTitle({0});",
+				});
 			} else {
 				// Only update the toc when this is not the first rendering of the frameset. (The first time, the toc page itself
 				// will get it correct.
-				hiddenCtrlInfo = new HiddenControlInfo();
-				hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.TocState);
-				hiddenCtrlInfo.Value = new PlainTextString(GetTocStates());
-				hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.FormatInvariant("frameMgr.SetTocNodes(document.getElementById({0}).value);",
-						JScriptString.QuoteString(HiddenFieldNames.TocState, false)));
-				hiddenControlInfos.Add(hiddenCtrlInfo);
+				hiddenControlInfos.Add(new HiddenControlInfo {
+					Id = HiddenFieldNames.TocState,
+					Value = this.GetTocStates(),
+					FrameManagerInitializationScript = @"
+frameMgr.SetTocNodes({0});",
+				});
 			}
+			
+			var _contentFrameUrl =
+					new UrlString(
+					// If we need to load the content frame because the current activity changed, or we need to render the content 
+					// frame URL because there was an error, then figure out the content frame URL.
+						(LoadContentFrame || HasError)
+						// The activity has changed, so find the new Url for the content frame. 
+						&& Session.HasCurrentActivity
+							? GetContentFrameUrl()
+							: string.Empty
+					).ToAscii();
 
 			// Write content href value (value to GET into content frame) -- only if it's required
-			hiddenCtrlInfo = new HiddenControlInfo();
-			hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.ContentHref);
-			sb = new StringBuilder(4096);
-
-			// If we need to load the content frame because the current activity changed, or we need to render the content 
-			// frame URL because there was an error, then figure out the content frame URL.
-
-			if (LoadContentFrame || HasError) {
-				// The activity has changed, so find the new Url for the content frame. 
-				if (Session.HasCurrentActivity)
-					sb.Append(GetContentFrameUrl());
-			}
-			hiddenCtrlInfo.Value = new PlainTextString(new UrlString(sb.ToString()).ToAscii());
-			hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.Format("frameMgr.SetContentFrameUrl(document.getElementById({0}).value);",
-			JScriptString.QuoteString(HiddenFieldNames.ContentHref, false)));
-			hiddenControlInfos.Add(hiddenCtrlInfo);
+			hiddenControlInfos.Add(new HiddenControlInfo {
+				Id = HiddenFieldNames.ContentHref,
+				Value = _contentFrameUrl,
+				FrameManagerInitializationScript = @"
+frameMgr.SetContentFrameUrl({0});",
+			});
 
 			// Write the data model information, only if the current activity requires it.
 			if (!SubmitPageDisplayed && CurrentActivityRequiresRte) {
@@ -720,52 +709,56 @@ namespace Microsoft.LearningComponents.Frameset
 
 				DataModelValues dmValues = converter.GetDataModelValues(FormatDataModelValueForClient);
 
-				hiddenCtrlInfo = new HiddenControlInfo();
-				hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.ObjectiveIdMap);
-				hiddenCtrlInfo.Value = dmValues.ObjectiveIdMap;
-				hiddenCtrlInfo.FrameManagerInitializationScript = null;
-				hiddenControlInfos.Add(hiddenCtrlInfo);
+				hiddenControlInfos.Add(new HiddenControlInfo {
+					Id = HiddenFieldNames.ObjectiveIdMap,
+					Value = dmValues.ObjectiveIdMap,
+				});
 
-				hiddenCtrlInfo = new HiddenControlInfo();
-				hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.DataModel);
-				hiddenCtrlInfo.Value = dmValues.Values;
-				StringBuilder initCommand = new StringBuilder(1000);
-				initCommand.AppendLine(ResHelper.Format("var hidDM = document.getElementById({0});", JScriptString.QuoteString(HiddenFieldNames.DataModel, false)));
-				initCommand.AppendLine(ResHelper.Format("var hidObjectiveMap = document.getElementById({0});", JScriptString.QuoteString(HiddenFieldNames.ObjectiveIdMap, false)));
-				initCommand.Append("frameMgr.InitDataModelValues(hidDM.value, hidObjectiveMap.value);");
-				initCommand.AppendFormat("hidDM.value = {0};", JScriptString.QuoteString("", false));
-				initCommand.AppendFormat("hidObjectiveMap.value = {0};", JScriptString.QuoteString("", false));
-				hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(initCommand.ToString());
-				hiddenControlInfos.Add(hiddenCtrlInfo);
+				hiddenControlInfos.Add(new HiddenControlInfo {
+					Id = HiddenFieldNames.DataModel,
+					Value = dmValues.Values,
+					FrameManagerInitializationScript =
+						ResHelper.Format(@"
+var $hidDM = $({0});
+var $hidObjectiveMap = $({1});
+frameMgr.InitDataModelValues($hidDM.val(), $hidObjectiveMap.val());
+$hidDM.val('');
+$hidObjectiveMap.val('');",
+							JScriptString.QuoteString(
+								"#" + HiddenFieldNames.DataModel,
+								false),
+							JScriptString.QuoteString(
+								"#" + HiddenFieldNames.ObjectiveIdMap,
+								false)),
+				});
 			}
 
 			// If there was an IsMove*Valid request, send the response
 			if (m_isNavValidResponse != null) {
-				hiddenCtrlInfo = new HiddenControlInfo();
-				hiddenCtrlInfo.Id = new PlainTextString(HiddenFieldNames.IsNavigationValidResponse);
-				hiddenCtrlInfo.Value = m_isNavValidResponse.ClientFieldResponse;
-				hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString(ResHelper.FormatInvariant("frameMgr.SetIsNavigationValid(document.getElementById({0}).value);",
-					JScriptString.QuoteString(HiddenFieldNames.IsNavigationValidResponse, false)));
-				hiddenControlInfos.Add(hiddenCtrlInfo);
+				hiddenControlInfos.Add(new HiddenControlInfo {
+					Id = HiddenFieldNames.IsNavigationValidResponse,
+					Value = m_isNavValidResponse.ClientFieldResponse,
+					FrameManagerInitializationScript = @"
+frameMgr.SetIsNavigationValid({0})",
+				});
 			}
 
 			if (m_isPostedPage) {
 				// Set PostIsComplete. THIS MUST BE THE LAST VALUE SET! 
-				hiddenCtrlInfo = new HiddenControlInfo();
-				hiddenCtrlInfo.FrameManagerInitializationScript = new JScriptString("frameMgr.PostIsComplete();");
-				hiddenControlInfos.Add(hiddenCtrlInfo);
+				hiddenControlInfos.Add(new HiddenControlInfo {
+					FrameManagerInitializationScript = @"
+frameMgr.PostIsComplete();",
+				});
 			}
-		}
 
+			return hiddenControlInfos;
+		}
 
 		/// <summary>
 		/// If true, the content frame needs to be reloaded.
+		/// If true, the command is written to load the content frame with a new URL
 		/// </summary>
-		private bool LoadContentFrame
-		{
-			get { return m_loadContentFrame; }
-			set { m_loadContentFrame = value; }
-		}
+		private bool LoadContentFrame { get; set; }
 
 		/// <summary>
 		/// This is a callback function for the RteConverter class. This method is called when a name / value pair 
@@ -965,13 +958,10 @@ namespace Microsoft.LearningComponents.Frameset
 				return;
 
 			HtmlStringWriter sw = new HtmlStringWriter(Response.Output);
-
-			foreach (HiddenControlInfo ctrlInfo in m_hiddenControlInfos) {
-				if ((ctrlInfo.Id != null) && (ctrlInfo.Value != null)) {
-					WriteHiddenControl(sw, ctrlInfo.Id, ctrlInfo.Value);
-					Response.Write("\r\n");
-				}
-			}
+			
+			new List<HiddenControlInfo>(this.HiddenControls)
+				.ForEach(_ctl => _ctl.WriteFieldTo(sw));
+			
 			sw.EndRender();
 		}
 
@@ -995,7 +985,8 @@ namespace Microsoft.LearningComponents.Frameset
 				if (!String.IsNullOrEmpty(ErrorMessage)) {
 					
 					var js = new JScriptString(
-						ResHelper.Format("frameMgr.SetErrorMessage({0});",
+						ResHelper.Format(@"
+frameMgr.SetErrorMessage({0});",
 						JScriptString.QuoteString(ErrorMessage, false)));
 					
 					_sb.AppendLine(js.ToString());
@@ -1003,21 +994,21 @@ namespace Microsoft.LearningComponents.Frameset
 
 				if (m_isPostedPage) {
 					// Clear any state waiting for additional information
-					var js = new JScriptString("frameMgr.WaitForContentCompleted(0);");
-					_sb.AppendLine(js.ToString());
+					_sb.AppendLine(new JScriptString(@"
+frameMgr.WaitForContentCompleted(0);").ToString());
 				}
 
 				return _sb.ToString();
 			}
-
-			foreach (HiddenControlInfo ctrlInfo in m_hiddenControlInfos) {
-				// Some cases do not have code to initialize frameMgr
-				if (ctrlInfo.FrameManagerInitializationScript != null) {
-					_sb.AppendLine(
-						ctrlInfo.FrameManagerInitializationScript.ToString());
-				}
-			}
-
+			
+			_sb.Append(
+				string.Join(string.Empty,
+					new List<HiddenControlInfo>(this.HiddenControls)
+						// Some cases do not have code to initialize frameMgr
+						.FindAll(_ctl => !string.IsNullOrEmpty(_ctl.FrameManagerInitializationScript))
+						.ConvertAll(_ctl => _ctl.FrameManagerInitializationScript.ToString())
+						.ToArray()));
+			
 			return _sb.ToString();
 		}
 
@@ -1038,27 +1029,13 @@ namespace Microsoft.LearningComponents.Frameset
 			}
 		}
 		#endregion  // called from aspx
-
-		/// <summary>
-		/// Write a hidden control to the string writer. The controlId shows up in id= and name= attributes. The 
-		/// value is the Value of the control.
-		/// </summary>
-		private static void WriteHiddenControl(HtmlStringWriter sw, PlainTextString controlId, PlainTextString value)
-		{
-			sw.AddAttribute(HtmlTextWriterAttribute.Type, new HtmlString("hidden"));
-			sw.AddAttribute(HtmlTextWriterAttribute.Id, controlId.ToHtmlString());
-			sw.AddAttribute(HtmlTextWriterAttribute.Name, controlId.ToHtmlString());
-			sw.AddAttribute(HtmlTextWriterAttribute.Value, value.ToHtmlString());
-			sw.RenderBeginTag(HtmlTextWriterTag.Input);
-			sw.RenderEndTag();
-		}
-
+		
 		// Small helper class to save information about the pending response to an IsMove*Valid request.
 		internal class IsNavValidResponseData
 		{
-			string m_command;
-			string m_commandData;
-			bool m_response;
+			readonly string m_command;
+			readonly string m_commandData;
+			readonly bool m_response;
 
 			public IsNavValidResponseData(string command, string commandData, bool response)
 			{
@@ -1091,35 +1068,65 @@ namespace Microsoft.LearningComponents.Frameset
 		}
 	}
 
-	public class HiddenControlInfo
+	class HiddenControlInfo
 	{
-		private PlainTextString m_id;
-		private PlainTextString m_value;
-		private JScriptString m_FrameManagerInitializationScript;
+		#region Properties
 
-		public HiddenControlInfo()
-		{
-		}
+		public string Id { private get; set; }
+		public string Value { private get; set; }
 
-		public PlainTextString Id
-		{
-			get { return m_id; }
-			set { m_id = value; }
-		}
-
-		public PlainTextString Value
-		{
-			get { return m_value; }
-			set { m_value = value; }
-		}
-
+		string m_js;
 		/// <summary>
 		/// Script to inject into the onload handler to initialize frameManager with this information.
 		/// </summary>
-		public JScriptString FrameManagerInitializationScript
-		{
-			get { return m_FrameManagerInitializationScript; }
-			set { m_FrameManagerInitializationScript = value; }
+		public string FrameManagerInitializationScript {
+			get {
+				return
+					string.Format(
+						this.m_js ?? string.Empty,
+						JScriptString.QuoteString(this.Value));
+			}
+			set { this.m_js = value; }
 		}
+
+		public string ExtractFieldValueExpression {
+			get {
+				return
+					string.IsNullOrEmpty(this.Id)
+						? ""
+						: "$('#" + this.Id + "').val()";
+			}
+		}
+
+		#endregion Properties
+
+		#region Methods
+
+		public void WriteFieldTo(HtmlStringWriter writer)
+		{
+			if(!string.IsNullOrEmpty(this.Id) && !string.IsNullOrEmpty(this.Value)) {
+				WriteHiddenControl(writer, this.Id, this.Value);
+				writer.WriteText("\r\n");
+			}
+		}
+
+		/// <summary>
+		/// Write a hidden control to the string writer. The controlId shows up in id= and name= attributes. The 
+		/// value is the Value of the control.
+		/// </summary>
+		static void WriteHiddenControl(
+			HtmlStringWriter sw,
+			PlainTextString controlId,
+			PlainTextString value)
+		{
+			sw.AddAttribute(HtmlTextWriterAttribute.Type, new HtmlString("hidden"));
+			sw.AddAttribute(HtmlTextWriterAttribute.Id, controlId.ToHtmlString());
+			sw.AddAttribute(HtmlTextWriterAttribute.Name, controlId.ToHtmlString());
+			sw.AddAttribute(HtmlTextWriterAttribute.Value, value.ToHtmlString());
+			sw.RenderBeginTag(HtmlTextWriterTag.Input);
+			sw.RenderEndTag();
+		}
+
+		#endregion Methods
 	}
 }
