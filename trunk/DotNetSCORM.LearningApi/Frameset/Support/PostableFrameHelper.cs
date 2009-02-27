@@ -232,45 +232,41 @@ namespace Microsoft.LearningComponents.Frameset
         /// resource may be relative or absolute.
         /// </summary>
         /// <returns>The url, in Ascii format, for the content frame.</returns>
-        [SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings"),    // the url is needed in string form
-        SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]    // this does too much work to be property
-        protected string GetContentFrameUrl()
-        {
-            StringBuilder sb = new StringBuilder(4096);
+		[SuppressMessage("Microsoft.Design", "CA1055:UriReturnValuesShouldNotBeStrings"),    // the url is needed in string form
+		SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]    // this does too much work to be property
+		protected string GetContentFrameUrl()
+		{
+			StringBuilder sb = new StringBuilder(4096);
 
-            Uri entryPoint = Session.CurrentActivityEntryPoint;
+			Uri entryPoint = Session.CurrentActivityEntryPoint;
 
-            if (entryPoint.IsAbsoluteUri)
-            {
-                sb.Append(new UrlString(entryPoint).ToAscii());
-            }
-            else
-            {
-                // In this case, the resource file is in the package, so just load the content frame referencing the attempt
-                // and view information, as appropriate.
+			if (entryPoint.IsAbsoluteUri) {
+				sb.Append(new UrlString(entryPoint).ToAscii());
+			} else {
+				// In this case, the resource file is in the package, so just load the content frame referencing the attempt
+				// and view information, as appropriate.
 
-                // The URL for attempt-based content frames in BWP is:
-                // http://<...basicWebApp>/Content.aspx/<view>/<attemptId>/otherdata/
-                // the otherdata depends on the view
-                sb.Append("Content.aspx");
-                AppendContentFrameDetails(Session, sb);
-                sb.Append("/");
+				// The URL for attempt-based content frames in BWP is:
+				// http://<...basicWebApp>/Content.aspx/<view>/<attemptId>/otherdata/
+				// the otherdata depends on the view
+				sb.Append("Content.aspx");
+				AppendContentFrameDetails(Session, sb);
+				sb.Append("/");
 
-                sb.Append(Session.CurrentActivityEntryPoint.OriginalString);
+				sb.Append(Session.CurrentActivityEntryPoint.OriginalString);
 
-                // If there were query parameters, append them
-                string parameters = Session.CurrentActivityResourceParameters;
-                if (!String.IsNullOrEmpty(parameters))
-                {
-                    // parameters is defined in SCORM as already being encoded
-                    if (!parameters.StartsWith("?", StringComparison.Ordinal))
-                        sb.Append("?");
-                    sb.Append(parameters);
-                }
-            }
+				// If there were query parameters, append them
+				string parameters = Session.CurrentActivityResourceParameters;
+				if (!String.IsNullOrEmpty(parameters)) {
+					// parameters is defined in SCORM as already being encoded
+					if (!parameters.StartsWith("?", StringComparison.Ordinal))
+						sb.Append("?");
+					sb.Append(parameters);
+				}
+			}
 
-            return sb.ToString();
-        }  
+			return sb.ToString();
+		}
 
         protected bool HasError
         {

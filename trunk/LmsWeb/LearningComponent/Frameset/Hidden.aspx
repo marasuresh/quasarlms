@@ -13,7 +13,8 @@
 		Register.JavaScript(this.Page, @"
 // Get frameset manager
 var frameMgr = API_GetFramesetManager();
-// Set data on frameset manager"
+// Set data on frameset manager
+"
 + this.GetFrameMgrInit()
 + @"
 // Register with framemanager that loading is complete
