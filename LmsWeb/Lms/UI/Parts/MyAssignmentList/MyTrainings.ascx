@@ -23,7 +23,7 @@
 	ID="dsRequests"
 	runat="server"
 	SelectMethod="FindApprovedRequests"
-	UpdateMethod="GoRequest"
+	UpdateMethod="SubmitTraining"
 	TypeName="N2.Lms.Items.MyAssignmentList"
 	onobjectcreating="ds_ObjectCreating">
 	<UpdateParameters>

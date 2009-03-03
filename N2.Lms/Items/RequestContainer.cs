@@ -4,6 +4,7 @@
 	using Installation;
 	using Integrity;
 	using Templates.Items;
+	using Workflow;
 
 	[Definition(
 		"Request Container",
@@ -21,6 +22,7 @@
 		{
 			this.Name = "requests";
 			this.Title = global::N2.Lms.Strings.RequestContainer_Title;
+			this.WofkflowProvider = N2.Context.Current.Resolve<IWorkflowProvider>();
 		}
 
 		#region System properties

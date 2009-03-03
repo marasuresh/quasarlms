@@ -44,7 +44,7 @@
 
 <asp:ObjectDataSource ID="dsRequests" runat="server" 
     SelectMethod="FindRequestsToApprove" 
-    UpdateMethod="GoRequest"
+    UpdateMethod="ApproveRequest"
     TypeName="N2.Lms.Items.MyAssignmentList" 
     OnObjectCreating="ds_ObjectCreating">
     <UpdateParameters>

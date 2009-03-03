@@ -52,7 +52,7 @@
 		ID="dsRequests"
 		runat="server"
 		SelectMethod="FindRequestsToGrade"
-		UpdateMethod="GoRequest"
+		UpdateMethod="GradeRequest"
 		TypeName="N2.Lms.Items.MyAssignmentList"
 		OnObjectCreating="ds_ObjectCreating">
 	

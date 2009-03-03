@@ -213,6 +213,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addons\Workflow\Edit\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Addons\Workflow\Edit\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Addons\Workflow\Edit\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Addons\Workflow\Edit\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\ChatGrand.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -251,26 +265,52 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyAssignmentList.resx</DependentUpon>
     </Compile>
-    <Compile Include="Workflow\Edit\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Workflow\Edit\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Workflow\Edit\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Workflow\Edit\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
     <Content Include="Lms\UI\Js\fixValidatorsInChrome.js" />
     <Content Include="Lms\UI\Parts\MyAssignmentList\App_LocalResources\MyRequests.ru.resx" />
     <Content Include="Lms\UI\Parts\Test.ascx" />
     <Content Include="Lms\UI\Parts\TestMultiPages.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Addons\Workflow\Edit\Default.aspx" />
+    <Content Include="Addons\Workflow\Edit\Edit.aspx" />
+    <Content Include="Addons\Workflow\UI\gfx\blue.png" />
+    <Content Include="Addons\Workflow\UI\gfx\cat.png" />
+    <Content Include="Addons\Workflow\UI\gfx\champagne.png" />
+    <Content Include="Addons\Workflow\UI\gfx\dog.png" />
+    <Content Include="Addons\Workflow\UI\gfx\duck.png" />
+    <Content Include="Addons\Workflow\UI\gfx\fish.png" />
+    <Content Include="Addons\Workflow\UI\gfx\green.png" />
+    <Content Include="Addons\Workflow\UI\gfx\jDrag.gif" />
+    <Content Include="Addons\Workflow\UI\gfx\jDropBut.gif" />
+    <Content Include="Addons\Workflow\UI\gfx\jOpDrop.gif" />
+    <Content Include="Addons\Workflow\UI\gfx\jSel.gif" />
+    <Content Include="Addons\Workflow\UI\gfx\one.png" />
+    <Content Include="Addons\Workflow\UI\gfx\orange.png" />
+    <Content Include="Addons\Workflow\UI\gfx\purple.png" />
+    <Content Include="Addons\Workflow\UI\gfx\red.png" />
+    <Content Include="Addons\Workflow\UI\gfx\redwine.png" />
+    <Content Include="Addons\Workflow\UI\gfx\rosewine.png" />
+    <Content Include="Addons\Workflow\UI\gfx\snake.png" />
+    <Content Include="Addons\Workflow\UI\gfx\three.png" />
+    <Content Include="Addons\Workflow\UI\gfx\two.png" />
+    <Content Include="Addons\Workflow\UI\gfx\whitewine.png" />
+    <Content Include="Addons\Workflow\UI\gfx\yellow.png" />
+    <Content Include="Addons\Workflow\UI\img\03\01.png" />
+    <Content Include="Addons\Workflow\UI\img\03\02.png" />
+    <Content Include="Addons\Workflow\UI\img\03\31.png" />
+    <Content Include="Addons\Workflow\UI\img\03\35.png" />
+    <Content Include="Addons\Workflow\UI\img\03\41.png" />
+    <Content Include="Addons\Workflow\UI\img\03\46.png" />
+    <Content Include="Addons\Workflow\UI\img\04\30.png" />
+    <Content Include="Addons\Workflow\UI\img\04\45.png" />
+    <Content Include="Addons\Workflow\UI\img\workflow.png" />
+    <Content Include="Addons\Workflow\UI\img\workflow_actions.png" />
+    <Content Include="Addons\Workflow\UI\img\workflow_folder.png" />
+    <Content Include="Addons\Workflow\UI\img\workflow_link.png" />
+    <Content Include="Addons\Workflow\UI\img\workflow_page.png" />
+    <Content Include="Addons\Workflow\UI\img\workflow_states.png" />
+    <Content Include="Addons\Workflow\UI\StateDefinition.ascx" />
+    <Content Include="Addons\Workflow\UI\Workflow.ascx" />
     <Content Include="App_GlobalResources\MyAssignmentList_MyCourses.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>MyAssignmentList_MyCourses.designer.cs</LastGenOutput>
@@ -309,53 +349,13 @@
       <LastGenOutput>MyAssignmentList_MyCourses.ru.designer.cs</LastGenOutput>
     </Content>
     <Content Include="Lms\UI\Parts\MyAssignmentList\MyTrainingsToGrade.ascx" />
-    <Content Include="Workflow\Edit\Default.aspx" />
-    <Content Include="Workflow\Edit\Edit.aspx" />
-    <Content Include="Workflow\UI\gfx\blue.png" />
-    <Content Include="Workflow\UI\gfx\cat.png" />
-    <Content Include="Workflow\UI\gfx\champagne.png" />
-    <Content Include="Workflow\UI\gfx\dog.png" />
-    <Content Include="Workflow\UI\gfx\duck.png" />
-    <Content Include="Workflow\UI\gfx\fish.png" />
-    <Content Include="Workflow\UI\gfx\green.png" />
-    <Content Include="Workflow\UI\gfx\jDrag.gif" />
-    <Content Include="Workflow\UI\gfx\jDropBut.gif" />
-    <Content Include="Workflow\UI\gfx\jOpDrop.gif" />
-    <Content Include="Workflow\UI\gfx\jSel.gif" />
-    <Content Include="Workflow\UI\gfx\one.png" />
-    <Content Include="Workflow\UI\gfx\orange.png" />
-    <Content Include="Workflow\UI\gfx\purple.png" />
-    <Content Include="Workflow\UI\gfx\red.png" />
-    <Content Include="Workflow\UI\gfx\redwine.png" />
-    <Content Include="Workflow\UI\gfx\rosewine.png" />
-    <Content Include="Workflow\UI\gfx\snake.png" />
-    <Content Include="Workflow\UI\gfx\three.png" />
-    <Content Include="Workflow\UI\gfx\two.png" />
-    <Content Include="Workflow\UI\gfx\whitewine.png" />
-    <Content Include="Workflow\UI\gfx\yellow.png" />
-    <Content Include="Workflow\UI\img\03\01.png" />
-    <Content Include="Workflow\UI\img\03\02.png" />
-    <Content Include="Workflow\UI\img\03\31.png" />
-    <Content Include="Workflow\UI\img\03\35.png" />
-    <Content Include="Workflow\UI\img\03\41.png" />
-    <Content Include="Workflow\UI\img\03\46.png" />
-    <Content Include="Workflow\UI\img\04\30.png" />
-    <Content Include="Workflow\UI\img\04\45.png" />
-    <Content Include="Workflow\UI\img\workflow.png" />
-    <Content Include="Workflow\UI\img\workflow_actions.png" />
-    <Content Include="Workflow\UI\img\workflow_folder.png" />
-    <Content Include="Workflow\UI\img\workflow_link.png" />
-    <Content Include="Workflow\UI\img\workflow_page.png" />
-    <Content Include="Workflow\UI\img\workflow_states.png" />
-    <Content Include="Workflow\UI\StateDefinition.ascx" />
-    <Content Include="Workflow\UI\Workflow.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Addons\Workflow\UI\css\" />
+    <Folder Include="Addons\Workflow\UI\js\" />
+    <Folder Include="Addons\Workflow\Web\" />
     <Folder Include="App_Data\" />
     <Folder Include="Properties\" />
-    <Folder Include="Workflow\UI\css\" />
-    <Folder Include="Workflow\UI\js\" />
-    <Folder Include="Workflow\Web\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

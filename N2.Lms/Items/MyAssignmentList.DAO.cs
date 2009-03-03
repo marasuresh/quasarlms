@@ -88,7 +88,7 @@ namespace N2.Lms.Items
 		}
 
 		[DataObjectMethod(DataObjectMethodType.Update, true)]
-		public void GoRequest(
+		public void SubmitTraining(
 				int id,
 				string comments)
 		{
@@ -114,7 +114,7 @@ namespace N2.Lms.Items
 		}
 
 		[DataObjectMethod(DataObjectMethodType.Update, true)]
-		public void GoRequest(
+		public void GradeRequest(
 				int id,
 				string command,
 				string comments,
@@ -157,7 +157,7 @@ namespace N2.Lms.Items
 		}
 
 		[DataObjectMethod(DataObjectMethodType.Update, true)]
-		public void GoRequest(
+		public void ApproveRequest(
 				string command,
 				string trainingID,
 				string comments,
