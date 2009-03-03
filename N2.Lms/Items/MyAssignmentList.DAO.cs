@@ -28,11 +28,9 @@ namespace N2.Lms.Items
 			Request _request = N2.Context.Persister.Get<Request>(ID);
 
 			this.WorkflowProvider.PerformAction(_request,
-				new ActionArguments("Cancel") {
-					State = new TransientState {
-						SavedBy = UserName,
-						Comment = "Canceled",
-					}
+				"Cancel", new {
+					SavedBy = UserName,
+					Comment = "Canceled",
 				});
 		}
 
@@ -99,11 +97,9 @@ namespace N2.Lms.Items
 			string user = HttpContext.Current.User.Identity.Name;
 
 			this.WorkflowProvider.PerformAction(_request,
-				new ActionArguments("Finish") {
-					State = new TransientState {
-						SavedBy = user,
-						Comment = comments,
-					}
+				"Finish", new {
+					SavedBy = user,
+					Comment = comments,
 				});
 		}
 
@@ -133,26 +129,18 @@ namespace N2.Lms.Items
 			switch (command) {
 				case "Accept":
 					this.WorkflowProvider.PerformAction(_request,
-						new ActionArguments("Accept") {
-							State = new TransientState {
-								SavedBy = user,
-								Comment = comments,
-							},
-							Properties = new Dictionary<string, object>{{
-								"Grade", grade
-							}}
+						"Accept", new {
+							SavedBy = user,
+							Comment = comments,
+							Grade = grade
 						});
 					break;
 				case "Decline":
 					this.WorkflowProvider.PerformAction(_request,
-						new ActionArguments("Decline") {
-							State = new TransientState {
+						"Decline", new {
 								SavedBy = user,
 								Comment = comments,
-							},
-							Properties = new Dictionary<string, object> { {
-								"Training", _training
-							} }
+								Training = _training,
 						});
 					break;
 			}
@@ -183,23 +171,17 @@ namespace N2.Lms.Items
 			switch (command) {
 				case "Accept":
 					this.WorkflowProvider.PerformAction(_request,
-						new ActionArguments("Approve") {
-							State = new TransientState {
-								SavedBy = user,
-								Comment = comments,
-							},
-							Properties = new Dictionary<string, object> { {
-								"Training", _training
-							} }
+						"Approve", new {
+							SavedBy = user,
+							Comment = comments,
+							Training = _training,
 						});
 					break;
 				case "Reject":
 					this.WorkflowProvider.PerformAction(_request,
-						new ActionArguments("Cancel") {
-							State = new TransientState {
-								SavedBy = user,
-								Comment = comments,
-							}
+						"Cancel", new {
+							SavedBy = user,
+							Comment = comments,
 						});
 					break;
 			}
