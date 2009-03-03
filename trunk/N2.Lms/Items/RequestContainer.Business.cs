@@ -47,6 +47,8 @@ namespace N2.Lms.Items
 		
 		#endregion Methods
 
+		readonly IWorkflowProvider WofkflowProvider;
+
 		public virtual IEnumerable<Request> MyRequests { get { return GetChildren().OfType<Request>(); } }
 
         public IEnumerable<Request> MyApprovedRequests
