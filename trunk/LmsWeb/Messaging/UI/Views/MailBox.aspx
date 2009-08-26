@@ -92,10 +92,16 @@
         </asp:View>
     </asp:MultiView>
     <n2:ChromeBox runat="server">
-        <asp:ObjectDataSource runat="server" ID="ds" OldValuesParameterFormatString="original_{0}"
-            SelectMethod="GetFilteredFolderMessages" SelectCountMethod="TotalNumberOfMessage"
-            TypeName="N2.Messaging.MailBox" OnObjectCreating="ds_ObjectCreating" EnablePaging="True">
-        </asp:ObjectDataSource>
+		<asp:ObjectDataSource
+			runat	= "server"
+			ID		= "ds"
+			OldValuesParameterFormatString	= "original_{0}"
+			SelectMethod		= "GetFilteredFolderMessages"
+			SelectCountMethod	= "TotalNumberOfMessage"
+			TypeName			= "N2.Messaging.MailBox"
+			OnObjectCreating	= "ds_ObjectCreating"
+			EnablePaging		= "True">
+		</asp:ObjectDataSource>
         <asp:ListView ID="lv" DataKeyNames="ID" runat="server" DataSourceID="ds">
             <LayoutTemplate>
                 <table class="gridview" cellpadding="0" cellspacing="0">

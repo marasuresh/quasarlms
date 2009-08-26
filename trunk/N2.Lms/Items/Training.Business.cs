@@ -11,14 +11,17 @@ namespace N2.Lms.Items
 		Workflow m_workflow;
 		
 		[EditableItem("Workflow", 44, ContainerName = "lms")]
-		internal Workflow Workflow {
+		public Workflow Workflow {
 			get {
 				if (null == this.m_workflow) {
 					this.m_workflow = this.GetChild("workflow") as Workflow;
 
 					if (null == this.m_workflow) {
 						this.m_workflow = this.GenerateDefaultWorkflow();
-						Context.Current.Persister.Save(this.m_workflow);
+						
+						if (this.IsPersistent()) {
+							Context.Current.Persister.Save(this.m_workflow);
+						}
 					}
 				}
 				return this.m_workflow;

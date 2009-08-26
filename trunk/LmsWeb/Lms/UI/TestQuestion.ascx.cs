@@ -121,7 +121,8 @@ namespace N2.Lms.UI.Parts
 					_questionCotrol = new LiteralControl(
 						string.Concat(
 							"<p><iframe src='",
-							this.ResolveClientUrl("~/Upload/Courses/" + _question.Title),
+							this.ResolveUrl(this.CurrentItem.Test.Course.DiskFolder + "/" + _question.Title),
+							//this.ResolveClientUrl("~/Upload/Courses/" + _question.Title),
 							"'></iframe></p>"));
 					break;
 				default:

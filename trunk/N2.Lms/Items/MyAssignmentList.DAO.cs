@@ -118,12 +118,11 @@ namespace N2.Lms.Items
 				int id,
 				string command,
 				string comments,
-				string trainingID,
-				string grade)
+				int trainingID,
+				int grade)
 		{
 			Request _request = N2.Context.Persister.Get<Request>(id);
-			Training _training = N2.Context.Persister.Get<Training>(int.Parse(trainingID));
-
+			
 			string user = HttpContext.Current.User.Identity.Name;
 
 			switch (command) {
@@ -136,6 +135,7 @@ namespace N2.Lms.Items
 						});
 					break;
 				case "Decline":
+					Training _training = N2.Context.Persister.Get<Training>(trainingID);
 					this.WorkflowProvider.PerformAction(_request,
 						"Decline", new {
 								SavedBy = user,
