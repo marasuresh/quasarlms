@@ -38,7 +38,8 @@
 	<ItemTemplate>
 		<tr class='<%# Container.DataItemIndex % 2 == 0 ? "row" : "altrow" %>'>
 			<td><%# ((Request)Container.DataItem).Course.Title %> </td>
-			<td><%# (this.GetRequestState((Request)Container.DataItem) as AcceptedState).Grade %> </td>
+			<td><%# (this.GetRequestState((Request)Container.DataItem) as AcceptedState).Grade %> 
+			<small><%# (this.GetRequestState((Request)Container.DataItem) as AcceptedState).Comment %></small></td>
 		</tr>
 	</ItemTemplate>
 </asp:ListView>

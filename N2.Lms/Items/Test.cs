@@ -44,7 +44,7 @@
 
 		[EditableTextBox(
 			"Duration", 13,
-			DefaultValue = "600",
+			//DefaultValue = "600",
 			Required = true,
 			Validate = true,
 			ValidationExpression = @"(\d+)")]

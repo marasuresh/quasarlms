@@ -10,6 +10,7 @@ using N2.Lms.Web.UI.WebControls;
 using N2.Resources;
 using N2.Templates.Items;
 using N2.Templates.Web.UI;
+using N2.Web;
 using N2.Web.UI;
 
 /// <summary>
@@ -164,9 +165,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 		this.Decorator.Items.Add(_step.ID, module);
 		this.wz.WizardSteps.Add(_step);
 
-		(
-			(TemplateUserControl<AbstractContentPage, Topic>)((IContainable)module.Topic).AddTo(_step)
-		).CurrentItem = module.Topic;
+		ItemUtility.AddUserControl(_step, module.Topic);
 		
 		this.CreateControlHierarchy(module.Topic);
 		return _step;
@@ -186,7 +185,7 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 		this.Decorator.Items.Add(_step.ID, test);
 		this.wz.WizardSteps.Add(_step);
 
-		var _testControl = (BaseLearningControl<Test>)((IContainable)test).AddTo(_step);
+		var _testControl = (BaseLearningControl<Test>)ItemUtility.AddUserControl(_step, test);
 		_testControl.CurrentItem = test;
 		_testControl.AttemptItem = this.CurrentItem;
 
@@ -233,10 +232,8 @@ public partial class Player : ContentUserControl<AbstractContentPage, TrainingTi
 		this.Decorator.Items.Add(_step.ID, topic);
 		this.wz.WizardSteps.Add(_step);
 
-		((TemplateUserControl<AbstractContentPage, Topic>)((IContainable)topic)
-			.AddTo(_step))
-			.CurrentItem = topic;
-
+		ItemUtility.AddUserControl(_step, topic);
+		
 		this.CreateControlHierarchy(topic);
 
 		return _step;

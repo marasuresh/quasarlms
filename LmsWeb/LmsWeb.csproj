@@ -348,7 +348,6 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>MyAssignmentList_MyCourses.ru.designer.cs</LastGenOutput>
     </Content>
-    <Content Include="Lms\UI\Parts\MyAssignmentList\MyTrainingsToGrade.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Addons\Workflow\UI\css\" />
